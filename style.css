@@ -70,9 +70,15 @@ body {
   color: var(--cor6);
 }
 
+#fim {
+  background-color: var(--cor6);
+  width: 100%;
+}
+
+
 #direitos {
   font-size: 12pt;
   text-align: center;
   padding: 20px;
-  background-color: var(--cor6);
+  
 }
