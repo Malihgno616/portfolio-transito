@@ -1,0 +1,78 @@
+@charser "UTF-8";
+
+body {
+  background-color: var(--cor4);
+  font-family: Verdana, sans-serif;
+  margin: auto;
+}
+
+#cab {
+  padding: 15px;
+  background-image:linear-gradient(90deg, #A09235 50% , #33322B 10%) ;
+ 
+}
+
+/*Root das paletas de cores do tipo monocromático*/
+
+:root {
+  --cor1: #F5D400;
+  --cor2: #CAB422;
+  --cor3: #A09235;
+  --cor4: #756D3B;
+  --cor5: #4B4732;
+  --cor6: #33322B; 
+}
+
+.nav-menu {
+  list-style:none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--cor2);
+  border-radius: 20px;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.nav-menu li { 
+  display: inline;;
+}
+
+.nav-menu a {
+  display: inline-block;
+  padding: 20px;
+  color:var(--cor5);
+  text-decoration: none;
+  font-family:OCR A 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+.nav-menu a:hover {
+  background-color: var(--cor1);
+  transition-duration: 200ms;
+}
+
+.data {
+  padding: 20px;
+}
+
+.sidebar {
+  float: right;
+  width: 200px;
+  background-color: var(--cor4);
+  padding: px;
+}
+
+.titulo2 {
+  font-size: 24pt;
+  text-align: center;
+  background-color: var(--cor2);
+  padding: 40px 40px;
+  color: var(--cor6);
+}
+
+#direitos {
+  font-size: 12pt;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--cor6);
+}
