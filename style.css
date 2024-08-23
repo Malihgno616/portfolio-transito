@@ -51,9 +51,7 @@ body {
   transition-duration: 200ms;
 }
 
-.data {
-  padding: 20px;
-}
+
 
 .sidebar {
   float: right;
@@ -72,7 +70,9 @@ body {
 
 #fim {
   background-color: var(--cor6);
-  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 5px;
 }
 
 
@@ -80,5 +80,38 @@ body {
   font-size: 12pt;
   text-align: center;
   padding: 20px;
+  color: whitesmoke;  
+}
+
+
+.nav-destaque {
+  list-style-type: none;;
   
+  width: 6%;
+  margin: left;
+  text-align: center;
+  
+  border-radius: 45px;
+}
+
+.nav-destaque li{
+  display: inline-table;;
+  padding: 10px 10px; 
+}
+
+
+.nav-destaque a {
+  display: inline-block;
+  padding: 20px;
+  color:var(--cor5);
+  text-decoration: solid;
+  font-family:OCR A 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  border: 2px solid var(--cor6);
+  border-radius: 5px;
+  background-color: #CAB422;
+}
+
+.nav-destaque a:hover {
+  background-color: var(--cor1);
+  transition-duration: 200ms;
 }
