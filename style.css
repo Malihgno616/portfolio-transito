@@ -52,7 +52,6 @@ body {
 }
 
 
-
 .sidebar {
   float: right;
   width: 200px;
@@ -62,10 +61,10 @@ body {
 
 .titulo2 {
   font-size: 24pt;
-  text-align: center;
   background-color: var(--cor2);
-  padding: 40px 40px;
+  padding: 10px 10px;
   color: var(--cor6);
+  text-align: center;
 }
 
 #fim {
@@ -106,12 +105,26 @@ body {
   color:var(--cor5);
   text-decoration: solid;
   font-family:OCR A 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-  border: 2px solid var(--cor6);
-  border-radius: 5px;
+  
+  padding-inline: 10px;
   background-color: #CAB422;
 }
 
 .nav-destaque a:hover {
   background-color: var(--cor1);
   transition-duration: 200ms;
+}
+
+.pesquisa {
+  position: absolute;
+  top: 230px;
+  right: 20%;
+  background: var(--cor5);
+  height: 25px;
+  border-radius: 22px;
+  padding: 6px;
+}
+
+* {
+  margin: 0;
 }
