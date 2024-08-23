@@ -8,12 +8,10 @@ body {
 
 #cab {
   padding: 15px;
-  background-image:linear-gradient(90deg, #A09235 50% , #33322B 10%) ;
- 
+  background-image:linear-gradient(180deg, #A09235 50% , #33322B 10%) ;
 }
 
 /*Root das paletas de cores do tipo monocromático*/
-
 :root {
   --cor1: #F5D400;
   --cor2: #CAB422;
@@ -48,7 +46,7 @@ body {
 
 .nav-menu a:hover {
   background-color: var(--cor1);
-  transition-duration: 200ms;
+  transition-duration: 600ms;
 }
 
 
@@ -60,9 +58,8 @@ body {
 }
 
 .titulo2 {
-  font-size: 24pt;
-  background-color: var(--cor2);
-  padding: 10px 10px;
+  font-size: 16pt;
+  padding: 7px 7px;
   color: var(--cor6);
   text-align: center;
 }
@@ -85,9 +82,8 @@ body {
 
 .nav-destaque {
   list-style-type: none;;
-  
-  width: 6%;
-  margin: left;
+  background-color: var(--cor3);
+  margin: auto;
   text-align: center;
   
   border-radius: 45px;
@@ -100,34 +96,29 @@ body {
 
 
 .nav-destaque a {
-  display: inline-block;
-  padding: 20px;
+  
+  padding: 10px;
   color:var(--cor5);
   text-decoration: solid;
   font-family:OCR A 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-  
   padding-inline: 10px;
-  background-color: #CAB422;
+
 }
 
 .nav-destaque a:hover {
   background-color: var(--cor1);
-  transition-duration: 200ms;
+  transition-duration:700ms;
 }
 
 .pesquisa {
-  position: absolute;
-  top: 230px;
-  right: 20%;
+    
   background: var(--cor5);
-  height: 25px;
+  height: 24px;
   border-radius: 22px;
-  padding: 6px;
+  padding: 4px;
 }
 
-* {
-  margin: 0;
-}
+
 
 .txt_pesquisa {
   padding: 0px !important;
@@ -147,32 +138,15 @@ body {
 .btn-pesquisa {
   cursor: pointer;
   text-decoration: none;
-  color: #f1c40f;
+  color: var(--cor4);
   float: right;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #333;
+  background:var(--cor6);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.1s ease;
 }
 
-.fas {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-}
-
-
-
-.s {
-  padding: 4px;
-}
-
-.fa.search::before {
-  content: "\f002";
-}
