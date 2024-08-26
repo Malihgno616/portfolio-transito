@@ -7,17 +7,29 @@
   <link rel="stylesheet" href="style.css">
   
 </head>
-<body>   
-    <header id="cab">     
-      <a href="index.html"><img src="https://www.transitoleme.sp.gov.br/imagens/logo-transito-2018.png" alt="transitoleme" width="60%"></a>
-      <div class="pesquisa">
-        <input class="txt_pesquisa" type="text" name="query" autocomplete="off" placeholder="Buscar">
-        <label class="btn-pesquisa" for="send" href="#">
-          
-        </label>
-      </div>    
-    </header>
+<body> 
+    <!--Refatorando o Código HTML-->
 
+    <!--Cabeçalho-->     
+    <div class="header">
+      <div class="esquerda">
+        <a href="index.html"><img src="https://www.transitoleme.sp.gov.br/imagens/logo-transito-2018.png" alt="transitoleme" width="100%"></a>
+      </div>
+      <div class="direita">
+        <div class="titulo2" >
+          <h2>Seja Bem-Vindo!</h2>
+          <p id="date"></p>  
+          <script src="script.js"></script>
+        </div>
+      </div>
+    </div> 
+
+    <br>
+
+    <div class="telefone">
+      <a id="numero" href="#">(12)1234-1234</a>
+    </div>
+    
     <br>
 
     <nav >
@@ -30,15 +42,38 @@
         </ul>
     </nav>
     
-    <script src="script.js"></script>
     <br>
-    <div>
-      <div class="titulo2" >
-        <h2>SEJA BEM-VINDO!</h2>
-        <p id="date"></p>
+    <script src="slide.js"></script>
+    <div class="slider">
+      <div class="slides">
+          <div class="slide"><img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1"></div>
+          <div class="slide"><img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2"></div>
+          <div class="slide"><img src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3"></div>
       </div>
+      <div class="nav">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
+      </div>
+
+
+  </div>
+
+
+    
+    <div class="main">
+      <div class="section2">
+        <h1>Notícias</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam autem dicta iste dolor vel, aperiam quasi quae provident. Porro dolores facilis perspiciatis accusamus corrupti maxime velit similique non officiis exercitationem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni exercitationem consequatur, totam ipsum error nihil, autem eveniet possimus aliquid sapiente cupiditate porro laudantium voluptatem quia vel. Cum, velit. Nam, nulla.</p>
+      </div>
+      <div class="section1">
+        <h1>Destaques essa Semana!</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, perspiciatis rem, et amet voluptate fuga libero animi accusantium, cumque beatae quod vel quaerat voluptates quo corporis voluptatum repellendus officia distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat repudiandae, blanditiis molestiae, earum reprehenderit eius debitis quidem sunt, dignissimos neque? Maxime nisi error laborum reiciendis expedita dolor, doloribus eveniet.</p>
+      </div>
+      
     </div>
-  
+
+      <br>
+
     <nav>
       <ul class="nav-destaque">
           <li><a href="#">Multas</a></li>
@@ -50,12 +85,8 @@
           <li><a href="#">Sinalização</a></li>
       </ul>
     </nav>
-
-
-    <main id="conteudo todo">      
-           
-    </main>
-
+    
+      <br>
     <footer id="fim">    
           <strong>
             <p id="direitos"> &copy; Todos os direitos reservados. </p>

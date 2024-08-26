@@ -6,10 +6,51 @@ body {
   margin: auto;
 }
 
-#cab {
-  padding: 15px;
-  background-image:linear-gradient(180deg, #A09235 50% , #33322B 10%) ;
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+    
 }
+.direta, .esquerda {
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.esquerda {
+  background-color: var(--cor3);
+}
+
+.direita {
+  background-color: var(--cor5);
+  text-align: center;
+  padding: 55px;
+}
+
+.telefone {
+  background-color: #b9a732;
+  padding: 2px;
+  text-align: center;
+  margin: auto;
+  width: 135px;
+ 
+}
+
+.telefone a:hover {
+  background-color: var(--cor1);
+  transition-duration: 500ms;
+  line-height: normal;
+  border: 1px solid rgb(231, 187, 41) ;
+
+}
+
+#numero {
+  color:var(--cor5);
+  text-decoration: none;
+  font-family:OCR A 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
 
 /*Root das paletas de cores do tipo monocromático*/
 :root {
@@ -27,9 +68,10 @@ body {
   margin: 0;
   background-color: var(--cor2);
   border-radius: 20px;
-  width: 90%;
+  width: 650px;
   margin: auto;
   text-align: center;
+  border: 1px solid #33322B;
 }
 
 .nav-menu li { 
@@ -49,6 +91,22 @@ body {
   transition-duration: 600ms;
 }
 
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color:var(--cor3);
+  
+  margin: auto;
+  
+}
+
+.section1, .section2 {
+  padding: 60px;
+  box-sizing: border-box;
+  margin: auto;
+  width: 70%;
+  
+}
 
 .sidebar {
   float: right;
@@ -60,8 +118,9 @@ body {
 .titulo2 {
   font-size: 16pt;
   padding: 7px 7px;
-  color: var(--cor6);
+  color: var(--cor2);
   text-align: center;
+  text-shadow:2px 2px 0px #33322B;
 }
 
 #fim {
@@ -73,9 +132,8 @@ body {
 
 
 #direitos {
-  font-size: 12pt;
+  font-size: 10pt;
   text-align: center;
-  padding: 20px;
   color: whitesmoke;  
 }
 
@@ -85,41 +143,41 @@ body {
   background-color: var(--cor3);
   margin: auto;
   text-align: center;
-  
   border-radius: 45px;
 }
 
 .nav-destaque li{
-  display: inline-table;;
+  display: inline-flex;
   padding: 10px 10px; 
 }
 
 
-.nav-destaque a {
-  
+.nav-destaque a { 
   padding: 10px;
   color:var(--cor5);
   text-decoration: solid;
   font-family:OCR A 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-  padding-inline: 10px;
+  padding-inline: 90px;
 
 }
 
 .nav-destaque a:hover {
   background-color: var(--cor1);
   transition-duration:700ms;
+ 
 }
 
+/*
 .pesquisa {
     
-  background: var(--cor5);
+  background-color: var(--cor3);
   height: 24px;
   border-radius: 22px;
   padding: 4px;
 }
+*/
 
-
-
+/*
 .txt_pesquisa {
   padding: 0px !important;
   border: none;
@@ -132,21 +190,60 @@ body {
   margin-top: 2px;
   margin-left: 7px;
   margin-right: 7px;
-  width: 140px;
+  width: 90px;
 }
 
 .btn-pesquisa {
   cursor: pointer;
   text-decoration: none;
-  color: var(--cor4);
+  color: var(--cor2);
   float: right;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background:var(--cor6);
+  background:var(--cor2);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.1s ease;
 }
+*/
 
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.slide img {
+  width: 100%;
+  display: block;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.nav button {
+  background-color: var(--cor3);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
