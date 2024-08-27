@@ -13,7 +13,8 @@ function displayDate() {
 // Adiciona a data assim que o conteúdo da página for carregado
 window.onload = displayDate;
 
-// -------------------------------- //
+
+
 
 
 
