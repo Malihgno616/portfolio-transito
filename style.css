@@ -130,8 +130,8 @@ body {
   background-color: var(--cor2);
   margin: auto;
   text-align: center;
-  border-radius: 45px;
-  width: 75%;
+  border-radius: 20px;
+  max-width: 920px;
   border: 1px solid ;
 }
 
@@ -183,3 +183,57 @@ body {
   color: #756D3B; 
 }
 
+.rodape {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.metade1,
+.metade2 {
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.metade1 {
+  background-color: #33322B;
+  width: 100%; 
+  padding: 10px;
+}
+
+.metade2 {
+  background-color: var(--cor3);
+  
+}
+
+.metade1 a {
+  color: #756D3B;
+  text-decoration: none;
+}
+
+.metade1 a:hover {
+  color: yellow;
+  transition-duration: 500ms;
+}
+
+.metade2 a{
+  color: var(--cor6);
+  text-decoration: none;
+}
+
+.metade2 li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.metade2 li:hover {
+  background-color: var(--cor1);
+  width: 50%;
+  transition-duration: 950ms;
+  border-radius: 100px;
+}
+
+#links-uteis {
+  display: flex;
+  text-align: justify;
+}
