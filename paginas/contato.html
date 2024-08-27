@@ -10,40 +10,93 @@
 <body>
   <!--Refatorando o Código HTML-->
 
-    <!--Cabeçalho-->     
-    <div class="header">
-      <div class="esquerda">
-        <a href="../index.html"><img src="https://www.transitoleme.sp.gov.br/imagens/logo-transito-2018.png" alt="transitoleme" width="100%"></a>
-      </div>
-      <div class="direita">
-        <div class="titulo2" >
-          <h2>Seja Bem-Vindo!</h2>
-          <p id="date"></p>  
-          <div class="telefone">
-            <a id="numero" href="#">Nosso telefone:(12)1234-1234</a>
-          </div>
-          <script src="../script.js"></script>
+  <!--Cabeçalho-->     
+  <div class="header">
+    <div class="esquerda">
+      <a href="../index.html"><img src="https://www.transitoleme.sp.gov.br/imagens/logo-transito-2018.png" alt="transitoleme" width="100%"></a>
+    </div>
+    <div class="direita">
+      <div class="titulo2" >
+        <h2>Seja Bem-Vindo!</h2>
+        <p id="date"></p>  
+        <div class="telefone">
+          <a id="numero" href="#">Nosso telefone:(12)1234-1234</a>
         </div>
+        <script src="../script.js"></script>
       </div>
-    </div> 
+    </div>
+  </div> 
 
-    <br>
-        
-    <br>
+  <br>
 
-    <nav >
-        <ul class="nav-menu">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="/paginas/institucional.html">Institucional</a></li>
-          <li><a href="/paginas/noticia.html">Notícias</a></li>
-          <li><a href="/paginas/servicos.html">Serviços Online</a></li>
-          <li><a href="/paginas/contato.html">Contato</a></li>
-        </ul>
-    </nav>
+  <nav >
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="/paginas/institucional.html">Institucional</a></li>
+        <li><a href="/paginas/noticia.html">Notícias</a></li>
+        <li><a href="/paginas/servicos.html">Serviços Online</a></li>
+        <li><a href="/paginas/contato.html">Contato</a></li>
+      </ul>
+  </nav>
+
+  <br>
+      <!-- Menu Secundário-->
+  <nav>
+    <ul class="outro-menu">
+      <li><a href="#">Multas</a></li>
+      <li><a href="#">Vagas Especiais</a></li>
+      <li><a href="#">Bicicletas</a></li>
+      <li><a href="#">Zona Azul</a></li>
+      <li><a href="#">Interdições</a></li>
+      <li><a href="#">Lombadas</a></li>
+      <li><a href="#">Sinalização</a></li>
+    </ul>
+  </nav>  
+
+  <br>
+  <!--Conteúdo Principal-->
+  <div class="main">
+    <div class="section2">
+      <h1>Contato</h1>
+      <p>Preencha o formulário abaixo e nos envie sua mensagem</p>
+      <form action="#">
+          <label for="Nome">Nome</label>
+          <input type="text" name="nome" id="nome">
+      </form>
+      <form action="#">
+        <label for="Email">E-mail</label>
+        <input type="text" name="email" id="email">
+      </form>
+    </div>  
+  </div>
+
     
-    <br>
+  <!--Rodapé-->
+  <div class="rodape">
+    <div class="metade1">
+      <h2>Coordenadoria Municipal de Trânsito</h2>
+      <p><em>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</em></p>
+      <a href="#">
+      <address><p>endereço: rua dos asfaltos da silva, numero 001</p></address>
+      </a>
+      <a href="#"><p>Horário de Atendimento 8:00 as 16:00</p></a>
+      <a href="#"><p>(12)1234-1234</p></a>
+      <a href="#"><p>email@email.com</p></a>
+    </div>
+    <div class="metade2">
+      <h2 id="links-uteis">Links Úteis</h2>
+    <ul>
+      <li><a href="#">Prefeitura de Leme</a></li>
+      <li><a href="#">Câmara Municipal de Leme</a></li>
+      <li><a href="#">Detran-SP</a></li>
+      <li><a href="#">Denatran</a></li>
+      <li><a href="#">IPVA-SP</a></li>
+      <li><a href="#">E-CNH</a></li>
+      <li><a href="#">DER-SP</a></li>
+    </ul>
+    </div>
+  </div>
     
-    <br>
     <footer id="fim">    
           <strong>
             <p id="direitos"> &copy; Todos os direitos reservados. </p>

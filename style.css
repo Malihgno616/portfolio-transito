@@ -186,6 +186,7 @@ body {
 .rodape {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 
@@ -193,17 +194,20 @@ body {
 .metade2 {
   padding: 25px;
   box-sizing: border-box;
+  
 }
 
 .metade1 {
   background-color: #33322B;
   width: 100%; 
-  padding: 10px;
+  padding: 5px;
+  border:1px solid #33322B;
 }
 
 .metade2 {
-  background-color: var(--cor3);
-  
+  background-color: var(--cor4);
+  width: 100%;
+  padding: 5px;
 }
 
 .metade1 a {
@@ -219,6 +223,16 @@ body {
 .metade2 a{
   color: var(--cor6);
   text-decoration: none;
+}
+
+.metade h2 {
+  text-align: center;
+  padding-right: 20px;
+}
+
+.metade1 p {
+  text-align: justify;
+  font-weight: 500;
 }
 
 .metade2 li {
