@@ -153,9 +153,12 @@ body {
 
 .outro-menu {
   padding: 10px;
-  list-style-type: none;;
+  list-style: none;;
   background-color: var(--cor2);
   margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   text-align: center;
   border-radius: 20px;
   max-width: 920px;
@@ -188,6 +191,32 @@ body {
   transition-duration:700ms;
   width: 70%;
   border-radius: 55px;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--cor3) ;
+  border: 1px solid #000000;
+  padding: 10px;
+  display: none;
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  margin-bottom: 10px;
+}
+
+.submenu li:last-child {
+  margin-bottom: 0;
 }
 
 #insti {
