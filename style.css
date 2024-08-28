@@ -190,26 +190,6 @@ body {
   border-radius: 55px;
 }
 
-.submenu {
-  display: none; /* Oculta o submenu por padrão */
-  position: absolute;
-  top: 100%; /* Coloca o submenu logo abaixo do item de menu principal */
-  left: 0;
-  list-style-type: none;
-}
-
-.submenu li a {
-  padding: 10px;
-  display: block;
-  text-decoration: none;
-  background-color: #e4e4e4;
-}
-
-/* Exibe o submenu quando o item de menu principal é hover */
-.menu-item:hover .submenu {
-  display: block;
-}
-
 #insti {
   text-align: left; 
 }
