@@ -1,7 +1,7 @@
 @charser "UTF-8";
 
 body {
-  background-color:var(--cor4) ;
+  background-color:rgb(245, 239, 189) ;
   font-family: Verdana, sans-serif;
   margin: auto;
 }
@@ -32,13 +32,15 @@ body {
 
 .esquerda {
   background-color: var(--cor3);
-  border-radius: 40px;
+  border-radius: 10px;
+  padding-left: 20px;
 }
 
 .direita {
   background-color: var(--cor5);
   text-align: center;
-  border-radius: 40px;
+  border-radius: 10px;
+  padding-right: 20px;
   
 }
 
@@ -69,7 +71,7 @@ body {
   width: 650px;
   margin: auto;
   text-align: center;
-  border: 1px solid #33322B;
+ 
 }
 
 .nav-menu li { 
@@ -160,9 +162,9 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: center;
-  border-radius: 20px;
+
   max-width: 920px;
-  border: 1px solid ;
+ 
 }
 
 .outro-menu li{
