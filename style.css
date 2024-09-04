@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -14,7 +12,7 @@ body {
 
 .cabecalho {
   background-color: #F5C800;
-  padding: 1em;
+  padding: 1rem;
   text-align: center;  
 }
 
@@ -39,7 +37,6 @@ body {
   .borda h1 {
     font-size: 18px;
   }
-
 }
 
 @media (max-width: 480px){
@@ -49,7 +46,6 @@ body {
   .borda h1 {
     font-size: 14px;
   }
-
 }
 
 .menu1 {
@@ -136,4 +132,78 @@ body {
   }
 }
 
+.img-esquerda {
+  margin-top: 10px ;
+  padding-right: 300px;
+  padding-bottom: 500px;
+  margin-right: 1500px;
+  background-image: url("/images/estradavert.png");
+  background-size: 100% 100%;
+  justify-content: center;
+  
+}
 
+.borda-direita {
+  margin-left: 20%;
+  margin-top: -500px;
+  margin-bottom: 200px;
+  border: 2px solid #F5C800 ;
+  background-color: #F5C800;
+}
+
+.rodape {
+  background-color:#F5C800;
+  padding: 30px;
+  margin-top: 370px;
+
+}
+
+.rodape div {
+  text-align: left;
+  background-color: #32324B;
+  padding: 1em;
+  width: 50%;
+  border-radius: 40px;
+}
+
+.rodape ul li {
+  list-style: none;
+  padding: 1em;
+}
+
+.rodape a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.rodape a:hover {
+  color: #F5C800;
+  transition-duration: 500ms;
+}
+
+.copy {
+  font-size: 26px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 0.5em;
+}
+
+/* media queries */
+@media (max-width: 768px) {
+  .img-esquerda {
+    padding-right: 10%;
+  }
+  .borda-direita {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-esquerda {
+    padding-right: 5%;
+  }
+  .borda-direita {
+    margin-left: 5%;
+  }
+}
