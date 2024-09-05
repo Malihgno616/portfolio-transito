@@ -162,16 +162,59 @@ body {
 .rodape {
   margin-top: 1rem;
   background-color:#BAA82F;
-  padding: 10px;
+  padding: 3rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
+.text-rodape h2{
+  margin-top: -4rem;
+  margin-left: 3rem;
+  margin-bottom: 0;
+  margin-right: 0; 
+}
+
+.text-rodape p{
+  margin: 0 0 0 5rem;
+}
+
+.text-rodape img {
+  margin-left: -2rem;
+  margin-top: -1rem;
+
+}
+
+.txt-contato {
+  margin-right: 6rem;
+}
+
+.txt-contato ul {
+  margin-top: -15px;
+  padding: 0px;
+}
+
+.txt-contato li:hover {
+  background-color: #2F2F7F;
+  padding: 1px;
+  border-radius: 40px;
+  transition-duration: 1000ms;
+}
+
+
+
 .rodape div {
   text-align: left;
   background-color: #32324B;
   padding: 1em;  
+}
+
+.outra-div h2{
+  text-align: center;
+}
+
+.outra-div li {
+  margin-left: 13rem;
 }
 
 .rodape ul li {
@@ -187,6 +230,7 @@ body {
 .rodape a:hover {
   color: #F5C800;
   transition-duration: 500ms;
+  border-style: solid;
 }
 
 .copy {
