@@ -52,7 +52,7 @@ body {
   background-color: #3536A0;
   padding: 1rem;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 1rem;
   
 }
 
@@ -93,7 +93,7 @@ body {
   background-color: #3536A0;
   padding: 2rem;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .menu2 ul {
@@ -120,7 +120,6 @@ body {
   border-radius: 20px;
 }
 
-
 /*Linhas para tornar o menu responsivo*/
 @media (max-width: 768px){
   .menu2 ul {
@@ -133,37 +132,46 @@ body {
 }
 
 .img-esquerda {
-  margin-top: 10px ;
+  margin-top: 1rem ;
   padding-right: 300px;
   padding-bottom: 500px;
   margin-right: 1500px;
+  width: 3rem;
+  height: 6rem;
   background-image: url("/images/estradavert.png");
   background-size: 100% 100%;
-  justify-content: center;
-  
+  border-style: groove; 
 }
 
-.borda-direita {
-  margin-left: 20%;
-  margin-top: -500px;
-  margin-bottom: 200px;
-  border: 2px solid #F5C800 ;
+.sec1 {
   background-color: #F5C800;
+  width: 76.6rem;
+  height: 600px;
+  margin-top: -618px;
+  margin-left: 375px; 
+}
+
+.sec2 {
+  background-color: #2F2F7F;
+  width: 100rem;
+  height: 500px;
+  margin-top: 1rem;
+  margin-left: 0; 
 }
 
 .rodape {
-  background-color:#F5C800;
-  padding: 30px;
-  margin-top: 370px;
-
+  margin-top: 1rem;
+  background-color:#BAA82F;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 .rodape div {
   text-align: left;
   background-color: #32324B;
-  padding: 1em;
-  width: 50%;
-  border-radius: 40px;
+  padding: 1em;  
 }
 
 .rodape ul li {
@@ -182,11 +190,11 @@ body {
 }
 
 .copy {
-  font-size: 26px;
+  font-size: 16px;
   text-align: center;
   color: white;
   background-color: black;
-  padding: 0.5em;
+  padding: 5px;
 }
 
 /* media queries */
