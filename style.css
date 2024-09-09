@@ -57,6 +57,7 @@ body {
   font-style: italic;
 }
 
+
 /*Menus Principais*/
 
 .nav-menu {
@@ -83,6 +84,14 @@ body {
 .nav-item a:hover {
   color: var(--cor3);
 }
+
+/* Slider */
+
+
+
+
+
+
 
 /*Conteúdo Principal*/
 
