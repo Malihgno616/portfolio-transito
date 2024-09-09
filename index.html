@@ -3,96 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="/icon/favicon.ico" type="image/x-icon">
-  
   <title>Trânsito Leme</title>
+  <link rel="shortcut icon" href="/icon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+
 <body>
 
-    <header class="cabecalho">
-      <div class="borda">
-        <h1>Seja Bem-Vindo!!!</h1>
-      </div>
-      <img src="images/logo-transito-2018.png" alt="Logotipo LemeTransito" width="50%">
-    </header>
-    
-    <nav class="menu1">
-      <div>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="institucional.html">Institucional</a></li>
-          <li><a href="serviços.html">Serviços</a></li>
-          <li><a href="contato.html">Contato</a></li>
-          <li><a href="noticias.html">Notícias</a></li>
-        </ul>
-      </div>
-    </nav>
-    
-   
-    <nav class="menu2">
-      <div>
-        <ul>
-          <li><a href="#">Multas</a></li>
-          <li><a href="#">Vagas Especiais</a></li>
-          <li><a href="#">Bicicletas</a></li>
-          <li><a href="#">Zona Azul</a></li>
-          <li><a href="#">Interdições</a></li>
-          <li><a href="#">Lombadas</a></li>
-          <li><a href="#">Sinalização</a></li>
-        </ul>
-      </div>
-    </nav>
+  <!-- Cabeçalho -->
 
-    <main>
-      <aside>
-        <div class="img-esquerda">
+  <header class="header">
+    <div class="logo-item"><img src="images/logo-transito-2018.png" alt="LogoTransito"></div>
+  </header>
+
+  <!-- Boas Vindas -->
+  <div class="welcome">
+    <h2>Bem-vindo ao Trânsito Leme</h1>
+    <i class="fas fa-phone"><span>(19)1234-1234</span></i>
+  </div>
+
+  <!-- Menu do Site -->  
+  <div class="nav-menu">
+    <ul class="nav-item">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="/pages/institucional.html">Institucional</a></li>
+      <li><a href="/pages/noticias.html">Notícias</a></li>
+      <li><a href="/pages/contato.html">Contato</a></li>
+      <li><a href="/pages/serviços.html">Serviços Online</a></li>     
+    </ul>
+  </div>
+
+  <main class="main">
+      <div class="section-item">
+        <div class="aside-container">
+            <div class="aside-item">
+              <h2>Informações</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nisi eaque quos laboriosam voluptas culpa, expedita magni reiciendis voluptates? Dolores odio odit eaque error libero exercitationem quasi doloremque voluptate. Doloribus.</p>
+            </div>
         </div>
-      </aside>
-      <section class="sec1">
-        <p></p>
-      </section>
-      <section class="sec2">
-        <p></p>
-      </section>
-    </main>
-        
-    <footer class="rodape">
-      <div>
-        <ul> 
-          <div class="text-rodape">
-              <img src="/images/logo-box.png" alt="LogotipoLeme">
-              <h2>Coordenadoria Municipal de Trânsito</h2>
-              <p><em>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</em></p>
-          </div>
-          <div class="txt-contato">
-            <ul>
-              <li><a href="#"><p><address>Rua Das Estradas da Silva,505</address></p></a></li>
-              <li><a href="#"><p><address>(11) 1234-5678</address></p></a></li>
-              <li><a href="#"><p><address>contato@leme.com.br</address></p></a></li>
-              <li><a href="#"><p><address>Horario de Atendimento: Segunda à Sexta das 8:00 às 16:00 </address></p></a></li>
-            </ul>
-          </div>
-        </ul>
       </div>
-      <div class="outra-div">
+      <div class="section-item">
+        <div class="another-section-item">
+          <div class="divisions-section">item1</div>
+          <div class="divisions-section">item2</div>
+        </div>
+      </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-item">
+        <img src="/images/logo-box.png" alt="logo-box">
+        <div>
+          <h2>Coordenadoria Municipal de Trânsito</h2>
+          <p>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</p>
+        </div>
+        <div class="list">
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i>
+            <a href="#">R.Das Estradas - Centro , 454</a></li>
+            <li><i class="fa-solid fa-clock"></i>
+            <a href="#">Horário de Atendimento de Segunda à Sexta das 8:00 às 16:00</a></li>
+            <li><i class="fas fa-phone"></i>
+            <a href="#">(19) 1234-1234</a></li>
+            <li><i class="fa-solid fa-envelope"></i>
+            <a href="#">transito@email.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-item">
         <h2>Links Úteis</h2>
-        <ul>
-          <li><a href="#">Prefeitura de Leme</a></li>
-          <li><a href="#">Câmara Municipal de Leme</a></li>
-          <li><a href="#">Detran-SP</a></li>
-          <li><a href="#">Denatran</a></li>
-          <li><a href="#">IPVA-SP</a></li>
-          <li><a href="#">E-CNH</a></li>
-          <li><a href="#">DER-SP</a></li>
-        </ul>
+        <div class="another-list">
+          <ul>
+            <li><a href="#">Prefeitura de Leme</a></li>
+            <li><a href="#">Câmara Municipal de Leme</a></li>
+            <li><a href="#">Detran-SP</a></li>
+            <li><a href="#">Denatran</a></li>
+            <li><a href="#">IPVA-SP</a></li>
+            <li><a href="#">E-CNH</a></li>
+            <li><a href="#">DER-SP</a></li>
+          </ul>
+        </div>
       </div>
-    </footer>
-    
-    <div class="copy">
-      <p>&copy; 2024 Leme</p>
     </div>
+  </footer>
+
+  <div class="copyright">
+    <p>&copy; 2023 Trânsito Leme</p>
+  </div>
 
 </body>
 </html>
