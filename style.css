@@ -43,13 +43,20 @@ body {
   display: block;
 }
 
+#current-date {
+  text-transform: uppercase;
+  font-size: 18px;
+  
+}
+
 /* Boas vindas*/
 
 .welcome {
   background-color: var(--cor3);
   text-align: center;
   padding-top: 2px;
-  padding-bottom: 10px;
+  padding-bottom: 2px;
+  margin: auto;
 }
 
 .welcome h2 {
@@ -77,42 +84,43 @@ body {
 
 .nav-item a {
   text-decoration: none;
+  font-size: 2rem;
   color: var(--cor2);
   transition: .7s;
 }
 
 .nav-item a:hover {
   color: var(--cor3);
+  background-color: #ccc;
+  padding: 27px;
+  border-radius: 10px;
 }
-
-/* Slider */
-
-
-
-
-
 
 
 /*Conteúdo Principal*/
 
-/*Tornar responsivo*/
-@media (max-width: 768px) {
-  .main {
-    flex-direction: column;
-  }
-}
-.aside-container {
-  width: 100%;
+.institucional {
+  padding: 50px;
 }
 
-@media (max-width: 480px){
-  .header {
-    padding: 20px;
-  }
+.institucional h1 {
+  color: var(--cor1);
+  text-align: center;
+  font-size: 3rem;
 }
-  .nav-menu {
-    padding: 10px;
-  }
+
+.institucional p {
+  font-size: 2rem;
+  line-height: 4rem;
+}
+
+.institucional a {
+  text-decoration: none;
+  color: var(--cor1);
+  background-color: var(--cor2);
+  border-radius: 10px;
+}
+
 
 
 .main {

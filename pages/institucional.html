@@ -4,8 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Institucional</title>
+  
+  <link rel="stylesheet" href="/style.css"/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <link rel="shortcut icon" href="/icon/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
-  content
+   <!-- Cabeçalho -->
+
+  <header class="header">
+    <div class="logo-item"><img src="/images/logo-transito-2018.png" alt="LogoTransito"></div>
+  </header>
+
+  <!-- Boas Vindas -->
+  <div class="welcome">
+    <h2>Bem-vindo ao Trânsito Leme</h1>
+    <i class="fas fa-phone"><span>(19)1234-1234</span></i>
+    <p><span id="current-date"></span></p>
+    <script>
+      const currentDate = new Date();
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+      const formattedDate = currentDate.toLocaleDateString('pt-BR', options);
+      document.getElementById("current-date").textContent = formattedDate;
+    </script>
+  </div>
+
+  <!-- Menu do Site -->  
+  <div class="nav-menu">
+    <ul class="nav-item">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="/pages/institucional.html">Institucional</a></li>
+      <li><a href="/pages/noticias.html">Notícias</a></li>
+      <li><a href="/pages/contato.html">Contato</a></li>
+      <li><a href="/pages/serviços.html">Serviços Online</a></li>     
+    </ul>
+  </div>
+
+    <!-- Conteúdo Principal -->
+  <main class="main">
+    <div class="section-item">
+      <div class="institucional">
+        <h1>Institucional</h1>
+        <p>Disponibilizamos vários meios para esclarecer todas as dúvidas e que vocẽ solicite os serviços necessários relacionados ao Setor de Trânsito do Município de Leme/SP</p>
+        <p>Email: <a href="#">transito@email.com</a></p>
+        <p>Telefone: <a href="#">(19)1234-1234</a></p>
+        <p>Whatsapp: <a href="#">clique aqui</a></p>
+      </div>
+    </div>
+    <div class="section-item">
+
+    </div>
+  </main>
+
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-item">
+        <img src="/images/logo-box.png" alt="logo-box">
+        <div>
+          <h2>Coordenadoria Municipal de Trânsito</h2>
+          <p>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</p>
+        </div>
+        <div class="list">
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i>
+            <a href="#">R.Das Estradas - Centro , 454</a></li>
+            <li><i class="fa-solid fa-clock"></i>
+            <a href="#">Horário de Atendimento de Segunda à Sexta das 8:00 às 16:00</a></li>
+            <li><i class="fas fa-phone"></i>
+            <a href="#">(19) 1234-1234</a></li>
+            <li><i class="fa-solid fa-envelope"></i>
+            <a href="#">transito@email.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-item">
+        <h2>Links Úteis</h2>
+        <div class="another-list">
+          <ul>
+            <li><a href="#">Prefeitura de Leme</a></li>
+            <li><a href="#">Câmara Municipal de Leme</a></li>
+            <li><a href="#">Detran-SP</a></li>
+            <li><a href="#">Denatran</a></li>
+            <li><a href="#">IPVA-SP</a></li>
+            <li><a href="#">E-CNH</a></li>
+            <li><a href="#">DER-SP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Direitos Autorais -->
+  <div class="copyright">
+    <p>&copy; 2023 Trânsito Leme</p>
+  </div>
+
+
+
+
+
+
+
 </body>
 </html>

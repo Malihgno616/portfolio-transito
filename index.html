@@ -23,6 +23,18 @@
   <div class="welcome">
     <h2>Bem-vindo ao Trânsito Leme</h1>
     <i class="fas fa-phone"><span>(19)1234-1234</span></i>
+    <p><span id="current-date"></span></p>
+    <script>
+      const currentDate = new Date();
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+      const formattedDate = currentDate.toLocaleDateString('pt-BR', options);
+      document.getElementById("current-date").textContent = formattedDate;
+    </script>
   </div>
 
   <!-- Menu do Site -->  
