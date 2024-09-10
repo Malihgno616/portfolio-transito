@@ -33,10 +33,11 @@ body {
 }
 
 .header img {
+  max-width: 100%;
   width: 400px;
   margin-left: 0;
   margin-right: 0;
-  height: 100%;
+  height: auto;
   background-repeat: no-repeat;
   background-color: #f7f7f7;
   border-radius: 40px;
@@ -62,6 +63,15 @@ body {
 .welcome h2 {
   color: var(--cor1);
   font-style: italic;
+}
+
+#fade-element {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
 }
 
 
@@ -100,18 +110,19 @@ body {
 /*Conteúdo Principal*/
 
 .institucional {
-  padding: 50px;
+  padding: 0;
+  position: relative;
 }
 
 .institucional h1 {
   color: var(--cor1);
   text-align: center;
-  font-size: 3rem;
+  
 }
 
 .institucional p {
-  font-size: 2rem;
-  line-height: 4rem;
+  font-size: 1.5rem;
+  text-align: justify;
 }
 
 .institucional a {
@@ -119,27 +130,30 @@ body {
   color: var(--cor1);
   background-color: var(--cor2);
   border-radius: 10px;
+ 
 }
 
-
+#contato-main .section-item{
+  width: 20%;
+}
 
 .main {
   padding: 4em;
   display: flex;
   margin: 0 auto;
   gap: 2em;
-}
-
-.main {
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+.main {
+  display: flex;
+}
+
 .main .section-item {
   padding: 20px;
-  width: 1000px;
-  height: 1200px;
+  width: 900px;
+  height: 400px;
   flex: 2;
   box-shadow: 2px 4px 10px 4px #6b6b6b;
   background-color: #f8f3d7;
@@ -148,17 +162,16 @@ body {
 .aside-container {
   position: relative;
   margin: 0 auto;
-  left: -10%;
-  width: 80%;
-  height: 100%;
-  border: 1px solid #000;
-  position: relative;
-  background-image: url("/images/estradavert.png");
-  background-size: 100% 100%;
+  left: -25%;
+  height: 50%;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 3pc #323;
+  max-width: 50%;
+
 }
 
 .aside-item {
-  position: absolute;
+  position: relative;
   margin: 10px 10px 50px 10px;
   top: 0;
   left: 0;
@@ -168,14 +181,17 @@ body {
   font-size: 3rem;
   color: #f9f9f9;
   text-shadow: 2px 2px 3px #000000;
+  position: absolute;
 }
 
 .aside-item p {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
+  top: 100px;
   text-indent: 1.5rem;
   text-align: justify;
   line-height: 4rem;
+  position: absolute;
 }
 
 .another-section-item {
@@ -185,11 +201,6 @@ body {
   margin: 0 auto;
 }
 
-.divisions-section {
-  width: 300px;
-  height: 1130px;
-  box-shadow: 2px 4px 10px 4px #6b6b6b;
-}
 
 /* Rodapé */
 
@@ -211,6 +222,7 @@ body {
   background-color: var(--cor3);
   position: relative;
   margin: auto;
+  display: grid;
 }
 
 .footer-item:first-child {
@@ -284,3 +296,32 @@ body {
   text-align: center;
 }
 
+/* For small screens */
+@media (max-width: 480px) {
+  .main {
+    flex-direction: column;
+  }
+  .aside-container {
+    width: 100%;
+  }
+}
+
+/* For medium screens */
+@media (min-width: 481px) and (max-width: 768px) {
+  .main {
+    flex-direction: row;
+  }
+  .aside-container {
+    width: 30%;
+  }
+}
+
+/* For large screens */
+@media (min-width: 769px) {
+  .main {
+    flex-direction: row;
+  }
+  .aside-container {
+    width: 20%;
+  }
+}

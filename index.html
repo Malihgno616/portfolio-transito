@@ -20,21 +20,13 @@
   </header>
 
   <!-- Boas Vindas -->
-  <div class="welcome">
+   
+  <div id="fade-element" class="welcome">
     <h2>Bem-vindo ao Trânsito Leme</h1>
     <i class="fas fa-phone"><span>(19)1234-1234</span></i>
-    <p><span id="current-date"></span></p>
-    <script>
-      const currentDate = new Date();
-      const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      };
-      const formattedDate = currentDate.toLocaleDateString('pt-BR', options);
-      document.getElementById("current-date").textContent = formattedDate;
-    </script>
+    <p id="fade-element"><span id="current-date"></span></p>
+    <script src="script.js"></script>
+      
   </div>
 
   <!-- Menu do Site -->  
@@ -51,17 +43,12 @@
   <!-- Conteúdo Principal -->
   <main class="main">
       <div class="section-item">
-        <div class="aside-container">
-            <div class="aside-item">
-              <h2>Informações</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nisi eaque quos laboriosam voluptas culpa, expedita magni reiciendis voluptates? Dolores odio odit eaque error libero exercitationem quasi doloremque voluptate. Doloribus.</p>
-            </div>
+
         </div>
       </div>
       <div class="section-item">
         <div class="another-section-item">
-          <div class="divisions-section">item1</div>
-          <div class="divisions-section">item2</div>
+
         </div>
       </div>
   </main>
