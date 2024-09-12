@@ -16,6 +16,3 @@ Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria d
 - [] Ajustar outras páginas
 - [] Refatorar o conteúdo <main></main>
 
-**ACESSE O MEU SITE CLICANDO NESSE LINK**
-
- [Portfolio](https://portfolio-transito.vercel.app/)
