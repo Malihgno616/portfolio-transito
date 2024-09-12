@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trânsito Leme</title>
+  
   <link rel="shortcut icon" href="/icon/favicon.ico" type="image/x-icon">
+  
   <link rel="stylesheet" href="style.css" />
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 
 </head>
 
@@ -22,10 +23,10 @@
 
   <!-- Boas Vindas -->
    
-  <div id="fade-element" class="welcome">
+  <div class="welcome">
     <h2>Bem-vindo ao Trânsito Leme</h1>
     <i class="fas fa-phone"><span>(19)1234-1234</span></i>
-    <p id="fade-element"><span id="current-date"></span></p>
+    <p><span id="current-date"></span></p>
     <script src="script.js"></script>
       
   </div>
@@ -41,8 +42,54 @@
     </ul>
   </div>
 
-  <!-- Conteúdo Principal -->
-   <main class="main">
+  <!-- Slide -->
+
+  <div class="slider">
+    
+    <div class="slides">
+      <!--Radio Button-->
+      <input type="radio" name="radio-btn" id="radio1">
+      <input type="radio" name="radio-btn" id="radio2">
+      <input type="radio" name="radio-btn" id="radio3">
+      <input type="radio" name="radio-btn" id="radio4">
+      <!--Fim Radio Button-->
+
+      <!--Slide images-->
+      <div class="slide first">
+        <img src="/images/img-slider7.png" alt="Imagem 1" />
+      </div>
+      <div class="slide">
+        <img src="/images/img-slider8.png" alt="Imagem 2" />
+      </div>
+      <div class="slide">
+        <img src="/images/img-slider9.jpg" alt="Imagem 3" />
+      </div>
+
+      <!--Fim Slide images-->
+
+      <!--Navigation auto-->
+      <div class="navigation-auto">
+        <div class="auto-btn1"></div>
+        <div class="auto-btn2"></div>
+        <div class="auto-btn3"></div>
+      </div>
+
+    </div>
+
+    <div class="manual-navigation">
+      <label for="radio1" class="manual-btn"></label>
+      <label for="radio2" class="manual-btn"></label>
+      <label for="radio3" class="manual-btn"></label>
+    </div>
+    
+
+  </div>
+  <script src="slider.js"></script>
+
+
+
+  <!--
+     <main class="main">   
       <div class="nav-2menu">
         <ul class="item-menu">
           <li><a href="#">Multas</a></li>
@@ -68,6 +115,7 @@
    <div class="todas-as-noticias">
     <a href="#">ACESSE TODAS AS NOTÍCIAS</a>
    </div>
+  -->
 
   <!-- Rodapé -->
   <footer class="footer">

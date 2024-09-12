@@ -8,4 +8,3 @@ const options = {
 const formattedDate = currentDate.toLocaleDateString('pt-BR', options);
 document.getElementById("current-date").textContent = formattedDate;
 
-
