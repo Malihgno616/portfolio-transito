@@ -184,7 +184,7 @@ body {
 .navigation-auto {
   position: absolute;
   width: 800px;
-  margin-top: -240px;
+  margin-top: 160px;
   display: flex;
   justify-content: center;
 }
