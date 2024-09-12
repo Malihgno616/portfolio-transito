@@ -1,5 +1,21 @@
 **SEJA BEM VINDO AO MEU PORTFÓLIO**
 
-Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria de Trânsito, estou responsável em desenvolvimento do site tanto front-end, back-end e banco de dados.
+Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria de trânsito, estou responsável em desenvolvimento do site tanto front-end e back-end.
 
+**O QUE FOI DESENVOLVIDO ATÉ AGORA?**
 
+- [x] Cabeçalho 
+- [x] Rodapé
+- [x] Slider
+- [x] Menus Principais
+- [x] Menus Secundários
+
+**O QUE AINDA PRECISA SER FEITO?**
+
+- [] Tornar responsivo
+- [] Ajustar outras páginas
+- [] Refatorar o conteúdo <main></main>
+
+**ACESSE O MEU SITE CLICANDO NESSE LINK**
+
+  <a href="https://portfolio-transito.vercel.app/"><h2>Site Portfolio Trânsito</h2></a>
