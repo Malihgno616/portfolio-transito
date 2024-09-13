@@ -14,12 +14,12 @@ body {
 }
 
 :root {
-  --cor1: #E0B109;
-  --cor2: #091FE0;
-  --cor3: #346140;
+  --cor1: #EBBD01;
+  --cor2: #EB8000;
+  --cor3: #6B6336;
   --cor4: #343D8B;
-  --cor5: #09E043;
-  --cor6: #E0090E;
+  --cor5: #be2525;
+  --cor6: #EBCB4E;
 }
 
 /* Cabeçalho */
@@ -53,7 +53,7 @@ body {
 /* Boas vindas*/
 
 .welcome {
-  background-color: var(--cor3);
+  background-color: var(--cor4);
   text-align: center;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -74,6 +74,23 @@ body {
   opacity: 0;
 }
 
+/* Barra de pesquisa*/
+.search-bar {
+  display: flex;
+  flex-direction: row-reverse;
+  
+}
+
+#search-input {
+  border-radius: 10px;
+  color: #272727;
+
+}
+
+#search-btn {
+  background-color: var(--cor1);
+  border-radius: 10px;
+}
 
 /*Menus Principais*/
 
@@ -272,99 +289,26 @@ body {
   color: #ffffff;
 }
 
-/*
-
-
-
-#contato-main .section-item{
-  width: 20%;
-}
-*/
-
-/*
-.main {
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-around;
-}
-
-
-
-
-
-.section {
-  display: grid;
-  box-shadow: 1px 4px 4px 2px #000000a2;
-  width: 900px;
-  justify-content: center;
-  align-items: center;
-}
-
-.section h1 {
-  text-align: center;
-}
-
-.section div {
-  margin-top: -150px;
-  width: 500px;
-  padding: 20px;
-  box-shadow: 15px 13px 20px 20px #ccc;
-  height: 300px;
-}
-
-.section p {
-  text-align: justify;
-  text-indent: 2em;
-}
-
-.todas-as-noticias {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.todas-as-noticias a {
-  margin: 10px;
-  padding: 15px;
-  background-color: #346140;
-  font-size: 20px;
-  text-decoration: none;
-  color: #f7f7f7;
-  font-weight: 900;
-  border-radius: 20px;
-  transition: .5s;
-}
-
-.todas-as-noticias a:hover {
-  background-color: #858585;
-  color: #000;
-}
-
-*/
-
 /* Rodapé */
 
 .footer {
   margin-top: 10px;
   background-color: #ccc;
   height: 100%;
-
 }
 
 .footer-container {
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  box-sizing: border-box;
+
 }
 
 .footer-item {
   padding: 60px;
   height: 250px;
-  background-color: var(--cor3);
+  background-color: var(--cor4);
   position: relative;
   margin: auto;
-  display: grid;
 }
 
 .footer-item:first-child {
@@ -396,15 +340,15 @@ body {
 }
 
 .list a:hover {
-  background-color: var(--cor6);
-  border-radius: 40px;
+  background-color: var(--cor5);
 }
 
 .footer-item:last-child {
+  
+  display: grid;
   background-color: var(--cor1);
-  width: 500px;
+  align-items: center;
 }
-
 .footer-item:last-child h2 {
   padding: 0;
   margin-top: -40px;
@@ -424,7 +368,6 @@ body {
 .another-list a {
   text-decoration: none;
   color: #000000;
-
 }
 
 .another-list a:hover {
@@ -439,32 +382,94 @@ body {
   text-align: center;
 }
 
-/* For small screens */
-@media (max-width: 480px) {
+/* Media queries for responsiveness */
+
+/* Mobile devices (max-width: 480px) */
+@media only screen and (max-width: 480px) {
+  /* Add styles here for mobile devices */
+  .header {
+    padding: 20px;
+  }
+  .nav-menu {
+    flex-direction: column;
+  }
+  .nav-item {
+    padding: 5px;
+  }
+  .slider {
+    width: 100%;
+    height: 150px;
+  }
   .main {
     flex-direction: column;
   }
-  .aside-container {
+  .section-container {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    height: auto;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablets (max-width: 768px) */
+@media only screen and (max-width: 768px) {
+  /* Add styles here for tablets */
+  .header {
+    padding: 30px;
+  }
+  .nav-menu {
+    flex-direction: row;
+  }
+  .nav-item {
+    padding: 10px;
+  }
+  .slider {
     width: 100%;
+    height: 200px;
   }
-}
-
-/* For medium screens */
-@media (min-width: 481px) and (max-width: 768px) {
   .main {
     flex-direction: row;
   }
-  .aside-container {
-    width: 30%;
+  .section-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer {
+    height: auto;
+  }
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-/* For large screens */
-@media (min-width: 769px) {
+/* Desktops (min-width: 1024px) */
+@media only screen and (min-width: 1024px) {
+  /* Add styles here for desktops */
+  .header {
+    padding: 50px;
+  }
+  .nav-menu {
+    flex-direction: row;
+  }
+  .nav-item {
+    padding: 20px;
+  }
+  .slider {
+    width: 800px;
+    height: 300px;
+  }
   .main {
     flex-direction: row;
   }
-  .aside-container {
-    width: 20%;
+  .section-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer {
+    height: auto;
+  }
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
   }
 }
