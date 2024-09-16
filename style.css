@@ -77,19 +77,27 @@ body {
 /* Barra de pesquisa*/
 .search-bar {
   display: flex;
-  flex-direction: row-reverse;
-  
+  flex-direction: row-reverse; 
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
 #search-input {
-  border-radius: 10px;
   color: #272727;
-
+  border: 1px solid transparent;
+  margin-right: 20px;
 }
 
 #search-btn {
   background-color: var(--cor1);
-  border-radius: 10px;
+  margin-left: 20px;
+  border: 1px solid transparent;
+}
+
+#search-btn:hover {
+  background-color: var(--cor2);
+  cursor: pointer;
 }
 
 /*Menus Principais*/
@@ -112,7 +120,7 @@ body {
 
 .nav-item a {
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #000;
   transition: .5s;
 }
@@ -120,6 +128,7 @@ body {
 .nav-item a:hover {
   color: #f8f8f8;
   background-color: #000000;
+  border-radius: 20px;
   padding: 25px;
 }
 
@@ -255,8 +264,7 @@ body {
 
 .section-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  
+  grid-template-columns: repeat(2, 1fr); 
 }
 
 .section {
@@ -294,7 +302,13 @@ body {
   align-items: center;
   width: 50%;
   margin: 0 auto;
-  background-color: var(--cor6);
+  background-color: var(--cor1);
+  border-radius: 20px; 
+}
+
+.form-border input {
+  border: 2px solid #6b6b6b;
+  padding: 10px;
   border-radius: 20px;
 }
 
@@ -302,6 +316,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
 }
 
 .form-border div input:last-child{
@@ -321,7 +336,20 @@ body {
   width: 10%;
   height: 80px;
   grid-template-columns: repeat(2, 1fr);
+  margin: 10px;
+  background-color: #fded03;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: .5s;
 }
+
+.buttons button:hover {
+  background-color: #858585;
+  color: #ffffff;
+  
+}
+
 
 
 /* Rodapé */
@@ -378,8 +406,7 @@ body {
   background-color: var(--cor5);
 }
 
-.footer-item:last-child {
-  
+.footer-item:last-child { 
   display: grid;
   background-color: var(--cor1);
   align-items: center;
