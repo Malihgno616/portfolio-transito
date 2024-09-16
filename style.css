@@ -130,7 +130,6 @@ body {
   width: 800px;
   height: 200px;
   overflow: hidden; 
-  border-radius: 20px;
 }
 
 .slides {
@@ -288,6 +287,42 @@ body {
   background-color: #858585;
   color: #ffffff;
 }
+
+/* Formulário */
+.form-border {
+  padding: 65px;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  background-color: var(--cor6);
+  border-radius: 20px;
+}
+
+.form-border div  {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-border div input:last-child{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 100px;
+}
+
+.buttons {
+  display:grid;
+  
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons button {
+  width: 10%;
+  height: 80px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 
 /* Rodapé */
 

@@ -1,3 +1,5 @@
+// Data dinâmica
+
 const currentDate = new Date();
 const options = {
   weekday: 'long',
