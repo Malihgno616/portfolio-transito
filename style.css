@@ -382,88 +382,41 @@ section {
 
 /* Rodapé */
 
-.footer {
-  margin-top: 10px;
-  background-color: #ccc;
-  height: 100%;
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-
-}
-
 .footer-item {
-  padding: 60px;
-  height: 250px;
-  background-color: var(--cor4);
-  position: relative;
-  margin: auto;
-}
-
-.footer-item:first-child {
-  background-color: var(--cor3);
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  background-color: var(--cor2);
+  padding: 1rem;
 }
 
-.footer-item:first-child img {
-  width: 60px;
+.footer-item img {
+  width: 50px;
   height: 50px;
   margin-top: 25px;
+  margin-left: -10px;
 }
 
-.footer-item:first-child div {
-  margin-left: 10px;
+.footer-item div {
+  font-size: 1.3rem; 
+  color: #131313;
+  line-height: 90%;
 }
 
-.list ul li {
-  list-style: none;
-  padding: 5px;
-  padding-bottom: 5px;
-}
-
-.list a {
+.footer-item a {
   text-decoration: none;
-  color: #f9f9f9;
-  transition: .4s; 
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding: 10px;
 }
 
-.list a:hover {
-  background-color: var(--cor5);
-}
 
-.footer-item:last-child { 
-  display: grid;
-  background-color: var(--cor1);
-  align-items: center;
-}
-.footer-item:last-child h2 {
-  padding: 0;
-  margin-top: -40px;
-  font-size: 2rem;
-}
 
-.another-list ul{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 30px;
-}
-
-.another-list ul {
+.footer-item li {
   list-style: none;
+  padding: 10px;
 }
 
-.another-list a {
-  text-decoration: none;
-  color: #000000;
-}
-
-.another-list a:hover {
-  border-bottom: 1px solid black;
-}
-
+/* Direitos Autorais */
 .copyright {
   font-size: 1rem;
   color: #f9f9f9;
