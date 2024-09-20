@@ -1,0 +1,52 @@
+/* Formulário */
+.form-border {
+  padding: 40px;
+  align-items: center;
+  width: 40%;
+  margin: 0 auto;
+  background-color: var(--cor1);
+  border-radius: 10px; 
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.form-border input {
+  border: 2px solid #6b6b6b;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.form-border div  {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
+.form-border div input:last-child{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 100px;
+}
+
+.buttons {
+  display:grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons button {
+  width: 10%;
+  height: 80px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 10px;
+  background-color: var(--cor2);
+  border-radius: 10px;
+  border: 1px solid var(--cor3);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.buttons button:hover {
+  background-color: var(--cor3);
+  color: #9b9b9b; 
+}

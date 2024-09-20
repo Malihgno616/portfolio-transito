@@ -1,0 +1,41 @@
+/* Cabeçalho */
+
+.header {
+  display: flex;
+  background-image: url("/assets/images/estrada.png");
+  background-size: 100% 100%;
+}
+
+.header img {
+  max-width: 100%;
+  width: 400px;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  background-repeat: no-repeat;
+  background-color: #f7f7f7;
+  border-radius: 30px;
+  display: block;
+}
+
+#current-date {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* Boas vindas*/
+
+.welcome {
+  background-color: var(--cor5);
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: auto;
+}
+
+.welcome h2 {
+  color: var(--cor1);
+  font-style: italic;
+  text-transform: uppercase;
+}

@@ -1,0 +1,32 @@
+/*Menus Principais*/
+
+.nav-menu {
+  background-color: var(--cor1);
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+.nav-item {
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+}
+
+.nav-item li {
+  list-style: none;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-size: 1.35rem;
+  color: #000;
+  transition: .5s;
+  font-weight: bold;
+}
+
+.nav-item a:hover {
+  color: #f8f8f8;
+  background-color: var(--cor3);
+  border-radius: 15px;
+  padding: 10px;
+}

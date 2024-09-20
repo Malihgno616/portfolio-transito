@@ -1,0 +1,64 @@
+/* Menus Serviços Online*/
+
+#txt-servico{
+  text-align: center;
+}
+
+section {
+  margin: 0 auto;
+  padding: 5rem; 
+}
+
+.services-container {
+  margin-left: 15%;
+}
+
+.services-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 50px;
+}
+
+.services-items a {
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.services-items a:nth-last-child(2){
+  margin-left: 50%;
+}
+
+.services-items a:nth-last-child(1){
+  margin-left: 50%;
+}
+
+.services-items a img {
+  max-width: 65px;
+  height: 55px;
+  color: #000;
+}
+
+.services-items a i {
+  font-size: 50px;
+}
+
+.services-items a {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  border: 5px solid var(--cor2);
+  border-radius: 50%;
+  background-color: var(--cor1);
+  width: 90px;
+  justify-content: center;
+  align-items: center;
+  transition: .6s;
+} 
+
+.services-items a:hover {
+  border-radius: 0;
+  
+}
