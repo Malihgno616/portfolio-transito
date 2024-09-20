@@ -50,3 +50,26 @@
   background-color: var(--cor3);
   color: #9b9b9b; 
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .form-border {
+    padding: 20px; /* Reduz o padding em telas menores */
+    width: 95%; /* Aumenta a largura em telas pequenas */
+  }
+
+  .buttons button {
+    width: 90%; /* Botões ocupam mais espaço em telas menores */
+    height: 40px; /* Ajuste a altura para se adequar melhor */
+  }
+}
+
+@media (max-width: 480px) {
+  .form-border {
+    padding: 15px; /* Reduz o padding ainda mais */
+  }
+
+  .form-border div input:last-child {
+    height: auto; /* Melhor adaptação em telas menores */
+  }
+}

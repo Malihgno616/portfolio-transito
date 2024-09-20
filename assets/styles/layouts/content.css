@@ -18,9 +18,6 @@
 .section div a {
   display: flex;
   flex-direction: column; 
-}
-
-.section div a {
   text-decoration: none;
   padding: 1.25em;
   font-size: 1.2em;
@@ -40,7 +37,6 @@
   background-color: var(--cor5);
   color: #fff;
 }
-
 
 .section h1 {
   font-size: 3rem;
@@ -65,4 +61,29 @@
 #acesso:hover {
   background-color: #858585;
   color: #ffffff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .section-container {
+    grid-template-columns: 1fr; /* 1 coluna em telas menores */
+  }
+
+  .section h1 {
+    font-size: 2rem; /* Tamanho reduzido */
+  }
+
+  .section p {
+    font-size: 1.2rem; /* Tamanho reduzido */
+  }
+
+  .section div a {
+    padding: 1em; /* Padding reduzido */
+  }
+
+  #acesso {
+    margin-top: 30px; /* Margem superior reduzida */
+    padding: 15px; /* Padding reduzido */
+    font-size: 1rem; /* Ajustar tamanho da fonte */
+  }
 }

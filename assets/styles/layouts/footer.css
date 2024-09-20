@@ -1,42 +1,65 @@
 /* Rodapé */
-
 .footer-item {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Permite que os itens se movam para a próxima linha */
   background-color: var(--cor2);
   padding: 1rem;
 }
 
 .footer-item img {
-  width: 50px;
-  height: 50px;
-  margin-top: 25px;
-  margin-left: -10px;
+  width: 5vw; /* Tamanho em vw para ser responsivo */
+  
+  height: 5vw; /* Mantém a proporção */
+  margin-top: 1.5rem; /* Usar rem ou uma unidade relativa */
+  margin-left: -1rem; /* Ajuste conforme necessário */
 }
 
 .footer-item div {
-  font-size: 1.3rem; 
+  font-size: 1.2rem; /* Menor em dispositivos móveis */
   color: #131313;
-  line-height: 90%;
+  
+  text-align: center; /* Centraliza o texto */
+}
+
+.footer-item div h2 {
+  font-size: 1.5rem; /* Tamanho maior para o título */
+  
 }
 
 .footer-item a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.5rem;
-  padding: 10px;
+  font-size: 1.3rem; /* Ajustar para ser responsivo */
+  padding: 0.5rem; /* Tamanho em rem */
 }
 
 .footer-item li {
   list-style: none;
-  padding: 10px;
+  padding: 0.5rem; /* Tamanho em rem */
 }
 
 /* Direitos Autorais */
 .copyright {
-  font-size: 1rem;
+  font-size: 0.9rem; /* Menor em dispositivos móveis */
   color: #f9f9f9;
   background-color: #000;
-  padding: 10px;
+  padding: 0.5rem; /* Tamanho em rem */
   text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .footer-item {
+    flex-direction: column; /* Empilha os itens em telas pequenas */
+    align-items: center; /* Centraliza os itens */
+  }
+
+  .footer-item img {
+    margin-left: 0; /* Remove margem negativa */
+  }
+
+  .footer-item a {
+    font-size: 1.2rem; /* Ajusta tamanho do texto */
+  }
 }
