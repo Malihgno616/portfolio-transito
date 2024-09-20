@@ -9,10 +9,13 @@ Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria d
 - [x] Slider
 - [x] Menus Principais
 - [x] Menus Secundários
+- [x] Ajustar outras páginas
+- [x] Refatorar o conteúdo <main></main>
+- [x] Estrutura das pastas
 
 **O QUE AINDA PRECISA SER FEITO?**
 
 - [] Tornar responsivo
-- [] Ajustar outras páginas
-- [] Refatorar o conteúdo <main></main>
+
+
 
