@@ -17,21 +17,9 @@
 
 <body class="bg-light">
  
-
-  <!-- Boas Vindas -->
-  <div class="container text-center">
-    <h2>Bem-vindo ao Trânsito Leme</h1>
-    <i class="fas fa-phone"><span>(19)1234-1234</span></i>
-    <p><span id="current-date"></span></p>
-    <script src="/src/scripts/script.js"></script> 
-    
-  </div>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-warning ">
-  
-    </button>
-    <div class="collapse navbar-collapse " id="navbarNav">
-      <ul class="navbar-nav mx-auto">
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning p-3"> 
+    <div class="navbar-collapse" id="navbarNav">
+      <ul class="navbar navbar-nav text-center">
         <li class="nav-item active">
           <a class="nav-link" href="#">HOME <span class="sr-only">(Página atual)</span></a>
         </li>
@@ -45,34 +33,60 @@
     </div>
   </nav>
 
-  <div class="d-inline-flex p-2 bd-highlight">
-    <div class="dropdown ">
-      <button class="btn btn-warning btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        LINKS ÚTEIS
-      </button>
-      <div class="dropdown-menu bg-warning" aria-labelledby="dropdownMenu2">
-        <a href="#" class="dropdown-item" type="button">Prefeitura de Leme</a>
-        <a href="#" class="dropdown-item" type="button">Câmara Munipal de Leme</a>
-        <a href="#" class="dropdown-item" type="button">Detran-SP</a>
-        <a href="#" class="dropdown-item" type="button">Denatran</a>
-        <a href="#" class="dropdown-item" type="button">IPVA-SP</a>
-        <a href="#" class="dropdown-item" type="button">E-CNH</a>
-        <a href="#" class="dropdown-item" type="button">DER-SP</a>
-      </div>
-    </div>
+  
+  <div class="container-fluid text-center bg-secondary p-4">
+    <h2>Trânsito Leme</h1>
+      <span><strong>(19)1234-1234</strong></span> <i class="fas fa-phone"></i>
+      <p><span style="text-transform: uppercase;" id="current-date"></span></p>
+    <script src="/src/scripts/script.js"></script> 
   </div>
 
-  <!-- Ajuste main-->
-  <div class="main">
-   
-      <div class="section-item">
-        <div class="section">
-          <h1>Estamos à sua disposição</h1>
-          <p>Disponilizamos vários meios para esclarecer todas as dúvidas e que você solicite os serviços necessários relacionados ao Setor de Trânsito do Município de Leme/SP. </p>
-          <p><strong>Email: </strong><a style="text-decoration: none; color: #000; background-color: #fff022; border-radius: 10px;" href="#">email@email.com</a></p>
-          <p><strong>Telefone: </strong><a style="text-decoration: none; color: #000; background-color: #fff022; border-radius: 10px;" href="#">(19)1234-1234</a></p>
-          <p><strong>Whatsapp: </strong><a style="text-decoration: none; color: #000; background-color: #fff022; border-radius: 10px;" href="#">CLIQUE AQUI</a></p>
+  
+
+
+  <main class="container">
+
+    
+    <h1>Estamos à sua disposição</h1>
+    <p class="text-justify font-weight-bold">Disponilizamos vários meios para esclarecer todas as dúvidas e que você solicite os serviços necessários relacionados ao Setor de Trânsito do Município de Leme/SP.</p>
+    <p><strong>Email: </strong><a style="text-decoration: none; color: #000; background-color: #fff022; border-radius: 10px;" href="#">email@email.com</a></p>
+    <p><strong>Telefone: </strong><a style="text-decoration: none; color: #000; background-color: #fff022; border-radius: 10px;" href="#">(19)1234-1234</a></p>
+    <p><strong>Whatsapp: </strong><a style="text-decoration: none; color: #000; background-color: #fff022; border-radius: 10px;" href="#">CLIQUE AQUI</a></p>
+
+    <div class="d-inline-flex p-2 bd-highlight">
+      <div class="dropdown ">
+        <button class="btn btn-warning btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          LINKS ÚTEIS
+        </button>
+        <div class="dropdown-menu bg-warning" aria-labelledby="dropdownMenu2">
+          <a href="#" class="dropdown-item" type="button">Prefeitura de Leme</a>
+          <a href="#" class="dropdown-item" type="button">Câmara Munipal de Leme</a>
+          <a href="#" class="dropdown-item" type="button">Detran-SP</a>
+          <a href="#" class="dropdown-item" type="button">Denatran</a>
+          <a href="#" class="dropdown-item" type="button">IPVA-SP</a>
+          <a href="#" class="dropdown-item" type="button">E-CNH</a>
+          <a href="#" class="dropdown-item" type="button">DER-SP</a>
         </div>
+      </div>
+    </div>
+
+    <h2>Entre em contato conosco preenchendo este formulário</h2>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Example label</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Another label</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    </div>
+
+  </main>
+
+    
+
+
+  <!-- Ajuste main
+  <div class="main">
         <div class="section">
           <h1>Notícias</h1>
           <p><em>Portal de Notícias do Município de Leme e Região</em></p>
@@ -80,25 +94,29 @@
         </div>
         <div class="section">
           <div>
-            <h1>Links úteis</h1>
-            <p>Links que podem importantes para acessar.</p>
-            <ul>
-              <a href="#"><em></em></a>
-              <a href="#"><em></em></a>
-              <a href="#"><em></em></a>
-              <a href="#"><em></em></a>
-              <a href="#"><em></em></a>
-              <a href="#"><em></em></a>
-              <a href="#"><em></em></a>
-            </ul>
+
           </div>
         </div>
       </div>
       
       
+  </div> -->
+  <div class="d-flex p-2 bd-highlight bg-secondary">
+    <div class="col">
+      
+      <h2><img src="/assets/images/logo-box.png" alt="logobox"><em>Coordenadoria Municipal de Trânsito</em></h2>
+      <p><em>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</em></p>
+    </div>
+    <div class="col">
+      <ul class="list-group">
+        <li>R.Das Estradas - Centro , 454 <i class="fa-solid fa-location-dot"></i>
+        <li>Horário de Atendimento de Segunda à Sexta das 8:00 às 16:00 <i class="fa-solid fa-clock"></i></li>
+        <li>(19) 1234-1234 <i class="fas fa-phone"></i></li>
+        <li>transito@email.com <i class="fa-solid fa-envelope"></i></li>
+      </ul>
+    </div>
   </div>
-
-  <!-- Rodapé -->
+  <!-- Rodapé 
   <footer class="footer">
     
       <div class="footer-item">
@@ -123,10 +141,11 @@
       </div> 
     
   </footer>
+  -->
 
   <!-- Direitos Autorais -->
-  <div class="copyright">
-    <p>&copy; 2023 Trânsito Leme</p>
+  <div class="bg-dark p-2">
+    <p class="text-light text-center">&copy; 2023 Trânsito Leme</p>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
