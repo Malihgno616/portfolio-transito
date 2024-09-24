@@ -1,21 +1,5 @@
 /*Arquivo Principal*/
-@import url('/assets/styles/colors.css');
 
-@import url('/assets/styles/typography.css');
-
-@import url('/assets/styles/components/form.css');
-
-@import url('/assets/styles/components/menus.css');
-
-@import url('/assets/styles/components/services-menu.css');
-
-@import url('/assets/styles/components/slides.css');
-
-@import url('/assets/styles/layouts/content.css');
-
-@import url('/assets/styles/layouts/footer.css');
-
-@import url('/assets/styles/layouts/header.css');
 
 
 body, html {
