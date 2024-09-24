@@ -4,13 +4,13 @@
   display: flex;
   flex-wrap: wrap;
   background-image: url("/assets/images/estrada.png");
-  background-size: cover; /* Usar cover pode melhorar a visualização */
+  background-size: cover; 
   padding: 2em;
 }
 
 .header img {
-  width: 100%; /* Para tornar a imagem responsiva */
-  max-width: 400px; /* Limite a largura máxima */
+  width: 100%; 
+  max-width: 400px; 
   height: auto;
   background-repeat: no-repeat;
   background-color: #f7f7f7;
@@ -19,14 +19,14 @@
 
 #current-date {
   text-transform: uppercase;
-  font-size: 1rem; /* Usar rem para responsividade */
+  font-size: 1rem; 
   font-weight: 900;
 }
 
 .welcome {
   background-color: var(--cor5);
   text-align: center;
-  padding: 0.5em; /* Unidades relativas */
+  padding: 0.5em; 
   margin: auto;
 }
 
@@ -34,17 +34,17 @@
   color: var(--cor1);
   font-style: italic;
   text-transform: uppercase;
-  font-size: 1.5rem; /* Usar rem */
+  font-size: 1.5rem; 
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column; /* Empilhar elementos em telas menores */
+    flex-direction: column; 
     padding: 1em;
   }
 
   #current-date {
-    font-size: 0.875rem; /* Ajustar para telas menores */
+    font-size: 0.875rem; 
   }
 }

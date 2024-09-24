@@ -9,10 +9,7 @@
   border-radius: 2rem;
   max-width: 45rem;
   box-sizing: border-box;
-  margin-left: 28%;
-  margin-right: 28%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin: 5% auto; /* Centraliza o formulário */
   font-size: 1.2rem;
 }
 
@@ -76,7 +73,7 @@ button:focus {
 
 button:disabled {
   cursor: not-allowed;
-  background-color: #a08c19;
+  background-color: #616161;
 }
 
 .success {
@@ -90,4 +87,33 @@ button:disabled {
 .success,
 .error {
   text-align: center;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem; /* Menos padding em telas menores */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
+  }
+
+  label,
+  input,
+  textarea,
+  button {
+    height: auto; /* Permite que a altura se ajuste ao conteúdo */
+  }
+
+  textarea {
+    min-height: 10rem; /* Reduz a altura mínima do textarea */
+  }
+
+  button {
+    padding: 0.5rem 1rem; /* Ajusta o padding do botão */
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    margin: 5% 2%; /* Menos margens em telas muito pequenas */
+  }
 }
