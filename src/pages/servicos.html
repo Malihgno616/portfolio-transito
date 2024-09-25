@@ -20,82 +20,160 @@
   <nav class="sticky-bottom navbar navbar-expand-lg navbar-light bg-warning p-3"> 
     <div class="navbar-collapse" id="navbarNav">
       <ul class="navbar navbar-nav text-center">
+        <li class="nav-item">
+          <img class="mw-25 bg-light rounded-pill p-1" src="/assets/images/logo-transito-2018.png" alt="LogoLeme" width="250px">
+        </li>
         <li class="nav-item active">
           <a class="nav-link" href="/public/index.html">HOME <span class="sr-only">(Página atual)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/src/pages/servicos.html">SERVIÇOS</a>
         </li>
-
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+          <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+  
       </ul>
     </div>
   </nav>
   
-  <div class="container-fluid text-center bg-secondary p-4">
-    <h2>Trânsito Leme</h1>
+  <div class="container-fluid text-center bg-secondary p-0">
       <span><strong>(19)1234-1234</strong></span> <i class="fas fa-phone"></i>
       <p><span style="text-transform: uppercase;" id="current-date"></span></p>
     <script src="/src/scripts/script.js"></script> 
   </div>
 
   <main class="container">
-
-    <div id="carouselExampleIndicators" class="carousel slide mt-4 mb-4">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <h1 class="text-center">Serviços Online</h1>
+    <p>Oferecemos os melhores Serviços relacionados ao trânsito da cidade de Leme.</p>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <!-- Item 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Multas
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <p>Disponilizamos meios alternativos para serviços referente a multas de trânsito.</p>
+            <p class="fw-bold">Para Indicação de condutor:<a href="#">clique aqui</a></p>
+            <p class="fw-bold">Para Recurso de Multa:<a href="#">clique aqui</a></p>
+            <p class="fw-bold">Para Formulário de Cópia de AIT: <a href="#">clique aqui</a></p>
+            <p>Caso necessite de demais solicitações podem ser enviadas para este email: <a href="#">email@email.com</a></p>
+            <p>Caso queira conversar conosco pelo whatsapp(somente mensagens), clique no link abaixo e nos envie sua mensagem:
+              <a href="#">Whatsapp<i class="fas fa-phone"></i></a>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/assets/images/img-slider7.png" class="d-block w-100" alt="slide1">
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/images/img-slider8.png" class="d-block w-100" alt="slide2">
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/images/img-slider9.jpg" class="d-block w-100" alt="slide3">
+    
+      <!-- Item 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            Vagas especiais
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <h1>Vagas Especiais</h1>
+            <p>As credenciais para vagas exclusivas contemplam as Resoluções 303 e 304 do Conselho Nacional de Trânsito (Contran), ambas publicadas em 18/12/2008...</p>
+            <h1 class="mt-5 fw-bold">CARTÃO IDOSO</h1>
+            <p>Pode realizar o cadastro pela internet para solicitar o cartão gratuitamente.</p>
+            <p class="fw-bold">Para solicitar o cartão de Idoso preencha o formulário;<a href="#">CARTÃO DO IDOSO</a></p>
+            <h1 class="mt-5 fw-bold">CARTÃO DEFICIENTE FÍSICO</h1>
+            <p>Pode realizar o cadastro pela internet para solicitar o cartão gratuitamente.</p>
+            <p class="fw-bold">Para solicitar o cartão de Deficiente Físico preencha o formulário;<a href="#">CARTÃO DO DEFICIENTE FÍSICO</a></p>
+          </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+    
+      <!-- Item 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            Sinalizações
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <p>Para qualquer tipo de solicitação para qualquer tipo de sinalização, encaminhe para o email: <a href="#">email@email.com</a></p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Novo Item 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            Interdições
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <p>Para solicitar a interdição de via, deverá preencher o <strong>Requerimento para Interdição de Via Pública.</strong></p>
 
-  <p class="text-justify text-wrap fw-normal fs-4">Disponilizamos vários meios para esclarecer todas as dúvidas e que você solicite os serviços necessários relacionados ao Setor de Trânsito do Município de Leme/SP.</p>
-  
-  <p class="text-justify text-wrap fw-normal fs-4">Links que podem ser úteis para você!!</p>
+            <p>Para baixar o requerimento: <a href="#">CLIQUE AQUI</a> </p>
+            <span>email@email.com</span>
 
-  <h2>Entre em contato conosco preenchendo este formulário</h2>
-  <form class="row g-3 bg-warning mb-3 mt-4 rounded">
-    <div class="col-md-6">
-      <label for="inputNome" class="form-label">Nome: </label>
-      <input type="text" class="form-control" id="Nome" placeholder="Nome">
-    </div>
-    <div class="col-md-6">
-      <label for="inputEmail" class="form-label">Email: </label>
-      <input type="email" class="form-control" id="Email" placeholder="Email">
-    </div>
-    <div class="col-12">
-      <label for="inputTelefone" class="form-label">Telefone: </label>
-      <input type="phone" class="form-control" id="Telefone" placeholder="Telefone">
-    </div>
-    <div class="mb-3 col-12">
-      <label for="exampleFormControlTextarea1" class="form-label">Mensagem:</label>
-      <textarea class="form-control" id="Mensagem" rows="3"></textarea>
+            <p>- Preencher todos os campos do requerimento;</p>
+
+            <p>- O protocolo não caracteriza que o requerimento foi DEFERIDO, somente terá efeito com a expedição da AUTORIZAÇÃO ao requerente, que deverá ser retirado no Núcleo de Trânsito, de segunda à sexta-feira das 08h às 16h.</p>
+
+            <p>- A interdição e a liberação da via será realizada no horário deste requerimento pelos funcionários do setor, NÃO PODENDO SER ESTENDIDO.</p>
+
+          </div>
+        </div>
+      </div>
+    
+      <!-- Novo Item 5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            Semáforos
+          </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <p class="text-primary">Pontos de semáforos instalador na cidade de Leme/SP</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Rua. Teste x Av. teste da silva</p>
+            <p>001 - Todos</p>
+
+          </div>
+        </div>
+      </div>
+    </div>             
+
+
     </div> 
-    <div class="col-12 mb-3 mt-3">
-      <button type="submit" class="btn btn-light">Enviar</button>
-    </div>
-  </form>    
+
   </main>
 
-  <footer class="text-center mt-5 bg-body">
+  <footer class="text-center mt-5 bg-warning-subtle">
     <h2><img src="/assets/images/logo-box.png" alt="logobox"><em>Coordenadoria Municipal de Trânsito</em></h2>
     <p>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</p>
     <ul class="container-fluid bg-black text-light p-4 mb-0">
@@ -109,9 +187,10 @@
   </footer>
 
   <!-- Direitos Autorais -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
