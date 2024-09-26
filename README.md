@@ -12,10 +12,12 @@ Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria d
 - [x] Ajustar outras páginas
 - [x] Refatorar o conteúdo <main></main>
 - [x] Estrutura das pastas
+- [x] Tornar responsivo
 
 **O QUE AINDA PRECISA SER FEITO?**
 
-- [] Tornar responsivo
-- []
+- [] Adicionar mais função para interação
+
+
 
 
