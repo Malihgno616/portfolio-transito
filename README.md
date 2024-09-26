@@ -1,6 +1,6 @@
 **SEJA BEM VINDO AO MEU PORTFÓLIO**
 
-Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria de trânsito, estou responsável em desenvolvimento do site tanto front-end e back-end.
+Eu sou estagiário na Secretaria de Segurança, fazendo parte da coordenadoria de trânsito, estou responsável em desenvolvimento do site versão do cliente.
 
 **O QUE FOI DESENVOLVIDO ATÉ AGORA?**
 
