@@ -83,36 +83,34 @@
     </div>
 
     <main class="animate__animated animate__fadeInUp">
-      <div class="animate__animated animate__fadeInUp text-center">
-        <h1>Cartão do Deficiente</h1>
-        <p>Siga os passos para solicitar o cartão</p>
-        <p>
-          Após ficar pronto, será feito um agendamento para retirada do cartão.
-        </p>
-      </div>
+        <div class="container">
+          <h1 class="text-center">Cancelamento</h1>
+          <p class="text-center">Nos informe abaixo o motivo do cancelamento e as informações necessárias. Se for possível, entregue seu cartão na secretaria para concluir o cancelamento.</p>
+          <p></p>
+        </div>
 
-      <div class="container border rounded p-3 mx-auto w-75">
-        <div class="col mb-2">
-          <a class="btn btn-primary w-100" href="/src/pages/solicitacao_deficiente.html"
-            >Desejo fazer meu 1º cartão</a
-          >
+        <div class="container w-50 border border-3 rounded p-3">
+          <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">RG do beneficiário do cartão</label>
+            <input type="text" class="form-control" id="exampleInputRGDeficiente" aria-describedby="emailHelp" placeholder="RG do beneficiário">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Número do cartão</label>
+            <input type="text" class="form-control" id="exampleInputNumeroDoCartao"
+            placeholder="Número do cartão">
+          </div>
+          <div class="mb-3">
+            <label for="inputAreaTextoCancelamento" class="form-label">Motivo do cancelamento</label>
+            <textarea class="form-control" id="inputAreaTextoCancelamento" rows="3"
+            placeholder="Descreva o motivo do cancelamento do cartão"></textarea>
+          </div>
+          <a href="form_deficiente.html" class="btn btn-danger">
+            Voltar
+          </a>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
         </div>
-        <div class="col mb-2">
-          <a class="btn btn-primary w-100" href="/src/pages/renovar_cartao_deficiente.html"
-            >Desejo renovar meu cartão</a
-          >
-        </div>
-        <div class="col mb-2">
-          <a class="btn btn-primary w-100" href="/src/pages/cancel_cartao_deficiente.html"
-            >Desejo cancelar meu cartão</a
-          >
-        </div>
-        <div class="col">
-          <a class="btn btn-danger w-100" href="/src/pages/motivo_seg_via.html"
-            >Preciso de 2ªvia do cartão (Dentro do prazo de validade)</a
-          >
-        </div>
-      </div>
     </main>
 
     <footer class="text-center mt-5 bg-warning-subtle">
