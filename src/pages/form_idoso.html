@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Trânsito Leme</title>
+  <title>Formulário Idoso</title>
   
   <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
   
@@ -13,6 +13,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -49,18 +54,18 @@
     <script src="/src/scripts/script.js"></script> 
   </div>
 
-  <div class="text-center">
+  <div class="animate__animated animate__fadeInUp text-center">
       <h1>Cartão Idoso</h1>
       <p>Preencha o formulário abaixo.</p>
       <p>Após ficar pronto, será feito um agendamento para retirada do cartão.</p>
   </div>
-  <main class="container-fluid d-flex justify-content-center align-items-center">
+  <main class="animate__animated animate__fadeInUp container-fluid d-flex justify-content-center align-items-center">
             
-      <form class="row g-3 border rounded p-3 w-75 mt-2">
+      <form class="row g-3 border rounded p-3 mt-2 w-50">
         
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Nome:</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Nome do idoso">
+          <input type="text" class="form-control" id="inputEmail4" placeholder="Nome do idoso">
           <div class="form-group mt-3">
             <label for="dob">Data de Nascimento:</label>
             <input type="date" class="form-control" id="dob" name="dob" required>
@@ -88,14 +93,14 @@
           <input type="text" class="form-control" id="inputCity" placeholder="Número da residência">
         </div>
         
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
           <label for="inputCity" class="form-label">Cidade:</label>
           <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
         </div>
         
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
           <label for="inputCity" class="form-label">CEP:</label>
-          <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
+          <input type="text" class="form-control" id="inputCity" placeholder="CEP">
         </div>
         
         <div class="col-md-4 w-100">
@@ -133,14 +138,14 @@
           </select>
         </div>
         
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
           <label for="inputCity" class="form-label">Telefone:</label>
           <input type="text" class="form-control" id="inputCity" placeholder="Telefone">
         </div>
         
-        <div class="col-md-6 container"></div>
-          <label for="inputCity" class="form-label">RG:</label>
-          <input type="text" class="form-control w-25" id="inputCity" placeholder="RG">
+        <div class="col-md-6 container">
+          <label for="inputCity" class="form-label mt-3">RG:</label>
+          <input type="text" class="form-control " id="inputCity" placeholder="RG">
         </div>
         
         <div class="form-group">
@@ -148,28 +153,28 @@
           <input type="date" class="form-control" id="dob" name="dob" required>
         </div>
         
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container mt-3">
           <label for="dob">Expedido por:</label>
-          <input type="text" class="form-control w-50" id="inputCity" placeholder="Expedido por">
+          <input type="text" class="form-control" id="inputCity" placeholder="Expedido por">
         </div>
         
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
           <label for="inputCity" class="form-label">Número da CNH(Quando for condutor)</label>
           <input type="text" class="form-control" id="inputCity" placeholder="Número da CNH">
         </div>
         
-        <div class="form-group"></div>
+        <div class="form-group">
           <label for="dob">Validade da CNH:</label>
           <input type="date" class="form-control" id="dob" name="dob" required>
         </div>
 
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
           <label for="inputCity" class="form-label">Digite o email <i class="fa-solid fa-check"></i> </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Seu Email">
         </div>
 
         <p class="text-center mt-5 border rounded">Representante Legal</p>
-        <div class="mt-0 d-flex p-1 border rounded justify-content-center">
+        <div class="mt-0 d-flex p-2 border rounded justify-content-center gap-4">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
@@ -197,47 +202,47 @@
       
         <h3 class="mt-4">Informações do Representante</h3>
         
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Nome do representante: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Nome do representante">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Email do representante: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Email do representante">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">CEP: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="CEP">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Endereço(RUA,AV): </label>
-          <input type="text" class="form-control" id="inputCity" placeholder="Nome do representante">
+          <input type="text" class="form-control" id="inputCity" placeholder="Endereço">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Complemento: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Complemento">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Bairro: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Bairro">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Número: </label>
-          <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
+          <input type="text" class="form-control" id="inputCity" placeholder="Número">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Cidade</label>
           <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
         </div>
 
-        <div class="col-md-4 w-100"></div>
+        <div class="col-md-4 w-100">
           <label for="inputState" class="form-label">UF:</label>
           <select id="inputState" class="form-select">
             <option selected>Selecione</option>
@@ -272,22 +277,22 @@
           </select>
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container ">
           <label for="dob">RG: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="RG: ">
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Telefone: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Telefone">
         </div>
 
-        <div class="form-group"></div>
+        <div class="form-group">
           <label for="dob">Data de expedição:</label>
           <input type="date" class="form-control" id="dob" name="dob" required>
         </div>
 
-        <div class="col-md-6 container"></div>
+        <div class="col-md-6 container">
           <label for="dob">Expedido por: </label>
           <input type="text" class="form-control" id="inputCity" placeholder="Expedido por">
         </div>
@@ -320,14 +325,14 @@
         <p>Assinalar a principal condição de utilização do cartão</p>
         <div class="d-flex justify-content-center align-items-center gap-4">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="condicaoUso" id="condicaoUso1">
+            <label class="form-check-label" for="condicaoUso1">
               Na maioria das vezes como condutor
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
+            <input class="form-check-input" type="radio" name="condicaoUso" id="condicaoUso2" checked>
+            <label class="form-check-label" for="condicaoUso2">
               Na maioria das vezes como conduzido
             </label>
           </div>
@@ -335,37 +340,38 @@
 
         <p>Indicar a quem pertence(m) o(s) veículo(s) costumeiramente utilizado(s), preencher mais de uma opção se for o caso:</p>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="checkbox" name="proprietarioVeiculo" id="proprietario1">
+          <label class="form-check-label" for="proprietario1">
             Idoso
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-            Familiar do idoso (pai,mãe, marido/mulher, representante legal, filhos ou irmãos).
+          <input class="form-check-input" type="checkbox" name="proprietarioVeiculo" id="proprietario2" checked>
+          <label class="form-check-label" for="proprietario2">
+            Familiar do idoso (pai, mãe, marido/mulher, representante legal, filhos ou irmãos).
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="checkbox" name="proprietarioVeiculo" id="proprietario3">
+          <label class="form-check-label" for="proprietario3">
             Familiar mais distante (tios, netos, primos).
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="checkbox" name="proprietarioVeiculo" id="proprietario4">
+          <label class="form-check-label" for="proprietario4">
             Outros.
           </label>
         </div>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-danger">Limpar</button>
+          <button type="button" class="btn btn-danger">Limpar</button>
         </div>
 
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Enviar</button>
         </div>
+
       </form>
 
 
@@ -389,7 +395,7 @@
   
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-
+  
 
 </body>
 </html>
