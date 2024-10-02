@@ -83,16 +83,18 @@
     </div>
 
     <main class="animate__animated animate__fadeInUp">
-      
       <div class="animate__animated animate__fadeInUp text-center">
         <h1>Cartão do Deficiente</h1>
         <p>2ª via do cartão</p>
         <p>Clique em um dos motivos para solicitação do cartão.</p>
       </div>
 
-     <div class="container">
-        <form id="mainForm" class="row g-3 w-25 mx-auto border border-3 p-5 mt-4 rounded">
-          <label for="inputState" class="form-label">Motivo</label>
+      <div class="container">
+        <form
+          id="mainForm"
+          class="row g-3 w-25 mx-auto border border-3 p-1 mt-4 rounded"
+        >
+          <label for="inputState" class="form-label text-center">Motivo</label>
           <select id="inputState" class="form-select" onchange="showForm()">
             <option selected disabled>Selecionado</option>
             <option value="perda">Perda</option>
@@ -100,49 +102,60 @@
             <option value="roubo">Roubo</option>
             <option value="dano">Dano</option>
           </select>
-          <div class="col-12">
-            <button type="button" class="btn btn-warning" onclick="showForm()">Próximo</button>
-          </div>
         </form>
 
-        <div id="formPerda" class="hidden-form" style="display: none;">
+        <div id="formPerda" class="hidden-form" style="display: none">
           <h3>Formulário de Perda</h3>
           <form>
             <!-- Campos do formulário de perda -->
-            <input type="text" placeholder="Detalhes da perda" class="form-control" />
+            <input
+              type="text"
+              placeholder="Detalhes da perda"
+              class="form-control"
+            />
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
 
-        <div id="formFurto" class="hidden-form" style="display: none;">
+        <div id="formFurto" class="hidden-form" style="display: none">
           <h3>Formulário de Furto</h3>
           <form>
             <!-- Campos do formulário de furto -->
-            <input type="text" placeholder="Detalhes do furto" class="form-control" />
+            <input
+              type="text"
+              placeholder="Detalhes do furto"
+              class="form-control"
+            />
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
 
-        <div id="formRoubo" class="hidden-form" style="display: none;">
+        <div id="formRoubo" class="hidden-form" style="display: none">
           <h3>Formulário de Roubo</h3>
           <form>
             <!-- Campos do formulário de roubo -->
-            <input type="text" placeholder="Detalhes do roubo" class="form-control" />
+            <input
+              type="text"
+              placeholder="Detalhes do roubo"
+              class="form-control"
+            />
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
 
-        <div id="formDano" class="hidden-form" style="display: none;">
+        <div id="formDano" class="hidden-form" style="display: none">
           <h3>Formulário de Dano</h3>
           <form>
             <!-- Campos do formulário de dano -->
-            <input type="text" placeholder="Detalhes do dano" class="form-control" />
+            <input
+              type="text"
+              placeholder="Detalhes do dano"
+              class="form-control"
+            />
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
       </div>
-
-
     </main>
 
     <footer class="text-center mt-5 bg-warning-subtle">
@@ -169,6 +182,8 @@
       </ul>
     </footer>
 
+    <script src="/src/scripts/mani_form.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -179,6 +194,5 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-
   </body>
 </html>
