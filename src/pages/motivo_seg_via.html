@@ -92,25 +92,25 @@
       <div class="container">
         <form
           id="mainForm"
-          class="row g-3 w-25 mx-auto border border-3 p-3 mt-4 rounded"
+          class="row g-3 w-50 mx-auto border border-3 p-3 mt-4 rounded mb-3"
         >
           <label for="inputState" class="form-label text-center"
             ><h2>Motivo da 2ªvia</h2></label
           >
           <select id="inputState" class="form-select" onchange="showForm()">
             <option selected disabled>Selecionado</option>
-            <option value="perda">Perda</option>
-            <option value="furto">Furto</option>
-            <option value="roubo">Roubo</option>
-            <option value="dano">Dano</option>
+            <option value="perda">Perda do cartão</option>
+            <option value="furto">Furto do cartão</option>
+            <option value="roubo">Roubo do cartão</option>
+            <option value="dano">Dano do cartão</option>
           </select>
           <a class="btn btn-danger" href="form_deficiente.html">Voltar</a>
         </form>
 
         <div id="formPerda" class="hidden-form" style="display: none">
-          <h3>Perda do cartão</h3>
+          <h3 class="text-center">Perda do cartão</h3>
 
-          <form class="border border-4 p-4">
+          <form class="border border-4 p-4 mx-auto w-75">
             <p>
               Preencha as infirmações abaixo para solicitar a 2ª via do seu
               cartão.
@@ -126,8 +126,8 @@
         </div>
 
         <div id="formFurto" class="hidden-form" style="display: none">
-          <h3>Furto</h3>
-          <form class="border border-4 p-4">
+          <h3 class="text-center">Formulário de Furto</h3>
+          <form class="border border-4 p-4 mx-auto w-75">
             <p>
               Preencha as infirmações abaixo para solicitar a 2ª via do cartão
             </p>
@@ -149,8 +149,8 @@
         </div>
 
         <div id="formRoubo" class="hidden-form" style="display: none">
-          <h3>Formulário de Roubo</h3>
-          <form class="border border-4 p-4">
+          <h3 class="text-center">Formulário de Roubo</h3>
+          <form class="border border-4 p-4 mx-auto w-75">
             <p>
               Preencha as infirmações abaixo para solicitar a 2ª via do cartão
             </p>
@@ -172,8 +172,8 @@
         </div>
 
         <div id="formDano" class="hidden-form" style="display: none">
-          <h3>Formulário de Dano</h3>
-          <form class="border border-4 p-4">
+          <h3 class="text-center">Formulário de Dano</h3>
+          <form class="border border-4 p-4 mx-auto w-75">
             <p>
               Preencha as infirmações abaixo para solicitar a 2ª via do cartão
             </p>
