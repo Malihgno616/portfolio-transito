@@ -92,9 +92,11 @@
       <div class="container">
         <form
           id="mainForm"
-          class="row g-3 w-25 mx-auto border border-3 p-1 mt-4 rounded"
+          class="row g-3 w-25 mx-auto border border-3 p-3 mt-4 rounded"
         >
-          <label for="inputState" class="form-label text-center">Motivo</label>
+          <label for="inputState" class="form-label text-center"
+            ><h2>Motivo da 2ªvia</h2></label
+          >
           <select id="inputState" class="form-select" onchange="showForm()">
             <option selected disabled>Selecionado</option>
             <option value="perda">Perda</option>
@@ -102,57 +104,86 @@
             <option value="roubo">Roubo</option>
             <option value="dano">Dano</option>
           </select>
+          <a class="btn btn-danger" href="form_deficiente.html">Voltar</a>
         </form>
 
         <div id="formPerda" class="hidden-form" style="display: none">
-          <h3>Formulário de Perda</h3>
-          <form>
+          <h3>Perda do cartão</h3>
+
+          <form class="border border-4 p-4">
+            <p>
+              Preencha as infirmações abaixo para solicitar a 2ª via do seu
+              cartão.
+            </p>
             <!-- Campos do formulário de perda -->
             <input
               type="text"
-              placeholder="Detalhes da perda"
+              placeholder="RG do beneficiário do cartão."
               class="form-control"
             />
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
           </form>
         </div>
 
         <div id="formFurto" class="hidden-form" style="display: none">
-          <h3>Formulário de Furto</h3>
-          <form>
+          <h3>Furto</h3>
+          <form class="border border-4 p-4">
+            <p>
+              Preencha as infirmações abaixo para solicitar a 2ª via do cartão
+            </p>
             <!-- Campos do formulário de furto -->
             <input
               type="text"
-              placeholder="Detalhes do furto"
+              placeholder="RG do beneficiário"
               class="form-control"
             />
+            <div class="mb-3">
+              <label for="formFile" class="form-label"
+                >Cópia digitalizada do Boletim de ocorrência</label
+              >
+              <input class="form-control" type="file" id="formFile" />
+            </div>
+
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
 
         <div id="formRoubo" class="hidden-form" style="display: none">
           <h3>Formulário de Roubo</h3>
-          <form>
-            <!-- Campos do formulário de roubo -->
+          <form class="border border-4 p-4">
+            <p>
+              Preencha as infirmações abaixo para solicitar a 2ª via do cartão
+            </p>
+            <!-- Campos do formulário de furto -->
             <input
               type="text"
-              placeholder="Detalhes do roubo"
+              placeholder="RG do beneficiário"
               class="form-control"
             />
+            <div class="mb-3">
+              <label for="formFile" class="form-label"
+                >Cópia digitalizada do Boletim de ocorrência</label
+              >
+              <input class="form-control" type="file" id="formFile" />
+            </div>
+
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
 
         <div id="formDano" class="hidden-form" style="display: none">
           <h3>Formulário de Dano</h3>
-          <form>
-            <!-- Campos do formulário de dano -->
+          <form class="border border-4 p-4">
+            <p>
+              Preencha as infirmações abaixo para solicitar a 2ª via do cartão
+            </p>
             <input
               type="text"
-              placeholder="Detalhes do dano"
+              placeholder="RG do beneficiário"
               class="form-control"
             />
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <p>Se possível devolva seu cartão danificado na secretaria.</p>
+            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
           </form>
         </div>
       </div>
