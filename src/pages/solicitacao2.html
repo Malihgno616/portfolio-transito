@@ -184,7 +184,7 @@
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
-                onclick=""
+                onclick="temporarioOuPermanente()"
               />
               <label class="form-check-label" for="flexRadioDefault1">
                 TEMPORÁRIA
@@ -197,7 +197,7 @@
                 name="flexRadioDefault"
                 id="flexRadioDefault2"
                 checked
-                onclick=""
+                onclick="temporarioOuPermanente()"
               />
               <label class="form-check-label" for="flexRadioDefault2">
                 PERMANENTE
@@ -206,6 +206,26 @@
           </div>         
         </div>
         
+        <div class="col-md-10 d-none" id="form-temp">
+          <div class="form-group col-md-5">
+            <label for="exampleFormControlInput1">Data Início
+            <input type="date" class="form-control">  
+          </div>
+          <div class="form-group col-md-5">
+            <label for="exampleFormControlInput1">Data Fim
+            <input type="date" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-10 d-none" id="form-perm">
+          <div class="form-group col-md-5">
+            <label for="exampleFormControlInput1">Data Início
+            <input type="date" class="form-control">  
+          </div>
+        </div>
+
+
+
         <p>- Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular:</p>
 
         <div class="form-floating">
@@ -251,7 +271,7 @@
       </ul>
     </footer>
 
-    <script src="/src/scripts/exibir_form.js"></script>
+    <script src="/src/scripts/temp_ou_perma.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
