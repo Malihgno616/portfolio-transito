@@ -11,7 +11,6 @@
       type="image/x-icon"
     />
 
-
     <link rel="stylesheet" href="/styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -140,7 +139,7 @@
           <input type="text" class="form-control" id="inputCity" />
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-4">
           <label for="inputZip" class="form-label">Bairro</label>
           <input type="text" class="form-control" id="inputZip" />
         </div>
@@ -190,7 +189,7 @@
           </select>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-md-2">
           <label for="inputState" class="form-label">Telefone</label>
           <input type="text" class="form-control" id="inputZip" />
         </div>
@@ -232,7 +231,8 @@
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
                 onclick="toggleRepresentanteLegal(false)"
-              />
+                checked
+                />
               <label class="form-check-label" for="flexRadioDefault1">
                 Não
               </label>
@@ -243,7 +243,6 @@
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault2"
-                checked
                 onclick="toggleRepresentanteLegal(true)"
               />
               <label class="form-check-label" for="flexRadioDefault2">
@@ -266,7 +265,6 @@
             </label>
             <input type="file" class="form-control" id="inputGroupFile01" />
           </div>
-
           
         </div>
         <a href="/src/pages/form_deficiente.html" class="btn btn-danger">Voltar</a>
@@ -386,13 +384,8 @@
             id="inputZip"
             placeholder="Digite seu email"
           />
-        </div>       
-
-
-        
-
+        </div>              
       </form>
-      
     </main>
 
     <footer class="text-center mt-5 bg-warning-subtle">
