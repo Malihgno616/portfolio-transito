@@ -1,0 +1,36 @@
+.header {
+  background-color: #f1df8d;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem;
+  align-items: center;
+  img {
+    width: 100px;
+    border-radius: 50%;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 5rem;
+    align-items: flex-end;
+    li {
+      a {
+        color: #000;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: color 0.2s ease;
+      }
+      a:hover {
+        color: #ffffff;
+      }
+      .menu_bar {
+        transition: 0.5s;
+        display: none;
+      }
+      .menu_bar:hover {
+        color: #5f5f5f;
+      }
+    }
+  }
+}
+
