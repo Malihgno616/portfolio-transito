@@ -1,0 +1,57 @@
+.title {
+  margin-top: 0.5rem;
+  padding: 3.5rem;
+  background-image: url(../../assets/image/imgtransito03.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(54, 54, 54, 0.5);
+  background-blend-mode: multiply;
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+
+  div {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 125px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      text-transform: uppercase;
+      font-style: italic;
+      color: #dfdfdf;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  title {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .title {
+    padding: 2rem;
+    width: 100%;
+    h1 {
+      text-align: center;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
