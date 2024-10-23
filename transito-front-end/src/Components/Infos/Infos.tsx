@@ -21,11 +21,11 @@ export const Infos: React.FC = () => {
               <span>Whatsapp</span>
             </a>
           </li>
-          <li id="Email">
+          <li id={styles.Email}>
             <FontAwesomeIcon icon={faMailBulk} />
             <span>Email: email@email.com</span>
           </li>
-          <li id="Telefone">
+          <li id={styles.Telefone}>
             <FontAwesomeIcon icon={faPhone} />
             <span>(19)1234-1234</span>
           </li>

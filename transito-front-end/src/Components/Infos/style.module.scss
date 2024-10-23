@@ -3,8 +3,8 @@
   max-width: 800px;
   margin: 0 auto;
   .infos {
-    display: grid;
-    grid-template-columns: repeat(1fr);
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 2rem;
     h1 {
@@ -17,30 +17,103 @@
     }
     p {
       text-align: justify;
-      width: 100%;
       font-size: 1.55rem;
     }
   }
   .meios_contato {
     display: flex;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
     list-style: none;
     align-items: center;
     font-size: 1.25rem;
     #whatsapp {
       a {
-        padding: .7rem;
+        padding: 0.7rem;
         background-color: #167004;
         text-decoration: none;
         color: #f8f8f8;
         border-radius: 5px;
-        transition: .5s;
+        transition: 0.5s;
       }
       a:hover {
         background-color: #51744a;
       }
     }
   }
+}
 
+@media (max-width: 1024px) {
+  #infos_container {
+    max-width: 680px;
+    .infos {
+      p {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+    .meios_contato {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  #infos_container {
+    max-width: 480px;
+    .infos {
+      h1 {
+        font-size: 1.4rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      p {
+        font-size: 1.25rem;
+        width: 500px;
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  #infos_container {
+    max-width: 320px;
+    padding: 5rem;
+    .infos {
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 1.1rem;
+        width: 300px;
+      }
+      .meios_contato {
+        margin-top: 1rem;
+        gap: 1.5rem;
+        #whatsapp {
+          font-size: 0.8rem;
+        }
+        #Email {
+          font-size: 0.8rem;
+          font-weight: bold;
+        }
+        #Telefone {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
 }
