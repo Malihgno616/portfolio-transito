@@ -23,7 +23,7 @@ export const Infos: React.FC = () => {
           </li>
           <li id={styles.Email}>
             <FontAwesomeIcon icon={faMailBulk} />
-            <span>Email: email@email.com</span>
+            <span>email@email.com</span>
           </li>
           <li id={styles.Telefone}>
             <FontAwesomeIcon icon={faPhone} />

@@ -1,0 +1,15 @@
+.date {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+@media (max-width: 480px) {
+  .date {
+    max-width: 50%;
+    font-size: 0.5rem;
+  }
+}
