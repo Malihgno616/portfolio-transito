@@ -5,7 +5,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(54, 54, 54, 0.5);
+  background-color: rgba(0, 0, 0, 0.61);
   background-blend-mode: multiply;
   max-width: 100vw;
   margin-left: auto;
@@ -46,12 +46,14 @@
 @media (max-width: 740px) {
   .title {
     padding: 2rem;
-    width: 100%;
-    h1 {
-      text-align: center;
-    }
-    img {
-      width: 100%;
+    div {
+      img {
+        width: 80px;
+      }
+      h1 {
+        font-size: 1rem;
+        text-align: center;
+      }
     }
   }
 }
