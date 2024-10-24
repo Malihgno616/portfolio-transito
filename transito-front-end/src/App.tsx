@@ -6,6 +6,7 @@ import { CurrentDate } from "./Components/CurrentDate/CurrentDate";
 import { Slide } from "./Components/Slide/Slide";
 import { Articles } from "./Components/Articles/Articles";
 import { TitleBeforeNews } from "./Components/TitleBeforeNews/TitleBeforeNews";
+import { Footer } from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Infos />
       <TitleBeforeNews />
       <Articles />
+      <Footer />
     </>
   );
 }
