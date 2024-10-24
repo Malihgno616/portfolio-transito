@@ -13,7 +13,7 @@ export const Infos: React.FC = () => {
           Leme/SP para que você navegue melhor em nossa cidade.
         </p>
         <h2>Meios de contato</h2>
-        <p>Disponibilizamos meios de contato para esclarecer suas dúvidas.</p>
+        <p>Disponibilizamos meios de contato para esclarecer todas as suas dúvidas.</p>
         <ul className={styles.meios_contato}>
           <li id={styles.whatsapp}>
             <a href="#">
