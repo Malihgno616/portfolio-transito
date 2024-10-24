@@ -6,7 +6,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export const Header: React.FC = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-
   const toggleMenu = () => {
     setMenuVisible((prevState) => !prevState);
   };

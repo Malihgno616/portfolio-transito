@@ -10,7 +10,7 @@
   img {
     width: 100px;
     border-radius: 50%;
-    border: 5px solid rgba(90, 85, 15, 0.3);
+    box-shadow: 5px 5px 3px #0000005b;
   }
 
   ul {
@@ -27,10 +27,10 @@
         color: #000;
         text-decoration: none;
         font-size: 1.5rem;
-        transition: color 0.2s ease;
+        transition: color 0.4s ease;
       }
       a:hover {
-        color: #ffffff;
+        color: #aaaaaa;
       }
     }
   }
@@ -70,7 +70,7 @@
           text-decoration: none;
           font-size: 1.5rem;
           text-align: center;
-          transition: color 0.2s ease;
+          transition: color 0.5s ease-in;
           &:hover {
             color: #ffffff;
           }
