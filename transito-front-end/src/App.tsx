@@ -9,8 +9,8 @@ import { CurrentDate } from "./Components/CurrentDate/CurrentDate";
 import { Slide } from "./Components/Slide/Slide";
 import { Articles } from "./Components/Articles/Articles";
 import { TitleBeforeNews } from "./Components/TitleBeforeNews/TitleBeforeNews";
-import { Services } from "./pages/Services"; // Importando a nova página
-import { Contact } from "./pages/Contact"; // Importando a nova página
+import { Services } from "./pages/Services/Services";
+import { Contact } from "./pages/Contact/Contact";
 
 function App() {
   return (
