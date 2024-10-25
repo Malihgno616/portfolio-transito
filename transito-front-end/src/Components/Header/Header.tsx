@@ -3,6 +3,7 @@ import style from "./style.module.scss";
 import logoLeme from "../../assets/image/file.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export const Header: React.FC = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -18,13 +19,13 @@ export const Header: React.FC = () => {
       </button>
       <ul className={menuVisible ? style.visible : ""}>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Serviços</a>
+          <a href="/services">Serviços</a>
         </li>
         <li>
-          <a href="#">Contato</a>
+          <a href="/contact">Contato</a>
         </li>
       </ul>
     </header>
