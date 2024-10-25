@@ -7,6 +7,7 @@ import { Slide } from "./Components/Slide/Slide";
 import { Articles } from "./Components/Articles/Articles";
 import { TitleBeforeNews } from "./Components/TitleBeforeNews/TitleBeforeNews";
 import { Footer } from "./Components/Footer/Footer";
+import { Copyright } from "./Components/Copyright/Copyright";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <TitleBeforeNews />
       <Articles />
       <Footer />
+      <Copyright />
     </>
   );
 }

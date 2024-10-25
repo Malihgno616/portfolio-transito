@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
         <img src={logo} alt="" />
         <ul>
           <li>
-            <FontAwesomeIcon icon={faClock} />  estamos aberto para atendimento
+            <FontAwesomeIcon icon={faClock} />  estamos disponíveis para atendimento
             de segunda á sexta-feira das 8:00 ás 16:00
           </li>
           <li>
@@ -33,9 +33,6 @@ export const Footer: React.FC = () => {
             <FontAwesomeIcon icon={faPhone} />  (11) 99999-9999
           </li>
         </ul>
-      </div>
-      <div className={styles.copy}>
-        <p>&copy; 2023 - Todos os direitos reservados</p>
       </div>
     </footer>
   );
