@@ -1,0 +1,81 @@
+.contact_form {
+  padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 2rem;
+    margin-top: -8rem;
+    margin-bottom: 5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    gap: 1rem;
+    box-sizing: border-box; // Adiciona box-sizing para o formulário
+    border: 2px solid #ccc; // Adiciona a borda desejada
+    padding: 1rem; // Opcional: Adiciona algum padding interno se necessário
+    border-radius: 0.5rem;
+
+    .input_container {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+    }
+
+    input,
+    textarea {
+      box-sizing: border-box; // Adiciona box-sizing para os inputs e textarea
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+    }
+
+    input {
+      flex: 1; // Faz os inputs ocuparem o espaço disponível
+    }
+
+    textarea {
+      height: 150px; // Define uma altura para a área de mensagem
+      max-width: 900px;
+      resize: none;
+    }
+
+    button[type="submit"] {
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #f8c14b;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 250px;
+      margin: 0 auto;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: #fab726;
+      }
+    }
+
+    #clear_messages {
+      border: none;
+      padding: 1rem;
+      background-color: #ff3232;
+      color: #ebebeb;
+      cursor: pointer;
+      width: 250px;
+      font-size: 1rem;
+      margin: 0 auto;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #ff4b4b;
+      }
+    }
+  }
+}
