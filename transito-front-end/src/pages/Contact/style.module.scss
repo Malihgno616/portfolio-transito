@@ -13,11 +13,12 @@
   form {
     display: flex;
     flex-direction: column;
-    width: 850px;
+    width: 1240px;
+
     gap: 1rem;
-    box-sizing: border-box; // Adiciona box-sizing para o formulário
-    border: 2px solid #ccc; // Adiciona a borda desejada
-    padding: 1rem; // Opcional: Adiciona algum padding interno se necessário
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    padding: 1rem;
     border-radius: 0.5rem;
 
     .input_container {
@@ -28,33 +29,46 @@
 
     input,
     textarea {
-      box-sizing: border-box; // Adiciona box-sizing para os inputs e textarea
+      box-sizing: border-box;
       padding: 1rem;
       border: none;
       border-radius: 0.5rem;
+      font-size: 1.5rem;
     }
 
     input {
-      flex: 1; // Faz os inputs ocuparem o espaço disponível
+      flex: 1; // Makes inputs occupy available space
     }
 
     textarea {
-      height: 150px; // Define uma altura para a área de mensagem
-      max-width: 900px;
+      height: 250px; // Set height for message area
+      width: 100%;
       resize: none;
     }
 
-    button[type="submit"] {
+    button[type="submit"],
+    #clear_messages {
       padding: 1rem;
       border: none;
       border-radius: 0.5rem;
+      cursor: pointer;
+      width: 150px;
+      margin: 0 auto;
+      font-size: 1.54rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: 2px solid #f8c14b; // Accessibility focus styles
+      }
+
+      &:active {
+        transform: scale(0.98); // Button active state
+      }
+    }
+
+    button[type="submit"] {
       background-color: #f8c14b;
       color: #000;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 250px;
-      margin: 0 auto;
-      font-size: 1rem;
 
       &:hover {
         background-color: #fab726;
@@ -62,19 +76,144 @@
     }
 
     #clear_messages {
-      border: none;
-      padding: 1rem;
       background-color: #ff3232;
       color: #ebebeb;
-      cursor: pointer;
-      width: 250px;
-      font-size: 1rem;
-      margin: 0 auto;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
 
       &:hover {
         background-color: #ff4b4b;
+      }
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  .contact_form {
+    h2 {
+      font-size: 1.75em;
+    }
+    form {
+      width: 50em;
+      .input_container {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+      }
+      textarea {
+        width: 500px;
+        height: 150px;
+        padding: 1em;
+        margin: auto;
+      }
+      button[type="submit"] {
+        width: 100%;
+      }
+      #clear_messages {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .contact_form {
+    h2 {
+      font-size: 1.75em;
+    }
+    form {
+      width: 35em;
+      .input_container {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+      }
+      textarea {
+        width: 500px;
+        height: 150px;
+        padding: 1em;
+        margin: auto;
+      }
+      button[type="submit"] {
+        width: 100%;
+      }
+      #clear_messages {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact_form {
+    h2 {
+      font-size: 1.75em;
+    }
+    form {
+      width: 35em;
+      .input_container {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+      }
+      textarea {
+        width: 500px;
+        height: 150px;
+        padding: 1em;
+        margin: auto;
+      }
+      button[type="submit"] {
+        width: 100%;
+      }
+      #clear_messages {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .contact_form {
+    h2 {
+      font-size: 1.75em;
+    }
+    form {
+      width: 35em;
+      .input_container {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+      }
+      textarea {
+        width: 500px;
+        height: 150px;
+        padding: 1em;
+        margin: auto;
+      }
+      button[type="submit"] {
+        width: 100%;
+      }
+      #clear_messages {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact_form {
+    h2 {
+      font-size: 1.25em;
+    }
+    form {
+      width: 22em;
+      .input_container {
+        display: flex;
+        flex-direction: column;
+      }
+      textarea {
+        width: 100%;
+      }
+      button[type="submit"] {
+        width: 100%;
       }
     }
   }
