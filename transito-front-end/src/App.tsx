@@ -11,6 +11,7 @@ import { Articles } from "./Components/Articles/Articles";
 import { TitleBeforeNews } from "./Components/TitleBeforeNews/TitleBeforeNews";
 import { Services } from "./pages/Services/Services";
 import { Contact } from "./pages/Contact/Contact";
+import { UsefulLinks } from "./Components/UsefulLinks/UsefulLinks";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <CurrentDate />
               <Slide />
               <Infos />
+              <UsefulLinks/>
               <TitleBeforeNews />
               <Articles />
             </>

@@ -19,7 +19,7 @@ export const Services: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       // Simula um carregamento de dados
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       setLoading(false);
     };
 
