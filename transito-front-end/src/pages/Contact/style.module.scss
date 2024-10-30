@@ -180,19 +180,18 @@
       .input_container {
         display: flex;
         flex-direction: column;
-        padding: 1em;
       }
       textarea {
-        width: 500px;
-        height: 150px;
+        width: 350px;
+        height: 100px;
         padding: 1em;
-        margin: auto;
+        margin: 0 auto;
       }
       button[type="submit"] {
-        width: 100%;
+        width: 50%;
       }
       #clear_messages {
-        width: 100%;
+        width: 50%;
       }
     }
   }
@@ -200,6 +199,7 @@
 
 @media (max-width: 480px) {
   .contact_form {
+    width: 100%;
     h2 {
       font-size: 1.25em;
     }
@@ -208,12 +208,16 @@
       .input_container {
         display: flex;
         flex-direction: column;
+        width: 100%;
       }
       textarea {
         width: 100%;
       }
       button[type="submit"] {
-        width: 100%;
+        width: 50%;
+      }
+      #clear_messages {
+        width: 50%;
       }
     }
   }
