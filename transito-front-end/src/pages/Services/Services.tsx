@@ -24,7 +24,7 @@ export const Services: React.FC = () => {
       <div className={styles.service_options}>
         <ul>
           <li>
-            <a href="#">
+            <a href="/Multas">
               <div className={styles.icon_service}>
                 <FontAwesomeIcon icon={faCar} />
               </div>
@@ -32,7 +32,7 @@ export const Services: React.FC = () => {
             <span>multas</span>
           </li>
           <li>
-            <a href="">
+            <a href="/Vagas-especiais">
               <div className={styles.icon_service}>
                 <FontAwesomeIcon icon={faWheelchair} />
               </div>
@@ -40,7 +40,7 @@ export const Services: React.FC = () => {
             <span>vagas especiais</span>
           </li>
           <li>
-            <a href="">
+            <a href="/Sinalizacoes">
               <div className={styles.icon_service}>
                 <FontAwesomeIcon icon={faBan} />
               </div>
@@ -48,7 +48,7 @@ export const Services: React.FC = () => {
             <span>sinalizações</span>
           </li>
           <li>
-            <a href="">
+            <a href="/Interdicoes">
               <div className={styles.icon_service}>
                 <FontAwesomeIcon icon={faRoadBarrier} />
               </div>
@@ -56,7 +56,7 @@ export const Services: React.FC = () => {
             <span>interdições</span>
           </li>
           <li>
-            <a href="">
+            <a href="Semaforos">
               <div className={styles.icon_service}>
                 <FontAwesomeIcon icon={faTrafficLight} />
               </div>
@@ -64,7 +64,7 @@ export const Services: React.FC = () => {
             <span>semáforos</span>
           </li>
           <li>
-            <a href="">
+            <a href="/Lombadas">
               <div className={styles.icon_service}>
                 <img src={lombadaImg} alt="lombadas" />
               </div>
@@ -73,7 +73,7 @@ export const Services: React.FC = () => {
           </li>
           <div className={styles.center_wrapper}>
             <li>
-              <a href="">
+              <a href="/Zona-Azul">
                 <div className={styles.icon_service}>
                   <FontAwesomeIcon icon={faLocationDot} />
                 </div>
@@ -81,7 +81,7 @@ export const Services: React.FC = () => {
               <span>zona-azul</span>
             </li>
             <li>
-              <a href="">
+              <a href="/Bicicletas">
                 <div className={styles.icon_service}>
                   <FontAwesomeIcon icon={faBicycle} />
                 </div>
