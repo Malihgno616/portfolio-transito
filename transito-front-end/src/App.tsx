@@ -16,6 +16,7 @@ import { UsefulLinks } from "./Components/UsefulLinks/UsefulLinks";
 import React, { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { Bicicletas } from "./pages/Bicicletas/Bicletas";
+import { ZonaAzul } from "./pages/Zona-Azul/ZonaAzul";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -43,7 +44,7 @@ function App() {
             padding: "5rem",
           }}
         >
-          <TailSpin color="#000000" height={80} width={80} />
+          <TailSpin color="#4e4e4e" height={80} width={80} />
         </div>
       ) : (
         <Routes>
@@ -64,6 +65,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Bicicletas" element={<Bicicletas />} />
+          <Route path="/Zona-Azul" element={<ZonaAzul />} />
         </Routes>
       )}
       <Footer />

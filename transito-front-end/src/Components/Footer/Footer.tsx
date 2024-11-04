@@ -17,20 +17,20 @@ export const Footer: React.FC = () => {
         <img src={logo} alt="" />
         <ul>
           <li>
-            <FontAwesomeIcon icon={faClock} />  estamos disponíveis para atendimento
-            de segunda á sexta-feira das 8:00 ás 16:00
+            <FontAwesomeIcon icon={faClock} /> Estamos disponíveis para
+            atendimento de segunda á sexta-feira das 8:00 ás 16:00
           </li>
           <li>
-            <FontAwesomeIcon icon={faMailBulk} />  email@email.com
+            <FontAwesomeIcon icon={faMailBulk} /> email@email.com
           </li>
           <li>
             <address>
               <FontAwesomeIcon icon={faLocationDot} />
-               rua das ruas da silva, 999
+              rua das ruas da silva, 999
             </address>
           </li>
           <li>
-            <FontAwesomeIcon icon={faPhone} />  (11) 99999-9999
+            <FontAwesomeIcon icon={faPhone} /> (11) 99999-9999
           </li>
         </ul>
       </div>
