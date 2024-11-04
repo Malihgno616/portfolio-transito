@@ -17,6 +17,7 @@ import React, { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { Bicicletas } from "./pages/Bicicletas/Bicletas";
 import { ZonaAzul } from "./pages/Zona-Azul/ZonaAzul";
+import { VagasEspeciais } from "./pages/VagasEspeciais/VagasEspeciais";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -66,6 +67,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/Bicicletas" element={<Bicicletas />} />
           <Route path="/Zona-Azul" element={<ZonaAzul />} />
+          <Route path="/Vagas-especiais" element={<VagasEspeciais />} />
         </Routes>
       )}
       <Footer />
