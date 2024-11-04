@@ -18,6 +18,7 @@ import { TailSpin } from "react-loader-spinner";
 import { Bicicletas } from "./pages/Bicicletas/Bicletas";
 import { ZonaAzul } from "./pages/Zona-Azul/ZonaAzul";
 import { VagasEspeciais } from "./pages/VagasEspeciais/VagasEspeciais";
+import { FormularioIdoso } from "./pages/FormularioIdoso/FormularioIdoso";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -68,6 +69,7 @@ function App() {
           <Route path="/Bicicletas" element={<Bicicletas />} />
           <Route path="/Zona-Azul" element={<ZonaAzul />} />
           <Route path="/Vagas-especiais" element={<VagasEspeciais />} />
+          <Route path="/formulario-idoso" element={<FormularioIdoso />} />
         </Routes>
       )}
       <Footer />

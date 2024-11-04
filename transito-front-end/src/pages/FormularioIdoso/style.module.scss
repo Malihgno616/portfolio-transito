@@ -1,0 +1,47 @@
+#titleForm {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.form_container {
+  border: 2px solid #b4b4b4;
+  border-radius: 5px;
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  gap: 2rem;
+  select {
+    width: 20%;
+  }
+  h2 {
+    text-align: center;
+  }
+  #date {
+    width: 30%;
+  }
+  input {
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+  }
+  button {
+    border: none;
+    background-color: #cec330;
+    max-width: 350px;
+    padding: 1rem;
+    margin: 0 auto;
+    border-radius: 5px;
+    transition: all .5s ease;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+}
