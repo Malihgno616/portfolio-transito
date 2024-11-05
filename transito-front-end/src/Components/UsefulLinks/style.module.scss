@@ -1,4 +1,7 @@
 .links_container {
+  margin: 0 auto;
+  max-width: 750px;
+  width: 100%;
   h2 {
     text-align: center;
     margin-bottom: 2.3rem;
@@ -7,35 +10,38 @@
   }
   p {
     text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 6rem;
+    font-size: 1.55rem;
   }
   ul {
-    margin-top: 2rem;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+    padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    gap: 4rem;
+    align-items: center;
+    gap: 2rem;
     li {
       margin-bottom: 0;
+
       a {
+        justify-content: center;
         text-decoration: none;
-        color: #c4c4c4;
+        color: #000000;
         font-size: 1.4rem;
-        background-color: #867900;
+        background-color: #ffe600;
         padding: 0.5rem;
         border-radius: 1rem;
-        width: 350px;
+        width: 290px;
         height: 60px;
         display: flex;
-        justify-content: center;
         align-items: center;
         box-sizing: border-box;
         transition: 0.3s ease;
       }
       a:hover {
-        background-color: #c4c4c4;
+        background-color: #ffec7d;
         color: #000;
       }
     }
@@ -48,12 +54,12 @@
       font-size: 1rem;
     }
     ul {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
       li {
         a {
           margin-bottom: 5rem;
-          width: 250px;
-          font-size: 0.99rem;
+          width: 200px;
+          font-size: 1rem;
         }
       }
     }
@@ -64,14 +70,16 @@
   .links_container {
     p {
       font-size: 1rem;
+      width: 300px;
+      margin: 0 auto;
     }
     ul {
       grid-template-columns: repeat(2, 1fr);
       li {
         a {
           margin-bottom: 5rem;
-          width: 250px;
-          font-size: 0.99rem;
+          width: 150px;
+          font-size: 0.9rem;
         }
       }
     }
@@ -91,9 +99,9 @@
       li {
         a {
           margin-bottom: 2rem;
-          width: 130px;
+          width: 230px;
           padding: 0;
-          font-size: 0.99rem;
+          font-size: 0.8rem;
         }
         margin-bottom: 2rem;
       }
