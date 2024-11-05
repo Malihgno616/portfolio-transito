@@ -1,224 +1,222 @@
 .contact_form {
-  padding: 10rem;
+  padding: 5rem 2rem; /* Reduzi a margem para dar mais espaço em telas pequenas */
   display: flex;
   flex-direction: column;
   align-items: center;
 
   h2 {
-    font-size: 2rem;
-    margin-top: -8rem;
-    margin-bottom: 5rem;
+    font-size: 2.5rem; /* Aumentei um pouco o título */
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
   }
 
   form {
-    display: flex;
-    flex-direction: column;
-    width: 1240px;
-
-    gap: 1rem;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 40rem; /* Ajustei a largura máxima */
+    padding: 2rem;
     border: 2px solid #ccc;
-    padding: 1rem;
     border-radius: 0.5rem;
+    box-sizing: border-box;
+  }
 
-    .input_container {
-      display: flex;
-      flex-direction: row;
-      gap: 3rem;
+  .input_container {
+    display: flex;
+    flex-direction: column; /* Força a direção das colunas em telas menores */
+    gap: 1.5rem; /* Ajustei o espaço entre os campos */
+  }
+
+  input,
+  textarea {
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    width: 100%; /* Garante que os campos preencham a largura */
+  }
+
+  textarea {
+    height: 200px; /* Reduzi um pouco a altura do campo */
+    resize: vertical; /* Permite que o usuário redimensione verticalmente */
+  }
+
+  button[type="submit"],
+  #clear_messages {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%; /* Botões ocupando toda a largura */
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  button[type="submit"] {
+    background-color: #f8c14b;
+    color: #000;
+
+    &:hover {
+      background-color: #fab726;
     }
+  }
 
-    input,
-    textarea {
-      box-sizing: border-box;
-      padding: 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 1.5rem;
-    }
+  #clear_messages {
+    background-color: #ff3232;
+    color: #ebebeb;
 
-    input {
-      flex: 1; // Makes inputs occupy available space
-    }
-
-    textarea {
-      height: 250px; // Set height for message area
-      width: 100%;
-      resize: none;
-    }
-
-    button[type="submit"],
-    #clear_messages {
-      padding: 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      width: 150px;
-      margin: 0 auto;
-      font-size: 1.54rem;
-      transition: all 0.3s ease;
-
-      &:focus {
-        outline: 2px solid #f8c14b; // Accessibility focus styles
-      }
-
-      &:active {
-        transform: scale(0.98); // Button active state
-      }
-    }
-
-    button[type="submit"] {
-      background-color: #f8c14b;
-      color: #000;
-
-      &:hover {
-        background-color: #fab726;
-      }
-    }
-
-    #clear_messages {
-      background-color: #ff3232;
-      color: #ebebeb;
-
-      &:hover {
-        background-color: #ff4b4b;
-      }
+    &:hover {
+      background-color: #ff4b4b;
     }
   }
 }
 
 @media (max-width: 1240px) {
   .contact_form {
+    padding: 3rem 1rem; /* Reduzindo o padding nas telas médias */
     h2 {
-      font-size: 1.75em;
+      font-size: 2rem; /* Ajuste no tamanho da fonte */
     }
+
     form {
-      width: 50em;
-      .input_container {
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-      }
-      textarea {
-        width: 500px;
-        height: 150px;
-        padding: 1em;
-        margin: auto;
-      }
-      button[type="submit"] {
-        width: 100%;
-      }
-      #clear_messages {
-        width: 100%;
-      }
+      width: 100%;
+      max-width: none; /* Permite que ocupe mais espaço em telas pequenas */
+      padding: 1rem;
+      grid-template-columns: 1fr; /* Uma coluna */
+    }
+
+    .input_container {
+      flex-direction: column; /* Coluna para dispositivos menores */
+    }
+
+    textarea {
+      height: 180px;
+    }
+
+    button[type="submit"],
+    #clear_messages {
+      width: 100%;
+      font-size: 1.4rem;
     }
   }
 }
 
 @media (max-width: 850px) {
   .contact_form {
+    padding: 2rem 1rem;
     h2 {
-      font-size: 1.75em;
+      font-size: 1.8rem;
     }
+
     form {
-      width: 35em;
-      .input_container {
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-      }
-      textarea {
-        width: 500px;
-        height: 150px;
-        padding: 1em;
-        margin: auto;
-      }
-      button[type="submit"] {
-        width: 100%;
-      }
-      #clear_messages {
-        width: 100%;
-      }
+      width: 100%;
+      max-width: none;
+      padding: 1rem;
+    }
+
+    .input_container {
+      flex-direction: column;
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+    }
+
+    button[type="submit"],
+    #clear_messages {
+      width: 100%;
+      font-size: 1.4rem;
     }
   }
 }
 
 @media (max-width: 768px) {
   .contact_form {
+    padding: 1.5rem 1rem;
     h2 {
-      font-size: 1.75em;
+      font-size: 1.75rem;
     }
+
     form {
-      width: 35em;
-      .input_container {
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-      }
-      textarea {
-        width: 500px;
-        height: 150px;
-        padding: 1em;
-        margin: auto;
-      }
-      button[type="submit"] {
-        width: 100%;
-      }
-      #clear_messages {
-        width: 100%;
-      }
+      width: 100%;
+      max-width: 90%;
+      padding: 1rem;
+    }
+
+    .input_container {
+      flex-direction: column;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+    }
+
+    button[type="submit"],
+    #clear_messages {
+      width: 100%;
     }
   }
 }
 
 @media (max-width: 580px) {
   .contact_form {
+    padding: 1rem;
     h2 {
-      font-size: 1.75em;
+      font-size: 1.5rem;
     }
+
     form {
-      width: 35em;
-      .input_container {
-        display: flex;
-        flex-direction: column;
-      }
-      textarea {
-        width: 350px;
-        height: 100px;
-        padding: 1em;
-        margin: 0 auto;
-      }
-      button[type="submit"] {
-        width: 50%;
-      }
-      #clear_messages {
-        width: 50%;
-      }
+      width: 100%;
+      max-width: 90%;
+    }
+
+    .input_container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+    }
+
+    button[type="submit"],
+    #clear_messages {
+      width: 100%;
     }
   }
 }
 
 @media (max-width: 480px) {
   .contact_form {
-    width: 100%;
+    padding: 1rem;
     h2 {
-      font-size: 1.25em;
+      font-size: 1.25rem;
     }
+
     form {
-      width: 22em;
-      .input_container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-      textarea {
-        width: 100%;
-      }
-      button[type="submit"] {
-        width: 50%;
-      }
-      #clear_messages {
-        width: 50%;
-      }
+      width: 100%;
+      max-width: 90%;
+    }
+
+    .input_container {
+      flex-direction: column;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+    }
+
+    button[type="submit"],
+    #clear_messages {
+      width: 100%;
     }
   }
 }
