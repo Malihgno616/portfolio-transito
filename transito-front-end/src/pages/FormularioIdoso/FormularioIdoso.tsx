@@ -5,7 +5,7 @@ export const FormularioIdoso: React.FC = () => {
     <div id={styles.titleForm}>
       <h1>Formulário do Idoso</h1>
       <p>Preencha o formulário para adquirir o cartão do idoso.</p>
-      <div className={styles.form_container}>
+      <form className={styles.form_container}>
         <h2>Informações do Idoso</h2>
         <input type="text" placeholder="Nome" required />
         <input id={styles.date} type="date" />
@@ -73,7 +73,7 @@ export const FormularioIdoso: React.FC = () => {
         <p>Cópia do RG(OBRIGATÓRIO)</p>
         <input id="file_input" type="file" name="Selecionar" required />
         <button type="submit">Enviar</button>
-      </div>
+      </form>
     </div>
   );
 };
