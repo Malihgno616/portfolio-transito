@@ -19,6 +19,7 @@ import { Bicicletas } from "./pages/Bicicletas/Bicletas";
 import { ZonaAzul } from "./pages/Zona-Azul/ZonaAzul";
 import { VagasEspeciais } from "./pages/VagasEspeciais/VagasEspeciais";
 import { FormularioIdoso } from "./pages/FormularioIdoso/FormularioIdoso";
+import { Sinalizacao } from "./pages/Sinalizacao/Sinalizacao";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -70,6 +71,7 @@ function App() {
           <Route path="/Zona-Azul" element={<ZonaAzul />} />
           <Route path="/Vagas-especiais" element={<VagasEspeciais />} />
           <Route path="/formulario-idoso" element={<FormularioIdoso />} />
+          <Route path="/Sinalizacoes" element={<Sinalizacao />} />
         </Routes>
       )}
       <Footer />

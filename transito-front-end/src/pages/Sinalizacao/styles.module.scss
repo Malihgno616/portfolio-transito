@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  height: 50vh;
+  gap: 2rem;
+  a {
+    text-decoration: none;
+    color: #333;
+    &:hover {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      filter: brightness(1.1);
+    }
+  }
+}
