@@ -18,6 +18,17 @@
   grid-template-columns: 1fr; /* Corrigido para 1fr */
   gap: 2rem;
 
+  .representante_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+
   select {
     width: 100%; /* Ajuste para ocupar 100% do espaço disponível */
     max-width: 200px; /* Limite de largura para telas maiores */
