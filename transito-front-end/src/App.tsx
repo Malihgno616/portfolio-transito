@@ -20,6 +20,7 @@ import { ZonaAzul } from "./pages/Zona-Azul/ZonaAzul";
 import { VagasEspeciais } from "./pages/VagasEspeciais/VagasEspeciais";
 import { FormularioIdoso } from "./pages/FormularioIdoso/FormularioIdoso";
 import { Sinalizacao } from "./pages/Sinalizacao/Sinalizacao";
+import { Semaforos } from "./pages/Semaforos/Semaforos";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -44,6 +45,7 @@ function App() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            height: "100vh",
             padding: "5rem",
           }}
         >
@@ -67,11 +69,12 @@ function App() {
           />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/Bicicletas" element={<Bicicletas />} />
-          <Route path="/Zona-Azul" element={<ZonaAzul />} />
-          <Route path="/Vagas-especiais" element={<VagasEspeciais />} />
+          <Route path="/bicicletas" element={<Bicicletas />} />
+          <Route path="/zona-Azul" element={<ZonaAzul />} />
+          <Route path="/vagas-especiais" element={<VagasEspeciais />} />
           <Route path="/formulario-idoso" element={<FormularioIdoso />} />
-          <Route path="/Sinalizacoes" element={<Sinalizacao />} />
+          <Route path="/sinalizacoes" element={<Sinalizacao />} />
+          <Route path="/semaforos" element={<Semaforos />} />
         </Routes>
       )}
       <Footer />
