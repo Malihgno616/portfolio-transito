@@ -23,6 +23,8 @@ import { Sinalizacao } from "./pages/Sinalizacao/Sinalizacao";
 import { Semaforos } from "./pages/Semaforos/Semaforos";
 import { Lombadas } from "./pages/Lombadas/Lombadas";
 import { Interdicoes } from "./pages/Interdicoes/Interdicoes";
+import { Multas } from "./pages/Multas/Multas";
+import { FormAIT } from "./pages/FormAIT/FormAIT";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -79,6 +81,8 @@ function App() {
           <Route path="/semaforos" element={<Semaforos />} />
           <Route path="/lombadas" element={<Lombadas />} />
           <Route path="/interdicoes" element={<Interdicoes />} />
+          <Route path="/multas" element={<Multas />} />
+          <Route path="/FormAIT" element={<FormAIT />} />
         </Routes>
       )}
       <Footer />
