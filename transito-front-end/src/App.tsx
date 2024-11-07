@@ -22,6 +22,7 @@ import { FormularioIdoso } from "./pages/FormularioIdoso/FormularioIdoso";
 import { Sinalizacao } from "./pages/Sinalizacao/Sinalizacao";
 import { Semaforos } from "./pages/Semaforos/Semaforos";
 import { Lombadas } from "./pages/Lombadas/Lombadas";
+import { Interdicoes } from "./pages/Interdicoes/Interdicoes";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -77,6 +78,7 @@ function App() {
           <Route path="/sinalizacoes" element={<Sinalizacao />} />
           <Route path="/semaforos" element={<Semaforos />} />
           <Route path="/lombadas" element={<Lombadas />} />
+          <Route path="/interdicoes" element={<Interdicoes />} />
         </Routes>
       )}
       <Footer />
