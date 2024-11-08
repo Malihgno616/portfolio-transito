@@ -1,0 +1,83 @@
+.container {
+  max-width: 1050px;
+  width: 100%;
+  padding: 5rem;
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+    font-weight: 400;
+    padding: 1rem;
+  }
+  h2 {
+    padding: 1rem;
+    font-weight: 300;
+    text-align: center;
+  }
+  p {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin-top: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+  textarea {
+    max-width: 800px;
+    max-height: 30vh;
+    border: none;
+
+    text-overflow: none;
+  }
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    border-radius: 20px;
+    margin: 0 auto;
+    border: none;
+    background-color: #f8c14b;
+    transition: all 0.6s ease;
+    height: 60px;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+  form {
+    input {
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    border: 2px solid #7a7a7ab9;
+    padding: 2rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    .med_infos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 1rem;
+      height: 195px;
+      gap: 1rem;
+    }
+    .def_infos {
+      label {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        input {
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+        }
+      }
+      display: grid;
+      grid-template-columns: repeat(1fr);
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      margin-top: 2.5rem;
+    }
+  }
+}

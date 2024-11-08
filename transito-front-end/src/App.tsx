@@ -25,6 +25,8 @@ import { Lombadas } from "./pages/Lombadas/Lombadas";
 import { Interdicoes } from "./pages/Interdicoes/Interdicoes";
 import { Multas } from "./pages/Multas/Multas";
 import { FormAIT } from "./pages/FormAIT/FormAIT";
+import { FormDeficiente } from "./pages/FormDeficiente/FormDeficiente";
+import { InfosMedicas } from "./pages/InfosMedicas/InfosMedicas";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -82,7 +84,9 @@ function App() {
           <Route path="/lombadas" element={<Lombadas />} />
           <Route path="/interdicoes" element={<Interdicoes />} />
           <Route path="/multas" element={<Multas />} />
-          <Route path="/FormAIT" element={<FormAIT />} />
+          <Route path="/multas/formulario-ait" element={<FormAIT />} />
+          <Route path="/formulario-deficiente" element={<FormDeficiente />} />
+          <Route path="/informacoes-medicas" element={<InfosMedicas />} />
         </Routes>
       )}
       <Footer />
