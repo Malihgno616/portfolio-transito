@@ -22,7 +22,7 @@ export const FormDeficiente: React.FC = () => {
     <div id={styles.titleForm}>
       <h1>Formulário Deficiente</h1>
       <p>Preencha o formulário para adquirir o cartão do idoso.</p>
-      <form className={styles.form_container}>
+      <form action="/informacoes-medicas" className={styles.form_container}>
         <h2>Informações do requerente/beneficiário</h2>
         <input type="text" placeholder="Nome" required />
         <label htmlFor="">
