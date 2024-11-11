@@ -22,8 +22,8 @@
   textarea {
     max-width: 800px;
     max-height: 30vh;
-    border: none;
-
+    border: 2px solid #a3a3a3;
+    border-radius: 5px;
     text-overflow: none;
   }
   button {
@@ -44,8 +44,18 @@
     }
   }
   form {
+    .temp_ou_perm {
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      label {
+        gap: 1rem;
+      }
+    }
     input {
-      border: none;
+      border: 2px solid #a3a3a3;
       border-radius: 5px;
       margin-bottom: 1rem;
     }
@@ -56,10 +66,11 @@
     flex-direction: column;
     .med_infos {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1fr);
       padding: 1rem;
-      height: 195px;
+      height: 400px;
       gap: 1rem;
+      margin-bottom: 1rem;
     }
     .def_infos {
       label {
@@ -78,6 +89,61 @@
       align-items: center;
       margin-bottom: 2.5rem;
       margin-top: 2.5rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  textarea {
+    max-width: 100%;
+    max-height: 20vh;
+  }
+
+  button {
+    max-width: 150px;
+    height: 50px;
+  }
+
+  form {
+    padding: 1rem;
+
+    .temp_ou_perm {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    .med_infos {
+      width: 100%;
+      height: 140px;
+    }
+
+    .def_infos {
+      display: grid;
+      grid-template-columns: repeat(1fr);
+      input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
     }
   }
 }

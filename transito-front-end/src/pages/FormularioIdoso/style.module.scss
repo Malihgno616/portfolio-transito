@@ -1,5 +1,5 @@
 #titleForm {
-  padding: 5rem 2rem; /* Ajuste o padding para telas menores */
+  padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
   width: 100%;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 1fr; /* Corrigido para 1fr */
+  grid-template-columns: 1fr;
   gap: 2rem;
 
   .representante_form {
@@ -30,8 +30,8 @@
   }
 
   select {
-    width: 100%; /* Ajuste para ocupar 100% do espaço disponível */
-    max-width: 200px; /* Limite de largura para telas maiores */
+    width: 100%;
+    max-width: 200px;
   }
 
   h2 {
@@ -45,14 +45,14 @@
 
   input {
     padding: 1rem;
-    border: none;
+    border: 2px solid #a3a3a3;
     border-radius: 5px;
     width: 100%; /* Ajuste para ocupar 100% do espaço disponível */
   }
 
   button {
     border: none;
-    background-color: #cec330;
+    background-color: #f8c14b;
     max-width: 350px;
     padding: 1rem;
     margin: 0 auto;

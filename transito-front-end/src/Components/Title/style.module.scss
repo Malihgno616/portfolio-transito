@@ -18,14 +18,8 @@
     align-items: center;
 
     img {
-      width: 125px;
-      border-radius: 50%;
+      max-width: 725px;
       margin-bottom: 1rem;
-    }
-    h1 {
-      text-transform: uppercase;
-      font-style: italic;
-      color: #dfdfdf;
     }
   }
 }

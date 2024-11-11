@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./style.module.scss";
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 
 export const InfosMedicas: React.FC = () => {
+  const [temporarioOuPermanente, setTemporarioOuPermanente] = useState<
+    string | null
+  >("");
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setTemporarioOuPermanente((event.target as HTMLInputElement).value);
+  }
+
   return (
     <div className={styles.container}>
       <form>
@@ -52,6 +67,7 @@ export const InfosMedicas: React.FC = () => {
             <input type="checkbox" />
           </label>
           <br />
+
           <label>
             DEFICIÊNCIA AMBULATÓRIA AUTONOMA DECORRENTE DE INCAPACIDADE MENTAL
             <input type="checkbox" />
@@ -71,14 +87,48 @@ export const InfosMedicas: React.FC = () => {
           Em sentido <strong> permanente</strong>, informar o período de início
           da validade do cartão, com prazo de (5) cinco anos.
         </p>
-        <label>
-          TEMPORÁRIA
-          <input type="radio" />
-        </label>
-        <label>
-          PERMANENTE
-          <input type="radio" />
-        </label>
+        <FormControl component="fieldset" margin="normal">
+          <RadioGroup
+            row
+            name="Temporario ou Permanente"
+            value={temporarioOuPermanente}
+            onChange={handleChange}
+          >
+            <Box margin="0 auto">
+              <FormControlLabel
+                value="Temporario"
+                control={<Radio />}
+                label="Temporario"
+              />
+              <FormControlLabel
+                value="Permanente"
+                control={<Radio />}
+                label="Permanente"
+              />
+            </Box>
+          </RadioGroup>
+          {temporarioOuPermanente === "Temporario" ? (
+            <div className={styles.temp_ou_perm}>
+              <label>
+                Data de Início
+                <input type="date" />
+              </label>
+              <label>
+                Data de Fim
+                <input type="date" required />
+              </label>
+            </div>
+          ) : temporarioOuPermanente === "Permanente" ? (
+            <div className={styles.temp_ou_perm}>
+              <label>
+                Data de Início
+                <input type="date" required />
+              </label>
+            </div>
+          ) : (
+            <br />
+          )}
+        </FormControl>
         <p>
           Descrição e CID da lesão que justifique a incapacidade ou dificuldade
           ambular;

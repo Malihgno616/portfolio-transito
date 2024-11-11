@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./style.module.scss";
-import logo from "../../assets/image/file.jpeg";
+import logo from "../../assets/image/favicon.png";
 
 import {
   faClock,
