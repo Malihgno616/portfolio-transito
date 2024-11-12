@@ -14,10 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# transitoserver/urls.py
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Página inicial")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/contact/', include('contact.urls')),  # URL pattern for /api/contact/
+    path('api/contact/', include('contact.urls')),  # As URLs da app 'contact'
+    path('', home),  # Adiciona uma view para a raiz ("/")
 ]
