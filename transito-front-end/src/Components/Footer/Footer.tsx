@@ -14,7 +14,17 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <img src={logo} alt="" />
+        <div className={styles.title_container}>
+          <img src={logo} alt="logo transito leme" />
+          <div className={styles.titles}>
+            <h1>Secretatia Municipal de Trânsito</h1>
+            <h2>
+              <em>
+                Secretaria de Trânsito, Segurança, Cidadania e Defesa Civil
+              </em>
+            </h2>
+          </div>
+        </div>
         <ul>
           <li>
             <FontAwesomeIcon icon={faClock} /> Atendimento de Segunda à
@@ -24,10 +34,7 @@ export const Footer: React.FC = () => {
             <FontAwesomeIcon icon={faMailBulk} /> email@email.com
           </li>
           <li>
-            <address>
-              <FontAwesomeIcon icon={faLocationDot} /> rua das ruas da silva,
-              999
-            </address>
+            <FontAwesomeIcon icon={faLocationDot} /> rua das ruas da silva, 999
           </li>
           <li>
             <FontAwesomeIcon icon={faPhone} /> (11) 99999-9999
