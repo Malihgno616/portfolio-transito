@@ -23,6 +23,7 @@ export const Contact: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    //  console.log(`Mudança no campo ${name}: ${value}`); // Verifique se o valor está correto
     setFormFields((prevFields) => ({
       ...prevFields,
       [name]: value,
@@ -33,24 +34,45 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "127.0.0.1:8000/api/contact/submit",
-        formFields
+        "http://127.0.0.1:8000/api/contact/submit/",
+        formFields,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
-      alert("Mensagem enviada com sucesso!");
-      setFormFields({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+
+      if (response.status === 201) {
+        alert("Mensagem enviada com sucesso!");
+        setFormFields({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        alert("Erro ao enviar mensagem.");
+      }
     } catch (error) {
-      console.error(error);
-      alert("Houve um erro ao enviar a mensagem.");
+      if (error instanceof Error) {
+        // Caso o erro seja do tipo padrão JavaScript Error
+        alert("Erro ao enviar a mensagem: " + error.message);
+      } else if (axios.isAxiosError(error)) {
+        // Caso o erro seja do Axios
+        alert(
+          "Erro ao enviar a mensagem: " +
+            (error.response?.data || "Erro desconhecido")
+        );
+      } else {
+        // Caso o erro seja de algum outro tipo
+        alert("Erro desconhecido.");
+      }
     }
   };
 
   const handleClear = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); // Previne o comportamento padrão do botão
+    e.preventDefault();
     setFormFields({
       name: "",
       email: "",
@@ -70,6 +92,7 @@ export const Contact: React.FC = () => {
             placeholder="Digite seu nome..."
             value={formFields.name}
             onChange={handleChange}
+            required
           />
           <input
             type="email"
@@ -77,6 +100,7 @@ export const Contact: React.FC = () => {
             placeholder="Digite seu e-mail..."
             value={formFields.email}
             onChange={handleChange}
+            required
           />
           <input
             type="tel"
@@ -84,6 +108,7 @@ export const Contact: React.FC = () => {
             placeholder="Número do telefone..."
             value={formFields.phone}
             onChange={handleChange}
+            required
           />
         </div>
         <textarea
@@ -91,11 +116,12 @@ export const Contact: React.FC = () => {
           placeholder="Mensagem..."
           value={formFields.message}
           onChange={handleChange}
+          required
         ></textarea>
         <button id={styles.clear_messages} onClick={handleClear}>
           Limpar <FontAwesomeIcon icon={faEraser} />
         </button>
-        <button type="submit">
+        <button type="submit" >
           Enviar <FontAwesomeIcon icon={faMailBulk} />
         </button>
       </form>

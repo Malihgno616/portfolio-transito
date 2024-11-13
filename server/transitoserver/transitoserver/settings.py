@@ -15,17 +15,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import os
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),  # Caminho para os arquivos estáticos do React
-]
-
 # Configuração para servir o arquivo index.html do React
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
+        
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -38,7 +32,6 @@ TEMPLATES = [
     },
 ]
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -49,7 +42,6 @@ SECRET_KEY = 'django-insecure-64pq^boqk_xashd(%&hpw$y@px_*ukp#f04c5)at02@y#)@6@-
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -62,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'contact',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -77,25 +69,30 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  
+]
 
 ROOT_URLCONF = 'transitoserver.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+LOGGING = {
+  'version': 1,
+  'disable_existing_loggers': False,
+  'handlers': {
+    'console': {
+      'level': 'ERROR',
+      'class': 'logging.StreamHandler',
     },
-]
+  },
+  'loggers': {
+    'django': {
+      'handlers': ['console'],
+      'level': 'DEBUG',
+      'propagate': True,
+    },
+  },
+}
 
 WSGI_APPLICATION = 'transitoserver.wsgi.application'
 
@@ -129,6 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+APPEND_SLASH = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

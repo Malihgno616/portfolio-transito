@@ -1,14 +1,17 @@
-from django.shortcuts import render
-from rest_framework import status
-from rest_framework.decorators import api_view
+# contact/views.py
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ContactFormSerializer
+from rest_framework import status
 
-@api_view(["POST"])
-def submit_contact_form(request):
-  if request.method == 'POST':
-    serializer = ContactFormSerializer(data = request.data)
-    if serializer.is_valid():
-      serializer.save()
-      return Response({"message":"mensagem enviada com sucesso!"}, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class ContactSubmitView(APIView):
+    def post(self, request):
+        data = request.data  # Recebe os dados do formulário enviado
+        print("Dados recebidos:", data)  # Aqui você pode verificar os dados no console
+
+        # Validando se todos os campos obrigatórios foram preenchidos
+        if not all(key in data for key in ['name', 'email', 'phone', 'message']):
+            return Response({'error': 'Campos incompletos'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Aqui você pode salvar os dados no banco, enviar um email ou qualquer outra ação
+        # Exemplo de resposta de sucesso
+        return Response({'message': 'Mensagem recebida com sucesso!'}, status=status.HTTP_201_CREATED)
