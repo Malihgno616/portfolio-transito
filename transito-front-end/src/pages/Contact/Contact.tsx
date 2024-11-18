@@ -23,7 +23,6 @@ export const Contact: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    //  console.log(`Mudança no campo ${name}: ${value}`); // Verifique se o valor está correto
     setFormFields((prevFields) => ({
       ...prevFields,
       [name]: value,
@@ -34,7 +33,7 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/contact/submit/",
+        "http://localhost:8000/api/contact/submit/",
         formFields,
         {
           headers: {
@@ -56,16 +55,13 @@ export const Contact: React.FC = () => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        // Caso o erro seja do tipo padrão JavaScript Error
         alert("Erro ao enviar a mensagem: " + error.message);
       } else if (axios.isAxiosError(error)) {
-        // Caso o erro seja do Axios
         alert(
           "Erro ao enviar a mensagem: " +
             (error.response?.data || "Erro desconhecido")
         );
       } else {
-        // Caso o erro seja de algum outro tipo
         alert("Erro desconhecido.");
       }
     }
@@ -121,7 +117,7 @@ export const Contact: React.FC = () => {
         <button id={styles.clear_messages} onClick={handleClear}>
           Limpar <FontAwesomeIcon icon={faEraser} />
         </button>
-        <button type="submit" >
+        <button type="submit">
           Enviar <FontAwesomeIcon icon={faMailBulk} />
         </button>
       </form>

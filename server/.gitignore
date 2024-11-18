@@ -1,0 +1,5 @@
+# Ignorar arquivos de configuração sensíveis
+*.env
+db.sqlite3
+
+/__pycache__/
