@@ -1,6 +1,10 @@
 import styles from "./style.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEraser, faMailBulk } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEraser,
+  faMailBulk,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import axios from "axios";
 
@@ -19,6 +23,8 @@ export const Contact: React.FC = () => {
     message: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -31,6 +37,9 @@ export const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsLoading(true);
+
     try {
       const response = await axios.post(
         "http://localhost:8000/api/contact/submit/",
@@ -64,6 +73,8 @@ export const Contact: React.FC = () => {
       } else {
         alert("Erro desconhecido.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -117,8 +128,14 @@ export const Contact: React.FC = () => {
         <button id={styles.clear_messages} onClick={handleClear}>
           Limpar <FontAwesomeIcon icon={faEraser} />
         </button>
-        <button type="submit">
-          Enviar <FontAwesomeIcon icon={faMailBulk} />
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? (
+            <FontAwesomeIcon icon={faSpinner} spin />
+          ) : (
+            <>
+              Enviar <FontAwesomeIcon icon={faMailBulk} />
+            </>
+          )}
         </button>
       </form>
     </div>
