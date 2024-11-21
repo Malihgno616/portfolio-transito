@@ -69,6 +69,33 @@ class ContactListView(APIView):
         serializer = ContactFormSerializer(contacts, many=True)
 
         return Response(serializer.data)
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import ContactForm
+from .serializers import ContactFormSerializer
+from django.http import Http404
+import logging
+
+# Configuração do logger para depuração
+logger = logging.getLogger(__name__)
+
+class ContactDeleteView(APIView):
     def delete(self, request, pk):
-        pass
+        try:
+            # Tentar localizar o objeto pelo ID (pk)
+            contact = ContactForm.objects.get(pk=pk)
+            contact.delete()  # Deletar o objeto
+
+            # Registrar a exclusão no log
+            logger.info("Contato com ID %d deletado com sucesso", pk)
+
+            return Response({'message': 'Contato deletado com sucesso!'}, status=status.HTTP_204_NO_CONTENT)
+        except ContactForm.DoesNotExist:
+            logger.error("Contato com ID %d não encontrado", pk)
+            raise Http404  # Se o contato não for encontrado, gerar erro 404
+        except Exception as e:
+            logger.error("Erro ao deletar o contato com ID %d: %s", pk, str(e))
+            return Response({'error': f'Erro ao deletar o contato: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
