@@ -3,7 +3,8 @@
 db.sqlite3
 .gitignore
 __init__.py
-__pycache__/
+*__pycache__/
 *.pyc
 *.pyo
 *.class
+/transitoserver/contact/__pycache__
