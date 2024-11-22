@@ -202,7 +202,7 @@
 
     form {
       width: 100%;
-      max-width: 90%;
+      max-width: 100%;
     }
 
     .input_container {
@@ -217,6 +217,7 @@
     button[type="submit"],
     #clear_messages {
       width: 100%;
+      margin: 0 auto;
     }
   }
 }
