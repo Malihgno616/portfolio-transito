@@ -1,5 +1,9 @@
 # Ignorar arquivos de configuração sensíveis
 *.env
 db.sqlite3
-/__pycache__/
 .gitignore
+__init__.py
+__pycache__/
+*.pyc
+*.pyo
+*.class
