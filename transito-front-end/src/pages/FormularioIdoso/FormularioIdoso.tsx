@@ -51,6 +51,7 @@ export const FormularioIdoso: React.FC = () => {
           <option value="Amapá">Amapá</option>
           <option value="Amazonas">Amazonas</option>
           <option value="Bahia">Bahia</option>
+          <option value="Ceará">Ceará</option>
           <option value="Distrito Federal">Distrito Federal</option>
           <option value="Espírito Santo">Espírito Santo</option>
           <option value="Goiás">Goiás</option>
