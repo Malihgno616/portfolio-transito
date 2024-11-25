@@ -184,3 +184,6 @@ EMAIL_USE_SSL = False
 # settings.py
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# idioma do código
+LANGUAGE_CODE = 'pt-br'

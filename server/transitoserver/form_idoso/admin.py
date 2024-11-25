@@ -1,8 +1,14 @@
 from django.contrib import admin
-from .models import LegalRepresentative, SeniorForm
-# Register your models here.
+from form_idoso.models import SeniorForm, LegalRepresentative
 
-admin.site.register(LegalRepresentative)
-admin.site.register(SeniorForm)
+@admin.register(SeniorForm)
+class SeniorFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'birthday', 'gender', 'zip_code', 'city', 'state', 'phone', 'rg', 'issuance_date')
+    list_filter = ('state', 'gender')  # Filtro para o campo 'gender'
+    search_fields = ('name', 'phone', 'rg')
 
-
+@admin.register(LegalRepresentative)
+class LegalRepresentativeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'birthday', 'gender', 'zip_code', 'city', 'state', 'phone', 'rg', 'issuance_date')
+    list_filter = ('state', 'gender')  # Filtro para o campo 'gender'
+    search_fields = ('name', 'phone', 'rg')
