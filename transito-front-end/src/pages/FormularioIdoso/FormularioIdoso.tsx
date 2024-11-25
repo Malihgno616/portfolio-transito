@@ -8,6 +8,44 @@ import {
   RadioGroup,
 } from "@mui/material";
 
+interface SeniorFormFields {
+  name: String;
+  birthday: String;
+  gender: String;
+  zip_code: String;
+  address: String;
+  complement?: String;
+  neighborhood: String;
+  number: Number;
+  city: String;
+  state: String;
+  phone: String;
+  rg: String;
+  issuance_date: Date;
+  issued_by: String;
+  rg_copy_doc: String;
+  representative?: null
+}
+
+interface RepresentativeFields {
+  name: String;
+  birthday: String;
+  gender: String;
+  zip_code: String;
+  address: String;
+  complement?: String;
+  neighborhood: String;
+  number: Number;
+  city: String;
+  state: String;
+  phone: String;
+  rg: String;
+  issuance_date: Date;
+  issued_by: String;
+  rg_copy_doc: File;
+  representative_doc: File; 
+}
+
 export const FormularioIdoso: React.FC = () => {
   const [representanteLegal, setRepresentanteLegal] = useState<string | null>(
     null
