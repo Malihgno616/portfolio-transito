@@ -7,116 +7,131 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-
-interface SeniorFormFields {
-  name: String;
-  birthday: String;
-  gender: String;
-  zip_code: String;
-  address: String;
-  complement?: String;
-  neighborhood: String;
-  number: Number;
-  city: String;
-  state: String;
-  phone: String;
-  rg: String;
-  issuance_date: Date;
-  issued_by: String;
-  rg_copy_doc: String;
-  representative?: null
-}
-
-interface RepresentativeFields {
-  name: String;
-  birthday: String;
-  gender: String;
-  zip_code: String;
-  address: String;
-  complement?: String;
-  neighborhood: String;
-  number: Number;
-  city: String;
-  state: String;
-  phone: String;
-  rg: String;
-  issuance_date: Date;
-  issued_by: String;
-  rg_copy_doc: File;
-  representative_doc: File; 
-}
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const FormularioIdoso: React.FC = () => {
   const [representanteLegal, setRepresentanteLegal] = useState<string | null>(
     null
   );
 
+  const [isLoading, setIsLoading] = useState(false);
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setRepresentanteLegal((event.target as HTMLInputElement).value);
+    setRepresentanteLegal(event.target.value);
   }
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+
+    const form = event.target as HTMLFormElement;
+    const newFormData = new FormData(form);
+
+    alert("Os dados foram enviados com sucesso!!!");
+    console.log("FormData enviado:", newFormData); // Adicionar log
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/form_idoso/submit",
+        newFormData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      form.reset();
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Erro na requisição:", error.response?.data); // Imprimir resposta do erro
+        alert(`Erro na requisição: ${error.response?.data}`);
+      } else {
+        console.error("Erro desconhecido:", error);
+        alert("Erro desconhecido");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div id={styles.titleForm}>
       <h1>Formulário do Idoso</h1>
       <p>Preencha o formulário para adquirir o cartão do idoso.</p>
-      <form className={styles.form_container}>
+      <form className={styles.form_container} onSubmit={handleSubmit}>
         <h2>Informações do Idoso</h2>
-        <input type="text" placeholder="Nome" required />
+        <input type="text" placeholder="Nome" name="name" required />
         <label htmlFor="">Data de Nascimento</label>
-        <input id={styles.date} type="date" />
+        <input id={styles.date} type="date" name="birthday" />
         <label htmlFor="">Sexo</label>
-        <select name="Sexo" id="Sexo" required>
+        <select name="gender" id="Sexo" required>
           <option value="">Selecione...</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
         </select>
-        <input type="text" maxLength={9} placeholder="CEP" required />
+
         <input
-          type="address"
+          type="text"
+          maxLength={9}
+          placeholder="CEP"
+          name="zip_code"
+          required
+        />
+        <input
+          type="text"
           maxLength={70}
+          name="address"
           placeholder="Endereço (Rua, AV)"
           required
         />
-        <input type="text" maxLength={70} placeholder="Complemento" />
-        <input type="text" placeholder="Bairro" required />
-        <input type="text" placeholder="Número" required />
-        <input type="text" placeholder="Cidade" required />
+        <input
+          type="text"
+          maxLength={70}
+          placeholder="Complemento"
+          name="complement"
+        />
+        <input type="text" placeholder="Bairro" required name="neighborhood" />
+        <input type="text" placeholder="Número" required name="number" />
+        <input type="text" placeholder="Cidade" required name="city" />
         <label htmlFor="">UF</label>
-        <select name="Unidade Federal" id="Unidade Federal">
-          <option value="Selecione">Selecione</option>
-          <option value="Acre">Acre</option>
-          <option value="Alagos">Alagoas</option>
-          <option value="Amapá">Amapá</option>
-          <option value="Amazonas">Amazonas</option>
-          <option value="Bahia">Bahia</option>
-          <option value="Ceará">Ceará</option>
-          <option value="Distrito Federal">Distrito Federal</option>
-          <option value="Espírito Santo">Espírito Santo</option>
-          <option value="Goiás">Goiás</option>
-          <option value="Maranhão">Maranhão</option>
-          <option value="Mato Grosso">Mato Grosso</option>
-          <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-          <option value="Minas Gerais">Minas Gerais</option>
-          <option value="Pará">Pará</option>
-          <option value="Paraíba">Paraíba</option>
-          <option value="Paraná">Paraná</option>
-          <option value="Pernambuco">Pernambuco</option>
-          <option value="Piauí">Piauí</option>
-          <option value="Rio de Janeiro">Rio de Janeiro</option>
-          <option value="Rio Grande do Norte">Rio Grande do Norte</option>
-          <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-          <option value="Rondônia">Rondônia</option>
-          <option value="Roraima">Roraima</option>
-          <option value="Santa Catarina">Santa Catarina</option>
-          <option value="São Paulo">São Paulo</option>
-          <option value="Sergipe">Sergipe</option>
-          <option value="Tocantins">Tocantins</option>
+        <select name="state" id="Unidade Federal" required>
+          <option value="">Selecione...</option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
         </select>
-        <input type="phone" placeholder="Telefone" required />
-        <input type="text" placeholder="RG" required />
+        <input type="tel" name="phone" placeholder="Telefone" required />
+        <input type="text" name="rg" placeholder="RG" required />
         <label htmlFor="">Data de Expedição</label>
-        <input id={styles.date} type="date" />
-        <input type="text" placeholder="Expedido por..." />
+        <input id={styles.date} type="date" name="issuance_date" />
+        <input type="text" placeholder="Expedido por..." name="issued_by" />
 
         <h2>Documentos necessários do Idoso</h2>
         <p>
@@ -124,13 +139,13 @@ export const FormularioIdoso: React.FC = () => {
           equivalente.)
         </p>
         <p>Cópia do RG(OBRIGATÓRIO)</p>
-        <input id="file_input" type="file" name="Selecionar" required />
+        <input id="file_input" type="file" name="rg_copy_doc" required />
 
         <FormControl component="fieldset" margin="normal">
           <h2>Representante Legal</h2>
           <RadioGroup
             row
-            name="Representante Legal"
+            name="representante_legal"
             value={representanteLegal}
             onChange={handleChange}
           >
@@ -150,76 +165,106 @@ export const FormularioIdoso: React.FC = () => {
             <>
               <div className={styles.representante_form}>
                 <h2>Informações do representante</h2>
-                <input type="text" placeholder="Nome" required />
-                <input id={styles.date} type="date" />
+                <input type="text" placeholder="Nome" name="name" required />
+                <label htmlFor="">Data de Nascimento</label>
+                <input id={styles.date} type="date" name="birthday" />
                 <label htmlFor="">Sexo</label>
-                <select name="Sexo" id="Sexo" required>
+                <select name="gender" id="Sexo" required>
                   <option value="">Selecione...</option>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Feminino">Feminino</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Feminino</option>
                 </select>
-                <input type="text" maxLength={9} placeholder="CEP" required />
                 <input
-                  type="address"
+                  type="text"
+                  maxLength={9}
+                  placeholder="CEP"
+                  name="zip_code"
+                  required
+                />
+                <input
+                  type="text"
                   maxLength={70}
+                  name="address"
                   placeholder="Endereço (Rua, AV)"
                   required
                 />
-                <input type="text" maxLength={70} placeholder="Complemento" />
-                <input type="text" placeholder="Bairro" required />
-                <input type="text" placeholder="Número" required />
-                <input type="text" placeholder="Cidade" required />
+                <input
+                  type="text"
+                  maxLength={70}
+                  placeholder="Complemento"
+                  name="complement"
+                />
+                <input
+                  type="text"
+                  placeholder="Bairro"
+                  required
+                  name="neighborhood"
+                />
+                <input
+                  type="text"
+                  placeholder="Número"
+                  required
+                  name="number"
+                />
+                <input type="text" placeholder="Cidade" required name="city" />
                 <label htmlFor="">UF</label>
-                <select name="Unidade Federal" id="Unidade Federal">
-                  <option value="Selecione">Selecione</option>
-                  <option value="Acre">Acre</option>
-                  <option value="Alagos">Alagoas</option>
-                  <option value="Amapá">Amapá</option>
-                  <option value="Amazonas">Amazonas</option>
-                  <option value="Bahia">Bahia</option>
-                  <option value="Distrito Federal">Distrito Federal</option>
-                  <option value="Espírito Santo">Espírito Santo</option>
-                  <option value="Goiás">Goiás</option>
-                  <option value="Maranhão">Maranhão</option>
-                  <option value="Mato Grosso">Mato Grosso</option>
-                  <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-                  <option value="Minas Gerais">Minas Gerais</option>
-                  <option value="Pará">Pará</option>
-                  <option value="Paraíba">Paraíba</option>
-                  <option value="Paraná">Paraná</option>
-                  <option value="Pernambuco">Pernambuco</option>
-                  <option value="Piauí">Piauí</option>
-                  <option value="Rio de Janeiro">Rio de Janeiro</option>
-                  <option value="Rio Grande do Norte">
-                    Rio Grande do Norte
-                  </option>
-                  <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-                  <option value="Rondônia">Rondônia</option>
-                  <option value="Roraima">Roraima</option>
-                  <option value="Santa Catarina">Santa Catarina</option>
-                  <option value="São Paulo">São Paulo</option>
-                  <option value="Sergipe">Sergipe</option>
-                  <option value="Tocantins">Tocantins</option>
+                <select name="state" id="Unidade Federal" required>
+                  <option value="">Selecione...</option>
+                  <option value="AC">Acre</option>
+                  <option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option>
+                  <option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option>
+                  <option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option>
+                  <option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option>
+                  <option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option>
+                  <option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option>
+                  <option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option>
+                  <option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option>
+                  <option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                  <option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
                 </select>
-                <input type="phone" placeholder="Telefone" required />
-                <input type="text" placeholder="RG" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Telefone"
+                  required
+                />
+                <input type="text" name="rg" placeholder="RG" required />
                 <label htmlFor="">Data de Expedição</label>
-                <input id={styles.date} type="date" />
-                <input type="text" placeholder="Expedido por..." />
-                <div>
-                  <h2>Documentos necessários do Representante</h2>
-                  <p>
-                    Selecione a cópia digitalizada de identidade (ou de
-                    documento equivalente.)
-                  </p>
-                  <p>Cópia do RG(OBRIGATÓRIO)</p>
-                  <input
-                    id="file_input"
-                    type="file"
-                    name="Selecionar"
-                    required
-                  />
-                </div>
+                <input id={styles.date} type="date" name="issuance_date" />
+                <input
+                  type="text"
+                  placeholder="Expedido por..."
+                  name="issued_by"
+                />
+
+                <h2>Documentos necessários do Representante</h2>
+                <p>
+                  Selecione a cópia digitalizada de identidade (ou de documento
+                  equivalente.)
+                </p>
+                <p>Cópia do RG(OBRIGATÓRIO)</p>
+                <input
+                  id="file_input"
+                  type="file"
+                  name="rg_copy_doc"
+                  required
+                />
                 <hr />
                 <div>
                   <p>
@@ -231,7 +276,7 @@ export const FormularioIdoso: React.FC = () => {
                   <input
                     id="file_input"
                     type="file"
-                    name="Selecionar"
+                    name="representative_doc"
                     required
                   />
                 </div>
@@ -239,7 +284,9 @@ export const FormularioIdoso: React.FC = () => {
             </>
           )}
         </FormControl>
-        <button type="submit">Enviar</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : <>Enviar</>}
+        </button>
       </form>
     </div>
   );
