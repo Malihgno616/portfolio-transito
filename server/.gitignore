@@ -1,10 +1,51 @@
-# Ignorar arquivos de configuração sensíveis
+# Arquivos de configuração sensíveis
 *.env
+*.local
+*.dev
+*.prod
+*settings.py
+*/__init__.py
+# Banco de dados
 db.sqlite3
-.gitignore
-__init__.py
-*__pycache__/
+
+# Arquivos de log
+*.log
+
+# Arquivos compilados Python
 *.pyc
 *.pyo
-*.class
-/transitoserver/contact/__pycache__
+__pycache__/
+
+# Arquivos de migração
+*migrations/
+
+# Arquivos de media (upload de usuários)
+media/
+
+# Arquivos estáticos (se não for gerenciar com Git)
+static/
+
+# Pastas e arquivos do Django que não precisam ser versionados
+*.pot
+*.po
+*.mo
+
+# Arquivos de cache
+*.swp
+
+# Arquivos de ambiente (configurações locais)
+local_settings.py
+
+# Testes e diretórios temporários
+*.bak
+*.tmp
+
+# Arquivos gerados por editores de código (exemplo: VS Code, Sublime, etc.)
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Sistema operacional e outros arquivos gerados automaticamente
+.DS_Store
+Thumbs.db
