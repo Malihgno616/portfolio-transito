@@ -44,17 +44,22 @@ const articles: Article[] = [
 
 export const Articles: React.FC = () => {
   return (
-    <article className={styles.news}>
-      {articles.map((article, index) => (
-        <div key={index} className={styles.articles}>
-          <h2>{article.title}</h2>
-          <p>{article.description}</p>
-          <img src={article.image} alt={article.title} />
-          <a href={article.url} target="_blank" rel="noopener noreferrer">
-            Leia Mais
-          </a>
-        </div>
-      ))}
-    </article>
+    <>
+      <div>
+        <h1>Notícias</h1>
+      </div>
+      <article className={styles.news}>
+        {articles.map((article, index) => (
+          <div key={index} className={styles.articles}>
+            <h2>{article.title}</h2>
+            <p>{article.description}</p>
+            <img src={article.image} alt={article.title} />
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              Leia Mais
+            </a>
+          </div>
+        ))}
+      </article>
+    </>
   );
 };

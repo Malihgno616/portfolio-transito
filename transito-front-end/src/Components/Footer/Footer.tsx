@@ -15,9 +15,11 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.title_container}>
-          <img src={logo} alt="logo transito leme" />
           <div className={styles.titles}>
-            <h1>Secretatia Municipal de Trânsito</h1>
+            <h1>
+              <img src={logo} alt="logo transito leme" />
+              Secretatia Municipal de Trânsito
+            </h1>
             <h2>
               <em>
                 Secretaria de Trânsito, Segurança, Cidadania e Defesa Civil

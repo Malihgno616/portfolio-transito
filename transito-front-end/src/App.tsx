@@ -9,7 +9,6 @@ import { Infos } from "./Components/Infos/Infos";
 import { CurrentDate } from "./Components/CurrentDate/CurrentDate";
 import { Slide } from "./Components/Slide/Slide";
 import { Articles } from "./Components/Articles/Articles";
-import { TitleBeforeNews } from "./Components/TitleBeforeNews/TitleBeforeNews";
 import { Services } from "./pages/Services/Services";
 import { Contact } from "./pages/Contact/Contact";
 import { UsefulLinks } from "./Components/UsefulLinks/UsefulLinks";
@@ -43,6 +42,7 @@ function App() {
 
   return (
     <Router>
+      <Title />
       <Header />
       {loading ? (
         <div
@@ -63,13 +63,11 @@ function App() {
             path="/"
             element={
               <>
-                <Title />
-                <CurrentDate />
                 <Slide />
+                <CurrentDate />
                 <Infos />
-                <UsefulLinks />
-                <TitleBeforeNews />
                 <Articles />
+                <UsefulLinks />
               </>
             }
           />

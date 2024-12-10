@@ -1,17 +1,11 @@
 .header {
-  background-color: #f0d661;
+  background-color: #fddf56;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 1rem;
   align-items: center;
   gap: 1rem;
-
-  img {
-    width: 100px;
-    border-radius: 50%;
-    box-shadow: 5px 5px 3px #0000005b;
-  }
-
+  transform: translateY(-10%);
   ul {
     list-style: none;
     display: flex;
@@ -24,16 +18,17 @@
     li {
       a {
         color: #000;
+        text-transform: uppercase;
         text-decoration: none;
         font-size: 1.5rem;
+        font-weight: 400;
         transition: all 0.4s ease;
         &:hover {
-          color: whitesmoke;
+          color: rgb(135, 135, 135);
         }
       }
     }
   }
-
   button {
     border: none;
     background-color: transparent;
@@ -42,28 +37,22 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 420px) {
   .header {
     flex-direction: column;
     align-items: center;
     padding: 0.5rem;
 
-    img {
-      width: 70px;
-    }
-
     ul {
       display: block;
-      margin-top: 0.5rem;
+      margin-top: 0;
       align-items: center;
       max-height: 0;
       opacity: 0;
       overflow: hidden;
-
       li {
-        margin: 0.5rem 0;
         a {
-          padding: 0.5rem 1rem;
+          padding: 0.75rem 1rem;
           display: block;
           color: #000;
           text-decoration: none;
@@ -75,15 +64,22 @@
           }
         }
       }
-
       &.visible {
         max-height: 700px;
         opacity: 1;
       }
     }
-
     button {
+      padding: 0.25rem;
       display: block;
+      border: 1px solid #0000005e;
+      border-radius: 5px;
+      width: 30px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease;
     }
   }
 }

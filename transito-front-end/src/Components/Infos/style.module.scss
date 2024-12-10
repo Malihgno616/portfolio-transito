@@ -1,6 +1,6 @@
 #infos_container {
-  padding: 3rem;
-  max-width: 1100px;
+  padding: 2rem;
+  max-width: 1000px;
   margin: 0 auto;
 
   .infos {
@@ -11,14 +11,17 @@
     h1 {
       text-transform: uppercase;
       text-align: center;
+      font-weight: 400;
     }
     h2 {
       text-transform: uppercase;
       text-align: center;
+      font-weight: 400;
+      
     }
     p {
       text-align: justify;
-      font-size: 1.55rem;
+      font-size: 1.35rem;
     }
   }
   .meios_contato {
@@ -27,12 +30,12 @@
     gap: 1.5rem;
     list-style: none;
     align-items: center;
-    font-size: 1.55rem;
-    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
 
     #whatsapp {
       a {
-        padding: 0.7rem;
+        padding: 0.5rem;
         background-color: #167004;
         text-decoration: none;
         color: #f8f8f8;
@@ -90,31 +93,34 @@
 
 @media (max-width: 580px) {
   #infos_container {
-    max-width: 320px;
-    padding: 5rem;
+    max-width: 300px;
+    padding: 1rem;
     .infos {
       h1 {
-        font-size: 2rem;
+        font-size: 1.45rem;
+        font-weight: 400;
       }
       h2 {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
+        font-weight: 400;
       }
       p {
-        font-size: 1.1rem;
-        width: 300px;
+        font-size: 1rem;
+        width: 100%;
       }
       .meios_contato {
-        margin-top: 1rem;
-        gap: 1.5rem;
+        margin-top: 0;
+        gap: 1rem;
+        font-size: 2rem;
         #whatsapp {
-          font-size: 0.8rem;
+          font-size: 50%;
         }
         #Email {
-          font-size: 0.8rem;
-          font-weight: bold;
+          font-size: 50%;
+          font-weight: 400;
         }
         #Telefone {
-          font-size: 0.9rem;
+          font-size: 50%;
         }
       }
     }

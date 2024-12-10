@@ -6,7 +6,7 @@ export const UsefulLinks: React.FC = () => {
       <h2>Links Úteis</h2>
       <p>
         Caso necessite de consultar informações externas, consulte
-        abaixo links que são muito úteis.
+        abaixo links que são bastante úteis.
       </p>
       <ul>
         <li>
