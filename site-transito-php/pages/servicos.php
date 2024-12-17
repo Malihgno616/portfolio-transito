@@ -36,7 +36,7 @@
           <span>Multas</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/vagas-especiais.php">
             <div class="icones">
               <i class="fas fa-wheelchair"></i>
             </div>
