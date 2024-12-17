@@ -1,3 +1,4 @@
+
 <?php 
   $data = date('D');
   $mes = date('M');
@@ -29,7 +30,6 @@
     'Dec' => 'Dezembro'
   );
 ?>
-
 <div class="imagem_de_fundo">
   <img src="../assets/img/file.jpeg" alt="Logo Transito">
   <div id="boas_vindas">
@@ -43,11 +43,12 @@
   </div>
 </div>
 <nav class="menu">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Contato</a></li>
-    <li><a href="#">Serviços Online</a></li>
-    <button><i class="fas fa-bars"></i></button>
+  <ul> 
+    <li><a href="../public/index.php">Home</a></li>
+    <li><a href="../pages/servicos.php">Serviços Online</a></li>
+    <li><a href="../pages/contato.php">Contato</a></li>
+    <button>
+    <i class="fas fa-bars"></i>
+    </button>
   </ul>
 </nav>
-

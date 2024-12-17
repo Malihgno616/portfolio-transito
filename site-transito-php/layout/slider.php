@@ -1,4 +1,4 @@
-<div class="slider-wrapper">
+<div class="slider-wrapper animate__animated animate__backInLeft">
   <button class="slide-arrow" id="slide-arrow-prev">
     &#8249;
   </button>

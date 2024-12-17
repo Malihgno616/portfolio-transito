@@ -1,5 +1,5 @@
 .imagem_de_fundo {
-  background-image: url('../img/imgtransito03.png');
+  background-image: url("../img/imgtransito03.png");
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.459);
   background-blend-mode: multiply;
@@ -21,7 +21,7 @@
     font-size: 1.5rem;
     color: #ffffff;
   }
-  #boas_vindas h1  {
+  #boas_vindas h1 {
     color: #ffffff;
     font-size: 4rem;
     text-transform: capitalize;
@@ -32,7 +32,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
   }
 }
 
@@ -67,16 +66,16 @@
   display: none;
 }
 
-.menu ul button i:hover  {
+.menu ul button i:hover {
   color: #000000;
 }
 
 .menu li a:hover {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   color: #ff9900;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .imagem_de_fundo {
     width: 100%;
     height: 70vh;
@@ -109,5 +108,4 @@
   .menu ul button {
     display: block;
   }
-  
 }

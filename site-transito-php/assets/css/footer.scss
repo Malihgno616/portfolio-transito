@@ -45,3 +45,27 @@ footer {
   width: 100%;
   font-weight: 300;
 }
+
+
+@media(max-width: 480px) {
+  footer {
+    .titulo_rodape {
+      img {
+        width: 50px;
+      }
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+      h2 {
+        text-align: center;
+        font-size: 1rem;
+      }
+    }
+    div {
+      ul {
+        padding: 3rem;
+      }
+    }
+  }
+}

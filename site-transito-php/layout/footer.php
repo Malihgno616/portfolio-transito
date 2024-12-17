@@ -1,6 +1,7 @@
 <footer>
   <div class="titulo_rodape">
-    <h1><img src="../assets/img/favicon.png" alt="Logo Leme" width="100px"><em>Coordenadoria Municipal de Trânsito</em></h1>
+    <img src="../assets/img/favicon.png" alt="Logo Leme" width="100px">
+    <h1><em>Coordenadoria Municipal de Trânsito</em></h1>
     <h2><em>Secretaria de Segurança, Trânsito, Cidadania e Defesa Civil</em></h2>
   </div>
   <div>
