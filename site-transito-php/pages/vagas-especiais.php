@@ -25,16 +25,16 @@
     <p>O prazo para o cartão ficar pronto é de até 7 (sete) dias úteis.</p>
     <p>Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão.</p>
 
-    <p><strong>Para solicitar o Cartão de Idoso preencha o formulário: </strong></p>
-    <a href="#">CARTÃO DO IDOSO</a>
+    <p><strong>Para solicitar o Cartão de Idoso preencha o formulário: </strong><a href="../pages/formulario-idoso.php">CARTÃO DO IDOSO</a></p>
+    
 
     <h2>Cartão Deficiente</h2>
     <p>Pode realizar o cadastro pela internet para solicitar o cartão gratuitamente. </p>
     <p>O prazo para o cartão ficar pronto é de até 7 (sete) dias úteis.</p>
     <p>Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão.</p>
 
-    <p><strong>Para solicitar o Cartão de Deficiente Físico preencha o formulário: </strong></p>
-    <a href="#">CARTÃO DO DEFICIENTE FÍSICO</a>
+    <p><strong>Para solicitar o Cartão de Deficiente Físico preencha o formulário: </strong><a href="#">CARTÃO DO DEFICIENTE FÍSICO</a></p>
+    
     </p>
   </main>
   <?php include('../layout/footer.php') ?>

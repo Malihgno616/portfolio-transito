@@ -1,0 +1,221 @@
+.container {
+  padding: 2.5rem;
+  max-width: 1450px;
+  margin: 0 auto;
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+  }
+  .formulario-idoso {
+    margin-top: 1rem;
+    border: 1px solid #3333331a;
+    padding: 1rem;
+    border-radius: 15px;
+    .btns {
+      margin-top: 1rem;
+      display: flex;
+      button {
+        border: none;
+        padding: 1.25rem;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        
+      }
+      button:nth-child(1) {
+        background-color: #e91c1c;
+        color: #fff;
+        transition: all .5s ease;
+        &:hover{
+          filter: brightness(1.2);
+        }
+      }
+      button:nth-child(2) {
+        background-color: rgb(8, 148, 8);
+        color: #fff;
+        transition: all .5s ease;
+        &:hover{
+          filter: brightness(1.2);
+        }
+      }
+      
+    }
+    .docs-idoso {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+    }
+    .radio-representante {
+      background-color: #33333307;
+      max-width: 300px;
+      margin: 1rem auto;
+      border-radius: 10px;
+      border: 2px solid #3333338c;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      input[type="radio"] {
+        margin: .5rem;
+        background-color: #3333331a;
+      }
+    }
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      input {
+        width: 100%;
+        padding: .75rem;
+        border: 1px solid #33333346;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        background-color: #f0f0f0;
+      }
+      select {
+        padding: .5rem;
+        border: none;
+        border-radius: 10px;
+        width: 200px;
+        font-size: 1.25rem;
+      }
+      label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    
+  }
+}
+
+/* Para telas pequenas (celulares) */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .formulario-idoso {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 1rem;
+    
+    button {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+
+  .docs-idoso {
+    align-items: center;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .radio-representante {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  div {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    input, select {
+      width: 100%;
+    }
+
+    select {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Para telas médias (tablets) */
+@media (max-width: 900px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  .formulario-idoso {
+    padding: 1.5rem;
+  }
+
+  .btns {
+    gap: 1.5rem;
+    button {
+      width: 48%;
+    }
+  }
+
+  .docs-idoso {
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  .radio-representante {
+    width: 80%;
+    padding: 1rem;
+  }
+
+  div {
+    flex-direction: column;
+    gap: 0.75rem;
+
+    input, select {
+      width: 100%;
+    }
+  }
+}
