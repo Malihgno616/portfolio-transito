@@ -36,6 +36,7 @@ $array_generos = [
 ];
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -117,8 +118,6 @@ $array_generos = [
           <label for="rg-copia">Selecione(PNG, JPG)</label>
           <input type="file">
         </div>
-         
-        
         <div class="radio-representante">
           <h2>Possui representante?</h2>
           <label for="">
