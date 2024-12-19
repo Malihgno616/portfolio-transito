@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
   <section class="container animate__animated animate__fadeIn">
     <h1>Contato</h1>
     <h3>Para entrar em contato, preencha este formulário</h3>
-    <form action="" method="post" class="formulario-contato">
+    <form action="../config/database/form-contato-db.php" method="post" class="formulario-contato">
       <div>
         <input type="text" name="nome" id="" required placeholder="Nome"> 
         <input type="email" name="email" id="" required placeholder="Email">
