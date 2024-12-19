@@ -1,4 +1,5 @@
 <?php 
+ini_set("default_charset", "utf8mb4");
 
 $db_server = "localhost";
 $db_user = "root";
@@ -7,25 +8,52 @@ $db_name = "site_transito";
 $conn = "";
 
 try {
+  // Conecta ao banco de dados
   $conn = mysqli_connect(
     $db_server,
     $db_user,
     $db_password,
     $db_name
   );
-} catch(mysqli_sql_exception) {
-  echo "Erro ao conectar com o banco de dados!";
+  
+  // Verifica se a conexão foi bem-sucedida
+  if (!$conn) {
+    throw new Exception("Erro ao conectar com o banco de dados!");
+  }
+
+  // Configura o charset para UTF-8 (utf8mb4 é recomendado)
+  mysqli_set_charset($conn, "utf8mb4");
+
+} catch (Exception $e) {
+  echo $e->getMessage();
+  exit;
 }
 
+// Coleta os dados do formulário
 $nome = $_POST["nome"];
 $email = $_POST["email"];
 $telefone = $_POST["telefone"];
 $mensagem = $_POST["mensagem"];
 
-$string_sql = "INSERT INTO form_contato values (default,'{$nome}','{$email}','{$telefone}','{$mensagem}')";
+// Prepara a consulta SQL com parâmetros, evitando SQL Injection
+$query = "INSERT INTO form_contato (nome, email, telefone, mensagem) VALUES (?, ?, ?, ?)";
 
-$insert_contato = mysqli_query($conn, $string_sql);
+// Prepara a consulta para execução
+$stmt = mysqli_prepare($conn, $query);
 
+// Verifica se a preparação da consulta foi bem-sucedida
+if ($stmt === false) {
+  echo "Erro ao preparar a consulta: " . mysqli_error($conn);
+  exit;
+}
+
+// Vincula os parâmetros à consulta preparada
+mysqli_stmt_bind_param($stmt, "ssss", $nome, $email, $telefone, $mensagem);
+
+// Executa a consulta
+$executed = mysqli_stmt_execute($stmt);
+
+// Verifica se a execução foi bem-sucedida
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +77,6 @@ $insert_contato = mysqli_query($conn, $string_sql);
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 10px;
-    }
-    div {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -59,7 +85,7 @@ $insert_contato = mysqli_query($conn, $string_sql);
     a {
       text-decoration: none;
       color: #f0f0f0;
-      background-color:rgb(255, 73, 73);
+      background-color: rgb(255, 73, 73);
       padding: .5rem;
       font-size: 1.25rem;
       border-radius: 10rem;
@@ -73,11 +99,14 @@ $insert_contato = mysqli_query($conn, $string_sql);
 <body>
   <div>
     <?php
-    if(mysqli_affected_rows($conn)>0) {
-      echo "<p>Dados enviados com sucesso!!</p>";
+    // Verifica se a execução da consulta foi bem-sucedida
+    if ($executed) {
+      echo "<p>Dados enviados com sucesso!</p>";
     } else {
-      echo "<p>Erro ao enviar dados!!</p>";
+      echo "<p>Erro ao enviar dados: " . mysqli_error($conn) . "</p>";
     }
+
+    // Fecha a conexão com o banco de dados
     mysqli_close($conn);
     ?>
     <a href="../../public/index.php">Clique para voltar à página principal</a>

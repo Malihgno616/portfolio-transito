@@ -17,6 +17,7 @@
 <body>
   <?php 
     include('../layout/header.php');
+    
   ?>
   <section class="container animate__animated animate__fadeIn">
     <h1>Contato</h1>
