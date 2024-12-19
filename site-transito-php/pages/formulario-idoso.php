@@ -171,8 +171,12 @@ $array_generos = [
               <p>-Selecione a cópia digitalizada da sua carteira de identidate(ou documento equivalente).</p>
               <label for="rg-copia">Selecione(PNG, JPG)</label>
               <input type="file">
+              <p>-No caso do representante legal, selecione a cópia digitalizada do documento comprovando que o requerente é representante da pessoa idosa.</p>
+              <label for="compro">Selecione(PNG, JPG)</label>
+              <input type="file">
             </div>
         </div>
+        
         <div class="btns">
           <button>
           <i class="fas fa-xmark"></i>

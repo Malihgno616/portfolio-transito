@@ -73,7 +73,7 @@ $executed = mysqli_stmt_execute($stmt);
       width: 500px;
       height: 200px;
       background-color: #f0f0f0;
-      margin: 50px auto;
+      margin: 225px auto;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -81,6 +81,11 @@ $executed = mysqli_stmt_execute($stmt);
       flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+    p {
+      font-size: 2.1rem;
+      text-align: center;
+      margin-bottom: 1rem;
     }
     a {
       text-decoration: none;
@@ -93,6 +98,15 @@ $executed = mysqli_stmt_execute($stmt);
     }
     a:hover {
       filter: brightness(1.1);
+    }
+    @media(max-width: 480px){
+      div {
+        width: 100%;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+
     }
   </style>
 </head>
