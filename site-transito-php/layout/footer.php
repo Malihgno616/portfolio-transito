@@ -8,18 +8,18 @@
     <ul>
       <li>
       <i class="fas fa-location-dot"></i>  
-      Endereço
+      R. Dr.Armando Sales de Oliveira, 925 - Centro, Leme - SP, 13610-220
       </li>
       <li>
       <i class="fas fa-phone"></i>
-      Telefone
+      (19) 3573-5310
       </li>
       <li>
       <i class="fas fa-envelope"></i>  
-      Email</li>
+      nucleodetransito@leme.sp.gov.br</li>
       <li>
       <i class="fas fa-clock"></i>  
-      Atendimento</li>
+      Horário de atendimento: Segunda à Sexta-feira das 8:00 às 16:00</li>
     </ul>
   </div>
 </footer>

@@ -17,18 +17,19 @@
 .links ul li a {
   text-decoration: none;
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 @media(max-width: 480px){
   .links {
-    padding: 0;
+    padding: 1rem;
   }
-  .link h1 {
-    font-size: 1rem;
+  .links h1 { 
+    font-size: 1.5rem;
     text-align: center;
   }
-  .links ul li a {
-    font-size: .75rem;
+    .links ul li a {
+    font-size: 1.5rem; 
+    padding: 1rem;
   }
 }

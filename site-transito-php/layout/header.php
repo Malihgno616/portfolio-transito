@@ -1,4 +1,3 @@
-
 <?php 
   $data = date('D');
   $mes = date('M');

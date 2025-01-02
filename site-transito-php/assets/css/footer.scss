@@ -46,9 +46,9 @@ footer {
   font-weight: 300;
 }
 
-
 @media(max-width: 480px) {
   footer {
+    margin-top: 3rem;
     .titulo_rodape {
       img {
         width: 50px;
