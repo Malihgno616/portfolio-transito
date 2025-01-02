@@ -3,16 +3,16 @@
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <a href=""><img src="../assets/img/img-slider7.png" style="width:100%"></a>
+  <a href="#"><img src="../assets/img/img-slider7.png" style="width:100%"></a>
 </div>
 
 <div class="mySlides fade">
-  <a href=""><img src="../assets/img/img-slider8.png" style="width:100%"></a>
+  <a href="#"><img src="../assets/img/img-slider8.png" style="width:100%"></a>
 </div>
 
 <div class="mySlides fade">
 
-  <a href=""><img src="../assets/img/img-slider9.jpg" style="width:100%"></a>
+  <a href="#"><img src="../assets/img/img-slider9.jpg" style="width:100%"></a>
 
 </div>
 
