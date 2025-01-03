@@ -27,20 +27,20 @@
         padding: 1.25rem;
         border-radius: 10px;
         font-size: 1.2rem;
+        border: 2px solid #000;
         cursor: pointer;
-        
       }
       button:nth-child(1) {
-        background-color: #e91c1c;
-        color: #fff;
+        background-color: #FEC229;
+        color: #000000;
         transition: all .5s ease;
         &:hover{
           filter: brightness(1.2);
         }
       }
       button:nth-child(2) {
-        background-color: rgb(8, 148, 8);
-        color: #fff;
+        background-color: #FEC229;
+        color: #000000;
         transition: all .5s ease;
         &:hover{
           filter: brightness(1.2);

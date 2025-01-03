@@ -12,7 +12,7 @@
 
 <div class="mySlides fade">
 
-  <a href="#"><img src="../assets/img/img-slider9.jpg" style="width:100%"></a>
+  <a href="../pages/vagas-especiais.php"><img src="../assets/img/img-slider9.jpg" style="width:100%"></a>
 
 </div>
 
