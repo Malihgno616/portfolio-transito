@@ -10,7 +10,7 @@
   <p><a href="#">Recurso de Multa</a></p>
 
   <h2>Para Formulário de Cópia de AIT:</h2>
-  <a href="#">Formulário de Cópia de AIT</a>
+  <a href="../pages/form-ait.php">Formulário de Cópia de AIT</a>
 
   <p>Para as demais solicitações podem ser enviadas para o email:</p>
   <a href="#">nucleodetransito@leme.sp.gov.br</a>

@@ -24,7 +24,7 @@
           <span>Vagas Especiais</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/sinalizacao.php">
             <div class="icones">
               <i class="fas fa-ban"></i>
             </div>
