@@ -3,11 +3,11 @@
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <a href="#"><img src="../assets/img/img-slider7.png" style="width:100%"></a>
+  <a href="https://api.whatsapp.com/send?phone=551935735316&text=Mais%20informa%C3%A7%C3%B5es"><img src="../assets/img/img-slider7.png" style="width:100%"></a>
 </div>
 
 <div class="mySlides fade">
-  <a href="#"><img src="../assets/img/img-slider8.png" style="width:100%"></a>
+  <a href="../pages/indicacao-condutor.php"><img src="../assets/img/img-slider8.png" style="width:100%"></a>
 </div>
 
 <div class="mySlides fade">

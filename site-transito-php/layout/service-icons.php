@@ -40,7 +40,7 @@
           <span>Interdições</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/semaforos.php">
             <div class="icones">
               <i class="fas fa-traffic-light"></i>
             </div>

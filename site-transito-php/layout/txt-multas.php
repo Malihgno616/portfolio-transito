@@ -4,10 +4,10 @@
   <p>Oferecemos serviços referente a multas de trânsito.</p>
 
   <h2>Para Indicação do Condutor:</h2>
-  <p><a href="#">Inducação do Condutor</a></p>
+  <p><a href="../pages/indicacao-condutor.php">Indicação do Condutor</a></p>
 
   <h2>Para Recurso de Multa:</h2>
-  <p><a href="#">Recurso de Multa</a></p>
+  <p><a href="../pages/recurso-multa.php">Recurso de Multa</a></p>
 
   <h2>Para Formulário de Cópia de AIT:</h2>
   <a href="../pages/form-ait.php">Formulário de Cópia de AIT</a>
