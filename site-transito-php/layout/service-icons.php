@@ -32,7 +32,7 @@
           <span>Sinalizações</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/interdicoes.php">
             <div class="icones">
               <i class="fas fa-sign"></i>
             </div>
@@ -48,7 +48,7 @@
           <span>Semáforos</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/lombadas.php">
             <div class="icones">
               <img src="../assets/img/lombada.png" alt="Lombada img">
             </div>
@@ -56,7 +56,7 @@
           <span>Lombadas</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/zona-azul.php">
             <div class="icones">
               <i class="fas fa-location-dot"></i>
             </div>
@@ -64,7 +64,7 @@
           <span>Zona-Azul</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../pages/bicicletas.php">
             <div class="icones">
               <i class="fas fa-bicycle"></i>
             </div>

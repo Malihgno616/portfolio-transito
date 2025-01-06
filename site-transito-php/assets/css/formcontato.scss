@@ -19,7 +19,10 @@
     border: 2px solid #11111125;
     border-radius: 10px;
     width: 100%;
-    max-width: 800px; /* Limita a largura do formulário */
+    max-width: 800px;
+    
+    overflow: hidden;
+    position: relative;
     div {
       margin-bottom: 1rem;
       input {
@@ -29,6 +32,36 @@
         margin-bottom: 1rem; /* Adiciona espaçamento entre inputs */
         border: 1px solid #33333346;
         border-radius: 10px;
+        &:focus + label::after {
+          transform: translateX(0%);
+        }
+      }
+      label {
+        color: #003;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid #ffffff;
+        span {
+          position: absolute;
+          bottom: 5px;
+          font-size: 28px;
+          transition: all .3s ease;
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 100%;
+            height: 100%;
+            border-bottom: 1px solid #701e1e;
+            transform: translateX(-100%);
+            transition: all .3s ease;
+          }
+        }
       }
     }
     textarea {
