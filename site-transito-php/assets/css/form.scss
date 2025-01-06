@@ -4,15 +4,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
   margin-top: 20px;
   margin-bottom: -20px;
   h1 {
     font-size: 3rem;
     font-weight: 400;
+    text-align: center;
   }
   h2 {
     font-size: 1.5rem;
     font-weight: 400;
+    text-align: center;
   }
 }
 .container {
@@ -26,7 +31,7 @@
     border-radius: 2px;
     padding: 2rem;
     width: 100%;
-    max-width: 750px;
+    max-width: 1050px;
     .single-textarea {
       width: 100%;
       position: relative;
@@ -34,13 +39,14 @@
         font-size: 1.05rem;
         position: absolute;
         font-weight: 300;
-        padding: .5rem;
+        padding: 0.5rem;
         left: 0;
         color: #666;
         cursor: text;
         transition: 0.3s ease-in-out;
       }
       .textarea {
+        background-color: #f0f0f0a1;
         &:focus + label,
         &:valid ~ label {
           transform: translateY(-30px);
@@ -63,6 +69,52 @@
       }
     }
   }
+  .group-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    .input-content {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      min-height: 50px;
+      .input {
+        width: 100%;
+        min-height: 50px;
+        font-size: 18px;
+        border: 0;
+        border-bottom: 1px solid #94949480;
+        outline: none;
+        padding: 12px 0; // Dá espaço para o label flutuar acima
+        &:focus + .label-input,
+        &:valid + .label-input {
+          transform: translateY(-24px);
+          font-size: 14px;
+          color: #c7ab0e;
+        }
+        &:valid {
+          border-bottom: 1px solid #e6c929;
+        }
+        &:focus {
+          border-bottom: 1px solid #e6d543;
+        }
+      }
+      .label-input {
+        font-size: 1.05rem;
+        font-weight: 300;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #9b9b9b;
+        cursor: text;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+
   .single-input {
     width: 100%;
     margin: 30px 0;
@@ -73,6 +125,7 @@
       padding: 5px;
       height: 50px;
       font-size: 18px;
+      background-color: #f0f0f0a1;
       color: #666;
       border: 0;
       border-bottom: 1px solid #6d6d6d3f;
@@ -135,5 +188,3 @@
     }
   }
 }
-
-/*Estilo para o Formulário do Idoso e Deficiente*/
