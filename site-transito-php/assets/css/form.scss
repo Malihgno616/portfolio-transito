@@ -69,51 +69,6 @@
       }
     }
   }
-  .group-inputs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
-
-    .input-content {
-      position: relative;
-      width: 100%;
-      max-width: 300px;
-      min-height: 50px;
-      .input {
-        width: 100%;
-        min-height: 50px;
-        font-size: 18px;
-        border: 0;
-        border-bottom: 1px solid #94949480;
-        outline: none;
-        padding: 12px 0; // Dá espaço para o label flutuar acima
-        &:focus + .label-input,
-        &:valid + .label-input {
-          transform: translateY(-24px);
-          font-size: 14px;
-          color: #c7ab0e;
-        }
-        &:valid {
-          border-bottom: 1px solid #e6c929;
-        }
-        &:focus {
-          border-bottom: 1px solid #e6d543;
-        }
-      }
-      .label-input {
-        font-size: 1.05rem;
-        font-weight: 300;
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: #9b9b9b;
-        cursor: text;
-        transition: 0.3s ease-in-out;
-      }
-    }
-  }
 
   .single-input {
     width: 100%;
