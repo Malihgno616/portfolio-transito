@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const sim = document.getElementById("sim");
   const nao = document.getElementById("nao");
 
-  const formRepresentante = document.getElementById("representante-form");
+  const formRepresentante = document.getElementById("representante");
 
   const toggleRepresentanteForm = () => {
     if (sim.checked) {

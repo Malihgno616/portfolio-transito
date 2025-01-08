@@ -45,8 +45,7 @@ $array_generos = [
 <div class="container">
 
 	<form class="form animate__animated animate__fadeIn">
-
-
+		
 		<div class="input-group">
 			<input type="text" id="nome" name="nome" required class="input"/>
 			<label for="nome" id="label-input">Nome do Idoso</label>
@@ -66,12 +65,12 @@ $array_generos = [
 			</select>
 			<label for="genero" id="label-input">Sexo</label>
 		</div>
-	
+		
 		<div class="input-group">
 			<input type="text" name="cep" required class="input">
 			<label for="cep" id="label-input">CEP</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="endereco" required class="input">
 			<label for="endereco" id="label-input">Endereço(RUA, AV)</label>
@@ -91,12 +90,12 @@ $array_generos = [
 			<input type="text" name="numero" required class="input">
 			<label for="numero" id="label-input">Número</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="cidade" required class="input">
 			<label for="cidade" id="label-input">Cidade</label>
 		</div>
-
+		
 		<div class="input-group">
 			<select name="uf" class="select">
 				<option value="selecione">Selecione...</option>
@@ -108,51 +107,196 @@ $array_generos = [
 				UF(Unidade Federal)
 			</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="telefone" required class="input">
 			<label for="telefone" id="label-input">Telefone</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="rg" required class="input">
 			<label for="rg" id="label-input">RG</label>
 		</div>
 
 		<div class="input-group">
-				<input type="date" name="data-expedicao" required class="input-date">
-				<label for="data-expedicao" id="label-input">Data de Expedição</label>
+			<input type="date" name="data-expedicao" required class="input-date">
+			<label for="data-expedicao" id="label-input">Data de Expedição</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="expedido-por" required class="input">
 			<label for="expedido-por" id="label-input">Expedido por</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="cnh" class="input">
 			<label for="cnh" id="label-input">CNH(Se for condutor)</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="date" name="validade-cnh" class="input-date">
 			<label for="validade-cnh" id="label-input">Validade da CNH</label>
 		</div>
-
+		
 		<div class="input-group">
 			<input type="text" name="email" class="input">
 			<label for="email" id="label-input">Digite seu email(opcional)</label>
 		</div>
-
+		
 		<div class="input-group">
-			<label>Possui representante?</label>
-			<br>
-			<input type="radio" name="representante" class="input-radio">
-			<label for="sim">Sim</label>
-			<input type="radio" name="representante" class="input-radio" checked>
-			<label for="nao">Não</label>
+			
+			<div class="radio input">
+				
+				<p>Representante: </p>
+				
+				<input type="radio" name="representante" class="input-radio" id="sim">
+				<label for="sim">
+					<span class="custom-radio"></span> Sim
+				</label>
+				
+				<input type="radio" name="representante" class="input-radio" id="nao" checked>
+				<label for="nao">
+							<span class="custom-radio"></span> Não
+					</label>
+					
+				</div>
+
 		</div>
 
-	</form>
+		<div class="input-group">			
+			
+			<div class="input-file-container">
+				
+				<div class="input-file">
+					<input type="file" name="" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+					<label for="">Selecione a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
+					<span id="file-name"></span>						
+				</div>
+				<div id="image-preview"></div>
+				
+			</div>
+			
+		</div>
+		
+		<div id="representante" class="animate__animated animate__fadeIn">
+			
+				<h1>Informações do Representante</h1>
+				
+				<div class="input-group" id="representante">
+					<input type="text" name="nome-representante" class="input" />
+						<label for="nome-representante" id="label-input">Nome do representante</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="email-representante" class="input" />
+						<label for="email-representante" id="label-input">Email</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="endereco-representante" class="input" />
+						<label for="endereco-representante" id="label-input">Endereço(RUA, AV)</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="numero-representante" class="input" />
+						<label for="numero-representante" id="label-input">Nº</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="complemento-representante" class="input" />
+						<label for="complemento-representante" id="label-input">Complemento</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="bairro-representante" class="input" />
+						<label for="bairro-representante" id="label-input">Bairro</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="cep-representante" class="input">
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="cidade-representante" class="input" />
+						<label for="cidade-representante" id="label-input">Cidade</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						</div>
+						
+						<div class="input-group" id="representante">
+							<select name="uf" class="select">
+								<option value="selecione">Selecione...</option>
+								<?php foreach($estados as $uf){
+									echo "<option value='$uf'>$uf</option>";
+								}?>
+							</select>
+						<label for="uf" id="label-input">
+							UF(Unidade Federal)
+						</label>
+					</div>
 
+					<div class="input-group" id="representante">
+						<input type="text" name="telefone-representante" class="input" />
+						<label for="telefone-representante" id="label-input">Telefone</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="text" name="rg-representante" class="input">
+						<label for="rg-representante" id="label-input">RG</label>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<input type="date" name="" id="" class="input-date">
+						<label for="" id="label-input">Data de Expedição</label>
+					</div>
+					
+					
+					<div class="input-group" id="representante">
+						<div class="input-file-container">
+
+							<div class="input-file">
+								<input type="file" name="" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+								<label for="">Selecione a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
+								<span id="file-name"></span>						
+							</div>
+							<div id="image-preview"></div>
+							
+						</div>
+					</div>
+					
+					<div class="input-group" id="representante">
+						<div class="input-file-container">
+							
+							<div class="input-file">
+								<input type="file" name="" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+								<label for="">Comprovante de representante legal</label>
+								<span id="file-name"></span>						
+							</div>
+							<div id="image-preview"></div>
+							
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>	
+						
+			<div class="input-group">
+				<div class="buttons">
+					<button type="submit">Enviar</button>
+					<button type="reset">Limpar</button>
+				</div>
+			</div>
+		</form>
+		
 </div>
+
+<div class="title">
+	<p>Núcleo de Trânsito - Tel.:(19)3572-5310 - Email: nucleodetransito@leme.sp.gov.br</p>
+	<p>R. Dr. Armando Sales de Oliveira, nº925 - CEP 13610-220 - Leme/SP</p>
+	<p>Horário de atendimento: Das 8:00h ás 12:00h e das 13:00 às 16:00h</p>
+</div>
+
+<script src="../assets/js/exibirArquivo.js"></script>
+<script src="../assets/js/exibirForm.js"></script>

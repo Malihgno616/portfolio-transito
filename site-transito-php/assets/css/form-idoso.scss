@@ -37,12 +37,39 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     position: relative;
+
+    #representante {
+      max-width: 900;
+      width: 100%;
+      font-weight: 300;
+      color: #636363a4;
+      flex-wrap: wrap;
+      .input-group {
+        width: calc(100% - 1rem);
+        flex-direction: row;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+    }
     .input-group {
       width: calc(33.333% - 1rem);
+      max-width: 900px;
       margin: 0 auto;
       position: relative;
       margin-bottom: 2.5rem;
+      .buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        button {
+          border: none;
+          padding: 0.5rem 1rem;
+        }
+      }
       .input {
         width: 100%;
         height: 50px;
@@ -56,13 +83,13 @@
         &:valid ~ #label-input {
           transform: translateY(-24px);
           font-size: 14px;
-          color: #c7ab0e;
+          color: #a08a0c;
         }
         &:valid {
-          border-bottom: 1px solid #e6c929;
+          border-bottom: 1px solid #a89110;
         }
         &:focus {
-          border-bottom: 1px solid #e6d543;
+          border-bottom: 1px solid #9c8f15;
         }
       }
       .input-date {
@@ -110,8 +137,99 @@
           color: #c7ab0e;
         }
       }
-      
+      .radio {
+        p {
+          font-weight: 300;
+          color: #666;
+        }
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        background-color: #f0f0f0a1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        .input-radio {
+          display: none;
+        }
+        .input-radio:checked + label .custom-radio {
+          background-color: #c7ab0e;
+          border-color: #c7ab0e;
+        }
+        .input-radio:checked + label .custom-radio::after {
+          content: "";
+          display: block;
+          width: 8px;
+          height: 8px;
+          background-color: #dfdfdf; /* Cor do ponto central */
+          border-radius: 50%;
+          border: 1px solid rgb(250, 250, 250);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        label {
+          color: #666;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          gap: 10px;
+          .custom-radio {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #838383;
+            border-radius: 50%; /* Formato circular */
+            position: relative;
+            transition: background-color 0.3s, border-color 0.3s;
+          }
+        }
+      }
+      .input-file-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 800px;
+        .input-file {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #f0f0f0a1;
+          border-bottom: 1px solid #6d6d6d3f;
+          cursor: pointer;
+          .file {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+          }
+          label {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
 
+            // Efeito ao passar o mouse
+            &:hover {
+              color: #c7ab0e;
+            }
+          }
+          .file:focus + label {
+            color: #c7ab0e;
+          }
+          .file:valid + label {
+            color: #c7ab0e;
+          }
+        }
+      }
       #label-input {
         font-size: 1.05rem;
         font-weight: 300;
