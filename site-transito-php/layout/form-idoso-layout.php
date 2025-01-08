@@ -182,8 +182,8 @@ $array_generos = [
 			
 				<h1>Informações do Representante</h1>
 				
-				<div class="input-group" id="representante">
-					<input type="text" name="nome-representante" class="input" />
+					<div class="input-group" id="representante">
+						<input type="text" name="nome-representante" class="input" />
 						<label for="nome-representante" id="label-input">Nome do representante</label>
 					</div>
 					
@@ -214,6 +214,7 @@ $array_generos = [
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="cep-representante" class="input">
+						<label for="cep-representante" id="label-input">CEP</label>
 					</div>
 					
 					<div class="input-group" id="representante">
@@ -222,8 +223,6 @@ $array_generos = [
 					</div>
 					
 					<div class="input-group" id="representante">
-						</div>
-						
 						<div class="input-group" id="representante">
 							<select name="uf" class="select">
 								<option value="selecione">Selecione...</option>
@@ -281,13 +280,14 @@ $array_generos = [
 				</div>
 				
 			</div>	
-						
-			<div class="input-group">
-				<div class="buttons">
-					<button type="submit">Enviar</button>
-					<button type="reset">Limpar</button>
-				</div>
-			</div>
+			
+			<div class="buttons">
+        <button type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
+        <button type="submit">
+          Enviar <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+
 		</form>
 		
 </div>

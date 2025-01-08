@@ -21,7 +21,7 @@
         <label for="mensagem">Digite sua mensagem...</label>
       </div>
       <div class="buttons">
-        <button>Limpar <i class="fa-solid fa-broom"></i></button>
+        <button type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
         <button type="submit">
           Enviar <i class="fas fa-paper-plane"></i>
         </button>
