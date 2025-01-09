@@ -43,11 +43,13 @@
 </div>
 <nav class="menu">
   <ul> 
+    <button id="click">
+      <i class="fas fa-bars"></i>
+    </button>
     <li><a href="../public/index.php"><i class="fa-solid fa-house"></i> Home</a></li>
     <li><a href="../pages/servicos.php"><i class="fa-solid fa-laptop"></i> Serviços Online</a></li>
     <li><a href="../pages/contato.php"><i class="fa-regular fa-paper-plane"></i> Contato</a></li>
-    <button>
-    <i class="fas fa-bars"></i>
-    </button>
   </ul>
 </nav>
+
+<script src="../assets/js/exibirMenu.js"></script>

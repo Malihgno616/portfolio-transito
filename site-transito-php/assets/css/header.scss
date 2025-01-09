@@ -75,6 +75,64 @@
   color: #ff9900;
 }
 
+@media (max-width: 1200px) {
+  .imagem_de_fundo {
+    height: 50vh; /* Ajuste a altura para telas maiores */
+  }
+  .imagem_de_fundo #boas_vindas h1 {
+    font-size: 3rem; /* Ajuste o tamanho da fonte */
+  }
+  .menu ul li a {
+    font-size: 1.8rem; /* Ajuste o tamanho da fonte */
+  }
+}
+
+@media (max-width: 992px) {
+  .imagem_de_fundo {
+    height: 60vh;
+  }
+  .imagem_de_fundo #boas_vindas h1 {
+    font-size: 2.5rem;
+  }
+  .menu ul li a {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .imagem_de_fundo {
+    height: 50vh;
+  }
+  .imagem_de_fundo img {
+    max-width: 120px; /* Ajuste a largura da imagem */
+  }
+  .imagem_de_fundo #boas_vindas h1 {
+    font-size: 2rem;
+  }
+  .menu {
+    padding: 1rem;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: max-height 0.5s ease;
+    }
+    .menu ul li {
+      margin-bottom: 2rem;
+      a {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+    }
+  }
+  .menu ul li {
+    display: none;
+  }
+  .menu ul button {
+    display: block;
+  }
+}
+
 @media (max-width: 480px) {
   .imagem_de_fundo {
     width: 100%;
@@ -101,11 +159,44 @@
     font-size: 1.2rem;
     text-align: justify;
   }
-
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    ul {
+      display: flex;
+      flex-direction: column;
+      transition: max-height 0.5s ease;
+      li {
+        margin-bottom: 1rem;
+        a {
+          font-size: 1.5rem;
+          padding: 1rem;
+        }
+      }
+    }
+  }
   .menu ul li {
     display: none;
   }
   .menu ul button {
     display: block;
+  }
+}
+
+@media (max-width: 320px) {
+  .imagem_de_fundo {
+    height: 60vh; /* Ajuste para telas muito pequenas */
+  }
+  .imagem_de_fundo img {
+    max-width: 100px; /* Ajuste para telas muito pequenas */
+  }
+  .imagem_de_fundo #boas_vindas h1 {
+    font-size: 1.8rem; /* Ajuste o tamanho da fonte */
+  }
+  .menu ul li a {
+    font-size: 1.4rem; /* Ajuste o tamanho da fonte */
   }
 }
