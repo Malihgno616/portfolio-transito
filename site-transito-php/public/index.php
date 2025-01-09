@@ -11,7 +11,6 @@
     include_once('../layout/header.php');
     include_once('../layout/slider.php');
     include_once('../layout/news.php');
-    include_once('../layout/section.php');
     include_once('../layout/links.php');
     include_once('../layout/footer.php');
   ?>

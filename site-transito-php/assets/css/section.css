@@ -8,7 +8,7 @@
 
 .section a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -25,7 +25,7 @@
   background-color: green;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  color: #f0f0f0;
+  color: #d3d3d3;
   transition: all 0.5s ease;
 }
 
