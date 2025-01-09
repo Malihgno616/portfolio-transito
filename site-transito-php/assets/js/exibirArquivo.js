@@ -11,14 +11,13 @@ document.getElementById("file-input").addEventListener("change", function (e) {
       const img = document.createElement("img");
       img.src = e.target.result;
       img.alt = "Pré-visualização da imagem";
-      img.style.maxWidth = "100px";
-      img.style.height = "auto";
-
+      img.style.maxWidth = "80px";
+      img.style.height = "80px";
       imagePreview.innerHTML = "";
       imagePreview.appendChild(img);
     };
     reader.readAsDataURL(file);
-  }else {
+  } else {
     fileNameDisplay.textContent = "";
     imagePreview.innerHTML = "";
   }
