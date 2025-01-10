@@ -102,8 +102,8 @@
         border: 0;
         border-bottom: 1px solid #6d6d6d3f;
         outline: 0;
-        &:focus ~ #label-input,
-        &:valid ~ #label-input {
+        &:focus + #label-input,
+        &:valid + #label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #a08a0c;
@@ -125,13 +125,13 @@
         border-bottom: 1px solid #6d6d6d3f;
         outline: 0;
         cursor: pointer;
-        &:invalid ~ #label-input {
+        &:invalid + #label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #666;
         }
-        &:focus ~ #label-input,
-        &:valid ~ #label-input {
+        &:focus + #label-input,
+        &:valid + #label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #c7ab0e;
@@ -149,12 +149,12 @@
         border: 0;
         border-bottom: 1px solid #6d6d6d3f;
         outline: 0;
-        &:valid ~ #label-input {
+        &:valid + #label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #666;
         }
-        &:focus ~ #label-input {
+        &:focus + #label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #c7ab0e;
@@ -227,7 +227,7 @@
           border-bottom: 1px solid #6d6d6d3f;
           cursor: pointer;
           .file {
-            opacity: 0;
+            opacity: 1;
             position: absolute;
             width: 100%;
             height: 100%;
