@@ -63,21 +63,12 @@
 <?php 
   $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-$stmt = mysqli_prepare($conn, $query);
-
-if ($stmt === false) {
-    echo "Erro ao preparar a consulta: " . mysqli_error($conn);
-    exit;
-}
-
-  $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
   $stmt = mysqli_prepare($conn, $query);
 
   if ($stmt === false) {
       echo "Erro ao preparar a consulta: " . mysqli_error($conn);
       exit;
-  }
+  } 
 
   // Vincula os parâmetros sem o campo binário
   mysqli_stmt_bind_param($stmt, "sssssssssssssssssb", 
