@@ -170,7 +170,7 @@ $array_generos = [
 				
 				<div class="input-file">
 					<input type="file" name="copia-rg-idoso" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
-					<label for="">Selecione a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
+					<label for="copia-rg-idoso">Selecione(JPG, PNG ou PDF) a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
 					<span id="file-name"></span>						
 				</div>
 				<div id="image-preview"></div>
@@ -257,7 +257,7 @@ $array_generos = [
 
 							<div class="input-file">
 								<input type="file" name="copia-rg-representante" id="file-input" class="file" accept="image/*">
-								<label for="">Selecione a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
+								<label for="copia-rg-representante">Selecione(JPG, PNG ou PDF)  a cópia do RG do representante ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
 								<span id="file-name"></span>						
 							</div>
 							<div id="image-preview"></div>
@@ -270,7 +270,7 @@ $array_generos = [
 							
 							<div class="input-file">
 								<input type="file" name="comprovante-representante" id="file-input" placeholder="Cópia do RG" class="file" accept="image/*">
-								<label for="">Comprovante de representante legal</label>
+								<label for="">Selecione(JPG, PNG ou PDF) o comprovante de representante legal <strong>(OBRIGATÓRIO)</strong></label>
 								<span id="file-name"></span>						
 							</div>
 							<div id="image-preview"></div>

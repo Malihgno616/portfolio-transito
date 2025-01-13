@@ -44,73 +44,80 @@
   $email_idoso = $_POST["email-idoso"] ?? null;
   
   // Verificação do upload do arquivo
-  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] == 0) {
-    $copia_rg_idoso = $_FILES['copia-rg-idoso'];
-    $tipos_permitidos = ['image/jpeg', 'image/png'];
-
-    if (in_array($copia_rg_idoso['type'], $tipos_permitidos)) {
-        // Verifica o tamanho da imagem antes de processá-la
-        $tamanho_maximo = 16 * 1024 * 1024; // 16 MB
-        if ($copia_rg_idoso['size'] > $tamanho_maximo) {
-            echo "O arquivo é muito grande. O tamanho máximo permitido é 16 MB.";
-            exit;
-        }
-        $imagem = file_get_contents($copia_rg_idoso['tmp_name']);
+  if(isset($_FILES['copia-rg-idoso']['tmp_name']) && $_FILES['copia-rg-idoso']['tmp_name'] != ""){
+    $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+    if(in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)){
+      $imagem_idoso = file_get_contents($copia_rg_idoso);
     } else {
-        echo "Tipo de arquivo não permitido";
-        exit;
-    }
-  } else {
-      echo "Erro no upload do arquivo: " . $_FILES['copia-rg-idoso']['error'];
+      echo "Arquivo não permitido";           
       exit;
+    }   
+  } else {
+    echo "erro no upload do arquivo: " . $_FILES['copia-rg-idoso']['error'];
+    exit;
   }
-
+  
 ?>
 
 <?php 
-  // Query de inserção no banco de dados
+  $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+$stmt = mysqli_prepare($conn, $query);
+
+if ($stmt === false) {
+    echo "Erro ao preparar a consulta: " . mysqli_error($conn);
+    exit;
+}
+
   $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
   $stmt = mysqli_prepare($conn, $query);
 
-  if($stmt === false){
-    echo "Erro ao preparar a consulta: " . mysqli_error($conn);
-    exit;
+  if ($stmt === false) {
+      echo "Erro ao preparar a consulta: " . mysqli_error($conn);
+      exit;
   }
 
-  // Vincula os parâmetros corretamente, incluindo o parâmetro binário para a imagem
+  // Vincula os parâmetros sem o campo binário
   mysqli_stmt_bind_param($stmt, "sssssssssssssssssb", 
-                         $nome_idoso, 
-                         $nascimento_idoso,
-                         $genero_idoso,
-                         $endereco_idoso,
-                         $num_endereco_idoso,
-                         $complemento_idoso, 
-                         $bairro_idoso, 
-                         $cep_idoso, 
-                         $cidade_idoso,
-                         $uf_idoso,
-                         $tel_idoso,
-                         $rg_idoso,
-                         $expedicao_idoso,
-                         $expedido_idoso,
-                         $cnh_idoso,
-                         $validade_cnh_idoso,
-                         $email_idoso,
-                         $imagem); 
+      $nome_idoso, 
+      $nascimento_idoso,
+      $genero_idoso,
+      $endereco_idoso,
+      $num_endereco_idoso,
+      $complemento_idoso, 
+      $bairro_idoso, 
+      $cep_idoso, 
+      $cidade_idoso,
+      $uf_idoso,
+      $tel_idoso,
+      $rg_idoso,
+      $expedicao_idoso,
+      $expedido_idoso,
+      $cnh_idoso,
+      $validade_cnh_idoso,
+      $email_idoso,
+      $imagem_idoso); 
 
-  // Executa a consulta e verifica se houve sucesso
+  // Envia os dados binários separadamente
+  if (isset($imagem_idoso)) {
+      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); // O '17' é o índice da coluna do campo binário no SQL
+  }
+
+  // Executa a consulta
   $executed = mysqli_stmt_execute($stmt);
 
   if ($executed) {
-    $mensagem = "Dados enviados com sucesso!";
+      $mensagem = "Dados enviados com sucesso!";
   } else {
-    $mensagem = "Erro ao enviar dados: " . mysqli_error($conn);
+      $mensagem = "Erro ao enviar dados: " . mysqli_error($conn);
   }
-  
+
   // Fecha a conexão e o statement
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
+
 ?>
 
 <!DOCTYPE html>
