@@ -2,15 +2,16 @@
 
 footer {
   padding: 1rem;
-  background-color: #313131;
-  color: #e7e7e7;
-  
+  background-color: #585859;
+  color: #f2f2f2;
+
   .titulo_rodape {
     display: flex;
     flex-direction: column;
     align-items: center;
     h1 {
       font-size: 2.5rem;
+
       em {
         font-weight: bold;
       }
@@ -24,7 +25,6 @@ footer {
   .lista-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
     padding: 1rem;
     justify-items: center;
     list-style: none;
@@ -56,6 +56,58 @@ footer {
   }
 }
 
+.links-uteis {
+  background-color: #736A4F;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  justify-items: center;
+  align-content: center;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+  list-style: none;
+  a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #f2f2f2;
+    &:hover {
+      border-bottom: 1px solid #585859;
+    }
+  }
+}
+
+.contatos {
+  h2 {
+    color: #f2f2f2;
+    font-size: 1.5rem;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #585859;
+  a {
+    margin-top: 1rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: #f2f2f2;
+    transition: all .5s ease;
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+  #zapzap {
+    background-color: green;
+    padding: 0.55rem;
+    border-radius: 15px;
+    color: white;
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+}
+
 .direitos {
   font-size: 1rem;
   color: #fff;
@@ -66,13 +118,37 @@ footer {
   font-weight: 300;
 }
 
+@media (max-width: 1024px) {
+  footer {
+    .titulo_rodape {
+      h1 {
+        font-size: 2.2rem; /* Reduzido para telas médias */
+      }
+      h2 {
+        font-size: 1.4rem; /* Ajuste da fonte */
+      }
+    }
+
+    .lista-links {
+      grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas médias */
+    }
+
+    div {
+      ul {
+        padding: 2rem; /* Ajustando padding */
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   footer {
     margin-top: 3rem;
-    
+
     .titulo_rodape {
       img {
-        width: 50px;
+        width: 50px; /* Ajuste para imagens */
+        max-width: 100%;
       }
       h1 {
         font-size: 2rem;
@@ -86,11 +162,12 @@ footer {
 
     .lista-links {
       grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas médias */
+      padding: 0.5rem;
     }
 
     div {
       ul {
-        padding: 2rem; /* Reduzindo o padding */
+        padding: 1.5rem; /* Ajuste de padding */
       }
     }
   }
@@ -101,6 +178,7 @@ footer {
     .titulo_rodape {
       img {
         width: 40px; /* Ajustando o tamanho da imagem */
+        max-width: 100%;
       }
       h1 {
         font-size: 1.8rem; /* Reduzindo o tamanho da fonte */
@@ -119,7 +197,7 @@ footer {
 
     div {
       ul {
-        padding: 1.5rem; /* Ajustando padding */
+        padding: 1.2rem; /* Ajustando padding */
       }
     }
   }
