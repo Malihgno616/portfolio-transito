@@ -36,7 +36,7 @@
 }
 
 .menu {
-  background-color: #313131;
+  background-color: #736A4F;
   padding: 1rem;
 }
 
@@ -45,7 +45,8 @@
 }
 
 .menu li a {
-  color: #ffffff;
+  color: #F2F2F2;
+  padding: 0.75rem;
   text-decoration: none;
   font-size: 2rem;
 }
@@ -58,21 +59,17 @@
 
 .menu button {
   border: none;
-  background-color: #313131;
-  color: #ffffff;
+  background-color: #f2c029;
+  color: #181818;
   padding: 1rem;
   font-size: 2rem;
   cursor: pointer;
   display: none;
 }
 
-.menu ul button i:hover {
-  color: #000000;
-}
-
 .menu li a:hover {
-  transition: all 0.5s ease;
-  color: #ff9900;
+  transition: all 0.7s ease;
+  color: #131313;
 }
 
 @media (max-width: 1200px) {
