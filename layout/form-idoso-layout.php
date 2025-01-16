@@ -225,7 +225,7 @@ $array_generos = [
 					
 					<div class="input-group" id="representante">
 						<div class="input-group" id="representante">
-							<select name="uf" class="select">
+							<select name="uf-representante" class="select">
 								<option value="selecione">Selecione...</option>
 								<?php foreach($estados as $uf){
 									echo "<option value='$uf'>$uf</option>";
@@ -251,6 +251,10 @@ $array_generos = [
 						<label for="" id="label-input">Data de Expedição</label>
 					</div>
 					
+					<div class="input-group">
+						<input type="text" name="expedido-representante" class="input">
+						<label for="expedido-por" id="label-input">Expedido por</label>
+					</div>
 					
 					<div class="input-group" id="representante">
 						<div class="input-file-container">

@@ -42,8 +42,46 @@
   $cnh_idoso = $_POST["cnh-idoso"] ?? null;
   $validade_cnh_idoso = isset($_POST['validade-cnh-idoso']) && $_POST['validade-cnh-idoso'] !== '' ? $_POST['validade-cnh-idoso'] : null;
   $email_idoso = $_POST["email-idoso"] ?? null;
+  $nome_representante = $_POST["nome-representante"] ?? null;
+  $email_representante = $_POST["email-representante"] ?? null;
+  $endereco_representante = $_POST["endereco-representante"] ?? null;
+  $num_endereco_representante = $_POST["numero-endereco-representante"] ?? null;
+  $complemento_representante = $_POST["complemento-representante"] ?? null;
+  $bairro_representante = $_POST["bairro-representante"] ?? null;
+  $cep_representante = $_POST["cep-representante"] ?? null;
+  $cidade_representanta = $_POST["cidade-representante"] ?? null;
+  $uf_representante = $_POST["uf-representante"] ?? null;
+  $tel_representante = $_POST["telefone-representante"] ?? null;
+  $rg_representante = $_POST["rg-representante"] ?? null;
+  $expedicao_representante = $_POST["expedicao-representante"] ?? null;
+  $expedido_representante = $_POST["expedido-representante"] ?? null;
   
-  // Verificação do upload do arquivo
+  if(isset($_FILES['comprovante-representante']['tmp_name']) && $_FILES['comprovante-representante']['tmp_name'] != ""){
+    $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+    if(in_array(mime_content_type($comprovante_representante), $tipos_permitidos)){
+      $imagem_rg_representante = file_get_contents($comprovante_representante);
+    } else {
+      echo "Arquivo não permitido";
+    }
+  } else {
+    echo "erro no upload do arquivo: " . $_FILES['copia-rg-representante']['error'];
+    exit;
+  }
+
+  if(isset($_FILES['copia-rg-representante']['tmp_name']) && $_FILES['copia-rg-representante']['tmp_name'] != ""){
+    $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+    if(in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)){
+      $imagem_rg_representante = file_get_contents($copia_rg_representante);
+    } else {
+      echo "Arquivo não permitido";
+    }
+  } else {
+    echo "erro no upload do arquivo: " . $_FILES['copia-rg-representante']['error'];
+    exit;
+  }
+  
   if(isset($_FILES['copia-rg-idoso']['tmp_name']) && $_FILES['copia-rg-idoso']['tmp_name'] != ""){
     $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
@@ -61,7 +99,7 @@
 ?>
 
 <?php 
-  $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso, nome_representante, email_representante, endereco_representante, numero_endereco_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, data_expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
   $stmt = mysqli_prepare($conn, $query);
 
@@ -71,7 +109,7 @@
   } 
 
   // Vincula os parâmetros sem o campo binário
-  mysqli_stmt_bind_param($stmt, "sssssssssssssssssb", 
+  mysqli_stmt_bind_param($stmt, "sssssssssssssssssbsssssssssssssbb", 
       $nome_idoso, 
       $nascimento_idoso,
       $genero_idoso,
@@ -80,7 +118,7 @@
       $complemento_idoso, 
       $bairro_idoso, 
       $cep_idoso, 
-      $cidade_idoso,
+      $cidade_idoso,  
       $uf_idoso,
       $tel_idoso,
       $rg_idoso,
@@ -89,11 +127,34 @@
       $cnh_idoso,
       $validade_cnh_idoso,
       $email_idoso,
-      $imagem_idoso); 
-
-  // Envia os dados binários separadamente
+      $imagem_idoso,
+      $nome_representante,
+      $email_representante,
+      $endereco_representante,
+      $num_endereco_representante,
+      $complemento_representante,
+      $bairro_representante,
+      $cep_representante,
+      $cidade_representante,
+      $uf_representante,
+      $tel_representante,
+      $rg_representante,
+      $expedicao_representante,
+      $expedido_representante,
+      $copia_rg_representante,
+      $comprovante_representante
+); 
+  
   if (isset($imagem_idoso)) {
       mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); // O '17' é o índice da coluna do campo binário no SQL
+  }
+
+  if (isset($copia_rg_representante)) {
+    mysqli_stmt_send_long_data($stmt, 31, $copia_rg_representante);
+  }
+
+  if(isset($comprovante_representante)) {
+    mysqli_stmt_send_long_data($stmt, 32, $comprovante_representante);
   }
 
   // Executa a consulta
