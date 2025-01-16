@@ -59,12 +59,18 @@
 
 .menu button {
   border: none;
-  background-color: #f2c029;
+  background-color: #3b3729;
+  border-radius: 10px;
   color: #181818;
   padding: 1rem;
   font-size: 2rem;
   cursor: pointer;
   display: none;
+  transition: all .5 ease;
+}
+
+.menu button:hover {
+  background-color: #3b372957;
 }
 
 .menu li a:hover {
