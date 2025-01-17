@@ -108,7 +108,6 @@
       exit;
   } 
 
-  // Vincula os parâmetros sem o campo binário
   mysqli_stmt_bind_param($stmt, "sssssssssssssssssbsssssssssssssbb", 
       $nome_idoso, 
       $nascimento_idoso,
@@ -146,7 +145,7 @@
 ); 
   
   if (isset($imagem_idoso)) {
-      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); // O '17' é o índice da coluna do campo binário no SQL
+      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); 
   }
 
   if (isset($copia_rg_representante)) {
@@ -156,8 +155,7 @@
   if(isset($comprovante_representante)) {
     mysqli_stmt_send_long_data($stmt, 32, $comprovante_representante);
   }
-
-  // Executa a consulta
+  
   $executed = mysqli_stmt_execute($stmt);
 
   if ($executed) {
@@ -165,11 +163,9 @@
   } else {
       $mensagem = "Erro ao enviar dados: " . mysqli_error($conn);
   }
-
-  // Fecha a conexão e o statement
+ 
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
-
 ?>
 
 <!DOCTYPE html>
