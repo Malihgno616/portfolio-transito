@@ -1,0 +1,213 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.form {
+  border: 1px solid #94949480;
+  border-radius: 2px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+}
+
+.form h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #414141;
+}
+
+.form p {
+  text-align: justify;
+  color: #474747;
+}
+
+.input-group {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+/* Label Styling */
+.input-group label {
+  color: #414141;
+}
+
+/* Input Checkbox Styling */
+.input-checkbox {
+  margin-top: 1rem;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 2px solid rgb(105, 105, 105);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.input-checkbox:checked {
+  background-color: #c7ab0e;
+}
+
+/* Label for Inputs */
+.label-input {
+  font-size: 1.05rem;
+  font-weight: 300;
+  position: absolute;
+  left: 0;
+  color: #666;
+  cursor: text;
+  transition: 0.3s ease-in-out;
+  transform-origin: left center;
+}
+
+/* Date Input Styling */
+.input-date {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  background-color: #f0f0f0a1;
+  color: #666;
+  border: 0;
+  border-bottom: 1px solid #6d6d6d3f;
+  outline: 0;
+  cursor: pointer;
+}
+
+.input-date:invalid + .label-input {
+  transform: translateY(-74px);
+  font-size: 14px;
+  color: #666;
+}
+
+.input-date:focus + .label-input,
+.input-date:valid + .label-input {
+  font-size: 14px;
+  color: #c7ab0e;
+}
+
+.input-date:valid {
+  border-bottom: 1px solid #c7ab0e;
+}
+
+/* Text Input Styling */
+.input {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  background-color: #f0f0f0a1;
+  color: #666;
+  border: 0;
+  border-bottom: 1px solid #6d6d6d3f;
+  outline: 0;
+}
+
+.input:focus + .label-input,
+.input:valid + .label-input {
+  transform: translateY(-24px);
+  font-size: 14px;
+  color: #a08a0c;
+}
+
+.input:valid {
+  border-bottom: 1px solid #a89110;
+}
+
+.input:focus {
+  border-bottom: 1px solid #9c8f15;
+}
+
+/* Radio Button Styling */
+.input-radio {
+  appearance: none;
+  margin-top: 1rem;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgb(105, 105, 105);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.input-radio:checked {
+  background-color: #c7ab0e;
+}
+
+/* Textarea Styling */
+.textarea {
+  width: 100%;
+  height: 125px;
+  resize: none;
+  border: 2px solid #4747475b;
+  outline: 0;
+  position: relative;
+  border-radius: 5px;
+}
+
+.textarea:focus + .label,
+.textarea:valid + .label {
+  font-size: 14px;
+  color: #c7ab0e;
+}
+
+.textarea:valid {
+  border: 2px solid #c7ab0e;
+}
+
+.textarea .label {
+  font-size: 1.05rem;
+  font-weight: 300;
+  position: absolute;
+  left: 0;
+  color: #666;
+  cursor: text;
+  transition: 0.3s ease-in-out;
+  transform-origin: left center;
+}
+
+/* File Input Styling */
+.input-file {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Torna o input invisível, mas ainda funcional */
+  cursor: pointer; /* Permite que o input seja clicado */
+}
+
+.input-file + label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e7d533;
+  color: #000;
+  border: 2px solid #4747475b;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.input-file + label:hover {
+  background-color: #c7ab0e; /* Alterando a cor de fundo no hover */
+}
+
+.input-file + label:active {
+  background-color: #a08a0c; /* Alterando a cor de fundo ao clicar */
+}
+
+/* Button Styling */
+button {
+  background-color: #e7d533;
+  color: #000000;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto;
+}

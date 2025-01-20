@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php include_once("../layout/head-form-deficiente.php")?> 
-  <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+    <?php include_once('../layout/head-infos-medicas.php');?> 
   <title>Informações médicas</title>
 </head>
+<style>
+  .container-infos {
+    display: flex;
+  }
+</style>
 <body>
   <?php 
     include_once('../layout/header.php');
