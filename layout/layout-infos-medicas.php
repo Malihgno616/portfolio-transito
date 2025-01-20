@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form class="form" action="../pages/infos-adicionais.php" method="get">
+  <form class="form animate__animated animate__fadeIn" action="../pages/infos-adicionais.php" method="get">
     <h1>Informações do Médico</h1>
     <div class="input-group">
       <input type="text" name="nome-medico" id="" required class="input">
