@@ -93,9 +93,9 @@ $array_generos = [
     </div>
 
     <div class="input-group">
-      <select name="uf-deficiente" class="select" required id="">
+      <select name="uf-deficiente" class="select" required >
         <option value="selecione">Selecione...</option>
-        <?php foreach ($array_estados as $estado) {
+        <?php foreach ($estados as $estado) {
           echo "<option value='$estado'>$estado</option>";
         }?>
       </select>
