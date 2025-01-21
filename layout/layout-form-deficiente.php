@@ -41,59 +41,59 @@ $array_generos = [
 </div>
 
 <div class="container">
-  <form action="../pages/infos-medicas.php" method="get" class="form animate__animated animate__fadeIn">
+  <form action="../pages/infos-medicas.php" method="get" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
     <div class="input-group">
-      <input type="text" name="nome-deficiente" required class="input">
-      <label for="nome-deficiente" id="label-input">Nome do Beneficiário</label>
+      <input type="text" name="nome-beneficiario" required class="input">
+      <label for="beneficiario" id="label-input">Nome do Beneficiário</label>
     </div>
 
     <div class="input-group">
-      <input type="date" name="nascimento-deficiente" required class="input-date">
-      <label for="nascimento-deficiente" id="label-input">Data de Nascimento</label>
+      <input type="date" name="nascimento-beneficiario" required class="input-date">
+      <label for="nascimento-beneficiario" id="label-input">Data de Nascimento</label>
     </div>
 
     <div class="input-group">
-      <select name="genero-deficiente" required id="genero-deficiente" class="select">
+      <select name="genero-beneficiario" required id="genero-deficiente" class="select">
         <option value="selecione">Selecione</option>
         <?php foreach ($array_generos as $genero) {
           echo "<option value='$genero'>$genero</option>";
         } ?>
       </select>
-      <label for="genero-deficiente" id="label-input">Sexo</label>
+      <label for="genero-beneficiario" id="label-input">Sexo</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="endereco-deficiente" required class="input">
+      <input type="text" name="endereco-beneficiario" required class="input">
       <label for="endereco" id="label-input">Endereço(RUA, AV)</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="numero-endereco-deficiente" required class="input">
+      <input type="text" name="num-endereco-beneficiario" required class="input">
       <label for="numero-endereco-deficiente" id="label-input">Número</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="complemento-deficiente" class="input">
-      <label for="complemento-deficiente" id="label-input">Complemento(opcional)</label>
+      <input type="text" name="complemento-beneficiario" class="input">
+      <label for="complemento-beneficiario" id="label-input">Complemento(opcional)</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="bairro-deficiente" required class="input">
+      <input type="text" name="bairro-beneficiario" required class="input">
       <label for="bairro-deficiente" id="label-input">Bairro</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="cep-deficiente" required class="input">
+      <input type="text" name="cep-beneficiario" required class="input">
       <label for="cep-deficiente" id="label-input">CEP</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="cidade-deficiente" required class="input">
-      <label for="cidade-deficiente" id="label-input">Cidade</label>
+      <input type="text" name="cidade-beneficiario" required class="input">
+      <label for="cidade-beneficiario" id="label-input">Cidade</label>
     </div>
 
     <div class="input-group">
-      <select name="uf-deficiente" class="select" required >
+      <select name="uf-beneficiario" class="select" required >
         <option value="selecione">Selecione...</option>
         <?php foreach ($estados as $estado) {
           echo "<option value='$estado'>$estado</option>";
@@ -109,33 +109,33 @@ $array_generos = [
 
     
     <div class="input-group">
-      <input type="text" name="rg-deficiente" required class="input">
+      <input type="text" name="rg-beneficiario" required class="input">
       <label for="rg-deficiente" id="label-input">RG</label>
     </div>
 
     <div class="input-group">
-      <input type="date" name="data-expedicao-deficiente" required id="" class="input-date">
-      <label for="data-expedicao-deficiente" id="label-input">Data Expedição</label>
+      <input type="date" name="expedicao-beneficiario" required id="" class="input-date">
+      <label for="expedicao-beneficiario" id="label-input">Data Expedição</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="expedido-deficiente" required class="input"/>
-      <label for="expedido-deficiente" id="label-input">Expedido por</label>
+      <input type="text" name="expedido-beneficiario" required class="input"/>
+      <label for="expedido-beneficiario" id="label-input">Expedido por</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="cnh-deficiente" class="input">
-      <label for="cnh-deficiente" id="label-input">CNH(Se for condutor)</label>
+      <input type="text" name="cnh-beneficiario" class="input">
+      <label for="cnh-beneficiario" id="label-input">CNH(Se for condutor)</label>
     </div>
 
     <div class="input-group">
-      <input type="date" name="validade-cnh-deficiente" class="input-date">
-      <label for="validade-cnh-deficiente" id="label-input">Validade da CNH</label>
+      <input type="date" name="validade-cnh-beneficiario" class="input-date">
+      <label for="validade-cnh-beneficiario" id="label-input">Validade da CNH</label>
     </div>
 
     <div class="input-group">
-      <input type="text" name="email-deficiente" class="input" id="">
-      <label for="email-deficiente" id="label-input">Digite seu email(opcional)</label>
+      <input type="text" name="email-beneficiario" class="input" id="">
+      <label for="email-beneficiario" id="label-input">Digite seu email(opcional)</label>
     </div>
 
     <div class="input-group">
@@ -163,8 +163,8 @@ $array_generos = [
 			<div class="input-file-container">
 				
 				<div class="input-file">
-					<input type="file" name="copia-rg-idoso" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
-					<label for="copia-rg-idoso">Selecione(JPG, PNG ou PDF) a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
+					<input type="file" name="copia-rg-beneficiario" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+					<label for="copia-rg-beneficiario">Selecione(JPG, PNG ou PDF) a cópia do RG do requerente/beneficiário ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
 					<span id="file-name"></span>						
 				</div>
 				<div id="image-preview"></div>

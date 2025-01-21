@@ -44,7 +44,7 @@ $array_generos = [
 
 <div class="container">
 
-	<form  action="../config/database/form-idoso-db.php" method="POST" enctype="multipart/form-data" class="form animate__animated animate__fadeIn">
+	<form  action="../config/database/form-idoso-db.php" method="post" enctype="multipart/form-data" class="form animate__animated animate__fadeIn">
 		
 		<div class="input-group">
 			<input type="text" id="nome" name="nome-idoso" required class="input"/>
@@ -273,7 +273,7 @@ $array_generos = [
 						<div class="input-file-container">
 							
 							<div class="input-file">
-								<input type="file" name="comprovante-representante" id="file-input" placeholder="Cópia do RG" class="file" accept="image/*">
+								<input type="file" name="comprovante-representante" id="file-input" class="file" accept="image/*">
 								<label for="">Selecione(JPG, PNG ou PDF) o comprovante de representante legal <strong>(OBRIGATÓRIO)</strong></label>
 								<span id="file-name"></span>						
 							</div>

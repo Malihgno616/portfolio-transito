@@ -56,6 +56,20 @@
   $expedicao_representante = $_POST["expedicao-representante"] ?? null;
   $expedido_representante = $_POST["expedido-representante"] ?? null;
   
+  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === UPLOAD_ERR_OK) {
+    $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+    if (in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)) {
+        $imagem_idoso = file_get_contents($copia_rg_idoso); 
+    } else {
+        echo "Arquivo não permitido";
+        exit;
+    }
+  } else {
+      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
+      exit;
+  }
+
   if(isset($_FILES['comprovante-representante']['tmp_name']) && $_FILES['comprovante-representante']['tmp_name'] != ""){
     $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
@@ -65,7 +79,7 @@
       echo "Arquivo não permitido";
     }
   } else {
-    echo "erro no upload do arquivo: " . $_FILES['copia-rg-representante']['error'];
+    echo "Erro no upload do arquivo do comprovante de representante: " . $_FILES['copia-rg-representante']['error'];
     exit;
   }
 
@@ -78,21 +92,7 @@
       echo "Arquivo não permitido";
     }
   } else {
-    echo "erro no upload do arquivo: " . $_FILES['copia-rg-representante']['error'];
-    exit;
-  }
-  
-  if(isset($_FILES['copia-rg-idoso']['tmp_name']) && $_FILES['copia-rg-idoso']['tmp_name'] != ""){
-    $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
-    if(in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)){
-      $imagem_idoso = file_get_contents($copia_rg_idoso);
-    } else {
-      echo "Arquivo não permitido";           
-      exit;
-    }   
-  } else {
-    echo "erro no upload do arquivo: " . $_FILES['copia-rg-idoso']['error'];
+    echo "Erro no upload do arquivo da cópia do rg do representante: " . $_FILES['copia-rg-representante']['error'];
     exit;
   }
   
@@ -108,6 +108,7 @@
       exit;
   } 
 
+  // Bind parameters
   mysqli_stmt_bind_param($stmt, "sssssssssssssssssbsssssssssssssbb", 
       $nome_idoso, 
       $nascimento_idoso,
@@ -126,7 +127,7 @@
       $cnh_idoso,
       $validade_cnh_idoso,
       $email_idoso,
-      $imagem_idoso,
+      $imagem_idoso,   // Arquivo lido em binário
       $nome_representante,
       $email_representante,
       $endereco_representante,
@@ -142,19 +143,21 @@
       $expedido_representante,
       $copia_rg_representante,
       $comprovante_representante
-); 
-  
+  ); 
+
+  // Enviar dados binários
   if (isset($imagem_idoso)) {
-      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); 
+      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); // Envia o arquivo lido
   }
 
   if (isset($copia_rg_representante)) {
-    mysqli_stmt_send_long_data($stmt, 31, $copia_rg_representante);
+      mysqli_stmt_send_long_data($stmt, 31, $copia_rg_representante); // Envia outro arquivo
   }
 
-  if(isset($comprovante_representante)) {
-    mysqli_stmt_send_long_data($stmt, 32, $comprovante_representante);
+  if (isset($comprovante_representante)) {
+      mysqli_stmt_send_long_data($stmt, 32, $comprovante_representante); // Envia outro arquivo
   }
+
   
   $executed = mysqli_stmt_execute($stmt);
 
