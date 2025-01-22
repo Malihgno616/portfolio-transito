@@ -80,10 +80,11 @@
   $bairro_representante = $_POST["bairro-representante"] ?? null;
   $cep_representante = $_POST["cep-representante"] ?? null;
   $cidade_representante = $_POST["cidade-representante"] ?? null;
-  // $uf_representante = $_POST["uf-representante"] ?? null; O erro está aqui
+  /* O erro está aqui */ 
+  $uf_representante = $_POST["uf-representante"] ?? null;
   $tel_representante = $_POST["telefone-representante"] ?? null;
   $rg_representante = $_POST["rg-representante"] ?? null;
-  $expedicao_representante = $_POST["data-expedicao-representante"] ?? null;
+  $expedicao_representante = $_POST["expedicao-representante"] ?? null;
   $expedido_representante = $_POST["expedido-representante"] ?? null;
 
   /* O erro está aqui */
