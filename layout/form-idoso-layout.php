@@ -199,7 +199,7 @@ $array_generos = [
 					</div>
 					
 					<div class="input-group" id="representante">
-						<input type="text" name="numero-representante" class="input" />
+						<input type="text" name="numero-endereco-representante" class="input" />
 						<label for="numero-representante" id="label-input">Nº</label>
 					</div>
 					
@@ -223,15 +223,14 @@ $array_generos = [
 						<label for="cidade-representante" id="label-input">Cidade</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<div class="input-group" id="representante">
-							<select name="uf-representante" class="select">
-								<option value="selecione">Selecione...</option>
-								<?php foreach($estados as $uf){
-									echo "<option value='$uf'>$uf</option>";
-								}?>
-							</select>
-						<label for="uf" id="label-input">
+					<div class="input-group">
+						<select name="uf-representante" class="select">
+							<option value="selecione">Selecione...</option>
+							<?php foreach($estados as $uf){
+								echo "<option value='$uf'>$uf</option>";
+							}?>
+						</select>
+						<label for="uf-representante" id="label-input">
 							UF(Unidade Federal)
 						</label>
 					</div>

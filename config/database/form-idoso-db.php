@@ -24,7 +24,7 @@
 ?>
 
 <?php 
-  // Dados do formulário
+  // Dados do idoso
   $nome_idoso = $_POST["nome-idoso"];
   $nascimento_idoso = $_POST["nascimento-idoso"];
   $genero_idoso = $_POST["genero-idoso"];
@@ -42,21 +42,8 @@
   $cnh_idoso = $_POST["cnh-idoso"] ?? null;
   $validade_cnh_idoso = isset($_POST['validade-cnh-idoso']) && $_POST['validade-cnh-idoso'] !== '' ? $_POST['validade-cnh-idoso'] : null;
   $email_idoso = $_POST["email-idoso"] ?? null;
-  $nome_representante = $_POST["nome-representante"] ?? null;
-  $email_representante = $_POST["email-representante"] ?? null;
-  $endereco_representante = $_POST["endereco-representante"] ?? null;
-  $num_endereco_representante = $_POST["numero-endereco-representante"] ?? null;
-  $complemento_representante = $_POST["complemento-representante"] ?? null;
-  $bairro_representante = $_POST["bairro-representante"] ?? null;
-  $cep_representante = $_POST["cep-representante"] ?? null;
-  $cidade_representanta = $_POST["cidade-representante"] ?? null;
-  $uf_representante = $_POST["uf-representante"] ?? null;
-  $tel_representante = $_POST["telefone-representante"] ?? null;
-  $rg_representante = $_POST["rg-representante"] ?? null;
-  $expedicao_representante = $_POST["expedicao-representante"] ?? null;
-  $expedido_representante = $_POST["expedido-representante"] ?? null;
-  
-  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === UPLOAD_ERR_OK) {
+   
+  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] != "") {
     $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
     if (in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)) {
@@ -70,32 +57,66 @@
       exit;
   }
 
-  if(isset($_FILES['comprovante-representante']['tmp_name']) && $_FILES['comprovante-representante']['tmp_name'] != ""){
-    $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
+  if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] != "") {
+    $comprovante_representante = $_FILES['copia-rg-idoso']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
-    if(in_array(mime_content_type($comprovante_representante), $tipos_permitidos)){
-      $imagem_rg_representante = file_get_contents($comprovante_representante);
+    if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
+        $imagem_ = file_get_contents($comprovante_representante); 
     } else {
-      echo "Arquivo não permitido";
+        echo "Arquivo não permitido";
+        exit;
     }
   } else {
-    echo "Erro no upload do arquivo do comprovante de representante: " . $_FILES['copia-rg-representante']['error'];
-    exit;
-  }
+      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
+      exit;
+  }  
 
-  if(isset($_FILES['copia-rg-representante']['tmp_name']) && $_FILES['copia-rg-representante']['tmp_name'] != ""){
-    $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
-    if(in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)){
-      $imagem_rg_representante = file_get_contents($copia_rg_representante);
-    } else {
-      echo "Arquivo não permitido";
-    }
-  } else {
-    echo "Erro no upload do arquivo da cópia do rg do representante: " . $_FILES['copia-rg-representante']['error'];
-    exit;
-  }
-  
+  // Dados do representante
+  $nome_representante = $_POST["nome-representante"] ?? null;
+  $email_representante = $_POST["email-representante"] ?? null;
+  $endereco_representante = $_POST["endereco-representante"] ?? null;
+  $num_endereco_representante = $_POST["numero-endereco-representante"] ?? null;
+  $complemento_representante = $_POST["complemento-representante"] ?? null;
+  $bairro_representante = $_POST["bairro-representante"] ?? null;
+  $cep_representante = $_POST["cep-representante"] ?? null;
+  $cidade_representante = $_POST["cidade-representante"] ?? null;
+  // $uf_representante = $_POST["uf-representante"] ?? null; O erro está aqui
+  $tel_representante = $_POST["telefone-representante"] ?? null;
+  $rg_representante = $_POST["rg-representante"] ?? null;
+  $expedicao_representante = $_POST["data-expedicao-representante"] ?? null;
+  $expedido_representante = $_POST["expedido-representante"] ?? null;
+
+  /* O erro está aqui */
+  // if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] != "") {
+  //   $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'] ?? null;
+  //   $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+  //   if (in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)) {
+  //       $imagem_rg_representante = file_get_contents($copia_rg_representante); 
+  //   } else {
+  //       echo "Arquivo não permitido";
+  //       exit;
+  //   }
+  // } else {
+  //     echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-representante']['error'];
+  //     exit;
+  // }
+
+  /* O erro está aqui */
+  // if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] != "") {
+  //   $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
+  //   $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+  //   if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
+  //       $imagem_comp_representante = file_get_contents($comprovante_representante); 
+  //   } else {
+  //       echo "Arquivo não permitido";
+  //       exit;
+  //   }
+  // } else {
+  //     echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
+  //     exit;
+  // }
+
+
 ?>
 
 <?php 
@@ -141,23 +162,22 @@
       $rg_representante,
       $expedicao_representante,
       $expedido_representante,
-      $copia_rg_representante,
-      $comprovante_representante
+      $imagem_rg_representante,
+      $imagem_comp_representante
   ); 
 
   // Enviar dados binários
   if (isset($imagem_idoso)) {
-      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); // Envia o arquivo lido
+      mysqli_stmt_send_long_data($stmt, 17, $imagem_idoso); 
   }
 
-  if (isset($copia_rg_representante)) {
-      mysqli_stmt_send_long_data($stmt, 31, $copia_rg_representante); // Envia outro arquivo
+  if (isset($imagem_rg_representante)) {
+      mysqli_stmt_send_long_data($stmt, 31, $imagem_rg_representante); 
   }
 
-  if (isset($comprovante_representante)) {
-      mysqli_stmt_send_long_data($stmt, 32, $comprovante_representante); // Envia outro arquivo
+  if (isset($imagem_comp_representante)) {
+      mysqli_stmt_send_long_data($stmt, 32, $imagem_comp_representante); 
   }
-
   
   $executed = mysqli_stmt_execute($stmt);
 
