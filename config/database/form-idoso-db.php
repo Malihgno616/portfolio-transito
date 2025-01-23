@@ -55,21 +55,7 @@
   } else {
       echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
       exit;
-  }
-
-  if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] != "") {
-    $comprovante_representante = $_FILES['copia-rg-idoso']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
-    if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
-        $imagem_ = file_get_contents($comprovante_representante); 
-    } else {
-        echo "Arquivo não permitido";
-        exit;
-    }
-  } else {
-      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
-      exit;
-  }  
+  } 
 
   // Dados do representante
   $nome_representante = $_POST["nome-representante"] ?? null;
@@ -80,15 +66,16 @@
   $bairro_representante = $_POST["bairro-representante"] ?? null;
   $cep_representante = $_POST["cep-representante"] ?? null;
   $cidade_representante = $_POST["cidade-representante"] ?? null;
-  // $uf_representante = $_POST["uf-representante"] ?? null; /* Está ocasionando erro no envio */
+  // $uf_representante = $_POST["uf-representante"]; /* Está ocasionando erro no envio */
   $tel_representante = $_POST["telefone-representante"] ?? null;
   $rg_representante = $_POST["rg-representante"] ?? null;
   // $expedicao_representante = $_POST["expedicao-representante"] ?? null;
   // $expedido_representante = $_POST["expedido-representante"] ?? null;
 
+  /* Imagem do RG do representante */
   /* Está ocasionando erro de envio para o banco de dados */
   // if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] != "") {
-  //   $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'] ?? null;
+  //   $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'] ;
   //   $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
   //   if (in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)) {
   //       $imagem_rg_representante = file_get_contents($copia_rg_representante); 
@@ -101,6 +88,7 @@
   //     exit;
   // }
 
+  /* Imagem do comprovante de representante */
   /* Está ocasionando erro de envio para o banco de dados */
   // if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] != "") {
   //   $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
@@ -197,6 +185,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enviado</title>
+  <link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
   <style>
     * {
       margin: 0;

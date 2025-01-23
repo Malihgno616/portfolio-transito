@@ -225,12 +225,12 @@ $array_generos = [
 					
 					<div class="input-group">
 						<select name="uf-representante" class="select">
-							<option value="selecione">Selecione...</option>
+							<option value="">Selecione...</option>
 							<?php foreach($estados as $uf){
 								echo "<option value='$uf'>$uf</option>";
 							}?>
 						</select>
-						<label for="uf" id="label-input">
+						<label for="estados" id="label-input">
 							UF(Unidade Federal)
 						</label>
 					</div>
