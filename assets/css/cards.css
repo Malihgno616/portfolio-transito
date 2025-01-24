@@ -3,19 +3,9 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1240px;
   margin-block: 2rem;
   gap: 2rem;
-}
-
-div a {
-  text-decoration: none;
-  color: #333;
-  transition: all 0.5s ease;
-}
-
-div a:hover {
-  color: #666;
 }
 
 img {
@@ -27,12 +17,12 @@ img {
 .card {
   display: flex;
   flex-direction: column;
-  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  width: clamp(20rem, calc(20rem + 10vw), 20rem);
   overflow: hidden;
-  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ece9e6;
-  background: linear-gradient(to right, #ffffff, #ece9e6);
+  background: linear-gradient(to right, #ffffff, #ece9e671);
 }
 
 .card__body {
@@ -73,7 +63,14 @@ img {
 
 .card__body h4 {
   font-size: 1.5rem;
+  color: #575757;
   text-transform: capitalize;
+}
+
+.card__body p {
+  text-align: justify;
+  line-height: 1.25rem;
+  text-indent: 30px;
 }
 
 .card__footer {

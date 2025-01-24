@@ -1,7 +1,8 @@
+<h1 style="text-align: center; margin-top: 2rem; margin-bottom: 2rem; color: #575757;">Notícias em Destaque</h1>
     <div class="container">
       <div class="card">
         <div class="card__header">
-          <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image" width="600">
+          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
         </div>
         <div class="card__body">
           <span class="tag tag-blue">Technology</span>
@@ -20,7 +21,7 @@
       </div>
       <div class="card">
         <div class="card__header">
-          <img src="https://source.unsplash.com/600x400/?food" alt="card__image" class="card__image" width="600">
+          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
         </div>
         <div class="card__body">
           <span class="tag tag-brown">Food</span>
@@ -39,7 +40,7 @@
       </div>
       <div class="card">
         <div class="card__header">
-          <img src="https://source.unsplash.com/600x400/?car,automobile" alt="card__image" class="card__image" width="600">
+          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
         </div>
         <div class="card__body">
           <span class="tag tag-red">Automobile</span>
@@ -56,8 +57,61 @@
           </div>
         </div>
       </div>
-      <div>
-        <a href="#">Clique aqui para mais notícias</a>
-      </div>
+      <div class="card">
+        <div class="card__header">
+          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <span class="tag tag-brown">Traffic</span>
+          <h4>Race to your heart content</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+        </div>
+        <div class="card__footer">
+          <div class="user">
+            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
+            <div class="user__info">
+              <h5>John Doe</h5>
+              <small>2d ago</small>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="card">
+        <div class="card__header">
+          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <span class="tag tag-brown">Traffic</span>
+          <h4>Race to your heart content</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+        </div>
+        <div class="card__footer">
+          <div class="user">
+            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
+            <div class="user__info">
+              <h5>John Doe</h5>
+              <small>2d ago</small>
+            </div>
+          </div>
+        </div>
+      </div>   
+      <div class="card">
+        <div class="card__header">
+          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <span class="tag tag-brown">Traffic</span>
+          <h4>Race to your heart content</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+        </div>
+        <div class="card__footer">
+          <div class="user">
+            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
+            <div class="user__info">
+              <h5>John Doe</h5>
+              <small>2d ago</small>
+            </div>
+          </div>
+        </div>
+      </div>        
     </div>
-   
