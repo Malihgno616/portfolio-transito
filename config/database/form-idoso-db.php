@@ -45,7 +45,7 @@
    
   if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] != "") {
     $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
     if (in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)) {
         $imagem_idoso = file_get_contents($copia_rg_idoso); 
     } else {
@@ -66,44 +66,53 @@
   $bairro_representante = $_POST["bairro-representante"] ?? null;
   $cep_representante = $_POST["cep-representante"] ?? null;
   $cidade_representante = $_POST["cidade-representante"] ?? null;
-  // $uf_representante = $_POST["uf-representante"]; /* Está ocasionando erro no envio */
+  $uf_representante = $_POST["uf-representante"] ?? null;
+  if ($uf_representante === 'selecione' || $uf_representante === '') {
+    $uf_representante = null; 
+  }
   $tel_representante = $_POST["telefone-representante"] ?? null;
   $rg_representante = $_POST["rg-representante"] ?? null;
-  // $expedicao_representante = $_POST["expedicao-representante"] ?? null;
-  // $expedido_representante = $_POST["expedido-representante"] ?? null;
+  $expedicao_representante = $_POST["expedicao-representante"] ?? null;
+  if ($expedicao_representante === '') {
+    $expedicao_representante = null;
+  }
+  $expedido_representante = $_POST["expedido-representante"] ?? null;
 
   /* Imagem do RG do representante */
-  /* Está ocasionando erro de envio para o banco de dados */
-  // if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] != "") {
-  //   $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'] ;
-  //   $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
-  //   if (in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)) {
-  //       $imagem_rg_representante = file_get_contents($copia_rg_representante); 
-  //   } else {
-  //       echo "Arquivo não permitido";
-  //       exit;
-  //   }
-  // } else {
-  //     echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-representante']['error'];
-  //     exit;
-  // }
+  /* Erro corrigido */
+  if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
+      $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
+      $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf']; // 
+      if (in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)) {
+          $imagem_rg_representante = file_get_contents($copia_rg_representante);
+      } else {
+          echo "Arquivo não permitido. Somente imagens JPEG, PNG e PDF são aceitas.";
+          exit;
+      }
+    } elseif (empty($_FILES['copia-rg-representante']['name'])) {
+        $imagem_rg_representante = null;
+    } else {
+        echo "Erro no envio do arquivo da cópia do RG do idoso: " . $_FILES['copia-rg-representante']['error'];
+        exit;
+    }   
 
   /* Imagem do comprovante de representante */
-  /* Está ocasionando erro de envio para o banco de dados */
-  // if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] != "") {
-  //   $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
-  //   $tipos_permitidos = ['image/jpeg', 'image/png', 'image/pdf'];
-  //   if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
-  //       $imagem_comp_representante = file_get_contents($comprovante_representante); 
-  //   } else {
-  //       echo "Arquivo não permitido";
-  //       exit;
-  //   }
-  // } else {
-  //     echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
-  //     exit;
-  // }
-
+  /* Erro corrigido */
+  if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] == 0) {
+    $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
+    if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
+        $imagem_comp_representante = file_get_contents($comprovante_representante); 
+    } else {
+        echo "Arquivo não permitido";
+        exit;
+    }
+  } elseif (empty($_FILES['comprovante-representante']['name'])) {
+        $comprovante_representante = null;
+  } else {
+      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
+      exit;
+  }
 
 ?>
 
