@@ -1,204 +1,144 @@
-@import url("global.css");
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
 footer {
-  padding: 1rem;
-  background-color: #585859;
-  color: #f2f2f2;
-
-  .titulo_rodape {
+  .footer-container:nth-child(1) {
     display: flex;
     flex-direction: column;
+    background-color: #585859;
+    width: 50%;
+    height: 370px;
     align-items: center;
-    h1 {
-      font-size: 2.5rem;
-
-      em {
-        font-weight: bold;
+    padding: 1rem;
+    .titulo-footer {
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      h2 {
+        color: #e9e9e9;
+        font-weight: 300;
       }
     }
-    h2 {
-      font-weight: lighter;
-      font-size: 1.5rem;
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    a {
+      text-decoration: none;
+      color: #ececec;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    em {
+      color: #cacaca;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      margin-top: -2rem;
+      margin-left: 5rem;
     }
   }
+}
 
-  .lista-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+footer {
+  .footer-container:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    background-color: #f2ae2e;
+    width: 50%;
+    height: 370px;
+    align-items: center;
     padding: 1rem;
-    justify-items: center;
-    list-style: none;
-
-    li {
-      a {
-        text-decoration: none;
-        color: #fff;
-        font-size: 1.1rem;
-        transition: all 0.5s ease;
-        &:hover {
-          color: #a1980e;
+    h2 {
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 1.75rem;
+    }
+    .links-uteis {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.25rem;
+      li {
+        list-style: none;
+        a {
+          text-decoration: none;
+          color: #000000;
+          font-weight: bold;
+          font-size: 1.2rem;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
-    }
-  }
-
-  div {
-    ul {
-      list-style: none;
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      li {
-        margin-bottom: 1rem;
-      }
-    }
-  }
-}
-
-.links-uteis {
-  background-color: #736A4F;
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  justify-items: center;
-  align-content: center;
-  display: grid;
-  margin: 0 auto;
-  grid-template-columns: 1fr;
-  list-style: none;
-  a {
-    font-size: 1.25rem;
-    text-decoration: none;
-    color: #f2f2f2;
-    &:hover {
-      border-bottom: 1px solid #585859;
-    }
-  }
-}
-
-.contatos {
-  h2 {
-    color: #f2f2f2;
-    font-size: 1.5rem;
-  }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background-color: #585859;
-  a {
-    margin-top: 1rem;
-    text-decoration: none;
-    font-size: 1.25rem;
-    color: #f2f2f2;
-    transition: all .5s ease;
-    &:hover {
-      filter: brightness(1.2);
-    }
-  }
-  #zapzap {
-    background-color: green;
-    padding: 0.55rem;
-    border-radius: 15px;
-    color: white;
-    &:hover {
-      filter: brightness(1.2);
     }
   }
 }
 
 .direitos {
-  font-size: 1rem;
-  color: #fff;
-  text-align: center;
-  background-color: #000;
-  padding: 1rem;
-  width: 100%;
+  background-color: black;
+  color: white;
   font-weight: 300;
-}
-
-@media (max-width: 1024px) {
-  footer {
-    .titulo_rodape {
-      h1 {
-        font-size: 2.2rem; /* Reduzido para telas médias */
-      }
-      h2 {
-        font-size: 1.4rem; /* Ajuste da fonte */
-      }
-    }
-
-    .lista-links {
-      grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas médias */
-    }
-
-    div {
-      ul {
-        padding: 2rem; /* Ajustando padding */
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  footer {
-    margin-top: 3rem;
-
-    .titulo_rodape {
-      img {
-        width: 50px; /* Ajuste para imagens */
-        max-width: 100%;
-      }
-      h1 {
-        font-size: 2rem;
-        text-align: center;
-      }
-      h2 {
-        text-align: center;
-        font-size: 1.25rem;
-      }
-    }
-
-    .lista-links {
-      grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas médias */
-      padding: 0.5rem;
-    }
-
-    div {
-      ul {
-        padding: 1.5rem; /* Ajuste de padding */
-      }
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: rgb(255, 206, 46);
     }
   }
 }
 
 @media (max-width: 480px) {
   footer {
-    .titulo_rodape {
-      img {
-        width: 40px; /* Ajustando o tamanho da imagem */
-        max-width: 100%;
-      }
-      h1 {
-        font-size: 1.8rem; /* Reduzindo o tamanho da fonte */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .footer-container:nth-child(1) {
+      width: 100%;
+      height: 70.25vh;
+      .titulo-footer {
+        img {
+          width: 50px;
+        }
+        font-size: 1rem;
         text-align: center;
       }
-      h2 {
+      em {
+        margin-top: 1rem;
+        font-size: 1rem;
+        width: 100%;
         text-align: center;
-        font-size: 1rem; /* Ajustando o tamanho da fonte */
+        margin-right: 4rem;
+      }
+      p {
+        font-size: 1.1rem;
+        text-align: center;
       }
     }
-
-    .lista-links {
-      grid-template-columns: 1fr; /* Exibindo 1 coluna em telas pequenas */
-      padding: 1rem; /* Ajustando padding */
-    }
-
-    div {
-      ul {
-        padding: 1.2rem; /* Ajustando padding */
+  }
+  footer {
+    .footer-container:nth-child(2) {
+      width: 100%;
+      height: 50.25vh;
+      .links-uteis {
+        padding: 1rem;
+        li {
+          a {
+            font-size: 0.9rem;
+          }
+        }
       }
+    }
+  }
+  .direitos {
+    padding: 1rem;
+    p {
+      font-size: 0.9rem;
     }
   }
 }
