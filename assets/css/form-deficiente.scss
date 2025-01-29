@@ -1,24 +1,12 @@
 .title {
-  max-width: 900;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
-  h1 {
-    font-size: 2rem;
-  }
-  p {
-    margin-top: 1rem;
-    font-size: 1.25rem;
-    font-weight: 300;
-  }
-  p {
-    color: #636363a4;
-    font-size: 1.75rem;
-    padding: 1rem;
-  }
+  padding: 5px;
+  color: #898989;
+  margin-bottom: 1rem;
 }
 
 .container {
@@ -28,6 +16,12 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  p {
+    color: #636363a4;
+    width: 900px;
+    font-size: 1rem;
+    text-align: justify;
+  }
   .form {
     border: 1px solid #94949480;
     border-radius: 2px;
@@ -40,6 +34,48 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+
+    .input-checkbox {
+      margin-top: 1rem;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background-color: #fff;
+      border: 2px solid rgb(105, 105, 105);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .input-checkbox:checked {
+      background-color: #c7ab0e;
+    }
+
+    .textarea {
+      width: 100%;
+      height: 125px;
+      font-size: 1.25rem;
+      font-weight: 300;
+      resize: none;
+      border: 2px solid #4747475b;
+      outline: 0;
+      position: relative;
+      border-radius: 5px;
+    }
+
+    .textarea {
+      .label {
+        font-size: 1.25rem;
+        font-weight: 300;
+        position: absolute;
+        left: 0;
+        color: #666;
+        cursor: text;
+        transition: 0.3s ease-in-out;
+        transform-origin: left center;
+      }
+    }
+
     .buttons {
       display: flex;
       justify-content: space-between;
@@ -103,8 +139,8 @@
         border: 0;
         border-bottom: 1px solid #6d6d6d3f;
         outline: 0;
-        &:focus + #label-input,
-        &:valid + #label-input {
+        &:focus + .label-input,
+        &:valid + .label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #a08a0c;
@@ -126,13 +162,13 @@
         border-bottom: 1px solid #6d6d6d3f;
         outline: 0;
         cursor: pointer;
-        &:invalid + #label-input {
+        &:invalid + .label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #666;
         }
-        &:focus + #label-input,
-        &:valid + #label-input {
+        &:focus + .label-input,
+        &:valid + .label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #c7ab0e;
@@ -150,12 +186,12 @@
         border: 0;
         border-bottom: 1px solid #6d6d6d3f;
         outline: 0;
-        &:valid + #label-input {
+        &:valid + .label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #666;
         }
-        &:focus + #label-input {
+        &:focus + .label-input {
           transform: translateY(-24px);
           font-size: 14px;
           color: #c7ab0e;
@@ -254,7 +290,7 @@
           }
         }
       }
-      #label-input {
+      .label-input {
         font-size: 1.05rem;
         font-weight: 300;
         position: absolute;
@@ -263,32 +299,6 @@
         cursor: text;
         transition: 0.3s ease-in-out;
         transform-origin: left center;
-      }
-    }
-  }
-}
-
-/* Estilo para dispositivos grandes (desktops) */
-
-@media (min-width: 1025px) {
-  .title {
-    padding: 10px;
-    h1 {
-      font-size: 2rem;
-    }
-    p {
-      font-size: 1.75rem;
-    }
-  }
-
-  .container {
-    .form {
-      padding: 2rem;
-      flex-direction: row; /* Formulário em linha para telas grandes */
-      gap: 2rem;
-      .input-group {
-        width: calc(33.333% - 1rem); /* Inputs ocupando 1/3 da largura */
-        margin-bottom: 2.5rem;
       }
     }
   }

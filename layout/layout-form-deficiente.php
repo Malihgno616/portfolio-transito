@@ -36,20 +36,18 @@ $array_generos = [
 ];
 
 ?>
-<div class="texto-format">
-  <h1>Informações do Beneficiário</h1>
-</div>
 
 <div class="container">
-  <form action="../pages/infos-medicas.php" method="get" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
-    <div class="input-group">
+	<form action="../config/database/form-deficiente-db.php" method="post" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
+		<h1 class="title">Informações do Beneficiário</h1>
+		<div class="input-group">
       <input type="text" name="nome-beneficiario" required class="input">
-      <label for="beneficiario" id="label-input">Nome do Beneficiário</label>
+      <label for="beneficiario" class="label-input">Nome do Beneficiário</label>
     </div>
 
     <div class="input-group">
       <input type="date" name="nascimento-beneficiario" required class="input-date">
-      <label for="nascimento-beneficiario" id="label-input">Data de Nascimento</label>
+      <label for="nascimento-beneficiario" class="label-input">Data de Nascimento</label>
     </div>
 
     <div class="input-group">
@@ -59,37 +57,37 @@ $array_generos = [
           echo "<option value='$genero'>$genero</option>";
         } ?>
       </select>
-      <label for="genero-beneficiario" id="label-input">Sexo</label>
+      <label for="genero-beneficiario" class="label-input">Sexo</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="endereco-beneficiario" required class="input">
-      <label for="endereco" id="label-input">Endereço(RUA, AV)</label>
+      <label for="endereco" class="label-input">Endereço(RUA, AV)</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="num-endereco-beneficiario" required class="input">
-      <label for="numero-endereco-deficiente" id="label-input">Número</label>
+      <label for="numero-endereco-deficiente" class="label-input">Número</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="complemento-beneficiario" class="input">
-      <label for="complemento-beneficiario" id="label-input">Complemento(opcional)</label>
+      <label for="complemento-beneficiario" class="label-input">Complemento(opcional)</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="bairro-beneficiario" required class="input">
-      <label for="bairro-deficiente" id="label-input">Bairro</label>
+      <label for="bairro-deficiente" class="label-input">Bairro</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="cep-beneficiario" required class="input">
-      <label for="cep-deficiente" id="label-input">CEP</label>
+      <label for="cep-deficiente" class="label-input">CEP</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="cidade-beneficiario" required class="input">
-      <label for="cidade-beneficiario" id="label-input">Cidade</label>
+      <label for="cidade-beneficiario" class="label-input">Cidade</label>
     </div>
 
     <div class="input-group">
@@ -99,44 +97,58 @@ $array_generos = [
           echo "<option value='$estado'>$estado</option>";
         }?>
       </select>
-      <label for="uf-deficiente" id="label-input">Estado</label>
+      <label for="uf-deficiente" class="label-input">Estado</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="telefone-deficiente" required class="input">
-      <label for="telefone-deficiente" id="label-input">Telefone</label>
+      <label for="telefone-deficiente" class="label-input">Telefone</label>
     </div>
 
     
     <div class="input-group">
       <input type="text" name="rg-beneficiario" required class="input">
-      <label for="rg-deficiente" id="label-input">RG</label>
+      <label for="rg-deficiente" class="label-input">RG</label>
     </div>
 
     <div class="input-group">
       <input type="date" name="expedicao-beneficiario" required id="" class="input-date">
-      <label for="expedicao-beneficiario" id="label-input">Data Expedição</label>
+      <label for="expedicao-beneficiario" class="label-input">Data Expedição</label>
     </div>
-
-    <div class="input-group">
+   <div class="input-group">
       <input type="text" name="expedido-beneficiario" required class="input"/>
-      <label for="expedido-beneficiario" id="label-input">Expedido por</label>
+      <label for="expedido-beneficiario" class="label-input">Expedido por</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="cnh-beneficiario" class="input">
-      <label for="cnh-beneficiario" id="label-input">CNH(Se for condutor)</label>
+      <label for="cnh-beneficiario" class="label-input">CNH(Se for condutor)</label>
     </div>
 
     <div class="input-group">
       <input type="date" name="validade-cnh-beneficiario" class="input-date">
-      <label for="validade-cnh-beneficiario" id="label-input">Validade da CNH</label>
+      <label for="validade-cnh-beneficiario" class="label-input">Validade da CNH</label>
     </div>
 
     <div class="input-group">
       <input type="text" name="email-beneficiario" class="input" id="">
-      <label for="email-beneficiario" id="label-input">Digite seu email(opcional)</label>
+      <label for="email-beneficiario" class="label-input">Digite seu email(opcional)</label>
     </div>
+
+		<div class="input-group">			
+			
+			<div class="input-file-container">
+				
+				<div class="input-file">
+					<input type="file" name="copia-rg-beneficiario" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+					<label for="copia-rg-beneficiario">Selecione(JPG, PNG ou PDF) a cópia do RG do requerente/beneficiário ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
+					<span id="file-name"></span>						
+				</div>
+				<div id="image-preview"></div>
+				
+			</div>
+			
+		</div>
 
     <div class="input-group">
 			
@@ -158,63 +170,50 @@ $array_generos = [
 
 		</div>
 
-    <div class="input-group">			
-			
-			<div class="input-file-container">
-				
-				<div class="input-file">
-					<input type="file" name="copia-rg-beneficiario" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
-					<label for="copia-rg-beneficiario">Selecione(JPG, PNG ou PDF) a cópia do RG do requerente/beneficiário ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
-					<span id="file-name"></span>						
-				</div>
-				<div id="image-preview"></div>
-				
-			</div>
-			
-		</div>
+    
 		
 		<div id="representante" class="animate__animated animate__fadeIn">
 			
-				<h1>Informações do Representante</h1>
+				<h1 class="title">Informações do Representante</h1>
 				
 					<div class="input-group" id="representante">
 						<input type="text" name="nome-representante" class="input" />
-						<label for="nome-representante" id="label-input">Nome do representante</label>
+						<label for="nome-representante" class="label-input">Nome do representante</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="email-representante" class="input" />
-						<label for="email-representante" id="label-input">Email</label>
+						<label for="email-representante" class="label-input">Email</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="endereco-representante" class="input" />
-						<label for="endereco-representante" id="label-input">Endereço(RUA, AV)</label>
+						<label for="endereco-representante" class="label-input">Endereço(RUA, AV)</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="numero-representante" class="input" />
-						<label for="numero-representante" id="label-input">Nº</label>
+						<label for="numero-representante" class="label-input">Nº</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="complemento-representante" class="input" />
-						<label for="complemento-representante" id="label-input">Complemento</label>
+						<label for="complemento-representante" class="label-input">Complemento</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="bairro-representante" class="input" />
-						<label for="bairro-representante" id="label-input">Bairro</label>
+						<label for="bairro-representante" class="label-input">Bairro</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="cep-representante" class="input">
-						<label for="cep-representante" id="label-input">CEP</label>
+						<label for="cep-representante" class="label-input">CEP</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="cidade-representante" class="input" />
-						<label for="cidade-representante" id="label-input">Cidade</label>
+						<label for="cidade-representante" class="label-input">Cidade</label>
 					</div>
 					
 					<div class="input-group" id="representante">
@@ -225,29 +224,29 @@ $array_generos = [
 									echo "<option value='$uf'>$uf</option>";
 								}?>
 							</select>
-						<label for="uf" id="label-input">
+						<label for="uf" class="label-input">
 							UF(Unidade Federal)
 						</label>
 					</div>
 
 					<div class="input-group" id="representante">
 						<input type="text" name="telefone-representante" class="input" />
-						<label for="telefone-representante" id="label-input">Telefone</label>
+						<label for="telefone-representante" class="label-input">Telefone</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="text" name="rg-representante" class="input">
-						<label for="rg-representante" id="label-input">RG</label>
+						<label for="rg-representante" class="label-input">RG</label>
 					</div>
 					
 					<div class="input-group" id="representante">
 						<input type="date" name="expedicao-representante" id="" class="input-date">
-						<label for="" id="label-input">Data de Expedição</label>
+						<label for="" class="label-input">Data de Expedição</label>
 					</div>
 					
 					<div class="input-group">
 						<input type="text" name="expedido-representante" class="input">
-						<label for="expedido-por" id="label-input">Expedido por</label>
+						<label for="expedido-por" class="label-input">Expedido por</label>
 					</div>
 					
 					<div class="input-group" id="representante">
@@ -276,20 +275,110 @@ $array_generos = [
 						</div>
 					</div>
 					
-				</div>
-				
-			</div>	
-			
-			<div class="buttons">
-        <button onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
-        <button type="submit">
-          Próximo <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+				</div>		  
+    
+		</div>	
 
+		<h1 class="title">Informações do Médico</h1>
+    <div class="input-group">
+      <input type="text" name="nome-medico" id="" required class="input">
+      <label for="nome" class="label-input">Nome do médico </label>
+    </div>
+    <div class="input-group"><input type="text" name="crm-medico" required class="input">  
+      <label for="registro" class="label-input" >Registro profissional (CRM)</label>
+    </div>
+    <div class="input-group">
+      <input type="text" name="telefone-medico" class="input" required>
+      <label for="telefone" class="label-input">Telefone</label>
+    </div>
+    <div class="input-group">
+      <input type="text" name="endereco-medico"  class="input" required>
+      <label for="" class="label-input">Local de atendimento (Rua, AV)</label>
+    </div>
+    <h1 class="title">Informações Médicas</h1>
+    <p>O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox" name="deficiencia-ambulatoria" id="">
+      <label for="deficiencia-fisica">Deficiência física</label>
+    </div>
+    <div class="input-group">
+      <input type="checkbox"  class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="membros-superiores">Membro(s) Superiore(s)</label>
+    </div>
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="membros-inferiores">Membro(s) Inferior(es)</label>
+    </div>
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="cadeira-de-rodas">Utiliza cadeira de rodas</label>
+    </div>
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="aparelhagem-ortopedica">Aparelhagem Ortopédica</label>
+    </div>
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="protese">Prótese</label>
+    </div>
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="incapacidade-mental">DEFICIÊNCIA AMBULATÓRIA AUTÔNOMA DECORRENTE DE INCAPACIDADE MENTAL</label>
+    </div>    
+    <div class="input-group">
+      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
+      <label for="dificuldade-locomocao">DIFICULDADE DE LOCOMOÇÃO COM ALTO GRAU DE COMPROMETIMENTO AMBULATÓRIO</label>
+    </div>
+
+    <p>Assinalar o tempo. Em sentido <strong>temporário</strong>, informar o período previsto de restrição médica. No mínimo 2 meses e no máximo 1 ano.</p>
+    <p>Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
+
+    <div class="input-group">
+      <input type="radio" class="input-radio" name="validade" id="temporaria">
+      <label for="temporaria">Temporária</label>
+    </div>
+
+    <div class="input-group">
+      <input type="radio" class="input-radio" name="validade" id="permanente" >
+      <label for="permanente" >Permanente</label>
+    </div>
+
+    <div class="input-group">
+      <input type="date" name="data-inicio" id="data-inicio" required class="input-date">
+      <label for="data-inicio" id="data-inicio" class="label-input">Data de início</label>
+    </div>
+
+    <div class="input-group">
+      <input type="date" name="data-fim" id="data-fim" class="input-date" >
+      <label for="data-fim" id="data-fim" class="label-input">Data de fim</label>
+    </div>
+
+    <div class="input-group">
+      <textarea name="" id="" class="textarea"></textarea>
+      <label for="cid" class="label">- Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular:</label>
+    </div>
+
+    <p>- Selecione a cópia digitalizada do atestado médico da pessoa portadora de deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.</p>
+
+    <div class="input-group">
+      <input type="file" name="documento" id="file-input" class="input-file">
+      <label for="documento">SELECIONE (PNG, JPG, PDF)Cópia digitalizada do atestado médico <strong>(OBRIGATÓRIO)</strong></label>
+      <span id="file-name"></span>	
+      <div id="image-preview"></div>
+    </div>
+				
+		<div class="buttons">
+      <button onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
+      <button type="submit">
+        Enviar <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
 
   </form>
+
+
 </div>
 
+<script src="../assets/js/exibirData.js"></script>
 <script src="../assets/js/exibirArquivo.js"></script>
 <script src="../assets/js/exibirForm.js"></script>
