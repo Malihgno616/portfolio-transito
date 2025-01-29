@@ -36,8 +36,8 @@
 }
 
 .menu {
-  background-color: #736A4F;
-  padding: 1rem;
+  background-color: #db991e;
+  padding: 0px;
 }
 
 .menu ul {
@@ -45,7 +45,7 @@
 }
 
 .menu li a {
-  color: #F2F2F2;
+  color: #f2f2f2;
   padding: 0.75rem;
   text-decoration: none;
   font-size: 2rem;
@@ -54,7 +54,7 @@
 .menu * {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .menu button {
@@ -66,7 +66,7 @@
   font-size: 2rem;
   cursor: pointer;
   display: none;
-  transition: all .5 ease;
+  transition: all 0.5s ease;
 }
 
 .menu button:hover {
@@ -74,7 +74,7 @@
 }
 
 .menu li a:hover {
-  transition: all 0.7s ease;
+  transition: all 0.2s ease;
   color: #131313;
 }
 
