@@ -41,15 +41,17 @@
     </div>
   </div>
 </div>
-<nav class="menu">
-  <ul> 
-    <button id="click">
-      <i class="fas fa-bars"></i>
-    </button>
-    <li><a href="../public/index.php"><i class="fa-solid fa-house"></i> Home</a></li>
-    <li><a href="../pages/servicos.php"><i class="fa-solid fa-laptop"></i> Serviços Online</a></li>
-    <li><a href="../pages/contato.php"><i class="fa-regular fa-paper-plane"></i> Contato</a></li>
-  </ul>
-</nav>
+<div class="menu-container">
+  <nav class="nav-bar">
+    <ul>
+      <button id="click">
+        <i class="fas fa-bars"></i>
+      </button>
+      <li><a href="../public/index.php"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="../pages/servicos.php"><i class="fa-solid fa-laptop"></i> Serviços Online</a></li>
+      <li><a href="../pages/contato.php"><i class="fa-regular fa-paper-plane"></i> Contato</a></li>
+    </ul>
+  </nav>
+</div>
 
 <script src="../assets/js/exibirMenu.js"></script>

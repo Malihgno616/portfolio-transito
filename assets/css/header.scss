@@ -1,9 +1,13 @@
+@charset "UTF-8";
+
+@import url(root.css);
+
 .imagem_de_fundo {
   background-image: url("../img/imgtransito03.png");
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.459);
   background-blend-mode: multiply;
-  height: 350px;
+  height: 450px;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
@@ -35,171 +39,100 @@
   }
 }
 
-.menu {
-  background-color: #db991e;
-  padding: 0px;
+.menu-container {
+  background-color: var(--cor4);
+  padding: 10px;
+  margin: 0;
 }
 
-.menu ul {
-  list-style: none;
-}
-
-.menu li a {
-  color: #f2f2f2;
-  padding: 0.75rem;
-  text-decoration: none;
-  font-size: 2rem;
-}
-
-.menu * {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.menu button {
-  border: none;
-  background-color: #3b3729;
-  border-radius: 10px;
-  color: #181818;
-  padding: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  display: none;
-  transition: all 0.5s ease;
-}
-
-.menu button:hover {
-  background-color: #3b372957;
-}
-
-.menu li a:hover {
-  transition: all 0.2s ease;
-  color: #131313;
-}
-
-@media (max-width: 1200px) {
-  .imagem_de_fundo {
-    height: 50vh; /* Ajuste a altura para telas maiores */
-  }
-  .imagem_de_fundo #boas_vindas h1 {
-    font-size: 3rem; /* Ajuste o tamanho da fonte */
-  }
-  .menu ul li a {
-    font-size: 1.8rem; /* Ajuste o tamanho da fonte */
-  }
-}
-
-@media (max-width: 992px) {
-  .imagem_de_fundo {
-    height: 60vh;
-  }
-  .imagem_de_fundo #boas_vindas h1 {
-    font-size: 2.5rem;
-  }
-  .menu ul li a {
-    font-size: 1.7rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .imagem_de_fundo {
-    height: 50vh;
-  }
-  .imagem_de_fundo img {
-    max-width: 120px; /* Ajuste a largura da imagem */
-  }
-  .imagem_de_fundo #boas_vindas h1 {
-    font-size: 2rem;
-  }
-  .menu {
+.menu-container {
+  .nav-bar {
+    background-color: var(--cor1);
+    width: 75%;
+    margin: 0 auto;
     padding: 1rem;
+    border-radius: 55px;
     ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      transition: max-height 0.5s ease;
-    }
-    .menu ul li {
-      margin-bottom: 2rem;
-      a {
-        font-size: 1.5rem;
-        padding: 1rem;
+      justify-content: space-around;
+      #click {
+        display: none;
+        border: none;
+        background-color: #ac9c43;
+        width: 50px;
+        height: 50px;
+        border-radius: 70%;
+        font-size: 2rem;
+        transition: all 0.5s ease;
+        margin: auto;
+        &:hover {
+          color: white;
+          background-color: #8f7d15;
+        }
+      }
+      li {
+        a {
+          text-decoration: none;
+          color: #000000;
+          font-size: 2rem;
+          padding: 12px;
+          transition: all 0.5s ease;
+          height: 200px;
+          &:hover {
+            background-color: var(--hover-color-menu);
+          }
+        }
       }
     }
-  }
-  .menu ul li {
-    display: none;
-  }
-  .menu ul button {
-    display: block;
   }
 }
 
 @media (max-width: 480px) {
   .imagem_de_fundo {
-    width: 100%;
-    height: 70vh;
-  }
-  .imagem_de_fundo img {
-    width: 100%;
-    padding: 0;
-  }
-  .imagem_de_fundo #boas_vindas {
-    margin-top: -7rem;
-    max-width: 305px;
-  }
-  .imagem_de_fundo #boas_vindas h1 {
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-  }
-  .imagem_de_fundo #boas_vindas em {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    text-align: justify;
-  }
-  .imagem_de_fundo #boas_vindas div em {
-    font-size: 1.2rem;
-    text-align: justify;
-  }
-  .menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    ul {
-      display: flex;
-      flex-direction: column;
-      transition: max-height 0.5s ease;
-      li {
-        margin-bottom: 1rem;
-        a {
-          font-size: 1.5rem;
-          padding: 1rem;
-        }
+    img {
+      width: 50%;
+      padding: 0px;
+    }
+    #boas_vindas {
+      h1 {
+        font-size: 2.15rem;
+        text-align: center;
+      }
+      em {
+        font-size: 1rem;
+        padding: 1rem;
+        text-align: justify;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
       }
     }
   }
-  .menu ul li {
-    display: none;
-  }
-  .menu ul button {
-    display: block;
-  }
-}
 
-@media (max-width: 320px) {
-  .imagem_de_fundo {
-    height: 60vh; /* Ajuste para telas muito pequenas */
-  }
-  .imagem_de_fundo img {
-    max-width: 100px; /* Ajuste para telas muito pequenas */
-  }
-  .imagem_de_fundo #boas_vindas h1 {
-    font-size: 1.8rem; /* Ajuste o tamanho da fonte */
-  }
-  .menu ul li a {
-    font-size: 1.4rem; /* Ajuste o tamanho da fonte */
+  .menu-container {
+    .nav-bar {
+      width: 100%;
+      padding: 0px;
+      ul {
+        flex-direction: column;
+        align-items: center;
+        li {
+          a {
+            display: none;
+            height: 80px;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+          }
+        }
+        #click {
+          display: block;
+          margin: 10px auto;
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 }

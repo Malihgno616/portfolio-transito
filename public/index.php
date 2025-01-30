@@ -1,3 +1,6 @@
+<?php 
+  session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +14,7 @@
     include_once('../layout/header.php');
     include_once('../layout/slider.php');
     include_once('../layout/news.php');
-    include_once('../layout/links.php');
+    include_once('../layout/institucional.php');
     include_once('../layout/footer.php');
   ?>
 </body>

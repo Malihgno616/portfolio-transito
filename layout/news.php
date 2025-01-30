@@ -115,3 +115,7 @@
         </div>
       </div>        
     </div>
+
+    <div class="acesso-noticias">
+      <a href="#" class="link-access">CLIQUE AQUI PARA MAIS NOTÍCIAS</a>
+    </div>

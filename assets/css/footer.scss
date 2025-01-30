@@ -1,3 +1,9 @@
+@charset "UTF-8";
+
+@import url(root.css);
+
+
+
 footer {
   display: flex;
   justify-content: space-around;
@@ -8,7 +14,7 @@ footer {
   .footer-container:nth-child(1) {
     display: flex;
     flex-direction: column;
-    background-color: #585859;
+    background-color: var(--cor4);
     width: 50%;
     height: 370px;
     align-items: center;
@@ -48,7 +54,7 @@ footer {
   .footer-container:nth-child(2) {
     display: flex;
     flex-direction: column;
-    background-color: #f2ae2e;
+    background-color: var(--cor1);
     width: 50%;
     height: 370px;
     align-items: center;
