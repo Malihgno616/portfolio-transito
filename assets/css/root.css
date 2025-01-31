@@ -1,11 +1,11 @@
 :root {
-  --cor0: #f5ea22;
-  --cor1: #cac33e;
-  --cor2: #a09c4c;
-  --cor3: #75734b;
-  --cor4: #4b4a3c;
-  --cor5: #33332a;
-  --hover-color-menu: #a0991ac5;
-  --card-destaque: #00000050;  
-  --cor-titulo: #616161; 
+  --cor0: #f2f2f2;
+  --cor1: #f2c029;
+  --cor2: #f2ae2e;
+  --cor3: #736a4f;
+  --cor4: #585859;
+  --cor5: #20201d;
+  --hover-color-menu: #ac830a;
+  --card-destaque: #00000050;
+  --cor-titulo: #616161;
 }
