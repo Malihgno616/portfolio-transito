@@ -15,6 +15,7 @@
     include_once('../layout/slider.php');
     include_once('../layout/news.php');
     include_once('../layout/institucional.php');
+    include_once('../layout/servicos-destaque.php');
     include_once('../layout/footer.php');
   ?>
 </body>
