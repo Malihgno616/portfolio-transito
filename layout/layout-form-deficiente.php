@@ -35,6 +35,17 @@ $array_generos = [
   "Feminino",
 ];
 
+$deficiencias = [
+  "Deficiência Física",
+  "Membro(s) Superior(es)",
+  "Membro(s) Inferior(es)",
+  "Cadeira de Rodas",
+  "Aparelhagem Ortopédica",
+  "Prótese",
+  "Incapacidade Mental",
+  "Dificuldade de Locomoção"
+];
+
 ?>
 
 <div class="container">
@@ -66,8 +77,8 @@ $array_generos = [
     </div>
 
     <div class="input-group">
-      <input type="text" name="num-endereco-beneficiario" required class="input">
-      <label for="numero-endereco-deficiente" class="label-input">Número</label>
+      <input type="text" name="numero-beneficiario" required class="input">
+      <label for="numero-beneficiario" class="label-input">Número</label>
     </div>
 
     <div class="input-group">
@@ -101,7 +112,7 @@ $array_generos = [
     </div>
 
     <div class="input-group">
-      <input type="text" name="telefone-deficiente" required class="input">
+      <input type="text" name="telefone-beneficiario" required class="input">
       <label for="telefone-deficiente" class="label-input">Telefone</label>
     </div>
 
@@ -149,7 +160,72 @@ $array_generos = [
 			</div>
 			
 		</div>
+    
+		<h1 class="title">Informações do Médico</h1>
+    <div class="input-group">
+      <input type="text" name="nome-medico" id="" required class="input">
+      <label for="nome" class="label-input">Nome do médico </label>
+    </div>
+    <div class="input-group">
+      <input type="text" name="crm-medico" required class="input">  
+      <label for="registro" class="label-input" >Registro profissional (CRM)</label>
+    </div>
+    <div class="input-group">
+      <input type="text" name="telefone-medico" class="input" required>
+      <label for="telefone" class="label-input">Telefone</label>
+    </div>
+    <div class="input-group">
+      <input type="text" name="local-atendimento-medico" class="input" required>
+      <label for="" class="label-input">Local de atendimento (Rua, AV)</label>
+    </div>
+    <h1 class="title">Informações Médicas</h1>
+    <p>O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
+    <?php foreach($deficiencias as $deficiencia): ?>
+      <div class="input-group">
+        <input type="checkbox" class="input-checkbox" name="deficiencia-ambulatoria" id="deficiencia-<?php echo strtolower(str_replace(" ", "-", $deficiencia)); ?>">
+        <label for="deficiencia-<?php echo strtolower(str_replace(" ", "-", $deficiencia)); ?>">
+          <?php echo $deficiencia; ?>
+        </label>
+      </div>
+    <?php endforeach; ?>
+      
+    <p>Assinalar o tempo. Em sentido <strong>temporário</strong>, informar o período previsto de restrição médica. No mínimo 2 meses e no máximo 1 ano.</p>
+    <p>Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
 
+    <div class="input-group">
+      <input type="radio" class="input-radio" name="restricao-medica" id="temporaria">
+      <label for="temporaria">Temporária</label>
+    </div>
+
+    <div class="input-group">
+      <input type="radio" class="input-radio" name="restricao-medica" id="permanente" >
+      <label for="permanente" >Permanente</label>
+    </div>
+
+    <div class="input-group">
+      <input type="date" name="data-inicio" id="data-inicio" required class="input-date">
+      <label for="data-inicio" id="data-inicio" class="label-input">Data de início</label>
+    </div>
+
+    <div class="input-group">
+      <input type="date" name="data-fim" id="data-fim" class="input-date" >
+      <label for="data-fim" id="data-fim" class="label-input">Data de fim</label>
+    </div>
+
+    <div class="input-group">
+      <textarea name="cid" id="" class="textarea"></textarea>
+      <label for="cid" class="label">- Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular:</label>
+    </div>
+
+    <p>- Selecione a cópia digitalizada do atestado médico da pessoa portadora de deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.</p>
+
+    <div class="input-group">
+      <input type="file" name="atestado-medico" id="file-input" class="input-file">
+      <label for="atestado-medico">SELECIONE (PNG, JPG, PDF)Cópia digitalizada do atestado médico <strong>(OBRIGATÓRIO)</strong></label>
+      <span id="file-name"></span>	
+      <div id="image-preview"></div>
+    </div>
+		
     <div class="input-group">
 			
 			<div class="radio input">
@@ -169,10 +245,8 @@ $array_generos = [
 				</div>
 
 		</div>
-
-    
-		
-		<div id="representante" class="animate__animated animate__fadeIn">
+   	
+    <div id="representante" class="animate__animated animate__fadeIn">
 			
 				<h1 class="title">Informações do Representante</h1>
 				
@@ -278,95 +352,8 @@ $array_generos = [
 				</div>		  
     
 		</div>	
+    
 
-		<h1 class="title">Informações do Médico</h1>
-    <div class="input-group">
-      <input type="text" name="nome-medico" id="" required class="input">
-      <label for="nome" class="label-input">Nome do médico </label>
-    </div>
-    <div class="input-group"><input type="text" name="crm-medico" required class="input">  
-      <label for="registro" class="label-input" >Registro profissional (CRM)</label>
-    </div>
-    <div class="input-group">
-      <input type="text" name="telefone-medico" class="input" required>
-      <label for="telefone" class="label-input">Telefone</label>
-    </div>
-    <div class="input-group">
-      <input type="text" name="endereco-medico"  class="input" required>
-      <label for="" class="label-input">Local de atendimento (Rua, AV)</label>
-    </div>
-    <h1 class="title">Informações Médicas</h1>
-    <p>O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox" name="deficiencia-ambulatoria" id="">
-      <label for="deficiencia-fisica">Deficiência física</label>
-    </div>
-    <div class="input-group">
-      <input type="checkbox"  class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="membros-superiores">Membro(s) Superiore(s)</label>
-    </div>
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="membros-inferiores">Membro(s) Inferior(es)</label>
-    </div>
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="cadeira-de-rodas">Utiliza cadeira de rodas</label>
-    </div>
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="aparelhagem-ortopedica">Aparelhagem Ortopédica</label>
-    </div>
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="protese">Prótese</label>
-    </div>
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="incapacidade-mental">DEFICIÊNCIA AMBULATÓRIA AUTÔNOMA DECORRENTE DE INCAPACIDADE MENTAL</label>
-    </div>    
-    <div class="input-group">
-      <input type="checkbox" class="input-checkbox"  name="deficiencia-ambulatoria" id="">
-      <label for="dificuldade-locomocao">DIFICULDADE DE LOCOMOÇÃO COM ALTO GRAU DE COMPROMETIMENTO AMBULATÓRIO</label>
-    </div>
-
-    <p>Assinalar o tempo. Em sentido <strong>temporário</strong>, informar o período previsto de restrição médica. No mínimo 2 meses e no máximo 1 ano.</p>
-    <p>Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
-
-    <div class="input-group">
-      <input type="radio" class="input-radio" name="validade" id="temporaria">
-      <label for="temporaria">Temporária</label>
-    </div>
-
-    <div class="input-group">
-      <input type="radio" class="input-radio" name="validade" id="permanente" >
-      <label for="permanente" >Permanente</label>
-    </div>
-
-    <div class="input-group">
-      <input type="date" name="data-inicio" id="data-inicio" required class="input-date">
-      <label for="data-inicio" id="data-inicio" class="label-input">Data de início</label>
-    </div>
-
-    <div class="input-group">
-      <input type="date" name="data-fim" id="data-fim" class="input-date" >
-      <label for="data-fim" id="data-fim" class="label-input">Data de fim</label>
-    </div>
-
-    <div class="input-group">
-      <textarea name="" id="" class="textarea"></textarea>
-      <label for="cid" class="label">- Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular:</label>
-    </div>
-
-    <p>- Selecione a cópia digitalizada do atestado médico da pessoa portadora de deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.</p>
-
-    <div class="input-group">
-      <input type="file" name="documento" id="file-input" class="input-file">
-      <label for="documento">SELECIONE (PNG, JPG, PDF)Cópia digitalizada do atestado médico <strong>(OBRIGATÓRIO)</strong></label>
-      <span id="file-name"></span>	
-      <div id="image-preview"></div>
-    </div>
-				
 		<div class="buttons">
       <button onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
       <button type="submit">
