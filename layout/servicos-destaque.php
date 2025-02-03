@@ -5,13 +5,13 @@
   <div class="servicos">
     <a href="../pages/formulario-idoso.php">
       <img src="../assets/img/IconeIdoso.png" alt="">
-      <span>Formulário do Idoso</span>
+      <span>Cartão do Idoso</span>
     </a>
   </div>
   <div class="servicos">
     <a href="../pages/cartao-deficiente.php">
       <img src="../assets/img/IconeDeficiente.png" alt="">
-      <span>Formulário do Deficiente</span>
+      <span>Cartão do Deficiente</span>
     </a>
   </div>
 </div>
