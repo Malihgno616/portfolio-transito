@@ -213,8 +213,8 @@ $deficiencias = [
     </div>
 
     <div class="input-group">
-      <textarea name="cid" id="" class="textarea"></textarea>
-      <label for="cid" class="label">- Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular:</label>
+      <textarea name="cid" id="" class="textarea" placeholder="Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular"></textarea>
+      
     </div>
 
     <p>- Selecione a cópia digitalizada do atestado médico da pessoa portadora de deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.</p>

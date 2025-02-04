@@ -304,7 +304,6 @@
   }
 }
 
-/* Estilo para tablets (telas médias) */
 @media (max-width: 1024px) {
   .title {
     padding: 10px;
@@ -319,12 +318,12 @@
   .container {
     .form {
       padding: 1.5rem;
-      flex-direction: column; /* Formulário empilhado em telas médias */
+      flex-direction: column;
       gap: 1.5rem;
     }
 
     .input-group {
-      width: 100%; /* Inputs ocupando 100% da largura */
+      width: 100%;
       margin-bottom: 1.5rem;
     }
   }
@@ -344,37 +343,37 @@
 
   .container {
     .form {
-      padding: 1.5rem; /* Maior padding no formulário para mais espaço */
-      flex-direction: column; /* Formulário empilhado */
-      gap: 1.5rem; /* Maior espaço entre os elementos */
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     .input-group {
-      width: 100%; /* Inputs ocupando 100% da largura */
-      margin-bottom: 1.5rem; /* Mais espaço entre os campos */
+      width: 100%;
+      margin-bottom: 1.5rem;
     }
 
     .input,
     .select,
     .input-date {
       font-size: 16px;
-      height: 50px; /* Aumentei a altura para os inputs não ficarem comprimidos */
-      padding: 10px; /* Maior padding dentro dos inputs */
+      height: 50px;
+      padding: 10px;
     }
 
     .radio {
-      flex-direction: column; /* Botões de rádio empilhados */
-      gap: 1.5rem; /* Aumentei o espaçamento entre os botões */
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     .input-file-container {
       flex-direction: column;
-      gap: 1.5rem; /* Maior espaçamento entre os elementos */
+      gap: 1.5rem;
     }
 
     .buttons {
-      flex-direction: column; /* Botões empilhados */
-      gap: 1.5rem; /* Aumentei o gap entre os botões */
+      flex-direction: column;
+      gap: 1.5rem;
     }
   }
 }
