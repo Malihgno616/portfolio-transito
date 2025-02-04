@@ -1,3 +1,5 @@
+@import url(root.css);
+
 .container {
   padding: 5rem;
   h1 {
@@ -13,13 +15,13 @@
     margin-bottom: 2rem;
     a {
       text-decoration: none;
-      color: #ffffff;
+      color: #000000;
       transition: all 0.5s ease;
-      background-color: #c5b910;
+      background-color: var(--cor1);
       padding: 2px;
       border-radius: 10px;
       &:hover {
-        background-color: #777007;
+        background-color: var(--cor2);
       }
     }
   }
@@ -34,7 +36,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+
         a {
           text-decoration: none;
           color: #333;
@@ -55,7 +57,7 @@
           justify-content: center;
           align-items: center;
           text-align: center;
-          transition: all .5s ease-in;
+          transition: all 0.5s ease-in;
           &:hover {
             transform: scale(1.2);
           }
@@ -68,28 +70,27 @@
   }
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
   .container {
     h1 {
-     font-size: 2.5rem;
-     padding: 0;
+      font-size: 2.5rem;
+      padding: 0;
     }
     p {
       text-align: justify;
       font-size: 1rem;
     }
     .servicos {
-      font-size: .75rem;
+      font-size: 0.75rem;
       .icones {
         font-size: 1rem;
         width: 2rem;
         height: 2rem;
       }
       ul {
-      grid-template-columns: 1fr;
-      grid-gap: 2.5rem;
+        grid-template-columns: 1fr;
+        grid-gap: 2.5rem;
+      }
     }
-    
-  }
   }
 }
