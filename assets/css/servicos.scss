@@ -11,6 +11,17 @@
     font-weight: 300;
     text-align: center;
     margin-bottom: 2rem;
+    a {
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.5s ease;
+      background-color: #c5b910;
+      padding: 2px;
+      border-radius: 10px;
+      &:hover {
+        background-color: #777007;
+      }
+    }
   }
   .servicos {
     padding: 1rem;
