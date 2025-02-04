@@ -182,9 +182,9 @@ $deficiencias = [
     <p>O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
     <?php foreach($deficiencias as $deficiencia): ?>
       <div class="input-group">
-        <input type="checkbox" class="input-checkbox" name="deficiencia-ambulatoria" id="deficiencia-<?php echo strtolower(str_replace(" ", "-", $deficiencia)); ?>">
-        <label for="deficiencia-<?php echo strtolower(str_replace(" ", "-", $deficiencia)); ?>">
-          <?php echo $deficiencia; ?>
+        <input type="checkbox" class="input-checkbox" name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
+        <label for="deficiencia">
+          <?= $deficiencia; ?>
         </label>
       </div>
     <?php endforeach; ?>
@@ -193,13 +193,13 @@ $deficiencias = [
     <p>Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
 
     <div class="input-group">
-      <input type="radio" class="input-radio" name="restricao-medica" id="temporaria">
+      <input type="radio" class="input-radio" name="restricao-medica" value="temporaria" id="temporaria">
       <label for="temporaria">Temporária</label>
     </div>
 
     <div class="input-group">
-      <input type="radio" class="input-radio" name="restricao-medica" id="permanente" >
-      <label for="permanente" >Permanente</label>
+      <input type="radio" class="input-radio" name="restricao-medica" value="permanente" id="permanente">
+      <label for="permanente">Permanente</label>
     </div>
 
     <div class="input-group">

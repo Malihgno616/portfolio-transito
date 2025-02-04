@@ -62,8 +62,8 @@
   $crm_medico = $_POST['crm-medico'];
   $telefone_medico = $_POST['telefone-medico'];
   $local_atendimento_medico = $_POST['local-atendimento-medico'];
-  $deficiencia_ambulatoria = $_POST['deficiencia-ambulatoria'];
-  $restricao_medica = $_POST['validade-restricao'];
+  $deficiencia_ambulatoria = implode(", ", $_POST['deficiencia-ambulatoria']);
+  $restricao_medica = $_POST['restricao-medica'];
   $data_inicio = $_POST['data-inicio'];
   $data_fim = ($_POST['data-fim'] ?? null);
   if ($data_fim === '') {
@@ -90,6 +90,7 @@
 ?>
 
 <?php 
+    
   // Envio dos dados
   $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
 
@@ -132,12 +133,12 @@
     $img_atestado_medico 
   );
 
-    if(isset($copia_rg_beneficiario)){
-      mysqli_stmt_send_long_data($stmt, 17, $copia_rg_beneficiario);
+    if(isset($img_rg_beneficiario)){
+      mysqli_stmt_send_long_data($stmt, 17, $img_rg_beneficiario);
     }
 
-    if(isset($atestado_medico)){
-      mysqli_stmt_send_long_data($stmt, 27, $atestado_medico);
+    if(isset($img_atestado_medico)){
+      mysqli_stmt_send_long_data($stmt, 27, $img_atestado_medico);
     }
 
     $executed = mysqli_stmt_execute($stmt);
