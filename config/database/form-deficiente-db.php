@@ -41,7 +41,7 @@
   $expedido_beneficiario = $_POST['expedido-beneficiario'];
   $cnh_beneficiario = $_POST['cnh-beneficiario'] ?? null;
   $validade_cnh_beneficiario = isset($_POST['validade-cnh-beneficiario']) && $_POST['validade-cnh-beneficiario'] !== '' ? $_POST['validade-cnh-beneficiario'] : null;
-  $email_beneficiairo = $_POST['email-beneficiario'] ?? null;
+  $email_beneficiario = $_POST['email-beneficiario'] ?? null;
 
   // imagem do rg do beneficiario
   if (isset($_FILES['copia-rg-beneficiario']['tmp_name']) && $_FILES['copia-rg-beneficiario']['error'] != ""){
@@ -87,12 +87,62 @@
     exit;
   }
 
+  // Dados do representante
+  $nome_representante = $_POST['nome-representante'] ?? null;
+  $email_representante = $_POST['email-representante'] ?? null;
+  $endereco_representante = $_POST['endereco-representante'] ?? null;
+  $num_representante = $_POST['numero-representante'] ?? null;
+  $complemento_representante = $_POST['complemento-representante'] ?? null;
+  $bairro_representante = $_POST['bairro-representante'] ?? null;
+  $cep_representante = $_POST['cep-representante'] ?? null;
+  $cidade_representante = $_POST['cidade-representante'] ?? null;
+  $uf_representante = $_POST['uf-representante'] ?? null;
+  if ($uf_representante === 'selecione' || $uf_representante === '') {
+    $uf_representante = null; 
+  }
+  $tel_representante = $_POST['telefone-representante'] ?? null;
+  $rg_representante = $_POST['rg-representante'] ?? null;
+  $expedicao_representante = $_POST['expedicao-representante'] ?? null;
+  $expedido_representante = $_POST['expedido-representante'] ?? null;
+
+  if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
+      $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
+      $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf']; // 
+      if (in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)) {
+          $imagem_rg_representante = file_get_contents($copia_rg_representante);
+      } else {
+          echo "Arquivo não permitido. Somente imagens JPEG, PNG e PDF são aceitas.";
+          exit;
+      }
+    } elseif (empty($_FILES['copia-rg-representante']['name'])) {
+        $imagem_rg_representante = null;
+    } else {
+        echo "Erro no envio do arquivo da cópia do RG do idoso: " . $_FILES['copia-rg-representante']['error'];
+        exit;
+    }   
+
+  if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] == 0) {
+    $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
+    if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
+        $imagem_comp_representante = file_get_contents($comprovante_representante); 
+    } else {
+        echo "Arquivo não permitido";
+        exit;
+    }
+  } elseif (empty($_FILES['comprovante-representante']['name'])) {
+        $imagem_comp_representante = null;
+  } else {
+      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
+      exit;
+  }
+
 ?>
 
 <?php 
     
   // Envio dos dados
-  $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
+  $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico,nome_representante, email_representante, endereco_representante, num_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
 
   $stmt = mysqli_prepare($conn, $query);
   if ($stmt === false) {
@@ -102,7 +152,7 @@
 
   mysqli_stmt_bind_param(
     $stmt,
-    "ssssssssssssssssbssssssssssb", 
+    "ssssssssssssssssbssssssssssbsssssssssssssbb", 
     $nome_beneficiario,
     $nasc_beneficiario,
     $genero_beneficiario,
@@ -130,7 +180,22 @@
     $data_inicio,
     $data_fim,
     $cid,
-    $img_atestado_medico 
+    $img_atestado_medico,
+    $nome_representante,
+    $email_representante,
+    $endereco_representante,
+    $num_representante,
+    $complemento_representante,
+    $bairro_representante,
+    $cep_representante,
+    $cidade_representante,
+    $uf_representante,
+    $tel_representante,
+    $rg_representante,
+    $expedicao_representante,
+    $expedido_representante,
+    $imagem_rg_representante,
+    $imagem_comp_representante
   );
 
     if(isset($img_rg_beneficiario)){
@@ -139,6 +204,14 @@
 
     if(isset($img_atestado_medico)){
       mysqli_stmt_send_long_data($stmt, 27, $img_atestado_medico);
+    }
+
+    if(isset($imagem_rg_representante)){
+      mysqli_stmt_send_long_data($stmt, 42, $imagem_rg_representante);
+    }
+
+    if(isset($imagem_comp_representante)){
+      mysqli_stmt_send_long_data($stmt, 43, $imagem_comp_representante);
     }
 
     $executed = mysqli_stmt_execute($stmt);
