@@ -169,7 +169,7 @@ $array_generos = [
 			<div class="input-file-container">
 				
 				<div class="input-file">
-					<input type="file" name="copia-rg-idoso" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+					<input type="file" name="copia-rg-idoso" id="file-input" required placeholder="Cópia do RG" class="file-input file" accept="image/*">
 					<label for="copia-rg-idoso">Selecione(JPG, PNG ou PDF) a cópia do RG do idoso ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
 					<span id="file-name"></span>						
 				</div>
