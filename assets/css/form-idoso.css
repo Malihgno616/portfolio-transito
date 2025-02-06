@@ -1,0 +1,109 @@
+@import url(root.css);
+
+.title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 1rem;
+}
+
+.title > h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--cor-titulo);
+}
+
+.title > h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--cor-titulo);
+}
+
+.title > p {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--cor-txt);
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #ebebeb63;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #ffffffaf;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.1);
+}
+
+.form .input-group {
+  padding: 1rem;
+}
+
+.input-group > .input {
+  font-size: 2rem;
+  width: 100%;
+  padding: 0.55rem;
+  color: var(--cor-txt);
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.493);
+  font-weight: 300;
+  outline: 0;
+}
+
+.input-group > .input-date {
+  font-size: 1.25rem;
+  width: 100%;
+  border: none;
+  font-weight: 300;
+}
+
+.buttons {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.buttons > button {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: var(--cor-btn);
+  transition: all 0.5s ease;
+  color: #000000;
+}
+
+.buttons > button:hover {
+  filter: brightness(1.2);
+}
+
+#representante h1 {
+  text-align: center;
+  padding: 3rem;
+  margin-bottom: 1rem;
+  color: var(--cor-titulo);
+  font-weight: 300;
+}
+
+#representante .input-group {
+  margin-bottom: 1rem;
+}

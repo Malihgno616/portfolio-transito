@@ -36,13 +36,15 @@ $array_generos = [
 ];
 
 ?>
-<div class="title">
-	<h1>Cartão do Idoso</h1>
-	<p>Preencha o formulário abaixo</p>
-	<p> Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
-</div>
+
 
 <div class="container">
+
+	<div class="title">
+		<h1>Cartão do Idoso</h1>
+		<h2>Preencha o formulário abaixo</h2>
+		<p> Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
+	</div>
 
 	<form  action="../config/database/form-idoso-db.php" method="post" enctype="multipart/form-data" class="form animate__animated animate__fadeIn">
 		
@@ -146,7 +148,7 @@ $array_generos = [
 		
 		<div class="input-group">
 			
-			<div class="radio input">
+			<div class="radio-input">
 				
 				<p>Representante: </p>
 				
