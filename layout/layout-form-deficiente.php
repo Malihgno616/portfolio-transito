@@ -49,26 +49,33 @@ $deficiencias = [
 ?>
 
 <div class="container">
-	<form action="../config/database/form-deficiente-db.php" method="post" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
-		<h1 class="title">Informações do Beneficiário</h1>
+
+  <div class="title">
+		<h1>Cartão do Deficiente Físico</h1>
+		<h2>Preencha o formulário abaixo</h2>
+		<p> Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
+	</div>
+
+  <form action="../config/database/form-deficiente-db.php" method="post" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
+		
 		<div class="input-group">
       <input type="text" name="nome-beneficiario" required class="input">
       <label for="beneficiario" class="label-input">Nome do Beneficiário</label>
     </div>
 
     <div class="input-group">
+      <label for="nascimento-beneficiario" class="label-date">Data de Nascimento</label>
       <input type="date" name="nascimento-beneficiario" required class="input-date">
-      <label for="nascimento-beneficiario" class="label-input">Data de Nascimento</label>
     </div>
 
     <div class="input-group">
+      <label for="genero-beneficiario" class="label-select">Sexo</label>
       <select name="genero-beneficiario" required id="genero-deficiente" class="select">
         <option value="selecione">Selecione</option>
         <?php foreach ($array_generos as $genero) {
           echo "<option value='$genero'>$genero</option>";
         } ?>
       </select>
-      <label for="genero-beneficiario" class="label-input">Sexo</label>
     </div>
 
     <div class="input-group">
@@ -102,13 +109,13 @@ $deficiencias = [
     </div>
 
     <div class="input-group">
+      <label for="uf-deficiente" class="label-select">Estado</label>
       <select name="uf-beneficiario" class="select" required >
         <option value="selecione">Selecione...</option>
         <?php foreach ($estados as $estado) {
           echo "<option value='$estado'>$estado</option>";
         }?>
       </select>
-      <label for="uf-deficiente" class="label-input">Estado</label>
     </div>
 
     <div class="input-group">
@@ -123,8 +130,8 @@ $deficiencias = [
     </div>
 
     <div class="input-group">
+      <label for="expedicao-beneficiario" class="label-date">Data Expedição</label>
       <input type="date" name="expedicao-beneficiario" required id="" class="input-date">
-      <label for="expedicao-beneficiario" class="label-input">Data Expedição</label>
     </div>
    <div class="input-group">
       <input type="text" name="expedido-beneficiario" required class="input"/>
@@ -137,8 +144,8 @@ $deficiencias = [
     </div>
 
     <div class="input-group">
+      <label for="validade-cnh-beneficiario" class="label-date">Validade da CNH</label>
       <input type="date" name="validade-cnh-beneficiario" class="input-date">
-      <label for="validade-cnh-beneficiario" class="label-input">Validade da CNH</label>
     </div>
 
     <div class="input-group">
@@ -161,7 +168,9 @@ $deficiencias = [
 			
 		</div>
     
-		<h1 class="title">Informações do Médico</h1>
+		<div class="title">
+      <h2>Informações do Médico</h2>
+    </div>
     <div class="input-group">
       <input type="text" name="nome-medico" id="" required class="input">
       <label for="nome" class="label-input">Nome do médico </label>
@@ -178,7 +187,9 @@ $deficiencias = [
       <input type="text" name="local-atendimento-medico" class="input" required>
       <label for="" class="label-input">Local de atendimento (Rua, AV)</label>
     </div>
-    <h1 class="title">Informações Médicas</h1>
+    <div class="title">
+      <h2>Informações Médicas</h2>
+    </div>
     <p>O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
     <?php foreach($deficiencias as $deficiencia): ?>
       <div class="input-group">
@@ -203,13 +214,13 @@ $deficiencias = [
     </div>
 
     <div class="input-group">
+      <label for="data-inicio" id="data-inicio" class="label-date">Data de início</label>
       <input type="date" name="data-inicio" id="data-inicio" required class="input-date">
-      <label for="data-inicio" id="data-inicio" class="label-input">Data de início</label>
     </div>
 
     <div class="input-group">
-      <input type="date" name="data-fim" id="data-fim" class="input-date" >
-      <label for="data-fim" id="data-fim" class="label-input">Data de fim</label>
+      <label for="data-fim" id="data-fim" class="label-date">Data de fim</label>
+      <input type="date" name="data-fim" id="data-fim" class="input-date">     
     </div>
 
     <div class="input-group">

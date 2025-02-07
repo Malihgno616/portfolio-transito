@@ -1,0 +1,197 @@
+@import url(root.css);
+
+.title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 1rem;
+}
+
+.title > h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--cor-titulo);
+}
+
+.title > h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--cor-titulo);
+}
+
+.title > p {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--cor-txt);
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #ebebeb63;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #ffffffaf;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.1);
+}
+
+.form .input-group {
+  padding: 1rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group > .input {
+  font-size: 2rem;
+  width: 100%;
+  padding: 0.55rem;
+  color: var(--cor-txt);
+  border: none;
+  border-bottom: 1px solid var(--cor5);
+  font-weight: 300;
+  transition: all 0.5s ease;
+  outline: 0;
+}
+
+.input-group > .input-date {
+  font-size: 1.25rem;
+  width: 100%;
+  border: none;
+  font-weight: 300;
+  position: relative;
+  padding: 0.55rem;
+  color: var(--cor-txt);
+  border-bottom: 1px solid var(--cor5);
+  transition: all 0.5s ease;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.input-group > .label-date:focus > .input-date {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-56%);
+  color: var(--cor-label);
+}
+
+.label-date {
+  color: var(--cor-label);
+}
+
+.input-group > .input-date:focus {
+  border-bottom: 1px solid var(--cor1);
+}
+
+.input-group > .input-date:focus > .label-date:focus {
+  color: var(--cor2);
+}
+
+.label-input {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-56%);
+  transition: transform 0.5s ease, font-size 0.5s ease;
+  color: var(--cor-label);
+}
+
+.input:focus {
+  border-bottom: 1px solid var(--cor1);
+}
+
+.input-group > .input:focus + .label-input,
+.input-group > .input:valid + .label-input {
+  font-size: 0.8rem;
+  transform: translateY(-50px);
+  color: var(--cor2);
+}
+
+.select {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--cor5);
+}
+
+.label-select {
+  color: var(--cor-label);
+}
+
+.buttons {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.buttons > button {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: var(--cor-btn);
+  transition: all 0.5s ease;
+  color: #000000;
+}
+
+.buttons > button:hover {
+  filter: brightness(1.2);
+}
+
+#representante h1 {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  color: var(--cor-titulo);
+  font-weight: 300;
+}
+
+#representante .input-group {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input-file {
+  padding: 2rem;
+  border: 2px solid var(--cor3);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.input-file:hover {
+  border-color: var(--cor1);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file:hover {
+  color: var(--cor2);
+}
