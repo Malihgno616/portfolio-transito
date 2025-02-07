@@ -54,14 +54,19 @@
   padding: 1rem;
 }
 
+.input-group {
+  position: relative;
+}
+
 .input-group > .input {
   font-size: 2rem;
   width: 100%;
   padding: 0.55rem;
   color: var(--cor-txt);
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.493);
+  border-bottom: 1px solid var(--cor5);
   font-weight: 300;
+  transition: all 0.5s ease;
   outline: 0;
 }
 
@@ -70,6 +75,64 @@
   width: 100%;
   border: none;
   font-weight: 300;
+  position: relative;
+  padding: 0.55rem;
+  color: var(--cor-txt);
+  border-bottom: 1px solid var(--cor5);
+  transition: all 0.5s ease;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.input-group > .label-date:focus > .input-date {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-56%);
+  color: var(--cor-label);
+}
+
+.label-date {
+  color: var(--cor-label);
+}
+
+.input-group > .input-date:focus {
+  border-bottom: 1px solid var(--cor1);
+}
+
+.input-group > .input-date:focus > .label-date:focus {
+  color: var(--cor2);
+}
+
+.label-input {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-56%);
+  transition: transform 0.5s ease, font-size 0.5s ease;
+  color: var(--cor-label);
+}
+
+.input:focus {
+  border-bottom: 1px solid var(--cor1);
+}
+
+.input-group > .input:focus + .label-input,
+.input-group > .input:valid + .label-input {
+  font-size: 0.8rem;
+  transform: translateY(-50px);
+  color: var(--cor2);
+}
+.select {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--cor5);
+}
+
+.label-select {
+  color: var(--cor-label);
 }
 
 .buttons {
@@ -98,12 +161,186 @@
 
 #representante h1 {
   text-align: center;
-  padding: 3rem;
+  padding: 2rem;
   margin-bottom: 1rem;
   color: var(--cor-titulo);
   font-weight: 300;
 }
 
 #representante .input-group {
+  width: 100%;
   margin-bottom: 1rem;
+}
+
+.input-group > .radio-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--cor-txt);
+  cursor: pointer;
+}
+
+.input-radio {
+  display: none;
+}
+
+.input-radio + label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+
+label > .custom-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--cor3);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 20px;
+  height: 20px;
+}
+
+label > .custom-radio::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--cor2);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.input-radio:checked + label > .custom-radio::before {
+  opacity: 1;
+  border-color: var(--cor1);
+  background-color: var(--cor1);
+}
+
+.input-file {
+  padding: 2rem;
+  border: 2px solid var(--cor3);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.input-file:hover {
+  border-color: var(--cor1);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file:hover {
+  color: var(--cor2);
+}
+
+@media (max-width: 480px) {
+  .title > h1 {
+    font-size: 1.55rem;
+    text-align: center;
+  }
+
+  .title > h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .title > p {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+    margin: 10px auto;
+  }
+
+  .form {
+    padding: 0.5rem;
+  }
+
+  .input-group > .input {
+    font-size: 1rem;
+  }
+
+  .input-group > .input-date {
+    font-size: 0.8rem;
+  }
+
+  .buttons > button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  #representante h1 {
+    padding: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  #representante .input-group {
+    margin-bottom: 0.2rem;
+  }
+
+  .input-group > .radio-input {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title > h1 {
+    font-size: 3rem;
+  }
+
+  .title > h2 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+    margin: 20px auto;
+  }
+
+  .form {
+    padding: 1rem;
+  }
+
+  .input-group > .input {
+    font-size: 1.5rem;
+  }
+
+  .input-group > .input-date {
+    font-size: 1rem;
+  }
+
+  .buttons > button {
+    padding: 0.3rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  #representante h1 {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #representante .input-group {
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group > .radio-input {
+    font-size: 1rem;
+  }
 }
