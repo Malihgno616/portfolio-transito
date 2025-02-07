@@ -103,6 +103,9 @@
   $tel_representante = $_POST['telefone-representante'] ?? null;
   $rg_representante = $_POST['rg-representante'] ?? null;
   $expedicao_representante = $_POST['expedicao-representante'] ?? null;
+  if($expedicao_representante === '' ){
+    $expedicao_representante = null;
+  }
   $expedido_representante = $_POST['expedido-representante'] ?? null;
 
   if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {

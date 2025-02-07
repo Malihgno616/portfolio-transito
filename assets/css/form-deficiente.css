@@ -195,3 +195,99 @@
 .file:hover {
   color: var(--cor2);
 }
+
+@media (max-width: 480px) {
+  .title > h1 {
+    font-size: 1.55rem;
+    text-align: center;
+  }
+
+  .title > h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .title > p {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+    margin: 10px auto;
+  }
+
+  .form {
+    padding: 0.5rem;
+  }
+
+  .input-group > .input {
+    font-size: 1rem;
+  }
+
+  .input-group > .input-date {
+    font-size: 0.8rem;
+  }
+
+  .buttons > button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  #representante h1 {
+    padding: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  #representante .input-group {
+    margin-bottom: 0.2rem;
+  }
+
+  .input-group > .radio-input {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title > h1 {
+    font-size: 3rem;
+  }
+
+  .title > h2 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+    margin: 20px auto;
+  }
+
+  .form {
+    padding: 1rem;
+  }
+
+  .input-group > .input {
+    font-size: 1.5rem;
+  }
+
+  .input-group > .input-date {
+    font-size: 1rem;
+  }
+
+  .buttons > button {
+    padding: 0.3rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  #representante h1 {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #representante .input-group {
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group > .radio-input {
+    font-size: 1rem;
+  }
+}
