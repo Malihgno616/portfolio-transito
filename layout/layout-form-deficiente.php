@@ -214,13 +214,13 @@ $deficiencias = [
     </div>
 
     <div class="input-group">
-      <label for="data-inicio" id="data-inicio" class="label-date">Data de início</label>
       <input type="date" name="data-inicio" id="data-inicio" required class="input-date">
+      <label for="data-inicio" id="data-inicio" class="label-date">Data de início</label>
     </div>
 
     <div class="input-group">
-      <label for="data-fim" id="data-fim" class="label-date">Data de fim</label>
       <input type="date" name="data-fim" id="data-fim" class="input-date">     
+      <label for="data-fim" id="data-fim" class="label-date">Data de fim</label>
     </div>
 
     <div class="input-group">
@@ -239,7 +239,7 @@ $deficiencias = [
 		
     <div class="input-group">
 			
-			<div class="radio input">
+			<div class="radio-input">
 				
 				<p>Representante: </p>
 				
@@ -302,6 +302,9 @@ $deficiencias = [
 					</div>
 					
 					<div class="input-group" id="representante">
+            <label for="uf" class="label-select">
+              UF(Unidade Federal)
+            </label>
 						<div class="input-group" id="representante">
 							<select name="uf-representante" class="select">
 								<option value="selecione">Selecione...</option>
@@ -309,9 +312,6 @@ $deficiencias = [
 									echo "<option value='$uf'>$uf</option>";
 								}?>
 							</select>
-						<label for="uf" class="label-input">
-							UF(Unidade Federal)
-						</label>
 					</div>
 
 					<div class="input-group" id="representante">
@@ -325,8 +325,8 @@ $deficiencias = [
 					</div>
 					
 					<div class="input-group" id="representante">
-						<input type="date" name="expedicao-representante" id="" class="input-date">
-						<label for="" class="label-input">Data de Expedição</label>
+            <label for="" class="label-date">Data de Expedição</label>
+            <input type="date" name="expedicao-representante" id="" class="input-date">
 					</div>
 					
 					<div class="input-group">

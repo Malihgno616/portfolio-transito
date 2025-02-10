@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(root.css);
 
 .title {
@@ -13,12 +14,14 @@
   font-size: 4rem;
   font-weight: 300;
   color: var(--cor-titulo);
+  text-align: center;
 }
 
 .title > h2 {
   font-size: 2rem;
   font-weight: 300;
   color: var(--cor-titulo);
+  text-align: center;
 }
 
 .title > p {
@@ -196,6 +199,219 @@
   color: var(--cor2);
 }
 
+.input-group > .textarea {
+  width: 100%;
+  height: 250px;
+  font-size: 1.25rem;
+  padding: 1rem;
+  border: 2px solid var(--cor3);
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  resize: none;
+  outline: none;
+}
+
+.input-group > .textarea:focus {
+  border: 2px solid var(--cor1);
+}
+
+.input-group > .input-checkbox {
+  margin-left: 1rem;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  background-color: var(--cor0);
+  border: 1px solid var(--cor5);
+  border-radius: 15%;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.input-group > .input-checkbox:checked {
+  background-color: var(--cor1);
+  border: 1px solid var(--cor5);
+}
+
+.input-group > .input-radio {
+  margin-left: 1rem;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  background-color: var(--cor0);
+  border: 1px solid var(--cor5);
+  transition: all 0.5s ease;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.input-group > .input-radio:focus {
+  box-shadow: 0 0 0 2px var(--cor2);
+  background-color: var(--cor2);
+}
+
+.input-group > .input-radio:checked {
+  background-color: var(--cor1);
+  border: 1px solid var(--cor5);
+}
+
+.input-group > .input-radio:checked:focus {
+  box-shadow: 0 0 0 2px var(--cor1);
+}
+
+.input-group > .radio-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--cor-txt);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.input-group > .radio-input > .input-radio {
+  display: none;
+}
+
+.input-group > .radio-input > .input-radio + label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.input-group > .radio-input > .input-radio + label > .custom-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--cor3);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.input-group > .radio-input > .input-radio:checked + label > .custom-radio {
+  border-color: var(--cor1);
+}
+
+.input-group
+  > .radio-input
+  > .input-radio:checked
+  + label
+  > .custom-radio::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--cor1);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+@media (max-width: 480px) {
+  .title > h1 {
+    font-size: 1.55rem;
+  }
+
+  .title > h2 {
+    font-size: 1rem;
+  }
+
+  .title > p {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+    margin: 10px auto;
+  }
+
+  .form {
+    padding: 0.5rem;
+  }
+
+  .input-group > .input {
+    font-size: 1rem;
+  }
+
+  .input-group > .input-date {
+    font-size: 0.8rem;
+  }
+
+  .buttons > button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  #representante h1 {
+    padding: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  #representante .input-group {
+    margin-bottom: 0.2rem;
+  }
+
+  .input-group > .radio-input {
+    font-size: 0.8rem;
+  }
+  .input-group > .textarea {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title > h1 {
+    font-size: 3rem;
+  }
+
+  .title > h2 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+    margin: 20px auto;
+  }
+
+  .form {
+    padding: 1rem;
+  }
+
+  .input-group > .input {
+    font-size: 1.5rem;
+  }
+
+  .input-group > .input-date {
+    font-size: 1rem;
+  }
+
+  .buttons > button {
+    padding: 0.3rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  #representante h1 {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #representante .input-group {
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group > .radio-input {
+    font-size: 1rem;
+  }
+}
 @media (max-width: 480px) {
   .title > h1 {
     font-size: 1.55rem;
