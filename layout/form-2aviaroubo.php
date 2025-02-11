@@ -4,7 +4,7 @@
     <h2>Siga as etapas para solicitar o cartão</h2>
     <p>Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
   </div>
-  <form action="" method="post" class="form">
+  <form action="../config/database/2aVia-db.php" method="post" class="form">
       <div class="title">
         <h2>
           2ª via do cartão
@@ -14,11 +14,11 @@
         </p>
       </div>
       <div class="input-group">
-          <input type="text" name="rg-beneficiario" class="input" required>
+          <input type="text" name="rg-solicitante" class="input" required>
           <label for="" class="label-input">RG do beneficiário</label>
       </div>
       <div class="input-file">
-					<input type="file" name="boletim" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
+					<input type="file" name="boletim-ocorrencia" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
 					<label for="copia-rg-idoso">Selecione(JPG, PNG ou PDF) a cópia do boletim de ocorrência <strong>(OBRIGATÓRIO)</strong></label>
 					<span id="file-name"></span>						
 				</div>
