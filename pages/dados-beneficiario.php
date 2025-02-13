@@ -40,9 +40,10 @@ $result = mysqli_query($conn, $query_select);
 if (mysqli_num_rows($result) > 0) {
   // Pega a linha de dados
   $beneficiario = mysqli_fetch_assoc($result);
-} else {
-  echo "Nenhum beneficiário encontrado com esse RG.";
-}
+} 
+// else {
+//   echo "Nenhum beneficiário encontrado com esse RG.";
+// }
 
 ?>
 
@@ -117,35 +118,35 @@ if (mysqli_num_rows($result) > 0) {
     }
     ?>
   </div>
-  <div class="dados-representante">
+  <div class="dados-representante animate__animated animate__fadeIn">
     <h1>Dados do representante</h1>
     <?php             
       if(isset($beneficiario)){
-        echo "<p><strong>Nome: </strong>" . htmlspecialchars($beneficiario['nome_representante']) . "</p>";
+        echo "<p><strong>Nome do Representante: </strong>" . (!empty($beneficiario['nome_representante']) ? htmlspecialchars($beneficiario['nome_representante']) : 'Não informado') . "</p>";
 
         echo "<p><strong>Email: </strong>" . (!empty($beneficiario['email_representante']) ? htmlspecialchars($beneficiario['email_representante']) : 'Não informado') . "</p>";
 
-        echo "<p><strong>Endereço: </strong> " . htmlspecialchars($beneficiario['endereco_representante']) . "</p>";
+        echo "<p><strong>Endereço do Representante: </strong> " . (!empty($beneficiario['endereco_representante']) ? htmlspecialchars($beneficiario['endereco_representante']) : 'Não informado') . "</p>";
 
         echo "<p><strong>Complemento: </strong>" . (!empty($beneficiario['complemento_representante']) ? htmlspecialchars($beneficiario['complemento_representante']) : 'Não informado') . "</p>";
 
-        echo "<p><strong>Número: </strong>" . htmlspecialchars($beneficiario['num_representante']) . "</p>";
+        echo "<p><strong>Número: </strong>" . (!empty($beneficiario['num_representante']) ? htmlspecialchars($beneficiario['num_representante']) : 'Não informado') . "</p>";
 
-        echo "<p><strong>Bairro: </strong>" . htmlspecialchars($beneficiario['bairro_representante']) . "</p>";
+        echo "<p><strong>Bairro: </strong>" . (!empty($beneficiario['bairro_representante']) ? htmlspecialchars($beneficiario['bairro_representante']) : 'Não informado') . "</p>";
+                
+        echo "<p><strong>CEP: </strong>" . (!empty($beneficiario['cep_representante']) ? htmlspecialchars($beneficiario['cep_representante']) : 'Não informado') . "</p>";
+                
+        echo "<p><strong>Cidade: </strong>" . (!empty($beneficiario['cidade_representante']) ? htmlspecialchars($beneficiario['cidade_representante']) : 'Não informado') . "</p>";
         
-        echo "<p><strong>CEP: </strong>" . htmlspecialchars($beneficiario['cep_representante']) . "</p>";
-        
-        echo "<p><strong>Cidade: </strong>" . htmlspecialchars($beneficiario['cidade_representante']) . "</p>";
-        
-        echo "<p><strong>UF(Unidade Federal): </strong>" . htmlspecialchars($beneficiario['uf_representante']) . "</p>";
+        echo "<p><strong>UF(Unidade Federal): </strong>" . (!empty($beneficiario['uf_representante']) ? htmlspecialchars($beneficiario['uf_representante']) : 'Não informado') . "</p>";
         
         echo "<p><strong>Telefone: </strong>" . (!empty($beneficiario['telefone_representante']) ? htmlspecialchars($beneficiario['telefone_representante']) : 'Não informado') . "</p>";
         
-        echo "<p><strong>RG: </strong>" . htmlspecialchars($beneficiario['rg_representante']) . "</p>";
+        echo "<p><strong>RG: </strong>" . (!empty($beneficiario['rg_representante']) ? htmlspecialchars($beneficiario['rg_representante']) : 'Não informado') . "</p>";
         
-        echo "<p><strong>Data de Expedição: </strong> " . date('d/m/Y', strtotime(htmlspecialchars($beneficiario['expedicao_representante']))) . "</p>";
+        echo "<p><strong>Data de Expedição do Representante: </strong> " . (!empty($beneficiario['expedicao_representante']) ? date('d/m/Y', strtotime(htmlspecialchars($beneficiario['expedicao_representante']))) : 'Não informado') . "</p>";
         
-        echo "<p><strong>Expedido por: </strong>" . htmlspecialchars($beneficiario['expedido_representante']) . "</p>";
+        echo "<p><strong>Expedido por: </strong>" . (!empty($beneficiario['expedido_representante']) ? htmlspecialchars($beneficiario['expedido_representante']) : 'Não informado') . "</p>";
       
       } else {
         
@@ -156,6 +157,10 @@ if (mysqli_num_rows($result) > 0) {
   
   </div>
 
+  <div class="buttons">
+    <button onclick="window.history.back()">Voltar</button>
+    <button>Solicitar</button>
+  </div>
   <?php     
     include_once('../layout/footer.php');
   ?>

@@ -55,6 +55,33 @@
   width: 500px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  max-width: 300px;
+}
+
+.buttons button {
+  flex-basis: 45%;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: none;
+  background-color: var(--cor-btn);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttons button:hover {
+  filter: brightness(1.1);
+}
+
+.buttons button:active {
+  filter: brightness(1.1);
+}
+
 @media (max-width: 768px) {
   .dados-beneficiario {
     width: calc(100% - 2rem);
