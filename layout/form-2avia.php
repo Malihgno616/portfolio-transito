@@ -4,7 +4,7 @@
     <h2>Siga as etapas para solicitar o cartão</h2>
     <p>Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
   </div>
-  <form action="../config/database/2aVia-db.php" method="post" class="form">
+  <form action="../pages/dados-beneficiario.php" method="post" class="form">
       <div class="title">
         <h2>
           2ª via do cartão
@@ -20,7 +20,7 @@
       <div class="buttons">
         <button onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
       <button type="submit">
-        Enviar<i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+        Próximo<i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
       </button>     
       </div>
   </form>

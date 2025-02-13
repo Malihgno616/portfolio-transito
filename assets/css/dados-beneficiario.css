@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@import url(root.css);
+
+.dados-beneficiario {
+  margin: 50px auto;
+  width: 700px;
+  padding: 2rem;
+  box-shadow: 1px 1px 5px 3px var(--card-destaque);
+  border-radius: 10px;
+}
+
+.dados-beneficiario > h1 {
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: var(--cor-titulo);
+}
+
+.dados-beneficiario > p {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.dados-beneficiario > p > strong {
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .dados-beneficiario {
+    width: calc(100% - 2rem);
+    padding: 1rem;
+  }
+}
