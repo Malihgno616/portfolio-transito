@@ -117,7 +117,44 @@ if (mysqli_num_rows($result) > 0) {
     }
     ?>
   </div>
+  <div class="dados-representante">
+    <h1>Dados do representante</h1>
+    <?php             
+      if(isset($beneficiario)){
+        echo "<p><strong>Nome: </strong>" . htmlspecialchars($beneficiario['nome_representante']) . "</p>";
+
+        echo "<p><strong>Email: </strong>" . (!empty($beneficiario['email_representante']) ? htmlspecialchars($beneficiario['email_representante']) : 'Não informado') . "</p>";
+
+        echo "<p><strong>Endereço: </strong> " . htmlspecialchars($beneficiario['endereco_representante']) . "</p>";
+
+        echo "<p><strong>Complemento: </strong>" . (!empty($beneficiario['complemento_representante']) ? htmlspecialchars($beneficiario['complemento_representante']) : 'Não informado') . "</p>";
+
+        echo "<p><strong>Número: </strong>" . htmlspecialchars($beneficiario['num_representante']) . "</p>";
+
+        echo "<p><strong>Bairro: </strong>" . htmlspecialchars($beneficiario['bairro_representante']) . "</p>";
+        
+        echo "<p><strong>CEP: </strong>" . htmlspecialchars($beneficiario['cep_representante']) . "</p>";
+        
+        echo "<p><strong>Cidade: </strong>" . htmlspecialchars($beneficiario['cidade_representante']) . "</p>";
+        
+        echo "<p><strong>UF(Unidade Federal): </strong>" . htmlspecialchars($beneficiario['uf_representante']) . "</p>";
+        
+        echo "<p><strong>Telefone: </strong>" . (!empty($beneficiario['telefone_representante']) ? htmlspecialchars($beneficiario['telefone_representante']) : 'Não informado') . "</p>";
+        
+        echo "<p><strong>RG: </strong>" . htmlspecialchars($beneficiario['rg_representante']) . "</p>";
+        
+        echo "<p><strong>Data de Expedição: </strong> " . date('d/m/Y', strtotime(htmlspecialchars($beneficiario['expedicao_representante']))) . "</p>";
+        
+        echo "<p><strong>Expedido por: </strong>" . htmlspecialchars($beneficiario['expedido_representante']) . "</p>";
+      
+      } else {
+        
+        echo "<p class='alerta'>Nenhum beneficiário encontrado com esse RG.</p>";
+      
+      }
+    ?>
   
+  </div>
 
   <?php     
     include_once('../layout/footer.php');
