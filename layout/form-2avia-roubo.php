@@ -4,7 +4,7 @@
     <h2>Siga as etapas para solicitar o cartão</h2>
     <p>Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
   </div>
-  <form action="../pages/dados-beneficiario-2aVia.php" method="post" class="form">
+  <form action="../pages/dados-beneficiario-roubo.php" method="post" class="form">
       <div class="title">
         <h2>
           2ª via do cartão
@@ -19,9 +19,9 @@
       </div>
       <div class="buttons">
         <button onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
-      <button type="submit">
-        Próximo<i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-      </button>     
+        <button type="submit">
+          Próximo<i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+        </button>     
       </div>
   </form>
 </div>
