@@ -158,7 +158,7 @@ if (mysqli_num_rows($result) > 0) {
   
   <form class="form" action="" method="post" enctype="multipart/form-data">
     <div class="title">
-      <h2>Atualizar Dados do Beneficiário</h2>
+      <h2>Preencha as informações do formulário</h2>
       <p>Após a solciitação entraremos em contato</p>
     </div>
     <div class="input-group">
