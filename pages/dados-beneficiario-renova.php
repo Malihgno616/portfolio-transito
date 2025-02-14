@@ -157,10 +157,21 @@ if (mysqli_num_rows($result) > 0) {
   
   </div>
 
-  <div class="buttons">
-    <button onclick="window.history.back()">Voltar</button>
-    <button>Solicitar</button>
-  </div>
+  <form action="../config/database/renova-cartao-db.php" method="post" class="form">
+    <div class="title">
+      <h2>Informe seu RG para renovação</h2>
+      <p>Após a solicitação entraremos em contato</p>
+    </div>
+    <div class="input-group">
+      <input type="text" name="" id="" class="input" required>
+      <label class="label-input"for="rg">RG do beneficiário:</label>
+    </div>
+    <div class="buttons">
+      <button onclick="window.history.back()">Voltar</button>
+      <button>Solicitar renovação</button>
+    </div>
+  </form>
+  
   <?php     
     include_once('../layout/footer.php');
   ?>

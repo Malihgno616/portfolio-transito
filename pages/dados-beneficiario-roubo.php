@@ -156,13 +156,24 @@ if (mysqli_num_rows($result) > 0) {
     ?>
   </div>
   
-  <form action="" method="post" enctype="multipart/form-data">
-    <h1>Boletim de ocorrêcia</h1>
-    <input type="file" name="boletim-ocorrencia" id="">
-    <label for="">Selecione(JPG, PNG ou PDF) a cópia digitalizada do boletim de ocorrêcia</label>
+  <form class="form" action="" method="post" enctype="multipart/form-data">
+    <div class="title">
+      <h2>Atualizar Dados do Beneficiário</h2>
+      <p>Após a solciitação entraremos em contato</p>
+    </div>
+    <div class="input-group">
+      <input type="text" name="" id="" class="input" required>
+      <label for="" class="label-input">RG do beneficiário: </label>
+    </div>
+    <div class="input-group">
+      <div class="input-file">
+        <input type="file" name="boletim-ocorrencia" id="" required>
+        <label for="">Selecione(JPG, PNG ou PDF) a cópia digitalizada do boletim de ocorrêcia</label>
+      </div>
+    </div>
     <div class="buttons">
       <button onclick="window.history.back()">Voltar</button>
-      <button>Solicitar</button>
+      <button>Solicitar a 2ª via</button>
     </div>
   </form>
   

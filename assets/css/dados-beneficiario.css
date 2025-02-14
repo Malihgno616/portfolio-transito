@@ -82,30 +82,137 @@
   filter: brightness(1.1);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 750px;
-  width: 100%;
-  margin: 10px auto;
-  box-shadow: 1px 1px 5px 3px var(--card-destaque);
-  border-radius: 10px;
-  padding: 2rem;
+.title > h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--cor-titulo);
 }
 
-form > input[type="file"] {
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid var(--cor-borda);
-  border-radius: 5px;
+.title > h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
+  color: var(--cor-titulo);
+}
+
+.title > p {
+  text-align: center;
   font-size: 1.25rem;
-  margin-bottom: 1rem;
+  font-weight: 300;
+  color: var(--cor-txt);
 }
 
-form > .buttons {
-  gap: 2rem;
-  margin-top: 20px;
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 700px;
+  margin: 20px auto;
+  gap: 1.2rem;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #ffffffaf;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
+}
+
+.form .input-group {
+  padding: 1rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group > .input {
+  font-size: 2rem;
+  width: 100%;
+  padding: 0.55rem;
+  color: var(--cor-txt);
+  border: none;
+  border-bottom: 1px solid var(--cor5);
+  font-weight: 300;
+  transition: all 0.5s ease;
+  outline: 0;
+}
+.label-input {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-56%);
+  transition: transform 0.5s ease, font-size 0.5s ease;
+  color: var(--cor-label);
+}
+
+.input:focus {
+  border-bottom: 1px solid var(--cor1);
+}
+.input-group > .input:focus + .label-input,
+.input-group > .input:valid + .label-input {
+  font-size: 0.8rem;
+  transform: translateY(-50px);
+  color: var(--cor2);
+}
+.buttons {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.buttons > button {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: var(--cor-btn);
+  transition: all 0.5s ease;
+  color: #000000;
+}
+
+.buttons > button:hover {
+  filter: brightness(1.2);
+}
+
+.input-group > .textarea {
+  width: 100%;
+  height: 250px;
+  font-size: 1.25rem;
+  padding: 1rem;
+  border: 2px solid var(--cor3);
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  resize: none;
+  outline: none;
+}
+
+.input-group > .textarea:focus {
+  border: 2px solid var(--cor1);
+}
+
+.input-file {
+  padding: 2rem;
+  border: 2px solid var(--cor3);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.input-file:hover {
+  border-color: var(--cor1);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file:hover {
+  color: var(--cor2);
 }
 
 @media (max-width: 768px) {
@@ -113,8 +220,23 @@ form > .buttons {
   .dados-representante {
     width: calc(100% - 2rem);
     padding: 1rem;
+    box-shadow: none;
+    border-radius: 0;
   }
-  form {
+  .form {
     padding: 1rem;
+    margin: 0 auto;
+    gap: 0.8rem;
+  }
+  .input-group {
+    padding: 0.5rem;
+  }
+  .buttons {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+  .buttons button {
+    font-size: 1.1rem;
+    padding: 0.5rem;
   }
 }
