@@ -156,13 +156,13 @@ if (mysqli_num_rows($result) > 0) {
     ?>
   </div>
   
-  <form class="form" action="" method="post" enctype="multipart/form-data">
+  <form class="form" action="../config/database/2aVia-cartao-deficiente-db-roubo.php" method="post" enctype="multipart/form-data">
     <div class="title">
       <h2>Preencha as informações do formulário</h2>
       <p>Após a solciitação entraremos em contato</p>
     </div>
     <div class="input-group">
-      <input type="text" name="" id="" class="input" required>
+      <input type="text" name="rg-beneficiario" id="" class="input" required>
       <label for="" class="label-input">RG do beneficiário: </label>
     </div>
     <div class="input-group">
