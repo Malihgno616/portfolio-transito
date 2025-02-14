@@ -34,29 +34,34 @@ try {
 
 <?php 
 
-$rg_solicitante = $_POST["rg-solicitante"];
-$num_cartao = $_POST["num-cartao"];
-$motivo_cancela = $_POST["motivo-cancelamento"];
+$rg_beneficiario = $_POST['rg-beneficiario'];
+$motivo_cancela = $_POST['motivo-cancela'];
+$verify = "SELECT * from cartao_deficiente where rg_beneficiario = '$rg_beneficiario'";
+$result = mysqli_query($conn,$verify);
 
-$query = "INSERT INTO cancelamento_cartao_deficiente (rg_solicitante, num_cartao, motivo_cancel) VALUES (?,?,?)";
+if(mysqli_num_rows($result) > 0){
 
-$stmt = mysqli_prepare($conn, $query);
+  $query = "INSERT INTO cancelamento_cartao_deficiente (rg_solicitante, motivo_cancela) values (?,?)";
+  $stmt = mysqli_prepare($conn, $query);
 
-if($stmt === false){
-  echo "Erro ao preparar a consulta: " . mysqli_error($conn);
-  exit;
+  if($stmt === false ){
+    echo "Erro ao preparar a consulta: " . mysqli_error($conn);
+    exit;
+  }
+  
+  mysqli_stmt_bind_param($stmt, "ss", $rg_beneficiario, $motivo_cancela);
+
+  $executed = mysqli_stmt_execute($stmt);
+
+  if($executed) {
+    $mensagem = "Solicitação enviada com sucesso!";
+  } else {
+    $mensagem = "Erro ao enviar dados!" . mysqli_error($conn);
+  }
+
+} else {
+  $mensagem = "RG não encontrado na tabela de cartões";
 }
-
-mysqli_stmt_bind_param($stmt, "sss", $rg_solicitante, $num_cartao, $motivo_cancela);
-
-$executed = mysqli_stmt_execute($stmt);
-
-if ($executed) {
-      $mensagem = "Solicitação enviada com sucesso!";
-    } else {
-      $mensagem = "Erro ao enviar dados: " . mysqli_error($conn);
-    }
-
 
 ?>
 
@@ -119,11 +124,7 @@ if ($executed) {
   <div>
     <?php
     // Verifica se a execução da consulta foi bem-sucedida
-    if ($executed) {
-      echo "<p>Solicitação enviada com sucesso!</p>";
-    } else {
-      echo "<p>Erro ao enviar dados: " . mysqli_error($conn) . "</p>";
-    }
+    echo "<p>$mensagem</p>";
 
     // Fecha a conexão com o banco de dados
     mysqli_close($conn);

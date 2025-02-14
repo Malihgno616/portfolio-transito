@@ -157,21 +157,21 @@ if (mysqli_num_rows($result) > 0) {
   
   </div>
 
-  <form action="../config/database/renova-cartao-db.php" method="post" class="form">
+  <form action=".././config/database/cancela-cartao-db.php" method="post" class="form">
     <div class="title">
       <h2>Informe seu RG para cancelar o cartão</h2>
       <p>Após a solicitação entraremos em contato</p>
     </div>
     <div class="input-group">
-      <input type="text" name="" id="" class="input" required>
-      <label class="label-input"for="rg">RG do beneficiário:</label>
+      <input type="text" name="rg-beneficiario" id="" class="input" required>
+      <label class="label-input"for="">RG do beneficiário:</label>
     </div>
     <div class="input-group">
       <textarea class="textarea" name="motivo-cancela" id="" placeholder="Informe o motivo do cancelamento"></textarea>
     </div>
     <div class="buttons">
       <button onclick="window.history.back()">Voltar</button>
-      <button>Solicitar renovação</button>
+      <button type="submit">Solicitar renovação</button>
     </div>
   </form>
 
