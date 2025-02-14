@@ -35,26 +35,25 @@ try {
 <?php 
 
 $rg_beneficiario = $_POST['rg-beneficiario'];
-$motivo_cancela = $_POST['motivo-cancela'];
 $verify = "SELECT * from cartao_deficiente where rg_beneficiario = '$rg_beneficiario'";
 $result = mysqli_query($conn,$verify);
 
-if(mysqli_num_rows($result) > 0){
+if(mysqli_num_rows($result)>0) {
 
-  $query = "INSERT INTO cancelamento_cartao_deficiente (rg_solicitante, motivo_cancela) values (?,?)";
+  $query = "INSERT INTO renova_cartao_deficiente (rg_solicitante) values (?)";
   $stmt = mysqli_prepare($conn, $query);
 
-  if($stmt === false ){
+  if($stmt === false) {
     echo "Erro ao preparar a consulta: " . mysqli_error($conn);
     exit;
   }
-  
-  mysqli_stmt_bind_param($stmt, "ss", $rg_beneficiario, $motivo_cancela);
+
+  mysqli_stmt_bind_param($stmt, "s", $rg_beneficiario);
 
   $executed = mysqli_stmt_execute($stmt);
 
   if($executed) {
-    $mensagem = "Solicitação para cancelamento enviada com sucesso!";
+    $mensagem = "Solicitação para renovação enviada com sucesso";
   } else {
     $mensagem = "Erro ao enviar dados!" . mysqli_error($conn);
   }

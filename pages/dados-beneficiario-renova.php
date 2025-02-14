@@ -163,12 +163,12 @@ if (mysqli_num_rows($result) > 0) {
       <p>Após a solicitação entraremos em contato</p>
     </div>
     <div class="input-group">
-      <input type="text" name="" id="" class="input" required>
+      <input type="text" name="rg-beneficiario" id="" class="input" required>
       <label class="label-input"for="rg">RG do beneficiário:</label>
     </div>
     <div class="buttons">
       <button onclick="window.history.back()">Voltar</button>
-      <button>Solicitar renovação</button>
+      <button type="submit">Solicitar renovação</button>
     </div>
   </form>
   
