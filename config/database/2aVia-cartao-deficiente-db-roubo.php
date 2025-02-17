@@ -35,16 +35,18 @@ try {
 
 $rg_beneficiario = $_POST["rg-beneficiario"];
 
-if (isset($_FILES['boletim-ocorrencia']['tmp_name']) && $_FILES['boletim-ocorrencia']['error'] === 0) {
-  $boletim_ocorrencia = $_FILES['boletim-ocorrencia']['tmp_name'];
-  $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
-  if (in_array(mime_content_type($boletim_ocorrencia), $tipos_permitidos)){
-    $imagem_boletim = file_get_contents($boletim_ocorrencia);
-  } else {
-    $mensagem = "Arquivo não permitido";
-  }
+if (isset($_FILES['boletim-ocorrencia']) && $_FILES['boletim-ocorrencia']['error'] != "") {
+    $boletim_ocorrencia = $_FILES['boletim-ocorrencia']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
+    if (in_array(mime_content_type($boletim_ocorrencia), $tipos_permitidos)) {
+        $img_boletim = file_get_contents($boletim_ocorrencia);
+    } else {
+        $mensagem = "Arquivo não permitido";
+        exit;
+    }
 } else {
-  $mensagem = "Erro no envio do arquivo do boletim de ocorrencia: " . $_FILES['boletim-ocorrencia']['error'];
+    $mensagem = "Erro ao enviar o boletim de ocorrência: " . $_FILES['boletim-ocorrencia']['error'];
+    exit;
 }
 
 $verify = "SELECT * FROM cartao_deficiente where rg_beneficiario = '$rg_beneficiario'";
@@ -61,7 +63,11 @@ if(mysqli_num_rows($result) > 0){
     exit;
   }
 
-  mysqli_stmt_bind_param($stmt,"sb",$rg_beneficiario, $imagem_boletim);
+  mysqli_stmt_bind_param($stmt,"sb",$rg_beneficiario, $boletim_ocorrencia);
+
+  if (isset($img_boletim)){
+    mysqli_stmt_send_long_data($stmt, 1, $img_boletim);
+  }
 
   $executed = mysqli_stmt_execute($stmt);
 
@@ -135,10 +141,9 @@ if(mysqli_num_rows($result) > 0){
 <body>
   <div>
     <?php
-    // Verifica se a execução da consulta foi bem-sucedida
+    
     echo "<p>$mensagem</p>";
-
-    // Fecha a conexão com o banco de dados
+   
     mysqli_close($conn);
     ?>
     <a href="../../public/index.php">Clique para voltar à página principal</a>

@@ -123,10 +123,9 @@ if(mysqli_num_rows($result) > 0){
 <body>
   <div>
     <?php
-    // Verifica se a execução da consulta foi bem-sucedida
+    
     echo "<p>$mensagem</p>";
-
-    // Fecha a conexão com o banco de dados
+    
     mysqli_close($conn);
     ?>
     <a href="../../public/index.php">Clique para voltar à página principal</a>

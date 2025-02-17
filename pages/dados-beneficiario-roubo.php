@@ -173,7 +173,7 @@ if (mysqli_num_rows($result) > 0) {
     </div>
     <div class="buttons">
       <button onclick="window.history.back()">Voltar</button>
-      <button>Solicitar a 2ª via</button>
+      <button type="submit">Solicitar a 2ª via</button>
     </div>
   </form>
   
