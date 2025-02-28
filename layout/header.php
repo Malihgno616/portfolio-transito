@@ -50,6 +50,7 @@
       <li><a href="../public/index.php"><i class="fa-solid fa-house"></i> Home</a></li>
       <li><a href="../pages/servicos.php"><i class="fa-solid fa-laptop"></i> Serviços Online</a></li>
       <li><a href="../pages/contato.php"><i class="fa-regular fa-paper-plane"></i> Contato</a></li>
+      <li><a href="../pages/multas.php"><i class="fa-solid fa-car-side"></i>Multas</a></li>
     </ul>
   </nav>
 </div>

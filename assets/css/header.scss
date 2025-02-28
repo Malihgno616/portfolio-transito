@@ -27,7 +27,7 @@
   }
   #boas_vindas h1 {
     color: #ffffff;
-    font-size: 4rem;
+    font-size: 3rem;
     text-transform: capitalize;
   }
   #boas_vindas {
@@ -40,18 +40,18 @@
 }
 
 .menu-container {
-  background-color: var(--cor4);
+  background-color: var(--cor5);
   padding: 10px;
-  margin: 0;
+  
 }
 
 .menu-container {
   .nav-bar {
     background-color: var(--cor1);
-    width: 75%;
+    width: 90%;
     margin: 0 auto;
-    padding: 1rem;
-    border-radius: 55px;
+    padding: 5px;
+    border-radius: 15px;
     ul {
       list-style: none;
       display: flex;
@@ -76,11 +76,13 @@
           text-decoration: none;
           color: #000000;
           font-size: 2rem;
-          padding: 12px;
-          transition: all 0.5s ease;
+          padding: 3px;
+          transition: all 0.3s ease;
           height: 200px;
           &:hover {
+            color: #000000;
             background-color: var(--hover-color-menu);
+            border-radius: 10px;
           }
         }
       }
