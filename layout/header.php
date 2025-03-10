@@ -29,18 +29,7 @@
     'Dec' => 'Dezembro'
   );
 ?>
-<div class="imagem_de_fundo">
-  <img src="../assets/img/file.jpeg" alt="Logo Transito">
-  <div id="boas_vindas">
-    <h1>Seja bem vindo</h1>
-    <em>Horário de Atendimento: 8:00 às 16:00 de segunda à sexta.</em>
-    <div>
-      <em>
-        <?=$semana["$data"] . ", {$dia} de " . $mes_extenso["$mes"] . " de {$ano}"?>
-      </em>
-    </div>
-  </div>
-</div>
+
 <div class="menu-container">
   <nav class="nav-bar">
     <ul>
@@ -53,6 +42,18 @@
       <li><a href="../pages/multas.php"><i class="fa-solid fa-car-side"></i>Multas</a></li>
     </ul>
   </nav>
+</div>
+<div class="imagem_de_fundo">
+  <img src="../assets/img/file.jpeg" alt="Logo Transito">
+  <div id="boas_vindas">
+    <h1>Coordenadoria de Trânsito</h1>
+    <em>Horário de Atendimento: 8:00 às 16:00 de segunda à sexta.</em>
+    <div>
+      <em>
+        <?=$semana["$data"] . ", {$dia} de " . $mes_extenso["$mes"] . " de {$ano}"?>
+      </em>
+    </div>
+  </div>
 </div>
 
 <script src="../assets/js/exibirMenu.js"></script>
