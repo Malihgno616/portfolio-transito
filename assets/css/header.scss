@@ -10,6 +10,7 @@
   height: 450px;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -56,6 +57,7 @@
       list-style: none;
       display: flex;
       justify-content: space-around;
+      align-items: center;
       #click {
         display: none;
         border: none;
