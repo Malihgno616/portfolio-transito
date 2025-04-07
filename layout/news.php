@@ -1,121 +1,29 @@
-<h1 style="text-align: center; margin-top: 2rem; margin-bottom: 2rem; color: #575757;">Notícias em Destaque</h1>
-    <div class="container">
-      <div class="card">
-        <div class="card__header">
-          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-blue">Technology</span>
-          <h4>What's new in 2022 Tech</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
-            <div class="user__info">
-              <h5>Jane Doe</h5>
-              <small>2h ago</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card__header">
-          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-brown">Food</span>
-          <h4>Delicious Food</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <img src="https://i.pravatar.cc/40?img=2" alt="user__image" class="user__image">
-            <div class="user__info">
-              <h5>Jony Doe</h5>
-              <small>Yesterday</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card__header">
-          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-red">Automobile</span>
-          <h4>Race to your heart content</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
-            <div class="user__info">
-              <h5>John Doe</h5>
-              <small>2d ago</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card__header">
-          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-brown">Traffic</span>
-          <h4>Race to your heart content</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
-            <div class="user__info">
-              <h5>John Doe</h5>
-              <small>2d ago</small>
-            </div>
-          </div>
-        </div>
-      </div> 
-      <div class="card">
-        <div class="card__header">
-          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-brown">Traffic</span>
-          <h4>Race to your heart content</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
-            <div class="user__info">
-              <h5>John Doe</h5>
-              <small>2d ago</small>
-            </div>
-          </div>
-        </div>
-      </div>   
-      <div class="card">
-        <div class="card__header">
-          <img src="../assets/img/img-card.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-brown">Traffic</span>
-          <h4>Race to your heart content</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
-            <div class="user__info">
-              <h5>John Doe</h5>
-              <small>2d ago</small>
-            </div>
-          </div>
-        </div>
-      </div>        
-    </div>
+<div class="p-10">
+  <h1 class="text-center text-3xl md:text-4xl lg:text-5xl mb-8">Notícias em Destaque</h1>
+</div>
 
-    <div class="acesso-noticias">
-      <a href="#" class="link-access">CLIQUE AQUI PARA MAIS NOTÍCIAS</a>
+<div class="px-4 md:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto"> 
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <?php for($x=0 ; $x < 9 ; $x++): ?>
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <a href="#" class="block overflow-hidden">
+              <img class="w-full h-48 object-cover rounded-t-lg" src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg" alt="aaaaa" />
+          </a>
+          <div class="p-5">
+              <a href="#">
+                  <h5 class="mb-2 text-xl lg:text-2xl font-bold tracking-tight text-gray-900 line-clamp-2">Noteworthy technology acquisitions 2021</h5>
+              </a>
+              <p class="mb-3 text-sm lg:text-base text-gray-900 line-clamp-3">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+              <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                  Read more
+                  <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                  </svg>
+              </a>
+          </div>
+        </div>
+      <?php endfor; ?>
     </div>
+  </div>
+</div>
