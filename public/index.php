@@ -7,9 +7,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transito Leme</title>
-  <?php include("../layout/head-home.php");?>
+  <?php include("../layout/head.php");?>
 </head>
-<body>
+<body class="bg-gray-100">
   <?php 
     include_once('../layout/header.php');
     include_once('../layout/slider.php');

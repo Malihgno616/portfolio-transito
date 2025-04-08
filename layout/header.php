@@ -32,7 +32,7 @@
 
 <nav class="border-gray-200 bg-yellow-400 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="../assets/img/logo-borda-branca.png" class="w-auto h-16 p-0" />
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-500 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
@@ -44,7 +44,7 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
       <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-yellow-400 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-yellow-400 dark:bg-yellow-400">
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0  md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200" aria-current="page" title="Home Page">
+          <a href="../public/index.php" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0  md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200" aria-current="page" title="Home Page">
             <i class="fas fa-home mr-2"></i> Home
           </a>
         </li>
@@ -55,6 +55,9 @@
             <!-- Dropdown menu -->
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-400 rounded-lg shadow-sm w-65 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-300" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Multas</a>
+                  </li>
                   <li>
                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Indicação de condutor</a>
                   </li>
@@ -68,22 +71,22 @@
             </div>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Serviços</a>
+          <a href="../pages/servicos.php" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Serviços</a>
         </li>
         <li>
           <a href="#" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Notícias</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Contato</a>
+          <a href="../pages/contato.php" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Contato</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="h-125 md:h-screen max-w-full flex flex-col items-center bg-stone-500 bg-blend-multiply bg-[url(../assets/img/imgtransito03.png)] bg-no-repeat bg-cover md:bg-right bg-center bg-fixed px-4">
+<div class="h-90 md:h-screen max-w-full flex flex-col items-center bg-stone-500 bg-blend-multiply bg-[url(../assets/img/imgtransito03.png)] bg-no-repeat bg-cover md:bg-right bg-center bg-fixed px-4 shadow-4xl">
     <div class="m-auto flex flex-col justify-center items-center gap-4 sm:gap-8 py-8">
-      <img class="rounded-full w-55 h-55 sm:w-24 sm:h-24 md:w-30 md:h-30" src="../assets/img/file.jpeg" alt="Logo Transito">
+      <img class="rounded-full w-25 h-25 sm:w-44 sm:h-44 md:w-50 md:h-50" src="../assets/img/file.jpeg" alt="Logo Transito">
       <h1 class="text-3xl sm:text-4xl md:text-5xl text-gray-100 text-center">
         Coordenadoria de Trânsito
       </h1>
