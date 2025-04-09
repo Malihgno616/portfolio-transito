@@ -32,7 +32,7 @@
 
 <nav class="border-gray-200 bg-yellow-400 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="../public/index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="../assets/img/logo-borda-branca.png" class="w-auto h-16 p-0" />
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-500 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
