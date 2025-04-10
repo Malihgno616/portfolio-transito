@@ -1,6 +1,3 @@
-<main class="texto-format animate__animated animate__fadeIn">
-  <h1>Semáforos</h1>
-  <p>Aqui está a lista de todos os semáforos instalados em Leme/SP</p>
   <?php 
   $lista_endereco = [
     "Av. Joaquim Lopes Águila x Av Maria Augusta Thomaz",
@@ -31,10 +28,13 @@
     "Av. Dr. Hermínio Ometto x Av. José Moreira de Queiroz",
     "Todos"
   ];
-  $x = 1;
-  foreach($lista_endereco as $endereco) {
-    echo "<p> $x - $endereco</p>";
-    $x++;
-  }
 ?>
+<main class="texto-format animate__animated animate__fadeIn mx-auto p-5 sm:p-10">
+  <h1 class="text-4xl sm:text-5xl p-5">Semáforos</h1>
+  <p class="text-justify text-lg sm:text-xl p-5">Aqui está a lista de todos os semáforos instalados em Leme/SP</p>
+
+  <?php foreach($lista_endereco as $endereco):?>
+      <p class="text-base sm:text-sm p-5 w-full sm:w-auto"><?= $endereco?></p>
+  <?php endforeach;?>
+
 </main>
