@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 ini_set("default_charset", "utf8mb4");
 
 $db_server = "localhost";
@@ -30,6 +32,12 @@ $nome = $_POST["nome"];
 $email = $_POST["email"];
 $telefone = $_POST["telefone"];
 $mensagem = $_POST["mensagem"];
+
+if (empty($nome) || empty($email) || empty($telefone) || empty($mensagem)) {
+    $_SESSION['erro'] = "Por favor, preencha todos os campos";
+    header("Location: ../../pages/contato.php");
+    exit();
+}
 
 $query = "INSERT INTO form_contato (nome, email, telefone, mensagem) VALUES (?, ?, ?, ?)";
 
