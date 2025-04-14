@@ -1,4 +1,7 @@
 <?php 
+
+  session_start();
+
   ini_set("default_charset", "utf8mb4");
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
@@ -19,6 +22,23 @@
   } catch (Exception $e) {
     echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
     exit;
+  }
+
+  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Acesso inválido.");
+  }
+
+  $required = [
+    'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
+    'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
+    'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
+    'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
+  ];
+
+  foreach ($required as $field) {
+      if (empty($_POST[$field])) {
+          die("Erro: O campo '$field' obrigatorio.");
+      }
   }
 
 ?>
