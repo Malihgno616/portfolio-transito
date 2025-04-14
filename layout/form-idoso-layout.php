@@ -37,111 +37,107 @@ $array_generos = [
 
 ?>
 
-<div class="container">
-
 	<div class="title">
 		<h1>Cartão do Idoso</h1>
 		<h2>Preencha o formulário abaixo</h2>
 		<p> Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
 	</div>
 
-	<form  action="../config/database/form-idoso-db.php" method="post" enctype="multipart/form-data" class="form animate__animated animate__fadeIn">
+	<form class="grid grid-cols-3 gap-4 max-w-300 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action="../config/database/form-idoso-db.php" method="post" enctype="multipart/form-data">
 		
-		<div class="input-group">
-			<input type="text" id="nome" name="nome-idoso" required class="input"/>
-			<label for="nome" class="label-input">Nome do Idoso</label>
+		<div class="relative mb-5">
+			<input type="text" name="nome" id="nome-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" " />
+			<label for="nome" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome do idoso</label>
 		</div>
 		
-		<div class="input-group">
-			<label for="nasc-idoso" class="label-date">Data de Nascimento</label>
-			<input type="date" name="nascimento-idoso" required class="input-date">
+		<div class="relative mb-5">
+			<input type="date" name="nascimento-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" " >
+			<label for="nasc-idoso" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data de Nascimento</label>
 		</div>
 		
-		<div class="input-group">
-			<label for="genero" class="label-select">Sexo</label>
-			<select name="genero-idoso" id="genero-idoso" required class="select">
+		<div class="relative mb-5">
+			<select name="genero-idoso" id="genero-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer">
 				<option value="selecione">Selecione...</option>
 				<?php foreach($array_generos as $generos){
 					echo "<option value='$generos'>$generos</option>";
 				};?>
 			</select>
+			<label for="genero" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Sexo</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="endereco-idoso" required class="input">
-			<label for="endereco" class="label-input">Endereço(RUA, AV)</label>
-		</div>
-		
-		<div class="input-group">
-			<input type="text" name="numero-endereco-idoso" required class="input">
-			<label for="numero" class="label-input">Número</label>
-		</div>
-		
-		<div class="input-group">
-			<input type="text" name="complemento-idoso" class="input">
-			<label for="complemento" class="label-input">Complemento(opcional)</label>
-		</div>
-		
-		<div class="input-group">
-			<input type="text" name="bairro-idoso" required class="input">
-			<label for="bairro" class="label-input">Bairro</label>
+		<div class="relative mb-5">
+			<input type="text" name="endereco-idoso" id="nome-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" " />
+			<label for="nome" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA, AV)</label>
 		</div>
 
-		<div class="input-group">
-			<input type="text" name="cep-idoso" required class="input">
-			<label for="cep" class="label-input">CEP</label>
+		<div class="relative mb-5">
+			<input type="text" name="numero-endereco-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" " >
+			<label for="endereco" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Número</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="cidade-idoso" required class="input">
-			<label for="cidade" class="label-input">Cidade</label>
+		<div class="relative mb-5">
+			<input type="text" name="complemento-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" " >
+			<label for="endereco" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento(opcional)</label>
+		</div>	
+		
+		<div class="relative mb-5">
+			<input type="text" name="bairro-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="bairro" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Bairro</label>
+		</div>
+
+		<div class="relative mb-5">
+			<input type="text" name="cep-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="cep" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
 		</div>
 		
-		<div class="input-group">
-			<label for="uf" class="label-select">
-				UF(Unidade Federal)
-			</label>
-			<select name="uf-idoso" class="select" required>
+		<div class="relative mb-5">
+			<input type="text" name="cidade-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="cidade" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Cidade</label>
+		</div>
+		
+		<div class="relative mb-5">
+				<select name="uf-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
 				<option value="selecione">Selecione...</option>
 				<?php foreach($estados as $uf){
 					echo "<option value='$uf'>$uf</option>";
 				}?>
 			</select>
+			<label for="uf" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">UF(Unidade Federal)</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="telefone-idoso" required class="input">
-			<label for="telefone" class="label-input">Telefone</label>
+		<div class="relative mb-5">
+			<input type="text" name="telefone-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="telefone" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="rg-idoso" required class="input">
-			<label for="rg" class="label-input">RG</label>
+		<div class="relative mb-5">
+			<input type="text" name="rg-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="rg" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
 		</div>
 
-		<div class="input-group">
-			<label for="data-expedicao" class="label-date">Data de Expedição</label>
-			<input type="date" name="data-expedicao-idoso" required class="input-date">
+		<div class="relative mb-5">
+			<input type="date" name="data-expedicao-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="data-expedicao" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data de Expedição</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="expedido-idoso" required class="input">
-			<label for="expedido-por" class="label-input">Expedido por</label>
+		<div class="relative mb-5">
+			<input type="text" name="expedido-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="expedido-por" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido por</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="cnh-idoso" class="input">
-			<label for="cnh" class="label-input">CNH(Se for condutor)</label>
+		<div class="relative mb-5">
+			<input type="text" name="cnh-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="cnh" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CNH(Se for condutor)</label>
 		</div>
 		
-		<div class="input-group">
-			<label for="validade-cnh" class="label-date">Validade da CNH</label>
-			<input type="date" name="validade-cnh-idoso" class="input-date">
+		<div class="relative mb-5">
+			<input type="date" name="validade-cnh-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="validade-cnh" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade da CNH</label>
 		</div>
 		
-		<div class="input-group">
-			<input type="text" name="email-idoso" class="input">
-			<label for="email" class="label-input">Digite seu email(opcional)</label>
+		<div class="relative mb-5">
+			<input type="text" name="email-idoso" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+			<label for="email" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Digite seu email(opcional)</label>
 		</div>
 		
 		<div class="input-group">
@@ -280,18 +276,16 @@ $array_generos = [
 					
 				</div>
 
-				<div class="buttons">
-					<button type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
-					<button type="submit">
+				<div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
+					<button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
+					<button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
 						Enviar <i class="fas fa-paper-plane"></i>
 					</button>
 				</div>
-				
+							
 			</div>			
 
 		</form>
-		
-</div>
 
 <div class="title">
 	<p>Núcleo de Trânsito - Tel.:(19)3572-5310 - Email: nucleodetransito@leme.sp.gov.br</p>

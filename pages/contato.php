@@ -12,6 +12,7 @@ session_start();
 <body>
   <?php 
     include('../layout/header.php');
+    include_once('../layout/imgfundo.php');
     include('../layout/form-contato-layout.php');
     include('../layout/footer.php'); 
   ?>

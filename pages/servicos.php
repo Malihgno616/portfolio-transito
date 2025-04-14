@@ -9,6 +9,7 @@
 <body>
   <?php 
     include_once('../layout/header.php');
+    include_once('../layout/imgfundo.php');
     include_once('../layout/service-icons.php');
     include_once('../layout/footer.php');
   ?>
