@@ -33,10 +33,30 @@ $email = $_POST["email"];
 $telefone = $_POST["telefone"];
 $mensagem = $_POST["mensagem"];
 
-if (empty($nome) || empty($email) || empty($telefone) || empty($mensagem)) {
-    $_SESSION['erro'] = "Por favor, preencha todos os campos";
-    header("Location: ../../pages/contato.php");
-    exit();
+$campos_obrigatorios = ["nome", "email", "telefone", "mensagem"];
+
+$array_erro = [];
+foreach ($campos_obrigatorios as $campo) {
+  if (empty($_POST[$campo])) {
+      if ($campo === 'mensagem') {
+          $array_erro[$campo] = "Por favor, digite sua mensagem";
+      } else {
+          $array_erro[$campo] = "Por favor, preencha o seu {$campo}!";
+      }
+  }
+}
+
+if (!empty($array_erro)){
+  $_SESSION['erro-campos'] = $array_erro;
+  $_SESSION['erro'] = "Por favor, preencha todos os campos.";
+  header("Location: ../../pages/contato.php");
+  exit();
+}
+
+if (empty($_SESSION['nome']) || empty($_SESSION['email'] || empty($_SESSION['telefone'])) || empty($_SESSION['mensagem'])) {
+  $_SESSION['erro'] = "Por favor, preencha todos os campos.";
+  header("Location: ../../pages/contato.php");
+  exit();
 }
 
 $query = "INSERT INTO form_contato (nome, email, telefone, mensagem) VALUES (?, ?, ?, ?)";
