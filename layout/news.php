@@ -1,13 +1,13 @@
 <div class="shadow-lg bg-stone-500 bg-blend-multiply bg-[url(../assets/img/imgtransito.png)] p-10 bg-no-repeat bg-cover bg-fixed px-4 md:px-6 lg:px-8">
   <div class="p-10">
-    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-8">Notícias em Destaque</h1>
+    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Notícias em Destaque</h1>
   </div>
   <div class="max-w-7xl mx-auto"> 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <?php for($x=0 ; $x < 9 ; $x++): ?>
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+      <?php for($x=0 ; $x < 6 ; $x++): ?>
+        <div class="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
           <a href="#" class="block overflow-hidden">
-              <img class="w-full h-48 object-cover rounded-t-lg" src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg" alt="aaaaa" />
+              <img class="w-full h-48 object-cover" src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg" alt="aaaaa" />
           </a>
           <div class="p-5">
               <a href="#">
