@@ -35,6 +35,10 @@ $mensagem = $_POST["mensagem"];
 
 $campos_obrigatorios = ["nome", "email", "telefone", "mensagem"];
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $array_erro['email'] = "Formato de e-mail inválido";
+}
+
 $array_erro = [];
 foreach ($campos_obrigatorios as $campo) {
   if (empty($_POST[$campo])) {
@@ -48,12 +52,6 @@ foreach ($campos_obrigatorios as $campo) {
 
 if (!empty($array_erro)){
   $_SESSION['erro-campos'] = $array_erro;
-  $_SESSION['erro'] = "Por favor, preencha todos os campos.";
-  header("Location: ../../pages/contato.php");
-  exit();
-}
-
-if (empty($_SESSION['nome']) || empty($_SESSION['email'] || empty($_SESSION['telefone'])) || empty($_SESSION['mensagem'])) {
   $_SESSION['erro'] = "Por favor, preencha todos os campos.";
   header("Location: ../../pages/contato.php");
   exit();
