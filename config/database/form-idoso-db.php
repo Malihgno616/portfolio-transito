@@ -24,10 +24,6 @@
     exit;
   }
 
-  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    die("Acesso inválido.");
-  }
-
   $required = [
     'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
     'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
@@ -35,15 +31,20 @@
     'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
   ];
 
-  foreach ($required as $field) {
-      if (empty($_POST[$field])) {
-          die("Erro: O campo '$field' obrigatorio.");
-      }
+  $error_array = [];
+  foreach ($required as $campo) {
+    if (empty($_POST[$campo])) {
+      $error_array[$campo] = "Por favor, preencha o campo {$campo}";
+    }
   }
 
-?>
+  if (!empty($error_array)) {
+    $_SESSION['erro'] = $error_array;
+    $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
+    header("Location: ../../pages/formulario-idoso.php");
+    exit();
+  }
 
-<?php 
   // Dados do idoso
   $nome_idoso = $_POST["nome-idoso"];
   $nascimento_idoso = $_POST["nascimento-idoso"];
@@ -134,9 +135,6 @@
       exit;
   }
 
-?>
-
-<?php 
   $query = "INSERT INTO cartao_idoso (nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, email_idoso, copia_rg_idoso, nome_representante, email_representante, endereco_representante, numero_endereco_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, data_expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
   $stmt = mysqli_prepare($conn, $query);
@@ -197,75 +195,11 @@
   }
   
   $executed = mysqli_stmt_execute($stmt);
-
-  if ($executed) {
-      $mensagem = "Dados enviados com sucesso!";
-  } else {
-      $mensagem = "Erro ao enviar dados: " . mysqli_error($conn);
-  }
- 
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
-?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enviado</title>
-  <link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    div {
-      width: 500px;
-      height: 200px;
-      background-color: #f0f0f0;
-      margin: 225px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    p {
-      font-size: 2.1rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    a {
-      text-decoration: none;
-      color: #f0f0f0;
-      background-color: rgb(255, 73, 73);
-      padding: .5rem;
-      font-size: 1.25rem;
-      border-radius: 10rem;
-      transition: all .5s ease;
-    }
-    a:hover {
-      filter: brightness(1.1);
-    }
-    @media(max-width: 480px){
-      div {
-        width: 100%;
-      }
-      p {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div>
-    <p><?php echo $mensagem; ?></p>
-    <a href="../../public/index.php">Clique para voltar à página principal</a>
-  </div>
-</body>
-</html>
+  if ($executed) {
+      $_SESSION['success'] = "Informações enviadas com sucesso";
+      header("Location: ../../pages/formulario-idoso.php");
+      exit();
+  } 

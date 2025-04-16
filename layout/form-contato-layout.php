@@ -1,5 +1,6 @@
 <?php 
 session_start(); 
+
 $erro = isset($_SESSION['erro']) ? $_SESSION['erro'] : null;
 $erro_campo = isset($_SESSION['erro-campos'] ) ? $_SESSION['erro-campos'] : null;
 $sucesso_sql = isset($_SESSION['sucesso']) ? $_SESSION['sucesso'] : null;

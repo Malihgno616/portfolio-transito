@@ -56,7 +56,7 @@
             </ul>
         </div>
     </div>
-    <div class="px-4 py-6 bg-yellow-500 md:flex md:items-center md:justify-between">
+    <div class="px-4 py-6 bg-yellow-600 md:flex md:items-center md:justify-between">
         <img class="w-10 h-10" src="../assets/img/favicon.png" alt="">
         <span class="text-lg text-gray-900 sm:text-center">©2025 <a href="">Trânsito Leme</a>. Todos os direitos reservados.
     </span>
