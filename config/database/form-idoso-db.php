@@ -34,7 +34,7 @@
   $error_array = [];
   foreach ($required as $campo) {
     if (empty($_POST[$campo])) {
-      $error_array[$campo] = "Por favor, preencha o campo {$campo}";
+      $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
     }
   }
 
