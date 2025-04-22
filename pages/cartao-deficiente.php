@@ -12,6 +12,7 @@
 <body>
   <?php 
     include_once('../layout/header.php');
+    include('../layout/imgfundo.php');
     include_once('../layout/cartao-deficiente.php');
     include_once('../layout/footer.php');
   ?>

@@ -7,14 +7,14 @@
     <p class="text-base sm:text-sm px-5 sm:px-0 sm:text-center">
       Para solicitação de qualquer tipo de sinalização, nos encaminhe para este e-mail:
     </p>
-    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-sm" href="#">
+    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">
       nucleodetransito@leme.sp.gov.br
     </a>
   </section>
 
   <section class="flex flex-wrap sm:flex-col items-start gap-4 mb-7">
     <p class="text-base sm:text-sm p-5 w-full sm:w-auto">Ou entre em contato conosco através do nosso formulário de contato.</p>
-    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-sm" href="../pages/contato.php" title="Formulário de Contato">
+    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="../pages/contato.php" title="Formulário de Contato">
       Formulário de Contato
     </a>
   </section>

@@ -7,12 +7,12 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario Idoso</title>
-  <!-- <?php include_once('../layout/head-formidoso.php');?> -->
   <?php include_once('../layout/head.php');?>
 </head>
 <body>
   <?php 
     include_once('../layout/header.php');
+    include('../layout/imgfundo.php');
     include_once('../layout/form-idoso-layout.php');
     include_once('../layout/footer.php');
   ?> 

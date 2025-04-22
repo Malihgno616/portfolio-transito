@@ -9,6 +9,7 @@
 <body>
   <?php 
   include('../layout/header.php');
+  include('../layout/imgfundo.php');
   include('../layout/txt-bicicletas.php');
   include('../layout/footer.php');
   ?>

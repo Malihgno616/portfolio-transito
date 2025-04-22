@@ -27,7 +27,7 @@
     <h3 class="text-xl sm:text-5xl p-5">Informações sobre a notificação:</h3>
     <p class="text-justify text-lg sm:text-xl p-5">O Aviso de Irregularidade de Transito do estacionamento rotativo municipal zona azul, o mesmo possui prazo de 3 dias para regularização do Aviso de Infração junto a central de atendimento do munícipio pagando o valor de R$ 12,00. Caso a regularização não seja efetuada, acarretará multa no valor de R$ R$ 195,23 e 5 pontos na CNH.</p>
     <p class="text-justify text-lg sm:text-xl p-5">Site oficial da Zona Azul Brasil:</p>
-    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-sm" href="#">www.zonaazulbrasil.com.br/leme/</a>
+    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">www.zonaazulbrasil.com.br/leme/</a>
     <p class="text-justify text-lg sm:text-xl p-5">Email: contato@zonaazulbrasil.com.br</p>
     <p class="text-justify text-lg sm:text-xl p-5">Telefone:(19)3555-3155</p>
     <p class="text-justify text-lg sm:text-xl p-5">R. Dr.Querubino Soeiro, 143 - Centro</p>

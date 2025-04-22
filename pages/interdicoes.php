@@ -9,6 +9,7 @@
 <body>
   <?php 
     include_once('../layout/header.php');
+    include('../layout/imgfundo.php');
     include_once('../layout/txt-interdicao.php');
     include_once('../layout/footer.php');
   ?>

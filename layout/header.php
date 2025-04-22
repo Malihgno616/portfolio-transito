@@ -57,25 +57,22 @@
               <div id="dropdownNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-400 rounded-lg shadow-sm w-65 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-300" aria-labelledby="dropdownLargeButton">
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Multas</a>
+                      <a href="../pages/multas.php" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Multas</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Indicação de condutor</a>
+                      <a href="../pages/indicacao-condutor.php" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Indicação de condutor</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Formulário de recurso</a>
+                      <a href="../pages/recurso-multa.php" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Formulário de recurso</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Formulário cópia de AIT</a>
+                      <a href="../pages/form-ait.php" class="block px-4 py-2 hover:bg-gray-100 text-lg dark:hover:bg-gray-600 dark:hover:text-white duration-200">Formulário cópia de AIT</a>
                     </li>
                   </ul>
               </div>
           </li>
           <li>
             <a href="../pages/servicos.php" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Serviços</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Notícias</a>
           </li>
           <li>
             <a href="../pages/contato.php" class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Contato</a>

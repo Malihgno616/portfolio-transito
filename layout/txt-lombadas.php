@@ -4,7 +4,7 @@
   <section class="flex flex-wrap sm:flex-col items-start gap-4 mb-7">
     <p class="text-justify text-lg sm:text-sm px-5 sm:px-0 sm:text-center">Para solicitar a implantação de lombadas, deverá ser preenchido o <strong>Requerimento para Implantação de Redutor de Velocidade.</strong></p>
     <p class="text-justify text-lg sm:text-xl p-5">
-      Para baixar o requerimento: <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-sm" href="#">Clique Aqui</a>
+      Para baixar o requerimento: <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">Clique Aqui</a>
     </p>
     <p class="text-justify text-lg sm:text-xl p-5">
       Nos casos em não possuir email, poderá depositar na Caixa de Documentos pela Setor de Trânsito, e caso falte algum documento entraremos em contato via email ou telefone. Por isso preencha corretamente o telefone e/ou email.
@@ -29,7 +29,7 @@
       Para solicitar a retirada de lombadas, deverá ser preenchido o <strong>Requerimento para Retirada de Redutor de Velocidade.</strong>
     </p>
     <p class="text-justify text-lg sm:text-xl p-5">
-      Para baixar o requerimento: <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-sm" href="#">Clique Aqui</a>
+      Para baixar o requerimento: <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">Clique Aqui</a>
     </p>
     <p class="text-justify text-lg sm:text-xl p-5">
       - Após o preenchimento realizar o protocolo junto à PREFEITURA, de segunda à sexta-feira.
