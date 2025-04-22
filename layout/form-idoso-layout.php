@@ -306,12 +306,12 @@ $array_generos = [
 		<div class="p-5 border-2 border-gray-300 rounded-lg">
 			
 			<p class="text-center text-xl">Representante: </p>
-			<div class="radio-input flex justify-center items-center gap-2">	
-				<input type="radio" name="representante" class="input-radio" id="sim">
+			<div class="flex justify-center items-center gap-2">	
+				<input type="radio" name="representante" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500" id="sim">
 				<label for="sim">
 					<span class="custom-radio"></span> Sim
 				</label>
-				<input type="radio" name="representante" class="input-radio" id="nao" checked>
+				<input type="radio" name="representante" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500" id="nao" checked>
 				<label for="nao">
 							<span class="custom-radio"></span> Não
 					</label>
