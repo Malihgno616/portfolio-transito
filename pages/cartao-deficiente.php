@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartão Deficiente</title>
   <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
-  <?php 
-    include('../layout/head-card-deficiente.php');
-  ?>
+  <!-- <?php  include('../layout/head-card-deficiente.php') ;?> -->
+  <?php include('../layout/head.php'); ?>
+
 </head>
 <body>
   <?php 
