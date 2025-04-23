@@ -179,6 +179,3 @@ if (mysqli_num_rows($result) > 0) {
   <?php     
     include_once('../layout/footer.php');
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-</body>
-</html>

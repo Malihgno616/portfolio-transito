@@ -11,10 +11,10 @@ if (isset($_POST['solicitacao'])) {
       header("Location: ../pages/form-deficiente.php");
       exit();
     case '2':
-      echo "Solicitação 2 recebida";
+      header("Location: ../pages/renovar-cartao.php");
       exit();
     case '3':
-      echo "Solicitação 3 recebida";
+      header("Location: ../pages/cancelar-cartao.php");
       exit();
     case '4':
       echo "Solicitação 4 recebida";
