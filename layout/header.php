@@ -30,7 +30,7 @@
   );
 ?>
 
-<header >
+<header>
   <nav class="bg-yellow-500">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="../public/index.php" class="flex items-center space-x-3 rtl:space-x-reverse">

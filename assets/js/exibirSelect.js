@@ -1,19 +1,19 @@
+// JavaScript Corrigido
 document.addEventListener("DOMContentLoaded", function () {
-  const cartao4 = document.getElementById("cartao4");
+  const motivoContainer = document.getElementById("motivoContainer");
+  const radios = document.querySelectorAll('input[name="solicitacao"]');
 
-  const motivos = document.querySelector(".motivo");
+  const updateMotivoVisibility = () => {
+    const isSegundaVia =
+      document.querySelector('input[name="solicitacao"]:checked')?.value ===
+      "4";
+    motivoContainer.classList.toggle("hidden", !isSegundaVia);
+  };
 
-  const radios = document.querySelectorAll(
-    'input[type="radio"][name="solicitacao"]'
-  );
-
-  radios.forEach(function (radio) {
-    radio.addEventListener("change", function () {
-      if (cartao4.checked) {
-        motivos.style.display = "flex";
-      } else {
-        motivos.style.display = "none";
-      }
-    });
+  radios.forEach((radio) => {
+    radio.addEventListener("change", updateMotivoVisibility);
   });
+
+  // Atualizar estado inicial
+  updateMotivoVisibility();
 });

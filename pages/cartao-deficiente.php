@@ -1,3 +1,29 @@
+<?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+
+if (isset($_POST['solicitacao'])) {
+  switch ($_POST['solicitacao']) {
+    case '1':
+      header("Location: ../pages/form-deficiente.php");
+      exit();
+    case '2':
+      echo "Solicitação 2 recebida";
+      exit();
+    case '3':
+      echo "Solicitação 3 recebida";
+      exit();
+    case '4':
+      echo "Solicitação 4 recebida";
+      exit();
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,10 +37,10 @@
 </head>
 <body>
   <?php 
-    include_once('../layout/header.php');
+    include('../layout/header.php');
     include('../layout/imgfundo.php');
-    include_once('../layout/cartao-deficiente.php');
-    include_once('../layout/footer.php');
+    include('../layout/cartao-deficiente.php');
+    include('../layout/footer.php');
   ?>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
