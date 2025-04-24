@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cancelar Cartão</title>
   <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
-  <?php include_once("../layout/head-solicita-deficiente.php")?>
+  <?php include('../layout/head.php');?>
 </head>
 <body>
   <?php 
