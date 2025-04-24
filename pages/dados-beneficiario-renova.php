@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
 <body>
   <?php 
     include_once('../layout/header.php');
-    include('../layout/imgfundo.php');
+    include_once('../layout/title.php');
   ?> 
   <div class="dados-beneficiario animate__animated animate__fadeIn">
     <h1>Informações do Beneficiário</h1>

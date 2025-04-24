@@ -12,7 +12,7 @@ session_start();
 <body>
   <?php 
     include_once('../layout/header.php');
-    include('../layout/imgfundo.php');
+    include_once('../layout/title.php');
     include_once('../layout/form-idoso-layout.php');
     include_once('../layout/footer.php');
   ?> 

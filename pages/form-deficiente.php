@@ -16,7 +16,7 @@ session_start();
 <body>
   <?php 
     include('../layout/header.php');
-    include('../layout/imgfundo.php');
+    include_once('../layout/title.php');
     include('../layout/layout-form-deficiente.php');
     include('../layout/footer.php');
   ?>

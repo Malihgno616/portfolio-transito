@@ -10,7 +10,7 @@
 <body>
   <?php 
     include_once("../layout/header.php");
-    include('../layout/imgfundo.php');
+    include_once('../layout/title.php');
     include_once("../layout/form-2avia.php");
     include_once("../layout/footer.php");
   ?>

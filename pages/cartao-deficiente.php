@@ -38,7 +38,7 @@ if (isset($_POST['solicitacao'])) {
 <body>
   <?php 
     include('../layout/header.php');
-    include('../layout/imgfundo.php');
+    include('../layout/title.php');
     include('../layout/cartao-deficiente.php');
     include('../layout/footer.php');
   ?>
