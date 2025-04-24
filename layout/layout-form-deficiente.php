@@ -48,334 +48,351 @@ $deficiencias = [
 
 ?>
 
-<div class="container">
-
-  <div class="title">
-		<h1>Cartão do Deficiente Físico</h1>
-		<h2>Preencha o formulário abaixo</h2>
-		<p> Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
+  <div class="flex flex-col justify-center items-center m-20 gap-3">
+		<h1 class="text-5xl md:text-2xl font-bold text-center">Cartão do Deficiente Físico</h1>
+		<h2 class="text-2xl md:text-lg text-center">Preencha o formulário abaixo</h2>
+		<p class="text-lg md:text-md text-justify"> Assim que o cartão estiver pronto, será feito contato para agendamento da retirada do cartão</p>
 	</div>
 
-  <form action="../config/database/form-deficiente-db.php" method="post" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
+  <form class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action="../config/database/form-deficiente-db.php" method="post" class="form animate__animated animate__fadeIn" enctype="multipart/form-data">
 		
-		<div class="input-group">
-      <input type="text" name="nome-beneficiario" required class="input">
-      <label for="beneficiario" class="label-input">Nome do Beneficiário</label>
+		<div class="relative mb-5">
+      <input class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" " type="text" name="nome-beneficiario">
+      <label for="beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome do Beneficiário</label>
     </div>
 
-    <div class="input-group">
-      <label for="nascimento-beneficiario" class="label-date">Data de Nascimento</label>
-      <input type="date" name="nascimento-beneficiario" required class="input-date">
+    <div class="relative mb-5">
+      <input type="date" name="nascimento-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="nascimento-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data de Nascimento</label>
     </div>
 
-    <div class="input-group">
-      <label for="genero-beneficiario" class="label-select">Sexo</label>
-      <select name="genero-beneficiario" required id="genero-deficiente" class="select">
+    <div class="relative mb-5">
+      <select name="genero-beneficiario" id="genero-deficiente" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
         <option value="selecione">Selecione</option>
         <?php foreach ($array_generos as $genero) {
           echo "<option value='$genero'>$genero</option>";
         } ?>
       </select>
+      <label for="genero-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Sexo</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="endereco-beneficiario" required class="input">
-      <label for="endereco" class="label-input">Endereço(RUA, AV)</label>
+    <div class="relative mb-5">
+      <input type="text" name="endereco-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="endereco" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA, AV)</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="numero-beneficiario" required class="input">
-      <label for="numero-beneficiario" class="label-input">Número</label>
+    <div class="relative mb-5">
+      <input type="text" name="numero-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="numero-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Número</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="complemento-beneficiario" class="input">
-      <label for="complemento-beneficiario" class="label-input">Complemento(opcional)</label>
+    <div class="relative mb-5">
+      <input type="text" name="complemento-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="complemento-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento(opcional)</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="bairro-beneficiario" required class="input">
-      <label for="bairro-deficiente" class="label-input">Bairro</label>
+    <div class="relative mb-5">
+      <input type="text" name="bairro-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="bairro-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Bairro</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="cep-beneficiario" required class="input">
-      <label for="cep-deficiente" class="label-input">CEP</label>
+    <div class="relative mb-5">
+      <input type="text" name="cep-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="cep-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="cidade-beneficiario" required class="input">
-      <label for="cidade-beneficiario" class="label-input">Cidade</label>
+    <div class="relative mb-5">
+      <input type="text" name="cidade-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="cidade-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Cidade</label>
     </div>
 
-    <div class="input-group">
-      <label for="uf-deficiente" class="label-select">Estado</label>
-      <select name="uf-beneficiario" class="select" required >
+    <div class="relative mb-5">
+      <select name="uf-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
         <option value="selecione">Selecione...</option>
         <?php foreach ($estados as $estado) {
           echo "<option value='$estado'>$estado</option>";
         }?>
       </select>
+      <label for="uf-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Estado</label>
     </div>
-
-    <div class="input-group">
-      <input type="text" name="telefone-beneficiario" required class="input">
-      <label for="telefone-deficiente" class="label-input">Telefone</label>
-    </div>
-
     
-    <div class="input-group">
-      <input type="text" name="rg-beneficiario" required class="input">
-      <label for="rg-deficiente" class="label-input">RG</label>
+    <div class="relative mb-5">
+      <input type="text" name="telefone-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="telefone-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
+    </div>
+    
+    <div class="relative mb-5">
+      <input type="text" name="rg-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="rg-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
     </div>
 
-    <div class="input-group">
-      <label for="expedicao-beneficiario" class="label-date">Data Expedição</label>
-      <input type="date" name="expedicao-beneficiario" required id="" class="input-date">
+    <div class="relative mb-5">
+      <input type="date" name="expedicao-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="expedicao-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data Expedição</label>
     </div>
-   <div class="input-group">
-      <input type="text" name="expedido-beneficiario" required class="input"/>
-      <label for="expedido-beneficiario" class="label-input">Expedido por</label>
-    </div>
-
-    <div class="input-group">
-      <input type="text" name="cnh-beneficiario" class="input">
-      <label for="cnh-beneficiario" class="label-input">CNH(Se for condutor)</label>
+   <div class="relative mb-5">
+      <input type="text" name="expedido-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="expedido-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido por</label>
     </div>
 
-    <div class="input-group">
-      <label for="validade-cnh-beneficiario" class="label-date">Validade da CNH</label>
-      <input type="date" name="validade-cnh-beneficiario" class="input-date">
+    <div class="relative mb-5">
+      <input type="text" name="cnh-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="cnh-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CNH(Se for condutor)</label>
     </div>
 
-    <div class="input-group">
-      <input type="text" name="email-beneficiario" class="input" id="">
-      <label for="email-beneficiario" class="label-input">Digite seu email(opcional)</label>
+    <div class="relative mb-5">
+      <input type="date" name="validade-cnh-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="validade-cnh-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade da CNH</label>
     </div>
 
-		<div class="input-group">			
-			
-			<div class="input-file-container">
-				
-				<div class="input-file">
-					<input type="file" name="copia-rg-beneficiario" id="file-input" required placeholder="Cópia do RG" class="file" accept="image/*">
-					<label for="copia-rg-beneficiario">Selecione(JPG, PNG ou PDF) a cópia do RG do requerente/beneficiário ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
-					<span id="file-name"></span>						
-				</div>
-				<div id="image-preview"></div>
-				
-			</div>
-			
+    <div class="relative mb-5">
+      <input type="text" name="email-beneficiario" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="email-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Digite seu email(opcional)</label>
+    </div>
+
+		<div class="relative mb-5">			
+      <label for="copia-rg-beneficiario" class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-comprovante-rep-idoso">
+              <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+              </svg>
+              <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
+                <span class="font-semibold">Selecione uma cópia digitadlizada do RG do beneficiário</span>
+              </p>
+              <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+                JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+              </p>
+          </div>     
+          <input type="file" name="copia-rg-beneficiario" id="file-input" placeholder="Cópia do RG" class="hidden" accept="image/*">
+          <span id="file-name"></span>							
+      </label>	
 		</div>
     
-		<div class="title">
-      <h2>Informações do Médico</h2>
+		<div class="flex flex-col justify-center items-center m-10 gap-3">
+      <h2 class="text-3xl md:text-3xl text-center">Informações do Médico</h2>
     </div>
-    <div class="input-group">
-      <input type="text" name="nome-medico" id="" required class="input">
-      <label for="nome" class="label-input">Nome do médico </label>
+
+    <div class="relative mb-5">
+      <input type="text" name="nome-medico" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="nome" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome do médico </label>
     </div>
-    <div class="input-group">
-      <input type="text" name="crm-medico" required class="input">  
-      <label for="registro" class="label-input" >Registro profissional (CRM)</label>
+    
+    <div class="relative mb-5">
+      <input type="text" name="crm-medico" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">  
+      <label for="registro" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Registro profissional (CRM)</label>
     </div>
-    <div class="input-group">
-      <input type="text" name="telefone-medico" class="input" required>
-      <label for="telefone" class="label-input">Telefone</label>
+    
+    <div class="relative mb-5">
+      <input type="text" name="telefone-medico" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="telefone" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
-    <div class="input-group">
-      <input type="text" name="local-atendimento-medico" class="input" required>
-      <label for="" class="label-input">Local de atendimento (Rua, AV)</label>
+    
+    <div class="relative mb-5">
+      <input type="text" name="local-atendimento-medico" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+      <label for="" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Local de atendimento (Rua, AV)</label>
     </div>
-    <div class="title">
-      <h2>Informações Médicas</h2>
+
+    <div class="flex flex-col justify-center items-center m-10 gap-3">
+      <h2 class="text-3xl md:text-3xl text-center">Informações Médicas</h2>
     </div>
-    <p>O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
-    <?php foreach($deficiencias as $deficiencia): ?>
-      <div class="input-group">
-        <input type="checkbox" class="input-checkbox" name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
-        <label for="deficiencia">
-          <?= $deficiencia; ?>
-        </label>
+
+    <p class="p-1 text-center text-lg">O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
+    <div class="shadow-lg w-100 m-auto">
+      <?php foreach($deficiencias as $deficiencia): ?>
+        <div class="p-5">
+          <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2" name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
+          <label for="deficiencia" class="ms-2 text-lg font-medium text-gray-900">
+            <?= $deficiencia; ?>
+          </label>
+        </div>
+      <?php endforeach; ?>
+    </div>
+      
+    <p class="text-justify text-lg p-1">Assinalar o tempo. Em sentido <strong>temporário</strong>, informar o período previsto de restrição médica. No mínimo 2 meses e no máximo 1 ano.</p>
+    <p class="text-justify text-lg p-1">Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
+
+    <div class="flex rounded-md gap-3 p-5 justify-center items-center border-2 border-gray-300">
+      <div class="flex items-center ">
+        <input type="radio" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2" name="restricao-medica" value="temporaria" id="temporaria">
+        <label for="temporaria" class="ms-2 text-lg font-medium text-gray-900">Temporária</label>
       </div>
-    <?php endforeach; ?>
-      
-    <p>Assinalar o tempo. Em sentido <strong>temporário</strong>, informar o período previsto de restrição médica. No mínimo 2 meses e no máximo 1 ano.</p>
-    <p>Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
+      <div class="flex items-center">
+        <input type="radio" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"  name="restricao-medica" value="permanente" id="permanente">
+        <label for="permanente" class="ms-2 text-lg font-medium text-gray-900">Permanente</label>
+      </div>
+    </div>
+    
+     <div class="relative mb-5">
+       <input type="date" name="data-inicio" id="data-inicio" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+       <label for="data-inicio" id="data-inicio" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data de início</label>
+     </div>
+     <div class="relative mb-5">
+       <input type="date" name="data-fim" id="data-fim" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+       <label for="data-fim" id="data-fim" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data de fim</label>
+     </div>
 
-    <div class="input-group">
-      <input type="radio" class="input-radio" name="restricao-medica" value="temporaria" id="temporaria">
-      <label for="temporaria">Temporária</label>
+    <div class="relative mb-5">
+      <textarea name="cid" id="" class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"></textarea>
+      <label for="cid" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Descricao e CID da lesão que justifique a incapacidade ou dificuldade ambular</label>
     </div>
 
-    <div class="input-group">
-      <input type="radio" class="input-radio" name="restricao-medica" value="permanente" id="permanente">
-      <label for="permanente">Permanente</label>
-    </div>
-
-    <div class="input-group">
-      <input type="date" name="data-inicio" id="data-inicio" required class="input-date">
-      <label for="data-inicio" id="data-inicio" class="label-date">Data de início</label>
-    </div>
-
-    <div class="input-group">
-      <input type="date" name="data-fim" id="data-fim" class="input-date">     
-      <label for="data-fim" id="data-fim" class="label-date">Data de fim</label>
-    </div>
-
-    <div class="input-group">
-      <textarea name="cid" id="" class="textarea" placeholder="Descrição e CID da lesão que justifique a incapacidade ou dificuldade ambular"></textarea>
-      
-    </div>
-
-    <p>- Selecione a cópia digitalizada do atestado médico da pessoa portadora de deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.</p>
-
-    <div class="input-group">
-      <input type="file" name="atestado-medico" id="file-input" class="input-file">
-      <label for="atestado-medico">SELECIONE (PNG, JPG, PDF)Cópia digitalizada do atestado médico <strong>(OBRIGATÓRIO)</strong></label>
-      <span id="file-name"></span>	
-      <div id="image-preview"></div>
+    <div class="relative mb-5">
+      <label for="atestado-medico" class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+          <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>
+          <p class="mb-2 text-xl text-justify text-gray-500 dark:text-gray-400">
+          <span class="font-semibold">Selecione a cópia digitalizada do atestado médico da pessoa portadora de deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.</span>
+          </p>
+          <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+            JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+          </p>  
+        </div>
+        <input type="file" name="atestado-medico" id="" class="hidden">
+        <span id="file-name"></span>	
+      </label>
     </div>
 		
-    <div class="input-group">
-			
-			<div class="radio-input">
+		<div class="flex rounded-md gap-3 p-5 justify-center items-center border-2 border-gray-300">
 				
 				<p>Representante: </p>
 				
-				<input type="radio" name="representante" class="input-radio" id="sim">
-				<label for="sim">
+				<input type="radio" name="representante" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2" id="sim">
+				<label for="sim" class="ms-2 text-lg font-medium text-gray-900">
 					<span class="custom-radio"></span> Sim
 				</label>
 				
-				<input type="radio" name="representante" class="input-radio" id="nao" checked>
-				<label for="nao">
+				<input type="radio" name="representante" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2" id="nao" checked>
+				<label for="nao" class="ms-2 text-lg font-medium text-gray-900">
 							<span class="custom-radio"></span> Não
-					</label>
+				</label>
 					
-				</div>
-
 		</div>
    	
     <div id="representante" class="animate__animated animate__fadeIn">
 			
-				<h1 class="title">Informações do Representante</h1>
+				<div class="flex flex-col justify-center items-center m-10 gap-3">
+          <h2 class="text-3xl md:text-3xl text-center">Informações do representante</h2>
+        </div>
 				
-					<div class="input-group" id="representante">
-						<input type="text" name="nome-representante" class="input" />
-						<label for="nome-representante" class="label-input">Nome do representante</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="nome-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="nome-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome do representante</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="email-representante" class="input" />
-						<label for="email-representante" class="label-input">Email</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="email-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="email-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="endereco-representante" class="input" />
-						<label for="endereco-representante" class="label-input">Endereço(RUA, AV)</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="endereco-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="endereco-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA, AV)</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="numero-representante" class="input" />
-						<label for="numero-representante" class="label-input">Nº</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="numero-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" "class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="numero-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nº</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="complemento-representante" class="input" />
-						<label for="complemento-representante" class="label-input">Complemento</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="complemento-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="complemento-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="bairro-representante" class="input" />
-						<label for="bairro-representante" class="label-input">Bairro</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="bairro-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="bairro-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Bairro</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="cep-representante" class="input">
-						<label for="cep-representante" class="label-input">CEP</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="cep-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="cep-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="cidade-representante" class="input" />
-						<label for="cidade-representante" class="label-input">Cidade</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="cidade-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="cidade-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Cidade</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-            <label for="uf" class="label-select">
+					<div class="relative mb-5" id="representante">
+            <select name="uf-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+              <option value="selecione">Selecione...</option>
+              <?php foreach($estados as $uf){
+                echo "<option value='$uf'>$uf</option>";
+              }?>
+            </select>
+            <label for="uf" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
               UF(Unidade Federal)
             </label>
-						<div class="input-group" id="representante">
-							<select name="uf-representante" class="select">
-								<option value="selecione">Selecione...</option>
-								<?php foreach($estados as $uf){
-									echo "<option value='$uf'>$uf</option>";
-								}?>
-							</select>
 					</div>
 
-					<div class="input-group" id="representante">
-						<input type="text" name="telefone-representante" class="input" />
-						<label for="telefone-representante" class="label-input">Telefone</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="telefone-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="telefone-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<input type="text" name="rg-representante" class="input">
-						<label for="rg-representante" class="label-input">RG</label>
+					<div class="relative mb-5" id="representante">
+						<input type="text" name="rg-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="rg-representante" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-            <label for="" class="label-date">Data de Expedição</label>
-            <input type="date" name="expedicao-representante" id="" class="input-date">
+					<div class="relative mb-5" id="representante">
+            <input type="date" name="expedicao-representante" id="" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+            <label for="" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data de Expedição</label>
 					</div>
 					
-					<div class="input-group">
-						<input type="text" name="expedido-representante" class="input">
-						<label for="expedido-por" class="label-input">Expedido por</label>
+					<div class="relative mb-5">
+						<input type="text" name="expedido-representante" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
+						<label for="expedido-por" class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido por</label>
 					</div>
 					
-					<div class="input-group" id="representante">
-						<div class="input-file-container">
+					<div class="relative mb-5">
+            <label for="atestado-medico" class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                </svg>
+                <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
+                <span class="font-semibold">Selecione uma cópia digitalizada do RG do representante</span>
+                </p>
+                <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+                  JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+                </p>  
+              </div>
+              <input type="file" name="atestado-medico" id="" class="hidden">
+              <span id="file-name"></span>	
+            </label>
+          </div>
+					
+					<div class="relative mb-5">
+            <label for="atestado-medico" class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                </svg>
+                <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
+                <span class="font-semibold">Selecione uma cópia digitalizada do comprovante do representante </span>
+                </p>
+                <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+                  JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+                </p>  
+              </div>
+              <input type="file" name="atestado-medico" id="" class="hidden">
+              <span id="file-name"></span>	
+            </label>
+          </div>	  
+		</div>	  
 
-							<div class="input-file">
-								<input type="file" name="copia-rg-representante" id="file-input" class="file" accept="image/*">
-								<label for="copia-rg-representante">Selecione(JPG, PNG ou PDF)  a cópia do RG do representante ou documento equivalente <strong>(OBRIGATÓRIO)</strong></label>
-								<span id="file-name"></span>						
-							</div>
-							<div id="image-preview"></div>
-							
-						</div>
-					</div>
-					
-					<div class="input-group" id="representante">
-						<div class="input-file-container">
-							
-							<div class="input-file">
-								<input type="file" name="comprovante-representante" id="file-input" placeholder="Cópia do RG" class="file" accept="image/*">
-								<label for="">Selecione(JPG, PNG ou PDF) o comprovante de representante legal <strong>(OBRIGATÓRIO)</strong></label>
-								<span id="file-name"></span>						
-							</div>
-							<div id="image-preview"></div>
-							
-						</div>
-					</div>
-					
-				</div>		  
-    
-		</div>	
-    
-
-		<div class="buttons">
-      <button onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
-      <button type="submit">
-        Enviar <i class="fa-solid fa-arrow-right"></i>
+		<div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
+      <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
+      <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
+        Enviar <i class="fas fa-paper-plane"></i>
       </button>
-    </div>
+		</div>
 
   </form>
-
-
-</div>
 
 <script src="../assets/js/exibirData.js"></script>
 <script src="../assets/js/exibirArquivo.js"></script>
