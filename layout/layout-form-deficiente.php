@@ -217,7 +217,7 @@ $deficiencias = [
   <div class="relative mb-5">
     <label for="copia-rg-beneficiario"
       class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-      <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-comprovante-rep-idoso">
+      <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-rg-beneficiario">
         <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
           viewBox="0 0 20 16">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -230,9 +230,8 @@ $deficiencias = [
           JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
         </p>
       </div>
-      <input type="file" name="copia-rg-beneficiario" id="file-input" placeholder="Cópia do RG" class="hidden"
-        accept="image/*">
-      <span id="file-name"></span>
+      <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*">
+      <span id="file-name-rg-beneficiario"></span>
     </label>
   </div>
 
@@ -341,7 +340,7 @@ $deficiencias = [
   <div class="relative mb-5">
     <label for="atestado-medico"
       class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+      <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-atestado-medico">
         <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
           viewBox="0 0 20 16">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -356,8 +355,8 @@ $deficiencias = [
           JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
         </p>
       </div>
-      <input type="file" name="atestado-medico" id="" class="hidden">
-      <span id="file-name"></span>
+      <input type="file" name="atestado-medico" id="atestado-medico" class="hidden" accept="image/*">
+      <span id="file-name-atestado-medico"></span>
     </label>
   </div>
 
@@ -505,7 +504,7 @@ $deficiencias = [
     </div>
 
     <div class="relative mb-5">
-      <label for="atestado-medico"
+      <label for=""
         class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
           <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -520,13 +519,13 @@ $deficiencias = [
             JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
           </p>
         </div>
-        <input type="file" name="atestado-medico" id="" class="hidden">
+        <input type="file" name="" id="" class="hidden">
         <span id="file-name"></span>
       </label>
     </div>
 
     <div class="relative mb-5">
-      <label for="atestado-medico"
+      <label for=""
         class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
           <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -541,7 +540,7 @@ $deficiencias = [
             JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
           </p>
         </div>
-        <input type="file" name="atestado-medico" id="" class="hidden">
+        <input type="file" name="" id="" class="hidden">
         <span id="file-name"></span>
       </label>
     </div>
@@ -558,5 +557,5 @@ $deficiencias = [
 </form>
 
 <script src="../assets/js/exibirData.js"></script>
-<script src="../assets/js/exibirArquivo.js"></script>
+<script src="../assets/js/exibirArquivoBeneficiario.js"></script>
 <script src="../assets/js/exibirForm.js"></script>
