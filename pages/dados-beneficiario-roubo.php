@@ -49,17 +49,19 @@ if (mysqli_num_rows($result) > 0) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dados do Beneficiario</title>
   <?php include_once('../layout/head-dados-bene.php');?>
 </head>
+
 <body>
   <?php 
     include_once('../layout/header.php');
     include_once('../layout/title.php');
-  ?> 
+  ?>
   <div class="dados-beneficiario animate__animated animate__fadeIn">
     <h1>Informações do Beneficiário</h1>
 
@@ -156,8 +158,9 @@ if (mysqli_num_rows($result) > 0) {
       }
     ?>
   </div>
-  
-  <form class="form" action="../config/database/2aVia-cartao-deficiente-db-roubo.php" method="post" enctype="multipart/form-data">
+
+  <form class="form" action="../config/database/2aVia-cartao-deficiente-db-roubo.php" method="post"
+    enctype="multipart/form-data">
     <div class="title">
       <h2>Preencha as informações do formulário</h2>
       <p>Após a solciitação entraremos em contato</p>
@@ -177,7 +180,7 @@ if (mysqli_num_rows($result) > 0) {
       <button type="submit">Solicitar a 2ª via</button>
     </div>
   </form>
-  
+
   <?php     
     include_once('../layout/footer.php');
   ?>

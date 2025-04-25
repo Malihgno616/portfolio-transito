@@ -7,7 +7,8 @@
     <p class="text-justify text-lg sm:text-xl p-5">Para recurso de multa acesse o link abaixo</p>
     <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="#">clique aqui</a>
     <p class="text-justify text-lg sm:text-xl p-5">- Caso tenha dúvidas, encaminhar para o email abaixo</p>
-    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="#">nucledetransito@leme.sp.gov.br</a>
+    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200"
+      href="#">nucledetransito@leme.sp.gov.br</a>
   </section>
 
   <section class="mb-10">
@@ -15,9 +16,12 @@
     <p class="text-justify text-lg sm:text-xl p-5">- Requerimento preenchido, datado e assinado</p>
     <p class="text-justify text-lg sm:text-xl p-5">- Cópia da notificação da multa</p>
     <p class="text-justify text-lg sm:text-xl p-5">- Cópia do CRLV ou CRV (documento do veículo)</p>
-    <p class="text-justify text-lg sm:text-xl p-5">- Cópia da CNH (carteira nacional de habilitação) do condutor/infrator ou outro documento equivalente (pessoa física)</p>
-    <p class="text-justify text-lg sm:text-xl p-5">- Cópia do contrato social/documento equivalente (pessoa jurídica)</p>
-    <p class="text-justify text-lg sm:text-xl p-5">- Procuração com firma reconhecida em cartório, quando representado por terceiro.</p>
+    <p class="text-justify text-lg sm:text-xl p-5">- Cópia da CNH (carteira nacional de habilitação) do
+      condutor/infrator ou outro documento equivalente (pessoa física)</p>
+    <p class="text-justify text-lg sm:text-xl p-5">- Cópia do contrato social/documento equivalente (pessoa jurídica)
+    </p>
+    <p class="text-justify text-lg sm:text-xl p-5">- Procuração com firma reconhecida em cartório, quando representado
+      por terceiro.</p>
   </section>
 
 </main>

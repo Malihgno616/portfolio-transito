@@ -49,17 +49,19 @@ if (mysqli_num_rows($result) > 0) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dados do Beneficiario</title>
   <?php include_once('../layout/head-dados-bene.php');?>
 </head>
+
 <body>
   <?php 
     include_once('../layout/header.php');
     include_once('../layout/title.php');
-  ?> 
+  ?>
   <div class="dados-beneficiario animate__animated animate__fadeIn">
     <h1>Informações do Beneficiário</h1>
 
@@ -155,7 +157,7 @@ if (mysqli_num_rows($result) > 0) {
       
       }
     ?>
-  
+
   </div>
 
   <form action=".././config/database/cancela-cartao-db.php" method="post" class="form">
@@ -165,7 +167,7 @@ if (mysqli_num_rows($result) > 0) {
     </div>
     <div class="input-group">
       <input type="text" name="rg-beneficiario" id="" class="input" required>
-      <label class="label-input"for="">RG do beneficiário:</label>
+      <label class="label-input" for="">RG do beneficiário:</label>
     </div>
     <div class="input-group">
       <textarea class="textarea" name="motivo-cancela" id="" placeholder="Informe o motivo do cancelamento"></textarea>
