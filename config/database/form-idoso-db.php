@@ -92,7 +92,7 @@
     $uf_representante = null; 
   }
   $tel_representante = $_POST["telefone-representante"] ?? null;
-  $rg_representante = $_POST["rg-representante"] ?? null;
+  $rg_representante = !empty($_POST['rg-representante']) ? $_POST['rg-representante'] : null;
   $expedicao_representante = $_POST["expedicao-representante"] ?? null;
   if ($expedicao_representante === '') {
     $expedicao_representante = null;
