@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   ini_set("default_charset", "utf8mb4");
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
@@ -20,9 +21,22 @@
     echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
     exit;
   }
-?>
 
-<?php 
+  $required = ['nome-beneficiario','nascimento-beneficiario','genero-beneficiario','endereco-beneficiario','numero-beneficiario','bairro-beneficiario','cep-beneficiario','cidade-beneficiario','uf-beneficiario','telefone-beneficiario','rg-beneficiario','expedicao-beneficiario','expedido-beneficiario','nome-medico','crm-medico','telefone-medico','local-atendimento-medico','cid'];
+
+  $error_array = [];
+  foreach ($required as $campo) {
+    if (empty($_POST[$campo])) {
+      $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
+    }
+  }
+
+  if (!empty($error_array)) {
+    $_SESSION['error'] = $error_array;
+    $_SESSION['error-form-deficiente'] = "Por favor, preencha todos os campos obrigatórios.";
+    header("Location: ../../pages/form-deficiente.php");
+    exit();
+  }
 
   // Dados do beneficiario
   $nome_beneficiario = $_POST['nome-beneficiario'];
@@ -100,7 +114,7 @@
     $uf_representante = null; 
   }
   $tel_representante = $_POST['telefone-representante'] ?? null;
-  $rg_representante = $_POST['rg-representante'] ?? null;
+  $rg_representante = !empty($_POST['rg-representante']) ? $_POST['rg-representante'] : null;
   $expedicao_representante = $_POST['expedicao-representante'] ?? null;
   if($expedicao_representante === '' ){
     $expedicao_representante = null;
@@ -139,10 +153,6 @@
       exit;
   }
 
-?>
-
-<?php 
-    
   // Envio dos dados
   $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico,nome_representante, email_representante, endereco_representante, num_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
 
@@ -225,6 +235,10 @@
     }
     
     mysqli_stmt_close($stmt);
-    mysqli_close($conn);
-    
-?>
+    mysqli_close($conn);   
+
+  if ($executed) {
+  $_SESSION['success-form-deficiente'] = "Informações enviadas com sucesso";
+  header("Location: ../../pages/form-deficiente.php");
+  exit();
+  } 
