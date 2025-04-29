@@ -186,7 +186,7 @@ $array_generos = [
   </div>
   <?php else: ?>
   <div class="relative mb-5">
-    <input type="text" name="endereco-idoso" id="nome-idoso"
+    <input type="text" name="endereco-idoso" id="rua"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
       placeholder=" " />
     <label for="nome"
@@ -233,7 +233,7 @@ $array_generos = [
   </div>
   <?php else:?>
   <div class="relative mb-5">
-    <input type="text" name="bairro-idoso"
+    <input type="text" name="bairro-idoso" id="bairro"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
       placeholder=" ">
     <label for="bairro"
@@ -243,16 +243,15 @@ $array_generos = [
 
   <?php if (!empty($array_error['cep-idoso'])):?>
   <div class="relative mb-5">
-    <input type="text" name="cep-idoso"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-      placeholder=" ">
+    <input type="text" name="cep-idoso" onblur="pesquisacep(this.value);" class=" text-md block px-2.5 pb-2.5 pt-4 w-full text-red-900 rounded-lg border-2 border-red-500
+      focus:border-red-500 focus:ring-2 focus:ring-red-500 peer" placeholder=" ">
     <label for="cep"
       class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
       favor, preencha o seu CEP</label>
   </div>
   <?php else: ?>
   <div class="relative mb-5">
-    <input type="text" name="cep-idoso"
+    <input type="text" name="cep-idoso" onblur="pesquisacep(this.value);"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
       placeholder=" ">
     <label for="cep"
@@ -271,7 +270,7 @@ $array_generos = [
   </div>
   <?php else:?>
   <div class="relative mb-5">
-    <input type="text" name="cidade-idoso"
+    <input type="text" name="cidade-idoso" id="cidade"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
       placeholder=" ">
     <label for="cidade"
@@ -285,9 +284,9 @@ $array_generos = [
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
       placeholder=" ">
       <option value="">Selecione...</option>
-      <?php foreach($estados as $uf){
-					echo "<option value='$uf'>$uf</option>";
-				}?>
+      <?php foreach($estados as $sigla => $nome){
+        echo "<option value='$sigla'>$nome</option>";
+      } ?>
     </select>
     <label for="uf"
       class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
@@ -295,16 +294,16 @@ $array_generos = [
   </div>
   <?php else: ?>
   <div class="relative mb-5">
-    <select name="uf-idoso"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" ">
+    <select name="uf-idoso" id="uf" class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300
+      focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
       <option value="">Selecione...</option>
-      <?php foreach($estados as $uf){
-						echo "<option value='$uf'>$uf</option>";
-					}?>
+      <?php foreach($estados as $sigla => $nome){
+        echo "<option value='$sigla'>$nome</option>"; 
+      } ?>
     </select>
-    <label for="uf"
-      class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">UF(Unidade
+    <label for=" uf"
+      class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+      UF(Unidade
       Federal)</label>
   </div>
   <?php endif;?>
@@ -507,15 +506,14 @@ $array_generos = [
     </div>
 
     <div class="relative mb-5" id="representante">
-      <input type="text" name="cep-representante"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+      <input type="text" name="cep-representante" class=" text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300
+        focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer" placeholder=" ">
       <label for="cep-representante"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
     </div>
 
     <div class="relative mb-5" id="representante">
-      <input type="text" name="cidade-representante"
+      <input type="text" name="cidade-representante" id="cidade"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
         placeholder=" " />
       <label for="cidade-representante"
@@ -523,13 +521,13 @@ $array_generos = [
     </div>
 
     <div class="relative mb-5">
-      <select name="uf-representante"
+      <select name="uf-representante" id="uf"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
         placeholder=" ">
         <option value="">Selecione...</option>
-        <?php foreach($estados as $uf){
-								echo "<option value='$uf'>$uf</option>";
-							}?>
+        <?php foreach($estados as $sigla => $nome){
+        echo "<option value='$sigla'>$nome</option>";
+        } ?>
       </select>
       <label for="uf-representante"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
@@ -628,5 +626,6 @@ $array_generos = [
   <p class="text-lg text-justify">Horário de atendimento: Das 8:00h ás 12:00h e das 13:00 às 16:00h</p>
 </div>
 
+<script src="../assets/js/autofill.js"></script>
 <script src="../assets/js/exibirArquivo.js"></script>
 <script src="../assets/js/exibirForm.js"></script>
