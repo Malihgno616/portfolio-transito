@@ -1,13 +1,48 @@
 <?php 
+$estados = array(
+	'AC' => 'Acre',
+	'AL' => 'Alagoas',
+	'AP' => 'Amapá',
+	'AM' => 'Amazonas',
+	'BA' => 'Bahia',
+	'CE' => 'Ceará',
+	'DF' => 'Distrito Federal',
+	'ES' => 'Espirito Santo',
+	'GO' => 'Goiás',
+	'MA' => 'Maranhão',
+	'MS' => 'Mato Grosso do Sul',
+	'MT' => 'Mato Grosso',
+	'MG' => 'Minas Gerais',
+	'PA' => 'Pará',
+	'PB' => 'Paraíba',
+	'PR' => 'Paraná',
+	'PE' => 'Pernambuco',
+	'PI' => 'Piauí',
+	'RJ' => 'Rio de Janeiro',
+	'RN' => 'Rio Grande do Norte',
+	'RS' => 'Rio Grande do Sul',
+	'RO' => 'Rondônia',
+	'RR' => 'Roraima',
+	'SC' => 'Santa Catarina',
+	'SP' => 'São Paulo',
+	'SE' => 'Sergipe',
+	'TO' => 'Tocantins',
+);
+
+$array_generos = [
+  "Masculino",
+  "Feminino",
+];
+
 $deficiencias = [
-"Deficiência Física",
-"Membro(s) Superior(es)",
-"Membro(s) Inferior(es)",
-"Cadeira de Rodas",
-"Aparelhagem Ortopédica",
-"Prótese",
-"Incapacidade Mental",
-"Dificuldade de Locomoção"
+  "Deficiência Física",
+  "Membro(s) Superior(es)",
+  "Membro(s) Inferior(es)",
+  "Cadeira de Rodas",
+  "Aparelhagem Ortopédica",
+  "Prótese",
+  "Incapacidade Mental",
+  "Dificuldade de Locomoção"
 ];
 ?>
 
@@ -32,7 +67,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " type="text" name="nome-beneficiario">
+        placeholder=" " type="text" name="nome-beneficiario" value=<?=$beneficiario['nome_beneficiario']?>>
       <label for="beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
         do Beneficiário</label>
@@ -51,8 +86,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="date" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for="nascimento-beneficiario"
+        placeholder=" " value=<?=$beneficiario['nasc_beneficiario']?>> <label for="nascimento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Nascimento</label>
     </div>
@@ -65,7 +99,7 @@ $deficiencias = [
         placeholder=" ">
         <option value="">Selecione</option>
         <?php foreach ($array_generos as $genero) {
-          echo "<option value='$genero'>$genero</option>";
+          echo "<option value='$genero'>$beneficiario[genero_beneficiario];</option>";
         } ?>
       </select>
       <label for="genero-beneficiario"
@@ -78,9 +112,12 @@ $deficiencias = [
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
         placeholder=" ">
         <option value="">Selecione</option>
-        <?php foreach ($array_generos as $genero) {
-          echo "<option value='$genero'>$genero</option>";
-        } ?>
+        <?php 
+    foreach ($array_generos as $genero) {
+      $selected = ($genero === $beneficiario['genero_beneficiario']) ? 'selected' : '';
+      echo "<option value=\"$genero\" $selected>$genero</option>";
+    } 
+    ?>
       </select>
       <label for="genero-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Sexo</label>
@@ -100,12 +137,13 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="endereco-beneficiario" id="rua"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['endereco_beneficiario'];?>>
       <label for="endereco"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA,
         AV)</label>
     </div>
     <?php endif;?>
+
     <?php if (!empty($array_error['numero-beneficiario'])):?>
     <div class="relative mb-5">
       <input type="text" name="numero-beneficiario"
@@ -119,7 +157,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="numero-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['numero_beneficiario'];?>>
       <label for="numero-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500
         duration-300 transform -translate-y-4 scale-75
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
@@ -131,7 +169,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="complemento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['complemento_beneficiario'];?>>
       <label for="complemento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento(opcional)</label>
     </div>
@@ -150,7 +188,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="bairro-beneficiario" id="bairro"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['bairro_beneficiario'];?>>
       <label for="bairro-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
     top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
     peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -171,7 +209,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="cep-beneficiario" onblur="pesquisacep(this.value);"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['cep_beneficiario'];?>>
       <label for="cep-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
       top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
       peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -192,7 +230,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="cidade-beneficiario" id="cidade"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['cidade_beneficiario'];?>>
       <label for="cidade-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
       top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
       peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -221,8 +259,10 @@ $deficiencias = [
         placeholder=" ">
         <option value="">Selecione...</option>
         <?php foreach($estados as $sigla => $nome){
-        echo "<option value='$sigla'>$nome</option>";
-      } ?>
+          $selected = ($sigla === $beneficiario['uf_beneficiario']) ? 'selected' : '';
+          echo "<option value='$sigla' $selected>$nome</option>";
+        }
+        ?>
       </select>
       <label for="uf-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
       top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
@@ -244,7 +284,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="telefone-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['telefone_beneficiario'];?>>
       <label for="telefone-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -263,7 +303,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['rg_beneficiario'];?>>
       <label for="rg-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
     </div>
@@ -282,7 +322,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="date" name="expedicao-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['expedicao_beneficiario'];?>>
       <label for="expedicao-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         Expedição</label>
@@ -302,7 +342,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="expedido-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['expedido_beneficiario'];?>>
       <label for="expedido-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido
         por</label>
@@ -312,7 +352,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['cnh_beneficiario'];?>>
       <label for="cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CNH(Se
         for condutor)</label>
@@ -322,7 +362,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="date" name="validade-cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['validade_cnh_beneficiario'];?>>
       <label for="validade-cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
@@ -331,7 +371,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="email-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['email_beneficiario'];?>>
       <label for="email-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Digite
         seu email(opcional)</label>
@@ -376,7 +416,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="nome-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['nome_medico'];?>>
       <label for="nome"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
         do médico </label>
@@ -396,7 +436,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="crm-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['crm'];?>>
       <label for="registro"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Registro
         profissional (CRM)</label>
@@ -416,7 +456,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="telefone-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['telefone_medico'];?>>
       <label for="telefone"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -435,7 +475,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="local-atendimento-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " value=<?=$beneficiario['local_atendimento_medico'];?>>
       <label for=""
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Local
         de atendimento (Rua, AV)</label>
@@ -447,14 +487,17 @@ $deficiencias = [
     <h2 class="text-3xl md:text-3xl text-center">Informações Médicas</h2>
   </div>
 
-  <p class="p-1 text-center text-lg">O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
   <div class="shadow-lg w-100 m-auto">
-    <?php foreach($deficiencias as $deficiencia): ?>
+    <?php 
+  $deficiencias_marcadas = explode(",", $beneficiario['deficiencia_ambulatoria']);
+  foreach($deficiencias as $deficiencia): 
+    $checked = in_array($deficiencia, $deficiencias_marcadas) ? 'checked' : '';
+  ?>
     <div class="p-5">
       <input type="checkbox"
         class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 rounded-sm focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
-        name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
-      <label for="deficiencia" class="ms-2 text-lg font-medium text-gray-900">
+        name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>" <?= $checked; ?>>
+      <label class="ms-2 text-lg font-medium text-gray-900">
         <?= $deficiencia; ?>
       </label>
     </div>
@@ -470,13 +513,15 @@ $deficiencias = [
     <div class="flex items-center ">
       <input type="radio"
         class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
-        name="restricao-medica" value="temporaria" id="temporaria">
+        name="restricao-medica" value="temporaria" id="temporaria"
+        <?= ($beneficiario['periodo_restricao_medica'] === 'temporaria') ? 'checked' : ''; ?>>
       <label for="temporaria" class="ms-2 text-lg font-medium text-gray-900">Temporária</label>
     </div>
     <div class="flex items-center">
       <input type="radio"
         class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
-        name="restricao-medica" value="permanente" id="permanente">
+        name="restricao-medica" value="permanente" id="permanente"
+        <?= ($beneficiario['periodo_restricao_medica'] === 'permanente') ? 'checked' : ''; ?>>
       <label for="permanente" class="ms-2 text-lg font-medium text-gray-900">Permanente</label>
     </div>
   </div>
@@ -484,7 +529,7 @@ $deficiencias = [
   <div class="relative mb-5">
     <input type="date" name="data-inicio" id="data-inicio"
       class="text-md block px-2.5 pb-2.5 mt-3 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" ">
+      placeholder=" " value=<?=$beneficiario['data_inicio'];?>>
     <label for="data-inicio" id="data-inicio"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de início</label>
@@ -493,7 +538,7 @@ $deficiencias = [
   <div class="relative mb-5">
     <input type="date" name="data-fim" id="data-fim"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" ">
+      placeholder=" " value=<?=$beneficiario['data_fim'];?>>
     <label for="data-fim" id="data-fim"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de fim</label>
@@ -514,7 +559,7 @@ $deficiencias = [
   <?php else: ?>
   <div class="relative mb-5">
     <textarea name="cid" id=""
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"></textarea>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"> <?=$beneficiario['cid'];?></textarea>
     <label for="cid"
       class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Descrição
       CID
