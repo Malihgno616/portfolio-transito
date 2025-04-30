@@ -66,8 +66,7 @@ $deficiencias = [
 
 <form
   class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"
-  action="../config/database/form-deficiente-db.php" method="post" class="form animate__animated animate__fadeIn"
-  enctype="multipart/form-data">
+  action="../config/database/form-deficiente-db.php" method="post" enctype="multipart/form-data">
 
   <?php if ($success): ?>
   <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50"
