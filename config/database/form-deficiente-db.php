@@ -230,6 +230,7 @@
 
     if ($executed) {
       echo "Dados enviados com sucesso!";
+      
     } else {
       echo "Erro ao enviar dados: " . mysqli_error($conn);
     }
