@@ -1,45 +1,24 @@
 <?php 
 session_start();
 
-ini_set("default_charset", "utf8mb4");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$db_server = "localhost";
-$db_user = "root";
-$db_password = "";
-$db_name = "site_transito";
-$conn = "";
+require('conn.php');
 
-try {
-  $conn = mysqli_connect(
-    $db_server,
-    $db_user,
-    $db_password,
-    $db_name
-  );
-  
-  if (!$conn) {
-    throw new Exception("Erro ao conectar com o banco de dados!");
-  }
-  
-  mysqli_set_charset($conn, "utf8mb4");
-
-} catch (Exception $e) {
-  echo $e->getMessage();
-  exit;
-}
-
-$nome = $_POST["nome"];
-$email = $_POST["email"];
-$telefone = $_POST["telefone"];
-$mensagem = $_POST["mensagem"];
+$nome = htmlspecialchars(trim($_POST["nome"]));
+$email = htmlspecialchars(trim($_POST["email"]));
+$telefone = htmlspecialchars(trim($_POST["telefone"]));
+$mensagem = htmlspecialchars(trim($_POST["mensagem"]));
 
 $campos_obrigatorios = ["nome", "email", "telefone", "mensagem"];
+$array_erro = [];
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $array_erro['email'] = "Formato de e-mail inválido";
 }
 
-$array_erro = [];
 foreach ($campos_obrigatorios as $campo) {
   if (empty($_POST[$campo])) {
       if ($campo === 'mensagem') {
@@ -57,26 +36,26 @@ if (!empty($array_erro)){
   exit();
 }
 
-$query = "INSERT INTO form_contato (nome, email, telefone, mensagem) VALUES (?, ?, ?, ?)";
+$conn = new Conn();
+$pdo = $conn->connect();
 
-$stmt = mysqli_prepare($conn, $query);
+try {
+  $query = "INSERT INTO form_contato (nome, email, telefone, mensagem) VALUES (:nome, :email, :telefone, :mensagem)";
+  $stmt = $pdo->prepare($query);
 
-if ($stmt === false) {
-  echo "Erro ao preparar a consulta: " . mysqli_error($conn);
-  exit;
-}
+  $stmt->execute([
+    ':nome' => $nome,
+    ':email' => $email,
+    ':telefone' => $telefone,
+    ':mensagem' => $mensagem
+  ]);
 
-mysqli_stmt_bind_param($stmt, "ssss", $nome, $email, $telefone, $mensagem);
-
-$executed = mysqli_stmt_execute($stmt);
-
-if ($executed) {
   $_SESSION['sucesso'] = "Mensagem enviada com sucesso!";
   header("Location: ../../pages/contato.php");
-  exit;
-} else {
-  $_SESSION['erro-sql'] = "Erro ao enviar os dados: " . mysqli_stmt_error($stmt);
-  header("Location: ../../pages/contato.php");
-  exit;
-}
+  exit();
 
+} catch (PDOException $e) {
+    $_SESSION['erro-sql'] = "Erro ao enviar os dados: " . $e->getMessage();
+    header("Location: ../../pages/contato.php");
+    exit;
+}
