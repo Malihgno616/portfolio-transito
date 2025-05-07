@@ -564,7 +564,7 @@ $deficiencias = [
     </div>
   </div>
 
-  <div class="relative mb-5">
+  <div class="relative mb-5 mt-5">
     <input type="date" name="data-inicio" id="data-inicio"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
       placeholder=" ">
