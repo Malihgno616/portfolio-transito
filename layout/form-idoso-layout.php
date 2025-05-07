@@ -58,7 +58,7 @@ $array_generos = [
 </div>
 
 <form
-  class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"
+  class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"
   action="../config/database/form-idoso-db.php" method="post" enctype="multipart/form-data">
 
   <?php if ($error): ?>
