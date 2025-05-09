@@ -1,26 +1,11 @@
 <?php 
   session_start();
-  ini_set("default_charset", "utf8mb4");
+  
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
 
-  $db_server = "localhost";
-  $db_user = "root";
-  $db_password = "";
-  $db_name = "site_transito";
-  $conn = "";
-
-  try {
-    $conn = mysqli_connect($db_server, $db_user, $db_password, $db_name);
-    if (!$conn) {
-      throw new Exception("Erro ao conectar ao banco de dados");
-    }
-    mysqli_set_charset($conn, "utf8mb4");
-  } catch (Exception $e) {
-    echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
-    exit;
-  }
+  require('conn.php');
 
   $required = ['nome-beneficiario','nascimento-beneficiario','genero-beneficiario','endereco-beneficiario','numero-beneficiario','bairro-beneficiario','cep-beneficiario','cidade-beneficiario','uf-beneficiario','telefone-beneficiario','rg-beneficiario','expedicao-beneficiario','expedido-beneficiario','nome-medico','crm-medico','telefone-medico','local-atendimento-medico','cid'];
 

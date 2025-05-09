@@ -1,5 +1,4 @@
 <?php 
-session_start();
 
 $error = $_SESSION['erro-form-idoso'] ?? null;
 unset($_SESSION['erro-form-idoso']);

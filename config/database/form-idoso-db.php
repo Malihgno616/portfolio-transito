@@ -1,5 +1,9 @@
 <?php 
   session_start();
+
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
   
   require('conn.php');
 
@@ -20,20 +24,6 @@
   $cnh_idoso = $_POST["cnh-idoso"] ?? null;
   $validade_cnh_idoso = isset($_POST['validade-cnh-idoso']) && $_POST['validade-cnh-idoso'] !== '' ? $_POST['validade-cnh-idoso'] : null;
   $email_idoso = $_POST["email-idoso"] ?? null;
-   
-  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] != "") {
-    $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
-    if (in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)) {
-        $imagem_idoso = file_get_contents($copia_rg_idoso); 
-    } else {
-        echo "Arquivo não permitido";
-        exit;
-    }
-  } else {
-      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
-      exit;
-  } 
 
   $nome_representante = $_POST["nome-representante"] ?? null;
   $email_representante = $_POST["email-representante"] ?? null;
@@ -54,6 +44,20 @@
     $expedicao_representante = null;
   }
   $expedido_representante = $_POST["expedido-representante"] ?? null;
+     
+  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === 0 && $_FILES['copia-rg-idoso']['tmp_name'] !== '') {
+    $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
+    if (in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)) {
+        $imagem_idoso = file_get_contents($copia_rg_idoso); 
+    } else {
+        echo "Arquivo não permitido";
+        exit;
+    }
+  } else {
+      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
+      exit;
+  } 
 
   if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
       $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
@@ -87,12 +91,12 @@
       exit;
   }
  
-   $required = [
-    'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
-    'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
-    'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
-    'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
-    ];
+  $required = [
+  'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
+  'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
+  'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
+  'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
+  ];
 
   $error_array = [];
   foreach ($required as $campo) {
@@ -104,6 +108,8 @@
   if (!empty($error_array)) {
     $_SESSION['erro'] = $error_array;
     $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
+   
+    echo "Redirecionando...";
     header("Location: ../../pages/formulario-idoso.php");
     exit();
   }
@@ -122,54 +128,60 @@
         telefone_representante, rg_representante, data_expedicao_representante, 
         expedido_representante, copia_rg_representante, comprovante_representante
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    
     $stmt = $pdo->prepare($query);
+    $data = [
+      $nome_idoso,
+      $nascimento_idoso,
+      $genero_idoso,
+      $endereco_idoso,
+      $num_endereco_idoso,
+      $complemento_idoso,
+      $bairro_idoso,
+      $cep_idoso,
+      $cidade_idoso,
+      $uf_idoso,
+      $tel_idoso,
+      $rg_idoso,
+      $expedicao_idoso,
+      $expedido_idoso,
+      $cnh_idoso,
+      $validade_cnh_idoso,
+      $email_idoso,
+      $imagem_idoso,
+      $nome_representante,
+      $email_representante,
+      $endereco_representante,
+      $num_endereco_representante,
+      $complemento_representante,
+      $bairro_representante,
+      $cep_representante,
+      $cidade_representante,
+      $uf_representante,
+      $tel_representante,
+      $rg_representante,
+      $expedicao_representante,
+      $expedido_representante,
+      $imagem_rg_representante,
+      $imagem_comp_representante
+  ];
 
-    $stmt->bindValue(1,  $nome_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(2,  $nascimento_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(3,  $genero_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(4,  $endereco_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(5,  $num_endereco_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(6,  $complemento_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(7,  $bairro_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(8,  $cep_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(9,  $cidade_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(10, $uf_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(11, $tel_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(12, $rg_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(13, $expedicao_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(14, $expedido_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(15, $cnh_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(16, $validade_cnh_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(17, $email_idoso, PDO::PARAM_STR);
-    $stmt->bindValue(18, $imagem_idoso, PDO::PARAM_LOB); // binário
-    $stmt->bindValue(19, $nome_representante, PDO::PARAM_STR);
-    $stmt->bindValue(20, $email_representante, PDO::PARAM_STR);
-    $stmt->bindValue(21, $endereco_representante, PDO::PARAM_STR);
-    $stmt->bindValue(22, $num_endereco_representante, PDO::PARAM_STR);
-    $stmt->bindValue(23, $complemento_representante, PDO::PARAM_STR);
-    $stmt->bindValue(24, $bairro_representante, PDO::PARAM_STR);
-    $stmt->bindValue(25, $cep_representante, PDO::PARAM_STR);
-    $stmt->bindValue(26, $cidade_representante, PDO::PARAM_STR);
-    $stmt->bindValue(27, $uf_representante, PDO::PARAM_STR);
-    $stmt->bindValue(28, $tel_representante, PDO::PARAM_STR);
-    $stmt->bindValue(29, $rg_representante, PDO::PARAM_STR);
-    $stmt->bindValue(30, $expedicao_representante, PDO::PARAM_STR);
-    $stmt->bindValue(31, $expedido_representante, PDO::PARAM_STR);
-    $stmt->bindValue(32, $imagem_rg_representante, PDO::PARAM_LOB); // binário
-    $stmt->bindValue(33, $imagem_comp_representante, PDO::PARAM_LOB); // binário
+  $lob_indices = [17, 31, 32]; 
 
-    $executed = $stmt->execute();
+  foreach ($data as $index => $value) {
+      $param_type = in_array($index, $lob_indices) ? PDO::PARAM_LOB : PDO::PARAM_STR;
+      $stmt->bindValue($index + 1, $value, $param_type); 
+  }
+
+  $executed = $stmt->execute();
 
     if ($executed) {
         $_SESSION['success'] = "Informações enviadas com sucesso";
         header("Location: ../../pages/formulario-idoso.php");
         exit();
-    } else {
-        $_SESSION['error-sql'] = "Erro ao inserir no banco de dados.";
-    }
+    } 
 
   } catch (PDOException $e) {
-      $_SESSION['error-sql'] = "Erro de banco de dados: " . $e->getMessage();
+      $_SESSION['error-sql'] = "Erro do banco de dados: " . $e->getMessage();
       // Você pode também fazer um log aqui   
   }
