@@ -6,7 +6,7 @@
   error_reporting(E_ALL);
 
   require('conn.php');
-
+    
   $required = ['nome-beneficiario','nascimento-beneficiario','genero-beneficiario','endereco-beneficiario','numero-beneficiario','bairro-beneficiario','cep-beneficiario','cidade-beneficiario','uf-beneficiario','telefone-beneficiario','rg-beneficiario','expedicao-beneficiario','expedido-beneficiario','nome-medico','crm-medico','telefone-medico','local-atendimento-medico','cid'];
 
   $error_array = [];
@@ -105,7 +105,7 @@
     $expedicao_representante = null;
   }
   $expedido_representante = $_POST['expedido-representante'] ?? null;
-
+  
   if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
       $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
       $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf']; // 
@@ -138,93 +138,79 @@
       exit;
   }
 
-  // Envio dos dados
-  $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico,nome_representante, email_representante, endereco_representante, num_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
+  $conn = new Conn();
+  $pdo = $conn->connect();
 
-  $stmt = mysqli_prepare($conn, $query);
-  if ($stmt === false) {
-    echo "Erro ao preparar a consulta: " . mysqli_error($conn);
-    exit;
-  }
+  try {
+    
+    $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico,nome_representante, email_representante, endereco_representante, num_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
 
-  mysqli_stmt_bind_param(
-    $stmt,
-    "ssssssssssssssssbssssssssssbsssssssssssssbb", 
-    $nome_beneficiario,
-    $nasc_beneficiario,
-    $genero_beneficiario,
-    $endereco_beneficiario,
-    $numero_beneficiario,
-    $complemento_beneficiario,
-    $bairro_beneficiario,
-    $cep_beneficiario,
-    $cidade_beneficiario,
-    $uf_beneficiario,
-    $tel_beneficiario, 
-    $rg_beneficiario,
-    $expedicao_beneficiario,
-    $expedido_beneficiario,
-    $cnh_beneficiario,
-    $validade_cnh_beneficiario,
-    $email_beneficiario, 
-    $img_rg_beneficiario, 
-    $nome_medico,
-    $crm_medico,
-    $telefone_medico,
-    $local_atendimento_medico,
-    $deficiencia_ambulatoria,
-    $restricao_medica, 
-    $data_inicio,
-    $data_fim,
-    $cid,
-    $img_atestado_medico,
-    $nome_representante,
-    $email_representante,
-    $endereco_representante,
-    $num_representante,
-    $complemento_representante,
-    $bairro_representante,
-    $cep_representante,
-    $cidade_representante,
-    $uf_representante,
-    $tel_representante,
-    $rg_representante,
-    $expedicao_representante,
-    $expedido_representante,
-    $imagem_rg_representante,
-    $imagem_comp_representante
-  );
+    $stmt = $pdo->prepare($query);
+    $data = [
+      $nome_beneficiario,
+      $nasc_beneficiario,
+      $genero_beneficiario,
+      $endereco_beneficiario,
+      $numero_beneficiario,
+      $complemento_beneficiario,
+      $bairro_beneficiario,
+      $cep_beneficiario,
+      $cidade_beneficiario,
+      $uf_beneficiario,
+      $tel_beneficiario,
+      $rg_beneficiario,
+      $expedicao_beneficiario,
+      $expedido_beneficiario,
+      $cnh_beneficiario,
+      $validade_cnh_beneficiario,
+      $email_beneficiario,
+      $copia_rg_beneficiario,
+      $nome_medico,
+      $crm_medico,
+      $telefone_medico,
+      $local_atendimento_medico,
+      $deficiencia_ambulatoria,
+      $restricao_medica,
+      $data_inicio,
+      $data_fim,
+      $cid,
+      $atestado_medico,
+      $nome_representante,
+      $email_representante,
+      $endereco_representante,
+      $num_representante,
+      $complemento_representante,
+      $bairro_representante,
+      $cep_representante,
+      $cidade_representante,
+      $uf_representante,
+      $tel_representante,
+      $rg_representante,
+      $expedicao_representante,
+      $expedido_representante,
+      $imagem_rg_representante,
+      $imagem_comp_representante
+    ];
 
-    if(isset($img_rg_beneficiario)){
-      mysqli_stmt_send_long_data($stmt, 17, $img_rg_beneficiario);
+    $lob_indices = [17, 28, 41, 42];
+
+    foreach ($data as $index => $value) {
+      $param_type = in_array($index, $lob_indices) ? PDO::PARAM_LOB : PDO::PARAM_STR;
+      $stmt->bindValue($index + 1, $value, $param_type);
     }
 
-    if(isset($img_atestado_medico)){
-      mysqli_stmt_send_long_data($stmt, 27, $img_atestado_medico);
-    }
-
-    if(isset($imagem_rg_representante)){
-      mysqli_stmt_send_long_data($stmt, 42, $imagem_rg_representante);
-    }
-
-    if(isset($imagem_comp_representante)){
-      mysqli_stmt_send_long_data($stmt, 43, $imagem_comp_representante);
-    }
-
-    $executed = mysqli_stmt_execute($stmt);
+    $executed = $stmt->execute();
 
     if ($executed) {
-      echo "Dados enviados com sucesso!";
-      
+      $_SESSION['success-form-deficiente'] = "Informações enviadas com sucesso";
+      header("Location: ../../pages/form-deficiente.php");
+      exit();
     } else {
-      echo "Erro ao enviar dados: " . mysqli_error($conn);
+      $_SESSION['error-form-deficiente'] = "Erro ao enviar informações";
     }
-    
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);   
 
-  if ($executed) {
-  $_SESSION['success-form-deficiente'] = "Informações enviadas com sucesso";
-  header("Location: ../../pages/form-deficiente.php");
-  exit();
-  } 
+  } catch (PDOException $e) {
+    echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
+  }
+
+ 
