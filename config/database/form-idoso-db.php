@@ -24,7 +24,6 @@
   $cnh_idoso = $_POST["cnh-idoso"] ?? null;
   $validade_cnh_idoso = isset($_POST['validade-cnh-idoso']) && $_POST['validade-cnh-idoso'] !== '' ? $_POST['validade-cnh-idoso'] : null;
   $email_idoso = $_POST["email-idoso"] ?? null;
-
   $nome_representante = $_POST["nome-representante"] ?? null;
   $email_representante = $_POST["email-representante"] ?? null;
   $endereco_representante = $_POST["endereco-representante"] ?? null;
@@ -44,7 +43,28 @@
     $expedicao_representante = null;
   }
   $expedido_representante = $_POST["expedido-representante"] ?? null;
-     
+  
+  $required = [
+    'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
+    'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
+    'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
+    'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
+    ];
+  
+    $error_array = [];
+    foreach ($required as $campo) {
+      if (empty($_POST[$campo])) {
+        $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
+      }
+    }
+    
+    if (!empty($error_array)) {
+      $_SESSION['err-fields'] = $error_array;
+      $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
+      header("Location: ../../pages/formulario-idoso.php");
+      exit();
+    }
+
   if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === 0 && $_FILES['copia-rg-idoso']['tmp_name'] !== '') {
     $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
@@ -90,30 +110,7 @@
       echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
       exit;
   }
- 
-  $required = [
-  'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
-  'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
-  'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
-  'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
-  ];
-
-  $error_array = [];
-  foreach ($required as $campo) {
-    if (empty($_POST[$campo])) {
-      $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
-    }
-  }
-
-  if (!empty($error_array)) {
-    $_SESSION['erro'] = $error_array;
-    $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
    
-    echo "Redirecionando...";
-    header("Location: ../../pages/formulario-idoso.php");
-    exit();
-  }
-
   $conn = new Conn();
   $pdo = $conn->connect();
 
@@ -176,10 +173,12 @@
   $executed = $stmt->execute();
 
     if ($executed) {
-        $_SESSION['success'] = "Informações enviadas com sucesso";
+        $_SESSION['success-form-idoso'] = "Informações enviadas com sucesso";
         header("Location: ../../pages/formulario-idoso.php");
         exit();
-    } 
+    } else {
+      $_SESSION['erro-form-idoso'] = "Erro ao enviar informações";
+    }
 
   } catch (PDOException $e) {
       $_SESSION['error-sql'] = "Erro do banco de dados: " . $e->getMessage();

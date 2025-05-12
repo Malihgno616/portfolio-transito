@@ -3,11 +3,11 @@
 $error = $_SESSION['erro-form-idoso'] ?? null;
 unset($_SESSION['erro-form-idoso']);
 
-$array_error = $_SESSION['erro'] ?? null;
-unset($_SESSION['erro']);
+$array_error = $_SESSION['err-fields'] ?? null;
+unset($_SESSION['err-fields']);
 
-$success = $_SESSION['success'] ? $_SESSION['success'] : null;
-unset($_SESSION['success']);
+$success = $_SESSION['success-form-idoso'] ? $_SESSION['success-form-idoso'] : null;
+unset($_SESSION['success-form-idoso']);
 
 $error_sql = isset($_SESSION['error-sql']) ?: null;
 unset($_SESSION['error-sql']);
