@@ -1,9 +1,5 @@
 <?php 
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-
 // $db_server = "localhost";
 // $db_user = "root";
 // $db_password = "";
@@ -61,6 +57,6 @@
   <?php 
     include_once('../layout/header.php');
     include_once('../layout/title.php');
-    include('../layout/dados-bene.php'); 
+    include('../layout/dados-bene-renova.php'); 
     include_once('../layout/footer.php');
   ?>

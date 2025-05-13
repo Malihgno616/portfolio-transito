@@ -1,133 +1,85 @@
 <?php 
-
-ini_set("default_charset", "utf8mb4");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$db_server = "localhost";
-$db_user = "root";
-$db_password = "";
-$db_name = "site_transito";
-$conn = "";
+session_start();
 
-try {
-  $conn = mysqli_connect(
-    $db_server,
-    $db_user,
-    $db_password,
-    $db_name
-  );
-  
-  if (!$conn) {
-    throw new Exception("Erro ao conectar com o banco de dados!");
-  }
-  
-  mysqli_set_charset($conn, "utf8mb4");
-
-} catch (Exception $e) {
-  echo $e->getMessage();
-  exit;
-}
-
-?>
-
-<?php 
+require('conn.php');
 
 $rg_beneficiario = $_POST['rg-beneficiario'];
-$verify = "SELECT * from cartao_deficiente where rg_beneficiario = '$rg_beneficiario'";
-$result = mysqli_query($conn,$verify);
 
-if(mysqli_num_rows($result)>0) {
+$conn = new Conn();
+$pdo = $conn->connect();
 
-  $query = "INSERT INTO renova_cartao_deficiente (rg_solicitante) values (?)";
-  $stmt = mysqli_prepare($conn, $query);
+try {
+  $query = "SELECT * FROM cartao_deficiente where rg_beneficiario = :rg_beneficiario";
+  
+  $stmt = $pdo->prepare($query);
 
-  if($stmt === false) {
-    echo "Erro ao preparar a consulta: " . mysqli_error($conn);
-    exit;
-  }
+  $stmt->bindValue(":rg_beneficiario", $rg_beneficiario, PDO::PARAM_STR);
 
-  mysqli_stmt_bind_param($stmt, "s", $rg_beneficiario);
+  $result = $stmt->execute();
+  
+  $column_names = [
+    'nome_beneficiario',
+    'nasc_beneficiario',
+    'genero_beneficiario',
+    'endereco_beneficiario',
+    'numero_beneficiario',
+    'complemento_beneficiario',
+    'bairro_beneficiario',
+    'cep_beneficiario',
+    'cidade_beneficiario',
+    'uf_beneficiario',
+    'telefone_beneficiario',
+    'rg_beneficiario',
+    'expedicao_beneficiario',
+    'expedido_beneficiario',
+    'cnh_beneficiario',
+    'validade_cnh_beneficiario',
+    'email_beneficiario',
+    'copia_rg_beneficiario',
+    'nome_medico',
+    'crm',
+    'telefone_medico',
+    'local_atendimento_medico',
+    'deficiencia_ambulatoria',
+    'periodo_restricao_medica',
+    'data_inicio',
+    'data_fim',
+    'cid',
+    'atestado_medico',
+    'nome_representante',
+    'email_representante',
+    'endereco_representante',
+    'num_representante',
+    'complemento_representante',
+    'bairro_representante',
+    'cep_representante',
+    'cidade_representante',
+    'uf_representante',
+    'telefone_representante',
+    'rg_representante',
+    'expedicao_representante',
+    'expedido_representante',
+    'copia_rg_representante',
+    'comprovante_representante'   
+  ];
 
-  $executed = mysqli_stmt_execute($stmt);
+  if ($result) {
 
-  if($executed) {
-    $mensagem = "Solicitação para renovação enviada com sucesso";
-  } else {
-    $mensagem = "Erro ao enviar dados!" . mysqli_error($conn);
-  }
-
-} else {
-  $mensagem = "RG não encontrado na tabela de cartões";
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enviado</title>
-  <link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    div {
-      width: 500px;
-      height: 200px;
-      background-color: #f0f0f0;
-      margin: 225px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    p {
-      font-size: 2.1rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    a {
-      text-decoration: none;
-      color: #f0f0f0;
-      background-color: rgb(255, 73, 73);
-      padding: .5rem;
-      font-size: 1.25rem;
-      border-radius: 10rem;
-      transition: all .5s ease;
-    }
-    a:hover {
-      filter: brightness(1.1);
-    }
-    @media(max-width: 480px){
-      div {
-        width: 100%;
-      }
-      p {
-        font-size: 1.5rem;
-      }
-
-    }
-  </style>
-</head>
-<body>
-  <div>
-    <?php
-
-    echo "<p>$mensagem</p>";
+    echo var_dump($rg_beneficiario) . "<br>";
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    mysqli_close($conn);
-    ?>
-    <a href="../../public/index.php">Clique para voltar à página principal</a>
-  </div>
-</body>
-</html>
+    foreach ($column_names as $index) {
+      echo "<br>". $index . ": " . $data[$index] . "<br>";
+    }
+    
+  } else {
+    echo "Não foi possível encontrar o beneficiário.";
+  }
+  
+} catch(PDOException $e) {
+  echo "Erro: " . $e->getMessage();
+}

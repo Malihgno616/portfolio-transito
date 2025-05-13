@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <div class="flex flex-col justify-center items-center m-20 gap-3">
   <h1 class="text-5xl md:text-2xl font-bold text-center">Cartão do Deficiente</h1>
   <h2 class="md:text-3xl text-center">Siga as etapas para solicitar o cartão</h2>
@@ -5,7 +9,7 @@
     retirada do cartão</p>
 </div>
 
-<form action="../pages/dados-beneficiario-renova.php" method="post"
+<form action="../config/database/renova-cartao-db.php" method="post"
   class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
   <div class="flex flex-col justify-center items-center m-2 gap-3">
     <h2 class="md:text-3xl text-center">

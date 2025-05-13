@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="../assets/css/footer.scss">
-<link rel="stylesheet" href="../assets/css/header.scss">
 <link rel="stylesheet" href="../assets/css/global.css">
 <link rel="stylesheet" href="../assets/css/renova.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
