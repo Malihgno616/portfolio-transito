@@ -20,66 +20,21 @@ try {
   $stmt->bindValue(":rg_beneficiario", $rg_beneficiario, PDO::PARAM_STR);
 
   $result = $stmt->execute();
-  
-  $column_names = [
-    'nome_beneficiario',
-    'nasc_beneficiario',
-    'genero_beneficiario',
-    'endereco_beneficiario',
-    'numero_beneficiario',
-    'complemento_beneficiario',
-    'bairro_beneficiario',
-    'cep_beneficiario',
-    'cidade_beneficiario',
-    'uf_beneficiario',
-    'telefone_beneficiario',
-    'rg_beneficiario',
-    'expedicao_beneficiario',
-    'expedido_beneficiario',
-    'cnh_beneficiario',
-    'validade_cnh_beneficiario',
-    'email_beneficiario',
-    'copia_rg_beneficiario',
-    'nome_medico',
-    'crm',
-    'telefone_medico',
-    'local_atendimento_medico',
-    'deficiencia_ambulatoria',
-    'periodo_restricao_medica',
-    'data_inicio',
-    'data_fim',
-    'cid',
-    'atestado_medico',
-    'nome_representante',
-    'email_representante',
-    'endereco_representante',
-    'num_representante',
-    'complemento_representante',
-    'bairro_representante',
-    'cep_representante',
-    'cidade_representante',
-    'uf_representante',
-    'telefone_representante',
-    'rg_representante',
-    'expedicao_representante',
-    'expedido_representante',
-    'copia_rg_representante',
-    'comprovante_representante'   
-  ];
+  $count = $stmt->rowCount();
 
-  if ($result) {
-
-    echo var_dump($rg_beneficiario) . "<br>";
+  if ($count > 0) {
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    foreach ($column_names as $index) {
-      echo "<br>". $index . ": " . $data[$index] . "<br>";
-    }
-    
+    $_SESSION['dados_beneficiario'] = $data; 
+    header("Location: ../../pages/dados-beneficiario-renova.php");
+    exit();
   } else {
-    echo "Não foi possível encontrar o beneficiário.";
+    $_SESSION['erro-dados-def-renova'] = "Número do RG não encontrado/existente.";
+    header("Location: ../../pages/renovar-cartao.php");
+    exit();
   }
   
 } catch(PDOException $e) {
-  echo "Erro: " . $e->getMessage();
+  $_SESSION['erro-dados-def-renova'] = "Erro ao consultar o banco de dados: " . $e->getMessage();
+  header("Location: ../../pages/renovar-cartao.php");
+  exit();
 }
