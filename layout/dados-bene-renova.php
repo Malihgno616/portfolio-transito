@@ -48,10 +48,10 @@ $deficiencias = [
 
 session_start();
 
-// if (!isset($_SESSION['dados_beneficiario_renova'])) {
-//     header("Location: renovar-cartao.php");
-//     exit;
-// }
+if (!isset($_SESSION['dados_beneficiario_renova'])) {
+    header("Location: renovar-cartao.php");
+    exit;
+}
 
 $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
 
