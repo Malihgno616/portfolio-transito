@@ -1,4 +1,5 @@
 <?php 
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -24,7 +25,7 @@ try {
 
   if ($count > 0) {
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['dados_beneficiario'] = $data; 
+    $_SESSION['dados_beneficiario_renova'] = $data; 
     header("Location: ../../pages/dados-beneficiario-renova.php");
     exit();
   } else {
