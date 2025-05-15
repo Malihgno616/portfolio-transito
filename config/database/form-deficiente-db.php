@@ -164,7 +164,7 @@
       $cnh_beneficiario,
       $validade_cnh_beneficiario,
       $email_beneficiario,
-      $copia_rg_beneficiario,
+      $img_rg_beneficiario,
       $nome_medico,
       $crm_medico,
       $telefone_medico,
@@ -174,7 +174,7 @@
       $data_inicio,
       $data_fim,
       $cid,
-      $atestado_medico,
+      $img_atestado_medico,
       $nome_representante,
       $email_representante,
       $endereco_representante,
@@ -192,7 +192,7 @@
       $imagem_comp_representante
     ];
 
-    $lob_indices = [17, 28, 41, 42];
+    $lob_indices = [17, 28, 41, 42]; 
 
     foreach ($data as $index => $value) {
       $param_type = in_array($index, $lob_indices) ? PDO::PARAM_LOB : PDO::PARAM_STR;

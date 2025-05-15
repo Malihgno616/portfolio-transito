@@ -238,24 +238,21 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
   </div>
 
   <div class="relative mb-5">
+        
+  <h2 class="text-3xl p-2 text-center">RG do beneficiário</h2>
+
+    <?php if (!empty($dados_beneficiario['copia_rg_beneficiario'])): ?>
+    
     <label for="copia-rg-beneficiario"
       class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-rg-beneficiario">
-        <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-          viewBox="0 0 20 16">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-        </svg>
-        <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
-          <span class="font-semibold">Selecione uma cópia digitadlizada do RG do beneficiário</span>
-        </p>
-        <p class="text-lg text-gray-500 text-center dark:text-gray-400">
-          JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
-        </p>
+        <img class="w-full h-56 object-cover md:w-30" src="data:image/jpeg;base64, <?= base64_encode($dados_beneficiario['copia_rg_beneficiario'])?>">
       </div>
-      <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" value="<?=$dados_beneficiario['copia_rg_beneficiario'];?>" accept="image/*">
+      <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*">
       <span id="file-name-rg-beneficiario"></span>
     </label>
+    
+    <?php endif; ?>
   </div>
 
   <div class="flex flex-col justify-center items-center m-10 gap-3">
@@ -376,27 +373,24 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     Selecione a cópia digitalizada do atestado médico da pessoa portadora de
     deficiência física permanente por período de validade de (05) cinco anos ou para pessoa com dificuldade de
     locomoção temporária, por período de no mínimo (02) dois meses e no máximo (01) um ano.
-  </p>.
+  </p>
 
   <div class="relative mb-5">
+
+    <h2 class="text-3xl p-2 text-center">Atestado médico</h2>
+    
+    <?php if (!empty($dados_beneficiario['atestado_medico'])): ?>
+
     <label for="atestado-medico"
       class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-atestado-medico">
-        <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-          viewBox="0 0 20 16">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-        </svg>
-        <p class="mb-2 text-xl text-justify text-gray-500 dark:text-gray-400">
-          <span class="font-semibold">Selecione a cópia digitalizada do atestado médico</span>
-        </p>
-        <p class="text-lg text-gray-500 text-center dark:text-gray-400">
-          JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
-        </p>
+        <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?= base64_encode($dados_beneficiario['atestado_medico'])?>" alt="">
       </div>
       <input type="file" name="atestado-medico" id="atestado-medico" class="hidden" accept="image/*">
       <span id="file-name-atestado-medico"></span>
     </label>
+
+    <?php endif; ?>
   </div>
 
   <div class="flex rounded-md gap-3 p-5 justify-center items-center border-2 border-gray-300">
@@ -545,27 +539,32 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     </div>
 
     <div class="relative mb-5">
+
       <label for=""
         class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
           <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 20 16">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-          </svg>
-          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
-            <span class="font-semibold">Selecione uma cópia digitalizada do RG do representante</span>
-          </p>
-          <p class="text-lg text-gray-500 text-center dark:text-gray-400">
-            JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
-          </p>
+              viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+            </svg>
+            <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
+              <span class="font-semibold">Selecione uma cópia digitalizada do RG do representante </span>
+            </p>
+            <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+              JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+            </p>
+
         </div>
         <input type="file" name="" id="" class="hidden">
         <span id="file-name"></span>
       </label>
+
     </div>
 
     <div class="relative mb-5">
+        
+
       <label for=""
         class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -584,6 +583,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
         <input type="file" name="" id="" class="hidden">
         <span id="file-name"></span>
       </label>
+
     </div>
   </div>
 
