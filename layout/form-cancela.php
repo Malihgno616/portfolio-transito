@@ -5,7 +5,7 @@
       retirada do cartão</p>
   </div>
 
-  <form action="../config/database/cancela-cartao-db.php" method="post"
+  <form action="../config/database/verify-cancela-cartao-db.php" method="post"
     class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
     
     <?php if($error_data_cancel): ?>
