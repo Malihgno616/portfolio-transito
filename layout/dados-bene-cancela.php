@@ -57,7 +57,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
 ?>
 
-<form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action=""
+<form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action="../config/database/delete-card-deficiente.php"
   method="post" accept="multipart/form-data">
 
   <div class="flex flex-col justify-center items-center m-5 gap-3">
