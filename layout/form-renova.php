@@ -52,8 +52,8 @@
       do beneficiário</label>
   </div>
   <div class="flex justify-center gap-5 p-5 ">
-    <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
-      onclick="javascript:history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
+  <button type="button" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
+      onclick="window.location.href = '../pages/cartao-deficiente.php';"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
     <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
       Próximo <i class="fa-solid fa-arrow-right"></i>
     </button>

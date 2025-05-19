@@ -616,7 +616,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
   <div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
     <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
       type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
-    <button id="btn-enviar" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
+    <button id="btn-enviar " class="delete-btn bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
       <div role="status" class="flex justify-center items-center gap-2">
           <span id="btn-txt">Cancelar <i class="fa-solid fa-xmark"></i></span>
           <svg id="spinner" aria-hidden="true" class="hidden w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-yellow-400" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -629,6 +629,12 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
 </form>
 
+<script>
+    const btn = document.querySelector('.delete-btn');
+    btn.addEventListener("click", function () {
+      alert("Cartão cancelado com sucesso!");    
+    });
+</script>
 <script src="../assets/js/acitiveSpinner.js"></script>
 <script src="../assets/js/exibirData.js"></script>
 <script src="../assets/js/exibirArquivoBeneficiario.js"></script>
