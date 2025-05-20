@@ -129,18 +129,18 @@ $array_generos = [
     <?php endif; ?>
     <?php if (!empty($array_error['nascimento-idoso'])): ?>
     <div class="relative mb-5">
-      <input type="date" name="nascimento-idoso"
+      <input type="text" name="nascimento-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="nasc-idoso"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, preencha sua data de nascimento</label>
     </div>
     <?php else: ?>
     <div class="relative mb-5">
-      <input type="date" name="nascimento-idoso"
+      <input type="text" name="nascimento-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="nasc-idoso"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Nascimento</label>
@@ -302,7 +302,7 @@ $array_generos = [
     <div class="relative mb-5">
       <input type="text" name="telefone-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " oninput="formatPhone(this)" maxlength="15">
       <label for="telefone"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, preencha seu telefone</label>
@@ -311,7 +311,7 @@ $array_generos = [
     <div class="relative mb-5">
       <input type="text" name="telefone-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " oninput="formatPhone(this)" maxlength="15">
       <label for="telefone"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -336,18 +336,18 @@ $array_generos = [
     <?php endif;?>
     <?php if (!empty($array_error['data-expedicao-idoso'])):?>
     <div class="relative mb-5">
-      <input type="date" name="data-expedicao-idoso"
+      <input type="text" name="data-expedicao-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="data-expedicao"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, coloque a data de expedição do seu RG</label>
     </div>
     <?php else:?>
     <div class="relative mb-5">
-      <input type="date" name="data-expedicao-idoso"
+      <input type="text" name="data-expedicao-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="data-expedicao"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Expedição</label>
@@ -384,9 +384,9 @@ $array_generos = [
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="relative mb-5">
-      <input type="date" name="validade-cnh-idoso"
+      <input type="text" name="validade-cnh-idoso"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="validade-cnh"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
@@ -439,7 +439,7 @@ $array_generos = [
 
   </div>
 
-  <div id="representante" class="grid grid-cols-1 md:grid-cols-3  animate__animated animate__fadeIn">
+  <div id="representante" class="grid grid-cols-1 md:grid-cols-3 text-3xl  animate__animated animate__fadeIn">
 
     <h1 class="text-center text-2xl mb-5">Informações do Representante</h1>
 
@@ -518,7 +518,7 @@ $array_generos = [
       <div class="relative mb-5" id="representante">
         <input type="text" name="telefone-representante"
           class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-          placeholder=" " />
+          placeholder=" " oninput="formatPhone(this)" maxlength="15"/>
         <label for="telefone-representante"
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
       </div>
@@ -530,9 +530,9 @@ $array_generos = [
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
       </div>
       <div class="relative mb-5" id="representante">
-        <input type="date" name="expedicao-representante" id=""
+        <input type="text" name="expedicao-representante" id=""
           class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-          placeholder=" ">
+          placeholder=" " maxlength="10" oninput="formatDate(this)">
         <label for=""
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
           de Expedição</label>
@@ -610,6 +610,8 @@ $array_generos = [
   <p class="text-lg text-justify">Horário de atendimento: Das 8:00h ás 12:00h e das 13:00 às 16:00h</p>
 </div>
 
+<script src="../assets/js/formatPhone.js"></script>
+<script src="../assets/js/formatDate.js"></script>
 <script src="../assets/js/acitiveSpinner.js"></script>
 <script src="../assets/js/autofill-rep.js"></script>
 <script src="../assets/js/autofill.js"></script>

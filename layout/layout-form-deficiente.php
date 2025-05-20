@@ -137,18 +137,18 @@ $deficiencias = [
     <?php endif;?>
     <?php if(!empty($array_error['nascimento-beneficiario'])): ?>
     <div class="relative mb-5">
-      <input type="date" name="nascimento-beneficiario"
+      <input type="text" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " oninput="formatDate(this)" maxlength="10">
       <label for="nascimento-beneficiario"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Preencha
         sua data de nascimento</label>
     </div>
     <?php else: ?>
     <div class="relative mb-5">
-      <input type="date" name="nascimento-beneficiario"
+      <input type="text" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " oninput="formatDate(this)" maxlength="10">
       <label for="nascimento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Nascimento</label>
@@ -324,7 +324,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="telefone-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)">
       <label for="telefone-deficiente"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, preencha seu telefone</label>
@@ -333,7 +333,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="telefone-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)">
       <label for="telefone-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -358,18 +358,18 @@ $deficiencias = [
     <?php endif; ?>
     <?php if (!empty($array_error['expedicao-beneficiario'])): ?>
     <div class="relative mb-5">
-      <input type="date" name="expedicao-beneficiario"
+      <input type="text" name="expedicao-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="expedicao-beneficiario"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Pord
         favor, preencha a data de expedição de seu RG </label>
     </div>
     <?php else: ?>
     <div class="relative mb-5">
-      <input type="date" name="expedicao-beneficiario"
+      <input type="text" name="expedicao-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="expedicao-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         Expedição</label>
@@ -406,9 +406,9 @@ $deficiencias = [
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="relative mb-5">
-      <input type="date" name="validade-cnh-beneficiario"
+      <input type="text" name="validade-cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="validade-cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
@@ -491,7 +491,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="telefone-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)">
       <label for="telefone"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, preencha o telefone do médico</label>
@@ -500,7 +500,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="telefone-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)">
       <label for="telefone"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -565,17 +565,17 @@ $deficiencias = [
   </div>
 
   <div class="relative mb-5 mt-5">
-    <input type="date" name="data-inicio" id="data-inicio"
+    <input type="text" name="data-inicio" id="data-inicio"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" ">
+      placeholder=" " maxlength="10" oninput="formatDate(this)">
     <label for="data-inicio" id="data-inicio"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de início</label>
   </div>
   <div class="relative mb-5">
-    <input type="date" name="data-fim" id="data-fim"
+    <input type="text" name="data-fim" id="data-fim"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" ">
+      placeholder=" " maxlength="10" oninput="formatDate(this)">
     <label for="data-fim" id="data-fim"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de fim</label>
@@ -733,7 +733,7 @@ $deficiencias = [
       <div class="relative mb-5" id="representante">
         <input type="text" name="telefone-representante"
           class="text-sm block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-          placeholder=" ">
+          placeholder=" " maxlength="15" oninput="formatPhone(this)">
         <label for="telefone-representante"
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
       </div>
@@ -745,9 +745,9 @@ $deficiencias = [
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
       </div>
       <div class="relative mb-5" id="representante">
-        <input type="date" name="expedicao-representante" id=""
+        <input type="text" name="expedicao-representante" id=""
           class="text-sm block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-          placeholder=" ">
+          placeholder=" " maxlength="10" oninput="formatDate(this)">
         <label for="" text-sm
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
           de Expedição</label>
@@ -819,6 +819,8 @@ $deficiencias = [
 
 </form>
 
+<script src="../assets/js/formatDate.js"></script>
+<script src="../assets/js/formatPhone.js"></script>
 <script src="../assets/js/acitiveSpinner.js"></script>
 <script src="../assets/js/autofill-rep.js"></script>
 <script src="../assets/js/autofill.js"></script>
