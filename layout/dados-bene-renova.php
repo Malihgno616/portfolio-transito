@@ -57,13 +57,13 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
 
 ?>
 
-<form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action=""
+<form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"  action="../config/database/edit-card-deficiente-db.php"
   method="post" accept="multipart/form-data">
 
   <div class="flex flex-col justify-center items-center m-5 gap-3">
     <h2 class="text-3xl md:text-2xl font-bold text-center">Informações do beneficiário</h2>
   </div>
-
+  
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
     
     <div class="relative mb-5">
@@ -76,9 +76,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     </div>
 
     <div class="relative mb-5">
-      <input type="date" name="nascimento-beneficiario"
+      <input type="text" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['nasc_beneficiario']?>"> <label for="nascimento-beneficiario"
+        placeholder=" " oninput="formatDate(this)" maxlength="10" value="<?=$dados_beneficiario['nasc_beneficiario']?>"> <label for="nascimento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Nascimento</label>
     </div>
@@ -177,7 +177,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     <div class="relative mb-5">
       <input type="text" name="telefone-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['telefone_beneficiario'];?>">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?=$dados_beneficiario['telefone_beneficiario'];?>">
       <label for="telefone-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -191,9 +191,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     </div>
 
     <div class="relative mb-5">
-      <input type="date" name="expedicao-beneficiario"
+      <input type="text" name="expedicao-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['expedicao_beneficiario'];?>">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dados_beneficiario['expedicao_beneficiario'];?>">
       <label for="expedicao-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         Expedição</label>
@@ -219,9 +219,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="relative mb-5">
-      <input type="date" name="validade-cnh-beneficiario"
+      <input type="text" name="validade-cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value=<?=$beneficiario['validade_cnh_beneficiario'];?>>
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value=<?=$beneficiario['validade_cnh_beneficiario'];?>>
       <label for="validade-cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
@@ -281,7 +281,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     <div class="relative mb-5">
       <input type="text" name="telefone-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['telefone_medico'];?>">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?=$dados_beneficiario['telefone_medico'];?>">
       <label for="telefone"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -340,7 +340,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
   </div>
 
   <div class="relative mb-5">
-    <input type="date" name="data-inicio" id="data-inicio"
+    <input type="text" maxlength="10" oninput="formatDate(this)" name="data-inicio" id="data-inicio"
       class="text-md block px-2.5 pb-2.5 mt-3 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
       placeholder=" " value=<?=$dados_beneficiario['data_inicio'];?>>
     <label for="data-inicio" id="data-inicio"
@@ -349,9 +349,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
   </div>
 
   <div class="relative mb-5">
-    <input type="date" name="data-fim" id="data-fim"
+    <input type="text" name="data-fim" id="data-fim"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " value=<?=$dados_beneficiario['data_fim'];?>>
+      placeholder=" " maxlength="10" oninput="formatDate(this)" value=<?=$dados_beneficiario['data_fim'];?>>
     <label for="data-fim" id="data-fim"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de fim</label>
@@ -507,7 +507,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="telefone-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['telefone_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?=$dados_beneficiario['telefone_representante'] ?: 'Não possui'?>">
       <label for="telefone-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -521,9 +521,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
     </div>
 
     <div class="relative mb-5" id="representante">
-      <input type="date" name="expedicao-representante" id=""
+      <input type="text" name="expedicao-representante" id=""
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['expedicao_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dados_beneficiario['expedicao_representante'] ?: 'Não possui'?>">
       <label for=""
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Expedição</label>
@@ -629,7 +629,10 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
 
 </form>
 
+<script src="../assets/js/formatPhone.js"></script>
+<script src="../assets/js/formatDate.js"></script>
 <script src="../assets/js/acitiveSpinner.js"></script>
-<script src="../assets/js/exibirData.js"></script>
-<script src="../assets/js/exibirArquivoBeneficiario.js"></script>
+<script src="../assets/js/autofill-rep.js"></script>
+<script src="../assets/js/autofill.js"></script>
+<script src="../assets/js/exibirArquivo.js"></script>
 <script src="../assets/js/exibirForm.js"></script>

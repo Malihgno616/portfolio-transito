@@ -24,11 +24,6 @@ function pesquisacepRep(valor) {
   //Nova variável "cep" somente com dígitos.
   let cep = valor.replace(/\D/g, "");
 
-  console.log(document.getElementById("rua-rep")); // Verifique no console (F12)
-  console.log(document.getElementById("bairro-rep"));
-  console.log(document.getElementById("cidade-rep"));
-  console.log(document.getElementById("uf-rep"));
-
   //Verifica se campo cep possui valor informado.
   if (cep != "") {
     //Expressão regular para validar o CEP.
