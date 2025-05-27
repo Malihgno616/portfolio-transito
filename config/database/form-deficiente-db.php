@@ -57,6 +57,8 @@
     exit;
   }
 
+  $nome_arquivo_rg_benef = $_POST['nome-arquivo-rg-benef'] ?? null;
+
   $nome_medico = $_POST['nome-medico'];
   $crm_medico = $_POST['crm-medico'];
   $telefone_medico = $_POST['telefone-medico'];
@@ -84,6 +86,8 @@
     echo "Erro ao enviar o atestado médico: " . $_FILES['atestado-medico']['error'];
     exit;
   }
+
+  $nome_arquivo_atestado = $_POST['nome-arquivo-atestado'] ?? null;
 
   // Dados do representante
   $nome_representante = $_POST['nome-representante'] ?? null;
@@ -122,6 +126,8 @@
         exit;
     }   
 
+    $nome_arquiv_rg_rep = $_POST['nome-arquivo-rg-rep-def'] ?? null;
+
   if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] == 0) {
     $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
@@ -138,12 +144,27 @@
       exit;
   }
 
+  $nome_arquiv_comp_rep = $_POST['nome-arquivo-comp-rep-def'] ?? null;
+
   $conn = new Conn();
   $pdo = $conn->connect();
 
   try {
     
-    $query = "INSERT INTO cartao_deficiente (nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, email_beneficiario, copia_rg_beneficiario, nome_medico, crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico,nome_representante, email_representante, endereco_representante, num_representante, complemento_representante, bairro_representante, cep_representante, cidade_representante, uf_representante, telefone_representante, rg_representante, expedicao_representante, expedido_representante, copia_rg_representante, comprovante_representante) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";  
+    $query = "INSERT INTO cartao_deficiente (
+      nome_beneficiario, nasc_beneficiario, genero_beneficiario, endereco_beneficiario, 
+      numero_beneficiario, complemento_beneficiario, bairro_beneficiario, cep_beneficiario, 
+      cidade_beneficiario, uf_beneficiario, telefone_beneficiario, rg_beneficiario, 
+      expedicao_beneficiario, expedido_beneficiario, cnh_beneficiario, validade_cnh_beneficiario, 
+      email_beneficiario, copia_rg_beneficiario, nome_arquiv_rg_benef, nome_medico, 
+      crm, telefone_medico, local_atendimento_medico, deficiencia_ambulatoria, 
+      periodo_restricao_medica, data_inicio, data_fim, cid, atestado_medico, 
+      nome_arquiv_atestado, nome_representante, email_representante, endereco_representante, 
+      num_representante, complemento_representante, bairro_representante, cep_representante, 
+      cidade_representante, uf_representante, telefone_representante, rg_representante, 
+      expedicao_representante, expedido_representante, copia_rg_representante, 
+      nome_arquiv_rg_rep, comprovante_representante, nome_arquiv_comp_rep
+  ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     $stmt = $pdo->prepare($query);
     $data = [
@@ -165,6 +186,7 @@
       $validade_cnh_beneficiario,
       $email_beneficiario,
       $img_rg_beneficiario,
+      $nome_arquivo_rg_benef,
       $nome_medico,
       $crm_medico,
       $telefone_medico,
@@ -175,6 +197,7 @@
       $data_fim,
       $cid,
       $img_atestado_medico,
+      $nome_arquivo_atestado,
       $nome_representante,
       $email_representante,
       $endereco_representante,
@@ -189,10 +212,12 @@
       $expedicao_representante,
       $expedido_representante,
       $imagem_rg_representante,
-      $imagem_comp_representante
+      $nome_arquiv_rg_rep,
+      $imagem_comp_representante,
+      $nome_arquiv_comp_rep
     ];
 
-    $lob_indices = [17, 28, 41, 42]; 
+    $lob_indices = [17, 28, 42, 43]; 
 
     foreach ($data as $index => $value) {
       $param_type = in_array($index, $lob_indices) ? PDO::PARAM_LOB : PDO::PARAM_STR;

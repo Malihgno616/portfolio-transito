@@ -425,7 +425,7 @@ $deficiencias = [
 
   <div class="relative mb-5">
     <label for="copia-rg-beneficiario"
-      class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+      class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-rg-beneficiario">
         <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
           viewBox="0 0 20 16">
@@ -439,8 +439,8 @@ $deficiencias = [
           JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
         </p>
       </div>
-      <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*">
-      <span id="file-name-rg-beneficiario"></span>
+      <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*, .pdf">
+      <input type="text" name="nome-arquivo-rg-benef" id="file-name-rg-beneficiario" class="h-10 text-center border-transparent bg-transparent" readonly>
     </label>
   </div>
 
@@ -627,7 +627,7 @@ $deficiencias = [
         </p>
       </div>
       <input type="file" name="atestado-medico" id="atestado-medico" class="hidden" accept="image/*">
-      <span id="file-name-atestado-medico"></span>
+      <input type="text" name="nome-arquivo-atestado" id="file-name-atestado" class="h-10 text-center border-transparent bg-transparent" readonly>
     </label>
   </div>
 
@@ -778,14 +778,14 @@ $deficiencias = [
         </div>
         <input id="copia-rg-representante-def" type="file" name="copia-rg-representante" class="hidden"
           accept="image/*" />
-        <span id="file-name-representante-def"></span>
+          <input type="text" name="nome-arquivo-rg-rep-def" id="file-name-representante-def" class="h-10 text-center border-transparent bg-transparent" readonly>
       </label>
     </div>
 
     <div class="flex items-center justify-center w-full mb-5">
       <label for="comprovante-representante-def"
         class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-        <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-comprovante-rep-idoso-def">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-comprovante-rep-def">
           <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 20 16">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -798,7 +798,7 @@ $deficiencias = [
         </div>
         <input id="comprovante-representante-def" type="file" name="comprovante-representante" class="hidden"
           accept="image/*" />
-        <span id="file-name-comp-representante-def"></span>
+          <input type="text" name="nome-arquivo-comp-rep-def" id="file-name-comp-representante-def"" class="h-10 text-center border-transparent bg-transparent" readonly>
       </label>
     </div>
   </div>

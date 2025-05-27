@@ -3,30 +3,43 @@ document
   .addEventListener("change", function (e) {
     const file = e.target.files[0];
     const uploadArea = document.getElementById("upload-rg-beneficiario");
-    const fileNameSpan = document.getElementById("file-name-rg-beneficiario");
+    const fileNameInput = document.getElementById("file-name-rg-beneficiario");
 
-    if (file && file.type.startsWith("image/")) {
+    if (
+      file &&
+      (file.type.startsWith("image/") || file.type === "application/pdf")
+    ) {
       const reader = new FileReader();
-      reader.onload = function (e) {
+
+      fileNameInput.value = file.name;
+
+      if (file.type.startsWith("image/")) {
+        reader.onload = function (e) {
+          uploadArea.innerHTML = `
+                  <img src="${e.target.result}" 
+                       alt="Prévia do documento" 
+                       class="w-full h-56 object-cover md:w-30">
+              `;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Se for PDF
         uploadArea.innerHTML = `
-        <img src="${e.target.result}" 
-             alt="Prévia do documento" 
-             class="w-full h-56 object-cover md:w-30">
-      `;
-      };
-      reader.readAsDataURL(file);
-      fileNameSpan.textContent = file.name;
+              <svg class="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <p class="mt-2 font-medium">Arquivo PDF selecionado</p>
+          `;
+      }
     } else {
       uploadArea.innerHTML = `
-      <svg class="w-8 h-8 mb-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 20 16">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-      </svg>
-      <p class="mb-2 text-xl text-center text-gray-500"><span class="font-semibold">Selecione uma cópia digitalizada do RG do beneficiário</span></p>
-      <p class="text-lg text-gray-500 text-center">JPG ou PNG <strong>(OBRIGATÓRIO)</strong></p>
-    `;
-      fileNameSpan.textContent = "";
+          <svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>
+          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Selecione uma cópia digitalizada do RG do Idoso</span></p>
+          <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong></p>
+      `;
+      fileNameInput.value = "";
     }
   });
 
@@ -35,63 +48,106 @@ document
   .addEventListener("change", function (e) {
     const file = e.target.files[0];
     const uploadArea = document.getElementById("upload-atestado-medico");
-    const fileNameSpan = document.getElementById("file-name-atestado-medico");
+    const fileNameInput = document.getElementById("file-name-atestado");
 
-    if (file && file.type.startsWith("image/")) {
+    if (
+      file &&
+      (file.type.startsWith("image/") || file.type === "application/pdf")
+    ) {
       const reader = new FileReader();
-      reader.onload = function (e) {
+
+      fileNameInput.value = file.name;
+
+      if (file.type.startsWith("image/")) {
+        reader.onload = function (e) {
+          uploadArea.innerHTML = `
+                  <img src="${e.target.result}" 
+                       alt="Prévia do documento" 
+                       class="w-full h-56 object-cover md:w-30">
+              `;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Se for PDF
         uploadArea.innerHTML = `
-        <img src="${e.target.result}" 
-             alt="Prévia do documento" 
-             class="w-full h-56 object-cover md:w-30">
-      `;
-      };
-      reader.readAsDataURL(file);
-      fileNameSpan.textContent = file.name;
+              <svg class="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <p class="mt-2 font-medium">Arquivo PDF selecionado</p>
+          `;
+      }
     } else {
       uploadArea.innerHTML = `
-      <svg class="w-8 h-8 mb-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 20 16">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-      </svg>
-      <p class="mb-2 text-xl text-center text-gray-500"><span class="font-semibold">Selecione uma cópia digitalizada do RG do beneficiário</span></p>
-      <p class="text-lg text-gray-500 text-center">JPG ou PNG <strong>(OBRIGATÓRIO)</strong></p>
-    `;
-      fileNameSpan.textContent = "";
+          <svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>
+          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Selecione uma cópia digitalizada do RG do Idoso</span></p>
+          <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong></p>
+      `;
+      fileNameInput.value = "";
     }
   });
+
+/*
+
+copia-rg-representante-def
+upload-area-representante-def
+file-name-representante-def
+
+*/
+
+/*
+
+comprovante-representante-def
+upload-comprovante-rep-def
+file-name-comp-representante-def
+
+*/
 
 document
   .getElementById("copia-rg-representante-def")
   .addEventListener("change", function (e) {
     const file = e.target.files[0];
     const uploadArea = document.getElementById("upload-area-representante-def");
-    const fileNameSpan = document.getElementById("file-name-representante-def");
+    const fileNameInput = document.getElementById(
+      "file-name-representante-def"
+    );
 
-    if (file && file.type.startsWith("image/")) {
+    if (
+      file &&
+      (file.type.startsWith("image/") || file.type === "application/pdf")
+    ) {
       const reader = new FileReader();
 
-      reader.onload = function (e) {
-        // Cria a prévia da imagem
+      fileNameInput.value = file.name;
+
+      if (file.type.startsWith("image/")) {
+        reader.onload = function (e) {
+          uploadArea.innerHTML = `
+                  <img src="${e.target.result}" 
+                       alt="Prévia do documento" 
+                       class="w-full h-56 object-cover md:w-30">
+              `;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Se for PDF
         uploadArea.innerHTML = `
-							<img src="${e.target.result}" 
-									alt="Prévia do documento" 
-									class="w-full h-56 object-cover md:w-30">
-						`;
-      };
-      reader.readAsDataURL(file);
-      fileNameSpan.textContent = file.name;
+              <svg class="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <p class="mt-2 font-medium">Arquivo PDF selecionado</p>
+          `;
+      }
     } else {
-      // Reset se não for imagem
       uploadArea.innerHTML = `
-						<svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-						</svg>
-						<p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Selecione uma cópia digitalizada do RG do Representante</span></p>
-						<p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong></p>
-					`;
-      fileNameSpan.textContent = "";
+          <svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>
+          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Selecione uma cópia digitalizada do RG do Idoso</span></p>
+          <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong></p>
+      `;
+      fileNameInput.value = "";
     }
   });
 
@@ -99,35 +155,45 @@ document
   .getElementById("comprovante-representante-def")
   .addEventListener("change", function (e) {
     const file = e.target.files[0];
-    const uploadArea = document.getElementById(
-      "upload-comprovante-rep-idoso-def"
-    );
-    const fileNameSpan = document.getElementById(
+    const uploadArea = document.getElementById("upload-comprovante-rep-def");
+    const fileNameInput = document.getElementById(
       "file-name-comp-representante-def"
     );
 
-    if (file && file.type.startsWith("image/")) {
+    if (
+      file &&
+      (file.type.startsWith("image/") || file.type === "application/pdf")
+    ) {
       const reader = new FileReader();
 
-      reader.onload = function (e) {
-        // Cria a prévia da imagem
+      fileNameInput.value = file.name;
+
+      if (file.type.startsWith("image/")) {
+        reader.onload = function (e) {
+          uploadArea.innerHTML = `
+                  <img src="${e.target.result}" 
+                       alt="Prévia do documento" 
+                       class="w-full h-56 object-cover md:w-30">
+              `;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Se for PDF
         uploadArea.innerHTML = `
-							<img src="${e.target.result}" 
-									alt="Prévia do documento" 
-									class="w-full h-56 object-cover md:w-30">
-						`;
-      };
-      reader.readAsDataURL(file);
-      fileNameSpan.textContent = file.name;
+              <svg class="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <p class="mt-2 font-medium">Arquivo PDF selecionado</p>
+          `;
+      }
     } else {
-      // Reset se não for imagem
       uploadArea.innerHTML = `
-						<svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-						</svg>
-						<p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Selecione uma cópia digitalizada do RG do Representante</span></p>
-						<p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong></p>
-					`;
-      fileNameSpan.textContent = "";
+          <svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>
+          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Selecione uma cópia digitalizada do RG do Idoso</span></p>
+          <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong></p>
+      `;
+      fileNameInput.value = "";
     }
   });
