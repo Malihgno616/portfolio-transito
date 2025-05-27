@@ -79,6 +79,8 @@
       exit;
   } 
 
+  $nome_arquivo_rg_idoso = $_POST['nome-arquivo-rg-idoso']; 
+
   if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
       $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
       $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf']; // 
@@ -95,6 +97,8 @@
         exit;
     }   
 
+  $nome_arquivo_rg_rep = $_POST['nome-arquivo-rg-rep'];
+
   if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] == 0) {
     $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
@@ -110,7 +114,9 @@
       echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
       exit;
   }
-   
+  
+  $nome_arquivo_comp_rep = $_POST['nome-arquivo-comp-rep'];
+
   $conn = new Conn();
   $pdo = $conn->connect();
 
@@ -119,12 +125,13 @@
         nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, 
         complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, 
         rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, 
-        email_idoso, copia_rg_idoso, nome_representante, email_representante, 
+        email_idoso, copia_rg_idoso, nome_arquivo_rg_idoso, nome_representante, email_representante, 
         endereco_representante, numero_endereco_representante, complemento_representante, 
         bairro_representante, cep_representante, cidade_representante, uf_representante, 
         telefone_representante, rg_representante, data_expedicao_representante, 
-        expedido_representante, copia_rg_representante, comprovante_representante
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        expedido_representante, copia_rg_representante, nome_arquivo_rg_rep, 
+        comprovante_representante, nome_arquivo_comp_rep 
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = $pdo->prepare($query);
     $data = [
@@ -146,6 +153,7 @@
       $validade_cnh_idoso,
       $email_idoso,
       $imagem_idoso,
+      $nome_arquivo_rg_idoso,
       $nome_representante,
       $email_representante,
       $endereco_representante,
@@ -160,10 +168,12 @@
       $expedicao_representante,
       $expedido_representante,
       $imagem_rg_representante,
-      $imagem_comp_representante
+      $nome_arquivo_rg_rep,
+      $imagem_comp_representante,
+      $nome_arquivo_comp_rep
   ];
 
-  $lob_indices = [17, 31, 32]; 
+  $lob_indices = [17, 32, 34];
 
   foreach ($data as $index => $value) {
       $param_type = in_array($index, $lob_indices) ? PDO::PARAM_LOB : PDO::PARAM_STR;
@@ -181,6 +191,7 @@
     }
 
   } catch (PDOException $e) {
-      $_SESSION['error-sql'] = "Erro do banco de dados: " . $e->getMessage();
+      echo $_SESSION['error-sql'] = "Erro do banco de dados: " . $e->getMessage();
       // Você pode também fazer um log aqui   
+
   }

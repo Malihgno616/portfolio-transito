@@ -403,7 +403,7 @@ $array_generos = [
 
   <div class="flex items-center justify-center w-full mb-5">
     <label for="copia-rg-idoso"
-      class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+      class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-area">
         <!-- Conteúdo original -->
         <svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -416,8 +416,8 @@ $array_generos = [
         <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
         </p>
       </div>
-      <input id="copia-rg-idoso" type="file" name="copia-rg-idoso" class="hidden" accept="image/*" />
-      <span id="file-name"></span>
+      <input id="copia-rg-idoso" type="file" name="copia-rg-idoso" class="hidden" accept="accept=image/*,.pdf"/>
+      <input type="text" name="nome-arquivo-rg-idoso" id="file-name" class="h-10 text-center border-transparent bg-transparent" readonly>
     </label>
   </div>
 
@@ -549,7 +549,7 @@ $array_generos = [
 
     <div class="flex items-center justify-center w-full mb-5">
       <label for="copia-rg-representante"
-        class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+        class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-area-representante">
           <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 20 16">
@@ -562,13 +562,13 @@ $array_generos = [
           </p>
         </div>
         <input id="copia-rg-representante" type="file" name="copia-rg-representante" class="hidden" accept="image/*" />
-        <span id="file-name-representante"></span>
+        <input type="text" name="nome-arquivo-rg-rep" id="file-name-representante" class="h-10 text-center border-transparent bg-transparent" readonly>
       </label>
     </div>
 
     <div class="flex items-center justify-center w-full mb-5">
       <label for="comprovante-representante"
-        class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+        class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-comprovante-rep-idoso">
           <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 20 16">
@@ -582,7 +582,7 @@ $array_generos = [
         </div>
         <input id="comprovante-representante" type="file" name="comprovante-representante" class="hidden"
           accept="image/*" />
-        <span id="file-name-comp-representante"></span>
+          <input type="text" name="nome-arquivo-comp-rep" id="file-name-comp-representante" class="h-10 text-center border-transparent bg-transparent " readonly>
       </label>
     </div>
 

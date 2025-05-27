@@ -11,18 +11,15 @@ $conn = new Conn();
 $pdo = $conn->connect();
 
 try {
-    // Buscar os dados atuais do cartão para manter os BLOBs se não houver novos uploads
     $querySelect = "SELECT * FROM cartao_deficiente WHERE rg_beneficiario = ?";
     $stmtSelect = $pdo->prepare($querySelect);
     $stmtSelect->execute([$infos['rg-beneficiario']]);
     $currentData = $stmtSelect->fetch(PDO::FETCH_ASSOC);
 
-    // Inicializar arrays para construção dinâmica da query
     $setClauses = [];
     $params = [];
     $types = [];
 
-    // Mapear campos e seus valores, tratando arquivos separadamente
     $fields = [
         'nome_beneficiario' => $infos['nome-beneficiario'],
         'nasc_beneficiario' => $infos['nascimento-beneficiario'],
@@ -65,7 +62,6 @@ try {
         'expedido_representante' => $infos['expedido-representante']
     ];
 
-    // Tratar campos BLOB
     $blobFields = [
         'copia_rg_beneficiario' => 'copia-rg-beneficiario',
         'atestado_medico' => 'atestado-medico',
@@ -75,16 +71,13 @@ try {
 
     foreach ($blobFields as $dbField => $fileField) {
         if (!empty($files[$fileField]['name'])) {
-            // Processar novo upload
             $fileContent = file_get_contents($files[$fileField]['tmp_name']);
             $fields[$dbField] = $fileContent;
         } else {
-            // Manter o valor atual do banco de dados
             $fields[$dbField] = $currentData[$dbField];
         }
     }
 
-    // Construir cláusulas SET e parâmetros
     foreach ($fields as $field => $value) {
         if ($value !== null && $value !== 'Não possui') {
             $setClauses[] = "$field = ?";
@@ -92,8 +85,7 @@ try {
             $types[] = (in_array($field, array_keys($blobFields))) ? PDO::PARAM_LOB : PDO::PARAM_STR;
         }
     }
-
-    // Adicionar WHERE condition
+    
     $params[] = $infos['rg-beneficiario'];
 
     if (empty($setClauses)) {
@@ -103,7 +95,6 @@ try {
     $query = "UPDATE cartao_deficiente SET " . implode(', ', $setClauses) . " WHERE rg_beneficiario = ?";
     $stmt = $pdo->prepare($query);
 
-    // Vincular parâmetros
     foreach ($params as $index => $value) {
         $type = isset($types[$index]) ? $types[$index] : PDO::PARAM_STR;
         $stmt->bindValue($index + 1, $value, $type);
