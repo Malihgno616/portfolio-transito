@@ -76,9 +76,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     </div>
 
     <div class="relative mb-5">
-      <input type="date" name="nascimento-beneficiario"
+      <input type="text" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['nasc_beneficiario']?>"> <label for="nascimento-beneficiario"
+        placeholder=" " oninput="formatDate(this)" maxlength="10" value="<?=$dados_beneficiario['nasc_beneficiario']?>"> <label for="nascimento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Nascimento</label>
     </div>
@@ -97,6 +97,16 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
       </select>
       <label for="genero-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Sexo</label>
+    </div>
+
+    <div class="relative mb-5">
+      <input type="text" name="cep-beneficiario" 
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        placeholder=" " value="<?=$dados_beneficiario['cep_beneficiario'];?>">
+      <label for="cep-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
+      top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
+      peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
+      peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
     </div>
 
     <div class="relative mb-5">
@@ -136,17 +146,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
     peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Bairro</label>
     </div>
-
-    <div class="relative mb-5">
-      <input type="text" name="cep-beneficiario" 
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cep_beneficiario'];?>">
-      <label for="cep-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
-      top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
-      peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
-      peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
-    </div>
-
+  
     <div class="relative mb-5">
       <input type="text" name="cidade-beneficiario" id="cidade"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
@@ -191,9 +191,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     </div>
 
     <div class="relative mb-5">
-      <input type="date" name="expedicao-beneficiario"
+      <input type="text" name="expedicao-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['expedicao_beneficiario'];?>">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dados_beneficiario['expedicao_beneficiario'];?>">
       <label for="expedicao-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         Expedição</label>
@@ -219,9 +219,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="relative mb-5">
-      <input type="date" name="validade-cnh-beneficiario"
+      <input type="text" name="validade-cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value=<?=$beneficiario['validade_cnh_beneficiario'];?>>
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value=<?=$beneficiario['validade_cnh_beneficiario'];?>>
       <label for="validade-cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
@@ -239,21 +239,21 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
   <div class="relative mb-5">
         
-  <h2 class="text-3xl p-2 text-center">RG do beneficiário</h2>
-
-    <?php if (!empty($dados_beneficiario['copia_rg_beneficiario'])): ?>
-    
-    <label for="copia-rg-beneficiario"
-      class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-      <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-rg-beneficiario">
-        <img class="w-full h-56 object-cover md:w-30" src="data:image/jpeg;base64, <?= base64_encode($dados_beneficiario['copia_rg_beneficiario'])?>">
-      </div>
-      <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*">
-      <span id="file-name-rg-beneficiario"></span>
-    </label>
-    
-    <?php endif; ?>
-  </div>
+        <h2 class="text-3xl p-2 text-center">RG do beneficiário</h2>
+      
+          <?php if (!empty($dados_beneficiario['copia_rg_beneficiario'])): ?>
+          
+          <label for="copia-rg-beneficiario"
+            class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-rg-beneficiario">
+              <img class="w-full h-56 object-cover md:w-30" src="data:image/jpeg;base64, <?= base64_encode($dados_beneficiario['copia_rg_beneficiario'])?>">
+            </div>
+            <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*">
+            <input type="text" name="nome-arquivo-rg-benef" id="file-name-rg-beneficiario" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_rg_benef']?>" readonly>
+          </label>
+          
+          <?php endif; ?>
+        </div>
 
   <div class="flex flex-col justify-center items-center m-10 gap-3">
     <h2 class="text-3xl md:text-3xl text-center">Informações do Médico</h2>
@@ -378,16 +378,16 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
   <div class="relative mb-5">
 
     <h2 class="text-3xl p-2 text-center">Atestado médico</h2>
-    
+
     <?php if (!empty($dados_beneficiario['atestado_medico'])): ?>
 
     <label for="atestado-medico"
-      class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+      class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-atestado-medico">
         <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?= base64_encode($dados_beneficiario['atestado_medico'])?>" alt="">
       </div>
       <input type="file" name="atestado-medico" id="atestado-medico" class="hidden" accept="image/*">
-      <span id="file-name-atestado-medico"></span>
+      <input type="text" name="nome-arquivo-atestado" id="file-name-atestado" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_atestado'];?>" readonly>
     </label>
 
     <?php endif; ?>
@@ -419,6 +419,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
       <h2 class="text-3xl md:text-3xl text-center">Informações do representante</h2>
     </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
     <div class="relative mb-5" id="representante">
       <input type="text" name="nome-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
@@ -434,6 +435,14 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
         placeholder=" " value="<?=$dados_beneficiario['email_representante'] ?: 'Não possui'?>">
       <label for="email-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
+    </div>
+
+    <div class="relative mb-5" id="representante">
+      <input type="text" name="cep-representante"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        placeholder=" " value="<?=$dados_beneficiario['cep_representante'] ?: 'Não possui'?>">
+      <label for="cep-representante"
+        class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
     </div>
 
     <div class="relative mb-5" id="representante">
@@ -472,14 +481,6 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     </div>
 
     <div class="relative mb-5" id="representante">
-      <input type="text" name="cep-representante"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cep_representante'] ?: 'Não possui'?>">
-      <label for="cep-representante"
-        class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
-    </div>
-
-    <div class="relative mb-5" id="representante">
       <input type="text" name="cidade-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
         placeholder=" " value="<?=$dados_beneficiario['cidade_representante'] ?: 'Não possui'?>">
@@ -507,7 +508,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="telefone-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['telefone_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?=$dados_beneficiario['telefone_representante'] ?: 'Não possui'?>">
       <label for="telefone-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -521,98 +522,101 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     </div>
 
     <div class="relative mb-5" id="representante">
-      <input type="date" name="expedicao-representante" id=""
+      <input type="text" name="expedicao-representante" id=""
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['expedicao_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dados_beneficiario['expedicao_representante'] ?: 'Não possui'?>">
       <label for=""
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Expedição</label>
-    </div>
+    </div>   
+    
+  </div>
+  <div class="relative mb-5">
+    <input type="text" name="expedido-representante"
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+      placeholder=" " value="<?=$dados_beneficiario['expedido_representante'] ?: 'Não possui'?>">
+    <label for="expedido-por"
+      class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido
+      por</label>
+  </div>
+  <div class="relative mb-5">
 
-    <div class="relative mb-5">
-      <input type="text" name="expedido-representante"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['expedido_representante'] ?: 'Não possui'?>">
-      <label for="expedido-por"
-        class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido
-        por</label>
-    </div>
+    <h2 class="text-3xl p-2 text-center">RG do representante</h2>
 
-    <div class="relative mb-5">
-
-      <h2 class="text-3xl p-2 text-center">RG do representante</h2>
-
-      <?php if (!empty($dados_beneficiario['copia_rg_representante'])):?>
+    <?php if (!empty($dados_beneficiario['copia_rg_representante'])):?>
+      <label for=""
+      class="flex flex-col items-center justify-center w-full h- border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+          <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dados_beneficiario['copia_rg_representante']);?>" alt="">
+      </div>
+      <input id="copia-rg-representante-def" type="file" name="copia-rg-representante" class="hidden"
+        accept="image/*" />
+      <input type="text" name="nome-arquivo-rg-rep-def" id="file-name-representante-def" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_rg_rep']?>" readonly>
+    </label>
+      <?php else: ?>
         <label for=""
-        class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-            <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dados_beneficiario['copia_rg_representante']);?>" alt="">
-        </div>
-        <input type="file" name="" id="" class="hidden">
-        <span id="file-name"></span>
-      </label>
-        <?php else: ?>
-          <label for=""
-            class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 20 16">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                </svg>
-                <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Selecione uma cópia digitalizada do RG do representante </span>
-                </p>
-                <p class="text-lg text-gray-500 text-center dark:text-gray-400">
-                  JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
-                </p>
-            </div>
-            <input type="file" name="" id="" class="hidden">
-            <span id="file-name"></span>
-          </label>
-      <?php endif;?>
-    </div>
-
-    <div class="relative mb-5">      
-
-      <h2 class="text-3xl p-2 text-center">Comprovante do representante</h2>
-
-      <?php if (!empty($dados_beneficiario['comprovante_representante'])):?>
-        <label for=""
-        class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+          class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dados_beneficiario['comprovante_representante']);?>">
+            <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+              </svg>
+              <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
+                <span class="font-semibold">Selecione uma cópia digitalizada do RG do representante </span>
+              </p>
+              <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+                JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+              </p>
           </div>
           <input type="file" name="" id="" class="hidden">
           <span id="file-name"></span>
         </label>
-      
-      <?php else: ?>
-
-      <label for=""
-        class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
-        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-          <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 20 16">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-          </svg>
-          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
-            <span class="font-semibold">Selecione uma cópia digitalizada do comprovante do representante </span>
-          </p>
-          <p class="text-lg text-gray-500 text-center dark:text-gray-400">
-            JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
-          </p>
-        </div>
-        <input type="file" name="" id="" class="hidden">
-        <span id="file-name"></span>
-      </label>
-
-      <?php endif;?>
-
-    </div>
+    <?php endif;?>
   </div>
 
+  <div class="relative mb-5">      
+
+    <h2 class="text-3xl p-2 text-center">Comprovante do representante</h2>
+
+    <?php if (!empty($dados_beneficiario['comprovante_representante'])):?>
+      <label for=""
+      class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dados_beneficiario['comprovante_representante']);?>">
+        </div>
+        <input id="comprovante-representante-def" type="file" name="comprovante-representante" class="hidden"
+        accept="image/*" />
+        <input type="text" name="nome-arquivo-comp-rep-def" id="file-name-comp-representante-def"" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_comp_rep']?>" readonly>
+      </label>
+    
+    <?php else: ?>
+
+    <label for=""
+      class="flex flex-col items-center justify-center w-full h-74 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+        <svg class="w-8 h-8 mb-4 text-yellow-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 20 16">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+        </svg>
+        <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400">
+          <span class="font-semibold">Selecione uma cópia digitalizada do comprovante do representante </span>
+        </p>
+        <p class="text-lg text-gray-500 text-center dark:text-gray-400">
+          JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+        </p>
+      </div>
+      <input type="file" name="" id="" class="hidden">
+      <span id="file-name"></span>
+    </label>
+
+    <?php endif;?>
+
+    </div>
+
+   
+  </div>
   <div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
     <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
       type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
