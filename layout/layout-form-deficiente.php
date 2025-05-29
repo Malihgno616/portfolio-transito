@@ -342,7 +342,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
+        placeholder=" "maxlength="12" oninput="formatRG(this)">
       <label for="rg-deficiente"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, preencha seu RG</label>
@@ -351,7 +351,7 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " maxlength="12" oninput="formatRG(this)">
       <label for="rg-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
     </div>
@@ -740,7 +740,7 @@ $deficiencias = [
       <div class="relative mb-5" id="representante">
         <input type="text" name="rg-representante"
           class="text-sm block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-          placeholder=" ">
+          placeholder=" " maxlength="12" oninput="formatRG(this)">
         <label for="rg-representante"
           class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
       </div>
@@ -819,6 +819,7 @@ $deficiencias = [
 
 </form>
 
+<script src="../assets/js/formatRG.js"></script>
 <script src="../assets/js/formatDate.js"></script>
 <script src="../assets/js/formatPhone.js"></script>
 <script src="../assets/js/acitiveSpinner.js"></script>
