@@ -1,7 +1,7 @@
 <div
   class="shadow-lg bg-stone-500 bg-blend-multiply bg-[url(../assets/img/imgtransito.png)] p-10 bg-no-repeat bg-cover bg-fixed px-4 md:px-6 lg:px-8">
   <div class="p-10">
-    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Notícias em Destaque</h1>
+    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Notícias Recentes</h1>
   </div>
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
