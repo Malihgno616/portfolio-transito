@@ -20,5 +20,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./ackindev
-          server-dir: /public_html/novo.transitoleme.sp.gov.br/
+          local-dir: ./ackindev/
+          server-dir: /public_html/novo.transitoleme.sp.gov.br
