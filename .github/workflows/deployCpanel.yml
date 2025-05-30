@@ -20,5 +20,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./ # <- envia só o conteúdo da pasta, não a pasta em si
-          server-dir: /public_html/novo.transileme.sp.gov.br
+
