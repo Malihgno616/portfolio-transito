@@ -7,6 +7,13 @@ error_reporting(E_ALL);
 
 require('conn.php');
 
+$_SESSION['old-contact'] = [
+  'nome' => $_POST['nome'] ?? '',
+  'email' => $_POST['email'] ?? '',
+  'telefone' => $_POST['telefone'] ?? '',
+  'mensagem' => $_POST['mensagem'] ?? ''
+];
+
 $nome = htmlspecialchars(trim($_POST["nome"]));
 $email = htmlspecialchars(trim($_POST["email"]));
 $telefone = htmlspecialchars(trim($_POST["telefone"]));
