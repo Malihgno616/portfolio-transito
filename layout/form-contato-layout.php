@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 
 $erro = $_SESSION['erro'] ?? null;
@@ -65,75 +66,77 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['sucesso'], $_SESSI
     <p class="text-lg p-3 md:text-md">Retornaremos o mais breve possível.</p>
   </div>
 
-  <?php if (!empty($erro_campo['nome'])): ?>
   <div class="relative mb-5">
     <input type="text" name="nome" id="nome"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-      placeholder=" " value="<?= htmlspecialchars($old['nome'] ?? '') ?>"/>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= !empty($erro_campo['nome']) 
+      ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
+      ?> 
+      peer"
+      placeholder=" " value="<?= htmlspecialchars($old['nome'] ?? '') ?>"/>  
     <label for="nome"
-      class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"><?=$erro_campo['nome']; ?></label>
+      class="absolute text-sm 
+      <?= !empty($erro_campo['nome']) 
+      ? 'text-red-500 peer-focus:text-red-500' 
+      : 'text-gray-500 peer-focus:text-yellow-500' ?> 
+      duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+      <?= !empty($erro_campo['nome']) ? $erro_campo['nome'] : 'Nome' ?>
+    </label>
   </div>
-  <?php else: ?>
-  <div class="relative mb-5">
-    <input type="text" name="nome" id="nome"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " value="<?= htmlspecialchars($old['nome'] ?? '') ?>"/>
-    <label for="nome"
-      class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome</label>
-  </div>
-  <?php endif; ?>
 
-  <?php if (!empty($erro_campo['email'])): ?>
   <div class="relative mb-5">
     <input type="email" name="email" id="email"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-      placeholder=" " value="<?= htmlspecialchars($old['email'] ?? '')?>"/>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 
+      <?= !empty($erro_campo['email']) 
+      ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
+      ?> peer"
+      placeholder=" " value="<?= htmlspecialchars($old['email'] ?? '') ?>"/>
     <label for="email"
-      class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"><?=$erro_campo['email']; ?></label>
+      class="absolute text-sm 
+      <?= !empty($erro_campo['email']) 
+      ? 'text-red-500 peer-focus:text-red-500' 
+      : 'text-gray-500 peer-focus:text-yellow-500' ?> 
+      duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+      <?= !empty($erro_campo['email']) ? $erro_campo['email'] : 'Email' ?>
+    </label>
   </div>
-  <?php else: ?>
-  <div class="relative mb-5">
-    <input type="email" name="email" id="email"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " value="<?= htmlspecialchars($old['email'] ?? '')?>"/>
-    <label for="email"
-      class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
-  </div>
-  <?php endif; ?>
-
-  <?php if (!empty($erro_campo['telefone'])): ?>
+  
   <div class="relative mb-5">
     <input type="tel" name="telefone" id="telefone"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-      placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?= htmlspecialchars($old['telefone'])?>" />
-    <label for="telefone"
-      class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"><?=$erro_campo['telefone']; ?></label>
-  </div>
-  <?php else: ?>
-  <div class="relative mb-5">
-    <input type="tel" name="telefone" id="telefone"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?= htmlspecialchars($old['telefone'])?>" />
-    <label for="telefone"
-      class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
-  </div>
-  <?php endif; ?>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 
+      <?= !empty($erro_campo['telefone']) 
+      ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
+      ?> peer"
+      placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?= htmlspecialchars($old['telefone'] ?? '') ?>" />
 
-  <?php if (!empty($erro_campo['mensagem'])): ?>
+    <label for="telefone"
+      class="absolute text-sm 
+      <?= !empty($erro_campo['telefone']) 
+      ? 'text-red-500 peer-focus:text-red-500' 
+      : 'text-gray-500 peer-focus:text-yellow-500' ?> duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+      <?= !empty($erro_campo['telefone']) ? $erro_campo['telefone'] : 'Telefone' ?>
+    </label>
+  </div>
+
   <div class="relative mb-5">
     <textarea name="mensagem" id="mensagem"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"><?= htmlspecialchars($old['mensagem'] ?? '') ?></textarea>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 
+      <?= !empty($erro_campo['mensagem']) 
+      ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' ?> peer">
+      <?= htmlspecialchars($old['mensagem'] ?? '') ?>
+    </textarea>
     <label for="mensagem"
-      class="absolute text-xl text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"><?= $erro_campo['mensagem']; ?></label>
+      class="absolute text-sm 
+      <?= !empty($erro_campo['mensagem']) 
+      ? 'text-red-500 peer-focus:text-red-500' 
+      : 'text-gray-500 peer-focus:text-yellow-500' 
+      ?> duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+      <?= !empty($erro_campo['mensagem']) ? $erro_campo['mensagem'] : 'Digite sua mensagem...' ?>
+    </label>
   </div>
-<?php else: ?>
-  <div class="relative mb-5">
-    <textarea name="mensagem" id="mensagem"
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"><?= htmlspecialchars($old['mensagem'] ?? '') ?></textarea>
-    <label for="mensagem"
-      class="absolute text-xl text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Digite sua mensagem...</label>
-  </div>
-<?php endif; ?>
 
   <div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
     <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
@@ -148,6 +151,7 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['sucesso'], $_SESSI
         </div>
       </button>
   </div>
+
 </form>
 
 <script src="../assets/js/formatPhone.js"></script>

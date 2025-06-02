@@ -7,6 +7,22 @@
   
   require('conn.php');
 
+  $_SESSION['old-form-idoso'] = [
+    'nome-idoso' => $_POST['nome-idoso'] ?? '', 
+    'nascimento-idoso' => $_POST['nascimento-idoso'] ?? '', 
+    'genero-idoso' => $_POST['genero-idoso'] ?? '', 
+    'endereco-idoso' => $_POST['endereco-idoso'] ?? '', 
+    'numero-endereco-idoso' => $_POST['numero-endereco-idoso'] ?? '', 
+    'bairro-idoso' => $_POST['bairro-idoso'] ?? '',
+    'cep-idoso' => $_POST['cep-idoso'] ?? '', 
+    'cidade-idoso' => $_POST['cidade-idoso'] ?? '', 
+    'uf-idoso' => $_POST['uf-idoso'] ?? '', 
+    'telefone-idoso' => $_POST['telefone-idoso'] ?? '',
+    'rg-idoso' => $_POST['rg-idoso'] ?? '', 
+    'data-expedicao-idoso' => $_POST['data-expedicao-idoso'] ?? '', 
+    'expedido-idoso' => $_POST['expedido-idoso'] ?? ''
+  ];
+
   $nome_idoso = $_POST["nome-idoso"];
   $nascimento_idoso = $_POST["nascimento-idoso"];
   $genero_idoso = $_POST["genero-idoso"];
@@ -49,21 +65,21 @@
     'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
     'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
     'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
-    ];
-  
-    $error_array = [];
-    foreach ($required as $campo) {
-      if (empty($_POST[$campo])) {
-        $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
-      }
+    ]; 
+
+  $error_array = [];
+  foreach ($required as $campo) {
+    if (empty($_POST[$campo])) {
+      $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
     }
+  }
     
-    if (!empty($error_array)) {
-      $_SESSION['err-fields'] = $error_array;
-      $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
-      header("Location: ../../pages/formulario-idoso.php");
-      exit();
-    }
+  if (!empty($error_array)) {
+    $_SESSION['err-fields'] = $error_array;
+    $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
+    header("Location: ../../pages/formulario-idoso.php");
+    exit();
+  }
 
   if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === 0 && $_FILES['copia-rg-idoso']['tmp_name'] !== '') {
     $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
