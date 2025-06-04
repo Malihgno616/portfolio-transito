@@ -1,12 +1,14 @@
 <?php 
 
-define('DB_HOST', 'localhost');
+require __DIR__.'/../../vendor/autoload.php';
 
-define('DB_USER', 'root');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ , '/../../');
+$dotenv->load();
 
-define('DB_PASSWORD', '');
-
-define('DB_NAME', 'site_transito');
+define("DB_HOST", getenv('DB_HOST'));
+define("DB_NAME", getenv('DB_NAME'));
+define("DB_USER", getenv('DB_USER'));
+define("DB_PASSWORD", getenv('DB_PASSWORD'));
 
 class Conn {
   
@@ -23,5 +25,4 @@ class Conn {
       die("Erro ao conectar ao banco de dados: " . $e->getMessage());
     }
   }
-  
 }
