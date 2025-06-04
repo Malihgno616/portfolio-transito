@@ -116,46 +116,40 @@ $deficiencias = [
   <?php endif;?>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <?php if(!empty($array_error['nome-beneficiario'])): ?>
+    
     <div class="relative mb-5">
       <input
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['nome-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" " type="text" name="nome-beneficiario">
       <label for="beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o seu nome</label>
-    </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " type="text" name="nome-beneficiario">
-      <label for="beneficiario"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
-        do Beneficiário</label>
-    </div>
-    <?php endif;?>
-    <?php if(!empty($array_error['nascimento-beneficiario'])): ?>
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['nome-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?=!empty($array_error['nome-beneficiario']) ? 'Preencha o seu nome' : 'Nome do beneficiário'?>
+      </label>
+    </div> 
+    
     <div class="relative mb-5">
       <input type="text" name="nascimento-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= !empty($array_error['nascimento-beneficiario']) ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 '?> peer"
         placeholder=" " oninput="formatDate(this)" maxlength="10">
       <label for="nascimento-beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Preencha
-        sua data de nascimento</label>
-    </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="nascimento-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " oninput="formatDate(this)" maxlength="10">
-      <label for="nascimento-beneficiario"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
-        de Nascimento</label>
-    </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['genero-beneficiario'])): ?>
-    <div class="relative mb-5">
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['nascimento-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?>
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['nascimento-beneficiario']) ? 'Preencha sua data de nascimento' : 'Data
+        de Nascimento'?>
+      </label>
+    </div>  
+    
+    <!-- <div class="relative mb-5">
       <select name="genero-beneficiario" id="genero-deficiente"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
         placeholder=" ">
@@ -167,11 +161,11 @@ $deficiencias = [
       <label for="genero-beneficiario"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, selecione o sexo</label>
-    </div>
-    <?php else: ?>
+    </div> -->
+    
     <div class="relative mb-5">
       <select name="genero-beneficiario" id="genero-deficiente"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= !empty($array_error['genero-beneficiario']) ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'?>  peer"
         placeholder=" ">
         <option value="">Selecione</option>
         <?php foreach ($array_generos as $genero) {
@@ -179,221 +173,222 @@ $deficiencias = [
           } ?>
       </select>
       <label for="genero-beneficiario"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Sexo</label>
+        class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['genero-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['genero-beneficiario']) ? 'Selecione o sexo' : 'Sexo'?>  
+      </label>
     </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['cep-beneficiario'])):?>
-    <div class="relative mb-5">
+        
+    <!-- <div class="relative mb-5">
       <input type="text" name="cep-beneficiario" onblur="pesquisacep(this.value);"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
         placeholder=" ">
       <label for="cep-deficiente"
         class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
         favor, preencha seu CEP</label>
-    </div>
-    <?php else: ?>
+    </div> -->
+
     <div class="relative mb-5">
       <input type="text" name="cep-beneficiario" onblur="pesquisacep(this.value);"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['cep-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
-      <label for="cep-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
+      <label for="cep-deficiente" class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= !empty($array_error['cep-beneficiario']) ? 'text-red-500 peer-focus:text-red-500' : 'text-gray-500 peer-focus:text-yellow-500' ?>
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
         peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
-        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
-    </div>
-    <?php endif; ?>
-    <?php if (!empty($array_error['endereco-beneficiario'])): ?>
+        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['cep-beneficiario']) ? 'Preencha seu CEP' : 'CEP'?>
+      </label>
+    </div>   
+
     <div class="relative mb-5">
       <input type="text" name="endereco-beneficiario" id="rua"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['endereco-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
       <label for="endereco"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha seu endereço</label>
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['endereco-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['endereco-beneficiario']) ? 'Preencha seu endereço' : 'Endereço(RUA,
+        AV)'?>  
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="endereco-beneficiario" id="rua"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for="endereco"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA,
-        AV)</label>
-    </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['numero-beneficiario'])):?>
+
     <div class="relative mb-5">
       <input type="text" name="numero-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['numero-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
-      <label for="numero-beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o número de sua residência</label>
-    </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="numero-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for="numero-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500
-          duration-300 transform -translate-y-4 scale-75
+      <label for="numero-beneficiario" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+          !empty($array_error['numero-beneficiario']) 
+          ? 'text-red-500 peer-focus:text-red-500' 
+          : 'text-gray-500 peer-focus:text-yellow-500'?>
           top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
           peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
-          peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Número</label>
+          peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+          <?= !empty($array_error['numero-beneficiario']) ? 'Digite o nº da sua residência' : 'Nº'?>
+      </label>
     </div>
-    <?php endif; ?>
+        
     <div class="relative mb-5">
       <input type="text" name="complemento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
         placeholder=" ">
       <label for="complemento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento(opcional)</label>
-    </div>
-    <?php if (!empty($array_error['bairro-beneficiario'])): ?>
-    <div class="relative mb-5">
-      <input type="text" name="bairro-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
-      <label for="bairro-deficiente"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor,
-        preencha o seu bairro</label>
-    </div>
-    <?php else: ?>
+    </div>      
+
     <div class="relative mb-5">
       <input type="text" name="bairro-beneficiario" id="bairro"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['bairro-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
+        ?> peer"
         placeholder=" ">
-      <label for="bairro-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
-      top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
-      peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
-      peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Bairro</label>
-    </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['cidade-beneficiario'])):?>
-    <div class="relative mb-5">
-      <input type="text" name="cidade-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
-      <label for="cidade-beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha sua cidade</label>
-    </div>
-    <?php else: ?>
+      <label for="bairro-deficiente" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['bairro-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?>
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
+        peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
+        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['bairro-beneficiario']) ? 'Preencha o seu bairro' : 'Bairro' ?>
+      </label>
+    </div>   
+
     <div class="relative mb-5">
       <input type="text" name="cidade-beneficiario" id="cidade"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['cidade-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500'
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
-      <label for="cidade-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
+      <label for="cidade-beneficiario" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+      !empty($array_error['cidade-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500 '
+        ?>
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
         peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
-        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Cidade</label>
+        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+       <?= !empty($array_error['cidade-beneficiario']) ? 'Preencha sua cidade' : 'Cidade' ?>  
+      </label>
     </div>
-    <?php endif; ?>
-    <?php if (!empty($array_error['uf-beneficiario'])): ?>
+
     <div class="relative mb-5">
       <select name="uf-beneficiario" id="uf"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['uf-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'?>
+        peer"
         placeholder=" ">
         <option value="">Selecione...</option>
         <?php foreach($estados as $sigla => $nome){
           echo "<option value='$sigla'>$nome</option>";
         } ?>
       </select>
-      <label for="uf-deficiente"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, selecione o seu estado</label>
-    </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <select name="uf-beneficiario" id="uf"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-        <option value="">Selecione...</option>
-        <?php foreach($estados as $sigla => $nome){
-          echo "<option value='$sigla'>$nome</option>";
-        } ?>
-      </select>
-      <label for="uf-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
+      <label for="uf-deficiente" class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['uf-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?>
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
         peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
-        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Estado</label>
-    </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['telefone-beneficiario'])):?>
+        peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['uf-beneficiario']) ? 'Selecione o seu estado' : 'Estado' ?>
+      </label>
+    </div>   
+
     <div class="relative mb-5">
       <input type="text" name="telefone-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?=
+        !empty($array_error['telefone-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'?> peer"
         placeholder=" " maxlength="15" oninput="formatPhone(this)">
       <label for="telefone-deficiente"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha seu telefone</label>
+        class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['telefone-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500 '?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['telefone-beneficiario']) ? 'Preencha seu telefone' : 'Telefone'?>  
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="telefone-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="15" oninput="formatPhone(this)">
-      <label for="telefone-deficiente"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
-    </div>
-    <?php endif; ?>
-    <?php if (!empty($array_error['rg-beneficiario'])): ?>
+
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" "maxlength="12" oninput="formatRG(this)">
-      <label for="rg-deficiente"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha seu RG</label>
-    </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="rg-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?=
+        !empty($array_error['rg-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 '
+        ?> peer"
         placeholder=" " maxlength="12" oninput="formatRG(this)">
       <label for="rg-deficiente"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
-    </div>
-    <?php endif; ?>
-    <?php if (!empty($array_error['expedicao-beneficiario'])): ?>
+        class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['rg-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['rg-beneficiario']) ? 'Preencha seu RG' : 'RG'?> 
+      </label>
+    </div>  
+
     <div class="relative mb-5">
       <input type="text" name="expedicao-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?=
+        !empty($array_error['expedicao-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" " maxlength="10" oninput="formatDate(this)">
       <label for="expedicao-beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Pord
-        favor, preencha a data de expedição de seu RG </label>
+        class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?=
+        !empty($array_error['expedicao-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['expedicao-beneficiario']) ? 'Preencha a data de expedição' : 'Data
+        Expedição'?>
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="expedicao-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="10" oninput="formatDate(this)">
-      <label for="expedicao-beneficiario"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
-        Expedição</label>
-    </div>
-    <?php endif; ?>
-    <?php if(!empty($array_error['expedido-beneficiario'])): ?>
+
     <div class="relative mb-5">
       <input type="text" name="expedido-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['expedido-beneficiario']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
       <label for="expedido-beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o órgão expedidor de seu RG</label>
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['expedido-beneficiario']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?>
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['expedido-beneficiario']) ? 'Preencha seu órgão expedidor' : 'Expedido
+        por'?>
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="expedido-beneficiario"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for="expedido-beneficiario"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido
-        por</label>
-    </div>
-    <?php endif; ?>
+
     <div class="relative mb-5">
       <input type="text" name="cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
@@ -405,6 +400,7 @@ $deficiencias = [
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+   
     <div class="relative mb-5">
       <input type="text" name="validade-cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
@@ -413,6 +409,7 @@ $deficiencias = [
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
     </div>
+    
     <div class="relative mb-5">
       <input type="text" name="email-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
@@ -421,6 +418,7 @@ $deficiencias = [
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Digite
         seu email(opcional)</label>
     </div>
+  
   </div>
 
   <div class="relative mb-5">
@@ -448,82 +446,83 @@ $deficiencias = [
     <h2 class="text-3xl md:text-3xl text-center">Informações do Médico</h2>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <?php if (!empty($array_error['nome-medico'])): ?>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+
     <div class="relative mb-5">
       <input type="text" name="nome-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['nome-medico']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
       <label for="nome"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o nome do médico</label>
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['nome-medico']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['nome-medico']) ? 'Digite o nome do médico' : 'Nome
+        do médico'?>
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="nome-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for="nome"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
-        do médico </label>
-    </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['crm-medico'])): ?>
+
     <div class="relative mb-5">
       <input type="text" name="crm-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['crm-medico']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
       <label for="registro"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o registro profissional(CRM)</label>
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['crm-medico']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500' ?>
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['crm-medico']) ? 'Digite o registro profissional' : 'Registro
+        profissional(CRM)'?>  
+      </label>
     </div>
-    <?php else:?>
-    <div class="relative mb-5">
-      <input type="text" name="crm-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for="registro"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Registro
-        profissional (CRM)</label>
-    </div>
-    <?php endif;?>
-    <?php if (!empty($array_error['telefone-medico'])): ?>
+
     <div class="relative mb-5">
       <input type="text" name="telefone-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['telefone-medico']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" " maxlength="15" oninput="formatPhone(this)">
       <label for="telefone"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o telefone do médico</label>
+        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['telefone-medico']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?> 
+        top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['telefone-medico']) ? 'Digite do telefone do médico' : 'Telefone'?>
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="telefone-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="15" oninput="formatPhone(this)">
-      <label for="telefone"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
-    </div>
-    <?php endif; ?>
-    <?php if (!empty($array_error['local-atendimento-medico'])):?>
+
     <div class="relative mb-5">
       <input type="text" name="local-atendimento-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
+        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= 
+        !empty($array_error['local-atendimento-medico']) 
+        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+        : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+        ?> peer"
         placeholder=" ">
       <label for=""
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha o local de atendimento do médico</label>
+        class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
+        !empty($array_error['local-atendimento-medico']) 
+        ? 'text-red-500 peer-focus:text-red-500' 
+        : 'text-gray-500 peer-focus:text-yellow-500'?>
+         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+        <?= !empty($array_error['local-atendimento-medico']) ? 'Digite o endereço do local de atendimento' : 'Local
+        de atendimento (Rua, AV)'?> 
+      </label>
     </div>
-    <?php else: ?>
-    <div class="relative mb-5">
-      <input type="text" name="local-atendimento-medico"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
-      <label for=""
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Local
-        de atendimento (Rua, AV)</label>
-    </div>
-    <?php endif; ?>
+
   </div>
 
   <div class="flex flex-col justify-center items-center m-10 gap-3">
@@ -584,25 +583,23 @@ $deficiencias = [
   <p class="text-justify text-lg p-1">Descricao
     e CID da lesão que justifique a incapacidade ou dificuldade ambular</p>
 
-  <?php if (!empty($array_error['cid'])): ?>
   <div class="relative mb-5">
     <textarea name="cid" id=""
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"></textarea>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 <?= 
+      !empty($array_error['cid']) 
+      ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
+      ?> peer"></textarea>
     <label for="cid"
-      class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-      favor, preencha a descrição e CID
+      class="absolute text-md duration-300 transform -translate-y-4 scale-75 <?= 
+      !empty($array_error['cid']) 
+      ? 'text-red-500 peer-focus:text-red-500' 
+      : 'text-gray-500 peer-focus:text-yellow-500'?> 
+      top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+      <?= !empty($array_error['cid']) ? 'Digite a descrição CID' : 'Descrição
+      CID'?>
     </label>
   </div>
-  <?php else: ?>
-  <div class="relative mb-5">
-    <textarea name="cid" id=""
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"></textarea>
-    <label for="cid"
-      class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Descrição
-      CID
-    </label>
-  </div>
-  <?php endif; ?>
 
   <p class="text-justify text-lg p-1">
     Selecione a cópia digitalizada do atestado médico da pessoa portadora de
