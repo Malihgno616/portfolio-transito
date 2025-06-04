@@ -121,16 +121,13 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['sucesso'], $_SESSI
   </div>
 
   <div class="relative mb-5">
-    <textarea name="mensagem" id="mensagem"
-      class="text-indent-0 text-md pt-4 pb-2.5 px-2.5 w-full h-50 text-gray-900 rounded-lg border-2 
-      <?= !empty($erro_campo['mensagem']) 
+  <textarea name="mensagem" id="mensagem"
+  class="text-indent-0 text-md pt-4 pb-2.5 px-2.5 w-full h-50 text-gray-900 rounded-lg border-2 
+  <?= !empty($erro_campo['mensagem']) 
       ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
-      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' ?> 
-      peer" 
-      placeholder=" ">
-      <?= htmlspecialchars($old['mensagem'] ?? '') ?>
-    </textarea>
-
+      : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
+  ?> peer" 
+  placeholder=" "><?= htmlspecialchars($old['mensagem'] ?? '') ?></textarea>
     <label for="mensagem"
       class="absolute text-sm 
       <?= !empty($erro_campo['mensagem']) 
