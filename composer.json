@@ -1,0 +1,14 @@
+{
+    "name": "transito/portfolio-transito",
+    "type": "library",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ackin.Dev",
+            "email": "ackinlino123@gmail.com"
+        }
+    ]
+}
