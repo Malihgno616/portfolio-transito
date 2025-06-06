@@ -73,7 +73,7 @@
   $cid = $_POST['cid'];
 
   // imagem do atestado médico
-  if (isset($_FILES['atestado-medico']['tmp_name']) && $_FILES['atestado-medico']['error'] != ""){
+  if (isset($_FILES['atestado-medico']['tmp_name']) && $_FILES['atestado-medico']['error'] === UPLOAD_ERR_OK){
     $atestado_medico = $_FILES['atestado-medico']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
     if(in_array(mime_content_type($atestado_medico), $tipos_permitidos)){
