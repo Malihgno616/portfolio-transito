@@ -43,7 +43,7 @@
   $email_beneficiario = $_POST['email-beneficiario'] ?? null;
 
   // imagem do rg do beneficiario
-  if (isset($_FILES['copia-rg-beneficiario']['tmp_name']) && $_FILES['copia-rg-beneficiario']['error'] != ""){
+  if (isset($_FILES['copia-rg-beneficiario']['tmp_name']) && $_FILES['copia-rg-beneficiario']['error'] === UPLOAD_ERR_OK){
     $copia_rg_beneficiario = $_FILES['copia-rg-beneficiario']['tmp_name'];
     $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
     if(in_array(mime_content_type($copia_rg_beneficiario), $tipos_permitidos)){
