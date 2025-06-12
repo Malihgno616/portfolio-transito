@@ -19,7 +19,7 @@ FROM
 LEFT JOIN 
   conteudo_noticia cn ON np.id_noticia = cn.noticia_id
 ORDER BY 
-  np.id_noticia ASC LIMIT 6;";
+  np.id_noticia LIMIT 6;";
 
   $stmt = $pdo->prepare($query);
 
