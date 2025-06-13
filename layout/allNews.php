@@ -78,33 +78,36 @@
     <?php endforeach; ?>
     </div>
   </div>
-<nav aria-label="Page navigation example">
-    <ul class="flex items-center justify-center mt-5 -space-x-px h-10 text-base">
-  
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
-          <span class="sr-only">Previous</span>
-          <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-          </svg>
-        </a>
-      </li>
-  
-      <?php for($x= 1; $x <= 10 ; $x++): ?>
+  <nav aria-label="Page navigation example">
+    <ul class="flex gap-3 items-center justify-center mt-5 -space-x-px h-10 text-base">
         <li>
-          <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 "><?= $x?></a>
+            <a href="?page=<?= max(1, $page - 1) ?>" 
+               class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-yellow-800 bg-white border-2  border-yellow-600 rounded-s-lg hover:bg-yellow-200 hover:text-yellow-700 duration-75">
+                <span class="sr-only">Previous</span>
+                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+            </a>
         </li>
-      <?php endfor; ?>
-  
-      <li>
-        <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
-          <span class="sr-only">Next</span>
-          <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-        </a>
-      </li>
-  
+
+        <?php for($x = 1; $x <= $totalPages; $x++): ?>
+            <li>
+                <a href="?page=<?= $x ?>" 
+                   class="<?= $x == $page ? 'bg-yellow-200 text-yellow-700 border-yellow-600' : 'bg-white text-yellow-700 border-yellow-600' ?> font-bold flex items-center justify-center px-4 h-10 leading-tight border-2 hover:bg-yellow-200 hover:text-yellow-700 duration-75 rounded-md">
+                    <?= $x ?>
+                </a>
+            </li>
+        <?php endfor; ?>
+
+        <li>
+            <a href="?page=<?= min($totalPages, $page + 1) ?>" 
+               class="flex items-center justify-center px-4 h-10 leading-tight text-yellow-800 bg-white border-2 border-yellow-600 rounded-e-lg hover:bg-yellow-200 hover:text-yellow-700 duration-75">
+                <span class="sr-only">Next</span>
+                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+            </a>
+        </li>
     </ul>
   </nav>
 </div>

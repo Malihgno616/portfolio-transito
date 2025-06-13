@@ -3,7 +3,7 @@ session_start();
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
-require __DIR__ . '/../config/database/news-db.php'; // ⬆️ Volta para fora de /public/
+require __DIR__ . '/../config/database/news-pagination.php'; // ⬆️ Volta para fora de /public/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
