@@ -4,22 +4,22 @@
   </div>
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-    <?php foreach ($news as $index => $noticia): ?>
+    <?php foreach ($news as $index => $newsCards): ?>
     <div class="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md">
       <a href="#" class="block overflow-hidden">
         <img class="w-full h-48 object-cover rounded-t-md"
           src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg"
-          alt="<?= htmlspecialchars($noticia['titulo_principal']) ?>" />
+          alt="<?= htmlspecialchars($newsCards['titulo_principal']) ?>" />
       </a>
       <div class="p-5">
         <h5 class="text-center mb-4 text-xl lg:text-2xl font-normal tracking-tight text-gray-900 line-clamp-2">
-          <?= htmlspecialchars($noticia['titulo_principal']) ?>
+          <?= htmlspecialchars($newsCards['titulo_principal']) ?>
         </h5>                  
         <h6 class="text-center mb-2 text-xl lg:text-2xl font-medium tracking-tight text-gray-800 line-clamp-2">
-          <?= htmlspecialchars($noticia['subtitulo_principal']) ?>
+          <?= htmlspecialchars($newsCards['subtitulo_principal']) ?>
         </h6>
         <p class="text-justify mb-2 text-xl lg:text-md font-medium tracking-tight text-gray-600 line-clamp-3">
-          <?= htmlspecialchars($noticia['texto'] ?? "")?>
+          <?= htmlspecialchars($newsCards['texto'] ?? "")?>
         </p>
         <button data-modal-target="modal-<?= $index ?>" data-modal-toggle="modal-<?= $index ?>" 
         class="uppercase flex items-center m-auto font-bold text-black bg-yellow-500 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer duration-75" type="button">
@@ -51,26 +51,50 @@
                   </div>
                   <!-- Modal body -->
                   <div class="p-4 md:p-5 space-y-4">
-                    <a href="#" class="block overflow-hidden">
-                      <img class="w-full h-48 object-cover"
-                      src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg"
-                      alt="<?= htmlspecialchars($noticia['titulo_principal']) ?>" />
-                    </a>
-                    <h2 class="text-3xl text-center font-normal text-gray-900">
-                      <?= htmlspecialchars($noticia['titulo_principal']) ?>
-                    </h2>
-                    <h3 class="text-2xl text-center font-normal text-gray-900">
-                      <?= htmlspecialchars($noticia['subtitulo_principal']) ?>
-                    </h3>
-                    <h4 class="text-xl text-center font-medium text-gray-700">
-                      <?= htmlspecialchars($noticia['titulo_conteudo'] ?? "") ?>
-                    </h4>
-                    <h4 class="text-xl text-center font-medium text-gray-700">
-                      <?= htmlspecialchars($noticia['subtitulo_conteudo'] ?? "") ?>
-                    </h4>
-                    <p class="text-base text-justify leading-relaxed text-gray-500">
-                      <?= htmlspecialchars($noticia['texto'] ?? "")?>
-                    </p>
+                    <div class="space-y-2">
+                      <a href="#" class="block overflow-hidden">
+                        <img class="w-full h-48 object-cover"
+                        src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg"
+                        alt="<?= htmlspecialchars($newsCards['titulo_principal']) ?>" />
+                      </a>
+                      <h2 class="text-3xl text-center font-normal text-gray-900">
+                        <?= htmlspecialchars($newsCards['titulo_principal']) ?>
+                      </h2>
+                      <h3 class="text-2xl text-center font-normal text-gray-900">
+                        <?= htmlspecialchars($newsCards['subtitulo_principal']) ?>
+                      </h3>
+                    </div>
+                    
+                    <div class="space-y-2">
+                    
+                    <?php
+                    
+                    $content = obtainContentNews($newsCards['id_noticia']);
+                   
+                    foreach ($content as $contents):?>
+
+                      <?php if(!empty($contents['titulo_conteudo'])):?>
+                        <h4 class="text-xl text-center font-medium text-gray-700">
+                          <?= htmlspecialchars($contents['titulo_conteudo']) ?>
+                        </h4>
+                      <?php endif;?>
+                    
+                      <?php if(!empty($contents['subtitulo_conteudo'])):?>
+                      <h4 class="text-xl text-center font-medium text-gray-700">
+                        <?= htmlspecialchars($contents['subtitulo_conteudo']) ?>
+                      </h4>
+                      <?php endif;?>
+
+                      <?php if(!empty($contents['texto'])):?>
+                      <p class="text-base text-justify leading-relaxed text-gray-500">
+                        <?= htmlspecialchars($contents['texto'])?>
+                      </p>
+                      <?php endif;?>
+
+                    <?php endforeach ?>
+
+                    </div>
+
                   </div>
               </div>
           </div>
