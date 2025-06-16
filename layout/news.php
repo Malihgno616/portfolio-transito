@@ -78,7 +78,7 @@
                           <?= htmlspecialchars($contents['titulo_conteudo']) ?>
                         </h4>
                       <?php endif;?>
-                    
+                        <hr>
                       <?php if(!empty($contents['subtitulo_conteudo'])):?>
                       <h4 class="text-xl text-center font-medium text-gray-700">
                         <?= htmlspecialchars($contents['subtitulo_conteudo']) ?>
