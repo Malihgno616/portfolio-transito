@@ -65,36 +65,38 @@
                       </h3>
                     </div>
                     
-                    <div class="space-y-2">
-                    
-                    <?php
-                    
-                    $content = obtainContentNews($newsCards['id_noticia']);
-                   
-                    foreach ($content as $contents):?>
-
-                      <?php if(!empty($contents['titulo_conteudo'])):?>
-                        <h4 class="text-xl text-center font-medium text-gray-700">
-                          <?= htmlspecialchars($contents['titulo_conteudo']) ?>
-                        </h4>
-                      <?php endif;?>
-                        <hr>
-                      <?php if(!empty($contents['subtitulo_conteudo'])):?>
-                      <h4 class="text-xl text-center font-medium text-gray-700">
-                        <?= htmlspecialchars($contents['subtitulo_conteudo']) ?>
-                      </h4>
-                      <?php endif;?>
-
-                      <?php if(!empty($contents['texto'])):?>
-                      <p class="text-base text-justify leading-relaxed text-gray-500">
-                        <?= htmlspecialchars($contents['texto'])?>
-                      </p>
-                      <?php endif;?>
-
-                    <?php endforeach ?>
-
+                    <div class="space-y-4">
+                      <?php
+                      $contents = obtainContentNews($newsCards['id_noticia']);
+                      
+                      if($contents):
+                        foreach($contents as $content):
+                      ?>
+                        <div class="content-section">
+                          <?php if(!empty($content['titulo_conteudo'])): ?>
+                            <h4 class="text-xl font-medium text-gray-700">
+                              <?= htmlspecialchars($content['titulo_conteudo']) ?>
+                            </h4>
+                          <?php endif; ?>
+                          
+                          <?php if(!empty($content['subtitulo_conteudo'])): ?>
+                            <h5 class="text-lg font-medium text-gray-600 mt-2">
+                              <?= htmlspecialchars($content['subtitulo_conteudo']) ?>
+                            </h5>
+                          <?php endif; ?>
+                          
+                          <?php if(!empty($content['texto'])): ?>
+                            <p class="text-base text-gray-500 mt-2">
+                              <?= nl2br(htmlspecialchars($content['texto'])) ?>
+                            </p>
+                          <?php endif; ?>
+                        </div>
+                        <hr class="my-4">
+                      <?php 
+                        endforeach;
+                      endif;
+                      ?>
                     </div>
-
                   </div>
               </div>
           </div>
