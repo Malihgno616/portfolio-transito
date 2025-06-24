@@ -634,11 +634,11 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_renova'];
 
 </form>
 
-<script src="../assets/js/formatRG.js"></script>
-<script src="../assets/js/formatPhone.js"></script>
-<script src="../assets/js/formatDate.js"></script>
-<script src="../assets/js/acitiveSpinner.js"></script>
-<script src="../assets/js/autofill-rep.js"></script>
-<script src="../assets/js/autofill.js"></script>
-<script src="../assets/js/exibirArquivo.js"></script>
-<script src="../assets/js/exibirForm.js"></script>
+<script src="assets/js/formatRG.js"></script>
+<script src="assets/js/formatPhone.js"></script>
+<script src="assets/js/formatDate.js"></script>
+<script src="assets/js/acitiveSpinner.js"></script>
+<script src="assets/js/autofill-rep.js"></script>
+<script src="assets/js/autofill.js"></script>
+<script src="assets/js/exibirArquivo.js"></script>
+<script src="assets/js/exibirForm.js"></script>

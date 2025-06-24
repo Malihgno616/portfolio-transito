@@ -13,7 +13,7 @@
     <p class="text-base sm:text-lg p-5">Assim que o cartão estiver pronto, será feito contato para agendamento da
       retirada do cartão.</p>
     <p class="text-base sm:text-lg p-5"><strong>Para solicitar o Cartão de Idoso preencha o formulário: </strong><a
-        class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200" href="../pages/formulario-idoso.php">CARTÃO
+        class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200" href="formulario-idoso">CARTÃO
         DO IDOSO</a></p>
   </section>
 
@@ -28,7 +28,7 @@
 
     <p class="text-base text-justify sm:text-lg p-5"><strong>Para solicitar o Cartão de Deficiente Físico preencha o
         formulário: </strong><a class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200"
-        href="../pages/cartao-deficiente.php">CARTÃO DO DEFICIENTE FÍSICO</a></p>
+        href="cartao-deficiente">CARTÃO DO DEFICIENTE FÍSICO</a></p>
   </section>
 
 

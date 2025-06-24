@@ -11,7 +11,7 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['sucesso'], $_SESSI
 
 ?>
 <form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"
-  action="../config/database/form-contato-db.php" method="post">
+  action="config/database/form-contato-db.php" method="post">
 
   <?php if($erro): ?>
   <div id="erro-todos"
@@ -154,5 +154,5 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['sucesso'], $_SESSI
 
 </form>
 
-<script src="../assets/js/formatPhone.js"></script>
-<script src="../assets/js/acitiveSpinner.js"></script>
+<script src="assets/js/formatPhone.js"></script>
+<script src="assets/js/acitiveSpinner.js"></script>

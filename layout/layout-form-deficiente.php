@@ -65,7 +65,7 @@ $deficiencias = [
 </div>
 
 <form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"
-  action="../config/database/form-deficiente-db.php" method="post" enctype="multipart/form-data">
+  action="config/database/form-deficiente-db.php" method="post" enctype="multipart/form-data">
 
   <?php if ($success): ?>
   <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50"
@@ -816,12 +816,12 @@ $deficiencias = [
 
 </form>
 
-<script src="../assets/js/formatRG.js"></script>
-<script src="../assets/js/formatDate.js"></script>
-<script src="../assets/js/formatPhone.js"></script>
-<script src="../assets/js/acitiveSpinner.js"></script>
-<script src="../assets/js/autofill-rep.js"></script>
-<script src="../assets/js/autofill.js"></script>
-<script src="../assets/js/exibirData.js"></script>
-<script src="../assets/js/exibirArquivoBeneficiario.js"></script>
-<script src="../assets/js/exibirForm.js"></script>
+<script src="assets/js/formatRG.js"></script>
+<script src="assets/js/formatDate.js"></script>
+<script src="assets/js/formatPhone.js"></script>
+<script src="assets/js/acitiveSpinner.js"></script>
+<script src="assets/js/autofill-rep.js"></script>
+<script src="assets/js/autofill.js"></script>
+<script src="assets/js/exibirData.js"></script>
+<script src="assets/js/exibirArquivoBeneficiario.js"></script>
+<script src="assets/js/exibirForm.js"></script>

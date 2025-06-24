@@ -3,17 +3,17 @@
   <div class="relative h-60 overflow-hidden md:h-105">
     <!-- Item 1 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <a href=""><img src="../assets/img/img-slider7.png"
+      <a href=""><img src="assets/img/img-slider7.png"
           class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
     </div>
     <!-- Item 2 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-      <a href=""><img src="../assets/img/img-slider8.png"
+      <a href=""><img src="assets/img/img-slider8.png"
           class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
     </div>
     <!-- Item 3 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <a href=""><img src="../assets/img/img-slider9.jpg"
+      <a href=""><img src="assets/img/img-slider9.jpg"
           class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
     </div>
   </div>

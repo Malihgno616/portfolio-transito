@@ -12,7 +12,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl te-black p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/multas.php">
+          href="multas">
           <div class="icones mb-2">
             <i class="fas fa-car text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -24,7 +24,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/vagas-especiais.php">
+          href="vagas-especiais">
           <div class="mb-2">
             <i class="fas fa-wheelchair text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -34,7 +34,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/sinalizacao.php">
+          href="sinalizacao">
           <div class="mb-2">
             <i class="fas fa-ban text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -44,7 +44,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/interdicoes.php">
+          href="interdicoes">
           <div class="mb-2">
             <i class="fas fa-sign text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -54,7 +54,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/semaforos.php">
+          href="semaforos">
           <div class="mb-2">
             <i class="fas fa-traffic-light text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -64,7 +64,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/lombadas.php">
+          href="lombadas">
           <div class="mb-2">
             <i class="fa-solid fa-mound text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -74,7 +74,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/zona-azul.php">
+          href="zona-azul">
           <div class="mb-2">
             <i class="fas fa-location-dot text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -84,7 +84,7 @@
       <li
         class="flex flex-col items-center p-4 hover:border-yellow-500 transition duration-300">
         <a class="text-base sm:text-xl p-4 flex flex-col items-center justify-center hover:text-gray-700 duration-200"
-          href="../pages/bicicletas.php">
+          href="bicicletas">
           <div class="mb-2">
             <i class="fas fa-bicycle text-3xl sm:text-4xl md:text-5xl"></i>
           </div>
@@ -94,6 +94,6 @@
     </ul>
   </div>
   <p class="text-center text-base sm:text-lg p-5">Caso surgir alguma dúvida, compareça presencialmente ou entre em
-    contato preenchendo este formulário: <a class="hover:underline text-yellow-700" href="../pages/contato.php">Clique
+    contato preenchendo este formulário: <a class="hover:underline text-yellow-700" href="contato">Clique
       Aqui</a></p>
 </main>

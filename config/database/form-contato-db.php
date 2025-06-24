@@ -39,7 +39,7 @@ foreach ($campos_obrigatorios as $campo) {
 if (!empty($array_erro)){
   $_SESSION['erro-campos'] = $array_erro;
   $_SESSION['erro'] = "Por favor, preencha todos os campos.";
-  header("Location: ../../pages/contato.php");
+  header("Location: ../../contato");
   exit();
 }
 
@@ -58,11 +58,11 @@ try {
   ]);
 
   $_SESSION['sucesso'] = "Mensagem enviada com sucesso!";
-  header("Location: ../../pages/contato.php");
+  header("Location: ../../contato");
   exit();
 
 } catch (PDOException $e) {
     $_SESSION['erro-sql'] = "Erro ao enviar os dados: " . $e->getMessage();
-    header("Location: ../../pages/contato.php");
+    header("Location: ../../contato");
     exit;
 }

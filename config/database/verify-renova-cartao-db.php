@@ -26,16 +26,16 @@ try {
   if ($count > 0) {
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     $_SESSION['dados_beneficiario_renova'] = $data; 
-    header("Location: ../../pages/dados-beneficiario-renova.php");
+    header("Location: ../../dados-beneficiario-renova");
     exit();
   } else {
     $_SESSION['erro-dados-def-renova'] = "Número do RG não encontrado/existente.";
-    header("Location: ../../pages/renovar-cartao.php");
+    header("Location: ../../renovar-cartao");
     exit();
   }
   
 } catch(PDOException $e) {
   $_SESSION['erro-dados-def-renova'] = "Erro ao consultar o banco de dados: " . $e->getMessage();
-  header("Location: ../../pages/renovar-cartao.php");
+  header("Location: ../../renovar-cartao");
   exit();
 }

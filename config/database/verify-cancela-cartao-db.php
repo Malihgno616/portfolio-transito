@@ -26,16 +26,16 @@ try {
   if ($count > 0) {
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     $_SESSION['dados_beneficiario_cancela'] = $data; 
-    header("Location: ../../pages/dados-beneficiario-cancela.php");
+    header("Location: ../../dados-beneficiario-cancela");
     exit();
   } else {
     $_SESSION['erro-dados-def-cancela'] = "Número do RG não encontrado/existente.";
-    header("Location: ../../pages/cancelar-cartao.php");
+    header("Location: ../../cancelar-cartao");
     exit();
   }
   
 } catch(PDOException $e) {
   $_SESSION['erro-dados-def-cacenla'] = "Erro ao consultar o banco de dados: " . $e->getMessage();
-  header("Location: ../../pages/cancelar-cartao.php");
+  header("Location: ../../cancelar-cartao");
   exit();
 }

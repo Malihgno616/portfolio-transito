@@ -633,14 +633,14 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
 </form>
 
-<script src="../assets/js/formatRG.js"></script>
+<script src="assets/js/formatRG.js"></script>
 <script>
     const btn = document.querySelector('.delete-btn');
     btn.addEventListener("click", function () {
       alert("Cartão cancelado com sucesso!");    
     });
 </script>
-<script src="../assets/js/acitiveSpinner.js"></script>
-<script src="../assets/js/exibirData.js"></script>
-<script src="../assets/js/exibirArquivoBeneficiario.js"></script>
-<script src="../assets/js/exibirForm.js"></script>
+<script src="assets/js/acitiveSpinner.js"></script>
+<script src="assets/js/exibirData.js"></script>
+<script src="assets/js/exibirArquivoBeneficiario.js"></script>
+<script src="assets/js/exibirForm.js"></script>

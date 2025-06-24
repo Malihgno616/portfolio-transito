@@ -19,7 +19,7 @@
   if (!empty($error_array)) {
     $_SESSION['error'] = $error_array;
     $_SESSION['error-form-deficiente'] = "Por favor, preencha todos os campos obrigatórios.";
-    header("Location: ../../pages/form-deficiente.php");
+    header("Location: ../../form-deficiente");
     exit();
   }
 
@@ -228,7 +228,7 @@
 
     if ($executed) {
       $_SESSION['success-form-deficiente'] = "Informações enviadas com sucesso";
-      header("Location: ../../pages/form-deficiente.php");
+      header("Location: ../../form-deficiente");
       exit();
     } else {
       $_SESSION['error-form-deficiente'] = "Erro ao enviar informações";

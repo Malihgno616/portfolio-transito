@@ -77,7 +77,7 @@
   if (!empty($error_array)) {
     $_SESSION['err-fields'] = $error_array;
     $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
-    header("Location: ../../pages/formulario-idoso.php");
+    header("Location: ../../formulario-idoso");
     exit();
   }
 
@@ -200,7 +200,7 @@
 
     if ($executed) {
         $_SESSION['success-form-idoso'] = "Informações enviadas com sucesso";
-        header("Location: ../../pages/formulario-idoso.php");
+        header("Location: ../../formulario-idoso");
         exit();
     } else {
       $_SESSION['erro-form-idoso'] = "Erro ao enviar informações";

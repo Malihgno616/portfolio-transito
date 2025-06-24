@@ -8,13 +8,13 @@ session_start();
 if (isset($_POST['solicitacao'])) {
   switch ($_POST['solicitacao']) {
     case '1':
-      header("Location: ../pages/form-deficiente.php");
+      header("Location: form-deficiente");
       exit();
     case '2':
-      header("Location: ../pages/renovar-cartao.php");
+      header("Location: renovar-cartao");
       exit();
     case '3':
-      header("Location: ../pages/cancelar-cartao.php");
+      header("Location: cancelar-cartao");
       exit();
     case '4':
       echo "Solicitação 4 recebida";
@@ -31,18 +31,18 @@ if (isset($_POST['solicitacao'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartão Deficiente</title>
-  <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
   <!-- <?php  include('../layout/head-card-deficiente.php') ;?> -->
-  <?php include('../layout/head.php'); ?>
+  <?php include('layout/head.php'); ?>
 
 </head>
 
 <body>
   <?php 
-    include('../layout/header.php');
-    include('../layout/title.php');
-    include('../layout/cartao-deficiente.php');
-    include('../layout/footer.php');
+    include('layout/header.php');
+    include('layout/title.php');
+    include('layout/cartao-deficiente.php');
+    include('layout/footer.php');
   ?>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>

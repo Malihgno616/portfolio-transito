@@ -104,7 +104,7 @@
     <?php endforeach; ?>
     </div>
   </div>
-  <a href="../pages/noticias.php"
+  <a href="noticias"
     class="uppercase w-40 m-auto mt-10 flex items-center justify-center px-3 py-2 text-sm font-bold text-center text-black bg-yellow-500 rounded-lg hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-400 duration-75">
     Saiba mais 
     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
