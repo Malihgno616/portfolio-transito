@@ -9,6 +9,27 @@
     
   $required = ['nome-beneficiario','nascimento-beneficiario','genero-beneficiario','endereco-beneficiario','numero-beneficiario','bairro-beneficiario','cep-beneficiario','cidade-beneficiario','uf-beneficiario','telefone-beneficiario','rg-beneficiario','expedicao-beneficiario','expedido-beneficiario','nome-medico','crm-medico','telefone-medico','local-atendimento-medico','cid'];
 
+  $_SESSION['old-form-def'] = [
+    'nome-beneficiario' => $_POST['nome-beneficiario'] ?? '',
+    'nascimento-beneficiario' => $_POST['nascimento-beneficiario'] ?? '',
+    'genero-beneficiario' => $_POST['genero-beneficiario'] ?? '',
+    'endereco-beneficiario' => $_POST['endereco-beneficiario'] ?? '',
+    'numero-beneficiario' => $_POST['numero-beneficiario'] ?? '',
+    'bairro-beneficiario' => $_POST['bairro-beneficiario'] ?? '',
+    'cep-beneficiario' => $_POST['cep-beneficiario'] ?? '',
+    'cidade-beneficiario' => $_POST['cidade-beneficiario'] ?? '',
+    'uf-beneficiario' => $_POST['uf-beneficiario'] ?? '',
+    'telefone-beneficiario' => $_POST['telefone-beneficiario'] ?? '',
+    'rg-beneficiario' => $_POST['rg-beneficiario'] ?? '',
+    'expedicao-beneficiario' => $_POST['expedicao-beneficiario'] ?? '',
+    'expedido-beneficiario' => $_POST['expedido-beneficiario'] ?? '',
+    'nome-medico' => $_POST['nome-medico'] ?? '',
+    'crm-medico' => $_POST['crm-medico'] ?? '',
+    'telefone-medico' => $_POST['telefone-medico'] ?? '',
+    'local-atendimento-medico' => $_POST['local-atendimento-medico'] ?? '',
+    'cid' => $_POST['cid'] ?? ''
+  ];
+
   $error_array = [];
   foreach ($required as $campo) {
     if (empty($_POST[$campo])) {

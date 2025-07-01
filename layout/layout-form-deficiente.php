@@ -1,13 +1,11 @@
 <?php 
 
 $success = $_SESSION['success-form-deficiente'] ?? null;
-unset($_SESSION['success-form-deficiente']);
-
-$error_form_def = $_SESSION['error-form-deficiente'] ?? null;
-unset($_SESSION['error-form-deficiente']);
-
 $array_error = $_SESSION['error'] ?? null;
-unset($_SESSION['error']);
+$error_form_def = $_SESSION['error-form-deficiente'] ?? null;
+$old_form_deficiente = $_SESSION['old-form-def'] ?? null;
+
+unset($_SESSION['success-form-deficiente'], $_SESSION['error-form-deficiente'], $_SESSION['error'], $_SESSION['old-form-def']);
 
 $estados = array(
 	'AC' => 'Acre',
@@ -124,7 +122,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" " type="text" name="nome-beneficiario">
+        placeholder=" " type="text" name="nome-beneficiario"
+        value="<?= $old_form_deficiente['nome-beneficiario'] ?? ''?>"
+        >
       <label for="beneficiario"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['nome-beneficiario']) 
@@ -137,7 +137,11 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= !empty($array_error['nascimento-beneficiario']) ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 '?> peer"
-        placeholder=" " oninput="formatDate(this)" maxlength="10">
+        placeholder=" " 
+        oninput="formatDate(this)" 
+        maxlength="10"
+        value="<?= $old_form_deficiente['nascimento-beneficiario'] ?? ''?>"
+        >
       <label for="nascimento-beneficiario"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['nascimento-beneficiario']) 
@@ -147,30 +151,20 @@ $deficiencias = [
         <?= !empty($array_error['nascimento-beneficiario']) ? 'Preencha sua data de nascimento' : 'Data
         de Nascimento'?>
       </label>
-    </div>  
-    
-    <!-- <div class="relative mb-5">
-      <select name="genero-beneficiario" id="genero-deficiente"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
-        <option value="">Selecione</option>
-        <?php foreach ($array_generos as $genero) {
-            echo "<option value='$genero'>$genero</option>";
-          } ?>
-      </select>
-      <label for="genero-beneficiario"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, selecione o sexo</label>
-    </div> -->
-    
+    </div>     
+
     <div class="relative mb-5">
       <select name="genero-beneficiario" id="genero-deficiente"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 <?= !empty($array_error['genero-beneficiario']) ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'?>  peer"
         placeholder=" ">
         <option value="">Selecione</option>
-        <?php foreach ($array_generos as $genero) {
-            echo "<option value='$genero'>$genero</option>";
-          } ?>
+        <?php foreach($array_generos as $genero): ?>
+          <option value="<?= htmlspecialchars($genero)?>"
+            <?= (isset($old_form_deficiente['genero-beneficiario']) && $old_form_deficiente['genero-beneficiario'] === $genero) ? 'selected' : ''?>
+          >
+            <?= htmlspecialchars($genero) ?>
+          </option>  
+        <?php endforeach; ?>
       </select>
       <label for="genero-beneficiario"
         class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
@@ -181,15 +175,6 @@ $deficiencias = [
         <?= !empty($array_error['genero-beneficiario']) ? 'Selecione o sexo' : 'Sexo'?>  
       </label>
     </div>
-        
-    <!-- <div class="relative mb-5">
-      <input type="text" name="cep-beneficiario" onblur="pesquisacep(this.value);"
-        class="text-md block px-2.5 pb-2.5 pt-4 w-full text-red-500 rounded-lg border-2 border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 peer"
-        placeholder=" ">
-      <label for="cep-deficiente"
-        class="absolute text-sm text-red-500 peer-focus:text-red-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Por
-        favor, preencha seu CEP</label>
-    </div> -->
 
     <div class="relative mb-5">
       <input type="text" name="cep-beneficiario" onblur="pesquisacep(this.value);"
@@ -198,7 +183,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" "
+        value="<?= htmlspecialchars($old_form_deficiente['cep-beneficiario']) ?? ''?>"
+        >
       <label for="cep-deficiente" class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= !empty($array_error['cep-beneficiario']) ? 'text-red-500 peer-focus:text-red-500' : 'text-gray-500 peer-focus:text-yellow-500' ?>
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
         peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -214,7 +201,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" "
+        value="<?= htmlspecialchars($old_form_deficiente['endereco-beneficiario']) ?? ''?>"
+        >
       <label for="endereco"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['endereco-beneficiario']) 
@@ -233,7 +222,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" "
+        value="<?= htmlspecialchars($old_form_deficiente['numero-beneficiario']) ?? ''?>"
+        >
       <label for="numero-beneficiario" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
           !empty($array_error['numero-beneficiario']) 
           ? 'text-red-500 peer-focus:text-red-500' 
@@ -260,7 +251,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
         ?> peer"
-        placeholder=" ">
+        placeholder=" "
+        value="<?= htmlspecialchars($old_form_deficiente['bairro-beneficiario']) ?? ''?>"
+        >
       <label for="bairro-deficiente" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['bairro-beneficiario']) 
         ? 'text-red-500 peer-focus:text-red-500' 
@@ -279,7 +272,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500'
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" " 
+        value="<?= htmlspecialchars($old_form_deficiente['cidade-beneficiario']) ?? ''?>"
+        >
       <label for="cidade-beneficiario" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
       !empty($array_error['cidade-beneficiario']) 
         ? 'text-red-500 peer-focus:text-red-500' 
@@ -301,9 +296,12 @@ $deficiencias = [
         peer"
         placeholder=" ">
         <option value="">Selecione...</option>
-        <?php foreach($estados as $sigla => $nome){
-          echo "<option value='$sigla'>$nome</option>";
-        } ?>
+        <?php foreach ($estados as $sigla => $nome): ?>
+            <option value="<?= $sigla ?>"
+              <?= (isset($old_form_deficiente['uf-beneficiario']) && $old_form_deficiente['uf-beneficiario'] === $sigla) ? 'selected' : ''?>>
+              <?= $nome ?>
+            </option>
+        <?php endforeach; ?>
       </select>
       <label for="uf-deficiente" class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['uf-beneficiario']) 
@@ -322,7 +320,9 @@ $deficiencias = [
         !empty($array_error['telefone-beneficiario']) 
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'?> peer"
-        placeholder=" " maxlength="15" oninput="formatPhone(this)">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" 
+        value="<?= htmlspecialchars($old_form_deficiente['telefone-beneficiario']) ?? ''?>"
+        >
       <label for="telefone-deficiente"
         class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['telefone-beneficiario']) 
@@ -340,7 +340,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 '
         ?> peer"
-        placeholder=" " maxlength="12" oninput="formatRG(this)">
+        placeholder=" " maxlength="12" oninput="formatRG(this)" 
+        value="<?= htmlspecialchars($old_form_deficiente['rg-beneficiario']) ?? ''?>"
+        >
       <label for="rg-deficiente"
         class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['rg-beneficiario']) 
@@ -358,7 +360,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" " maxlength="10" oninput="formatDate(this)">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" 
+        value="<?= htmlspecialchars($old_form_deficiente['expedicao-benficiario']) ?? ''?>"
+        >
       <label for="expedicao-beneficiario"
         class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?=
         !empty($array_error['expedicao-beneficiario']) 
@@ -377,7 +381,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" "
+        value="<?= htmlspecialchars($old_form_deficiente['expedido-beneficiario']) ?? ''?>"
+        >
       <label for="expedido-beneficiario"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['expedido-beneficiario']) 
@@ -455,7 +461,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" " 
+        value="<?= htmlspecialchars($old_form_deficiente['nome-medico']) ?? ''?>"
+        >
       <label for="nome"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['nome-medico']) 
@@ -474,7 +482,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" " 
+        value="<?= htmlspecialchars($old_form_deficiente['crm-medico']) ?? ''?>"
+        >
       <label for="registro"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['crm-medico']) 
@@ -493,7 +503,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" " maxlength="15" oninput="formatPhone(this)">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" 
+        value="<?= htmlspecialchars($old_form_deficiente['telefone-medico']) ?? ''?>"
+        >
       <label for="telefone"
         class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['telefone-medico']) 
@@ -511,7 +523,9 @@ $deficiencias = [
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
         ?> peer"
-        placeholder=" ">
+        placeholder=" " 
+        value="<?= htmlspecialchars($old_form_deficiente['local-atendimento-medico']) ?? ''?>"
+        >
       <label for=""
         class="absolute text-sm duration-300 transform -translate-y-4 scale-75 <?= 
         !empty($array_error['local-atendimento-medico']) 
@@ -589,7 +603,9 @@ $deficiencias = [
       !empty($array_error['cid']) 
       ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
       : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400'
-      ?> peer"></textarea>
+      ?> peer">
+      <?= $old_form_deficiente['cid'] ?? ''?>  
+    </textarea>
     <label for="cid"
       class="absolute text-md duration-300 transform -translate-y-4 scale-75 <?= 
       !empty($array_error['cid']) 
