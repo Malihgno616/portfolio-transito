@@ -166,10 +166,10 @@
         </li>
     </ul>
   </nav>
-  <?php if(!empty($noticia)): ?>
+  <!-- <?php // if(!empty($noticia)): ?>
     <div class="col-span-3 text-center text-white py-10">
         <p>Total de notícias: <?= $totalNews ?></p>
         <p>Offset calculado: <?= $offset ?></p>
     </div>
-  <?php endif; ?>
+  <?php // endif; ?> -->
 </div>
