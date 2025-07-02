@@ -23,16 +23,16 @@ try {
 
   if ($executed) {
     $_SESSION['delete-card-deficiente'] = "Cartão deletado com sucesso!";
-    header("Location: ../../pages/cancelar-cartao.php");
+    header("Location: ../../cancelar-cartao");
     exit();
   } else {
     $_SESSION['delete-card-deficiente'] = "Erro ao deletar cartão!";
-    header("Location: ../../pages/cancelar-cartao.php");
+    header("Location: ../../cancelar-cartao");
     exit();
   }
 
 } catch (PDOException $e) {
   $_SESSION['delete-card-deficiente'] = "Erro ao banco de dados: " . $e->getMessage();
-  header("Location: ../pages/cancelar-cartao.php");
+  header("Location: ../../cancelar-cartao");
   exit();
 }

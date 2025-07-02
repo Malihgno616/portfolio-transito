@@ -108,13 +108,13 @@ try {
         $_SESSION['err-renova-card-def'] = "Erro ao alterar os dados";
     }
     
-    header("Location: ../../pages/renovar-cartao.php");
+    header("Location: ../../renovar-cartao.php");
     exit();
   
 } catch (PDOException $e) {
     echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
 } catch (Exception $e) {
     $_SESSION['err-renova-card-def'] = $e->getMessage();
-    header("Location: ../../pages/renovar-cartao.php");
+    header("Location: ../../renovar-cartao.php");
     exit();
 }
