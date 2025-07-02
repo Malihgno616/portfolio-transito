@@ -6,12 +6,12 @@
   <div class="max-w-7xl mx-auto flex justify-center">
     <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-5">
       <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-        <a href="../pages/formulario-idoso.php">
+        <a href="formulario-idoso">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Cartão do Idoso</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Clique aqui para preencher o formulário do cartão
           do idoso.</p>
-        <a href="../pages/formulario-idoso.php"
+        <a href="formulario-idoso"
           class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-yellow-500 rounded-lg hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 duration-75">
           Clique aqui
           <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -23,12 +23,12 @@
       </div>
 
       <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-        <a href="../pages/form-deficiente.php">
+        <a href="form-deficiente">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Cartão do Deficiente</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Clique aqui para preencher o formulário do cartão
           do deficiente.</p>
-        <a href="../pages/form-deficiente.php"
+        <a href="form-deficiente"
           class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-yellow-500 rounded-lg hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 duration-75">
           Clique aqui
           <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
