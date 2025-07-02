@@ -5,7 +5,7 @@
 <form action="" method="post" class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
     <div class="flex flex-col justify-center items-center m-2 gap-3">
       <h2 class="md:text-3xl text-center">
-        2ª via do cartão - Roubo
+        2ª via do cartão - Perda
       </h2>
       <p class="text-lg text-justify">
         Para solicitação da 2ª via do cartão informe preencha as informações do cartão

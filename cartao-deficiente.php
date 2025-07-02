@@ -5,8 +5,11 @@ error_reporting(E_ALL);
 
 session_start();
 
-if (isset($_POST['solicitacao'])) {
-  switch ($_POST['solicitacao']) {
+$solicitacoesPrincipais = filter_input(INPUT_POST, 'solicitacao', FILTER_DEFAULT);
+$motivosSegVia = filter_input(INPUT_POST, 'motivos', FILTER_DEFAULT);
+
+if ($solicitacoesPrincipais !== null) {
+  switch ($solicitacoesPrincipais) {
     case '1':
       header("Location: form-deficiente");
       exit();
@@ -16,8 +19,22 @@ if (isset($_POST['solicitacao'])) {
     case '3':
       header("Location: cancelar-cartao");
       exit();
+  }
+}
+
+if($motivosSegVia !== null) {
+  switch ($motivosSegVia) {
+    case '1':
+      header("Location: perda-cartao");
+      exit();
+    case '2':
+      header("Location: furto");
+      exit();
+    case '3':
+      header("Location: roubo");
+      exit();
     case '4':
-      echo "Solicitação 4 recebida";
+      header("Location: dano");
       exit();
   }
 }
@@ -32,9 +49,7 @@ if (isset($_POST['solicitacao'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartão Deficiente</title>
   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-  <!-- <?php  include('../layout/head-card-deficiente.php') ;?> -->
   <?php include('layout/head.php'); ?>
-
 </head>
 
 <body>
@@ -44,7 +59,3 @@ if (isset($_POST['solicitacao'])) {
     include('layout/cartao-deficiente.php');
     include('layout/footer.php');
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-</body>
-
-</html>

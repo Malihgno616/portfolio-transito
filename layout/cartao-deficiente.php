@@ -40,7 +40,7 @@
   <!-- Adicione uma div container para o motivo -->
   <div id="motivoContainer" class="mt-6 hidden">
     <label for="motivos" class="block mb-2 text-md font-medium text-gray-900">Motivo</label>
-    <select id="" name=""
+    <select id="" name="motivos"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5">
       <option value="">Selecione...</option>
       <option value="1">Perda</option>
