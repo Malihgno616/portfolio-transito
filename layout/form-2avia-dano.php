@@ -35,9 +35,9 @@
         do beneficiário</label>
     </div>
 
-    <div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
-    <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
-      type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
+    <div class="flex justify-center gap-5 p-5 ">
+      <button type="button" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
+      onclick="window.location.href = 'cartao-deficiente';"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
       <button id="btn-enviar" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
         <div role="status" class="flex justify-center items-center gap-2">
           <span id="btn-txt">Enviar <i class="fas fa-paper-plane"></i></span>
@@ -47,7 +47,7 @@
           </svg>
         </div>
       </button>
-    </div>
+    </div> 
   </form>
 
 <script src="assets/js/formatRG.js"></script>
