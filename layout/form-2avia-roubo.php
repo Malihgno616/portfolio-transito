@@ -53,7 +53,7 @@
           </p>
         </div>
         <input id="boletim-ocorrencia" type="file" name="boletim" class="hidden" accept="image/*,.pdf"/>
-        <input type="text" name="nome-arquivo-rg-idoso" id="file-name" class="h-10 text-center border-transparent bg-transparent" readonly>
+        <input type="text" name="img-bo" id="file-name" class="h-10 text-center border-transparent bg-transparent" readonly required>
       </label>
     </div>
 
