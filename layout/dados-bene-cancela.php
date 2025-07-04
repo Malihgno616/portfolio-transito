@@ -640,7 +640,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
       alert("Cartão cancelado com sucesso!");    
     });
 </script>
-<script src="assets/js/acitiveSpinner.js"></script>
+<script src="assets/js/activeSpinner.js"></script>
 <script src="assets/js/exibirData.js"></script>
 <script src="assets/js/exibirArquivoBeneficiario.js"></script>
 <script src="assets/js/exibirForm.js"></script>

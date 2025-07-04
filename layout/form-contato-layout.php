@@ -155,4 +155,4 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['sucesso'], $_SESSI
 </form>
 
 <script src="assets/js/formatPhone.js"></script>
-<script src="assets/js/acitiveSpinner.js"></script>
+<script src="assets/js/activeSpinner.js"></script>

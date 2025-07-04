@@ -73,5 +73,5 @@
   </form>
 
   <script src="assets/js/formatRG.js"></script>
-  <script src="assets/js/acitiveSpinner.js"></script>
+  <script src="assets/js/activeSpinner.js"></script>
   <script src="assets/js/exibirBO.js"></script>
