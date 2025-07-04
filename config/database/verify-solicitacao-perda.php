@@ -40,12 +40,11 @@ if(empty($infosPost['rg-beneficiario'])){
   } 
   
   try {
-    $query = "INSERT INTO solicitacao_2a_via (rg_beneficiario, img_bo) VALUES (:rg_beneficiario, :img_bo)";
+    $query = "INSERT INTO solicitacao_2a_via (rg_beneficiario) VALUES (:rg_beneficiario)";
     $stmt = $pdo->prepare($query);
   
     $executed = $stmt->execute([
       ":rg_beneficiario" => $infosPost['rg-beneficiario'],
-      ":img_bo" => $infosPost['img-bo'] ?? ""
     ]);
   
     if ($executed) {

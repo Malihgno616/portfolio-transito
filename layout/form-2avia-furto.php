@@ -2,7 +2,19 @@
   <h1 class="text-5xl md:text-2xl font-bold text-center">Cartão do Deficiente</h1>
 </div>
 
-<form action="" method="post" class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
+<form action="config/database/verify-solicitacao-furto.php" method="post" class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
+    <?php
+
+    if (isset($_SESSION['success-solicitacao'])) {
+      echo $_SESSION['success-solicitacao'];
+      unset($_SESSION['success-solicitacao']);
+    }
+
+    if (isset($_SESSION['error-solicitacao'])) {
+      echo $_SESSION['error-solicitacao'];
+      unset($_SESSION['error-solicitacao']);
+    }
+    ?>
     <div class="flex flex-col justify-center items-center m-2 gap-3">
       <h2 class="md:text-3xl text-center">
         2ª via do cartão - Furto
@@ -17,11 +29,34 @@
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" "
+        oninput="formatRG(this)"
+        maxlength="12"
+        >
       <label for=""
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG
         do beneficiário</label>
     </div>
+
+    <div class="flex items-center justify-center w-full mb-5">
+      <label for="boletim-ocorrencia"
+        class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-boletim">
+          <!-- Conteúdo original -->
+          <svg class="w-8 h-8 mb-4 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <p class="mb-2 text-xl text-center text-gray-500 dark:text-gray-400"><span class="font-semibold">Cópia digitalizada do boletim de ocorrência.</span></p>
+          <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
+          </p>
+        </div>
+        <input id="boletim-ocorrencia" type="file" name="boletim" class="hidden" accept="image/*,.pdf"/>
+        <input type="text" name="nome-arquivo-rg-idoso" id="file-name" class="h-10 text-center border-transparent bg-transparent" readonly>
+      </label>
+    </div>
+
     <div class="flex justify-center gap-5 p-5 ">
       <button type="button" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
       onclick="window.location.href = 'cartao-deficiente';"><i class="fa-solid fa-arrow-left"></i> Voltar </button>
@@ -36,3 +71,7 @@
       </button>
     </div> 
   </form>
+
+  <script src="assets/js/formatRG.js"></script>
+  <script src="assets/js/acitiveSpinner.js"></script>
+  <script src="assets/js/exibirBO.js"></script>
