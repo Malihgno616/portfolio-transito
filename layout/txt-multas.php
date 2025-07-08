@@ -9,21 +9,21 @@
         <h3 class="text-lg sm:text-xl p-5">Para Indicação do Condutor:</h3>
         <p class="text-base sm:text-lg p-5">
           <a class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200"
-            href="../pages/indicacao-condutor.php">Indicação do Condutor</a>
+            href="indicacao-condutor">Indicação do Condutor</a>
         </p>
       </li>
       <li>
         <h3 class="text-lg sm:text-xl p-5">Para Recurso de Multa:</h3>
         <p class="text-base sm:text-lg p-5">
           <a class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200"
-            href="../pages/recurso-multa.php">Recurso de Multa</a>
+            href="recurso-multa">Recurso de Multa</a>
         </p>
       </li>
       <li>
         <h3 class="text-lg sm:text-xl p-5">Para Formulário de Cópia de AIT:</h3>
         <p class="text-base sm:text-lg p-5">
           <a class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200"
-            href="../pages/form-ait.php">Formulário de Cópia de AIT</a>
+            href="form-ait">Formulário de Cópia de AIT</a>
         </p>
       </li>
     </ul>

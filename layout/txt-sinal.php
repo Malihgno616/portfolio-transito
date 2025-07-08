@@ -17,7 +17,7 @@
     <p class="text-base sm:text-sm p-5 w-full sm:w-auto">Ou entre em contato conosco através do nosso formulário de
       contato.</p>
     <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg"
-      href="../pages/contato.php" title="Formulário de Contato">
+      href="contato" title="Formulário de Contato">
       Formulário de Contato
     </a>
   </section>
