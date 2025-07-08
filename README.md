@@ -13,5 +13,4 @@
 <br>
 
 <h3>Diagrama de atividades - Cliente</h3>
-<h3>Diagrama de casos de uso - Cliente</h3>
 <img src="activities.png" alt="Diagrama de Atividades">
