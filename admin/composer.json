@@ -1,0 +1,10 @@
+{
+    "name": "transito/admin",
+    "authors": [
+        {
+            "name": "Ackin.Dev",
+            "email": "ackinlino123@gmail.com"
+        }
+    ],
+    "require": {}
+}

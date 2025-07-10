@@ -3,7 +3,7 @@
         'name' => 'transito/portfolio-transito',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6f2eef19446886de2dfc2d2006cda96f80d7a8d5',
+        'reference' => 'd1f5581f9d7e4a995e3d7bb5658784dca8eb3f73',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'transito/portfolio-transito' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6f2eef19446886de2dfc2d2006cda96f80d7a8d5',
+            'reference' => 'd1f5581f9d7e4a995e3d7bb5658784dca8eb3f73',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
