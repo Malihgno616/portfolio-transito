@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+$errLogin = $_SESSION['err-login'] ?? "";
+
+unset($_SESSION['err-login']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php include __DIR__.'/components/head.php'; ?>

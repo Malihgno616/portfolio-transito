@@ -36,9 +36,9 @@ class Conn {
   private function response()
   {
     if($this->connected) {
-      return "Conectado com sucesso!";
+      return $this->conn;
     } else {
-      return "Erro ao conectar!";
+      return false;
     }
   }
 
