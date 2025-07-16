@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transito - Admin</title>
+  <title>Painel de Controle - Trânsito Leme</title>
 
   <!-- Tailwind CDN (remova se estiver usando build) -->
   <script src="https://cdn.tailwindcss.com"></script>
