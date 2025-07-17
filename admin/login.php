@@ -47,5 +47,6 @@ if(!in_array($current_page, $allowed_pages)) {
     <?php require __DIR__.'/components/form-login.php';?>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="assets/js/spinnerOn.js"></script>
 </body>
 </html>
