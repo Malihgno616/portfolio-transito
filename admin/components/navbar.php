@@ -39,19 +39,19 @@
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
     <ul class="flex flex-col font-normal p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 text-lg">
       <li>
-        <a href="#" class="block py-2 px-3 text-black hover:text-white rounded-sm md:bg-transparent md:text-black md:p-0 md:hover:text-white dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white duration-100" aria-current="page">Home</a>
+        <a href="home.php" class="block py-2 px-3 text-black hover:text-white rounded-sm md:bg-transparent md:text-black md:p-0 md:hover:text-white dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white duration-100" aria-current="page">Home</a>
       </li>
       <li>
-        <a href="#" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Serviços</a>
+        <a href="servicos.php" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Serviços</a>
       </li>
       <li>
-        <a href="#" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Notícias</a>
+        <a href="noticias.php" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Notícias</a>
       </li>
       <li>
         <a href="#" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Todas as notificações</a>
       </li>
       <li>
-        <a href="#" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Contatos</a>
+        <a href="contatos.php" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Contatos</a>
       </li>
     </ul>
 
