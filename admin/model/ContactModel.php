@@ -6,6 +6,7 @@ require __DIR__.'/../config/conn.php';
 require __DIR__.'/../config/env.php';
 
 use Conn;
+use PDO, PDOException;
 
 class ContactModel {
 
@@ -25,8 +26,8 @@ class ContactModel {
     $offset = ($page -1) * $limit; 
 
     $stmt = $this->pdo->prepare("SELECT * FROM form_contato ORDER BY id DESC LIMIT :limit OFFSET :offset");
-    $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
-    $stmt->bindValue(':offset', $offset, \PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
     $contacts = $stmt->fetchAll();
     
@@ -49,5 +50,26 @@ class ContactModel {
     $row = $stmt->fetch();
     return $row['total'];
   }
-   
+  
+  public function deleteContact($id)
+  {
+    try {
+        $query = "DELETE FROM form_contato WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                
+        $stmt->execute();
+        
+        return $stmt->rowCount();
+        
+    } catch (PDOException $e) {
+        error_log("Erro ao deletar contato: " . $e->getMessage());
+        return false;
+    }
+  }
+  
+  
+
 }
+

@@ -28,6 +28,8 @@ use Model\ContactModel\ContactModel;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
+// Paginação
+
 $model = new ContactModel();
 $data = $model->paginatedContacts($page, 15);
 
@@ -38,6 +40,15 @@ $totalContacts = $data['total'];
 
 $start = (($currentPage - 1) * 15) + 1;
 $end = min($currentPage * 15, $totalContacts);
+
+// Deletar dados
+// $deleted = $model->deleteContact($_GET['id']);
+
+// if ($deleted) {
+//     header("Location: contacts.php");
+//     exit();
+// }
+
 
 ?>
 
@@ -75,9 +86,9 @@ include __DIR__.'/layout/header.php';
                         </div>  
                       </td>
                       <td class="px-6 py-4 text-lg">
-                          <a href="#" class="font-medium text-green-600 dark:text-green-500 hover:underline mr-3">Mensagem</a>
-                          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">Editar</a>
-                          <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Excluir</a>
+                          <button  class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</button>
+                          <button  class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
+                          <button  class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
                       </td>
                   </tr>
                   <?php endforeach; ?>
