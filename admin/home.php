@@ -29,12 +29,11 @@ if (!isset($_SESSION['username'])) {
 <?php include __DIR__.'/components/head.php';?>
 <body>
 <?php 
-
 include __DIR__.'/layout/header.php';
+?>
 
-echo <<<HTML
   <main class="w-full h-full p-10">
-    <h1 class="text-5xl font-light text-center mb-5">Bem-vindo, {$_SESSION['username']}. </h1>
+    <h1 class="text-5xl font-light text-center mb-5">Bem-vindo, <?=$_SESSION['username']?>. </h1>
     <h1 class="text-5xl font-light text-center mb-5">Transito - Adminstrativo</h1>
     <div class="flex justify-center animate__animated animate__fadeIn">
       <div class="p-10 w-full">
@@ -63,5 +62,5 @@ echo <<<HTML
       </div>
     </div>
   </main>
-  HTML;
-include __DIR__.'/layout/footer.php';
+
+<?php include __DIR__.'/layout/footer.php'; ?>
