@@ -69,7 +69,11 @@ include __DIR__.'/layout/header.php';
                       <td class="px-6 py-4 font-bold text-lg"><?=$contact['nome']?></td>
                       <td class="px-6 py-4 text-lg"><?=$contact['email']?></td>
                       <td class="px-6 py-4 text-lg"><?=$contact['telefone']?></td>
-                      <td class="px-6 py-4 text-lg"><?=$contact['mensagem']?></td>
+                      <td class="px-6 py-4 max-w-xs">
+                        <div class="line-clamp-1 text-lg text-gray-700" title="<?=htmlspecialchars($contact['mensagem'])?>">
+                            <?=htmlspecialchars($contact['mensagem'])?>
+                        </div>  
+                      </td>
                       <td class="px-6 py-4 text-lg">
                           <a href="#" class="font-medium text-green-600 dark:text-green-500 hover:underline mr-3">Mensagem</a>
                           <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">Editar</a>
