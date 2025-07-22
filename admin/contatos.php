@@ -53,6 +53,15 @@ include __DIR__.'/layout/header.php';
 
 <main class="w-full h-full p-10">
   <h1 class="text-5xl font-light text-center mb-5">Contatos</h1>
+    <?php 
+       if(isset($_SESSION['success_del_contact'])) {
+           echo $_SESSION['success_del_contact'];
+           unset($_SESSION['success_del_contact']);
+       } elseif(isset($_SESSION['error_message'])) {
+            echo $_SESSION['error_message'];
+            unset($_SESSION['error_message']);
+       } 
+    ?>
   <div class="flex justify-center animate__animated animate__fadeIn">
     <div class="p-10 w-full">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -62,7 +71,6 @@ include __DIR__.'/layout/header.php';
                       <th scope="col" class="px-6 py-3">Nome</th>
                       <th scope="col" class="px-6 py-3">Email</th>
                       <th scope="col" class="px-6 py-3">Telefone</th>
-                      <th scope="col" class="px-6 py-3">Mensagem</th>
                       <th scope="col" class="px-6 py-3">Ações</th> 
                   </tr>
               </thead>
@@ -72,15 +80,12 @@ include __DIR__.'/layout/header.php';
                       <td class="px-6 py-4 font-bold text-lg"><?=$contact['nome']?></td>
                       <td class="px-6 py-4 text-lg"><?=$contact['email']?></td>
                       <td class="px-6 py-4 text-lg"><?=$contact['telefone']?></td>
-                      <td class="px-6 py-4 max-w-xs">
-                        <div class="line-clamp-1 text-lg text-gray-700" title="<?=htmlspecialchars($contact['mensagem'])?>">
-                            <?=htmlspecialchars($contact['mensagem'])?>
-                        </div>  
-                      </td>
-                      <td class="px-6 py-4 text-lg">
+                      <td class=" flex gap-2 px-6 py-4 text-lg">
                         <button type="button" data-modal-target="modal-<?= $contact['id'] ?>" data-modal-toggle="modal-<?= $contact['id'] ?>" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</button>
-                        <button  class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
-                        <button  class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
+                        <form action="del-contact.php" method="post">
+                            <input type="hidden" name="id" value="<?= $contact['id'] ?>">
+                            <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
+                        </form>
                       </td>
                     </tr>                    
                     <?php endforeach; ?>                   

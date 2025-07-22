@@ -68,8 +68,7 @@ class ContactModel {
         return false;
     }
   }
-  
-  
+    
 
 }
 
