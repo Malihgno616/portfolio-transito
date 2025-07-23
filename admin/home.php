@@ -54,7 +54,7 @@ include __DIR__.'/layout/header.php';
               <i class="fa-solid fa-newspaper"></i>
               Notícias
             </a>
-            <a href="#" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
+            <a href="usuarios.php" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
               <i class="fa-solid fa-user-tie"></i>
               Usuários
             </a>
