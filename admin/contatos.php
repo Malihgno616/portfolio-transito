@@ -84,7 +84,7 @@ include __DIR__.'/layout/header.php';
                         <button type="button" data-modal-target="modal-<?= $contact['id'] ?>" data-modal-toggle="modal-<?= $contact['id'] ?>" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</button>
                         <form action="del-contact.php" method="post">
                             <input type="hidden" name="id" value="<?= $contact['id'] ?>">
-                            <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
+                            <button type="submit" onclick="window.confirm('Tem certeza que deseja cancelar?')" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
                         </form>
                       </td>
                     </tr>                    
