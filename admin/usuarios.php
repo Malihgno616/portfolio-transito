@@ -54,6 +54,12 @@ $end = min($currentPage * $limit, $totalUsers);
     <h1 class="text-5xl font-light text-center mb-5">Usuários</h1>
     <div class="flex justify-center animate__animated animate__fadeIn">
       <div class="p-10 w-full">
+        <div class="flex justify-center">
+          <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-yellow-100 font-semibold text-yellow-600 dark:text-yellow-800 hover:bg-yellow-200 flex justify-center items-center gap-1 m-5 rounded-xl p-2 duration-100">Adicionar Usuário <i class="fa-solid fa-user-plus"></i></button>
+        </div>
+        <!-- Main modal -->
+
+        
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
             <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
@@ -77,8 +83,8 @@ $end = min($currentPage * $limit, $totalUsers);
                       <?=$user['level']?>
                     </td>
                     <td class="px-6 py-4 flex gap-2 text-lg">
-                      <button class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
-                      <button onclick="window.confirm('Tem certeza que deseja cancelar?')" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
+                      <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
+                      <button onclick="window.confirm('Tem certeza que deseja excluir este usuário?')" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -128,7 +134,48 @@ $end = min($currentPage * $limit, $totalUsers);
         </div>
       </div>
     </div>
+  
+   
   </main>
+
+  <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full animate__animated animate__fadeInDown">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900">
+                    Adicionar um usuário
+                </h3>
+                <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="authentication-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5">
+                <form class="space-y-4" action="#">
+                    <div>
+                        <label for="user" class="block mb-2 text-sm font-medium text-gray-900">Nome</label>
+                        <input type="text" name="user" id="user" class="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 " required />
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Digite a senha</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" required />
+                    </div>
+                    <div>
+                        <label for="password1" class="block mb-2 text-sm font-medium text-gray-900">Confirmar a senha</label>
+                        <input type="password1" name="password1" id="password1" placeholder="••••••••" class="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" required />
+                    </div>
+                    <button type="submit" class="w-full text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cadastrar usuário</button>
+                </form>
+              </div>
+         </div>
+      </div>
+  </div> 
+
   <?php 
     include __DIR__.'/layout/footer.php';
   ?>
