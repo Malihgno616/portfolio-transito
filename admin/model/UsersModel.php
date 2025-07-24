@@ -36,7 +36,7 @@ class UsersModel {
 
     $offset = ($page - 1) * $limit; 
   
-    $query = "SELECT username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
+    $query = "SELECT name_adm, username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
     
     $stmt = $this->pdo->prepare($query);
     
@@ -63,7 +63,7 @@ class UsersModel {
   }
 
   public function createUser()
-  {
+  {   
     return null;
   }
 
@@ -71,7 +71,7 @@ class UsersModel {
   {
     return null;
   }
-
+  
   public function deleteUser()
   {
     return null;

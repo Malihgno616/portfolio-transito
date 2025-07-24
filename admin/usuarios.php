@@ -56,10 +56,7 @@ $end = min($currentPage * $limit, $totalUsers);
       <div class="p-10 w-full">
         <div class="flex justify-center">
           <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-yellow-100 font-semibold text-yellow-600 dark:text-yellow-800 hover:bg-yellow-200 flex justify-center items-center gap-1 m-5 rounded-xl p-2 duration-100">Adicionar Usuário <i class="fa-solid fa-user-plus"></i></button>
-        </div>
-        <!-- Main modal -->
-
-        
+        </div>        
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
             <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
@@ -74,7 +71,7 @@ $end = min($currentPage * $limit, $totalUsers);
                 <?php foreach($users as $user): ?>
                 <tr class="bg-white border-b hover:bg-gray-50">
                     <td class="px-6 py-4 font-bold text-lg">
-                      <?=$user['username']?>
+                      <?=$user['name_adm']?>
                     </td>  
                     <td class="px-6 py-4 font-bold text-lg">
                       <?=$user['username']?>
@@ -83,7 +80,7 @@ $end = min($currentPage * $limit, $totalUsers);
                       <?=$user['level']?>
                     </td>
                     <td class="px-6 py-4 flex gap-2 text-lg">
-                      <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
+                      <button type="button" data-modal-target="#" data-modal-toggle="#" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
                       <button onclick="window.confirm('Tem certeza que deseja excluir este usuário?')" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
                     </td>
                 </tr>
@@ -147,7 +144,7 @@ $end = min($currentPage * $limit, $totalUsers);
                 <h3 class="text-xl font-semibold text-gray-900">
                     Adicionar um usuário
                 </h3>
-                <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="authentication-modal">
+                <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center focus:outline-yellow-500" data-modal-hide="authentication-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -156,20 +153,84 @@ $end = min($currentPage * $limit, $totalUsers);
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
-                    <div>
-                        <label for="user" class="block mb-2 text-sm font-medium text-gray-900">Nome</label>
-                        <input type="text" name="user" id="user" class="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 " required />
+                <form class="space-y-4 p-5 grid grid-cols-1 gap-7" action="#" method="post">      
+
+                    <div class="relative z-0">
+                      <input 
+                        name="username"
+                        type="text"
+                        id="name"
+                        class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="name"
+                        class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                              peer-focus:start-0 peer-focus:text-yellow-500 
+                              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                              peer-focus:scale-90 peer-focus:-translate-y-4">
+                        Digite o nome de Login
+                      </label>
                     </div>
-                    <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Digite a senha</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" required />
+                    
+                    <div class="relative z-0">
+                      <input 
+                        name="username"
+                        type="text"
+                        id="name"
+                        class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="name"
+                        class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                              peer-focus:start-0 peer-focus:text-yellow-500 
+                              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                              peer-focus:scale-90 peer-focus:-translate-y-4">
+                        Digite o nome de usuário
+                      </label>
                     </div>
-                    <div>
-                        <label for="password1" class="block mb-2 text-sm font-medium text-gray-900">Confirmar a senha</label>
-                        <input type="password1" name="password1" id="password1" placeholder="••••••••" class="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" required />
+
+                    <div class="relative z-0">
+                      <input 
+                        name="password"
+                        type="password"
+                        id="pass"
+                        class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        
+                        for="pass"
+                        class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                              peer-focus:start-0 peer-focus:text-yellow-500 
+                              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                              peer-focus:scale-90 peer-focus:-translate-y-4">
+                        Digite a senha
+                      </label>
                     </div>
-                    <button type="submit" class="w-full text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cadastrar usuário</button>
+
+                    <div class="relative z-0">
+                      <input 
+                        name="pass-again"
+                        type="password"
+                        id="pass-again"
+                        class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="pass-again"
+                        class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                              peer-focus:start-0 peer-focus:text-yellow-500 
+                              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                              peer-focus:scale-90 peer-focus:-translate-y-4">
+                        Digite o senha novamente
+                      </label>
+                    </div>
+
+                    <button type="submit" class="w-full text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                      Cadastrar usuário
+                    </button>
                 </form>
               </div>
          </div>
