@@ -37,7 +37,7 @@ class UsersModel {
 
     $offset = ($page - 1) * $limit; 
   
-    $query = "SELECT name_adm, username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
+    $query = "SELECT id, name_adm, username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
     
     $stmt = $this->pdo->prepare($query);
     
@@ -108,9 +108,26 @@ class UsersModel {
     return null;
   }
   
-  public function deleteUser()
+  public function deleteUser($id)
   {
-    return null;
+    try {
+
+      $query = "DELETE FROM login_adm WHERE id = :id";
+      
+      $stmt = $this->pdo->prepare($query);
+      
+      $stmt->bindValue(':id', $id);
+      
+      $executed = $stmt->execute();
+      
+      return $executed;
+
+    } catch (PDOException $e) {
+      
+      return "Error: ". $e->getMessage();
+    
+    }
+
   }
 
 }
