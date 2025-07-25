@@ -54,6 +54,14 @@ $end = min($currentPage * $limit, $totalUsers);
     <h1 class="text-5xl font-light text-center mb-5">Usuários</h1>
     <div class="flex justify-center animate__animated animate__fadeIn">
       <div class="p-10 w-full">
+        <?php 
+        
+        if(isset($_SESSION['alert-user'])){
+          echo $_SESSION['alert-user'];
+          unset($_SESSION['alert-user']);
+        }
+        
+        ?>
         <div class="flex justify-center">
           <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-yellow-100 font-semibold text-yellow-600 dark:text-yellow-800 hover:bg-yellow-200 flex justify-center items-center gap-1 m-5 rounded-xl p-2 duration-100">Adicionar Usuário <i class="fa-solid fa-user-plus"></i></button>
         </div>        
@@ -153,11 +161,11 @@ $end = min($currentPage * $limit, $totalUsers);
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4 p-5 grid grid-cols-1 gap-7" action="#" method="post">      
+                <form class="space-y-4 p-5 grid grid-cols-1 gap-10" action="add-user.php" method="post">      
 
                     <div class="relative z-0">
                       <input 
-                        name="username"
+                        name="user-login"
                         type="text"
                         id="name"
                         class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
@@ -175,7 +183,7 @@ $end = min($currentPage * $limit, $totalUsers);
                     
                     <div class="relative z-0">
                       <input 
-                        name="username"
+                        name="user-name"
                         type="text"
                         id="name"
                         class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
@@ -191,6 +199,14 @@ $end = min($currentPage * $limit, $totalUsers);
                       </label>
                     </div>
 
+                    <div class="relative z-0">
+                      <input name="access-level" type="number" id="number-input" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" required value="1"/>
+                      <label for="number-input" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                              peer-focus:start-0 peer-focus:text-yellow-500 
+                              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                              peer-focus:scale-90 peer-focus:-translate-y-4">Nível de acesso:</label>
+                    </div>
+                    
                     <div class="relative z-0">
                       <input 
                         name="password"

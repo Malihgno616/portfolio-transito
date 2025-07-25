@@ -7,6 +7,7 @@ require __DIR__.'/../config/env.php';
 
 use Conn;
 use PDO, PDOException;
+use Exception;
 
 class UsersModel {
   
@@ -62,9 +63,44 @@ class UsersModel {
   
   }
 
-  public function createUser()
+  public function createUser($nameUser, $nameLogin, $pass, $level = 1)
   {   
-    return null;
+
+    try {
+
+      $checkQuery = "SELECT COUNT(*) FROM login_adm WHERE username = :username";
+      $checkStmt = $this->pdo->prepare($checkQuery);
+      $checkStmt->bindValue(':username', $nameLogin);
+      $checkStmt->execute();
+        
+      if ($checkStmt->fetchColumn() > 0) {
+          throw new Exception("Este nome de usuário já está em uso");
+      }
+
+      $query = "INSERT INTO login_adm (name_adm, username, pass, level) VALUES(:name_adm, :username, :pass, :level)";
+  
+      $stmt = $this->pdo->prepare($query);
+  
+      $inputs = [
+      ':name_adm' => $nameUser,
+      ':username' => $nameLogin,
+      ':pass' => $pass,
+      ':level' => $level
+      ];
+
+    foreach ($inputs as $param => $value) {
+        $stmt->bindValue($param, $value);
+    }
+  
+    $executed = $stmt->execute();
+      
+      return $executed;
+
+    } catch(PDOException $e) {
+      
+      return "Error: ". $e->getMessage();
+    }
+
   }
 
   public function updateUser()
