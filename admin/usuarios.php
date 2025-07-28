@@ -89,9 +89,9 @@ $end = min($currentPage * $limit, $totalUsers);
                     </td>
                     <td class="px-6 py-4 flex gap-2 text-lg">
                       <button type="button" data-modal-target="#" data-modal-toggle="#" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
-                      <form action="del-user.php" method="post">
+                      <form action="del-user.php" onsubmit="return window.confirm('Tem certeza que deseja excluir este usuário?')" method="post">
                         <input class="hidden" type="hidden" name="id-user" value="<?= htmlspecialchars($user['id'] ?? '') ?>">
-                        <button type="submit" onclick="window.confirm('Tem certeza que deseja excluir este usuário?')" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
+                        <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
                       </form>
                     </td>
                 </tr>
