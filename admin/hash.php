@@ -1,5 +1,5 @@
 <?php
-$password = "ackinteste";
+$password = "teste";
 
 $options = [
   'cost' => 15

@@ -10,13 +10,13 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
-if(!isset($_SESSION['username'])) {
+if(!isset($_SESSION['user-login'])) {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
     header("Location: login.php");
     exit();
 }
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['user-login'])) {
     header("Location: index.php");
     exit();
 }

@@ -6,37 +6,19 @@ session_start([
     'use_strict_mode' => true
 ]);
 
-require __DIR__.'/model/UsersModel.php';
-use UsersModel\UsersModel\UsersModel;
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
 
-$inputPostUsers = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+require __DIR__.'/model/UsersModel.php';
+
+use UsersModel\UsersModel\UsersModel;
 
 $usersModel = new UsersModel();
 
-if(empty($inputPostUsers['user-login']) || empty($inputPostUsers['user-name']) || 
-    empty($inputPostUsers['password']) || empty($inputPostUsers['pass-again'])) {
-    $_SESSION['alert-user'] = setAlert("Todos os campos são obrigatórios", "error");
-    header("Location: usuarios.php");
-    exit();
-}
+$userId = filter_input(INPUT_POST,'id', FILTER_VALIDATE_INT);
 
-$userLogin = $inputPostUsers['user-login'];
-$userName = $inputPostUsers['user-name'];
-$accesLevel = $inputPostUsers['access-level'];
-$pass = $inputPostUsers['password'];
-$passConfirm = $inputPostUsers['pass-again'];
-
-$options = [
-  'cost' => 15
-];
-
-if ($pass !== $passConfirm) {
-    $_SESSION['alert-user'] = setAlert("As senhas não coincidem", "error");
-    header("Location: usuarios.php");
-    exit();
-}
-
-$hashedPass = password_hash($pass, PASSWORD_BCRYPT, $options);
+$inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 function setAlert($message, $type = 'success') {
     $colorClass = $type === 'success' 
@@ -61,24 +43,41 @@ function setAlert($message, $type = 'success') {
     HTML;  
 }
 
-$reqMethod = $_SERVER['REQUEST_METHOD'];
+$options = [
+  'cost' => 15
+];
 
-if($reqMethod === 'POST') {
-    try {
-        $result = $usersModel->createUser($userLogin, $userName, $hashedPass, $accesLevel);
-        
-        if ($result) {
-            $_SESSION['alert-user'] = setAlert("Usuário criado com sucesso!", "success");
-        }
-        
-    } catch (Exception $e) {
-        if (strpos($e->getMessage(), 'já está em uso') !== false) {
-            $_SESSION['alert-user'] = setAlert($e->getMessage(), "error");
-        } else {
-            $_SESSION['alert-user'] = setAlert("Erro ao criar o usuário", "error");
-        }
-    }
+$userLogin = $inputPost['user-login'] ?? "";
+
+$userName = $inputPost['user-name'] ?? "";
+
+$accessLevel = $inputPost['access-level'] ?? "";
+
+$pass = $inputPost['password'] ?? "";
+
+$hashedPass = password_hash($pass, PASSWORD_BCRYPT, $options);
+
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+  
+  try {
     
+    $updated = $usersModel->updateUser($userId, $userLogin, $userName, $hashedPass, $accessLevel);
+
+    if($updated) {
+      $_SESSION['alert-user'] = setAlert("Dados do usuário atualizado com sucesso!", "success");
+      header("Location: usuarios.php");
+      exit();
+    } else {
+      $_SESSION['alert-user'] = setAlert("Erro ao atualizar dados do usuário!", "error");
+      header("Location: usuarios.php");
+      exit();
+    }
+
+  } catch(Exception $e) {
+    $_SESSION['alert-user'] = setAlert("Erro: " . $e->getMessage(), 'error');
     header("Location: usuarios.php");
     exit();
+  }
+
 }

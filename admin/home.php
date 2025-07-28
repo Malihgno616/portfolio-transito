@@ -10,19 +10,12 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
-if(!isset($_SESSION['username'])) {
+if(!isset($_SESSION['user-login'])) {  // Note o uso de underscore
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
     header("Location: login.php");
     exit();
 }
-
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,7 +26,7 @@ include __DIR__.'/layout/header.php';
 ?>
 
   <main class="w-full h-full p-10">
-    <h1 class="text-5xl font-light text-center mb-5">Bem-vindo, <?=$_SESSION['username']?>. </h1>
+    <h1 class="text-5xl font-light text-center mb-5">Bem-vindo, <?=$_SESSION['user-login']?>. </h1>
     <h1 class="text-5xl font-light text-center mb-5">Transito - Adminstrativo</h1>
     <div class="flex justify-center animate__animated animate__fadeIn">
       <div class="p-10 w-full">

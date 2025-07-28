@@ -37,7 +37,7 @@ class UsersModel {
 
     $offset = ($page - 1) * $limit; 
   
-    $query = "SELECT id, name_adm, username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
+    $query = "SELECT id, user_login, username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
     
     $stmt = $this->pdo->prepare($query);
     
@@ -63,27 +63,27 @@ class UsersModel {
   
   }
 
-  public function createUser($nameUser, $nameLogin, $pass, $level = 1)
+  public function createUser($userLogin, $userName, $pass, $level = 1)
   {   
 
     try {
 
       $checkQuery = "SELECT COUNT(*) FROM login_adm WHERE username = :username";
       $checkStmt = $this->pdo->prepare($checkQuery);
-      $checkStmt->bindValue(':username', $nameLogin);
+      $checkStmt->bindValue(':username', $userName);
       $checkStmt->execute();
         
       if ($checkStmt->fetchColumn() > 0) {
           throw new Exception("Este nome de usuário já está em uso");
       }
 
-      $query = "INSERT INTO login_adm (name_adm, username, pass, level) VALUES(:name_adm, :username, :pass, :level)";
+      $query = "INSERT INTO login_adm (user_login, username, pass, level) VALUES(:user_login, :username, :pass, :level)";
   
       $stmt = $this->pdo->prepare($query);
   
       $inputs = [
-      ':name_adm' => $nameUser,
-      ':username' => $nameLogin,
+      ':user_login' => $userLogin,
+      ':username' => $userName,
       ':pass' => $pass,
       ':level' => $level
       ];
@@ -103,9 +103,42 @@ class UsersModel {
 
   }
 
-  public function updateUser()
+  public function updateUser($id, $login, $username, $pass, $level)
   {
-    return null;
+    try {
+
+      $checkQuery = "SELECT * FROM login_adm WHERE id = :id";
+      $checkStmt = $this->pdo->prepare($checkQuery);
+      $checkStmt->bindValue(':id', $id);
+      $checkStmt->execute();
+      $user = $checkStmt->fetch();
+      if (!$user) {
+        throw new Exception("Este usuário não existe"); 
+      }
+
+      $updateQuery = "UPDATE login_adm 
+      SET user_login = :user_login, 
+          username = :username, 
+          pass = :pass, 
+          level = :level, 
+          alteration = NOW() 
+      WHERE id = :id";
+      
+      $updateStmt = $this->pdo->prepare($updateQuery);
+      $updateStmt->bindValue(':id', $id);
+      $updateStmt->bindValue(':user_login', $login);
+      $updateStmt->bindValue(':username', $username);
+      $updateStmt->bindValue(':pass', $pass);
+      $updateStmt->bindValue(':level', $level);
+
+      $updateStmt->execute();
+      return true;
+
+    } catch(PDOException $e) {
+      error_log("DB Error: " . $e->getMessage()); // Log interno
+      return "Erro ao atualizar usuário. Tente novamente mais tarde.";
+    }
+
   }
   
   public function deleteUser($id)

@@ -12,17 +12,6 @@ ini_set("display_startup_errors", 1);
 
 require __DIR__.'/model/UsersModel.php';
 
-if(!isset($_SESSION['username'])) {
-    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
-    header("Location: login.php");
-    exit();
-}
-
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
-
 use UsersModel\UsersModel\UsersModel;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -79,16 +68,16 @@ $end = min($currentPage * $limit, $totalUsers);
                 <?php foreach($users as $user): ?>
                 <tr class="bg-white border-b hover:bg-gray-50">
                     <td class="px-6 py-4 font-bold text-lg">
-                      <?=$user['name_adm']?>
-                    </td>  
-                    <td class="px-6 py-4 font-bold text-lg">
                       <?=$user['username']?>
                     </td>
+                    <td class="px-6 py-4 font-bold text-lg">
+                      <?=$user['user_login']?>
+                    </td>  
                     <td class="px-6 py-4">
                       <?=$user['level']?>
                     </td>
                     <td class="px-6 py-4 flex gap-2 text-lg">
-                      <button type="button" data-modal-target="#" data-modal-toggle="#" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
+                      <button type="button" data-modal-target="edit-user-<?= $user['id'] ?>" data-modal-toggle="edit-user-<?= $user['id'] ?>" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
                       <form action="del-user.php" onsubmit="return window.confirm('Tem certeza que deseja excluir este usuário?')" method="post">
                         <input class="hidden" type="hidden" name="id-user" value="<?= htmlspecialchars($user['id'] ?? '') ?>">
                         <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
@@ -143,6 +132,123 @@ $end = min($currentPage * $limit, $totalUsers);
       </div>
     </div>
   
+    <?php foreach ($users as $user): ?>
+      <div id="edit-user-<?=$user['id']?>" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full animate__animated animate__fadeInDown">
+      <div class="relative p-4 w-full max-w-md max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow-sm">
+              <!-- Modal header -->
+              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+                  <h3 class="text-xl font-semibold text-gray-900">
+                      Editar usuário
+                  </h3>
+                  <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center focus:outline-yellow-500" data-modal-hide="edit-user<?=$user['id']?>">
+                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                  </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-4 md:p-5">
+                  <form class="space-y-4 p-5 grid grid-cols-1 gap-10" action="update-user.php" method="post">      
+                      <input type="hidden" name="id" value="<?= $user['id'] ?>">
+
+                      <div class="relative z-0">
+                        <input 
+                          name="user-login"
+                          type="text"
+                          id="name"
+                          class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                          placeholder=" "
+                          value="<?= $user['user_login'] ?>"
+                        />
+                        <label
+                          for="name"
+                          class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                peer-focus:start-0 peer-focus:text-yellow-500 
+                                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                                peer-focus:scale-90 peer-focus:-translate-y-4">
+                          Digite o nome de Login
+                        </label>
+                      </div>
+                      
+                      <div class="relative z-0">
+                        <input 
+                          name="user-name"
+                          type="text"
+                          id="name"
+                          class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                          placeholder=" "
+                          value="<?= $user['username'] ?>"
+                        />
+                        <label
+                          for="name"
+                          class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                peer-focus:start-0 peer-focus:text-yellow-500 
+                                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                                peer-focus:scale-90 peer-focus:-translate-y-4">
+                          Digite o nome de usuário
+                        </label>
+                      </div>
+  
+                      <div class="relative z-0">
+                        <input name="access-level" type="number" id="number-input" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" required value="<?=$user['level']?>" />
+                        <label for="number-input" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                peer-focus:start-0 peer-focus:text-yellow-500 
+                                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                                peer-focus:scale-90 peer-focus:-translate-y-4">Nível de acesso:</label>
+                      </div>
+                      
+                      <div class="relative z-0">
+                        <input 
+                          name="password"
+                          type="password"
+                          id="pass"
+                          class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                          placeholder=" "
+                          
+                        />
+                        <label
+                          
+                          for="pass"
+                          class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                peer-focus:start-0 peer-focus:text-yellow-500 
+                                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                                peer-focus:scale-90 peer-focus:-translate-y-4">
+                          Digite a senha
+                        </label>
+                      </div>
+  
+                      <div class="relative z-0">
+                        <input 
+                          name="pass-again"
+                          type="password"
+                          id="pass-again"
+                          class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                          placeholder=" "
+                          
+                        />
+                        <label
+                          for="pass-again"
+                          class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                peer-focus:start-0 peer-focus:text-yellow-500 
+                                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                                peer-focus:scale-90 peer-focus:-translate-y-4">
+                          Digite o senha novamente
+                        </label>
+                      </div>
+  
+                      <button type="submit" class="w-full text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Salvar Alteração
+                      </button>
+                  </form>
+                </div>
+           </div>
+        </div>
+    </div> 
+        
+    <?php endforeach; ?>
    
   </main>
 

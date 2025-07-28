@@ -12,7 +12,6 @@ ini_set("display_startup_errors", 1);
 
 session_regenerate_id(true);
 
-
 include __DIR__.'/config/conn.php';
 require __DIR__.'/config/env.php';
 
@@ -45,10 +44,10 @@ function setError($message) {
 }
 
 try {
-    $username = $inputPost['username'];
+    $userLogin = $inputPost['user-login'];
     $password = $inputPost['password'];  
 
-    if(empty($username) || empty($password)) {
+    if(empty($userLogin) || empty($password)) {
       setError("Preencha todos os campos");
       header("Location: login.php");
       exit();
@@ -56,9 +55,9 @@ try {
     
     $pdo = $conn->connect();
 
-    $query = "SELECT username, pass from login_adm WHERE username = :username";
+    $query = "SELECT user_login, pass from login_adm WHERE user_login = :user_login";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':user_login', $userLogin);
     $executed = $stmt->execute();  
     
     if($stmt->rowCount() > 0) {
@@ -66,7 +65,7 @@ try {
       $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
       if(password_verify(trim($password), trim($user['pass']))) {                
-        $_SESSION['username'] = $user['username'];
+        $_SESSION['user-login'] = $user['user_login'];
         header("Location: home.php");
         exit();
       } else {
