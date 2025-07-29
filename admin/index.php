@@ -11,10 +11,10 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 if(!isset($_SESSION['redirect_url'])) {
-    $_SESSION['redirect_url'] = 'home.php'; // Página padrão
+  $_SESSION['redirect_url'] = 'home.php'; 
 }
 
-if(isset($_SESSION['username'])) {
+if(isset($_SESSION['user-login'])) {
   header("Location: home.php");
 } else {
   header("Location: login.php");

@@ -1,6 +1,5 @@
 <?php 
 
-
 session_start([
     'cookie_secure' => true,
     'cookie_httponly' => true,
@@ -12,18 +11,6 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 require __DIR__.'/model/ContactModel.php';
-
-if(!isset($_SESSION['username'])) {
-    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
-    header("Location: login.php");
-    exit();
-}
-
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
-
 use Model\ContactModel\ContactModel;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
