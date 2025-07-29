@@ -96,29 +96,24 @@ $end = min($currentPage * $limit, $totalUsers);
                             </span>
                             <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                                 <li>
-                                    <a href="?page=<?= ($currentPage > 1) ? $currentPage - 1 : 1 ?>" 
-                                      class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                                    <a href="?page=<?= max(1, $currentPage - 1) ?>" 
+                                    class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 <?= $currentPage == 1 ? 'opacity-50 cursor-not-allowed' : '' ?>">
                                         Anterior
                                     </a>
                                 </li>
-                                
-                                <?php 
 
-                                $startPage = max(1, $currentPage - 2);
-                                $endPage = min($totalPages, $currentPage + 2);
-                                
-                                for($x = $startPage; $x <= $endPage; $x++): ?>
+                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                                     <li>
-                                        <a href="?page=<?= $x ?>" 
-                                          class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 <?= ($x == $currentPage) ? 'bg-blue-50 text-blue-600' : '' ?>">
-                                            <?= $x ?>
+                                        <a href="?page=<?= $i ?>" 
+                                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 <?= $i == $currentPage ? 'text-yellow-600 bg-blue-50 hover:bg-yellow-100 hover:text-yellow-700' : '' ?>">
+                                            <?= $i ?>
                                         </a>
                                     </li>
                                 <?php endfor; ?>
-                                
+
                                 <li>
-                                    <a href="?page=<?= ($currentPage < $totalPages) ? $currentPage + 1 : $totalPages ?>" 
-                                      class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                                    <a href="?page=<?= min($totalPages, $currentPage + 1) ?>" 
+                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 <?= $currentPage == $totalPages ? 'opacity-50 cursor-not-allowed' : '' ?>">
                                         Próxima
                                     </a>
                                 </li>
