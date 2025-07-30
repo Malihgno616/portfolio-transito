@@ -1,5 +1,4 @@
 <?php 
-
 session_start([
     'cookie_secure' => true,
     'cookie_httponly' => true,
@@ -10,22 +9,30 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
-$titleNews = filter_input(INPUT_POST, 'title',FILTER_DEFAULT);
-$subTitleNews = filter_input(INPUT_POST, 'subtitle',FILTER_DEFAULT);
+require __DIR__.'/model/NewsModel.php';
+
+use Model\NewsModel\NewsModel;
+
+$newsModel = new NewsModel();
+
+$titleNews = filter_input(INPUT_POST, 'title', FILTER_DEFAULT);
+
+$subTitleNews = filter_input(INPUT_POST, 'subtitle', FILTER_DEFAULT);
 
 $reqMethod = $_SERVER['REQUEST_METHOD'];
 
 if($reqMethod === 'POST') {
-  
-  $_SESSION['main_news'] = [
-    'title' => $titleNews,
-    'subtitle' => $subTitleNews,
-    'image' => $_FILES['img-noticia'] ?? null
-  ];
+        
+    $_SESSION['main_news'] = [
+        'title' => $titleNews,
+        'subtitle' => $subTitleNews,
+    ];
 
-  header("Location: form-add-content.php");
-  exit();
+    header("Location: form-add-content.php");
+    exit();
 }
+
+
 
 ?>
 
