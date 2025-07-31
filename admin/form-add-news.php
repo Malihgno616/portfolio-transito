@@ -1,4 +1,5 @@
 <?php 
+
 session_start([
     'cookie_secure' => true,
     'cookie_httponly' => true,
@@ -8,31 +9,6 @@ session_start([
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
-
-require __DIR__.'/model/NewsModel.php';
-
-use Model\NewsModel\NewsModel;
-
-$newsModel = new NewsModel();
-
-$titleNews = filter_input(INPUT_POST, 'title', FILTER_DEFAULT);
-
-$subTitleNews = filter_input(INPUT_POST, 'subtitle', FILTER_DEFAULT);
-
-$reqMethod = $_SERVER['REQUEST_METHOD'];
-
-if($reqMethod === 'POST') {
-        
-    $_SESSION['main_news'] = [
-        'title' => $titleNews,
-        'subtitle' => $subTitleNews,
-    ];
-
-    header("Location: form-add-content.php");
-    exit();
-}
-
-
 
 ?>
 
@@ -48,7 +24,7 @@ if($reqMethod === 'POST') {
   <main class="max-w-5xl h-full p-10 m-auto">
     <h1 class="text-5xl font-light text-center mb-5">Adicione uma notícia</h1>
     <div class="p-10 w-full">
-      <form action="<?=$_SERVER['PHP_SELF']?>" enctype="multipart/form-data" class="space-y-4 p-5 grid grid-cols-1 gap-10" method="post">
+      <form action="form-add-content.php" enctype="multipart/form-data" class="space-y-4 p-5 grid grid-cols-1 gap-10" method="post">
         <div class="relative z-0">
           <input class="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
           placeholder=" " type="text" name="title">

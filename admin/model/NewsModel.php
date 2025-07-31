@@ -22,58 +22,60 @@ class NewsModel {
     $this->pdo = $this->conn->connect();
   }
 
-  public function getMainNewsById($newsId)
+  public function addMainNews($titleNews, $subtitleNews)
   {
-    
-    $query = "SELECT * FROM noticia_principal WHERE noticia_id = :noticia_id";
+      try {
+          $query = "INSERT INTO noticia_principal(titulo_principal, subtitulo) 
+                    VALUES (:titulo_principal, :subtitulo)";
+          
+          $stmt = $this->pdo->prepare($query);
+          
+          $stmt->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
+          $stmt->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
+          
+          if ($stmt->execute()) {
+              return $this->pdo->lastInsertId(); 
+          }
+          
+          return false;
 
-    $stmt = $this->pdo->prepare($query);
-    
-    $stmt->bindParam(':noticia_id', $newsId, PDO::PARAM_INT);
-    
-    $executed = $stmt->execute();
-
-    return $executed;
-    
+      } catch(PDOException $e) {
+          error_log('ERROR: ' . $e->getMessage());
+          return false;
+      }
   }
 
-  public function addMainNews($titleNews, $imageMainNews = null, $subtitleNews)
+  public function getMainNews($newsId)
   {
     
     try {
       
-      $query = "INSERT INTO noticia_principal(img_noticia, titulo_principal, subtitulo) VALUES (:img_noticia, :titulo_princiapl, subtitulo)";
-      
+      $query = "SELECT * FROM noticia_principal WHERE id_noticia = :id_noticia";
+  
       $stmt = $this->pdo->prepare($query);
-
-      $stmt->bindValue(':img_noticia', $imageMainNews, PDO::PARAM_STR);
       
-      $stmt->bindValue(':titulo_princiapl', $titleNews, PDO::PARAM_STR);
-      
-      $stmt->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
+      $stmt->bindParam(':id_noticia', $newsId, PDO::PARAM_INT);
       
       $stmt->execute();
-
-      return $stmt->fetchAll();
-
-    } catch(PDOException $e) {
       
-      return 'ERROR: ' . $e->getMessage();
+      return $stmt->fetch(PDO::FETCH_ASSOC);
     
-    }
+    } catch(PDOException $e) {
 
+      return "Error: " . $e->getMessage();
+
+    }
+    
   }
 
-  public function addContentNews($imgContent = null, $titleContent, $subtitleContent, $textContent)
+  public function addContentNews($titleContent, $subtitleContent, $textContent)
   {
     try {
 
-      $addContentQuery = "INSERT INTO conteudo_noticia(img_conteudo, titulo_conteudo, subtitulo_conteudo, texto_conteudo) VALUES (:img_conteudo, :titulo_conteudo, :subtitulo_conteudo, :texto_conteudo)";
+      $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, texto_conteudo) VALUES (:titulo_conteudo, :subtitulo_conteudo, :texto_conteudo)";
       
       $stmt = $this->pdo->prepare($addContentQuery);
       
-      $stmt->bindValue(':img_conteudo', $imgContent, PDO::PARAM_STR);
-
       $stmt->bindValue('titulo_conteudo', $titleContent, PDO::PARAM_STR);
 
       $stmt->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
@@ -91,7 +93,7 @@ class NewsModel {
     }
   }
 
-  public function updateRelationalNewsId($newsId, $contentId)
+  public function updateRelationalNews($newsId, $contentId)
   {
     try {
 
