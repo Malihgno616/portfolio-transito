@@ -24,13 +24,11 @@ $mainSubtitle = $inputPost['subtitle'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  $newsModel->addMainNews($mainTitle, $mainSubtitle);
+  $insertedId =  $newsModel->addMainNews($mainTitle, $mainSubtitle);
+
+  $mainNews = $newsModel->getMainNews($insertedId);
 
 }
-
-
-
-
 
 ?>
 
@@ -49,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form action="" enctype="multipart/form-data" class="space-y-4 p-5 grid grid-cols-1 gap-10">
           <div class="relative z-0">
             <input class="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
-            placeholder=" " type="text" name="title" value="">
+            placeholder=" " type="text" name="title" value="<?= htmlspecialchars($inputPost['title'] ?? '') ?>">
             <label class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
             peer-focus:start-0 peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0  peer-focus:scale-90 peer-focus:-translate-y-4" for="title">Título da notícia</label>
           </div>
@@ -61,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
           
           <div class="relative z-0">
             <input class="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
-            placeholder=" " type="text" name="subtitle" value="">
+            placeholder=" " type="text" name="subtitle"  value="<?= htmlspecialchars($inputPost['subtitle'] ?? '') ?>">
             <label class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
             peer-focus:start-0 peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0  peer-focus:scale-90 peer-focus:-translate-y-4" for="title">Subtítulo</label>
           </div>
@@ -70,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
           
           <div class="relative z-0">
               <input class="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
-              placeholder=" " type="text" name="subtitle">
+              placeholder=" " type="text" name="">
               <label class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
               peer-focus:start-0 peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0  peer-focus:scale-90 peer-focus:-translate-y-4" for="title">Título do conteúdo</label>
           </div>
@@ -82,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
           
           <div class="relative z-0">
               <input class="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
-              placeholder=" " type="text" name="subtitle">
+              placeholder=" " type="text" name="">
               <label class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
               peer-focus:start-0 peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0  peer-focus:scale-90 peer-focus:-translate-y-4" for="title">Subtítulo do conteúdo</label>
           </div>
