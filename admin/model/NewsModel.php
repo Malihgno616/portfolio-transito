@@ -97,7 +97,9 @@ class NewsModel {
   {
     try {
 
-      $updateQuery = "UPDATE conteudo_noticia SET noticia_id = :noticia_id WHERE conteudo_noticia.id_conteudo = :id_conteudo";
+      $this->pdo->beginTransaction();
+
+      $updateQuery = "UPDATE conteudo_noticia SET noticia_id = :noticia_id WHERE id_conteudo = :id_conteudo";
 
       $stmt = $this->pdo->prepare($updateQuery);
 
@@ -105,14 +107,19 @@ class NewsModel {
 
       $stmt->bindValue(':id_conteudo', $contentId, PDO::PARAM_INT);
 
-      $stmt->execute();
-
-      return $stmt->fetchAll();
+      $result = $stmt->execute();
+        
+      if(!$result) {
+          throw new Exception("Erro na execução: " . implode(", ", $stmt->errorInfo()));
+      }
+      
+      $this->pdo->commit();
+      return true;
 
     } catch(PDOException $e) {
-
-      return "Error: " . $e->getMessage();
-
+        $this->pdo->rollBack();
+        error_log("Erro ao atualizar relação: " . $e->getMessage());
+        return false;
     }
 
   }
