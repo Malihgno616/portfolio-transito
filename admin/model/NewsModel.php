@@ -70,57 +70,57 @@ class NewsModel {
 
   public function addContentNews($titleContent, $subtitleContent, $textContent)
   {
-    try {
+      try {
+          $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, texto_conteudo) 
+                              VALUES (:titulo_conteudo, :subtitulo_conteudo, :texto_conteudo)";
+          
+          $stmt = $this->pdo->prepare($addContentQuery);
+          
+          $stmt->bindValue(':titulo_conteudo', $titleContent, PDO::PARAM_STR);
+          $stmt->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
+          $stmt->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);
 
-      $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, texto_conteudo) VALUES (:titulo_conteudo, :subtitulo_conteudo, :texto_conteudo)";
-      
-      $stmt = $this->pdo->prepare($addContentQuery);
-      
-      $stmt->bindValue('titulo_conteudo', $titleContent, PDO::PARAM_STR);
+          if ($stmt->execute()) {
+              return $this->pdo->lastInsertId();
+          }
 
-      $stmt->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
+          return false;
 
-      $stmt->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);
-
-      $stmt->execute();
-      
-      return $stmt->fetchAll();
-
-    } catch (PDOException $e) {
-      
-      return 'ERROR: ' . $e->getMessage();
-    
-    }
+      } catch (PDOException $e) {
+          error_log('Erro ao adicionar conteúdo: ' . $e->getMessage());
+          return false;
+      }
   }
 
   public function updateRelationalNews($newsId, $contentId)
   {
-    try {
+      try {
+          $this->pdo->beginTransaction();
 
-      $this->pdo->beginTransaction();
+          $updateQuery = "UPDATE conteudo_noticia SET noticia_id = :noticia_id WHERE id_conteudo = :id_conteudo";
+          $stmt = $this->pdo->prepare($updateQuery);
 
-      $updateQuery = "UPDATE conteudo_noticia SET noticia_id = :noticia_id WHERE id_conteudo = :id_conteudo";
+          $stmt->bindValue(':noticia_id', $newsId, PDO::PARAM_INT);
+          $stmt->bindValue(':id_conteudo', $contentId, PDO::PARAM_INT);
 
-      $stmt = $this->pdo->prepare($updateQuery);
+          $result = $stmt->execute();
+          
+          // Verifica quantas linhas foram afetadas
+          $rowCount = $stmt->rowCount();
+          
+          if($rowCount === 0) {
+              $this->pdo->rollBack();
+              error_log("Nenhuma linha foi atualizada. newsId: $newsId, contentId: $contentId");
+              return false;
+          }
+          
+          $this->pdo->commit();
+          return true;
 
-      $stmt->bindValue(':noticia_id', $newsId, PDO::PARAM_INT);
-
-      $stmt->bindValue(':id_conteudo', $contentId, PDO::PARAM_INT);
-
-      $result = $stmt->execute();
-        
-      if(!$result) {
-          throw new Exception("Erro na execução: " . implode(", ", $stmt->errorInfo()));
+      } catch(PDOException $e) {
+          $this->pdo->rollBack();
+          error_log("Erro ao atualizar relação: " . $e->getMessage());
+          return false;
       }
-      
-      $this->pdo->commit();
-      return true;
-
-    } catch(PDOException $e) {
-        $this->pdo->rollBack();
-        error_log("Erro ao atualizar relação: " . $e->getMessage());
-        return false;
-    }
-
   }
 }
