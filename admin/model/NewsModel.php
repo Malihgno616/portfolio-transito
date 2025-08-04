@@ -7,7 +7,6 @@ require __DIR__.'/../config/env.php';
 
 use Conn;
 use PDO, PDOException;
-use Exception;
 
 class NewsModel { 
 
@@ -22,19 +21,19 @@ class NewsModel {
     $this->pdo = $this->conn->connect();
   }
 
-  public function publishedNews($page, $limit, $offset)   
+  public function publishedNews($page, $limit, $offset)
   {
-    if($page < 1) $page = 1;
-    $offset = ($page - 1) * 1;
-    
     try {
-        $query = "SELECT DISTINCT
-            np.id_noticia,
-            np.titulo_principal,
-            np.subtitulo AS subtitulo_principal,
-            cn.titulo_conteudo,
-            cn.subtitulo_conteudo,
-            cn.texto_conteudo as texto
+
+        if($page < 0) $page = 1;
+
+        $query ="SELECT DISTINCT
+        np.id_noticia,
+        np.titulo_principal,
+        np.subtitulo AS subtitulo_principal,
+        cn.titulo_conteudo,
+        cn.subtitulo_conteudo,
+        cn.texto_conteudo as texto
         FROM 
             noticia_principal np
         JOIN 
@@ -44,25 +43,39 @@ class NewsModel {
         LIMIT :limit OFFSET :offset";
 
         $stmt = $this->pdo->prepare($query);
-
-        $stmt->bindValue(':page', $page, PDO::PARAM_INT);
-        
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-        
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
         $stmt->execute();
 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        return $result = [
-            
-        ];
-        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     } catch(PDOException $e) {
-        return 'ERROR: ' . $e->getMessage();
+
+        return "Error: " . $e->getMessage();
+    
     }
-  
+  }
+
+  public function countAllNews()
+  {
+    try {
+
+        $query = "SELECT COUNT(DISTINCT np.id_noticia) as total 
+                  FROM noticia_principal np
+                  JOIN conteudo_noticia cn ON np.id_noticia = cn.noticia_id";
+        
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['total'];
+
+    } catch(PDOException $e) {
+        return "Error: " . $e->getMessage();
+    }
   }
 
   public function addMainNews($titleNews, $subtitleNews)
