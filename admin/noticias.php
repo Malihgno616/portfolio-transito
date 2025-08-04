@@ -37,13 +37,9 @@ include __DIR__.'/layout/header.php';
             <i class="fa-solid fa-magnifying-glass"></i>
             Pesquisar notícia
           </a>
-          <a href="#" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
+          <a href="news-table.php" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
             <i class="fa-solid fa-newspaper"></i>
             Todas as notícias
-          </a>
-          <a href="#" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
-            <i class="fa-solid fa-upload"></i>
-            Notícias publicadas
           </a>
       </div>
     </div>

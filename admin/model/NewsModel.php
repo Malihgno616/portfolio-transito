@@ -22,6 +22,49 @@ class NewsModel {
     $this->pdo = $this->conn->connect();
   }
 
+  public function publishedNews($page, $limit, $offset)   
+  {
+    if($page < 1) $page = 1;
+    $offset = ($page - 1) * 1;
+    
+    try {
+        $query = "SELECT DISTINCT
+            np.id_noticia,
+            np.titulo_principal,
+            np.subtitulo AS subtitulo_principal,
+            cn.titulo_conteudo,
+            cn.subtitulo_conteudo,
+            cn.texto_conteudo as texto
+        FROM 
+            noticia_principal np
+        JOIN 
+            conteudo_noticia cn ON np.id_noticia = cn.noticia_id
+        GROUP BY np.id_noticia
+        ORDER BY np.id_noticia DESC
+        LIMIT :limit OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->bindValue(':page', $page, PDO::PARAM_INT);
+        
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result = [
+            
+        ];
+        
+    } catch(PDOException $e) {
+        return 'ERROR: ' . $e->getMessage();
+    }
+  
+  }
+
   public function addMainNews($titleNews, $subtitleNews)
   {
       try {
@@ -71,13 +114,16 @@ class NewsModel {
   public function addContentNews($titleContent, $subtitleContent, $textContent)
   {
       try {
+          
           $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, texto_conteudo) 
                               VALUES (:titulo_conteudo, :subtitulo_conteudo, :texto_conteudo)";
           
           $stmt = $this->pdo->prepare($addContentQuery);
           
           $stmt->bindValue(':titulo_conteudo', $titleContent, PDO::PARAM_STR);
+          
           $stmt->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
+          
           $stmt->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);
 
           if ($stmt->execute()) {
@@ -92,18 +138,22 @@ class NewsModel {
       }
   }
 
+  
+
   public function updateRelationalNews($newsId, $contentId)
   {
       try {
           $this->pdo->beginTransaction();
 
           $updateQuery = "UPDATE conteudo_noticia SET noticia_id = :noticia_id WHERE id_conteudo = :id_conteudo";
+          
           $stmt = $this->pdo->prepare($updateQuery);
 
           $stmt->bindValue(':noticia_id', $newsId, PDO::PARAM_INT);
+          
           $stmt->bindValue(':id_conteudo', $contentId, PDO::PARAM_INT);
 
-          $result = $stmt->execute();
+          $stmt->execute();
           
           // Verifica quantas linhas foram afetadas
           $rowCount = $stmt->rowCount();
