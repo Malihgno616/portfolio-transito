@@ -22,6 +22,14 @@ ini_set("display_startup_errors", 1);
 <body>
   <?php include __DIR__.'/layout/header.php';?>
   <main class="max-w-5xl h-full p-10 m-auto">
+    <?php 
+        
+    if(isset($_SESSION['news-alert'])){
+      echo $_SESSION['news-alert'];
+      unset($_SESSION['news-alert']);
+    }
+    
+    ?>
     <h1 class="text-5xl font-light text-center mb-5">Adicione uma notícia</h1>
     <div class="p-10 w-full">
       <form action="form-add-content.php" enctype="multipart/form-data" class="space-y-4 p-5 grid grid-cols-1 gap-10" method="post">
