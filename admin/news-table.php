@@ -40,7 +40,13 @@ $endItem = min($offset + $limit, $totalNews);
 <?php 
 include __DIR__.'/layout/header.php';
 ?>
-  <main class="w-full h-full p-10">
+  <main class="w-full h-full p-10">   
+    <?php 
+    if(isset($_SESSION['news-alert'])){
+          echo $_SESSION['news-alert'];
+          unset($_SESSION['news-alert']);
+        }
+    ?>
     <?php include __DIR__.'/components/table-noticia.php';?>
   </main>
 

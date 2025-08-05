@@ -31,6 +31,7 @@ class NewsModel {
         np.id_noticia,
         np.titulo_principal,
         np.subtitulo AS subtitulo_principal,
+        cn.id_conteudo,
         cn.titulo_conteudo,
         cn.subtitulo_conteudo,
         cn.texto_conteudo as texto
@@ -38,12 +39,14 @@ class NewsModel {
             noticia_principal np
         JOIN 
             conteudo_noticia cn ON np.id_noticia = cn.noticia_id
-        GROUP BY np.id_noticia
+        GROUP BY np.id_noticia, cn.id_conteudo 
         ORDER BY np.id_noticia DESC
         LIMIT :limit OFFSET :offset";
 
         $stmt = $this->pdo->prepare($query);
+        
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
         $stmt->execute();
@@ -87,6 +90,7 @@ class NewsModel {
           $stmt = $this->pdo->prepare($query);
           
           $stmt->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
+          
           $stmt->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
           
           if ($stmt->execute()) {
@@ -186,4 +190,39 @@ class NewsModel {
           return false;
       }
   }
+
+  public function deleteNews($idMainNews, $idContentNews)
+  {
+    try {
+        $this->pdo->beginTransaction();
+
+        $queryContent = "DELETE FROM conteudo_noticia WHERE id_conteudo = :id_conteudo";
+        
+        $stmt = $this->pdo->prepare($queryContent);
+        
+        $stmt->bindValue(':id_conteudo', $idContentNews, PDO::PARAM_INT);
+        
+        $stmt->execute();
+
+        $queryMain = "DELETE FROM noticia_principal WHERE id_noticia = :id_noticia";
+        
+        $stmt = $this->pdo->prepare($queryMain);
+        
+        $stmt->bindValue(':id_noticia', $idMainNews, PDO::PARAM_INT);
+        
+        $stmt->execute();
+
+        $this->pdo->commit();
+        
+        return true;
+
+    } catch(PDOException $e) {
+  
+        error_log("Erro ao deletar notícia: " . $e->getMessage());
+  
+        return false;
+ 
+    } 
+  }
+
 }
