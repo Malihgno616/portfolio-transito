@@ -42,12 +42,15 @@ include __DIR__.'/layout/header.php';
 ?>
   <main class="w-full h-full p-10">   
     <?php 
-    if(isset($_SESSION['news-alert'])){
+        if(isset($_SESSION['news-alert'])){
           echo $_SESSION['news-alert'];
           unset($_SESSION['news-alert']);
         }
+
+        include __DIR__.'/components/table-noticia.php';
+        
+        include __DIR__.'/components/modal-news.php';
     ?>
-    <?php include __DIR__.'/components/table-noticia.php';?>
   </main>
 
 <?php include __DIR__.'/layout/footer.php'; ?>
