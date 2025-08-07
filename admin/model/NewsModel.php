@@ -154,9 +154,7 @@ class NewsModel {
           return false;
       }
   }
-
   
-
   public function updateRelationalNews($newsId, $contentId)
   {
       try {
@@ -225,4 +223,69 @@ class NewsModel {
     } 
   }
 
+  public function updateNews($idMainNews, $idContentNews, $titleNews, $subtitleNews, $titleContent, $subtitleContent, $textContent)
+    {
+        try {
+            $this->pdo->beginTransaction();
+
+            $checkQueryMainNews = "SELECT * FROM noticia_principal WHERE id_noticia = :id_noticia";
+
+            $stmt = $this->pdo->prepare($checkQueryMainNews);
+
+            $stmt->bindValue(':id_noticia', $idMainNews, PDO::PARAM_INT);
+
+            $stmt->execute();
+            
+            $checkQueryContentNews = "SELECT * FROM conteudo_noticia WHERE id_conteudo = :id_conteudo";
+
+            $stmtContent = $this->pdo->prepare($checkQueryContentNews);
+
+            $stmtContent->bindValue(':id_conteudo', $idContentNews, PDO::PARAM_INT);
+
+            $stmtContent->execute();
+
+            if ($stmt->rowCount() === 0 || $stmtContent->rowCount() === 0) {
+                $this->pdo->rollBack();
+                error_log("Notícia principal ou conteúdo não encontrado. Main ID: $idMainNews, Content ID: $idContentNews");
+                return false;
+            }
+            
+            $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
+
+            $stmtMain = $this->pdo->prepare($updateQueryMain);
+
+            $stmtMain->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
+
+            $stmtMain->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
+
+            $stmtMain->bindValue(':id_noticia', $idMainNews, PDO::PARAM_INT);
+
+            $stmtMain->execute();
+
+            $updateQueryContent = "UPDATE conteudo_noticia SET titulo_conteudo = :titulo_conteudo, subtitulo_conteudo = :subtitulo_conteudo, texto_conteudo = :texto_conteudo WHERE id_conteudo = :id_conteudo";
+
+            $stmtContent = $this->pdo->prepare($updateQueryContent);
+
+            $stmtContent->bindValue(':titulo_conteudo', $titleContent, PDO::PARAM_STR);
+
+            $stmtContent->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
+
+            $stmtContent->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);
+
+            $stmtContent->bindValue(':id_conteudo', $idContentNews, PDO::PARAM_INT);
+
+            $stmtContent->execute();
+
+            $this->pdo->commit();
+
+            return true;
+
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            
+            error_log("Erro ao verificar notícia principal: " . $e->getMessage());
+            
+            return false;
+        }
+    }
 }
