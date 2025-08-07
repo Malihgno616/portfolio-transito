@@ -22,29 +22,26 @@
                   <img src="https://w0.peakpx.com/wallpaper/250/796/HD-wallpaper-random-road-1-forest-grass-gray-travel-beautiful-sky-clouds-green-random-road-white.jpg" alt="imagem estática" class="w-full h-48 object-cover rounded-lg mb-4">
                 </div>
 
-                <h4 class="text-lg font-semibold text-gray-900"><?= htmlspecialchars($newsItem['subtitulo_principal']) ?></h4>
+                <h4 class="m-5 text-center text-lg font-semibold text-gray-900"><?= htmlspecialchars($newsItem['subtitulo_principal']) ?></h4>
                 
                 <div>
                   <img src="https://w0.peakpx.com/wallpaper/250/796/HD-wallpaper-random-road-1-forest-grass-gray-travel-beautiful-sky-clouds-green-random-road-white.jpg" alt="imagem estática" class="w-full h-48 object-cover rounded-lg mb-4">
                 </div>
 
-                <h4 class="text-lg font-semibold text-gray-900">
+                <h4 class="m-5 text-center text-lg font-semibold text-gray-900">
                   <?= htmlspecialchars($newsItem['titulo_conteudo'])?>
                 </h4>
                 
-                <h5 class="text-base font-normal text-gray-600">
+                <h5 class="m-5 text-center text-base font-normal text-gray-600">
                   <?= htmlspecialchars($newsItem['subtitulo_conteudo']) ?>
                 </h5>
 
-                <p class="text-base leading-relaxed text-gray-500">
-                  <?= htmlspecialchars($newsItem['texto']) ?>
-                </p>
+                <div class="w-full max-w-full overflow-auto">
+                  <p class="text-justify break-words leading-relaxed text-gray-500">
+                    <?= htmlspecialchars($newsItem['texto']) ?>
+                  </p>
+                </div>
                 
-            </div>
-            <!-- Modal footer -->
-            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                <button data-modal-hide="news-<?= $newsItem['id_noticia'] ?>" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">I accept</button>
-                <button data-modal-hide="news-<?= $newsItem['id_noticia'] ?>" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Decline</button>
             </div>
         </div>
     </div>
