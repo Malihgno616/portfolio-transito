@@ -40,24 +40,36 @@ function setAlert($message, $type = 'success') {
 }
 
 $inputPost = filter_input_array(INPUT_POST, [
-    'id-main-news' => FILTER_SANITIZE_NUMBER_INT,
-    'id-content-news' => FILTER_SANITIZE_NUMBER_INT,
-    'main-title' => FILTER_UNSAFE_RAW,
-    'main-subtitle' => FILTER_UNSAFE_RAW,
-    'title-content' => FILTER_UNSAFE_RAW,
-    'subtitle-content' => FILTER_UNSAFE_RAW,
-    'text-content' => FILTER_UNSAFE_RAW,
+    'id-main-news' => FILTER_SANITIZE_NUMBER_INT, 
+    'id-content-news' => FILTER_SANITIZE_NUMBER_INT , 
+    'main-title' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'main-subtitle' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'title-content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'subtitle-content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'text-content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
 ]);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $idMainNews = $inputPost['id-main-news'];
-    $idContentNews = $inputPost['id-content-news'];
-    $mainTitle = $inputPost['main-title'];
-    $mainSubtitle = $inputPost['main-subtitle'];
-    $titleContent = $inputPost['title-content'];
-    $subtitleContent = $inputPost['subtitle-content'];
-    $textContent = $inputPost['text-content'];
+    if(!filter_var($inputPost['id-main-news'], FILTER_VALIDATE_INT, ['min_range' => 1]) && !filter_var($inputPost['id-content-news'], FILTER_VALIDATE_INT, ['min_range' => 1])) {
+        $_SESSION['news-alert'] = setAlert("ID da notícia ou conteúdo não fornecido.", "error");
+        header('Location: news-table.php');
+        exit;
+    }
+
+    if(!$inputPost['main-title'] || !$inputPost['main-subtitle'] || !$inputPost['title-content'] || !$inputPost['subtitle-content'] || !$inputPost['text-content']) {
+        $_SESSION['news-alert'] = setAlert("Todos os campos são obrigatórios.", "error");
+        header('Location: news-table.php');
+        exit;
+    }
+
+    $idMainNews = (int)trim($inputPost['id-main-news']);
+    $idContentNews = (int)trim($inputPost['id-content-news']);
+    $mainTitle = trim($inputPost['main-title']);
+    $mainSubtitle = trim($inputPost['main-subtitle']);
+    $titleContent = trim($inputPost['title-content']);
+    $subtitleContent = trim($inputPost['subtitle-content']);
+    $textContent = strip_tags(trim($inputPost['text-content']));
 
     $updated = $newsModel->updateNews($idMainNews, $idContentNews, $mainTitle, $mainSubtitle, $titleContent, $subtitleContent, $textContent);
 
