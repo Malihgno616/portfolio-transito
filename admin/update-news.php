@@ -10,6 +10,8 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
+header("Content-Type: text/html; charset=UTF-8");
+
 require __DIR__.'/model/NewsModel.php';
 
 use Model\NewsModel\NewsModel;
@@ -42,11 +44,11 @@ function setAlert($message, $type = 'success') {
 $inputPost = filter_input_array(INPUT_POST, [
     'id-main-news' => FILTER_SANITIZE_NUMBER_INT, 
     'id-content-news' => FILTER_SANITIZE_NUMBER_INT , 
-    'main-title' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-    'main-subtitle' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-    'title-content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-    'subtitle-content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-    'text-content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'main-title' => FILTER_UNSAFE_RAW,
+    'main-subtitle' => FILTER_UNSAFE_RAW,
+    'title-content' => FILTER_UNSAFE_RAW,
+    'subtitle-content' => FILTER_UNSAFE_RAW,
+    'text-content' => FILTER_UNSAFE_RAW,
 ]);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,7 +59,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if(!$inputPost['main-title'] || !$inputPost['main-subtitle'] || !$inputPost['title-content'] || !$inputPost['subtitle-content'] || !$inputPost['text-content']) {
+    if(!$inputPost['main-title'] 
+    || !$inputPost['main-subtitle'] 
+    || !$inputPost['title-content'] 
+    || !$inputPost['subtitle-content'] 
+    || !$inputPost['text-content']) {
         $_SESSION['news-alert'] = setAlert("Todos os campos são obrigatórios.", "error");
         header('Location: news-table.php');
         exit;
@@ -73,7 +79,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $updated = $newsModel->updateNews($idMainNews, $idContentNews, $mainTitle, $mainSubtitle, $titleContent, $subtitleContent, $textContent);
 
-    // Atualizar notícia
     if ($updated) {
         $_SESSION['news-alert'] = setAlert("Notícia atualizada com sucesso!", "success");
     } else {
