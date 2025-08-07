@@ -87,7 +87,7 @@
                       <?php endif; ?>
                       
                       <?php if(!empty($content['texto'])): ?>
-                        <p class="text-base text-gray-500 mt-2">
+                        <p class="text-justify break-words leading-relaxed text-gray-500 mt-2">
                           <?= nl2br(htmlspecialchars($content['texto'])) ?>
                         </p>
                       <?php endif; ?>
