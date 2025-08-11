@@ -19,13 +19,13 @@ $newsModel = new NewsModel();
 $inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 $mainTitle = $inputPost['title'];
-
+$nameImageMainNews = $inputPost['name-img-file-main'] ?? "";
 $mainSubtitle = $inputPost['subtitle'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  $insertedId =  $newsModel->addMainNews($mainTitle, $mainSubtitle);
-
+  $insertedId =  $newsModel->addMainNews($mainTitle, $mainSubtitle,$nameImageMainNews);
+  
   $_SESSION['main-news-id'] = $insertedId;
   
   $mainNews = $newsModel->getMainNews($insertedId);

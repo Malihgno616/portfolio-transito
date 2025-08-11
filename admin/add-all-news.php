@@ -50,11 +50,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titleContent = $inputPost['title-content'];
     $subtitleContent = $inputPost['subtitle-content'];
     $textContent = $inputPost['text-content'];
+    $imageContent = $inputPost['name-img-file-content'];
     
     // Verifique se os IDs são válidos
     error_log("Tentando adicionar conteúdo para newsId: $newsId");
     
-    $contentId = $newsModel->addContentNews($titleContent, $subtitleContent, $textContent);
+    $contentId = $newsModel->addContentNews($titleContent, $subtitleContent, $textContent, $imageContent);
     
     if(!$contentId) {
         die("Falha ao adicionar conteúdo!");

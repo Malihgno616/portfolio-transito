@@ -81,16 +81,16 @@ class NewsModel {
     }
   }
 
-  public function addMainNews($titleNews, $subtitleNews)
+  public function addMainNews($titleNews, $subtitleNews, $nameImgMainNews = "")
   {
       try {
-          $query = "INSERT INTO noticia_principal(titulo_principal, subtitulo) 
-                    VALUES (:titulo_principal, :subtitulo)";
+          $query = "INSERT INTO noticia_principal(titulo_principal, nome_img_noticia,subtitulo) 
+                    VALUES (:titulo_principal, :nome_img_noticia, :subtitulo)";
           
           $stmt = $this->pdo->prepare($query);
           
           $stmt->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
-          
+          $stmt->bindValue(':nome_img_noticia', $nameImgMainNews, PDO::PARAM_STR);
           $stmt->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
           
           if ($stmt->execute()) {
@@ -128,12 +128,12 @@ class NewsModel {
     
   }
 
-  public function addContentNews($titleContent, $subtitleContent, $textContent)
+  public function addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent = "")
   {
       try {
           
-          $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, texto_conteudo) 
-                              VALUES (:titulo_conteudo, :subtitulo_conteudo, :texto_conteudo)";
+          $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, nome_img_conteudo, texto_conteudo) 
+                              VALUES (:titulo_conteudo, :subtitulo_conteudo, :nome_img_conteudo,:texto_conteudo)";
           
           $stmt = $this->pdo->prepare($addContentQuery);
           
@@ -141,6 +141,8 @@ class NewsModel {
           
           $stmt->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
           
+          $stmt->bindValue(':nome_img_conteudo', $nameImageContent, PDO::PARAM_STR);
+
           $stmt->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);
 
           if ($stmt->execute()) {
