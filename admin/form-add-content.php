@@ -19,12 +19,27 @@ $newsModel = new NewsModel();
 $inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 $mainTitle = $inputPost['title'];
+
+$fileMainNews = null;
+
+if (isset($_FILES['img-file-main']) && $_FILES['img-file-main']['error'] === UPLOAD_ERR_OK) {
+
+    $fileMainNews = file_get_contents($_FILES['img-file-main']['tmp_name']);
+
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($_FILES['img-file-main']['tmp_name']);
+    
+    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
+    }
+}
+
 $nameImageMainNews = $inputPost['name-img-file-main'] ?? "";
 $mainSubtitle = $inputPost['subtitle'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  $insertedId =  $newsModel->addMainNews($mainTitle, $mainSubtitle,$nameImageMainNews);
+  $insertedId =  $newsModel->addMainNews($mainTitle, $mainSubtitle,$nameImageMainNews, $fileMainNews);
   
   $_SESSION['main-news-id'] = $insertedId;
   

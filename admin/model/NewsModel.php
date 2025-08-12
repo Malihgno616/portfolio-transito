@@ -80,30 +80,37 @@ class NewsModel {
         return "Error: " . $e->getMessage();
     }
   }
+    public function addMainNews($titleNews, $subtitleNews, $nameImgMainNews = "", $fileMainNews = null)
+    {
+        try {
+            $query = "INSERT INTO noticia_principal(titulo_principal, img_noticia, nome_img_noticia, subtitulo) 
+                    VALUES (:titulo_principal, :img_noticia, :nome_img_noticia, :subtitulo)";
+            
+            $stmt = $this->pdo->prepare($query);
+                            
+            $stmt->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
+            $stmt->bindValue(':nome_img_noticia', $nameImgMainNews, PDO::PARAM_STR);
+            
+            // Se um arquivo foi enviado, vincule como LOB, caso contrário, vincule como NULL
+            if ($fileMainNews !== null) {
+                $stmt->bindValue(':img_noticia', $fileMainNews, PDO::PARAM_LOB);
+            } else {
+                $stmt->bindValue(':img_noticia', null, PDO::PARAM_NULL);
+            }
+            
+            $stmt->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
+            
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId(); 
+            }
+            
+            return false;
 
-  public function addMainNews($titleNews, $subtitleNews, $nameImgMainNews = "")
-  {
-      try {
-          $query = "INSERT INTO noticia_principal(titulo_principal, nome_img_noticia,subtitulo) 
-                    VALUES (:titulo_principal, :nome_img_noticia, :subtitulo)";
-          
-          $stmt = $this->pdo->prepare($query);
-          
-          $stmt->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
-          $stmt->bindValue(':nome_img_noticia', $nameImgMainNews, PDO::PARAM_STR);
-          $stmt->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
-          
-          if ($stmt->execute()) {
-              return $this->pdo->lastInsertId(); 
-          }
-          
-          return false;
-
-      } catch(PDOException $e) {
-          error_log('ERROR: ' . $e->getMessage());
-          return false;
-      }
-  }
+        } catch(PDOException $e) {
+            error_log('ERROR: ' . $e->getMessage());
+            return false;
+        }
+    }
 
   public function getMainNews($newsId)
   {

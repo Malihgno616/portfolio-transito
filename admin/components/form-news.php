@@ -18,7 +18,7 @@
                 <p class="text-md text-gray-500">Formato PNG ou JPG/JPEG</p>
                 <div id="image-preview-main" class="mt-4 flex justify-center"></div>
             </div>
-            <input id="dropzone-file-main-news" type="file" class="hidden" accept="image/png, image/jpeg" />
+            <input id="dropzone-file-main-news" name="img-file-main" type="file" class="hidden" accept="image/png, image/jpeg" />
         </label>
       </div> 
       <div class="flex items-center justify-center w-full mt-4">
