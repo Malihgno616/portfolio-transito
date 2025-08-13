@@ -135,12 +135,12 @@ class NewsModel {
     
   }
 
-  public function addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent = "")
+  public function addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent = "", $imageContent = "")
   {
       try {
           
-          $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, nome_img_conteudo, texto_conteudo) 
-                              VALUES (:titulo_conteudo, :subtitulo_conteudo, :nome_img_conteudo,:texto_conteudo)";
+          $addContentQuery = "INSERT INTO conteudo_noticia(titulo_conteudo, subtitulo_conteudo, img_conteudo, nome_img_conteudo, texto_conteudo) 
+                              VALUES (:titulo_conteudo, :subtitulo_conteudo, :img_conteudo,:nome_img_conteudo,:texto_conteudo)";
           
           $stmt = $this->pdo->prepare($addContentQuery);
           
@@ -148,6 +148,8 @@ class NewsModel {
           
           $stmt->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
           
+          $stmt->bindValue(':img_conteudo', $imageContent, PDO::PARAM_LOB);
+
           $stmt->bindValue(':nome_img_conteudo', $nameImageContent, PDO::PARAM_STR);
 
           $stmt->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);

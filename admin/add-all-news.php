@@ -41,6 +41,18 @@ function setAlert($message, $type = 'success') {
     HTML;  
 }
 
+if (isset($_FILES['img-file-content']) && $_FILES['img-file-content']['error'] === UPLOAD_ERR_OK) {
+
+    $fileContentNews = file_get_contents($_FILES['img-file-content']['tmp_name']);
+
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($_FILES['img-file-content']['tmp_name']);
+    
+    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
+    }
+}
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(!isset($inputPost['news_id'])) {
         die("ID da notícia principal não encontrado!");
@@ -50,12 +62,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titleContent = $inputPost['title-content'];
     $subtitleContent = $inputPost['subtitle-content'];
     $textContent = $inputPost['text-content'];
-    $imageContent = $inputPost['name-img-file-content'];
+    $nameImageContent = $inputPost['name-img-file-content'];
     
+
     // Verifique se os IDs são válidos
     error_log("Tentando adicionar conteúdo para newsId: $newsId");
     
-    $contentId = $newsModel->addContentNews($titleContent, $subtitleContent, $textContent, $imageContent);
+    $contentId = $newsModel->addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent, $fileContentNews);
     
     if(!$contentId) {
         die("Falha ao adicionar conteúdo!");
