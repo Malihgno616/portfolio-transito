@@ -47,6 +47,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
+// Verifica se é requisição para exibir imagem
+if (isset($_GET['action']) && $_GET['action'] === 'show_image' && isset($_SESSION['main-news-id'])) {
+    $news = $newsModel->getMainNews($_SESSION['main-news-id']);
+    if ($news && $news['img_noticia']) {
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $finfo->buffer($news['img_noticia']);
+        header("Content-Type: " . $mimeType);
+        echo $news['img_noticia'];
+        exit;
+    }
+    // Imagem padrão se não encontrar
+    header("Content-Type: image/png");
+    readfile(__DIR__.'/assets/images/default-news.png');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
