@@ -29,9 +29,13 @@ class NewsModel {
 
         $query ="SELECT DISTINCT
         np.id_noticia,
+        np.img_noticia as img_noticia,
+        np.nome_img_noticia as nome_img_noticia, 
         np.titulo_principal,
         np.subtitulo AS subtitulo_principal,
         cn.id_conteudo,
+        cn.img_conteudo as img_conteudo,
+        cn.nome_img_conteudo as nome_img_conteudo,
         cn.titulo_conteudo,
         cn.subtitulo_conteudo,
         cn.texto_conteudo as texto

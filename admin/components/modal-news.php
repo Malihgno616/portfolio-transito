@@ -17,16 +17,34 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-
-                <div>
-                  <img src="https://w0.peakpx.com/wallpaper/250/796/HD-wallpaper-random-road-1-forest-grass-gray-travel-beautiful-sky-clouds-green-random-road-white.jpg" alt="imagem estática" class="w-full h-48 object-cover rounded-lg mb-4">
-                </div>
+              
+              <?php if(!empty($newsItem['img_noticia'])): ?>
+                  <div class="relative border rounded-lg p-2">
+                      <img src="display-image.php?id=<?= $newsItem['id_noticia'] ?>" 
+                          class="w-full max-h-40 object-contain mx-auto">
+                      <p class="text-xs text-gray-500 mt-1 text-center">
+                          <?= htmlspecialchars($newsItem['nome_img_noticia'] ?? 'Sem nome') ?>
+                      </p>
+                  </div>
+              <?php else: ?>
+                  <p class="text-sm text-gray-500">Nenhuma imagem cadastrada</p>
+              <?php endif; ?>
 
                 <h4 class="m-5 text-center text-lg font-semibold text-gray-900"><?= htmlspecialchars($newsItem['subtitulo_principal']) ?></h4>
-                
-                <div>
-                  <img src="https://w0.peakpx.com/wallpaper/250/796/HD-wallpaper-random-road-1-forest-grass-gray-travel-beautiful-sky-clouds-green-random-road-white.jpg" alt="imagem estática" class="w-full h-48 object-cover rounded-lg mb-4">
-                </div>
+
+                <?php if(!empty($newsItem['img_conteudo'])): ?>
+                  <div class="relative border rounded-lg p-2">
+                      <img src="display-image.php?id=<?= $newsItem['id_conteudo'] ?>" 
+                          class="w-full max-h-40 object-contain mx-auto">
+                      <p class="text-xs text-gray-500 mt-1 text-center">
+                          <?= htmlspecialchars($newsItem['nome_img_conteudo'] ?? 'Sem nome') ?>
+                      </p>
+                  </div>
+                <?php else: ?>
+                  <p class="text-xs text-gray-500 mt-1 text-center">
+                    <?= htmlspecialchars($newsItem['nome_img_noticia'] ?? 'Sem nome') ?>
+                  </p>
+                <?php endif;?>
 
                 <h4 class="m-5 text-center text-lg font-semibold text-gray-900">
                   <?= htmlspecialchars($newsItem['titulo_conteudo'])?>
