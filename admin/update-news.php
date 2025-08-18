@@ -49,6 +49,8 @@ $inputPost = filter_input_array(INPUT_POST, [
     'title-content' => FILTER_UNSAFE_RAW,
     'subtitle-content' => FILTER_UNSAFE_RAW,
     'text-content' => FILTER_UNSAFE_RAW,
+    'name-img-file-main' => FILTER_UNSAFE_RAW,
+    'name-img-file-content' => FILTER_UNSAFE_RAW
 ]);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -204,8 +204,8 @@ class NewsModel {
       }
   }
 
-  public function deleteNews($idMainNews, $idContentNews)
-  {
+    public function deleteNews($idMainNews, $idContentNews)
+    {
     try {
         $this->pdo->beginTransaction();
 
@@ -235,10 +235,10 @@ class NewsModel {
   
         return false;
  
-    } 
-  }
+        } 
+    }
 
-  public function updateNews($idMainNews, $idContentNews, $titleNews, $subtitleNews, $titleContent, $subtitleContent, $textContent)
+    public function updateNews($idMainNews, $idContentNews, $titleNews, $subtitleNews, $titleContent, $subtitleContent, $textContent, $imageMainNews = null, $nameImageMainNews = "", $imageContent = null, $nameImageContent = "")
     {
         try {
             $this->pdo->beginTransaction();
@@ -265,7 +265,7 @@ class NewsModel {
                 return false;
             }
             
-            $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
+            $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal, , img_noticia = :img_noticia, nome_img_noticia = :nome_img_noticia, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
 
             $stmtMain = $this->pdo->prepare($updateQueryMain);
 
@@ -273,15 +273,23 @@ class NewsModel {
 
             $stmtMain->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
 
+            $stmtMain->bindValue(':img_noticia', $imageMainNews, PDO::PARAM_LOB);
+
+            $stmtMain->bindValue(':nome_img_noticia', $nameImageMainNews, PDO::PARAM_STR);
+
             $stmtMain->bindValue(':id_noticia', $idMainNews, PDO::PARAM_INT);
 
             $stmtMain->execute();
 
-            $updateQueryContent = "UPDATE conteudo_noticia SET titulo_conteudo = :titulo_conteudo, subtitulo_conteudo = :subtitulo_conteudo, texto_conteudo = :texto_conteudo WHERE id_conteudo = :id_conteudo";
+            $updateQueryContent = "UPDATE conteudo_noticia SET titulo_conteudo = :titulo_conteudo, img_conteudo = :img_conteudo, nome_img_conteudo = :nome_img_conteudo ,subtitulo_conteudo = :subtitulo_conteudo, texto_conteudo = :texto_conteudo WHERE id_conteudo = :id_conteudo";
 
             $stmtContent = $this->pdo->prepare($updateQueryContent);
 
             $stmtContent->bindValue(':titulo_conteudo', $titleContent, PDO::PARAM_STR);
+
+            $stmtContent->bindValue(':img_conteudo', $imageContent, PDO::PARAM_LOB);
+
+            $stmtContent->bindValue(':nome_img_conteudo', $nameImageContent, PDO::PARAM_STR);
 
             $stmtContent->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
 

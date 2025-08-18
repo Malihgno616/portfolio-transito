@@ -82,7 +82,7 @@
                 </button>
             </div>
             <div class="p-4 md:p-5">
-              <form class="space-y-4 p-5 grid grid-cols-1 gap-10" action="update-news.php" method="post">
+              <form class="space-y-4 p-5 grid grid-cols-1 gap-10" action="update-news.php" enctype="multipart/form-data" method="post">
                 <input type="hidden" name="id-main-news" value="<?= $newsItem['id_noticia'] ?>">
                 <input type="hidden" name="id-content-news" value="<?= $newsItem['id_conteudo'] ?>">
 
@@ -109,7 +109,7 @@
                     <div class="flex items-center justify-center w-full">
                       <label for="dropzone-file-main-news" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                            <div id="image-preview" class="mt-4 flex justify-center">
+                            <div id="main-image-preview" class="mt-4 flex justify-center">
                               <?php if(isset($newsItem) && $newsItem['img_noticia']): ?>
                                 <div class="mb-6 w-full">
                                   <h2 class="text-xl font-bold mb-2 text-center">Pré-visualização da Imagem Principal</h2>
@@ -180,9 +180,9 @@
 
                   <div class="relative z-0">
                     <div class="flex items-center justify-center w-full">
-                      <label for="dropzone-file-main-news" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                      <label for="dropzone-file-content-news" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                            <div id="image-preview" class="mt-4 flex justify-center">
+                            <div id="image-preview-content" class="mt-4 flex justify-center">
                               <?php if(isset($newsItem) && $newsItem['img_conteudo']): ?>
                                 <div class="mb-6 w-full">
                                   <h2 class="text-xl font-bold mb-2 text-center">Pré-visualização da Imagem do conteúdo</h2>
@@ -205,16 +205,12 @@
                               <?php endif; ?>
                             </div>
                           </div>
-                          <input id="dropzone-file-main-news" type="file" class="hidden" accept="image/png, image/jpeg" />
+                          <input id="dropzone-file-content-news" type="file" class="hidden" accept="image/png, image/jpeg" />
                       </label>
                     </div> 
                     <div class="flex items-center justify-center w-full mt-4">
-                      <input type="text" name="name-img-file-main" value="<?= $newsItem['nome_img_conteudo']?>" class="border-2 border-gray-300 text-center rounded-lg w-full" readonly/>
+                      <input type="text" name="name-img-file-content" value="<?= $newsItem['nome_img_conteudo']?>" class="border-2 border-gray-300 text-center rounded-lg w-full" readonly/>
                     </div>
-                  </div>
-
-                  <div class="relative z-0">
-                    <!-- Input da imagem do conteúdo da notícia -->
                   </div>
                   
                   <div class="relative z-0">
