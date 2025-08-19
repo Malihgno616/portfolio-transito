@@ -20,7 +20,7 @@
               
               <?php if(!empty($newsItem['img_noticia'])): ?>
                   <div class="relative border rounded-lg p-2">
-                      <img src="display-image.php?id=<?= $newsItem['id_noticia'] ?>" 
+                      <img src="display-image.php?id=<?= $newsItem['id_noticia'] ?>&type=main" 
                           class="w-full max-h-40 object-contain mx-auto">
                       <p class="text-xs text-gray-500 mt-1 text-center">
                           <?= htmlspecialchars($newsItem['nome_img_noticia'] ?? 'Sem nome') ?>
@@ -34,7 +34,7 @@
 
                 <?php if(!empty($newsItem['img_conteudo'])): ?>
                   <div class="relative border rounded-lg p-2">
-                      <img src="display-image.php?id=<?= $newsItem['id_conteudo'] ?>" 
+                      <img src="display-image.php?id=<?= $newsItem['id_conteudo'] ?>&type=content" 
                           class="w-full max-h-40 object-contain mx-auto">
                       <p class="text-xs text-gray-500 mt-1 text-center">
                           <?= htmlspecialchars($newsItem['nome_img_conteudo'] ?? 'Sem nome') ?>
@@ -90,13 +90,13 @@
                     <input 
                       name="main-title"
                       type="text"
-                      id="name"
+                      id="main-title"
                       class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                       placeholder=" "
                       value="<?= htmlspecialchars($newsItem['titulo_principal']) ?>"
                     />
                     <label
-                      for="name"
+                      for="main-title"
                       class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -114,7 +114,7 @@
                                 <div class="mb-6 w-full">
                                   <h2 class="text-xl font-bold mb-2 text-center">Pré-visualização da Imagem Principal</h2>
                                   <div class="flex justify-center">
-                                    <img src="display-image.php?id=<?= $newsItem['id_noticia'] ?>" 
+                                    <img src="display-image.php?id=<?= $newsItem['id_noticia'] ?>&type=main" 
                                         alt="<?= htmlspecialchars($newsItem['nome_img_noticia']) ?>"
                                         class="max-w-full max-h-40 object-contain rounded-lg shadow-md">
                                   </div>
@@ -132,7 +132,7 @@
                               <?php endif; ?>
                             </div>
                           </div>
-                          <input id="dropzone-file-main-news" type="file" class="hidden" accept="image/png, image/jpeg" />
+                          <input id="dropzone-file-main-news" name="img-file-main" type="file" class="hidden" accept="image/png, image/jpeg" />
                       </label>
                     </div> 
                     <div class="flex items-center justify-center w-full mt-4">
@@ -144,13 +144,13 @@
                     <input 
                       name="main-subtitle"
                       type="text"
-                      id="name"
+                      id="main-subtitle"
                       class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                       placeholder=" "
                       value="<?= htmlspecialchars($newsItem['subtitulo_principal']) ?>"
                     />
                     <label
-                      for="name"
+                      for="main-subtitle"
                       class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -163,13 +163,13 @@
                     <input 
                       name="title-content"
                       type="text"
-                      id="name"
+                      id="title-content"
                       class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                       placeholder=" "
                       value="<?= htmlspecialchars($newsItem['titulo_conteudo']) ?>"
                     />
                     <label
-                      for="name"
+                      for="title-content"
                       class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -187,7 +187,8 @@
                                 <div class="mb-6 w-full">
                                   <h2 class="text-xl font-bold mb-2 text-center">Pré-visualização da Imagem do conteúdo</h2>
                                   <div class="flex justify-center">
-                                    <img src="display-image.php?id=<?= $newsItem['id_conteudo'] ?>" 
+                                    <!-- CORREÇÃO AQUI: usar id_conteudo em vez de id_noticia -->
+                                    <img src="display-image.php?id=<?= $newsItem['id_conteudo'] ?>&type=content" 
                                         alt="<?= htmlspecialchars($newsItem['nome_img_conteudo']) ?>"
                                         class="max-w-full max-h-40 object-contain rounded-lg shadow-md">
                                   </div>
@@ -199,16 +200,17 @@
                                   <svg class="w-8 h-8 mb-4 text-gray-500 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                   </svg>
-                                  <p class="mb-2 text-lg text-gray-500"><span class="font-semibold">Adicione a imagem da notícia</span> ou clique e arraste neste campo (Opcional)</p>
+                                  <p class="mb-2 text-lg text-gray-500"><span class="font-semibold">Adicione a imagem do conteúdo</span> ou clique e arraste neste campo (Opcional)</p>
                                   <p class="text-md text-gray-500">Formato PNG ou JPG/JPEG</p>
                                 </div>
                               <?php endif; ?>
                             </div>
                           </div>
-                          <input id="dropzone-file-content-news" type="file" class="hidden" accept="image/png, image/jpeg" />
+                          <input id="dropzone-file-content-news" name="img-file-content" type="file" class="hidden" accept="image/png, image/jpeg" />
                       </label>
                     </div> 
                     <div class="flex items-center justify-center w-full mt-4">
+                      <!-- CORREÇÃO AQUI: usar nome_img_conteudo em vez de nome_img_noticia -->
                       <input type="text" name="name-img-file-content" value="<?= $newsItem['nome_img_conteudo']?>" class="border-2 border-gray-300 text-center rounded-lg w-full" readonly/>
                     </div>
                   </div>
@@ -217,13 +219,13 @@
                     <input 
                       name="subtitle-content"
                       type="text"
-                      id="name"
+                      id="subtitle-content"
                       class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                       placeholder=" "
                       value="<?= htmlspecialchars($newsItem['subtitulo_conteudo']) ?>"
                     />
                     <label
-                      for="name"
+                      for="subtitle-content"
                       class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -235,13 +237,13 @@
                   <div class="relative z-0">
                     <textarea
                       name="text-content"
-                      id="name"
+                      id="text-content"
                       class="block py-2.5 px-0 w-full h-100 text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                     >
                       <?= htmlspecialchars($newsItem['texto']) ?>
                     </textarea>
                     <label
-                      for="name"
+                      for="text-content"
                       class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 

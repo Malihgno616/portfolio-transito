@@ -139,6 +139,27 @@ class NewsModel {
     
   }
 
+  public function getContentNews($idContent)
+  {
+    try {
+
+        $query = "SELECT * FROM conteudo_noticia WHERE id_conteudo = :id_conteudo";
+
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->bindParam(':id_conteudo', $idContent, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+
+        return "Error: " . $e->getMessage();
+    
+    }
+  }
+
   public function addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent = "", $imageContent = "")
   {
       try {
