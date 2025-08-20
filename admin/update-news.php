@@ -58,6 +58,8 @@ $fileMainNews = null;
 $fileContentNews = null;
 $nameImageMainNews = null;
 $nameImageContent = null;
+$updateMainImage = false; // Flag para indicar se há nova imagem principal
+$updateContentImage = false; // Flag para indicar se há nova imagem de conteúdo
 
 // Processar upload da imagem principal (se houver)
 if (isset($_FILES['img-file-main']) && $_FILES['img-file-main']['error'] === UPLOAD_ERR_OK) {
@@ -72,9 +74,11 @@ if (isset($_FILES['img-file-main']) && $_FILES['img-file-main']['error'] === UPL
     
     $fileMainNews = file_get_contents($_FILES['img-file-main']['tmp_name']);
     $nameImageMainNews = $_FILES['img-file-main']['name'];
+    $updateMainImage = true; // Há nova imagem principal
 } else {
     // Se não houve upload, usar o nome existente do POST
     $nameImageMainNews = trim($inputPost['name-img-file-main']);
+    // Não definir $fileMainNews para preservar a imagem existente no banco
 }
 
 // Processar upload da imagem de conteúdo (se houver)
@@ -90,9 +94,11 @@ if (isset($_FILES['img-file-content']) && $_FILES['img-file-content']['error'] =
     
     $fileContentNews = file_get_contents($_FILES['img-file-content']['tmp_name']);
     $nameImageContent = $_FILES['img-file-content']['name'];
+    $updateContentImage = true; // Há nova imagem de conteúdo
 } else {
     // Se não houve upload, usar o nome existente do POST
     $nameImageContent = trim($inputPost['name-img-file-content']);
+    // Não definir $fileContentNews para preservar a imagem existente no banco
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -133,8 +139,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $textContent, 
             $fileMainNews, 
             $nameImageMainNews, 
+            $updateMainImage, // Nova flag
             $fileContentNews, 
-            $nameImageContent
+            $nameImageContent,
+            $updateContentImage // Nova flag
         );
 
         if ($updated) {

@@ -259,25 +259,19 @@ class NewsModel {
         } 
     }
 
-    public function updateNews($idMainNews, $idContentNews, $titleNews, $subtitleNews, $titleContent, $subtitleContent, $textContent, $imageMainNews = null, $nameImageMainNews = "", $imageContent = null, $nameImageContent = "")
+    public function updateNews($idMainNews, $idContentNews, $titleNews, $subtitleNews, $titleContent, $subtitleContent, $textContent, $imageMainNews = null, $nameImageMainNews = "", $updateMainImage = false, $imageContent = null, $nameImageContent = "", $updateContentImage = false)
     {
         try {
             $this->pdo->beginTransaction();
 
             $checkQueryMainNews = "SELECT * FROM noticia_principal WHERE id_noticia = :id_noticia";
-
             $stmt = $this->pdo->prepare($checkQueryMainNews);
-
             $stmt->bindValue(':id_noticia', $idMainNews, PDO::PARAM_INT);
-
             $stmt->execute();
             
             $checkQueryContentNews = "SELECT * FROM conteudo_noticia WHERE id_conteudo = :id_conteudo";
-
             $stmtContent = $this->pdo->prepare($checkQueryContentNews);
-
             $stmtContent->bindValue(':id_conteudo', $idContentNews, PDO::PARAM_INT);
-
             $stmtContent->execute();
 
             if ($stmt->rowCount() === 0 || $stmtContent->rowCount() === 0) {
@@ -286,49 +280,49 @@ class NewsModel {
                 return false;
             }
             
-            $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal,  img_noticia = :img_noticia, nome_img_noticia = :nome_img_noticia, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
-
-            $stmtMain = $this->pdo->prepare($updateQueryMain);
+            // Atualizar notícia principal com tratamento condicional da imagem
+            if ($updateMainImage) {
+                // Se há nova imagem, atualizar com o BLOB
+                $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal, img_noticia = :img_noticia, nome_img_noticia = :nome_img_noticia, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
+                $stmtMain = $this->pdo->prepare($updateQueryMain);
+                $stmtMain->bindValue(':img_noticia', $imageMainNews, PDO::PARAM_LOB);
+            } else {
+                // Se não há nova imagem, manter a existente e atualizar apenas o nome
+                $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal, nome_img_noticia = :nome_img_noticia, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
+                $stmtMain = $this->pdo->prepare($updateQueryMain);
+            }
 
             $stmtMain->bindValue(':titulo_principal', $titleNews, PDO::PARAM_STR);
-
             $stmtMain->bindValue(':subtitulo', $subtitleNews, PDO::PARAM_STR);
-
-            $stmtMain->bindValue(':img_noticia', $imageMainNews, PDO::PARAM_LOB);
-
             $stmtMain->bindValue(':nome_img_noticia', $nameImageMainNews, PDO::PARAM_STR);
-
             $stmtMain->bindValue(':id_noticia', $idMainNews, PDO::PARAM_INT);
-
             $stmtMain->execute();
 
-            $updateQueryContent = "UPDATE conteudo_noticia SET titulo_conteudo = :titulo_conteudo, img_conteudo = :img_conteudo, nome_img_conteudo = :nome_img_conteudo ,subtitulo_conteudo = :subtitulo_conteudo, texto_conteudo = :texto_conteudo WHERE id_conteudo = :id_conteudo";
-
-            $stmtContent = $this->pdo->prepare($updateQueryContent);
+            // Atualizar conteúdo da notícia com tratamento condicional da imagem
+            if ($updateContentImage) {
+                // Se há nova imagem, atualizar com o BLOB
+                $updateQueryContent = "UPDATE conteudo_noticia SET titulo_conteudo = :titulo_conteudo, img_conteudo = :img_conteudo, nome_img_conteudo = :nome_img_conteudo, subtitulo_conteudo = :subtitulo_conteudo, texto_conteudo = :texto_conteudo WHERE id_conteudo = :id_conteudo";
+                $stmtContent = $this->pdo->prepare($updateQueryContent);
+                $stmtContent->bindValue(':img_conteudo', $imageContent, PDO::PARAM_LOB);
+            } else {
+                // Se não há nova imagem, manter a existente e atualizar apenas o nome
+                $updateQueryContent = "UPDATE conteudo_noticia SET titulo_conteudo = :titulo_conteudo, nome_img_conteudo = :nome_img_conteudo, subtitulo_conteudo = :subtitulo_conteudo, texto_conteudo = :texto_conteudo WHERE id_conteudo = :id_conteudo";
+                $stmtContent = $this->pdo->prepare($updateQueryContent);
+            }
 
             $stmtContent->bindValue(':titulo_conteudo', $titleContent, PDO::PARAM_STR);
-
-            $stmtContent->bindValue(':img_conteudo', $imageContent, PDO::PARAM_LOB);
-
             $stmtContent->bindValue(':nome_img_conteudo', $nameImageContent, PDO::PARAM_STR);
-
             $stmtContent->bindValue(':subtitulo_conteudo', $subtitleContent, PDO::PARAM_STR);
-
             $stmtContent->bindValue(':texto_conteudo', $textContent, PDO::PARAM_STR);
-
             $stmtContent->bindValue(':id_conteudo', $idContentNews, PDO::PARAM_INT);
-
             $stmtContent->execute();
 
             $this->pdo->commit();
-
             return true;
 
         } catch (PDOException $e) {
             $this->pdo->rollBack();
-            
-            error_log("Erro ao verificar notícia principal: " . $e->getMessage());
-            
+            error_log("Erro ao atualizar notícia: " . $e->getMessage());
             return false;
         }
     }
