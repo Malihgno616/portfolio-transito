@@ -53,7 +53,6 @@ $inputPost = filter_input_array(INPUT_POST, [
     'name-img-file-content' => FILTER_UNSAFE_RAW
 ]);
 
-// Inicializar variáveis de arquivo como null
 $fileMainNews = null;
 $fileContentNews = null;
 $nameImageMainNews = null;

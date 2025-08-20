@@ -19,7 +19,7 @@
                         <div class="mb-6 w-full">
                           <h2 class="text-xl font-bold mb-2 text-center">Pré-visualização da Imagem Principal</h2>
                           <div class="flex justify-center">
-                            <img src="display-image.php?id=<?= $mainNews['id_noticia'] ?>" 
+                            <img src="display-image.php?id=<?= $mainNews['id_noticia'] ?>&type=main" 
                                 alt="<?= htmlspecialchars($mainNews['nome_img_noticia']) ?>"
                                 class="max-w-full max-h-40 object-contain rounded-lg shadow-md">
                           </div>
