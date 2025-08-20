@@ -286,7 +286,7 @@ class NewsModel {
                 return false;
             }
             
-            $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal, , img_noticia = :img_noticia, nome_img_noticia = :nome_img_noticia, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
+            $updateQueryMain = "UPDATE noticia_principal SET titulo_principal = :titulo_principal,  img_noticia = :img_noticia, nome_img_noticia = :nome_img_noticia, subtitulo = :subtitulo WHERE id_noticia = :id_noticia";
 
             $stmtMain = $this->pdo->prepare($updateQueryMain);
 
