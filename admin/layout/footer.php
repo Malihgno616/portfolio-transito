@@ -8,5 +8,6 @@ include __DIR__.'/../components/footer.php';
 <script src="assets/js/imgNews.js"></script>
 <script src="assets/js/showUserImage.js"></script>
 <script src="assets/js/modalEditImageNews.js"></script>
+<script src="assets/js/displayEditUserImage.js"></script>
 </body>
 </html>

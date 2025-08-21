@@ -159,13 +159,13 @@
                         <input 
                           name="user-login"
                           type="text"
-                          id="name"
+                          id="name-<?=$user['id']?>"
                           class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                           placeholder=" "
                           value="<?= $user['user_login'] ?>"
                         />
                         <label
-                          for="name"
+                          for="name-<?=$user['id']?>"
                           class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                 peer-focus:start-0 peer-focus:text-yellow-500 
                                 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -176,9 +176,9 @@
 
                       <div class="relative z-0 flex flex-col items-center">
                           <div class="flex justify-center w-full md:w-64">
-                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 overflow-hidden">
+                              <label for="dropzone-file-user-<?=$user['id']?>" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 overflow-hidden">
                                   <div class="flex items-center justify-center w-full h-full p-2"> <!-- Centralização total -->
-                                      <div id="main-image-preview" class="w-full h-full flex items-center justify-center"> <!-- Flex para centralizar -->
+                                      <div id="user-image-preview-<?=$user['id']?>" class="w-full h-full flex items-center justify-center"> <!-- Flex para centralizar -->
                                           <?php
                                           if(isset($user['id']) && $user['id']): ?>
                                               <div class="flex flex-col items-center justify-center w-full h-full space-y-1">
@@ -186,7 +186,7 @@
                                                   <div class="flex items-center justify-center w-full h-full">
                                                       <img src="display-user-image.php?id=<?=$user['id']?>&type=user" 
                                                           alt="Imagem do usuário"
-                                                          class="max-w-full max-h-24 object-contain rounded-lg shadow-md">
+                                                          class="max-w-full max-h-24 object-contain rounded-full">
                                                   </div>
                                               </div>
                                           <?php else: ?>
@@ -200,7 +200,7 @@
                                           <?php endif; ?>
                                       </div>
                                   </div>
-                                  <input id="dropzone-file" name="img-file-main" type="file" class="hidden" accept="image/png, image/jpeg" />
+                                  <input id="dropzone-file-user-<?=$user['id']?>" name="img-file-user" type="file" class="hidden" accept="image/png, image/jpeg" />
                               </label>
                           </div> 
                           <div class="flex justify-center w-full mt-2"> 
@@ -212,13 +212,13 @@
                         <input 
                           name="user-name"
                           type="text"
-                          id="name"
+                          id="username-<?=$user['id']?>"
                           class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                           placeholder=" "
                           value="<?= $user['username'] ?>"
                         />
                         <label
-                          for="name"
+                          for="username-<?=$user['id']?>"
                           class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                 peer-focus:start-0 peer-focus:text-yellow-500 
                                 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -228,8 +228,8 @@
                       </div>
   
                       <div class="relative z-0">
-                        <input name="access-level" type="number" id="number-input" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" required value="<?=$user['level']?>" />
-                        <label for="number-input" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                        <input name="access-level" type="number" id="number-input-<?=$user['id']?>" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" required value="<?=$user['level']?>" />
+                        <label for="number-input-<?=$user['id']?>" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                 peer-focus:start-0 peer-focus:text-yellow-500 
                                 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                 peer-focus:scale-90 peer-focus:-translate-y-4">Nível de acesso:</label>
@@ -239,14 +239,14 @@
                         <input 
                           name="password"
                           type="password"
-                          id="pass"
+                          id="pass-<?=$user['id']?>"
                           class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                           placeholder=" "
                           
                         />
                         <label
                           
-                          for="pass"
+                          for="pass-<?=$user['id']?>"
                           class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                 peer-focus:start-0 peer-focus:text-yellow-500 
                                 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -259,13 +259,13 @@
                         <input 
                           name="pass-again"
                           type="password"
-                          id="pass-again"
+                          id="pass-again-<?=$user['id']?>"
                           class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                           placeholder=" "
                           
                         />
                         <label
-                          for="pass-again"
+                          for="pass-again-<?=$user['id']?>"
                           class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                 peer-focus:start-0 peer-focus:text-yellow-500 
                                 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
