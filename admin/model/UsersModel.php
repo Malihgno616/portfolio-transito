@@ -63,44 +63,43 @@ class UsersModel {
   
   }
 
-  public function createUser($userLogin, $userName, $pass, $level = 1)
+  public function createUser($userLogin, $userName, $pass, $level = 1, $imgUser = null, $nameImgUser = "")
   {   
+      try {
+          $checkQuery = "SELECT COUNT(*) FROM login_adm WHERE username = :username";
+          $checkStmt = $this->pdo->prepare($checkQuery);
+          $checkStmt->bindValue(':username', $userName);
+          $checkStmt->execute();
+          
+          if ($checkStmt->fetchColumn() > 0) {
+              throw new Exception("Este nome de usuário já está em uso");
+          }
 
-    try {
+          $query = "INSERT INTO login_adm (user_login, username, pass, level, img_usuario, nome_img_usuario) 
+                  VALUES(:user_login, :username, :pass, :level, :img_usuario, :nome_img_usuario)";
+    
+          $stmt = $this->pdo->prepare($query);
 
-      $checkQuery = "SELECT COUNT(*) FROM login_adm WHERE username = :username";
-      $checkStmt = $this->pdo->prepare($checkQuery);
-      $checkStmt->bindValue(':username', $userName);
-      $checkStmt->execute();
-        
-      if ($checkStmt->fetchColumn() > 0) {
-          throw new Exception("Este nome de usuário já está em uso");
+          $stmt->bindValue(':user_login', $userLogin);
+          $stmt->bindValue(':username', $userName);
+          $stmt->bindValue(':pass', $pass);
+          $stmt->bindValue(':level', $level);
+          
+          if ($imgUser !== null) {
+              $stmt->bindValue(':img_usuario', $imgUser, PDO::PARAM_LOB);
+          } else {
+              $stmt->bindValue(':img_usuario', null, PDO::PARAM_NULL);
+          }
+          
+          $stmt->bindValue(':nome_img_usuario', $nameImgUser);
+    
+          $executed = $stmt->execute();
+          return $executed;
+
+      } catch(PDOException $e) {
+          error_log("Erro ao criar usuário: " . $e->getMessage());
+          throw new Exception("Erro ao criar usuário: " . $e->getMessage());
       }
-
-      $query = "INSERT INTO login_adm (user_login, username, pass, level) VALUES(:user_login, :username, :pass, :level)";
-  
-      $stmt = $this->pdo->prepare($query);
-  
-      $inputs = [
-      ':user_login' => $userLogin,
-      ':username' => $userName,
-      ':pass' => $pass,
-      ':level' => $level
-      ];
-
-    foreach ($inputs as $param => $value) {
-        $stmt->bindValue($param, $value);
-    }
-  
-    $executed = $stmt->execute();
-      
-      return $executed;
-
-    } catch(PDOException $e) {
-      
-      return "Error: ". $e->getMessage();
-    }
-
   }
 
   public function updateUser($id, $login, $username, $pass, $level)

@@ -63,9 +63,28 @@ function setAlert($message, $type = 'success') {
 
 $reqMethod = $_SERVER['REQUEST_METHOD'];
 
+if (isset($_FILES['img-file-user']) && $_FILES['img-file-user']['error'] === UPLOAD_ERR_OK) {
+
+    $fileContentUser = file_get_contents($_FILES['img-file-user']['tmp_name']);
+
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($_FILES['img-file-user']['tmp_name']);
+    
+    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
+    }
+
+    $imgUser = $fileContentUser;
+    
+} else {
+    $imgUser = null;
+}
+
+$nameImageUser = $inputPostUsers['name-img-file-user'] ?? "";
+
 if($reqMethod === 'POST') {
     try {
-        $result = $usersModel->createUser($userLogin, $userName, $hashedPass, $accesLevel);
+        $result = $usersModel->createUser($userLogin, $userName, $hashedPass, $accesLevel, $imgUser, $nameImageUser);
         
         if ($result) {
             $_SESSION['alert-user'] = setAlert("Usuário criado com sucesso!", "success");
