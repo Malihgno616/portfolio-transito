@@ -30,6 +30,15 @@ class UsersModel {
       return (int)$stmt->fetchColumn();
   }
 
+  public function getUser($id) 
+  {
+    $query = "SELECT * FROM login_adm WHERE id = :id";
+    $stmt = $this->pdo->prepare($query);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
   public function allUsers($page, $limit)
   {
 
@@ -37,7 +46,7 @@ class UsersModel {
 
     $offset = ($page - 1) * $limit; 
   
-    $query = "SELECT id, user_login, username, level FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
+    $query = "SELECT id, user_login, username, img_usuario, level, nome_img_usuario FROM login_adm ORDER BY id DESC LIMIT :limit OFFSET :offset";
     
     $stmt = $this->pdo->prepare($query);
     

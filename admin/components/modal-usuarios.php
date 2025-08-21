@@ -133,6 +133,7 @@
 
 <!-- Modal para editar usuário -->
 <?php foreach ($users as $user): ?>
+    
       <div id="edit-user-<?=$user['id']?>" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full animate__animated animate__fadeInDown">
       <div class="relative p-4 w-full max-w-md max-h-full">
           <!-- Modal content -->
@@ -174,36 +175,37 @@
                       </div>
 
                       <div class="relative z-0 flex flex-col items-center">
-                        <div class="flex justify-center w-full md:w-64">
-                          <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                            <div class="flex flex-col items-center justify-center w-full h-full px-1"> 
-                              <div id="main-image-preview" class="flex flex-col items-center justify-center w-full h-full">
-                                <?php // if(isset($newsItem) && $newsItem['img_noticia']): ?>
-                                  <div class="flex flex-col items-center justify-center w-full">
-                                    <h2 class="text-md font-bold mb-1 text-center">Pré-visualização</h2>
-                                    <div class="flex justify-center">
-                                      <img src="#" 
-                                          alt="#"
-                                          class="max-w-full max-h-28 object-contain rounded-lg shadow-md">
-                                    </div>
+                          <div class="flex justify-center w-full md:w-64">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 overflow-hidden">
+                                  <div class="flex items-center justify-center w-full h-full p-2"> <!-- Centralização total -->
+                                      <div id="main-image-preview" class="w-full h-full flex items-center justify-center"> <!-- Flex para centralizar -->
+                                          <?php
+                                          if(isset($user['id']) && $user['id']): ?>
+                                              <div class="flex flex-col items-center justify-center w-full h-full space-y-1">
+                                                  <h2 class="text-xs font-bold text-gray-600 text-center">Pré-visualização</h2>
+                                                  <div class="flex items-center justify-center w-full h-full">
+                                                      <img src="display-user-image.php?id=<?=$user['id']?>&type=user" 
+                                                          alt="Imagem do usuário"
+                                                          class="max-w-full max-h-24 object-contain rounded-lg shadow-md">
+                                                  </div>
+                                              </div>
+                                          <?php else: ?>
+                                              <div class="flex flex-col items-center justify-center text-center"> 
+                                                  <svg class="w-6 h-6 mb-2 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                  </svg>
+                                                  <p class="text-xs text-gray-500"><span class="font-medium">Adicionar imagem</span></p>
+                                                  <p class="text-xs text-gray-400">PNG/JPG</p>
+                                              </div>
+                                          <?php endif; ?>
+                                      </div>
                                   </div>
-                                <?php // else: ?>
-                                  <div class="flex flex-col items-center justify-center w-full h-full"> 
-                                    <svg class="w-5 h-5 mb-1 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                    </svg>
-                                    <p class="mb-1 text-xs text-gray-500 text-center"><span class="font-semibold">Adicionar imagem do usuário (opcional)</span></p>
-                                    <p class="text-xs text-gray-500 text-center">PNG/JPG</p>
-                                  </div>
-                                <?php // endif; ?>
-                              </div>
-                            </div>
-                            <input id="dropzone-file" name="img-file-main" type="file" class="hidden" accept="image/png, image/jpeg" />
-                          </label>
-                        </div> 
-                        <div class="flex justify-center w-full mt-2"> 
-                          <input type="text" name="name-img-file-main" value="" class="border-2 border-gray-300 text-center rounded-lg w-full md:w-64 text-xs py-1" readonly/>
-                        </div>
+                                  <input id="dropzone-file" name="img-file-main" type="file" class="hidden" accept="image/png, image/jpeg" />
+                              </label>
+                          </div> 
+                          <div class="flex justify-center w-full mt-2"> 
+                              <input type="text" name="name-img-file-main" value="<?= $user['nome_img_usuario'] ?>" class="border-2 border-gray-300 text-center rounded-lg w-full md:w-64 text-xs py-1" readonly/>
+                          </div>
                       </div>
                       
                       <div class="relative z-0">
