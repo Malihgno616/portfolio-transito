@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Input da imagem do usuário
         const userImageInput = modal.querySelector(`#dropzone-file-user-${userId}`);
         const userImagePreview = modal.querySelector(`#user-image-preview-${userId}`);
-        const fileNameInput = modal.querySelector('input[name="name-img-file-main"]');
+        const fileNameInput = modal.querySelector('input[name="name-img-file-user"]');
 
         if (userImageInput) {
             userImageInput.addEventListener('change', function(e) {

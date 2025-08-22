@@ -48,36 +48,58 @@ $options = [
 ];
 
 $userLogin = $inputPost['user-login'] ?? "";
-
 $userName = $inputPost['user-name'] ?? "";
-
 $accessLevel = $inputPost['access-level'] ?? "";
-
 $pass = $inputPost['password'] ?? "";
 
-$hashedPass = password_hash($pass, PASSWORD_BCRYPT, $options);
+// Só gera hash se a senha não estiver vazia
+$hashedPass = !empty($pass) ? password_hash($pass, PASSWORD_BCRYPT, $options) : null;
 
+$nameFileUser = $inputPost['name-img-file-user'] ?? "";
+$imgFileUser = null;
+$updateImage = false;
+
+// Verifica se uma nova imagem foi enviada
+if(isset($_FILES['img-file-user']) && $_FILES['img-file-user']['error'] === UPLOAD_ERR_OK) {
+    $imgFileUser = file_get_contents($_FILES['img-file-user']['tmp_name']);
+    $updateImage = true; // Flag indicando que a imagem deve ser atualizada
+
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($_FILES['img-file-user']['tmp_name']);
+    
+    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+        $_SESSION['alert-user'] = setAlert("Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.", "error");
+        header("Location: usuarios.php");
+        exit();
+    }
+}
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-  
-  try {
-    
-    $updated = $usersModel->updateUser($userId, $userLogin, $userName, $hashedPass, $accessLevel);
+    try {
+        $updated = $usersModel->updateUser(
+            $userId, 
+            $userLogin, 
+            $userName, 
+            $hashedPass, 
+            $accessLevel, 
+            $imgFileUser, 
+            $nameFileUser, 
+            $updateImage
+        );
 
-    if($updated) {
-      $_SESSION['alert-user'] = setAlert("Dados do usuário atualizado com sucesso!", "success");
-      header("Location: usuarios.php");
-      exit();
-    } else {
-      $_SESSION['alert-user'] = setAlert("Erro ao atualizar dados do usuário!", "error");
-      header("Location: usuarios.php");
-      exit();
+        if($updated) {
+            $_SESSION['alert-user'] = setAlert("Dados do usuário atualizado com sucesso!", "success");
+            header("Location: usuarios.php");
+            exit();
+        } else {
+            $_SESSION['alert-user'] = setAlert("Nenhum dado foi alterado!", "warning");
+            header("Location: usuarios.php");
+            exit();
+        }
+
+    } catch(Exception $e) {
+        $_SESSION['alert-user'] = setAlert("Erro: " . $e->getMessage(), 'error');
+        header("Location: usuarios.php");
+        exit();
     }
-
-  } catch(Exception $e) {
-    $_SESSION['alert-user'] = setAlert("Erro: " . $e->getMessage(), 'error');
-    header("Location: usuarios.php");
-    exit();
-  }
-
 }

@@ -111,44 +111,79 @@ class UsersModel {
       }
   }
 
-  public function updateUser($id, $login, $username, $pass, $level)
+  public function updateUser($id, $login, $username, $pass, $level, $imgUser = null, $nameImgUser = "", $updateImage = false)
   {
-    try {
+      try {
+          // Verificar se o usuário existe
+          $checkQuery = "SELECT * FROM login_adm WHERE id = :id";
+          $checkStmt = $this->pdo->prepare($checkQuery);
+          $checkStmt->bindValue(':id', $id, PDO::PARAM_INT);
+          $checkStmt->execute();
+          $user = $checkStmt->fetch();
+          
+          if (!$user) {
+              throw new Exception("Este usuário não existe"); 
+          }
 
-      $checkQuery = "SELECT * FROM login_adm WHERE id = :id";
-      $checkStmt = $this->pdo->prepare($checkQuery);
-      $checkStmt->bindValue(':id', $id);
-      $checkStmt->execute();
-      $user = $checkStmt->fetch();
-      if (!$user) {
-        throw new Exception("Este usuário não existe"); 
+          // Construir a query dinamicamente
+          $queryParts = [];
+          $params = [':id' => $id];
+          
+          // Campos obrigatórios
+          $queryParts[] = "user_login = :user_login";
+          $params[':user_login'] = $login;
+          
+          $queryParts[] = "username = :username";
+          $params[':username'] = $username;
+          
+          $queryParts[] = "level = :level";
+          $params[':level'] = $level;
+          
+          $queryParts[] = "alteration = NOW()";
+          
+          // Senha - só atualiza se foi fornecida
+          if ($pass !== null) {
+              $queryParts[] = "pass = :pass";
+              $params[':pass'] = $pass;
+          }
+          
+          // Imagem - só atualiza se o flag for true
+          if ($updateImage) {
+              $queryParts[] = "img_usuario = :img_usuario";
+              $params[':img_usuario'] = $imgUser;
+              
+              $queryParts[] = "nome_img_usuario = :nome_img_usuario";
+              $params[':nome_img_usuario'] = $nameImgUser;
+          }
+          
+          // Montar a query final
+          $updateQuery = "UPDATE login_adm SET " . implode(", ", $queryParts) . " WHERE id = :id";
+          
+          $updateStmt = $this->pdo->prepare($updateQuery);
+          
+          // Bind dos parâmetros
+          foreach ($params as $key => $value) {
+              $paramType = PDO::PARAM_STR;
+              
+              if ($key === ':id' || $key === ':level') {
+                  $paramType = PDO::PARAM_INT;
+              } elseif ($key === ':img_usuario') {
+                  $paramType = PDO::PARAM_LOB;
+              }
+              
+              $updateStmt->bindValue($key, $value, $paramType);
+          }
+          
+          $updateStmt->execute();
+
+          return $updateStmt->rowCount() > 0;
+
+      } catch(PDOException $e) {
+          error_log("DB Error: " . $e->getMessage());
+          throw new Exception("Erro ao atualizar usuário. Tente novamente mais tarde.");
       }
-
-      $updateQuery = "UPDATE login_adm 
-      SET user_login = :user_login, 
-          username = :username, 
-          pass = :pass, 
-          level = :level, 
-          alteration = NOW() 
-      WHERE id = :id";
-      
-      $updateStmt = $this->pdo->prepare($updateQuery);
-      $updateStmt->bindValue(':id', $id);
-      $updateStmt->bindValue(':user_login', $login);
-      $updateStmt->bindValue(':username', $username);
-      $updateStmt->bindValue(':pass', $pass);
-      $updateStmt->bindValue(':level', $level);
-
-      $updateStmt->execute();
-      return true;
-
-    } catch(PDOException $e) {
-      error_log("DB Error: " . $e->getMessage()); // Log interno
-      return "Erro ao atualizar usuário. Tente novamente mais tarde.";
-    }
-
   }
-  
+    
   public function deleteUser($id)
   {
     try {
