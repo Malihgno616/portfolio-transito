@@ -6,7 +6,7 @@
             <i class="fa-solid fa-person-cane"></i>
             Cartões do Idoso
           </a>
-          <a href="tab-deficieinte.php" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
+          <a href="tab-deficiente.php" class="text-3xl m-auto text-center h-auto w-120 rounded-lg bg-gray-300/90 p-10 hover:shadow-xl duration-150">
             <i class="fa-solid fa-wheelchair"></i>
             Cartões do Deficiente
           </a>
