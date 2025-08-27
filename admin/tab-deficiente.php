@@ -1,3 +1,28 @@
+<?php 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+require __DIR__.'/model/FormDeficienteModel.php';
+
+use Model\FormDeficienteModel;
+$formDeficienteModel = new FormDeficienteModel();
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$limit = 10;
+
+$beneficiarios = $formDeficienteModel->paginatedDeficientes($page, $limit);
+
+$totalBeneficiarios = $beneficiarios['total'];
+$totalPages = $beneficiarios['totalPages'];
+$currentPage = $beneficiarios['page'];
+$listBeneficiarios = $beneficiarios['deficientes'];
+
+$offset = ($currentPage - 1) * $limit;
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php include __DIR__.'/components/head.php';?>
