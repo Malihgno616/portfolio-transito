@@ -59,17 +59,29 @@ class FormIdosoModel {
         }
     }
 
-    // Método opcional se precisar do count separadamente
     public function idosoCountTable()
     {
         try {
-            $query = "SELECT COUNT(*) as total FROM cartao_idoso"; // Corrigido para a tabela correta
+            $query = "SELECT COUNT(*) as total FROM cartao_idoso"; 
             $stmt = $this->pdo->query($query);
             $row = $stmt->fetch();
             return $row['total'];
         } catch (PDOException $e) {
             error_log("Erro ao contar idosos: " . $e->getMessage());
             return 0;
+        }
+    }
+
+    public function getIdosoById($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM cartao_idoso WHERE id = :id");
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar idoso por ID: " . $e->getMessage());
+            return null;
         }
     }
 }
