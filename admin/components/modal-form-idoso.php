@@ -485,13 +485,15 @@
                             </div> 
                         </div>
 
-                        <div class="gap-5 m-10 flex items-center">
+                        <div class="w-50 gap-5 m-10 flex items-center justify-center">
 
-                            <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Salvar Alteração</button>
+                            <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Salvar Alteração 
+                                <i class="fa-solid fa-floppy-disk"></i>
+                            </button>
 
-                            <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Validar e Imprimir </button>
-
-                            
+                            <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Validar e Imprimir 
+                                <i class="fa-solid fa-file-export"></i>
+                            </button>                         
 
                         </div>
 
