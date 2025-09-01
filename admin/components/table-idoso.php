@@ -43,7 +43,9 @@
                                 <td class="px-6 py-4 text-lg bg-green-200 text-green-500 font-bold">EMITIDO</td>
                                 <td class="px-6 py-4 text-lg flex gap-5">
                                     <button type="button" data-modal-target="edit-idoso-modal-<?= $idoso['id']?>" data-modal-toggle="edit-idoso-modal-<?= $idoso['id']?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></button>
-                                    <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="#" method="post">
+                                    <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="delete-idoso.php" method="post">
+                                        <input type="hidden" name="id-idoso" value="<?= $idoso['id'] ?>">
+                                        
                                         <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>

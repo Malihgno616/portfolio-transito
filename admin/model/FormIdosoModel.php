@@ -84,4 +84,32 @@ class FormIdosoModel {
             return null;
         }
     }
+
+    public function deleteIdoso($id)
+    {
+        try {
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare("DELETE FROM cartao_idoso WHERE id = :id");
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 0) {
+                $this->pdo->rollBack();
+                return "Nenhum registro encontrado para deletar.";
+            }
+
+            $this->pdo->commit();
+            return true;
+
+        } catch(PDOException $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            error_log("Erro ao deletar idoso: " . $e->getMessage());
+            return "Erro ao deletar idoso: " . $e->getMessage();
+        }
+    }
+
 }
