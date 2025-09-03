@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 require __DIR__.'/model/FormIdosoModel.php';
 
 use Model\FormIdosoModel;
@@ -127,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $formIdosoModel->registerIdoso(
-        $nomeIDoso, 
+        $nomeIdoso, 
         $nascIdoso,
         $sexoIdoso,
         $endIdoso,
@@ -165,12 +167,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nomeAqvCompRep
         );    
 
-        $_SESSION['alert-idoso'] = setAlert("Cadastro realizado com sucesso!", "success");
+        $_SESSION['idoso-alert'] = setAlert("Cadastro realizado com sucesso!", "success");
         header("Location: tab-idoso.php");
         exit();
         
     } catch(Exception $e) {
-        $_SESSION['alert-idoso'] = setAlert("Erro ao processar o formulário: " . $e->getMessage(), "error");
+        $_SESSION['idoso-alert'] = setAlert("Erro ao processar o formulário: " . $e->getMessage(), "error");
         header("Location: tab-idoso.php");
         exit();
     }

@@ -17,7 +17,7 @@ use Model\FormIdosoModel;
 
 // Obter página atual da URL, padrão é 1
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 10;
+$limit = 5;
 
 $formIdosoModel = new FormIdosoModel();
 $idosos = $formIdosoModel->paginatedIdosos($page, $limit);
