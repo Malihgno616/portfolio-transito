@@ -11,7 +11,7 @@ use Model\FormDeficienteModel;
 $formDeficienteModel = new FormDeficienteModel();
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 10;
+$limit = 5;
 
 $beneficiarios = $formDeficienteModel->paginatedDeficientes($page, $limit);
 

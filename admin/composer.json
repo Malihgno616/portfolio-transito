@@ -6,5 +6,7 @@
             "email": "ackinlino123@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "predis/predis": "^3.2"
+    }
 }

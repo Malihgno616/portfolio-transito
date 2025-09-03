@@ -6,6 +6,25 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit1debac9205d2d9237cafb9cd5cd81d3e
 {
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+            'Predis\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -13,6 +32,8 @@ class ComposerStaticInit1debac9205d2d9237cafb9cd5cd81d3e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1debac9205d2d9237cafb9cd5cd81d3e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1debac9205d2d9237cafb9cd5cd81d3e::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit1debac9205d2d9237cafb9cd5cd81d3e::$classMap;
 
         }, null, ClassLoader::class);
