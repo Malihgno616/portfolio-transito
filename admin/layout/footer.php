@@ -12,6 +12,6 @@ include __DIR__.'/../components/footer.php';
 <script src="assets/js/showImgIdoso.js"></script>
 <script src="assets/js/showImgRepIdoso.js"></script>
 <script src="assets/js/formatInput.js"></script>
-<script src="assets/js/autofill.js"></script>
+<script src="assets/js/autofill-admin.js"></script>
 </body>
 </html>
