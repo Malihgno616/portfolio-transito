@@ -55,7 +55,7 @@ try {
     
     $pdo = $conn->connect();
 
-    $query = "SELECT user_login, pass from login_adm WHERE user_login = :user_login";
+    $query = "SELECT id, user_login, pass from login_adm WHERE user_login = :user_login";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':user_login', $userLogin);
     $executed = $stmt->execute();  
@@ -66,6 +66,9 @@ try {
 
       if(password_verify(trim($password), trim($user['pass']))) {                
         $_SESSION['user-login'] = $user['user_login'];
+
+        $_SESSION['user-id'] = $user['id'];
+
         header("Location: home.php");
         exit();
       } else {
