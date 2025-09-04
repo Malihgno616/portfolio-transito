@@ -380,7 +380,7 @@
                                         "TO" => "Tocantins"
                                     ];
                                     foreach ($ufs as $sigla => $nome) {
-                                        $selected = ($idoso['uf_representante'] ?? '') === $sigla ? 'selected' : '';
+                                        $selected = (!empty($idoso['uf_representante']) && $idoso['uf_representante'] === $sigla) ? 'selected' : '';
                                         echo "<option value=\"$sigla\" $selected>$nome</option>";
                                     }
                                     ?>

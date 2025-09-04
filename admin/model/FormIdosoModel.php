@@ -75,7 +75,7 @@ class FormIdosoModel {
     public function getIdosoById($id)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM cartao_idoso WHERE id = :id");
+            $stmt = $this->pdo->prepare("SELECT id, copia_rg_idoso, nome_arquivo_rg_idoso, copia_rg_representante, nome_arquivo_rg_rep, comprovante_representante, nome_arquivo_comp_rep FROM cartao_idoso WHERE id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch();
@@ -235,7 +235,7 @@ class FormIdosoModel {
                 $this->pdo->rollBack();
             }
             error_log("Erro ao criar idoso: " . $e->getMessage());
-            return "Erro ao criar idoso: " . $e->getMessage();
+            throw new \Exception("Erro ao criar idoso: " . $e->getMessage());
         }
     }
             
