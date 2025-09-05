@@ -280,10 +280,21 @@
                                     Email
                                 </label>
                             </div>
+
+                                                        
+                            <div class="relative z-0">
+                                <input type="text" id="cep-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-rep" oninput="pesquisacepRep(this.value);">
+                                    <label for="cep-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    peer-focus:start-0 peer-focus:text-yellow-500 
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    CEP
+                                </label>
+                            </div>
                             
                             <div class="relative z-0">
-                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-rep" id="rua-rep">
+                                    <label for="rua-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
                                     peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                     peer-focus:scale-90 peer-focus:-translate-y-4">
@@ -312,8 +323,8 @@
                             </div>
                             
                             <div class="relative z-0">
-                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-rep" id="bairro-rep">
+                                    <label for="bairro-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
                                     peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                     peer-focus:scale-90 peer-focus:-translate-y-4">
@@ -322,18 +333,8 @@
                             </div>
                             
                             <div class="relative z-0">
-                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
-                                    peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
-                                    CEP
-                                </label>
-                            </div>
-                            
-                            <div class="relative z-0">
-                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <input type="text" id="cidade-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-rep">
+                                    <label for="cidade-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
                                     peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                     peer-focus:scale-90 peer-focus:-translate-y-4">
@@ -342,7 +343,7 @@
                             </div>
                             
                             <div class="relative z-0">
-                                <select name="uf-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="" >
+                                <select name="uf-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="uf-rep" >
                                     <option value="">Selecione a UF</option>
                                     <?php
                                     $ufs = [
@@ -376,11 +377,11 @@
                                     ];
                                     foreach ($ufs as $sigla => $nome) {
                                         
-                                        echo "<option value=\"$sigla\" selected>$nome</option>";
+                                        echo "<option value=\"$sigla\">$nome</option>";
                                     }
                                     ?>
                                 </select>
-                                <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <label for="uf-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
                                     peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                     peer-focus:scale-90 peer-focus:-translate-y-4">
