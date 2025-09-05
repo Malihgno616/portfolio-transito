@@ -60,6 +60,12 @@
                         <tr class="bg-gray-50">
                             <td colspan="8" class="px-6 py-3">
                                 <nav class="flex items-center justify-between gap-5 pt-2" aria-label="Table navigation">
+                                    
+                                    <!-- Informação de páginas -->
+                                    <span class="text-sm text-gray-700">
+                                        Página <span class="font-semibold"><?= $currentPage ?></span> de <span class="font-semibold"><?= $totalPages ?></span>
+                                    </span>
+
                                     <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                                         <!-- Botão Anterior -->
                                         <li>
@@ -84,7 +90,7 @@
                                         
                                         for ($x = $startPage; $x <= $endPage; $x++): ?>
                                             <li>
-                                                <a class="flex items-center justify-center px-3 h-8 leading-tight text-yellow-500 bg-white border border-yellow-300 hover:bg-yellow-100 hover:text-yellow-700 <?= $x == $currentPage ? 'bg-yellow-100 text-yellow-600 border-yellow-300' : '' ?>" 
+                                                <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-yellow-100 hover:text-yellow-700 <?= $x == $currentPage ? ' text-yellow-600 border-gray-300' : '' ?>" 
                                                 href="?page=<?= $x ?>">
                                                     <?= $x ?>
                                                 </a>
@@ -106,10 +112,6 @@
                                         </li>
                                     </ul>
                                     
-                                    <!-- Informação de páginas -->
-                                    <span class="text-sm text-gray-700">
-                                        Página <span class="font-semibold"><?= $currentPage ?></span> de <span class="font-semibold"><?= $totalPages ?></span>
-                                    </span>
                                 </nav>
                             </td>
                         </tr>
