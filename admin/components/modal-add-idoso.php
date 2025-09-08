@@ -292,6 +292,119 @@
                                 </label>
                             </div>
                             
+                            <script>
+                            function limpa_formulario_cep_idoso() {
+                                document.getElementById("rua").value = "";
+                                document.getElementById("bairro").value = "";
+                                document.getElementById("cidade").value = "";
+                                document.getElementById("uf").value = "";
+                            }
+
+                            function meu_callback_idoso(conteudo) {
+                                console.log("Resposta do ViaCEP (Idoso):", conteudo);
+                                
+                                if (!conteudo.erro) {
+                                    document.getElementById("rua").value = conteudo.logradouro || "";
+                                    document.getElementById("bairro").value = conteudo.bairro || "";
+                                    document.getElementById("cidade").value = conteudo.localidade || "";
+                                    document.getElementById("uf").value = conteudo.uf || "";
+                                } else {
+                                    limpa_formulario_cep_idoso();
+                                    alert("CEP não encontrado para o idoso.");
+                                }
+                            }
+
+                            function pesquisacep(valor) {
+                                console.log("CEP idoso digitado:", valor);
+                                
+                                let cep = valor.replace(/\D/g, "");
+                                
+                                if (cep !== "") {
+                                    let validacep = /^[0-9]{8}$/;
+                                    
+                                    if (validacep.test(cep)) {
+                                        document.getElementById("rua").value = "Carregando...";
+                                        document.getElementById("bairro").value = "Carregando...";
+                                        document.getElementById("cidade").value = "Carregando...";
+                                        document.getElementById("uf").value = "Carregando...";
+                                        
+                                        let script = document.createElement("script");
+                                        
+                                        window.meu_callback_viacep_idoso = function(conteudo) {
+                                            meu_callback_idoso(conteudo);
+                                        };
+                                        
+                                        script.src = "https://viacep.com.br/ws/" + cep + "/json/?callback=meu_callback_viacep_idoso";
+                                        
+                                        const scriptsAntigos = document.querySelectorAll('script[src*="viacep.com.br"]');
+                                        scriptsAntigos.forEach(oldScript => oldScript.remove());
+                                        
+                                        document.body.appendChild(script);
+                                    } else {
+                                        limpa_formulario_cep_idoso();
+                                    }
+                                } else {
+                                    limpa_formulario_cep_idoso();
+                                }
+                            }
+
+                            // Funções para o formulário do REPRESENTANTE
+                            function limpa_formulario_cep_rep() {
+                                document.getElementById("rua-rep").value = "";
+                                document.getElementById("bairro-rep").value = "";
+                                document.getElementById("cidade-rep").value = "";
+                                document.getElementById("uf-rep").value = "";
+                            }
+
+                            function meu_callback_rep(conteudo) {
+                                console.log("Resposta do ViaCEP (Representante):", conteudo);
+                                
+                                if (!conteudo.erro) {
+                                    document.getElementById("rua-rep").value = conteudo.logradouro || "";
+                                    document.getElementById("bairro-rep").value = conteudo.bairro || "";
+                                    document.getElementById("cidade-rep").value = conteudo.localidade || "";
+                                    document.getElementById("uf-rep").value = conteudo.uf || "";
+                                } else {
+                                    limpa_formulario_cep_rep();
+                                    alert("CEP não encontrado para o representante.");
+                                }
+                            }
+
+                            function pesquisacepRep(valor) {
+                                console.log("CEP representante digitado:", valor);
+                                
+                                let cep = valor.replace(/\D/g, "");
+                                
+                                if (cep !== "") {
+                                    let validacep = /^[0-9]{8}$/;
+                                    
+                                    if (validacep.test(cep)) {
+                                        document.getElementById("rua-rep").value = "Carregando...";
+                                        document.getElementById("bairro-rep").value = "Carregando...";
+                                        document.getElementById("cidade-rep").value = "Carregando...";
+                                        document.getElementById("uf-rep").value = "Carregando...";
+                                        
+                                        let script = document.createElement("script");
+                                        
+                                        window.meu_callback_viacep_rep = function(conteudo) {
+                                            meu_callback_rep(conteudo);
+                                        };
+                                        
+                                        script.src = "https://viacep.com.br/ws/" + cep + "/json/?callback=meu_callback_viacep_rep";
+                                        
+                                        const scriptsAntigos = document.querySelectorAll('script[src*="viacep.com.br"]');
+                                        scriptsAntigos.forEach(oldScript => oldScript.remove());
+                                        
+                                        document.body.appendChild(script);
+                                    } else {
+                                        limpa_formulario_cep_rep();
+                                    }
+                                } else {
+                                    limpa_formulario_cep_rep();
+                                }
+                            }
+                            </script>
+                            
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-rep" id="rua-rep">
                                     <label for="rua-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
@@ -453,7 +566,7 @@
                                 </div>
                                 
                                 <input id="dropzone-rg-representante" type="file" class="hidden" name="copia-rg-rep" accept=".png,.jpg,.jpeg,.pdf"/>
-                                <input type="hidden" name="nome-aqv-rg-representante" id="nome-aqv-rg-representante">
+                                <input type="hidden" name="nome-aqv-rg-rep" id="nome-aqv-rg-representante">
                             </label>
                         </div> 
                     </div>
@@ -480,7 +593,7 @@
                                 </div>
                                 
                                 <input id="dropzone-comprovante-representante" type="file" class="hidden" name="comprovante-rep" accept=".png,.jpg,.jpeg,.pdf"/>
-                                <input type="hidden" name="nome-aqv-comprovante-representante" id="nome-aqv-comprovante-representante">
+                                <input type="hidden" name="nome-aqv-comp-rep" id="nome-aqv-comprovante-representante">
                             </label>
                         </div> 
                     </div>

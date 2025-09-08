@@ -238,7 +238,139 @@ class FormIdosoModel {
             throw new \Exception("Erro ao criar idoso: " . $e->getMessage());
         }
     }
+    
+    public function updateIdoso($idIdoso, $nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numRgIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso, $compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numRgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "", $updateRgIdoso = false, $updateRgRep = false, $updateCompRep = false)
+    {
+        try {
+            $this->pdo->beginTransaction();
+
+            // Verificar se o idoso existe
+            $queryCheck = "SELECT id FROM cartao_idoso WHERE id = :id";
+            $checkStmt = $this->pdo->prepare($queryCheck);
+            $checkStmt->bindValue(':id', $idIdoso, PDO::PARAM_INT);
+            $checkStmt->execute();
+
+            if ($checkStmt->rowCount() === 0) {
+                $this->pdo->rollBack();
+                return "Nenhum registro encontrado para atualizar.";
+            }
+
+            // Construir a query dinamicamente
+            $queryParts = [];
+            $params = [':id' => $idIdoso];
             
+            // Campos obrigatórios do idoso
+            $camposIdoso = [
+                'nome_idoso' => $nomeIdoso,
+                'nascimento_idoso' => $nascIdoso,
+                'genero_idoso' => $sexIdoso,
+                'endereco_idoso' => $endIdoso,
+                'numero_endereco_idoso' => $numIdoso,
+                'complemento_idoso' => $compIdoso,
+                'bairro_idoso' => $bairroIdoso,
+                'cep_idoso' => $cepIdoso,
+                'cidade_idoso' => $cidadeIdoso,
+                'uf_idoso' => $ufIdoso,
+                'telefone_idoso' => $telIdoso,
+                'rg_idoso' => $numRgIdoso,
+                'data_expedicao_idoso' => $expedicaoIdoso,
+                'expedido_idoso' => $expedidoIdoso,
+                'cnh_idoso' => $cnhIdoso,
+                'validade_cnh_idoso' => $validadeCnhIdoso,
+                'email_idoso' => $emailIdoso
+            ];
+            
+            foreach ($camposIdoso as $campo => $valor) {
+                $queryParts[] = "$campo = :$campo";
+                $params[":$campo"] = $valor;
+            }
+            
+            // Campos do representante
+            $camposRep = [
+                'nome_representante' => $nomeRep,
+                'email_representante' => $emailRep,
+                'endereco_representante' => $endRep,
+                'numero_endereco_representante' => $numRep,
+                'complemento_representante' => $compRep,
+                'bairro_representante' => $bairroRep,
+                'cep_representante' => $cepRep,
+                'cidade_representante' => $cidadeRep,
+                'uf_representante' => $ufRep,
+                'telefone_representante' => $telRep,
+                'rg_representante' => $numRgRep,
+                'data_expedicao_representante' => $expedicaoRep,
+                'expedido_representante' => $expedidoRep
+            ];
+            
+            foreach ($camposRep as $campo => $valor) {
+                $queryParts[] = "$campo = :$campo";
+                $params[":$campo"] = $valor;
+            }
+            
+            // Campos de arquivos - só atualiza se a flag for true
+            if ($updateRgIdoso) {
+                $queryParts[] = "copia_rg_idoso = :copia_rg_idoso";
+                $params[':copia_rg_idoso'] = $copiaRgIdoso;
+                
+                $queryParts[] = "nome_arquivo_rg_idoso = :nome_arquivo_rg_idoso";
+                $params[':nome_arquivo_rg_idoso'] = $nomeAqvRgIdoso;
+            }
+            
+            if ($updateRgRep) {
+                $queryParts[] = "copia_rg_representante = :copia_rg_representante";
+                $params[':copia_rg_representante'] = $copiaRgRep;
+                
+                $queryParts[] = "nome_arquivo_rg_rep = :nome_arquivo_rg_rep";
+                $params[':nome_arquivo_rg_rep'] = $nomeAqvRgRep;
+            }
+            
+            if ($updateCompRep) {
+                $queryParts[] = "comprovante_representante = :comprovante_representante";
+                $params[':comprovante_representante'] = $comprovanteRep;
+                
+                $queryParts[] = "nome_arquivo_comp_rep = :nome_arquivo_comp_rep";
+                $params[':nome_arquivo_comp_rep'] = $nomeAqvCompRep;
+            }
+            
+            // Montar a query final
+            $updateQuery = "UPDATE cartao_idoso SET " . implode(", ", $queryParts) . " WHERE id = :id";
+            
+            $stmt = $this->pdo->prepare($updateQuery);
+            
+            // Bind dos parâmetros
+            foreach ($params as $key => $value) {
+                $paramType = PDO::PARAM_STR;
+                
+                if ($key === ':id') {
+                    $paramType = PDO::PARAM_INT;
+                } elseif (strpos($key, 'copia_') === 0 || strpos($key, 'comprovante_') === 0) {
+                    $paramType = PDO::PARAM_LOB;
+                } elseif ($value === null) {
+                    $paramType = PDO::PARAM_NULL;
+                }
+                
+                $stmt->bindValue($key, $value, $paramType);
+            }
+            
+            $stmt->execute();
+            
+            if ($stmt->rowCount() === 0) {
+                $this->pdo->rollBack();
+                return "Nenhum registro encontrado para atualizar.";
+            }
+
+            $this->pdo->commit();
+            return true;
+            
+        } catch(PDOException $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            error_log("Erro ao atualizar idoso: " . $e->getMessage());
+            throw new \Exception("Erro ao atualizar idoso: " . $e->getMessage());
+        }
+    }
+
     public function deleteIdoso($id)
     {
         try {
