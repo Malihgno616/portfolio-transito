@@ -40,6 +40,9 @@
                             <td class="px-6 py-4 text-lg bg-green-200 text-green-500 font-bold">EMITIDO</td>
                             <td class="px-6 py-4 text-lg flex gap-5">
                                 <button class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></button>
+                                <a href="#" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
+                                    <i class="fa-solid fa-print"></i>
+                                </a> 
                                 <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="#" method="post">
                                     <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">
                                         <i class="fa-solid fa-trash"></i>
@@ -54,7 +57,12 @@
                     <tfoot>
                         <tr class="bg-gray-50">
                             <td colspan="8" class="px-6 py-3">
-                                <nav class="flex items-center justify-between gap-5 pt-2" aria-label="Table navigation">
+                                <nav class="flex items-center justify-between gap-5 pt-2" aria-label="Table navigation">                                   
+                                    <!-- Informação de páginas -->
+                                    <span class="text-sm text-gray-700">
+                                        Página <span class="font-semibold"><?= $currentPage ?></span> de <span class="font-semibold"><?= $totalPages ?></span>
+                                    </span>
+
                                     <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                                         <!-- Botão Anterior -->
                                         <li>
@@ -79,7 +87,7 @@
                                         
                                         for ($x = $startPage; $x <= $endPage; $x++): ?>
                                             <li>
-                                                <a class="flex items-center justify-center px-3 h-8 leading-tight text-yellow-500 bg-white border border-yellow-300 hover:bg-yellow-100 hover:text-yellow-700 <?= $x == $currentPage ? 'bg-yellow-100 text-yellow-600 border-yellow-300' : '' ?>" 
+                                                <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-yellow-100 hover:text-yellow-700 <?= $x == $currentPage ? ' text-yellow-600 ' : '' ?>" 
                                                 href="?page=<?= $x ?>">
                                                     <?= $x ?>
                                                 </a>
@@ -100,11 +108,7 @@
                                             <?php endif; ?>
                                         </li>
                                     </ul>
-                                    
-                                    <!-- Informação de páginas -->
-                                    <span class="text-sm text-gray-700">
-                                        Página <span class="font-semibold"><?= $currentPage ?></span> de <span class="font-semibold"><?= $totalPages ?></span>
-                                    </span>
+
                                 </nav>
                             </td>
                         </tr>
