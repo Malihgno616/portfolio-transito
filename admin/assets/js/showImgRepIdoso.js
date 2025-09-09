@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const img = document.createElement('img');
                         img.src = e.target.result;
                         img.alt = "Documento enviado";
-                        img.classList.add('max-w-full', 'max-h-40', 'object-contain', 'rounded', 'mx-auto');
+                        img.classList.add('max-w-full', 'max-h-40', 'object-contain', 'mx-auto');
                         previewContainer.appendChild(img);
                     };
                     reader.readAsDataURL(file);
