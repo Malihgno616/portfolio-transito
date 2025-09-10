@@ -31,12 +31,63 @@ class FormDeficienteModel {
             $totalPages = ceil($total / $limit);
 
             // Depois os dados paginados
-            $stmt = $this->pdo->prepare("SELECT * FROM cartao_deficiente ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT 
+            id, 
+            nome_beneficiario, 
+            nasc_beneficiario, 
+            genero_beneficiario, 
+            endereco_beneficiario, 
+            numero_beneficiario, 
+            complemento_beneficiario,
+            bairro_beneficiario,
+            cep_beneficiario,
+            cidade_beneficiario,  
+            uf_beneficiario,      
+            telefone_beneficiario,
+            rg_beneficiario,
+            expedicao_beneficiario,
+            expedido_beneficiario,
+            cnh_beneficiario,
+            validade_cnh_beneficiario,
+            email_beneficiario,
+            copia_rg_beneficiario,
+            nome_arquiv_rg_benef,  
+            nome_medico,
+            crm,
+            telefone_medico,
+            local_atendimento_medico,
+            deficiencia_ambulatoria,
+            periodo_restricao_medica,
+            data_inicio,
+            data_fim,
+            cid,
+            atestado_medico,
+            nome_arquiv_atestado,
+            nome_representante,
+            email_representante,
+            endereco_representante,
+            num_representante,
+            complemento_representante,
+            bairro_representante,
+            cep_representante,
+            cidade_representante,
+            uf_representante,
+            telefone_representante,
+            rg_representante,
+            expedicao_representante,
+            expedido_representante,
+            copia_rg_representante,
+            nome_arquiv_rg_rep,
+            comprovante_representante,
+            nome_arquiv_comp_rep
+        FROM cartao_deficiente 
+        ORDER BY id DESC 
+        LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
             
-            $deficientes = $stmt->fetchAll();
+            $deficientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             return [
                 'deficientes' => $deficientes,

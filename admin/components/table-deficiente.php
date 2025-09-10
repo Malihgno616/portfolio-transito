@@ -39,7 +39,9 @@
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['rg_beneficiario']?></td>
                             <td class="px-6 py-4 text-lg bg-green-200 text-green-500 font-bold">EMITIDO</td>
                             <td class="px-6 py-4 text-lg flex gap-5">
-                                <button class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></button>
+                                <button data-modal-target="form-edit-benef-<?= $beneficiario['id']?>" data-modal-toggle="form-edit-benef-<?= $beneficiario['id']?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200">
+                                    <i class="fa-solid fa-pen-ruler"></i>
+                                </button>
                                 <a href="#" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
                                     <i class="fa-solid fa-print"></i>
                                 </a> 

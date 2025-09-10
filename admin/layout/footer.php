@@ -14,5 +14,6 @@ include __DIR__.'/../components/footer.php';
 <script src="assets/js/formatInput.js"></script>
 <script src="assets/js/autofill-admin.js"></script>
 <script src="assets/js/spinnerForms.js"></script>
+<script src="assets/js/exibirDataBene.js"></script>
 </body>
 </html>
