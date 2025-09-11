@@ -19,6 +19,29 @@ class FormDeficienteModel {
         $this->pdo = $this->conn->connect();
     }
 
+    public function getBeneficiarioById($id)
+    {
+        try {
+
+            $query = "SELECT id, copia_rg_beneficiario, nome_arquiv_rg_benef, atestado_medico, nome_arquiv_atestado, copia_rg_representante, nome_arquiv_rg_rep, comprovante_representante, nome_arquiv_comp_rep FROM cartao_deficiente WHERE id = :id";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            
+            $stmt->execute();
+
+            return $stmt->fetch();
+
+        } catch(PDOException $e) {
+
+            error_log("Erro ao buscar o id: " . $e->getMessage());
+
+            return null;
+        }   
+
+    }
+
     public function paginatedDeficientes($page, $limit)
     {
         try {

@@ -35,9 +35,13 @@ $deficiencias = [
                 <div class="p-4 md:p-5 space-y-4">
                         <form id="form-edit-benef-<?= $beneficiario['id']?>" action="#" method="post" enctype="multipart/form-data">
                             <h1 class="text-center text-2xl p-5">Informações do Beneficiário</h1>
+                            <h2 class="text-center text-lg text-yellow-700 p-3 font-bold">ID: <?= $beneficiario['id']?></h2>
+
+                            <input type="text" hidden value="<?= $beneficiario['id']?>" name="id-benef">
+                            
                             <div class="p-5 grid grid-cols-3 gap-10">
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-beneficiario">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-beneficiario" value="<?= $beneficiario['nome_beneficiario'] ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -47,7 +51,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nasc-beneficiario" oninput="formatDate(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nasc-beneficiario" oninput="formatDate(this)" value="<?= $beneficiario['nasc_beneficiario']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -57,10 +61,10 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <select class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="" id="" name="sexo-beneficiario">
-                                        <option value="">Selecione o sexo</option>
-                                        <option value="masculino">Masculino</option>
-                                        <option value="feminino">Feminino</option>
+                                    <select name="sexo-beneficiario" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="" id="">
+                                        <option value="" disabled <?= empty($beneficiario['genero_beneficiario']) ? 'selected' : '' ?>>Selecione o sexo</option>
+                                        <option value="masculino" <?= ($beneiciario['genero_beneficiario'] ?? '') === 'masculino' ? 'selected' : '' ?>>Masculino</option>
+                                        <option value="feminino" <?= ($beneficiario['genero_beneficiario'] ?? '') === 'feminino' ? 'selected' : '' ?>>Feminino</option>
                                     </select>
                                     <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
@@ -71,7 +75,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-beneficiario" id="cep" oninput="pesquisacep(this.value);">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-beneficiario" id="cep" oninput="pesquisacep(this.value);" value="<?= $beneficiario['cep_beneficiario']?>">
                                         <label for="cep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -81,7 +85,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-beneficiario" id="rua">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-beneficiario" id="rua" value="<?= $beneficiario['endereco_beneficiario'] ?>">
                                         <label for="rua" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -91,7 +95,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-beneficiario">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-beneficiario" value="<?= $beneficiario['numero_beneficiario']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -101,7 +105,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="comp-beneficiario">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="comp-beneficiario" value="<?= $beneficiario['complemento_beneficiario'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -111,7 +115,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-beneficiario" id="bairro">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-beneficiario" id="bairro" value="<?= $beneficiario['bairro_beneficiario']?>">
                                         <label for="bairro" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -121,7 +125,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-beneficiario" id="cidade">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-beneficiario" id="cidade" value="<?= $beneficiario['cidade_beneficiario']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -131,8 +135,8 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <select name="uf-beneficiario" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="uf">
-                                        <option value="">Selecione a UF</option>
+                                    <select name="uf-beneficiario" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="">
+                                        <option value="" disabled <?= empty($beneficiario['uf_beneficiario']) ? 'selected' : '' ?>>Selecione a UF</option>
                                         <?php
                                         $ufs = [
                                             "AC" => "Acre",
@@ -164,11 +168,12 @@ $deficiencias = [
                                             "TO" => "Tocantins"
                                         ];
                                         foreach ($ufs as $sigla => $nome) {
-                                            echo "<option value=\"$sigla\" >$nome</option>";
+                                            $selected = ($beneficario['uf_beneficiario'] ?? '') === $sigla ? 'selected' : '';
+                                            echo "<option value=\"$sigla\" $selected>$nome</option>";
                                         }
                                         ?>
                                     </select>
-                                    <label for="uf" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                         peer-focus:scale-90 peer-focus:-translate-y-4">
@@ -177,7 +182,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="tel-beneficiario" oninput="formatPhone(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="tel-beneficiario" oninput="formatPhone(this)" value="<?= $beneficiario['telefone_beneficiario']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -187,7 +192,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-beneficiario" oninput="formatRG(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-beneficiario" oninput="formatRG(this)" value="<?= $beneficiario['rg_beneficiario'] ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -197,7 +202,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="data-exp-bene" oninput="formatDate(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="data-exp-bene" oninput="formatDate(this)" value="<?= $beneficiario['expedicao_beneficiario'] ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -207,7 +212,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="expedido-beneficiario">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="expedido-beneficiario" value="<?= $beneficiario['expedido_beneficiario'] ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -217,7 +222,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cnh-beneficiario">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cnh-beneficiario" value="<?= $beneficiario['cnh_beneficiario'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -227,7 +232,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="validade-cnh-bene" oninput="formatDate(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="validade-cnh-bene" oninput="formatDate(this)" value="<?= $beneficiario[''] ?? ""?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -237,7 +242,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="email" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="email-beneficiario">
+                                    <input type="email" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="email-beneficiario" value="<?= $beneficiario['email_beneficiario'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -254,12 +259,25 @@ $deficiencias = [
                                     <label for="dropzone-rg-idoso" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                                         <!-- Conteúdo padrão (será substituído pelo preview) -->
                                         <div id="default-content" class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                            </svg>
-                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
-                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700">Cópia do RG do Idoso <strong>OBRIGATÓRIO</strong></p>
-                                            <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+
+                                            <?php if(!empty($beneficiario) && $beneficiario['copia_rg_beneficiario']): ?>
+                                                <div class="flex flex-col items-center justify-center mb-4">
+                                                    <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=copia-rg-beneficiario" alt="Cópia do RG do beneficiário">
+                                                    <span><?= $beneficiario['nome_arquiv_rg_benef']?></span>
+                                                    <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
+                                                    <i class="fas fa-times mr-1"></i> Remover
+                                                </button>
+                                                </div>
+                                            <?php else: ?>
+
+                                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                </svg>
+                                                <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
+                                                <p class="mb-2 text-md text-gray-500 dark:text-gray-700">Cópia do RG do Idoso <strong>OBRIGATÓRIO</strong></p>
+                                                <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                            <?php endif; ?>
+
                                         </div>
                                         
                                         <!-- Área para o preview (inicialmente vazia) - CORRIGIDO -->
@@ -279,7 +297,7 @@ $deficiencias = [
                             <div class="p-5 grid grid-cols-2 gap-10">
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-medico">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-medico" value="<?= $beneficiario['nome_medico']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -289,7 +307,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="crm-medico">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="crm-medico" value="<?= $beneficiario['crm']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -299,7 +317,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="especialidade-medico">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="especialidade-medico" value="<?= $beneficiario['telefone_medico']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -309,7 +327,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="especialidade-medico">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="especialidade-medico" value="<?= $beneficiario['local_atendimento_medico']?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -326,11 +344,25 @@ $deficiencias = [
 
                             <p class="p-1 text-center text-lg">O requerente possui deficiência <strong>AMBULATÓRIA</strong> causada por:</p>
                             <div class="shadow-lg w-70 m-auto flex flex-col items-center justify-center flex-wrap border border-gray-200">
-                                <?php foreach($deficiencias as $deficiencia): ?>
+                                <?php 
+                                // Garante que $beneficiario['deficiencia_ambulatoria'] seja array
+                                $deficienciasMarcadas = [];
+                                if (!empty($beneficiario['deficiencia_ambulatoria'])) {
+                                    if (is_array($beneficiario['deficiencia_ambulatoria'])) {
+                                        $deficienciasMarcadas = $beneficiario['deficiencia_ambulatoria'];
+                                    } else {
+                                        // Se vier como string separada por vírgula
+                                        $deficienciasMarcadas = explode(',', $beneficiario['deficiencia_ambulatoria']);
+                                        $deficienciasMarcadas = array_map('trim', $deficienciasMarcadas);
+                                    }
+                                }
+                                foreach($deficiencias as $deficiencia): 
+                                    $checked = in_array($deficiencia, $deficienciasMarcadas) ? 'checked' : '';
+                                ?>
                                 <div class="p-5">
                                 <input type="checkbox"
                                     class="w-4 h-4 text-yellow-500 bg-gray-300 border-gray-600 rounded-sm focus:ring-yellow-500 focus:ring-2"
-                                    name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
+                                    name="deficiencia-ambulatoria[]" value="<?=$deficiencia ?>" <?=$checked?>>
                                 <label for="deficiencia" class="ms-2 text-lg font-medium text-gray-900">
                                     <?= $deficiencia; ?>
                                 </label>
@@ -342,22 +374,30 @@ $deficiencias = [
                             <p class="text-justify text-lg p-5">Em sentido permanente, informar o período de início de validade do cartão, com prazo de (05) cinco anos.</p>
 
                             <div class="flex rounded-md gap-3 p-5 justify-center items-center border-2 border-gray-300">
-                                <div class="flex items-center ">
-                                <input type="radio" class="w-4 h-4 text-yellow-500 bg-gray-400 border-gray-300focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2" name="restricao-medica" value="temporaria" id="temporaria">
-                                <label for="temporaria" class="ms-2 text-lg font-medium text-gray-900">Temporária</label>
+                                <div class="flex items-center">
+                                    <input type="radio"
+                                        class="w-4 h-4 text-yellow-500 bg-gray-400 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
+                                        name="restricao-medica"
+                                        value="temporaria"
+                                        id="temporaria"
+                                        <?= ($beneficiario['periodo_restricao_medica'] ?? '') === 'temporaria' ? 'checked' : '' ?>>
+                                    <label for="temporaria" class="ms-2 text-lg font-medium text-gray-900">Temporária</label>
                                 </div>
                                 <div class="flex items-center">
-                                <input type="radio"
-                                    class="w-4 h-4 text-yellow-500 bg-gray-400 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
-                                    name="restricao-medica" value="permanente" id="permanente" checked>
-                                <label for="permanente" class="ms-2 text-lg font-medium text-gray-900">Permanente</label>
+                                    <input type="radio"
+                                        class="w-4 h-4 text-yellow-500 bg-gray-400 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
+                                        name="restricao-medica"
+                                        value="permanente"
+                                        id="permanente"
+                                        <?= ($beneficiario['periodo_restricao_medica'] ?? '') === 'permanente' ? 'checked' : '' ?>>
+                                    <label for="permanente" class="ms-2 text-lg font-medium text-gray-900">Permanente</label>
                                 </div>
                             </div>
 
                             <div class="relative mb-5 mt-5">
                                 <input type="text" name="data-inicio" id="data-inicio"
                                     class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-yellow-400 peer"
-                                    placeholder=" " maxlength="10" oninput="formatDate(this)">
+                                    placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?= $beneficiario['data_inicio']?>">
                                 <label for="data-inicio"
                                     class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                                     Data de início
@@ -367,7 +407,7 @@ $deficiencias = [
                             <div class="relative mb-5">
                                 <input type="text" name="data-fim" id="data-fim"
                                     class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-yellow-400 peer"
-                                    placeholder=" " maxlength="10" oninput="formatDate(this)">
+                                    placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?= $beneficiario['data_fim'] ?? "" ?>">
                                 <label for="data-fim"
                                     class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                                     Data de fim
@@ -383,6 +423,7 @@ $deficiencias = [
                                     rows="5"
                                     class="block w-full px-4 py-3 text-md text-gray-900 bg-white border-2 border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 resize-none peer"
                                     placeholder=" ">
+                                    <?= $beneficiario['cid']?>
                                 </textarea>
                                 <label for="cid" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-90 top-2 left-4 z-10 origin-[0] bg-white px-2 peer-focus:text-yellow-500 peer-focus:scale-90 peer-focus:-translate-y-4">
                                     Descrição e CID
@@ -396,12 +437,23 @@ $deficiencias = [
                                     <label for="dropzone-rg-idoso" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                                         <!-- Conteúdo padrão (será substituído pelo preview) -->
                                         <div id="default-content" class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                            <?php if(!empty($beneficiario) && $beneficiario['atestado_medico']): ?>
+                                                <div class="flex flex-col items-center justify-center mb-4">
+                                                    <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=atestado-medico" alt="Cópia do RG do beneficiário">
+                                                    <span><?= $beneficiario['nome_arquiv_atestado']?></span>
+                                                    <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
+                                                    <i class="fas fa-times mr-1"></i> Remover
+                                                </button>
+                                                </div>
+
+                                            <?php else: ?>
+                                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                            </svg>
-                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
-                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700">Cópia do atestado médico <strong>OBRIGATÓRIO</strong></p>
-                                            <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                                </svg>
+                                                <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
+                                                <p class="mb-2 text-md text-gray-500 dark:text-gray-700">Cópia do atestado médico <strong>OBRIGATÓRIO</strong></p>
+                                                <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                            <?php endif;?>
                                         </div>
                                         
                                         <!-- Área para o preview (inicialmente vazia) - CORRIGIDO -->
@@ -421,7 +473,7 @@ $deficiencias = [
                             <div class="p-5 grid grid-cols-3 gap-10">
 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-rep">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-rep" value="<?= $beneficiario['nome_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -431,7 +483,7 @@ $deficiencias = [
                                 </div>
 
                                 <div class="relative z-0">
-                                    <input type="email" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="email-rep">
+                                    <input type="email" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="email-rep" value="<?= $beneficiario['email_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -442,7 +494,7 @@ $deficiencias = [
 
                                                             
                                 <div class="relative z-0">
-                                    <input type="text" id="cep-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-rep" oninput="pesquisacepRep(this.value);">
+                                    <input type="text" id="cep-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-rep" oninput="pesquisacepRep(this.value);" value="<?= $beneficiario['cep_representante'] ?? "" ?>">
                                         <label for="cep-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -565,7 +617,7 @@ $deficiencias = [
                                 </script>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-rep" id="rua-rep">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-rep" id="rua-rep" value="<?= $beneficiario['endereco_representante'] ?? "" ?>">
                                         <label for="rua-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -575,7 +627,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-rep">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-rep" value="<?= $beneficiario['num_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -585,7 +637,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="comp-rep">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="comp-rep" value="<?= $beneficiario['complemento_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -595,7 +647,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-rep" id="bairro-rep">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-rep" id="bairro-rep" value="<?= $beneficiario['bairro_representante'] ?? "" ?>">
                                         <label for="bairro-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -605,7 +657,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" id="cidade-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-rep">
+                                    <input type="text" id="cidade-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-rep" value="<?= $beneficiario['cidade_representante'] ?? "" ?>">
                                         <label for="cidade-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -615,8 +667,8 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <select name="uf-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="uf-rep" >
-                                        <option value="">Selecione a UF</option>
+                                    <select name="uf-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="">
+                                        <option value="" disabled <?= empty($beneficiario['uf_representante']) ? 'selected' : '' ?>>Selecione a UF</option>
                                         <?php
                                         $ufs = [
                                             "AC" => "Acre",
@@ -648,21 +700,24 @@ $deficiencias = [
                                             "TO" => "Tocantins"
                                         ];
                                         foreach ($ufs as $sigla => $nome) {
-                                            
-                                            echo "<option value=\"$sigla\">$nome</option>";
+                                            if (!empty($beneficiario['uf_representante']) && $beneficiario['uf_representante'] === $sigla) {
+                                                echo "<option value=\"$sigla\" selected>$nome</option>";
+                                            } else {
+                                                echo "<option value=\"$sigla\">$nome</option>";
+                                            }
                                         }
                                         ?>
                                     </select>
-                                    <label for="uf-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                                         peer-focus:scale-90 peer-focus:-translate-y-4">
                                         Unidade Federativa(UF)
                                     </label>
                                 </div>
-                                
+                                    
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="tel-rep" oninput="formatPhone(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="tel-rep" oninput="formatPhone(this)" value="<?= $beneficiario['telefone_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -672,7 +727,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-rep" oninput="formatRG(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-rep" oninput="formatRG(this)" value="<?= $beneficiario['rg_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -682,7 +737,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="data-exp-rep" oninput="formatDate(this)">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="data-exp-rep" oninput="formatDate(this)" value="<?= $beneficiario['expedicao_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -692,7 +747,7 @@ $deficiencias = [
                                 </div>
                                 
                                 <div class="relative z-0"> 
-                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="expedido-rep">
+                                    <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="expedido-rep" value="<?= $beneficiario['expedido_representante'] ?? "" ?>">
                                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                         peer-focus:start-0 peer-focus:text-yellow-500 
                                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -710,12 +765,24 @@ $deficiencias = [
                                 <label for="dropzone-rg-representante" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                                     <!-- Conteúdo padrão RG Representante -->
                                     <div id="default-content-rg-rep" class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <?php if(!empty($beneficiario) && $beneficiario['copia_rg_representante']):?>
+
+                                            <div class="flex flex-col items-center justify-center mb-4">
+                                                <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=copia-rg-representante" alt="Cópia do RG do beneficiário">
+                                                <span><?= $beneficiario['nome_arquiv_rg_rep']?></span>
+                                                <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
+                                                <i class="fas fa-times mr-1"></i> Remover
+                                            </button>
+                                            </div>
+
+                                        <?php else: ?>
+                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                        </svg>
-                                        <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
-                                        <p class="mb-2 text-md text-gray-500 dark:text-gray-700">RG do Representante <strong>OBRIGATÓRIO</strong></p>
-                                        <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                            </svg>
+                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
+                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700">RG do Representante <strong>OBRIGATÓRIO</strong></p>
+                                            <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                        <?php endif; ?>
                                     </div>
                                     
                                     <!-- Área para preview RG Representante -->
@@ -737,12 +804,22 @@ $deficiencias = [
                                 <label for="dropzone-comprovante-representante" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                                     <!-- Conteúdo padrão Comprovante Representante -->
                                     <div id="default-content-comp-rep" class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <?php if(!empty($beneficiario) && $beneficiario['comprovante_representante']):?>
+                                            <div class="flex flex-col items-center justify-center mb-4">
+                                                    <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=comprovante-representante" alt="Cópia do RG do beneficiário">
+                                                    <span><?= $beneficiario['nome_arquiv_comp_rep']?></span>
+                                                    <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
+                                                    <i class="fas fa-times mr-1"></i> Remover
+                                                </button>
+                                                </div>
+                                        <?php else: ?>
+                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                        </svg>
-                                        <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
-                                        <p class="mb-2 text-md text-gray-500 dark:text-gray-700">Comprovante de Representação <strong>OBRIGATÓRIO</strong></p>
-                                        <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                            </svg>
+                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700"><span class="font-semibold">Clique aqui</span> ou arraste o arquivo aqui</p>
+                                            <p class="mb-2 text-md text-gray-500 dark:text-gray-700">Comprovante de Representação <strong>OBRIGATÓRIO</strong></p>
+                                            <p class="text-lg text-gray-500 dark:text-gray-700">PNG, JPG ou PDF</p>
+                                        <?php endif;?>
                                     </div>
                                     
                                     <!-- Área para preview Comprovante Representante -->
