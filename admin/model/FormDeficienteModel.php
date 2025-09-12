@@ -42,6 +42,36 @@ class FormDeficienteModel {
 
     }
 
+    public function deleteBeneficiario($id)
+    {
+        try {
+
+            $query = "DELETE FROM cartao_deficiente where id = :id";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 0) {
+                $this->pdo->rollBack();
+                return "Nenhum registro encontrado para deletar.";
+            }
+
+            $this->pdo->commit();
+
+            return true;
+
+        } catch(PDOException $e) {
+            if($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            error_log("Erro ao excluir o cartão" . $e->getMessage());
+            return "Erro ao excluir o cartão" . $e->getMessage();
+        }
+    }
+
     public function paginatedDeficientes($page, $limit)
     {
         try {

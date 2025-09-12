@@ -45,7 +45,8 @@
                                 <a href="#" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
                                     <i class="fa-solid fa-print"></i>
                                 </a> 
-                                <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="#" method="post">
+                                <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="delete-beneficiario.php" method="post">
+                                    <input type="hidden" name="id-beneficiario" value="<?= $beneficiario['id']?>">
                                     <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
