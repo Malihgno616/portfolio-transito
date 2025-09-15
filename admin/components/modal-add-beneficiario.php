@@ -31,8 +31,8 @@ $deficiencias = [
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-                    <form id="form-add-idoso" action="add-idoso.php" method="post" enctype="multipart/form-data">
-                        <h1 class="text-center text-2xl p-5">Informações do Idoso</h1>
+                    <form id="form-add-beneficiario" action="add-deficiente.php" method="post" enctype="multipart/form-data">
+                        <h1 class="text-center text-2xl p-5">Informações do Beneficiário</h1>
                         <div class="p-5 grid grid-cols-3 gap-10">
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-beneficiario">
@@ -55,7 +55,7 @@ $deficiencias = [
                             </div>
 
                             <div class="relative z-0">
-                                <select class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="" id="" name="sexo-beneficiario">
+                                <select class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="" name="sexo-beneficiario">
                                     <option value="">Selecione o sexo</option>
                                     <option value="masculino">Masculino</option>
                                     <option value="feminino">Feminino</option>
@@ -249,9 +249,9 @@ $deficiencias = [
 
                         <div class="relative z-0">
                             <div class="flex items-center justify-center w-full">
-                                <label for="dropzone-rg-idoso" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
+                                <label for="dropzone-rg-bene" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                                     <!-- Conteúdo padrão (será substituído pelo preview) -->
-                                    <div id="default-content" class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <div id="default-content-bene" class="flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                         </svg>
@@ -261,13 +261,13 @@ $deficiencias = [
                                     </div>
                                     
                                     <!-- Área para o preview (inicialmente vazia) - CORRIGIDO -->
-                                    <div id="preview-content" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
-                                        <div id="rg-idoso-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
-                                        <p id="rg-idoso-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
+                                    <div id="preview-content-bene" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
+                                        <div id="rg-bene-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
+                                        <p id="rg-bene-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
                                     </div>
                                     
-                                    <input id="dropzone-rg-idoso" type="file" class="hidden" name="copia-rg-bene" accept=".png,.jpg,.jpeg,.pdf"/>
-                                    <input type="hidden" name="nome-aqv-rg-idoso" id="nome-aqv-rg-bene">
+                                    <input id="dropzone-rg-bene" type="file" class="hidden" name="copia-rg-bene" accept=".png,.jpg,.jpeg,.pdf"/>
+                                    <input type="hidden" name="nome-aqv-rg-bene" id="nome-aqv-rg-bene">
                                 </label>
                             </div>
                         </div>
@@ -297,7 +297,7 @@ $deficiencias = [
                             </div>
 
                             <div class="relative z-0">
-                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="especialidade-medico">
+                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="telefone-medico">
                                     <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
                                     peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -307,7 +307,7 @@ $deficiencias = [
                             </div>
 
                             <div class="relative z-0">
-                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="especialidade-medico">
+                                <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="local-atendimento-medico">
                                     <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
                                     peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
@@ -328,7 +328,7 @@ $deficiencias = [
                             <div class="p-5">
                             <input type="checkbox"
                                 class="w-4 h-4 text-yellow-500 bg-gray-300 border-gray-600 rounded-sm focus:ring-yellow-500 focus:ring-2"
-                                name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
+                                name="deficiencia-ambulatoria" value="<?=$deficiencia?>">
                             <label for="deficiencia" class="ms-2 text-lg font-medium text-gray-900">
                                 <?= $deficiencia; ?>
                             </label>
@@ -391,9 +391,9 @@ $deficiencias = [
                                 
                         <div class="relative z-0">
                             <div class="flex items-center justify-center w-full">
-                                <label for="dropzone-rg-idoso" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
+                                <label for="dropzone-atestado" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                                     <!-- Conteúdo padrão (será substituído pelo preview) -->
-                                    <div id="default-content" class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <div id="default-content-atestado" class="flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                         </svg>
@@ -403,13 +403,13 @@ $deficiencias = [
                                     </div>
                                     
                                     <!-- Área para o preview (inicialmente vazia) - CORRIGIDO -->
-                                    <div id="preview-content" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
-                                        <div id="rg-idoso-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
-                                        <p id="rg-idoso-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
+                                    <div id="preview-content-atestado" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
+                                        <div id="atestado-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
+                                        <p id="atestado-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
                                     </div>
                                     
-                                    <input id="dropzone-rg-idoso" type="file" class="hidden" name="copia-rg-bene" accept=".png,.jpg,.jpeg,.pdf"/>
-                                    <input type="hidden" name="nome-aqv-rg-idoso" id="nome-aqv-rg-bene">
+                                    <input id="dropzone-atestado" type="file" class="hidden" name="atestado-medico" accept=".png,.jpg,.jpeg,.pdf"/>
+                                    <input type="hidden" name="nome-aqv-atestado" id="nome-aqv-atestado">
                                 </label>
                             </div>
                         </div>
