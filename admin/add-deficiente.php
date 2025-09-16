@@ -1,12 +1,15 @@
 <?php 
-
 session_start();
-
 require __DIR__.'/model/FormDeficienteModel.php';
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 use Model\FormDeficienteModel;
 
 $beneficiario = new FormDeficienteModel();
+
 function setAlert($message, $type = 'success') {
     $colorClass = $type === 'success' 
         ? 'text-green-800 bg-green-50' 
@@ -32,70 +35,101 @@ function setAlert($message, $type = 'success') {
 
 $inputPost = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
+// INICIALIZE TODAS AS VARIÁVEIS DE ARQUIVOS
+$copiaRgBeneficiario = null;
+$atestadoMedico = null;
+$copiaRgRep = null;
+$comprovanteRep = null;
+
 // Dados do beneficiário: OBRIGATÓRIOS
-$nomeBeneficiario = $inputPost['nome-beneficiario'];
-$nascBeneficiario = $inputPost['nasc-beneficiario'];
-$generoBenefiaciario = $inputPost['sexo-beneficiario'];
-$endereciBeneficiario = $inputPost['end-beneficiario'];
-$numEndBeneficiario = $inputPost['num-beneficiario'];
-$bairroBeneficiario = $inputPost['bairro-beneficiario'];
-$cepBeneficiario = $inputPost['cep-beneficiario'];
-$cidadeBeneficiario = $inputPost['cidade-beneficiario'];
-$ufBeneficiario = $inputPost['uf-beneficiario'];
-$telBeneficiario = $inputPost['tel-beneficiario'];
-$rgBeneficiario = $inputPost['rg-beneficiario'];
-$dataExpBeneficiario = $inputPost['data-exp-bene'];
-$expedidoBeneficiario = $inputPost['expedido-beneficiario'];
+$nomeBeneficiario = $inputPost['nome-beneficiario'] ?? '';
+$nascBeneficiario = $inputPost['nasc-beneficiario'] ?? '';
+$generoBenefiaciario = $inputPost['sexo-beneficiario'] ?? '';
+$cepBeneficiario = $inputPost['cep-beneficiario'] ?? '';
+$enderecoBeneficiario = $inputPost['end-beneficiario'] ?? '';
+$numEndBeneficiario = $inputPost['num-beneficiario'] ?? '';
+$bairroBeneficiario = $inputPost['bairro-beneficiario'] ?? '';
+$cidadeBeneficiario = $inputPost['cidade-beneficiario'] ?? '';
+$ufBeneficiario = $inputPost['uf-beneficiario'] ?? '';
+$telBeneficiario = $inputPost['tel-beneficiario'] ?? '';
+$rgBeneficiario = $inputPost['rg-beneficiario'] ?? '';
+$dataExpRgBeneficiario = $inputPost['data-exp-bene'] ?? '';
+$expedidoBeneficiario = $inputPost['expedido-beneficiario'] ?? '';
+$nomeAqvRgBeneficiario = $inputPost['nome-aqv-rg-bene'] ?? '';
+$nomeMedico = $inputPost['nome-medico'] ?? '';
+$crmMedico = $inputPost['crm-medico'] ?? '';
+$telMedico = $inputPost['telefone-medico'] ?? '';
+$localAtendimentoMedico = $inputPost['local-atendimento-medico'] ?? '';
+$deficiencias = is_array($inputPost['deficiencia-ambulatoria'] ?? []) ? 
+    implode(", ", $inputPost['deficiencia-ambulatoria']) : 
+    ($inputPost['deficiencia-ambulatoria'] ?? '');
+$periodoRestricaoMedica = $inputPost['restricao-medica'] ?? '';
+$dataInicio = $inputPost['data-inicio'] ?? '';
+$descricaoCid = $inputPost['descricao-cid'] ?? '';
+$nomeAqvAtestado = $inputPost['nome-aqv-atestado'] ?? '';
 
+// Processar arquivo do RG do beneficiário (OBRIGATÓRIO)
 if (isset($_FILES['copia-rg-bene']) && $_FILES['copia-rg-bene']['error'] === UPLOAD_ERR_OK) {
-
     $fileContentBeneficiario = file_get_contents($_FILES['copia-rg-bene']['tmp_name']);
-
     $finfo = new finfo(FILEINFO_MIME_TYPE);
-
     $mimeTypeBeneficiario = $finfo->file($_FILES['copia-rg-bene']['tmp_name']);
-
-    if (!in_array($mimeTypeBeneficiario, ['image/jpeg', 'image/png'])) {
-        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos');
+    
+    // Aceitar JPEG, PNG e PDF
+    if (in_array($mimeTypeBeneficiario, ['image/jpeg', 'image/png', 'application/pdf'])) {
+        $copiaRgBeneficiario = $fileContentBeneficiario;
+    } else {
+        $_SESSION['alert-beneficiario'] = setAlert('Tipo de arquivo inválido para RG do beneficiário. Apenas JPEG, PNG e PDF são permitidos', 'error');
+        header("Location: tab-deficiente.php");
+        exit();
     }
-
-    $copiaRgBeneficiario = $fileContentBeneficiario;
-
+} else {
+    $_SESSION['alert-beneficiario'] = setAlert('Cópia do RG do beneficiário é obrigatória', 'error');
+    header("Location: tab-deficiente.php");
+    exit();
 }
 
-$nomeAqvRgBeneficiario = $inputPost['nome-aqv-rg-bene'];
-$nomeMedico = $inputPost['nome-medico'];
-$crmMedico = $inputPost['crm-medico'];
-$telMedico = $inputPost['telefone-medico'];
-$localAtendimentoMedico = $inputPost['local-atendimento-medico'];
-$deficiencias = $inputPost['deficiencia-ambulatoria'];
-$periodoRestricaoMedica = $inputPost['restricao-medica'];
-$dataInicio = $inputPost['data-inicio'];
-$descricaoCid = $inputPost['descricao-cid'];
-
+// Processar atestado médico (OBRIGATÓRIO)
 if (isset($_FILES['atestado-medico']) && $_FILES['atestado-medico']['error'] === UPLOAD_ERR_OK) {
-
     $fileContentAtestado = file_get_contents($_FILES['atestado-medico']['tmp_name']);
-
     $finfo = new finfo(FILEINFO_MIME_TYPE);
-
     $mimeTypeAtestado = $finfo->file($_FILES['atestado-medico']['tmp_name']);
-
-    if (!in_array($mimeTypeAtestado, ['image/jpeg', 'image/png'])) {
-        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos');
+    
+    if (in_array($mimeTypeAtestado, ['image/jpeg', 'image/png', 'application/pdf'])) {
+        $atestadoMedico = $fileContentAtestado;
+    } else {
+        $_SESSION['alert-beneficiario'] = setAlert('Tipo de arquivo inválido para atestado médico. Apenas JPEG, PNG e PDF são permitidos', 'error');
+        header("Location: tab-deficiente.php");
+        exit();
     }
-
-    $atestadoMedico = $fileContentAtestado;
-
+} else {
+    $_SESSION['alert-beneficiario'] = setAlert('Atestado médico é obrigatório', 'error');
+    header("Location: tab-deficiente.php");
+    exit();
 }
 
-$nomeAqvAtestado = $inputPost['nome-aqv-atestado'];
+$camposObrigatorios = [
+    'nome-beneficiario', 'nasc-beneficiario', 'sexo-beneficiario',
+    'cep-beneficiario', 'end-beneficiario', 'num-beneficiario',
+    'bairro-beneficiario', 'cidade-beneficiario', 'uf-beneficiario',
+    'tel-beneficiario', 'rg-beneficiario', 'data-exp-bene',
+    'expedido-beneficiario', 'nome-medico', 'crm-medico',
+    'telefone-medico', 'local-atendimento-medico', 'data-inicio',
+    'descricao-cid'
+];
+
+foreach ($camposObrigatorios as $campo) {
+    if (empty($inputPost[$campo])) {
+        $_SESSION['alert-beneficiario'] = setAlert("Campo obrigatório não preenchido: " . $campo, 'error');
+        header("Location: tab-deficiente.php");
+        exit();
+    }
+}
 
 // Dados do beneficiário: OPCIONAIS
-$complementoBenficiario = $inputPost['comp-beneficiario'] ?? "";
+$complementoBeneficiario = $inputPost['comp-beneficiario'] ?? "";
 $cnhBeneficiario = $inputPost['cnh-beneficiario'] ?? "";
 $validadeCnhBeneficiario = $inputPost['validade-cnh-bene'] ?? "";
-$emailBeneficiaio = $inputPost['email-beneficiario'] ?? "";
+$emailBeneficiario = $inputPost['email-beneficiario'] ?? "";
 $dataFim = $inputPost['data-fim'] ?? "";
 $nomeRep = $inputPost['nome-rep'] ?? "";
 $emailRep = $inputPost['email-rep'] ?? "";
@@ -110,111 +144,108 @@ $telRep = $inputPost['tel-rep'] ?? "";
 $rgRep = $inputPost['rg-rep'] ?? "";
 $dataExpRgRep  = $inputPost['data-exp-rep'] ?? "";
 $expedidoRep = $inputPost['expedido-rep'] ?? "";
-
-// Cópia do RG do Representante
-if (isset($_FILES['copia-rg-rep']) && $_FILES['copia-rg-rep']['error'] === UPLOAD_ERR_OK) {
-    $fileContentRep = file_get_contents($_FILES['copia-rg-rep']['tmp_name']);
-
-    $fintoRep = new finfo(FILEINFO_MIME_TYPE);
-
-    $mimeTypeRep = $fintoRep->file($_FILES['copia-rg-rep']['tmp_name']);
-
-    if (!in_array($mimeTypeRep, ['image/jpeg', 'image/png'])) {
-        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
-    }
-
-    $copiaRgRep = $fileContentRep;  
-} else {
-    $copiaRgRep = null;
-}
-
 $nomeAqvRgRep = $inputPost['nome-aqv-rg-rep'] ?? "";
-
-// Comprovante do Representante
-if (isset($_FILES['comprovante-rep']) && $_FILES['comprovante-rep']['error'] === UPLOAD_ERR_OK) {
-    $fileContentCompRep = file_get_contents($_FILES['comprovante-rep']['tmp_name']);
-
-    $fintoCompRep = new finfo(FILEINFO_MIME_TYPE);
-
-    $mimeTypeCompRep = $fintoCompRep->file($_FILES['comprovante-rep']['tmp_name']);
-
-    if (!in_array($mimeTypeCompRep, ['image/jpeg', 'image/png'])) {
-        die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
-    }
-
-    $comprovanteRep = $fileContentCompRep;
-
-} else {
-    $comprovanteRep = null;
-}
-
 $nomeAqvCompRep = $inputPost['nome-aqv-comp-rep'] ?? "";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    try {
-        $beneficiario->registerBeneficiario(
-        $nomeBeneficiario,
-        $nascBeneficiario,
-        $generoBenefiaciario,
-        $endereciBeneficiario,
-        $numEndBeneficiario,
-        $bairroBeneficiario,
-        $cepBeneficiario,
-        $cidadeBeneficiario,
-        $ufBeneficiario,
-        $telBeneficiario,
-        $rgBenficiario,
-        $dataExpRgBeneficiario,
-        $expedidoBeneficiario,
-        $copiaRgBeneficiario,
-        $nomeAqvRgBeneficiario,
-        $nomeMedico,
-        $crmMedico,
-        $telMedico,
-        $localAtendimentoMedico,
-        $deficiencias,
-        $periodoRestricaoMedica,
-        $dataInicio,
-        $descricaoCid,
-        $atestadoMedico,
-        $nomeAqvAtestado,
-        $complementoBenficiario,
-        $cnhBeneficiario,
-        $validadeCnhBeneficiario,
-        $emailBeneficiaio,
-        $dataFim,
-        $nomeRep,
-        $emailRep,
-        $enderecoBeneficiario,
-        $numRep,
-        $compRep,
-        $bairroRep,
-        $cepRep,
-        $cidadeRep,
-        $ufRep,
-        $telRep,
-        $rgRep,
-        $dataExpRgRep,
-        $expedidoRep,
-        $copiaRgRep,
-        $nomeAqvRgRep,
-        $comprovanteRep,
-        $nomeAqvCompRep
-        );
-
-        $_SESSION['alert-beneficiario'] = setAlert('Dados do beneficiário adicionados com sucesso!', 'success');
-        header("Location: tab-deficiente.php");
-        exit();
-
-    } catch(Exception $e) {
-
-        $_SESSION['alert-beneficiario'] = setAlert('Error:' . $e->getMessage(), 'error');
-        header("Location: tab-deficiente.php");
-        exit();
-
-    }
+// Cópia do RG do Representante (OPCIONAL)
+if (isset($_FILES['copia-rg-rep']) && $_FILES['copia-rg-rep']['error'] === UPLOAD_ERR_OK) {
+    $fileContentRep = file_get_contents($_FILES['copia-rg-rep']['tmp_name']);
+    $finfoRep = new finfo(FILEINFO_MIME_TYPE);
+    $mimeTypeRep = $finfoRep->file($_FILES['copia-rg-rep']['tmp_name']);
     
+    if (in_array($mimeTypeRep, ['image/jpeg', 'image/png'])) {
+        $copiaRgRep = $fileContentRep;
+    }
 }
 
+// Comprovante do Representante (OPCIONAL)
+if (isset($_FILES['comprovante-rep']) && $_FILES['comprovante-rep']['error'] === UPLOAD_ERR_OK) {
+    $fileContentCompRep = file_get_contents($_FILES['comprovante-rep']['tmp_name']);
+    $finfoCompRep = new finfo(FILEINFO_MIME_TYPE);
+    $mimeTypeCompRep = $finfoCompRep->file($_FILES['comprovante-rep']['tmp_name']);
+    
+    if (in_array($mimeTypeCompRep, ['image/jpeg', 'image/png'])) {
+        $comprovanteRep = $fileContentCompRep;
+    }
+}
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $result = $beneficiario->registerBeneficiario(
+            $nomeBeneficiario,
+            $nascBeneficiario,
+            $generoBenefiaciario,
+            $enderecoBeneficiario,
+            $numEndBeneficiario,
+            $bairroBeneficiario,
+            $cepBeneficiario,
+            $cidadeBeneficiario,
+            $ufBeneficiario,
+            $telBeneficiario,
+            $rgBeneficiario,
+            $dataExpRgBeneficiario,
+            $expedidoBeneficiario,
+            $copiaRgBeneficiario,
+            $nomeAqvRgBeneficiario,
+            $nomeMedico,
+            $crmMedico,
+            $telMedico,
+            $localAtendimentoMedico,
+            $deficiencias,
+            $periodoRestricaoMedica,
+            $dataInicio,
+            $descricaoCid,
+            $atestadoMedico,
+            $nomeAqvAtestado,
+            $complementoBeneficiario,
+            $cnhBeneficiario,
+            $validadeCnhBeneficiario,
+            $emailBeneficiario,
+            $dataFim,
+            $nomeRep,
+            $emailRep,
+            $enderecoRep,
+            $numRep,
+            $compRep,
+            $bairroRep,
+            $cepRep,
+            $cidadeRep,
+            $ufRep,
+            $telRep,
+            $rgRep,
+            $dataExpRgRep,
+            $expedidoRep,
+            $copiaRgRep,
+            $nomeAqvRgRep,
+            $comprovanteRep,
+            $nomeAqvCompRep
+        );
+
+        
+        if (is_array($result) && isset($result['success']) && $result['success']) {
+            $_SESSION['alert-beneficiario'] = setAlert('Dados do beneficiário adicionados com sucesso!', 'success');
+        } elseif (is_array($result) && isset($result['error'])) {
+            $_SESSION['alert-beneficiario'] = setAlert('Erro ao cadastrar beneficiário: ' . implode(" | ", $result['error']), 'error');
+        } else {
+            $_SESSION['alert-beneficiario'] = setAlert('Erro desconhecido ao cadastrar beneficiário.', 'error');
+        }
+        
+        header("Location: tab-deficiente.php");
+        exit();
+
+    } catch(PDOException $e) {
+         $errorMessage = 'Erro no banco de dados: ' . $e->getMessage();
+    $errorCode = $e->getCode();
+    $errorFile = $e->getFile();
+    $errorLine = $e->getLine();
+
+    // Log mais detalhado
+    error_log("PDOException [$errorCode] em $errorFile:$errorLine - $errorMessage");
+
+    // Mensagem para o usuário (não inclua detalhes sensíveis em produção)
+    $_SESSION['alert-beneficiario'] = setAlert("Erro [$errorCode]: {$e->getMessage()}", 'error');
+    
+    header("Location: tab-deficiente.php");
+    exit();
+    }
+}

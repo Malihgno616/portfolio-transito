@@ -316,9 +316,13 @@ class FormDeficienteModel {
             $stmt->bindValue(':comprovante_representante', $comprovanteRep);
             $stmt->bindValue(':nome_arquiv_comp_rep', $nomeAqvCompRep);
 
-            $stmt->execute();
-
-            return $this->pdo->lastInsertId();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            } else {
+                $errorInfo = $stmt->errorInfo();
+                error_log("Erro PDO::execute: " . implode(" | ", $errorInfo));
+                return false;
+            }
 
         } catch(PDOException $e) {
             error_log("Erro ao registrar beneficiário: " . $e->getMessage());

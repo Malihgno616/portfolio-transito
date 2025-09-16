@@ -22,7 +22,7 @@ $deficiencias = [
                 <h3 class="text-xl font-medium text-gray-900 dark:text-black">
                     Cartão do Deficiente - Adicionar 
                 </h3>
-                <button type="button" class="text-gray-700 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-red-700 dark:hover:text-white" data-modal-hide="add-idoso-modal">
+                <button type="button" class="text-gray-700 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-red-700 dark:hover:text-white" data-modal-hide="add-beneficiario-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -328,7 +328,7 @@ $deficiencias = [
                             <div class="p-5">
                             <input type="checkbox"
                                 class="w-4 h-4 text-yellow-500 bg-gray-300 border-gray-600 rounded-sm focus:ring-yellow-500 focus:ring-2"
-                                name="deficiencia-ambulatoria" value="<?=$deficiencia?>">
+                                name="deficiencia-ambulatoria[]" value="<?=$deficiencia?>">
                             <label for="deficiencia" class="ms-2 text-lg font-medium text-gray-900">
                                 <?= $deficiencia; ?>
                             </label>
