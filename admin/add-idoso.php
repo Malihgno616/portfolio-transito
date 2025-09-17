@@ -57,9 +57,9 @@ if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === U
 
     $fileContentIdoso = file_get_contents($_FILES['copia-rg-idoso']['tmp_name']);
 
-    $finto = new finfo(FILEINFO_MIME_TYPE);
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-    $mimeTypeIdoso = $finto->file($_FILES['copia-rg-idoso']['tmp_name']);
+    $mimeTypeIdoso = $finfo->file($_FILES['copia-rg-idoso']['tmp_name']);
 
     if (!in_array($mimeTypeIdoso, ['image/jpeg', 'image/png'])) {
         die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
@@ -90,9 +90,9 @@ $expedidoRep = $inputPost['expedido-rep'] ?? "";
 if (isset($_FILES['copia-rg-rep']) && $_FILES['copia-rg-rep']['error'] === UPLOAD_ERR_OK) {
     $fileContentRep = file_get_contents($_FILES['copia-rg-rep']['tmp_name']);
 
-    $fintoRep = new finfo(FILEINFO_MIME_TYPE);
+    $finfoRep = new finfo(FILEINFO_MIME_TYPE);
 
-    $mimeTypeRep = $fintoRep->file($_FILES['copia-rg-rep']['tmp_name']);
+    $mimeTypeRep = $finfoRep->file($_FILES['copia-rg-rep']['tmp_name']);
 
     if (!in_array($mimeTypeRep, ['image/jpeg', 'image/png'])) {
         die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
@@ -109,9 +109,9 @@ $nomeAqvRgRep = $inputPost['nome-aqv-rg-rep'] ?? "";
 if (isset($_FILES['comprovante-rep']) && $_FILES['comprovante-rep']['error'] === UPLOAD_ERR_OK) {
     $fileContentCompRep = file_get_contents($_FILES['comprovante-rep']['tmp_name']);
 
-    $fintoCompRep = new finfo(FILEINFO_MIME_TYPE);
+    $finfoCompRep = new finfo(FILEINFO_MIME_TYPE);
 
-    $mimeTypeCompRep = $fintoCompRep->file($_FILES['comprovante-rep']['tmp_name']);
+    $mimeTypeCompRep = $finfoCompRep->file($_FILES['comprovante-rep']['tmp_name']);
 
     if (!in_array($mimeTypeCompRep, ['image/jpeg', 'image/png'])) {
         die('Tipo de arquivo inválido. Apenas JPEG e PNG são permitidos.');
