@@ -17,6 +17,10 @@ class FormDeficienteModel {
     {
         $this->conn = new Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $this->pdo = $this->conn->connect();
+
+
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
     public function getBeneficiarioById($id)
@@ -165,6 +169,7 @@ class FormDeficienteModel {
 
     public function registerBeneficiario($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $rg, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $rgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "") {
         try {
+            $this->pdo->beginTransaction(); 
 
             $query = "INSERT INTO cartao_deficiente
             (
@@ -294,7 +299,7 @@ class FormDeficienteModel {
             $stmt->bindValue(':deficiencia_ambulatoria', $deficiencias);
             $stmt->bindValue(':periodo_restricao_medica', $periodoRestricaoMedica);
             $stmt->bindValue(':data_inicio', $dataInicio);
-            $stmt->bindValue(':data_fim', $dataFim);
+            $stmt->bindValue(':data_fim', $dataFim ?? "");
             $stmt->bindValue(':cid', $cid);
             $stmt->bindValue(':atestado_medico', $atestadoMedico);
             $stmt->bindValue(':nome_arquiv_atestado', $nomeAqvAtestado);
@@ -316,17 +321,22 @@ class FormDeficienteModel {
             $stmt->bindValue(':comprovante_representante', $comprovanteRep);
             $stmt->bindValue(':nome_arquiv_comp_rep', $nomeAqvCompRep);
 
-            if ($stmt->execute()) {
+            $result = $stmt->execute();
+
+            if ($result) {
+                $this->pdo->commit();
                 return $this->pdo->lastInsertId();
             } else {
-                $errorInfo = $stmt->errorInfo();
-                error_log("Erro PDO::execute: " . implode(" | ", $errorInfo));
+                $this->pdo->rollBack();
                 return false;
             }
 
         } catch(PDOException $e) {
-            error_log("Erro ao registrar beneficiário: " . $e->getMessage());
-            return null;
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            error_log("Erro ao criar beneficiario: " . $e->getMessage());
+            throw new \Exception("Erro ao criar beneficiario: " . $e->getMessage());
         }
     }
 
