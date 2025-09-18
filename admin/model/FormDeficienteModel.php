@@ -109,6 +109,7 @@ class FormDeficienteModel {
             email_beneficiario,
             copia_rg_beneficiario,
             nome_arquiv_rg_benef,  
+            numero_registro,
             nome_medico,
             crm,
             telefone_medico,

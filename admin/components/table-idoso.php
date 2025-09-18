@@ -23,8 +23,6 @@
                         
                         <th scope="col" class="px-6 py-3">RG</th>
 
-                        <th scope="col" class="px-6 py-3 text-blue-500">STATUS</th>
-
                         <th scope="col" class="px-6 py-3 text-center">Ações</th>
                     </tr>
                 </thead>
@@ -38,9 +36,9 @@
                                 <td class="px-6 py-4 text-lg"><?= $idoso['nome_idoso']?></td>
                                 <td class="px-6 py-4 text-lg"><?= $idoso['telefone_idoso']?></td>
                                 <td class="px-6 py-4 text-lg"><?= $idoso['nascimento_idoso']?></td>
-                                <td class="px-6 py-4 text-lg font-bold text-blue-500">123456</td>
-                                <td class="px-6 py-4 text-lg"><?= $idoso['rg_idoso']?></td>
-                                <td class="px-6 py-4 text-lg bg-green-200 text-green-500 font-bold">EMITIDO</td>
+                                <td class="px-6 py-4 text-center text-lg font-normal <?= $idoso['numero_registro'] == 0 ? 'bg-red-200' : '' ?>">
+                                    <?= $idoso['numero_registro'] ?>
+                                </td>    <td class="px-6 py-4 text-lg"><?= $idoso['rg_idoso']?></td>
                                 <td class="px-6 py-4 text-lg flex gap-5">
                                     <button type="button" data-modal-target="edit-idoso-modal-<?= $idoso['id']?>" data-modal-toggle="edit-idoso-modal-<?= $idoso['id']?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></button>
                                     <a href="#" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
