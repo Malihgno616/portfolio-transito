@@ -7,6 +7,8 @@
         }
     ],
     "require": {
-        "predis/predis": "^3.2"
+        "predis/predis": "^3.2",
+        "setasign/fpdi": "^2.6",
+        "setasign/fpdf": "^1.8"
     }
 }
