@@ -29,9 +29,24 @@ $pdf->AddPage();
 
 $pdf->Image($imagePath, 0, 0, $widthMm, $heightMm);
 
+$positionNumberRegister = [
+    497,
+    276
+];
+
+$positionEmission = [
+    310,
+    346
+];
+
 $pdf->SetFont('Helvetica', 'B', 98);
 $pdf->SetTextColor(50, 50, 50);
-$pdf->SetXY(495, 276);
+$pdf->SetXY($positionNumberRegister[0], $positionNumberRegister[1]);
 $pdf->Write(35, '0000');
+
+$pdf->SetFont('Helvetica', 'B', 88);
+$pdf->SetTextColor(50,50,50);
+$pdf->SetXY($positionEmission[0], $positionEmission[1]);
+$pdf->Write(35,'01/02/2024');
 
 $pdf->Output('F', __DIR__ . '/cartao-idoso/new-cartao-idoso.pdf');
