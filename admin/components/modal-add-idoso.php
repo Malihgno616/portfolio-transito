@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="relative z-0">
-                                <select class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="" id="" name="sexo-idoso">
+                                <select class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="" name="sexo-idoso">
                                     <option value="">Selecione o sexo</option>
                                     <option value="masculino">Masculino</option>
                                     <option value="feminino">Feminino</option>
