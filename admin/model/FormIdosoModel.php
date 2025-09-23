@@ -31,7 +31,7 @@ class FormIdosoModel {
             $totalPages = ceil($total / $limit);
 
             // Depois os dados paginados
-            $stmt = $this->pdo->prepare("SELECT * FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso,nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -72,7 +72,7 @@ class FormIdosoModel {
         }
     }
 
-    public function getIdosoById($id)
+    public function getImgIdosoById($id)
     {
         try {
             $stmt = $this->pdo->prepare("SELECT id, copia_rg_idoso, nome_arquivo_rg_idoso, copia_rg_representante, nome_arquivo_rg_rep, comprovante_representante, nome_arquivo_comp_rep FROM cartao_idoso WHERE id = :id");
@@ -82,6 +82,25 @@ class FormIdosoModel {
         } catch (PDOException $e) {
             error_log("Erro ao buscar idoso por ID: " . $e->getMessage());
             return null;
+        }
+    }
+
+    public function detailIdoso($id)
+    {
+        try {
+        $query = "SELECT * FROM cartao_idoso WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Retorna o resultado dentro de um array para o foreach funcionar
+        return $result ? [$result] : [];
+
+        } catch(PDOException $e) {
+            error_log("Erro ao selecionar idoso: " . $e->getMessage());
+            return [];
         }
     }
 

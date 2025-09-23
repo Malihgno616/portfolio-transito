@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $type = $_GET['type'] ?? 'idoso';
 
     // Buscar imagem do idoso
-    $idoso = $formIdosoModel->getIdosoById($id);
+    $idoso = $formIdosoModel->getImgIdosoById($id);
     
     if ($idoso && $idoso['copia_rg_idoso'] && $type === 'idoso') {
         $finfo = new finfo(FILEINFO_MIME_TYPE);

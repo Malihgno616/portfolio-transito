@@ -30,8 +30,6 @@ $listIdosos = $idosos['idosos'];
 // Calcular offset para numeração
 $offset = ($currentPage - 1) * $limit;
 
-$descIdoso = $formIdosoModel->getIdosoById($idosos);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -52,7 +50,7 @@ $descIdoso = $formIdosoModel->getIdosoById($idosos);
 
         include __DIR__.'/components/modal-add-idoso.php';
         include __DIR__.'/components/table-idoso.php';
-        include __DIR__.'/components/modal-form-idoso.php';
+
     ?>
 </main>
 
