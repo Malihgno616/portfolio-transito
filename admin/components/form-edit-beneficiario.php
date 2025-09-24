@@ -16,7 +16,7 @@ $deficiencias = [
 <?php foreach($beneficiarios as $index => $beneficiario): ?>
     
     <div class="animate__animated animate__fadeIn p-10 border-2 rounded-lg border-gray-600/50 md:p-5 space-y-4">
-            <form class="animate__animated animate__fadeIn" id="form-edit-benef-<?= $beneficiario['id']?>" action="#" method="post" enctype="multipart/form-data">
+            <form class="animate__animated animate__fadeIn" id="form-edit-beneficiario" action="update-deficiente.php" method="post" enctype="multipart/form-data">
                 <h1 class="text-center text-2xl p-5">Informações do Beneficiário</h1>
                 <h2 class="text-center text-lg text-yellow-700 p-3 font-bold">ID: <?= $beneficiario['id']?></h2>
 
@@ -44,7 +44,7 @@ $deficiencias = [
                     </div>
 
                     <div class="relative z-0">
-                        <select name="sexo-beneficiario" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="" id="">
+                        <select name="sexo-beneficiario" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="">
                             <option value="" disabled <?= empty($beneficiario['genero_beneficiario']) ? 'selected' : '' ?>>Selecione o sexo</option>
                             <option value="masculino" <?= ($beneiciario['genero_beneficiario'] ?? '') === 'masculino' ? 'selected' : '' ?>>Masculino</option>
                             <option value="feminino" <?= ($beneficiario['genero_beneficiario'] ?? '') === 'feminino' ? 'selected' : '' ?>>Feminino</option>
@@ -239,7 +239,7 @@ $deficiencias = [
 
                 <div class="relative z-0">
                     <div class="flex items-center justify-center w-full">
-                        <label for="dropzone-rg-idoso" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
+                        <label for="dropzone-rg-bene" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                             <!-- Conteúdo padrão (será substituído pelo preview) -->
                             <div id="default-content" class="flex flex-col items-center justify-center pt-5 pb-6">
 
@@ -247,9 +247,6 @@ $deficiencias = [
                                     <div class="flex flex-col items-center justify-center mb-4">
                                         <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=copia-rg-beneficiario" alt="Cópia do RG do beneficiário">
                                         <span><?= $beneficiario['nome_arquiv_rg_benef']?></span>
-                                        <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
-                                        <i class="fas fa-times mr-1"></i> Remover
-                                    </button>
                                     </div>
                                 <?php else: ?>
 
@@ -265,11 +262,11 @@ $deficiencias = [
                             
                             <!-- Área para o preview (inicialmente vazia) - CORRIGIDO -->
                             <div id="preview-content" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
-                                <div id="rg-idoso-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
-                                <p id="rg-idoso-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
+                                <div id="rg-bene-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
+                                <p id="rg-bene-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
                             </div>
                             
-                            <input id="dropzone-rg-idoso" type="file" class="hidden" name="copia-rg-bene" accept=".png,.jpg,.jpeg,.pdf"/>
+                            <input id="dropzone-rg-bene" type="file" class="hidden" name="copia-rg-bene" accept=".png,.jpg,.jpeg,.pdf"/>
                             <input type="hidden" name="nome-aqv-rg-idoso" id="nome-aqv-rg-bene">
                         </label>
                     </div>
@@ -417,16 +414,13 @@ $deficiencias = [
                         
                 <div class="relative z-0">
                     <div class="flex items-center justify-center w-full">
-                        <label for="dropzone-rg-idoso" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
+                        <label for="dropzone-atestado" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-200 dark:hover:bg-gray-200">
                             <!-- Conteúdo padrão (será substituído pelo preview) -->
                             <div id="default-content" class="flex flex-col items-center justify-center pt-5 pb-6">
                                 <?php if(!empty($beneficiario) && $beneficiario['atestado_medico']): ?>
                                     <div class="flex flex-col items-center justify-center mb-4">
                                         <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=atestado-medico" alt="Cópia do RG do beneficiário">
                                         <span><?= $beneficiario['nome_arquiv_atestado']?></span>
-                                        <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
-                                        <i class="fas fa-times mr-1"></i> Remover
-                                    </button>
                                     </div>
 
                                 <?php else: ?>
@@ -440,13 +434,13 @@ $deficiencias = [
                             </div>
                             
                             <!-- Área para o preview (inicialmente vazia) - CORRIGIDO -->
-                            <div id="preview-content" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
-                                <div id="rg-idoso-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
-                                <p id="rg-idoso-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
+                            <div id="preview-content-atestado" class="hidden flex flex-col items-center justify-center w-full h-full p-4">
+                                <div id="atestado-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
+                                <p id="atestado-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
                             </div>
                             
-                            <input id="dropzone-rg-idoso" type="file" class="hidden" name="copia-rg-bene" accept=".png,.jpg,.jpeg,.pdf"/>
-                            <input type="hidden" name="nome-aqv-rg-idoso" id="nome-aqv-rg-bene">
+                            <input id="dropzone-atestado" type="file" class="hidden" name="atestado-medico" accept=".png,.jpg,.jpeg,.pdf"/>
+                            <input type="hidden" name="nome-aqv-atestado" id="nome-aqv-atestado">
                         </label>
                     </div>
                 </div>
@@ -753,9 +747,7 @@ $deficiencias = [
                                 <div class="flex flex-col items-center justify-center mb-4">
                                     <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=copia-rg-representante" alt="Cópia do RG do beneficiário">
                                     <span><?= $beneficiario['nome_arquiv_rg_rep']?></span>
-                                    <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
-                                    <i class="fas fa-times mr-1"></i> Remover
-                                </button>
+                                    
                                 </div>
 
                             <?php else: ?>
@@ -791,9 +783,7 @@ $deficiencias = [
                                 <div class="flex flex-col items-center justify-center mb-4">
                                         <img class="max-w-xs max-h-40 object-contain" src="display-beneficiario.php?id=<?= $beneficiario['id']?>&type=comprovante-representante" alt="Cópia do RG do beneficiário">
                                         <span><?= $beneficiario['nome_arquiv_comp_rep']?></span>
-                                        <button type="button" class="mt-2 text-red-600 hover:text-red-800 text-sm remove-btn">
-                                        <i class="fas fa-times mr-1"></i> Remover
-                                    </button>
+                                        
                                     </div>
                             <?php else: ?>
                                 <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -829,7 +819,171 @@ $deficiencias = [
                 </div>
 
             </form>
-    </div>        
+    </div>       
+    <script>
+        // Função para configurar o preview de imagens para cada área de upload
+        function setupImagePreview(inputId, previewContainerId, fileNameId, defaultContentId, imagePreviewId) {
+            const input = document.getElementById(inputId);
+            const previewContainer = document.getElementById(previewContainerId);
+            const fileNameElement = document.getElementById(fileNameId);
+            const defaultContent = document.getElementById(defaultContentId);
+            const imagePreview = document.getElementById(imagePreviewId);
+
+            if (!input) return;
+
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                
+                if (file) {
+                    // Verifica se é uma imagem
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            // Cria elemento de imagem para preview
+                            imagePreview.innerHTML = `<img src="${e.target.result}" class="max-w-xs max-h-40 object-contain" alt="Preview">`;
+                            
+                            // Exibe nome do arquivo
+                            fileNameElement.textContent = file.name;
+                            
+                            // Esconde conteúdo padrão e mostra preview
+                            defaultContent.classList.add('hidden');
+                            previewContainer.classList.remove('hidden');
+                        };
+                        
+                        reader.readAsDataURL(file);
+                    } else if (file.type === 'application/pdf') {
+                        // Para PDF, mostra ícone e nome do arquivo
+                        imagePreview.innerHTML = `
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-file-pdf text-red-500 text-6xl mb-2"></i>
+                                <span class="text-sm text-gray-600">Arquivo PDF</span>
+                            </div>
+                        `;
+                        
+                        fileNameElement.textContent = file.name;
+                        defaultContent.classList.add('hidden');
+                        previewContainer.classList.remove('hidden');
+                    }
+                }
+            });
+        }
+
+        // Função para remover a imagem/preview
+        function setupRemoveButtons() {
+            document.querySelectorAll('.remove-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const container = this.closest('label');
+                    const input = container.querySelector('input[type="file"]');
+                    const previewContainer = container.querySelector('[id*="preview-content"]');
+                    const defaultContent = container.querySelector('[id*="default-content"]');
+                    const imagePreview = container.querySelector('[id*="-image-preview"]');
+                    const fileNameElement = container.querySelector('[id*="-file-name"]');
+                    
+                    // Limpa o input de arquivo
+                    if (input) input.value = '';
+                    
+                    // Limpa o preview
+                    if (imagePreview) imagePreview.innerHTML = '';
+                    if (fileNameElement) fileNameElement.textContent = '';
+                    
+                    // Mostra conteúdo padrão e esconde preview
+                    if (previewContainer) previewContainer.classList.add('hidden');
+                    if (defaultContent) defaultContent.classList.remove('hidden');
+                });
+            });
+        }
+
+        // Função para drag and drop
+        function setupDragAndDrop(dropzoneId, inputId) {
+            const dropzone = document.getElementById(dropzoneId);
+            const input = document.getElementById(inputId);
+
+            if (!dropzone || !input) return;
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                dropzone.classList.add('bg-gray-200', 'border-yellow-500');
+            }
+
+            function unhighlight() {
+                dropzone.classList.remove('bg-gray-200', 'border-yellow-500');
+            }
+
+            dropzone.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                input.files = files;
+                
+                // Dispara evento change no input
+                const event = new Event('change', { bubbles: true });
+                input.dispatchEvent(event);
+            }
+        }
+
+        // Inicializar quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar preview para cada tipo de arquivo
+            
+            // RG do Beneficiário
+            setupImagePreview(
+                'dropzone-rg-bene',
+                'preview-content',
+                'rg-bene-file-name',
+                'default-content',
+                'rg-bene-image-preview'
+            );
+
+            // Atestado Médico
+            setupImagePreview(
+                'dropzone-atestado',
+                'preview-content-atestado',
+                'atestado-file-name',
+                'default-content',
+                'atestado-image-preview'
+            );
+            
+            // Configurar botões de remover
+            setupRemoveButtons();
+
+            // Configurar drag and drop para cada área
+            setupDragAndDrop('dropzone-rg-bene', 'dropzone-rg-bene');
+            setupDragAndDrop('dropzone-atestado', 'dropzone-atestado');     
+        });
+
+        // Função para clique na área de upload (fallback)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('label[for*="dropzone"]')) {
+                const label = e.target.closest('label');
+                const inputId = label.getAttribute('for');
+                const input = document.getElementById(inputId);
+                if (input) {
+                    input.click();
+                }
+            }
+        });
+        </script> 
 
 <?php endforeach; ?>
 
