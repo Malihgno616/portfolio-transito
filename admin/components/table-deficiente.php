@@ -41,18 +41,25 @@
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['rg_beneficiario']?></td>
                             <td class="px-6 py-4 text-lg <?= $beneficiario['numero_registro'] === 0 ? 'bg-red-200 text-red-500 font-bold' : '' ?>"><?= $beneficiario['numero_registro'] === 0 ? 'NÃO EMITIDO' : 'EMITIDO'?></td>
                             <td class="px-6 py-4 text-lg flex gap-5">
-                                <button data-modal-target="form-edit-benef-<?= $beneficiario['id']?>" data-modal-toggle="form-edit-benef-<?= $beneficiario['id']?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200">
-                                    <i class="fa-solid fa-pen-ruler"></i>
-                                </button>
-                                <a href="#" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
+
+                                <form action="detalhes-card-deficiente.php" method="get">
+                                    <input type="hidden" name="id-beneficiario" value="<?= $beneficiario['id']?>">
+                                    <button type="submit" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200">
+                                        <i class="fa-solid fa-pen-ruler"></i>
+                                    </button>
+                                </form>
+
+                                <button class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
                                     <i class="fa-solid fa-print"></i>
-                                </a> 
+                                </button>
+
                                 <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="delete-beneficiario.php" method="post">
                                     <input type="hidden" name="id-beneficiario" value="<?= $beneficiario['id']?>">
                                     <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
+                            
                             </td>
                         </tr>
                         <?php endforeach; ?>

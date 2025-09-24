@@ -47,7 +47,6 @@ $offset = ($currentPage - 1) * $limit;
     
         include __DIR__.'/components/table-deficiente.php';
         include __DIR__.'/components/modal-add-beneficiario.php';
-        include __DIR__.'/components/modal-edit-beneficiario.php';
     ?>
 </main>
 
