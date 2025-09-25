@@ -36,10 +36,10 @@
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['nome_beneficiario']?></td>
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['telefone_beneficiario']?></td>
                             <td class="px-6 py-4 text-center text-lg font-normal <?= $beneficiario['numero_registro'] === 0 ? 'bg-red-200' : '' ?>">
-                                <?= $beneficiario['numero_registro']?>
+                                <?= intval($beneficiario['numero_registro'])?>
                             </td>
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['rg_beneficiario']?></td>
-                            <td class="px-6 py-4 text-lg <?= $beneficiario['numero_registro'] === 0 ? 'bg-red-200 text-red-500 font-bold' : 'bg-green-200 text-green-500 font-bold' ?>"><?= $beneficiario['numero_registro'] === 0 ? 'NÃO EMITIDO' : 'EMITIDO'?></td>
+                            <td class="px-6 py-4 text-lg <?= intval($beneficiario['numero_registro']) === 0 ? 'bg-red-200 text-red-500 font-bold' : 'bg-green-200 text-green-500 font-bold' ?>"><?= intval($beneficiario['numero_registro']) === 0 ? 'NÃO EMITIDO' : 'EMITIDO'?></td>
                             <td class="px-6 py-4 text-lg flex gap-5">
 
                                 <form action="detalhes-card-deficiente.php" method="get">
