@@ -41,7 +41,7 @@ class CardIdosoFrente extends BasePdf {
 
     public function addContentRegNumber($regNumber)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 98);
+        $this->pdf->SetFont('Helvetica', 'B', 88);
         $this->pdf->SetTextColor(255, 0, 0);
         $this->pdf->SetXY($this->positionRegNumber[0], $this->positionRegNumber[1]);
         $this->pdf->Write(35, $regNumber);
