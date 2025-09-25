@@ -35,7 +35,7 @@
                             </td>
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['nome_beneficiario']?></td>
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['telefone_beneficiario']?></td>
-                            <td class="px-6 py-4 text-center text-lg font-normal <?= $beneficiario['numero_registro'] === 0 ? 'bg-red-200' : '' ?>">
+                            <td class="px-6 py-4 text-center text-lg font-normal <?= intval($beneficiario['numero_registro']) === 0 ? 'bg-red-200' : 'bg-green-200' ?>">
                                 <?= intval($beneficiario['numero_registro'])?>
                             </td>
                             <td class="px-6 py-4 text-lg"><?= $beneficiario['rg_beneficiario']?></td>
