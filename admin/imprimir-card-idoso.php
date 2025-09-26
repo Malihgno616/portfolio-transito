@@ -1,5 +1,8 @@
 <?php 
 
+require __DIR__.'/model/FormIdosoModel.php';
+
+
 session_start([
     'cookie_secure' => true,
     'cookie_httponly' => true,
@@ -9,6 +12,16 @@ session_start([
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
+
+use Model\FormIdosoModel;
+
+$formIdosoModel = new FormIdosoModel();
+
+$inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
+
+$idIdoso = $inputGet['id-idoso'];
+
+$nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
 
 ?>
 
@@ -20,13 +33,30 @@ ini_set("display_startup_errors", 1);
 
 <main class="w-full h-full p-10">
     <h1 class="text-5xl font-light text-center mb-5">Impressão dos cartões</h1>
-    <div class="flex gap-8 items-center justify-center w-full">
-        <a href="#" class="w-[700px] h-[350px] bg-yellow-200 flex items-center justify-center border-4 rounded-md hover:bg-yellow-300 duration-75">
-            <h1 class="text-2xl text-gray-800">Imprimir Frente</h1>
-        </a>
-        <a href="#" class="w-[700px] h-[350px] bg-yellow-200 flex items-center justify-center border-4 rounded-md hover:bg-yellow-300 duration-75">
-            <h1 class="text-2xl text-gray-800">Imprimir Verso</h1>
-        </a>
+    <p class="font-bold text-2xl text-center m-7 text-yellow-700">
+        ID: <?= $idIdoso; ?>
+    </p>
+    <p class="text-2xl text-center m-7">
+        Nome: <?= $nomeBeneficiario; ?>
+    </p>
+        <div class="flex gap-8 justify-center flex-col items-center w-full">
+        
+        <form action="card-idoso-frente.php" method="get" target="_blank">
+            <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
+            <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
+                <h1 class="text-4xl text-gray-800 text-center">Imprimir Frente <i class="fa-solid fa-file-pdf"></i></h1>
+            </button>
+        </form>
+
+        <form action="card-idoso-verso.php" method="get" target="_blank">
+            <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
+            <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
+                <h1 class="text-4xl text-gray-800 text-center">Imprimir Verso <i class="fa-solid fa-file-pdf"></i></h1>
+            </button>
+        </form>
+
+        <a href="tab-idoso.php" class="rounded-xl w-[400px] text-3xl flex justify-center m-auto items-center bg-yellow-600 text-white p-3 hover:bg-yellow-500 duration-75">Voltar</a>
+    
     </div>
 </main>
 
