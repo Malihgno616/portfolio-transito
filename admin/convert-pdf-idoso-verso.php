@@ -1,14 +1,12 @@
 <?php 
 
+namespace ConvertPdf;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 include_once __DIR__. '/basepdf.php';
 
 use ConvertPdf\BasePdf;
-
-$date = date("d/m/Y");
-
-$year = date('Y');
 
 $imagePath = __DIR__ . '/cartao-idoso/cartao-idoso-verso.png';
 
@@ -51,22 +49,3 @@ class CardIdosoVerso extends BasePdf {
 
 }
 
-$idIdoso = 120;
-
-$outputPath = __DIR__ . '/cartao-idoso/cartao-idoso-id' . $idIdoso . '-verso.pdf';
-
-try {
-
-    $idosoVerso = new CardIdosoVerso($imagePath, [295,10]);
-
-    $idosoVerso->addContentNomeIdoso("Idoso da Silva");
-
-    $idosoVerso->generate($outputPath);
-
-    echo "Cartão idoso-verso enviado com sucesso!!!";
-
-} catch(Exception $e) {
-
-    echo "Erro: " . $e->getMessage();
-
-}

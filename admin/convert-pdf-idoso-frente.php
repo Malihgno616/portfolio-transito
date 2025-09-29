@@ -1,5 +1,7 @@
 <?php
 
+namespace ConvertPdf;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 include_once __DIR__. '/basepdf.php';
@@ -59,27 +61,5 @@ class CardIdosoFrente extends BasePdf {
     {
         $this->pdf->Output('F', $outputPath);
     }
-
-}
-
-$idIdoso = 120;
-
-$outputPath = __DIR__ . '/cartao-idoso/cartao-idoso-id' . $idIdoso . '-frente.pdf';
-
-try {
-    
-    $idosoFrente = new CardIdosoFrente($imagePath,[497, 276], [310, 346]);
-
-    $idosoFrente->addContentRegNumber('0000' . '/' . $year);
-    
-    $idosoFrente->addContentIssueDate($date);
-    
-    $idosoFrente->generate($outputPath);
-
-    echo "PDF gerado com sucesso!!";
-
-} catch(Exception $e) {
-    
-    echo "Erro:" . $e->getMessage();
 
 }

@@ -99,7 +99,7 @@ class FormIdosoModel {
             return [];
         }
     }
-
+    
     public function detailIdoso($id)
     {
         try {
