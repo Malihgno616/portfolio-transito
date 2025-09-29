@@ -36,7 +36,7 @@
                                 <td class="px-6 py-4 text-lg"><?= $idoso['nome_idoso']?></td>
                                 <td class="px-6 py-4 text-lg"><?= $idoso['telefone_idoso']?></td>
                                 <td class="px-6 py-4 text-lg"><?= $idoso['nascimento_idoso']?></td>
-                                <td class="px-6 py-4 text-center text-lg font-normal <?= $idoso['numero_registro'] == 0 ? 'bg-red-200' : '' ?>">
+                                <td class="px-6 py-4 text-center text-lg font-normal <?= $idoso['numero_registro'] == 0 ? 'bg-red-200' : 'bg-green-200' ?>">
                                     <?= $idoso['numero_registro'] ?>
                                 </td>    <td class="px-6 py-4 text-lg"><?= $idoso['rg_idoso']?></td>
                                 <td class="px-6 py-4 text-lg flex gap-5">

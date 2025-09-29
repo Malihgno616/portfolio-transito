@@ -2,7 +2,6 @@
 
 require __DIR__.'/model/FormIdosoModel.php';
 
-
 session_start([
     'cookie_secure' => true,
     'cookie_httponly' => true,
