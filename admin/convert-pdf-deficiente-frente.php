@@ -1,5 +1,7 @@
 <?php 
 
+namespace ConvertPdf;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 include_once __DIR__. '/basepdf.php';
@@ -61,21 +63,21 @@ class CardDeficienteFrente extends BasePdf {
     }
 }
 
-$idBeneficiario = 111;
+// $idBeneficiario = 111;
 
-$outputPath = __DIR__ . "/cartao-deficiente/cartao-deficiente-frente-id$idBeneficiario.pdf";
+// $outputPath = __DIR__ . "/cartao-deficiente/cartao-deficiente-frente-id$idBeneficiario.pdf";
 
-try {
+// try {
 
-    $card = new CardDeficienteFrente($imagePath, [495, 255], [230, 333]
-);
+//     $card = new CardDeficienteFrente($imagePath, [495, 255], [230, 333]
+// );
 
-    $card->addContentRegNumber("1234/$year");
-    $card->addContentIssueDate($date);
-    $card->generate($outputPath);
+//     $card->addContentRegNumber("1234/$year");
+//     $card->addContentIssueDate($date);
+//     $card->generate($outputPath);
 
-    echo "PDF gerado com sucesso: $outputPath\n";
+//     echo "PDF gerado com sucesso: $outputPath\n";
 
-} catch (Exception $e) {
-    echo 'Erro ao gerar o PDF: ',  $e->getMessage(), "\n";
-}
+// } catch (Exception $e) {
+//     echo 'Erro ao gerar o PDF: ',  $e->getMessage(), "\n";
+// }

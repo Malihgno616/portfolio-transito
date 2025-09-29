@@ -10,8 +10,17 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
-$idBeneficiario = 1;
-$nomeBeneficiario = "João da Silva";
+require __DIR__.'/model/FormDeficienteModel.php';
+
+use Model\FormDeficienteModel;
+
+$formDeficienteModel = new FormDeficienteModel();
+
+$inputGet = filter_input_array(INPUT_GET, FILTER_SANITIZE_SPECIAL_CHARS);
+
+$idBeneficiario = $inputGet['id-beneficiario'];
+
+$nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['nome_beneficiario'];
 
 ?>
 
@@ -32,14 +41,16 @@ $nomeBeneficiario = "João da Silva";
     <div class="flex gap-8 justify-center flex-col items-center w-full">
         
         <form action="card-deficiente-frente.php" method="get" target="_blank">
+            <input type="hidden" name="id-beneficiario" value="<?= $idBeneficiario ?>">
             <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
                 <h1 class="text-4xl text-gray-800 text-center">Imprimir Frente <i class="fa-solid fa-file-pdf"></i></h1>
             </button>
         </form>
 
         <form action="card-deficiente-verso.php" method="get" target="_blank">
+            <input type="hidden" name="id-beneficiario" value="<?= $idBeneficiario ?>">
             <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                <h1 class="text-4xl text-gray-800 text-center">Imprimir Frente <i class="fa-solid fa-file-pdf"></i></h1>
+                <h1 class="text-4xl text-gray-800 text-center">Imprimir Verso <i class="fa-solid fa-file-pdf"></i></h1>
             </button>
         </form>
 

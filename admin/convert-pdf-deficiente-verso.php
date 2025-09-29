@@ -1,5 +1,7 @@
 <?php 
 
+namespace ConvertPdf;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 include_once __DIR__. '/basepdf.php';
@@ -50,20 +52,20 @@ class CardDeficienteVerso extends BasePdf {
 
 }
 
-$idDeficiente = 120;
+// $idDeficiente = 120;
 
-$outputPath = __DIR__ . '/cartao-deficiente/cartao-deficiente-id' . $idDeficiente . '-verso.pdf';
+// $outputPath = __DIR__ . '/cartao-deficiente/cartao-deficiente-id' . $idDeficiente . '-verso.pdf';
 
-try {
+// try {
 
-    $deficienteVerso = new CardDeficienteVerso($imagePath, [295,10]);
+//     $deficienteVerso = new CardDeficienteVerso($imagePath, [295,10]);
     
-    $deficienteVerso->addContentNomeIdoso('Nome do Deficiente');
+//     $deficienteVerso->addContentNomeIdoso('Nome do Deficiente');
     
-    $deficienteVerso->generate($outputPath);
+//     $deficienteVerso->generate($outputPath);
 
-    echo "PDF gerado com sucesso: " . $outputPath . "\n";
+//     echo "PDF gerado com sucesso: " . $outputPath . "\n";
 
-} catch (Exception $e) {
-    echo "Erro ao gerar o PDF: " . $e->getMessage() . "\n";
-}
+// } catch (Exception $e) {
+//     echo "Erro ao gerar o PDF: " . $e->getMessage() . "\n";
+// }

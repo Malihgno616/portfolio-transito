@@ -46,6 +46,28 @@ class FormDeficienteModel {
 
     }
 
+    public function detailsDeficiente($id)
+    {
+        try {
+
+            $query = "SELECT id, nome_beneficiario, numero_registro FROM cartao_deficiente WHERE id = :id";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+
+            error_log("Erro ao buscar o id: " . $e->getMessage());
+
+            return null;
+        }
+    }
+
     public function deleteBeneficiario($id)
     {
         try {
