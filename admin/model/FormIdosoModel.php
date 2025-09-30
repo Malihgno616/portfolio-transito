@@ -112,7 +112,7 @@ class FormIdosoModel {
     public function cardIdosoDetails($id)
     {
         try {
-            $query = "SELECT id, nome_idoso, numero_registro FROM cartao_idoso WHERE id = :id";
+            $query = "SELECT id, nome_idoso, numero_registro, data_emissao FROM cartao_idoso WHERE id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();

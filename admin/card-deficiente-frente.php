@@ -42,9 +42,11 @@ try {
 
     $numReg = $formDeficienteModel->detailsDeficiente($idBeneficiario)['numero_registro'];
 
+    $issueDate = $formDeficienteModel->detailsDeficiente($idBeneficiario)['data_emissao'];
+
     $pdfFrente->addContentRegNumber($numReg . '/' . $year);
 
-    $pdfFrente->addContentIssueDate($date);
+    $pdfFrente->addContentIssueDate($issueDate);
    
     $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['nome_beneficiario'];
 

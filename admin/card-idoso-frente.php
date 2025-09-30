@@ -26,13 +26,11 @@ $formIdosoModel = new FormIdosoModel();
 
 $inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
 
-$date = date("d/m/Y");
-
-$year = date('Y');
-
 $idIdoso = $inputGet['id-idoso'];
 
 $numReg = $formIdosoModel->cardIdosoDetails($idIdoso)['numero_registro'];
+
+$issueDate = $formIdosoModel->cardIdosoDetails($idIdoso)['data_emissao'];
 
 $outputDir = __DIR__  .'/pdf-idoso-frente';
 
@@ -44,7 +42,7 @@ try {
     
     $pdfFrente->addContentRegNumber($numReg . '/' . $year);
     
-    $pdfFrente->addContentIssueDate($date);
+    $pdfFrente->addContentIssueDate($issueDate);
     
     $pdfFrente->generate($outputPath);
     
