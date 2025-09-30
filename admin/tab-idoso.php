@@ -49,6 +49,7 @@ $offset = ($currentPage - 1) * $limit;
         }
 
         include __DIR__.'/components/modal-add-idoso.php';
+        include __DIR__.'/components/modal-cria-num-reg-idoso.php';
         include __DIR__.'/components/table-idoso.php';
 
     ?>

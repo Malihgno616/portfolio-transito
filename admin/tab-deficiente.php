@@ -46,6 +46,7 @@ $offset = ($currentPage - 1) * $limit;
         }
     
         include __DIR__.'/components/table-deficiente.php';
+        include __DIR__.'/components/modal-cria-num-reg-deficiente.php';
         include __DIR__.'/components/modal-add-beneficiario.php';
     ?>
 </main>

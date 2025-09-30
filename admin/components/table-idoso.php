@@ -55,6 +55,8 @@
                                             </button>
                                         </form>
 
+                                        <button data-modal-target="register-num-idoso" data-modal-toggle="register-num-idoso" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-700 dark:text-yellow-700 hover:bg-yellow-200">Registrar</button>
+
                                     <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="delete-idoso.php" method="post">
                                         <input type="hidden" name="id-idoso" value="<?= $idoso['id'] ?>">
                                         
