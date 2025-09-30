@@ -56,7 +56,7 @@
                                     </button>
                                 </form>
                                 
-                                <button data-modal-target="register-num-deficiente" data-modal-toggle="register-num-deficiente" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-700 dark:text-yellow-700 hover:bg-yellow-200">Registrar</button>
+                                <button data-modal-target="register-num-deficiente-<?= $beneficiario['id']?>" data-modal-toggle="register-num-deficiente-<?= $beneficiario['id']?>" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-700 dark:text-yellow-700 hover:bg-yellow-200">Registrar</button>
                                 
                                 <form onsubmit="return window.confirm('Tem certeza que deseja excluir este cartão?')" action="delete-beneficiario.php" method="post">
                                     <input type="hidden" name="id-beneficiario" value="<?= $beneficiario['id']?>">

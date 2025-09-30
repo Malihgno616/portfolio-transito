@@ -46,6 +46,30 @@ class FormDeficienteModel {
 
     }
 
+    public function addRegistration($id, $regNumber, $issueDate)
+    {
+        try {
+
+            $query = "UPDATE cartao_deficiente SET numero_registro = :regNumber, data_emissao = :issueDate WHERE id = :id ";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(':regNumber', $regNumber, PDO::PARAM_INT);
+
+            $stmt->bindValue(':issueDate', $issueDate, PDO::PARAM_STR);
+
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            return $stmt->rowCount() > 0;
+
+        } catch(PDOException $e) {
+            error_log("Erro ao adicionar nº de registro: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function detailsDeficiente($id)
     {
         try {
