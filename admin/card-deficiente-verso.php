@@ -35,8 +35,20 @@ try {
     $pdfVerso = new CardDeficienteVerso($imagePath, [295,10]);
 
     $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['nome_beneficiario'];
-       
-    $pdfVerso->addContentNomeIdoso($nomeBeneficiario);
+
+    $nomeCorrigido = $nomeBeneficiario;
+
+    // Tentativa 1: Remover possíveis caracteres problemáticos
+    $nomeCorrigido = preg_replace('/[^\x00-\x7F\x80-\xFF]/', '', $nomeCorrigido);
+
+    // Tentativa 2: Converter para ISO-8859-1
+    if (function_exists('iconv')) {
+        $nomeCorrigido = iconv('UTF-8', 'ISO-8859-1//IGNORE', $nomeCorrigido);
+    } else {
+        $nomeCorrigido = mb_convert_encoding($nomeCorrigido, 'ISO-8859-1', 'UTF-8');
+    }
+          
+    $pdfVerso->addContentNomeIdoso($nomeCorrigido);
     
     $outputPath = $imageDir . '/cartao-deficiente-id' . $idBeneficiario . '-verso.pdf';
 
