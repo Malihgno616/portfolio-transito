@@ -32,5 +32,8 @@ ini_set("display_startup_errors", 1);
     include __DIR__.'/components/form-news.php';
 
     ?>
+    <div class="m-auto text-center p-12">
+      <a href="noticias.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
   </main>
   <?php include __DIR__.'/layout/footer.php';?>

@@ -49,6 +49,9 @@ $offset = ($currentPage - 1) * $limit;
         include __DIR__.'/components/modal-cria-num-reg-deficiente.php';
         include __DIR__.'/components/modal-add-beneficiario.php';
     ?>
+    <div class="m-auto text-center p-12">
+      <a href="servicos.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
 </main>
 
 <?php include __DIR__.'/layout/footer.php';?>

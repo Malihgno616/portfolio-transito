@@ -22,6 +22,9 @@ include __DIR__.'/layout/header.php';
 
 <main class="w-full h-full p-10">
   <?php include __DIR__.'/components/noticias.php';?>
+  <div class="m-auto text-center p-12">
+      <a href="home.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
 </main>
 
 <?php include __DIR__.'/layout/footer.php'; ?>
