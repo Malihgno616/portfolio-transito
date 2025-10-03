@@ -1,4 +1,4 @@
-<h1 class="text-5xl font-light text-center mb-5">Contatos</h1>
+
     <?php 
        if(isset($_SESSION['success_del_contact'])) {
            echo $_SESSION['success_del_contact'];
@@ -10,6 +10,12 @@
     ?>
   <div class="flex justify-center animate__animated animate__fadeIn">
     <div class="p-10 w-full">
+        <div class="flex justify-between items-center w-[58em] m-auto mb-5">
+        <h1 class="text-5xl text-center">Contatos</h1>
+        <a href="home.php" class="text-3xl text-center p-2 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
+    <hr>
+    <br>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
               <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">

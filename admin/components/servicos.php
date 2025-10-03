@@ -1,6 +1,11 @@
-<h1 class="text-5xl font-light text-center mb-5">Serviços</h1>
-  <div class="flex justify-center animate__animated animate__fadeIn">
-    <div class="p-10 w-full">
+<div class="flex justify-center animate__animated animate__fadeIn">
+  <div class="p-10 w-full">
+      <div class="flex justify-between items-center w-[58em] m-auto mb-5">
+        <h1 class="text-5xl text-center">Serviços</h1>
+        <a href="home.php" class="text-3xl text-center p-2 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+      </div>
+      <hr>
+      <br>
       <div class="flex items-center justify-center flex-col gap-7">
           <a href="tab-idoso.php" class="m-auto text-center h-auto w-[35em] rounded-md bg-gray-200 p-10 hover:shadow-xl duration-150">
             <div class="flex flex-col items-center justify-center">
@@ -18,7 +23,7 @@
           </a>
       </div>
       <div class="m-auto text-center p-12">
-        <a href="home.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+        
       </div>
     </div>
     
