@@ -2,7 +2,9 @@
 
 require_once __DIR__. '/conn.php';
 
-$conn = new Conn();
+use ConnectionClientSide\ConnectionClientSide;
+
+$conn = new ConnectionClientSide();
 
 $pdo = $conn->connect();
 
@@ -33,7 +35,7 @@ try {
 
 function obtainContentNews($newsId) {
   try {
-      $conn = new Conn();
+      $conn = new ConnectionClientSide();
       $pdo = $conn->connect();
       
       $stmt = $pdo->prepare("SELECT 

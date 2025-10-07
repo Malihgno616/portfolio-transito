@@ -1,5 +1,12 @@
 <?php
 session_start(); 
+
+$erro = $_SESSION['erro'] ?? null;
+$erro_campo = $_SESSION['erro-campos'] ?? [];
+$old = $_SESSION['old-contact'] ?? [];
+
+unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['old-contact']);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

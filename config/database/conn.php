@@ -1,28 +1,28 @@
 <?php 
 
-require __DIR__.'/../../vendor/autoload.php';
+namespace ConnectionClientSide;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '../../../');
-$dotenv->safeLoad();
+require_once __DIR__.'/env.php';
+use PDO;
+use PDOException;
 
-define("DB_HOST", $_ENV['DB_HOST']);
-define("DB_NAME", $_ENV['DB_NAME']);
-define("DB_USER", $_ENV['DB_USER']);
-define("DB_PASSWORD", $_ENV['DB_PASSWORD']);
+class ConnectionClientSide {
+    private $host = DB_HOST;
+    private $db_name = DB_NAME;
+    private $username = DB_USER;
+    private $password = DB_PASSWORD;
+    public $conn;
 
-class Conn {
-  
-  public function connect(){
-    try {
-      $pdo = new PDO('mysql:host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', 
-      DB_USER,
-      DB_PASSWORD);
-      
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      return $pdo;
+    public function connect() {
+        $this->conn = null;
 
-    } catch (PDOException $e) {
-      die("Erro ao conectar ao banco de dados: " . $e->getMessage());
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+        } catch(PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
+        }
+
+        return $this->conn;
     }
-  }
 }
