@@ -1,28 +1,43 @@
 <?php 
 
-namespace ConnectionClientSide;
+class Conn {
+  private $host;
+  private $user;
+  private $pass;
+  private $db;
+  private $conn;
+  private $connected;
 
-require_once __DIR__.'/env.php';
-use PDO;
-use PDOException;
+  public function __construct($host, $user, $pass, $db) {
+    $this->host = $host;
+    $this->user = $user;
+    $this->pass = $pass;
+    $this->db = $db;
+  }
 
-class ConnectionClientSide {
-    private $host = DB_HOST;
-    private $db_name = DB_NAME;
-    private $username = DB_USER;
-    private $password = DB_PASSWORD;
-    public $conn;
-
-    public function connect() {
-        $this->conn = null;
-
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->conn->exec("set names utf8");
-        } catch(PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
-        }
-
-        return $this->conn;
+  public function connect() {
+    try {
+      $this->conn = new PDO(
+        "mysql:host=$this->host;dbname=$this->db;charset=utf8mb4",
+        $this->user,
+        $this->pass
+      );
+      $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $this->connected = true;
+    } catch(PDOException $e) {
+      $this->connected = false;
     }
+
+    return $this->response(); 
+  }
+
+  private function response()
+  {
+    if($this->connected) {
+      return $this->conn;
+    } else {
+      return false;
+    }
+  }
+
 }

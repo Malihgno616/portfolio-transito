@@ -1,213 +1,227 @@
-<?php 
-  session_start();
+<?php
+session_start();
 
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-  
-  require('conn.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-  $_SESSION['old-form-idoso'] = [
-    'nome-idoso' => $_POST['nome-idoso'] ?? '', 
-    'nascimento-idoso' => $_POST['nascimento-idoso'] ?? '', 
-    'genero-idoso' => $_POST['genero-idoso'] ?? '', 
-    'endereco-idoso' => $_POST['endereco-idoso'] ?? '', 
-    'numero-endereco-idoso' => $_POST['numero-endereco-idoso'] ?? '', 
-    'bairro-idoso' => $_POST['bairro-idoso'] ?? '',
-    'cep-idoso' => $_POST['cep-idoso'] ?? '', 
-    'cidade-idoso' => $_POST['cidade-idoso'] ?? '', 
-    'uf-idoso' => $_POST['uf-idoso'] ?? '', 
-    'telefone-idoso' => $_POST['telefone-idoso'] ?? '',
-    'rg-idoso' => $_POST['rg-idoso'] ?? '', 
-    'data-expedicao-idoso' => $_POST['data-expedicao-idoso'] ?? '', 
-    'expedido-idoso' => $_POST['expedido-idoso'] ?? ''
-  ];
+require __DIR__ . './conn-client-side.php';
+require __DIR__ . '/../../models/FormIdoso.php';
 
-  $nome_idoso = $_POST["nome-idoso"];
-  $nascimento_idoso = $_POST["nascimento-idoso"];
-  $genero_idoso = $_POST["genero-idoso"];
-  $endereco_idoso = $_POST["endereco-idoso"];
-  $num_endereco_idoso = $_POST["numero-endereco-idoso"];
-  $complemento_idoso = $_POST["complemento-idoso"] ?? null;
-  $bairro_idoso = $_POST["bairro-idoso"];
-  $cep_idoso = $_POST["cep-idoso"];
-  $cidade_idoso = $_POST["cidade-idoso"];
-  $uf_idoso = $_POST["uf-idoso"];
-  $tel_idoso = $_POST["telefone-idoso"];
-  $rg_idoso = $_POST["rg-idoso"];
-  $expedicao_idoso = $_POST["data-expedicao-idoso"];
-  $expedido_idoso = $_POST["expedido-idoso"];
-  $cnh_idoso = $_POST["cnh-idoso"] ?? null;
-  $validade_cnh_idoso = isset($_POST['validade-cnh-idoso']) && $_POST['validade-cnh-idoso'] !== '' ? $_POST['validade-cnh-idoso'] : null;
-  $email_idoso = $_POST["email-idoso"] ?? null;
-  $nome_representante = $_POST["nome-representante"] ?? null;
-  $email_representante = $_POST["email-representante"] ?? null;
-  $endereco_representante = $_POST["endereco-representante"] ?? null;
-  $num_endereco_representante = $_POST["numero-endereco-representante"] ?? null;
-  $complemento_representante = $_POST["complemento-representante"] ?? null;
-  $bairro_representante = $_POST["bairro-representante"] ?? null;
-  $cep_representante = $_POST["cep-representante"] ?? null;
-  $cidade_representante = $_POST["cidade-representante"] ?? null;
-  $uf_representante = $_POST["uf-representante"] ?? null;
-  if ($uf_representante === 'selecione' || $uf_representante === '') {
-    $uf_representante = null; 
+use Model\FormIdoso;
+
+$formIdoso = new FormIdoso();
+
+function setAlert($message, $type = 'success')
+{
+  $colorClass = $type === 'success'
+    ? 'text-green-800 bg-green-50'
+    : 'text-red-800 bg-red-50';
+
+  return <<<HTML
+    <div id="alert-3" class="flex items-center p-4 mb-4 rounded-lg $colorClass w-15" role="alert">
+        <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <div class="ms-3 text-lg font-medium">
+            $message 
+        </div>
+        <button type="button" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 p-1.5 hover:bg-opacity-80 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+        </button>
+    </div>
+    HTML;
+}
+
+$inputPost = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+$_SESSION['old-form-idoso'] = [
+  'nome-idoso' => $inputPost['nome-idoso'] ?? '',
+  'nascimento-idoso' => $inputPost['nascimento-idoso'] ?? '',
+  'genero-idoso' => $inputPost['genero-idoso'] ?? '',
+  'endereco-idoso' => $inputPost['endereco-idoso'] ?? '',
+  'numero-endereco-idoso' => $inputPost['numero-endereco-idoso'] ?? '',
+  'bairro-idoso' => $inputPost['bairro-idoso'] ?? '',
+  'cep-idoso' => $inputPost['cep-idoso'] ?? '',
+  'cidade-idoso' => $inputPost['cidade-idoso'] ?? '',
+  'uf-idoso' => $inputPost['uf-idoso'] ?? '',
+  'telefone-idoso' => $inputPost['telefone-idoso'] ?? '',
+  'rg-idoso' => $inputPost['rg-idoso'] ?? '',
+  'data-expedicao-idoso' => $inputPost['data-expedicao-idoso'] ?? '',
+  'expedido-idoso' => $inputPost['expedido-idoso'] ?? ''
+];
+
+$nomeIdoso = $inputPost["nome-idoso"];
+$nascimentoIdoso = $inputPost["nascimento-idoso"];
+$generoIdoso = $inputPost["genero-idoso"];
+$enderecoIdoso = $inputPost["endereco-idoso"];
+$numEnderecoIdoso = $inputPost["numero-endereco-idoso"];
+$complementoIdoso = $inputPost["complemento-idoso"] ?? null;
+$bairroIdoso = $inputPost["bairro-idoso"];
+$cepIdoso = $inputPost["cep-idoso"];
+$cidadeIdoso = $inputPost["cidade-idoso"];
+$ufIdoso = $inputPost["uf-idoso"];
+$telIdoso = $inputPost["telefone-idoso"];
+$rgIdoso = $inputPost["rg-idoso"];
+$expedicaoIdoso = $inputPost["data-expedicao-idoso"];
+$expedidoIdoso = $inputPost["expedido-idoso"];
+$cnhIdoso = $inputPost["cnh-idoso"] ?? null;
+$validadeCnhIdoso = isset($inputPost['validade-cnh-idoso']) && $inputPost['validade-cnh-idoso'] !== '' ? $_['validade-cnh-idoso'] : null;
+$emailIdoso = $inputPost["email-idoso"] ?? null;
+$nomeRepresentante = $inputPost["nome-representante"] ?? null;
+$emailRepresentante = $inputPost["email-representante"] ?? null;
+$enderecoRepresentante = $inputPost["endereco-representante"] ?? null;
+$numEnderecoRepresentante = $inputPost["numero-endereco-representante"] ?? null;
+$complementoRepresentante = $inputPost["complemento-representante"] ?? null;
+$bairroRepresentante = $inputPost["bairro-representante"] ?? null;
+$cepRepresentante = $inputPost["cep-representante"] ?? null;
+$cidadeRepresentante = $inputPost["cidade-representante"] ?? null;
+$ufRepresentante = $inputPost["uf-representante"] ?? null;
+if ($ufRepresentante === 'selecione' || $ufRepresentante === '') {
+  $ufRepresentante = null;
+}
+$telRepresentante = $inputPost["telefone-representante"] ?? null;
+$rgRepresentante = !empty($inputPost['rg-representante']) ? $inputPost['rg-representante'] : null;
+$expedicaoRepresentante = $inputPost["expedicao-representante"] ?? null;
+if ($expedicaoRepresentante === '') {
+  $expedicaoRepresentante = null;
+}
+$expRepresentante = $inputPost["expedido-representante"] ?? null;
+
+$required = [
+  'nome-idoso',
+  'nascimento-idoso',
+  'genero-idoso',
+  'endereco-idoso',
+  'numero-endereco-idoso',
+  'bairro-idoso',
+  'cep-idoso',
+  'cidade-idoso',
+  'uf-idoso',
+  'telefone-idoso',
+  'rg-idoso',
+  'data-expedicao-idoso',
+  'expedido-idoso'
+];
+
+$errorArray = [];
+foreach ($required as $campo) {
+  if (empty($inputPost[$campo])) {
+    $errorArray[$campo] = "Este campo é obrigatório, preencha este campo";
   }
-  $tel_representante = $_POST["telefone-representante"] ?? null;
-  $rg_representante = !empty($_POST['rg-representante']) ? $_POST['rg-representante'] : null;
-  $expedicao_representante = $_POST["expedicao-representante"] ?? null;
-  if ($expedicao_representante === '') {
-    $expedicao_representante = null;
-  }
-  $expedido_representante = $_POST["expedido-representante"] ?? null;
-  
-  $required = [
-    'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
-    'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
-    'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
-    'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
-    ]; 
+}
 
-  $error_array = [];
-  foreach ($required as $campo) {
-    if (empty($_POST[$campo])) {
-      $error_array[$campo] = "Este campo é obrigatório, preencha este campo";
-    }
-  }
-    
-  if (!empty($error_array)) {
-    $_SESSION['err-fields'] = $error_array;
-    $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
-    header("Location: ../../formulario-idoso");
-    exit();
-  }
+if (!empty($erroArray)) {
+  $_SESSION['err-fields'] = $errorArray;
+  $_SESSION['erro-form-idoso'] = "Por favor, preencha todos os campos obrigatórios.";
+  header("Location: ../../formulario-idoso");
+  exit();
+}
 
-  if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === 0 && $_FILES['copia-rg-idoso']['tmp_name'] !== '') {
-    $copia_rg_idoso = $_FILES['copia-rg-idoso']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
-    if (in_array(mime_content_type($copia_rg_idoso), $tipos_permitidos)) {
-        $imagem_idoso = file_get_contents($copia_rg_idoso); 
-    } else {
-        echo "Arquivo não permitido";
-        exit;
-    }
+if (isset($_FILES['copia-rg-idoso']) && $_FILES['copia-rg-idoso']['error'] === 0 && $_FILES['copia-rg-idoso']['tmp_name'] !== '') {
+  $copiaRgIdoso = $_FILES['copia-rg-idoso']['tmp_name'];
+  $tiposPermitidos = ['image/jpeg', 'image/png', 'application/pdf'];
+  if (in_array(mime_content_type($copiaRgIdoso), $tiposPermitidos)) {
+    $imagemIdoso = file_get_contents($copiaRgIdoso);
   } else {
-      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
-      exit;
-  } 
+    echo "Arquivo não permitido";
+    exit;
+  }
+} else {
+  echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['copia-rg-idoso']['error'];
+  exit;
+}
 
-  $nome_arquivo_rg_idoso = $_POST['nome-arquivo-rg-idoso']; 
+$nomeArquivoRgIdoso = $inputPost['nome-arquivo-rg-idoso'];
 
-  if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
-      $copia_rg_representante = $_FILES['copia-rg-representante']['tmp_name'];
-      $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf']; // 
-      if (in_array(mime_content_type($copia_rg_representante), $tipos_permitidos)) {
-          $imagem_rg_representante = file_get_contents($copia_rg_representante);
-      } else {
-          echo "Arquivo não permitido. Somente imagens JPEG, PNG e PDF são aceitas.";
-          exit;
-      }
-    } elseif (empty($_FILES['copia-rg-representante']['name'])) {
-        $imagem_rg_representante = null;
-    } else {
-        echo "Erro no envio do arquivo da cópia do RG do idoso: " . $_FILES['copia-rg-representante']['error'];
-        exit;
-    }   
-
-  $nome_arquivo_rg_rep = $_POST['nome-arquivo-rg-rep'];
-
-  if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] == 0) {
-    $comprovante_representante = $_FILES['comprovante-representante']['tmp_name'];
-    $tipos_permitidos = ['image/jpeg', 'image/png', 'application/pdf'];
-    if (in_array(mime_content_type($comprovante_representante), $tipos_permitidos)) {
-        $imagem_comp_representante = file_get_contents($comprovante_representante); 
-    } else {
-        echo "Arquivo não permitido";
-        exit;
-    }
-  } elseif (empty($_FILES['comprovante-representante']['name'])) {
-        $comprovante_representante = null;
+if (isset($_FILES['copia-rg-representante']) && $_FILES['copia-rg-representante']['error'] == 0) {
+  $copiaRgRepresentante = $_FILES['copia-rg-representante']['tmp_name'];
+  $tiposPermitidos = ['image/jpeg', 'image/png', 'application/pdf']; // 
+  if (in_array(mime_content_type($copiaRgRepresentante), $tiposPermitidos)) {
+    $imagemRgRepresentante = file_get_contents($copiaRgRepresentante);
   } else {
-      echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
-      exit;
+    echo "Arquivo não permitido. Somente imagens JPEG, PNG e PDF são aceitas.";
+    exit;
   }
-  
-  $nome_arquivo_comp_rep = $_POST['nome-arquivo-comp-rep'];
+} elseif (empty($_FILES['copia-rg-representante']['name'])) {
+  $imagemRgRepresentante = null;
+} else {
+  echo "Erro no envio do arquivo da cópia do RG do idoso: " . $_FILES['copia-rg-representante']['error'];
+  exit;
+}
 
-  $conn = new Conn();
-  $pdo = $conn->connect();
+$nomeArquivoRgRep = $inputPost['nome-arquivo-rg-rep'];
 
-  try {
-    $query = "INSERT INTO cartao_idoso (
-        nome_idoso, nascimento_idoso, genero_idoso, endereco_idoso, numero_endereco_idoso, 
-        complemento_idoso, bairro_idoso, cep_idoso, cidade_idoso, uf_idoso, telefone_idoso, 
-        rg_idoso, data_expedicao_idoso, expedido_idoso, cnh_idoso, validade_cnh_idoso, 
-        email_idoso, copia_rg_idoso, nome_arquivo_rg_idoso, nome_representante, email_representante, 
-        endereco_representante, numero_endereco_representante, complemento_representante, 
-        bairro_representante, cep_representante, cidade_representante, uf_representante, 
-        telefone_representante, rg_representante, data_expedicao_representante, 
-        expedido_representante, copia_rg_representante, nome_arquivo_rg_rep, 
-        comprovante_representante, nome_arquivo_comp_rep 
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
-    $stmt = $pdo->prepare($query);
-    $data = [
-      $nome_idoso,
-      $nascimento_idoso,
-      $genero_idoso,
-      $endereco_idoso,
-      $num_endereco_idoso,
-      $complemento_idoso,
-      $bairro_idoso,
-      $cep_idoso,
-      $cidade_idoso,
-      $uf_idoso,
-      $tel_idoso,
-      $rg_idoso,
-      $expedicao_idoso,
-      $expedido_idoso,
-      $cnh_idoso,
-      $validade_cnh_idoso,
-      $email_idoso,
-      $imagem_idoso,
-      $nome_arquivo_rg_idoso,
-      $nome_representante,
-      $email_representante,
-      $endereco_representante,
-      $num_endereco_representante,
-      $complemento_representante,
-      $bairro_representante,
-      $cep_representante,
-      $cidade_representante,
-      $uf_representante,
-      $tel_representante,
-      $rg_representante,
-      $expedicao_representante,
-      $expedido_representante,
-      $imagem_rg_representante,
-      $nome_arquivo_rg_rep,
-      $imagem_comp_representante,
-      $nome_arquivo_comp_rep
-  ];
+if (isset($_FILES['comprovante-representante']) && $_FILES['comprovante-representante']['error'] == 0) {
+  $comprovanteRepresentante = $_FILES['comprovante-representante']['tmp_name'];
+  $tiposPermitidos = ['image/jpeg', 'image/png', 'application/pdf'];
+  if (in_array(mime_content_type($comprovanteRepresentante), $tiposPermitidos)) {
+    $imagemCompRepresentante = file_get_contents($comprovanteRepresentante);
+  } else {
+    echo "Arquivo não permitido";
+    exit;
+  }
+} elseif (empty($_FILES['comprovante-representante']['name'])) {
+  $comprovanteRepresentante = null;
+} else {
+  echo "Erro no envio do arquivo da cópia do rg do idoso: " . $_FILES['comprovante-representante']['error'];
+  exit;
+}
 
-  $lob_indices = [17, 32, 34];
+$nomeArquivoCompRep = $inputPost['nome-arquivo-comp-rep'];
 
-  foreach ($data as $index => $value) {
-      $param_type = in_array($index, $lob_indices) ? PDO::PARAM_LOB : PDO::PARAM_STR;
-      $stmt->bindValue($index + 1, $value, $param_type); 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $result = $formIdoso->sendIdoso(
+    $nomeIdoso,
+    $nascimentoIdoso,
+    $generoIdoso,
+    $enderecoIdoso,
+    $numEnderecoIdoso,
+    $bairroIdoso,
+    $cepIdoso,
+    $cidadeIdoso,
+    $ufIdoso,
+    $telIdoso,
+    $rgIdoso,
+    $expedicaoIdoso,
+    $expedidoIdoso,
+    $imagemIdoso,
+    $nomeArquivoRgIdoso,
+    $complementoIdoso,
+    $cnhIdoso,
+    $validadeCnhIdoso,
+    $emailIdoso,
+    $nomeRepresentante,
+    $emailRepresentante,
+    $enderecoRepresentante,
+    $numEnderecoRepresentante,
+    $complementoRepresentante,
+    $bairroRepresentante,
+    $cepRepresentante,
+    $cidadeRepresentante,
+    $ufRepresentante,
+    $telRepresentante,
+    $rgRepresentante,
+    $expRepresentante,
+    $expRepresentante,
+    $imagemRgRepresentante,
+    $nomeArquivoRgRep,
+    $imagemCompRepresentante,
+    $nomeArquivoCompRep
+    );
+
+  if ($result) {
+    $_SESSION['success-form-idoso'] = setAlert("Formulário enviado com sucesso!", 'success');
+    unset($_SESSION['old-form-idoso']);
+  } else {
+    $_SESSION['error-form-idoso'] = setAlert("Erro ao enviar o formulário. Por favor, tente novamente.", 'error');
   }
 
-  $executed = $stmt->execute();
-
-    if ($executed) {
-        $_SESSION['success-form-idoso'] = "Informações enviadas com sucesso";
-        header("Location: ../../formulario-idoso");
-        exit();
-    } else {
-      $_SESSION['erro-form-idoso'] = "Erro ao enviar informações";
-    }
-
-  } catch (PDOException $e) {
-      echo $_SESSION['error-sql'] = "Erro do banco de dados: " . $e->getMessage();
-      // Você pode também fazer um log aqui   
-
-  }
+  header("Location: formulario-idoso");
+  exit();
+}

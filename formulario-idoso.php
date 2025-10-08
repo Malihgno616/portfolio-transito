@@ -1,6 +1,47 @@
 <?php
 session_start(); 
 
+$array_error = $_SESSION['err-fields'] ?? null;
+$error_sql = isset($_SESSION['error-sql']) ?: null;
+$old_form_idoso = $_SESSION['old-form-idoso'] ?? null;
+
+unset($_SESSION['erro-form-idoso'], $_SESSION['err-fields'], $_SESSION['error-sql'], $_SESSION['old-form-idoso']);
+
+$estados = array(
+	'AC' => 'Acre',
+	'AL' => 'Alagoas',
+	'AP' => 'Amapá',
+	'AM' => 'Amazonas',
+	'BA' => 'Bahia',
+	'CE' => 'Ceará',
+	'DF' => 'Distrito Federal',
+	'ES' => 'Espirito Santo',
+	'GO' => 'Goiás',
+	'MA' => 'Maranhão',
+	'MS' => 'Mato Grosso do Sul',
+	'MT' => 'Mato Grosso',
+	'MG' => 'Minas Gerais',
+	'PA' => 'Pará',
+	'PB' => 'Paraíba',
+	'PR' => 'Paraná',
+	'PE' => 'Pernambuco',
+	'PI' => 'Piauí',
+	'RJ' => 'Rio de Janeiro',
+	'RN' => 'Rio Grande do Norte',
+	'RS' => 'Rio Grande do Sul',
+	'RO' => 'Rondônia',
+	'RR' => 'Roraima',
+	'SC' => 'Santa Catarina',
+	'SP' => 'São Paulo',
+	'SE' => 'Sergipe',
+	'TO' => 'Tocantins',
+);
+
+$array_generos = [
+  "Masculino",
+  "Feminino",
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
