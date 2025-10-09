@@ -212,7 +212,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if ($result === true) {
-            $_SESSION['idoso-alert'] = setAlert("Formulário enviado com sucesso!", 'success');
+            $_SESSION['idoso-alert'] = setAlert("Informações enviadas com sucesso!", 'success');
             unset($_SESSION['old-form-idoso']);
             unset($_SESSION['err-fields']);
         } else {

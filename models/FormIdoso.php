@@ -160,14 +160,14 @@ class FormIdoso {
 
             $this->pdo->commit();
 
-            return $this->pdo->lastInsertId();
+            return true;
             
         } catch(PDOException $e) {
             if ($this->pdo->inTransaction()) {
                 $this->pdo->rollBack();
             }
             error_log("Erro ao criar idoso: " . $e->getMessage());
-            throw new \Exception("Erro ao criar idoso: " . $e->getMessage());
+            return false;
         }
     }
 
