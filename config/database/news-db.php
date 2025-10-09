@@ -2,9 +2,9 @@
 
 require_once __DIR__. '/conn.php';
 
-use ConnectionClientSide\ConnectionClientSide;
+require __DIR__.'/env.php';
 
-$conn = new ConnectionClientSide();
+$conn = new Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 $pdo = $conn->connect();
 
@@ -35,7 +35,7 @@ try {
 
 function obtainContentNews($newsId) {
   try {
-      $conn = new ConnectionClientSide();
+      $conn = new Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
       $pdo = $conn->connect();
       
       $stmt = $pdo->prepare("SELECT 
