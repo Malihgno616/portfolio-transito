@@ -21,7 +21,7 @@ try {
   INNER JOIN 
     conteudo_noticia cn ON np.id_noticia = cn.noticia_id
   ORDER BY 
-    np.id_noticia DESC LIMIT 6;";
+    np.id_noticia DESC LIMIT 3;";
 
   $stmt = $pdo->prepare($query);
 

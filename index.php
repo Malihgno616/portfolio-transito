@@ -3,7 +3,15 @@
   error_reporting(E_ALL);
   ini_set("display_errors", 1);
   ini_set("display_startup_errors", 1);
-  require __DIR__ . '/config/database/news-db.php';
+  
+  require __DIR__.'/models/News.php';
+  
+  use Models\News;
+
+  $news = new News();
+
+  $noticiasRecentes = $news->recentNews(3);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
