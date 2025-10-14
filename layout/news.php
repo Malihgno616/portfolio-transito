@@ -11,11 +11,9 @@
         $delayClass = $delays[$index % count($delays)] ?? 'animate__delay-0s';
       ?>
       <div class="animate__animated animate__fadeInDown <?= $delayClass ?> bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md">
-        <a href="#" class="block overflow-hidden">
-          <img class="w-full h-48 object-cover rounded-t-md"
-            src="https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg"
-            alt="<?= htmlspecialchars($newsCards['titulo_principal']) ?>" />
-        </a>
+        <img class="w-full h-48 object-cover rounded-t-md"
+          src="display-news-img?id=<?= $newsCards['id_noticia']?>&type=main" alt="Img conteúdo da notícia"
+          alt="<?= htmlspecialchars($newsCards['titulo_principal']) ?>" />
         <div class="p-5">
           <h5 class="text-center mb-4 text-xl lg:text-2xl font-normal tracking-tight text-gray-900 line-clamp-2">
             <?= htmlspecialchars($newsCards['titulo_principal']) ?>
@@ -23,14 +21,17 @@
           <h6 class="text-center mb-2 text-xl lg:text-2xl font-medium tracking-tight text-gray-800 line-clamp-2">
             <?= htmlspecialchars($newsCards['subtitulo_principal']) ?>
           </h6>
-          <a href="#" class="uppercase flex items-center m-auto font-bold text-black bg-yellow-500 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer duration-75" type="button">
-            Ler mais
-            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-              fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9" />
-            </svg>
-          </a>
+          <form action="detalhe-noticia" method="get">
+            <input type="hidden" name="id" value="<?=$newsCards['id_noticia']?>">
+            <button type="submit" class="w-40 text-center uppercase flex items-center justify-between m-auto font-bold text-black bg-yellow-500 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 cursor-pointer duration-75" >
+              Ler mais
+              <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
       <?php endforeach; ?>

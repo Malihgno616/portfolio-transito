@@ -8,19 +8,13 @@ require __DIR__.'/models/News.php';
 
 use Models\News;
 
+$inputGet = filter_input_array(INPUT_GET, FILTER_DEFAULT);
+
+$id = $inputGet['id'];
+
 $news = new News();
 
-$currentPage = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-
-$limit = 6;
-
-$offset = ($currentPage - 1) * $limit;
-
-$todasNoticias = $news->paginatedNews($currentPage, $limit, $offset);
-
-$totalNews = $news->countAllNews();
-$totalPages = ceil($totalNews / $limit);
-$page = $currentPage;
+$noticiaDetalhada = $news->detailedNews($id);
 
 ?>
 <!DOCTYPE html>
@@ -38,6 +32,7 @@ $page = $currentPage;
     <?php
       include 'layout/header.php';
       include 'layout/title.php';
-      include 'layout/allNews.php';
+    //   include 'layout/allNews.php';
+      include __DIR__.'/layout/detail-news.php';
       include 'layout/footer.php';
     ?>
