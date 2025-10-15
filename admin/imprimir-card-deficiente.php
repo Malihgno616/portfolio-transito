@@ -43,8 +43,8 @@ $inputGet = filter_input_array(INPUT_GET, FILTER_SANITIZE_SPECIAL_CHARS);
 
 $idBeneficiario = $inputGet['id-beneficiario'];
 
-if (isset($formDeficienteModel->detailsDeficiente($idBeneficiario)['numero_registro']) === 0) {
-    $_SESSION['deficiente-alert'] = setAlert("O beneficiário não possui número de registro. Por favor, adicione um número de registro antes de gerar o cartão.", 'error');
+if (intval($formDeficienteModel->detailsDeficiente($idBeneficiario)['numero_registro']) === 0) {
+    $_SESSION['alert-beneficiario'] = setAlert("O beneficiário não possui número de registro. Por favor, adicione um número de registro antes de gerar o cartão.", 'error');
     header('Location: tab-deficiente.php');
     exit;
 }
