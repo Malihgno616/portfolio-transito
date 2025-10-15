@@ -1,5 +1,5 @@
 <?php foreach($noticiaDetalhada as $index => $noticiaDetalhe):?>
-<div class="shadow-lg bg-stone-500 bg-blend-multiply bg-[url(../assets/img/imgtransito.png)] p-10 bg-no-repeat bg-cover bg-fixed px-4 md:px-6 lg:px-8">
+<div class="shadow-lg bg-stone-500 bg-blend-multiply p-10 bg-no-repeat bg-cover bg-fixed px-4 md:px-6 lg:px-8" style="background-image: url('assets/img/imgtransito-compressed.jpg');">
     <div class="p-10">
         <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Detalhe da Notícia</h1>
     </div>
@@ -24,4 +24,4 @@
         <a class="text-black font-bold text-xl p-2 rounded-md bg-yellow-500 hover:bg-yellow-200 duration-75" href="noticias">Voltar</a>
     </div>
 </div>
-<?php endforeach;?>
+<?php endforeach; ?>
