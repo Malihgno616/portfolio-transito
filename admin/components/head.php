@@ -5,6 +5,7 @@
 
   <!-- Tailwind CDN (remova se estiver usando build) -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
 
   <!-- Seu CSS personalizado (opcional, se não estiver sobrescrevendo Tailwind errado) -->
   <link rel="stylesheet" href="assets/css/global.css" />
