@@ -43,12 +43,6 @@ $inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
 
 $idIdoso = $inputGet['id-idoso'];
 
-if ($formIdosoModel->cardIdosoDetails($idIdoso)['numero_registro'] === 0) {
-    $_SESSION['idoso-alert'] = setAlert("O beneficiário não possui número de registro. Por favor, adicione um número de registro antes de gerar o cartão.", 'error');
-    header('Location: tab-idoso.php');
-    exit;
-}
-
 $nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
 
 ?>

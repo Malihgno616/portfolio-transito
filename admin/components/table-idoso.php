@@ -50,7 +50,7 @@
                                         <form action="imprimir-card-idoso.php" method="get">
                                             <input type="hidden" name="id-idoso" value="<?= $idoso['id']?>">
                                             
-                                            <button type="submit" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
+                                            <button type="submit" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200" <?= $idoso['numero_registro'] == 0 ? 'disabled' : ''?>>
                                                 <i class="fa-solid fa-print"></i>
                                             </button>
                                         </form>
