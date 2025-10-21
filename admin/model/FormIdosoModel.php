@@ -2,8 +2,8 @@
 
 namespace Model;
 
-require __DIR__.'/../config/conn.php';
-require __DIR__.'/../config/env.php';
+require_once __DIR__.'/../config/conn.php';
+require_once __DIR__.'/../config/env.php';
 
 use Conn;
 use PDO, PDOException;

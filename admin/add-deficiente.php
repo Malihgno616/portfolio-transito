@@ -6,10 +6,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require __DIR__.'/model/FormDeficienteModel.php';
+require_once __DIR__.'/model/FormDeficienteModel.php';
+require_once __DIR__.'/model/NotificacaoModel.php';
 
+use Model\NotificacaoModel;
 use Model\FormDeficienteModel;
 
+$notificacoes = new NotificacaoModel();
 $beneficiarios = new FormDeficienteModel();
 
 function setAlert($message, $type = 'success') {
@@ -205,6 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result !== false) {
             $_SESSION['alert-beneficiario'] = setAlert("Dados enviados com sucesso!");
+            $notificacoes->sendNotification("NOVO CARTÃO PARA ". $nomeBenef, "CARTÃO DO DEFICIENTE");
             header("Location: tab-deficiente.php");
             exit();
         } else {

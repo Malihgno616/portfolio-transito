@@ -1,11 +1,17 @@
 <?php 
 
 session_start();
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
 
-require __DIR__.'/model/FormIdosoModel.php';
+require_once __DIR__.'/model/NotificacaoModel.php';
+require_once __DIR__.'/model/FormIdosoModel.php';
 
 use Model\FormIdosoModel;
+use Model\NotificacaoModel;
 
+$notificacoes = new NotificacaoModel();
 $formIdosoModel = new FormIdosoModel();
 
 function setAlert($message, $type = 'success') {
@@ -168,6 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );    
 
         $_SESSION['idoso-alert'] = setAlert("Cadastro realizado com sucesso!", "success");
+        $notificacoes->sendNotification("NOVO CARTÃO PARA " . $nomeIdoso, "CARTÃO DO IDOSO");
         header("Location: tab-idoso.php");
         exit();
         
