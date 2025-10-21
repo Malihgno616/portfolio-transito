@@ -49,7 +49,7 @@
         <a href="noticias.php" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Notícias</a>
       </li>
       <li>
-        <a href="#" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Todas as notificações</a>
+        <a href="notificacoes.php" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Todas as notificações</a>
       </li>
       <li>
         <a href="contatos.php" class="block py-2 px-3 text-black hover:text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:text-black md:hover:text-white md:p-0 dark:text-black dark:hover:text-white md:dark:text-black md:dark:hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent duration-100">Contatos</a>
