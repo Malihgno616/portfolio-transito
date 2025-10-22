@@ -267,6 +267,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($result) {
         $_SESSION['alert-deficiente'] = setAlert("Formulário enviado com sucesso!", 'success');
+        $formDeficiente->sendNotification("NOVO CARTÃO PARA ". $nomeBeneficiario, "CARTÃO DEFICIENTE");
         unset($_SESSION['old-form-def']);
     } else {
         $_SESSION['alert-deficiente'] = setAlert("Erro ao enviar o formulário!");

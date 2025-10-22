@@ -38,4 +38,28 @@ class FormContact {
         }
     }
 
+    public function sendNotification($descricao = "", $categoria = "")
+    {
+
+        try {
+
+            $query = "INSERT INTO notificacoes (descricao, categoria) VALUES (:desc, :cat)";
+
+            $stmt = $this->pdo->prepare($query);
+            
+            $stmt->bindValue(':desc', $descricao);
+            
+            $stmt->bindValue(':cat', $categoria);
+            
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+                
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+
+    }
+
 }

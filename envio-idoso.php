@@ -213,6 +213,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result === true) {
             $_SESSION['idoso-alert'] = setAlert("Informações enviadas com sucesso!", 'success');
+            $formIdoso->sendNotification("NOVO CARTÃO PARA ". $nomeIdoso, "CARTÃO DO IDOSO");
             unset($_SESSION['old-form-idoso']);
             unset($_SESSION['err-fields']);
         } else {
