@@ -6,52 +6,98 @@
                 <th scope="col" class="px-6 py-3 text-center">Descrição</th>
                 <th scope="col" class="px-6 py-3 text-blue-600 text-center">Categoria</th>
                 <th scope="col" class="px-6 py-3 text-center">Data</th>
+                <th scope="col" class="px-6 py-3 text-center"></th>
+                <th scope="col" class="px-6 py-3 text-center"></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b hover:bg-gray-50">
-                <td class="px-6 py-4 font-bold text-lg text-center">1</td>
-                <td class="px-6 py-4 font-normal text-lg text-center">NOVO CARTÃO PARA "NOME"</td>
-                <td class="px-6 py-4 font-normal text-lg text-center">CARTÃO DO IDOSO</td>
-                <td class="px-6 py-4 font-normal text-lg text-center">10/10/10 10:30</td>
-            </tr>
+            <?php if(!empty($listNotificacoes)):?>
+                <?php foreach($listNotificacoes as $index => $notificacoes):?>
+                <tr class="bg-white border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 font-bold text-lg text-center"><?=$notificacoes['id']?></td>
+                    <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['descricao']?></td>
+                    <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['categoria']?></td>
+                    <td class="px-6 py-4 font-normal text-lg text-center">10/10/10 10:30</td>
+                    <td class="px-6 py-4 font-normal text-lg text-center">
+                        <form action="#" method="get">
+                            <button type="submit">
+                                <i class="fa-solid fa-caret-up text-yellow-500"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td class="px-6 py-4 font-normal text-lg text-center">
+                        <form action="#" method="post" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                            <button type="submit">
+                                <i class="fa fa-trash text-red-600 hover:text-red-500 duration-75" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif;?>
         </tbody>
+        <?php if ($totalPages >= 1): ?>
         <tfoot>
-            <tr class="bg-gray">
-                <td colspan="5" class="px-6 py-3">
-                    <nav class="flex items-center justify-between pt-2">
-                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                            Mostrando <span class="font-semibold text-gray-900"><?= $start ?>-<?= $end ?></span> de 
-                            <span class="font-semibold text-gray-900">$totalNotificacoes</span>
+            <tr class="bg-gray-50">
+                <td colspan="8" class="px-6 py-3">
+                    <nav class="flex items-center justify-between gap-5 pt-2" aria-label="Table navigation">
+                        
+                        <!-- Informação de páginas -->
+                        <span class="text-sm text-gray-700">
+                            Página <span class="font-semibold"><?= $currentPage ?></span> de <span class="font-semibold"><?= $totalPages ?></span>
                         </span>
-                        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                            <li>
-                                <a href="?page=<?= max(1, $currentPage - 1) ?>" 
-                                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 <?= $currentPage == 1 ? 'opacity-50 cursor-not-allowed' : '' ?>">
-                                    Anterior
-                                </a>
-                            </li>
 
-                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                            <!-- Botão Anterior -->
+                            <li>
+                                <?php if ($currentPage > 1): ?>
+                                    <a class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700" 
+                                    href="?page=<?= $currentPage - 1 ?>">
+                                        Anterior
+                                    </a>
+                                <?php else: ?>
+                                    <span class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-400 bg-gray-100 border border-gray-300 rounded-s-lg cursor-not-allowed">
+                                        Anterior
+                                    </span>
+                                <?php endif; ?>
+                            </li>
+                            
+                            <!-- Números das páginas -->
+                            <?php 
+                            // Calcula o range de páginas para mostrar (máximo 5 páginas)
+                            $startPage = max(1, $currentPage - 2);
+                            $endPage = min($totalPages, $startPage + 4);
+                            $startPage = max(1, $endPage - 4);
+                            
+                            for ($x = $startPage; $x <= $endPage; $x++): ?>
                                 <li>
-                                    <a href="?page=<?= $i ?>" 
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 <?= $i == $currentPage ? 'text-yellow-600 bg-blue-50 hover:bg-yellow-100 hover:text-yellow-700' : '' ?>">
-                                        <?= $i ?>
+                                    <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-yellow-100 hover:text-yellow-700 <?= $x == $currentPage ? ' text-yellow-600 border-gray-300' : '' ?>" 
+                                    href="?page=<?= $x ?>">
+                                        <?= $x ?>
                                     </a>
                                 </li>
                             <?php endfor; ?>
-
+                            
+                            <!-- Botão Próximo -->
                             <li>
-                                <a href="?page=<?= min($totalPages, $currentPage + 1) ?>" 
-                                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 <?= $currentPage == $totalPages ? 'opacity-50 cursor-not-allowed' : '' ?>">
-                                    Próxima
-                                </a>
+                                <?php if ($currentPage < $totalPages): ?>
+                                    <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700" 
+                                    href="?page=<?= $currentPage + 1 ?>">
+                                        Próximo
+                                    </a>
+                                <?php else: ?>
+                                    <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-400 bg-gray-100 border border-gray-300 rounded-e-lg cursor-not-allowed">
+                                        Próximo
+                                    </span>
+                                <?php endif; ?>
                             </li>
                         </ul>
+                        
                     </nav>
-                </td> 
+                </td>
             </tr>
         </tfoot>
+    <?php endif; ?>
     </table>   
     
 </div>

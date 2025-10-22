@@ -45,9 +45,49 @@ class NotificacaoModel {
 
   }
   
-  public function paginatedNotifications()
+  public function paginatedNotifications($page, $limit)
   {
-    return 0;    
+      try {
+          if ($page < 1) $page = 1;
+          $offset = ($page - 1) * $limit;
+          
+          $queryCount = "SELECT COUNT(*) as total FROM notificacoes";
+          $stmtCount = $this->pdo->prepare($queryCount);
+          $stmtCount->execute();
+
+          $result = $stmtCount->fetch(PDO::FETCH_ASSOC);
+          $total = $result ? (int) $result['total'] : 0;
+
+          $totalPages = $limit > 0 ? ceil($total / $limit) : 0;
+
+          $queryNotifications = "SELECT id, descricao, categoria FROM notificacoes ORDER BY id DESC LIMIT :limit OFFSET :offset";
+          $stmtNotificacoes = $this->pdo->prepare($queryNotifications);
+
+          $stmtNotificacoes->bindValue(':limit', $limit, PDO::PARAM_INT);
+          $stmtNotificacoes->bindValue(':offset', $offset, PDO::PARAM_INT);
+          $stmtNotificacoes->execute();
+
+          $notificacoes = $stmtNotificacoes->fetchAll(PDO::FETCH_ASSOC);
+
+          return [
+              'notificacoes' => $notificacoes,
+              'total' => $total,
+              'page' => $page,
+              'limit' => $limit,
+              'totalPages' => $totalPages
+          ];
+
+      } catch (PDOException $e) {
+          error_log("Error: " . $e->getMessage());
+          return [
+              'notificacoes' => [],
+              'total' => 0,
+              'page' => $page,
+              'limit' => $limit,
+              'totalPages' => 0
+          ];
+      }
   }
+
 
 }

@@ -1,13 +1,25 @@
 <?php 
 
-use Model\NotificacaoModel;
 session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
 require __DIR__.'/model/NotificacaoModel.php';
+use Model\NotificacaoModel;
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$limit = 15;
 
 $notificacoes = new NotificacaoModel();
+$notificacoes = $notificacoes->paginatedNotifications($page, $limit);
+
+$totalNotficacoes =  $notificacoes['total'];
+$totalPages = $notificacoes['totalPages'];
+$currentPage = $notificacoes['page'];
+$listNotificacoes = $notificacoes['notificacoes'];
+
+$offset = ($currentPage - 1) * $limit;
 
 ?>
 
