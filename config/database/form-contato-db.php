@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
     $success = $formContact->sendContact($nome, $email, $telefone, $mensagem);
     
-    if ($success) {
+    if ($success === true) {
         $_SESSION['contact-alert'] = setAlert("Mensagem enviada com sucesso!", 'success');
         $formContact->sendNotification("NOVO CONTATO POR ". $nome, "CONTATO");
         unset($_SESSION['old-contact']);

@@ -60,7 +60,7 @@ class NotificacaoModel {
 
           $totalPages = $limit > 0 ? ceil($total / $limit) : 0;
 
-          $queryNotifications = "SELECT id, descricao, categoria FROM notificacoes ORDER BY id DESC LIMIT :limit OFFSET :offset";
+          $queryNotifications = "SELECT id, descricao, categoria, data FROM notificacoes ORDER BY id DESC LIMIT :limit OFFSET :offset";
           $stmtNotificacoes = $this->pdo->prepare($queryNotifications);
 
           $stmtNotificacoes->bindValue(':limit', $limit, PDO::PARAM_INT);

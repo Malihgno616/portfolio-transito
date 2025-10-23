@@ -17,7 +17,7 @@
                     <td class="px-6 py-4 font-bold text-lg text-center"><?=$notificacoes['id']?></td>
                     <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['descricao']?></td>
                     <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['categoria']?></td>
-                    <td class="px-6 py-4 font-normal text-lg text-center">10/10/10 10:30</td>
+                    <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['data']?></td>
                     <td class="px-6 py-4 font-normal text-lg text-center">
                         <form action="#" method="get">
                             <button type="submit">
