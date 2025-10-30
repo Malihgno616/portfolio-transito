@@ -6,8 +6,7 @@
 
   <section class="flex flex-wrap sm:flex-col items-start gap-4 mb-7">
     <p class="text-base sm:text-sm px-5 sm:px-0 sm:text-center">Para baixar o requerimento: </p>
-    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#" target="_blank"
-      rel="noopener noreferrer">clique aqui</a>
+    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#" rel="noopener noreferrer">clique aqui</a>
     <p class="text-base sm:text-sm px-5 sm:px-0 sm:text-center">
       Qualquer dúvida entre em contato com este e-mail:
     </p>
@@ -17,7 +16,7 @@
       Ou preencha o formulário de contato:
     </p>
     <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg"
-      href="../pages/contato.php">Formulário de contato</a>
+      href="contato">Formulário de contato</a>
   </section>
 
   <section class="flex flex-wrap sm:flex-col items-start gap-4 mb-7">

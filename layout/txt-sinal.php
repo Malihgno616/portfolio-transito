@@ -8,7 +8,7 @@
     <p class="text-base sm:text-sm px-5 sm:px-0 sm:text-center">
       Para solicitação de qualquer tipo de sinalização, nos encaminhe para este e-mail:
     </p>
-    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">
+    <a class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="mailto:nucleodetransito@leme.sp.gov.br">
       nucleodetransito@leme.sp.gov.br
     </a>
   </section>

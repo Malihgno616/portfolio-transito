@@ -5,7 +5,7 @@
       preencha o formulário da Notificação da Autuação recebida, e encaminhe ao Setor de Trânsito no prazo estabelecido,
       com as assinaturas originais do condutor e do proprietário do veículo, acompanhadas de cópia de documento de
       identidade e CNH do Condutor/Infrator com categoria compatível com o veículo. </p>
-    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="#">Indicação de
+    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="https://leme.sipladu.com.br/" target="_blank">Indicação de
       condutor online</a>
     <p class="text-justify text-lg sm:text-xl p-5">Em caso de não preenchimento, ou por falta de documentação, o
       proprietário do veículo será considerado o responsável pela infração.</p>
@@ -18,6 +18,6 @@
       710/2017 e 619/2016) </p>
     <p class="text-justify text-lg sm:text-xl p-5">Caso tenha dúvida, encaminhe pelo email abaixo:</p>
     <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200"
-      href="#">nucledetransito@leme.sp.gov.br</a>
+      href="mailto:nucledetransito@leme.sp.gov.br">nucledetransito@leme.sp.gov.br</a>
   </section>
 </main>

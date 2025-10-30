@@ -17,10 +17,10 @@
         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contato</h2>
         <ul class="text-gray-500 dark:text-gray-400 font-medium">
           <li class="mb-4">
-            <a href="#" class="hover:underline">(19) 3573-5310</a>
+            <a href="https://wa.me/551935735310" class="hover:underline">(19) 3573-5310</a>
           </li>
           <li class="mb-4">
-            <a href="#" class="sm:text-sm hover:underline">nucleodetransito@leme.sp.gov.br</a>
+            <a href="mailto:nucleodetransito@leme.sp.gov.br" class="sm:text-sm hover:underline">nucleodetransito@leme.sp.gov.br</a>
           </li>
         </ul>
       </div>

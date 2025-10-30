@@ -40,8 +40,7 @@
       nos
       enviar uma mensagem:</p>
     <p class="text-base sm:text-lg p-5">
-      <a class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200" href="https://wa.me/5511999999999">(11)
-        99999-9999</a>
+      <a class="bg-yellow-500 p-3 rounded-md hover:bg-amber-200 duration-200" href="https://wa.me/551935735310" target="_blank">(19) 3573-5310</a>
     </p>
   </section>
 

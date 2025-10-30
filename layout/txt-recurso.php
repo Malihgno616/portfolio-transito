@@ -5,10 +5,10 @@
   <section class="mb-10">
     <h2 class="text-xl sm:text-5xl p-5">Recurso de Multa</h2>
     <p class="text-justify text-lg sm:text-xl p-5">Para recurso de multa acesse o link abaixo</p>
-    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="#">clique aqui</a>
+    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="https://leme.sipladu.com.br/" target="_blank">clique aqui</a>
     <p class="text-justify text-lg sm:text-xl p-5">- Caso tenha dúvidas, encaminhar para o email abaixo</p>
     <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200"
-      href="#">nucledetransito@leme.sp.gov.br</a>
+      href="mailto:nucleodetransito@leme.sp.gov.br">nucledetransito@leme.sp.gov.br</a>
   </section>
 
   <section class="mb-10">

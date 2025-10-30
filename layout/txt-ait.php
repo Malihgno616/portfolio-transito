@@ -5,14 +5,13 @@
 
   <section class="mb-10">
     <p class="text-justify text-lg sm:text-xl p-5">Clique abaixo para baixar o requerimento</p>
-    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="#">Clique Aqui</a>
+    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="REQUERIMENTO_CÓPIA_DE_AIT.pdf" target="_blank">Clique Aqui</a>
     <p class="text-justify text-lg sm:text-xl p-5">- Após o preenchimento, encaminhar juntamento com os documentos
       digitalizados para o email ou para o nossso WhatsApp</p>
     <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200"
-      href="#">nucleodetransito@leme.sp.gov.br</a>
-    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="#">WhatsApp
+      href="mailto:nucleodetransito@leme.sp.gov.br">nucleodetransito@leme.sp.gov.br</a>
+    <a class="text-lg bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200" href="https://wa.me/551935735310" target="_blank">WhatsApp
       Trânsito</a>
-
   </section>
 
   <section class="mb-10">
