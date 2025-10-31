@@ -120,7 +120,7 @@ class News {
             np.subtitulo AS subtitulo_principal
             FROM 
                 noticia_principal np
-            LEFT JOIN 
+            INNER JOIN 
                 conteudo_noticia cn ON np.id_noticia = cn.noticia_id
             ORDER BY 
                 np.id_noticia DESC LIMIT :limit;";
