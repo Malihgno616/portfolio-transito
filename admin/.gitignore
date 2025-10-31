@@ -3,14 +3,7 @@ package-lock.json
 package.json
 .env
 
-# Ignorar todos os PDFs dentro das pastas de cartões
-pdf-deficiente-frente/*.pdf
-pdf-deficiente-verso/*.pdf
-pdf-idoso-frente/*.pdf
-pdf-idoso-verso/*.pdf
-
-# Mas manter as pastas no repositório
-!pdf-deficiente-frente/.gitkeep
-!pdf-deficiente-verso/.gitkeep
-!pdf-idoso-frente/.gitkeep
-!pdf-idoso-verso/.gitkeep
+/pdf-deficiente-frente/*.pdf
+/pdf-deficiente-verso/*.pdf
+/pdf-idoso-frente/*.pdf
+/pdf-idoso-verso/*.pdf
