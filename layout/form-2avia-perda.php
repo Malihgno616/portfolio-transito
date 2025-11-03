@@ -4,16 +4,10 @@
 
 <form action="config/database/verify-solicitacao-perda.php" method="post" class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
     <?php
-
-    if (isset($_SESSION['success-solicitacao'])) {
-      echo $_SESSION['success-solicitacao'];
-      unset($_SESSION['success-solicitacao']);
-    }
-
-    if (isset($_SESSION['error-solicitacao'])) {
-      echo $_SESSION['error-solicitacao'];
-      unset($_SESSION['error-solicitacao']);
-    }
+      if (isset($_SESSION['perda-alert'])) {
+        echo $_SESSION['perda-alert'];
+        unset($_SESSION['perda-alert']);
+      }
     ?>
     <div class="flex flex-col justify-center items-center m-2 gap-3">
       <h2 class="md:text-3xl text-center">

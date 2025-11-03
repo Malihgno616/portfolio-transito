@@ -2,9 +2,6 @@
 
 session_start();
 
-$error_data = isset($_SESSION['erro-dados-def-renova']) ? $_SESSION['erro-dados-def-renova'] : '';
-unset($_SESSION['erro-dados-def-renova']);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

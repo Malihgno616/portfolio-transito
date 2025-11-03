@@ -2,9 +2,6 @@
 
 session_start();
 
-$error_data_cancel = isset($_SESSION['erro-dados-def-cancela']) ? $_SESSION['erro-dados-def-cancela'] : '';
-unset($_SESSION['erro-dados-def-cancela']);
-
 ?>
 
 <!DOCTYPE html>

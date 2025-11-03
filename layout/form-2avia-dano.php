@@ -4,16 +4,10 @@
 
 <form action="config/database/verify-solicitacao-dano.php" method="post" class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-180 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn">
     <?php
-
-    if (isset($_SESSION['success-solicitacao'])) {
-      echo $_SESSION['success-solicitacao'];
-      unset($_SESSION['success-solicitacao']);
-    }
-
-    if (isset($_SESSION['error-solicitacao'])) {
-      echo $_SESSION['error-solicitacao'];
-      unset($_SESSION['error-solicitacao']);
-    }
+      if (isset($_SESSION['dano-alert'])) {
+        echo $_SESSION['dano-alert'];
+        unset($_SESSION['dano-alert']);
+      }    
     ?>
     <div class="flex flex-col justify-center items-center m-2 gap-3">
       <h2 class="md:text-3xl text-center">
@@ -37,7 +31,6 @@
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG
         do beneficiário</label>
     </div>
-
 
     <div class="flex justify-center gap-5 p-5 ">
       <button type="button" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
