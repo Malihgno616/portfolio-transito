@@ -14,3 +14,9 @@
 
 <h3>Diagrama de atividades - Cliente</h3>
 <img src="activities.png" alt="Diagrama de Atividades">
+
+<h2>Deselvolvimento na parte administrativa (Usuário administrativo)</h2>
+<p>O site administrativo tem como finalidade de lidar com os dados dos usuários que estão vindo pela parte do cliente ao utilizar o site principal.</p>
+<p>No site adiminstrativo o usuário tem controle para validação de dados que vem dos formulários, como dos cartões do idoso e do deficiente, podendo ver através das notificações em tempo real.</p>
+<p>Para ter acesso a esse site clique aqui: <a href="
+novo.transitoleme.sp.gov.br/admin" targer="_blank"></a> <strong>Login: teste, Senha: teste</strong></p>
