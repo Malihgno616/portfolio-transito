@@ -28,20 +28,22 @@ $formIdosoModel = new FormIdosoModel();
 
 $outputDir = __DIR__  .'/pdf-idoso-verso';
 
-$outputPath = $outputDir . '/cartao-idoso-id' . $idIdoso . '-verso.pdf';
+$fileName = 'cartao-idoso-id' . $idIdoso . '-verso.pdf'; 
+
+$outputPath = $outputDir . '/' . $fileName;
+
+$type = "idoso-frente";
 
 try {
+
     $pdfVerso = new CardIdosoVerso($imagePath, [295,10]);
 
     $nomeIdoso = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
-    
-    // Múltiplas tentativas de conversão
+
     $nomeCorrigido = $nomeIdoso;
-    
-    // Tentativa 1: Remover possíveis caracteres problemáticos
+
     $nomeCorrigido = preg_replace('/[^\x00-\x7F\x80-\xFF]/', '', $nomeCorrigido);
-    
-    // Tentativa 2: Converter para ISO-8859-1
+
     if (function_exists('iconv')) {
         $nomeCorrigido = iconv('UTF-8', 'ISO-8859-1//IGNORE', $nomeCorrigido);
     } else {
@@ -49,12 +51,16 @@ try {
     }
     
     $pdfVerso->addContentNomeIdoso($nomeCorrigido);
+
     $pdfVerso->generate($outputPath);
     
 } catch(Exception $e) {
     echo "Erro ao gerar o PDF: " . $e->getMessage();
     exit;
 }
+
+$type = "idoso-verso";
+$_SESSION['arquivos_temp_pdf'][] = $outputPath;
 
 ?>
 
@@ -71,3 +77,12 @@ try {
 </main>
 
 <?php include __DIR__.'/layout/footer.php';?>
+
+<script>
+window.addEventListener("beforeunload", () => {
+    fetch("temp-cards.php?file=<?= urlencode($fileName)?>&type=<?=$type?>",{
+        method: 'GET',
+        keepalive: true
+    }).catch(error => console.log("Erro ao limpar o arquivo", error));
+});
+</script>

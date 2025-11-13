@@ -36,6 +36,12 @@ $imageDir = __DIR__.'/pdf-deficiente-frente';
 
 $imagePath = __DIR__ . '/cartao-deficiente/cartao-deficiente-frente.png';
 
+$fileName = 'cartao-deficiente-id' . $idBeneficiario . '-frente.pdf'; 
+
+$outputPath = $imageDir . '/' . $fileName;
+
+$type = "deficiente-frente";
+
 try {
 
     $pdfFrente = new CardDeficienteFrente($imagePath, [495, 255], [230, 333]);
@@ -50,7 +56,6 @@ try {
    
     $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['nome_beneficiario'];
 
-    $outputPath = $imageDir . '/cartao-deficiente-id' . $idBeneficiario . '-frente.pdf';
 
     $pdfFrente->generate($outputPath);
 
@@ -58,6 +63,8 @@ try {
     echo "Erro ao gerar o PDF: " . $e->getMessage();
     exit;
 }
+
+$_SESSION['arquivos_temp_pdf'][] = $outputPath;
 
 ?>
 
@@ -74,3 +81,12 @@ try {
 </main>
 
 <?php include __DIR__.'/layout/footer.php';?>
+
+<script>
+window.addEventListener("beforeunload", () => {
+    fetch("temp-cards.php?file=<?= urlencode($fileName)?>&type=<?=$type?>",{
+        method: 'GET',
+        keepalive: true
+    }).catch(error => console.log("Erro ao limpar o arquivo", error));
+});
+</script>
