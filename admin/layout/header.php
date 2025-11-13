@@ -1,4 +1,4 @@
 <?php 
 // 
-header("Refresh: 30");
+header("Refresh: 3600");
 include __DIR__.'/../components/navbar.php';
