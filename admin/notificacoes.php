@@ -32,7 +32,9 @@ $offset = ($currentPage - 1) * $limit;
 <main class="w-full h-full p-10">
     <div class="flex justify-between items-center w-[58em] m-auto mb-5">
         <h1 class="text-5xl text-center">Notificações</h1>
-        <a href="home.php" class="text-3xl text-center p-2 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+        <a href="home.php" class="text-xl text-center px-6 py-3 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-150 transition-colors">
+          Voltar
+        </a>
     </div>
     <hr>
     <br>

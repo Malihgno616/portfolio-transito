@@ -6,8 +6,6 @@ session_start([
     'use_strict_mode' => true
 ]);
 
-
-
 require __DIR__.'/model/FormDeficienteModel.php';
 
 require __DIR__.'/convert-pdf-deficiente-frente.php';
