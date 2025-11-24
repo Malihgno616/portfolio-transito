@@ -12,4 +12,3 @@
         <span class="block text-lg text-gray-500 sm:text-center dark:text-black">© 2023 <a href="home.php" class="hover:underline">Trânsito Leme</a>. Todos os direitos reservados.</span>
     </div>
 </footer>
-
