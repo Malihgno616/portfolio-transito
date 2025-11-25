@@ -19,5 +19,6 @@ include __DIR__.'/../components/footer.php';
 <script src="assets/js/spinnerOn.js"></script>
 <script src="assets/js/formatInput.js"></script>
 <script src="assets/js/spinnerForms.js"></script>
+<script src="assets/js/change-slider.js"></script>
 </body>
 </html>
