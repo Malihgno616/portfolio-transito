@@ -19,7 +19,7 @@
               <p class="text-xl p-2 font-light">Tabela de contato</p>
               <i class="text-yellow-600 fa-solid fa-phone text-4xl"></i>
             </a>
-            <a href="#" class="flex flex-col justify-center text-3xl m-auto text-center h-42 w-80 rounded-lg bg-gray-200 p-10 hover:shadow-xl duration-150">
+            <a href="edit-sliders.php" class="flex flex-col justify-center text-3xl m-auto text-center h-42 w-80 rounded-lg bg-gray-200 p-10 hover:shadow-xl duration-150">
               Slider
               <p class="text-xl p-2 font-light">Edite os Sliders do site principal</p>
               <i class="text-yellow-600 fa-solid fa-images text-4xl"></i>
