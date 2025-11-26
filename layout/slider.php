@@ -1,23 +1,28 @@
+<?php 
+  $img7 = "assets/img/img-slider7.jpg";
+  $img8 = "assets/img/img-slider8.jpg";
+  $img9 = "assets/img/img-slider9.jpg"; 
+?>
 <div id="controls-carousel" class="relative w-full  shadow-2xs" data-carousel="static">
-  <!-- Carousel wrapper -->
+
   <div class="relative h-60 overflow-hidden md:h-105">
-    <!-- Item 1 -->
+
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <a href=""><img src="assets/img/img-slider7.jpg"
-          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
+      <a href=""><img src="<?= $img7 ?>?v=<?= filemtime($img7) ?>"
+          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="slider-7"></a>
     </div>
-    <!-- Item 2 -->
+
     <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-      <a href=""><img src="assets/img/img-slider8.jpg"
-          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
+      <a href=""><img src="<?= $img8 ?>?v=<?= filemtime($img8) ?>"
+          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="slider-8"></a>
     </div>
-    <!-- Item 3 -->
+
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <a href=""><img src="assets/img/img-slider9.jpg"
-          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
+      <a href=""><img src="<?= $img9 ?>?v=<?= filemtime($img9) ?>"
+          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="slider-9"></a>
     </div>
   </div>
-  <!-- Slider controls -->
+
   <button type="button"
     class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
     data-carousel-prev>
