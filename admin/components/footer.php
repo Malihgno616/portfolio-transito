@@ -1,4 +1,4 @@
-<footer class="bg-white shadow-sm dark:bg-gray-500">
+<footer class="shadow-sm bg-gray-500">
     <div class="w-full max-w-screen-xl mx-auto md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="home.php" class="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">

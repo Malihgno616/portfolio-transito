@@ -1,25 +1,25 @@
-    <div class="flex justify-center">
+    <div class="flex justify-center items-center mb-4 gap-10">
         <p class="text-md font-normal p-4 text-gray-500 dark:text-gray-400">
             Total de registros <span class="font-semibold text-gray-900"> <?= $formIdosoModel->idosoCountTable(); ?>
         </p>
         <p class="text-md font-normal p-4 text-gray dark:text-gray-400">
             Último cartão emitido <span class="font-semibold text-gray-900"> 123456</span>
-        </p>
+        </p> 
     </div>
     <div class="flex justify-center animate__animated animate__fadeIn">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
                 <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-blue-500">ID</th>
+                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderById">ID</a></th>
 
-                        <th scope="col" class="px-6 py-3">Nome</th>
+                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderByName">Nome</a></th>
                         
                         <th scope="col" class="px-6 py-3">Nº Telefone</th>
                         
                         <th scope="col" class="px-6 py-3">Data Nasc</th>
                         
-                        <th scope="col" class="px-6 py-3 text-blue-500">Nº REG</th>
+                        <th scope="col" class="px-6 py-3 text-blue-500  hover:underline"><a href="?orderByRegNumber">Nº REG</a></th>
                         
                         <th scope="col" class="px-6 py-3">RG</th>
 

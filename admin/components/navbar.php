@@ -1,11 +1,11 @@
-<nav class="bg-white border-gray-200 dark:bg-yellow-500">
+<nav class="bg-yellow-500 border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="home.php" class="flex items-center space-x-1 rtl:space-x-reverse">
-    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white italic">Painel de Controle</span>
+    <span class="self-center text-2xl font-semibold whitespace-nowrap italic text-white">Painel de Controle</span>
       <img src="assets/img/logo-borda-branca.png" class="h-20" alt="Flowbite Logo" />
   </a>
   <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+      <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4  focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span class="sr-only">Open user menu</span>
 
         <img class="w-20 h-20 rounded-full" src="display-user-image.php?id=<?=$_SESSION['user-id'];?>&type=user" alt="user photo">
