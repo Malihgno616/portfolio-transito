@@ -8,17 +8,17 @@
   <div class="relative h-60 overflow-hidden md:h-105">
 
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <a href=""><img src="<?= $img7 ?>?v=<?= filemtime($img7) ?>"
+      <a href="https://api.whatsapp.com/send?phone=551935735316&text=Mais%20informa%C3%A7%C3%B5es" target="_blank"><img src="<?= $img7 ?>?v=<?= filemtime($img7) ?>"
           class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="slider-7"></a>
     </div>
 
     <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-      <a href=""><img src="<?= $img8 ?>?v=<?= filemtime($img8) ?>"
+      <a href="indicacao-condutor"><img src="<?= $img8 ?>?v=<?= filemtime($img8) ?>"
           class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="slider-8"></a>
     </div>
 
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <a href=""><img src="<?= $img9 ?>?v=<?= filemtime($img9) ?>"
+      <a href="vagas-especiais"><img src="<?= $img9 ?>?v=<?= filemtime($img9) ?>"
           class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="slider-9"></a>
     </div>
   </div>
