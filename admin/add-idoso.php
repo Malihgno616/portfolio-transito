@@ -133,6 +133,24 @@ $nomeAqvCompRep = $inputPost['nome-aqv-comp-rep'] ?? "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $partsDateIdoso = explode('/', $nascIdoso);
+
+    $day = $partsDateIdoso[0];
+    $month = $partsDateIdoso[1];
+    $year = $partsDateIdoso[2];
+
+    if (!checkdate($month, $day, $year)) {
+        $_SESSION['idoso-alert'] = setAlert("Data de nascimento inválida!", "error");
+        header("Location: tab-idoso.php");
+        exit();
+    }
+
+    if ($year > date('Y') - 60) {
+        $_SESSION['idoso-alert'] = setAlert("O idoso deve ter pelo menos 60 anos!", "error");
+        header("Location: tab-idoso.php");
+        exit();
+    }
+
     try {
         $formIdosoModel->registerIdoso(
         $nomeIdoso, 
