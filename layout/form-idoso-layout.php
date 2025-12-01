@@ -156,17 +156,17 @@
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400' 
         ?> peer"
-        placeholder=" " value="<?= htmlspecialchars($old_form_idoso['bairro']) ?? ''?>">
+        placeholder=" " value="<?= isset($old_form_idoso['bairro-idoso']) ? htmlspecialchars($old_form_idoso['bairro-idoso']) : '' ?>">
       <label for="bairro"
         class="absolute text-sm duration-300 transform -translate-y-4 scale-75 
         <?= !empty($array_error['bairro-idoso']) 
         ? 'text-red-500 peer-focus:text-red-500' 
         : 'text-gray-500 peer-focus:text-yellow-500 '?> 
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
-        <?= !empty('bairro-idoso') ? "Preencha seu bairro" : "Bairro"?>
+        <?= !empty($array_error['bairro-idoso']) ? "Preencha seu bairro" : "Bairro" ?>
       </label>
     </div>
-  
+      
     <div class="relative mb-5">
       <input type="text" name="cidade-idoso" id="cidade"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 
@@ -340,7 +340,7 @@
         <p class="text-lg text-gray-500 text-center dark:text-gray-400">JPG, PNG ou PDF <strong>(OBRIGATÓRIO)</strong>
         </p>
       </div>
-      <input id="copia-rg-idoso" type="file" name="copia-rg-idoso" class="hidden" accept="accept=image/*,.pdf"/>
+      <input id="copia-rg-idoso" type="file" name="copia-rg-idoso" class="hidden" accept="accept=image/*"/>
       <input type="text" name="nome-arquivo-rg-idoso" id="file-name" class="h-10 text-center border-transparent bg-transparent" readonly>
     </label>
   </div>

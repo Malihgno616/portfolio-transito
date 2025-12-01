@@ -171,6 +171,54 @@ $nomeArquivoCompRep = $inputPost['nome-arquivo-comp-rep'] ?? '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $minimumAge = 60;
+    $birthDate = DateTime::createFromFormat('d/m/Y', $nascimentoIdoso);
+    $currentDate = new DateTime(); 
+    $ageInterval = $currentDate->diff($birthDate);
+    $age = $ageInterval->y;
+
+    if (!$birthDate) {
+        $_SESSION['idoso-alert'] = setAlert("Data de nascimento inválida. Use o formato dd/mm/aaaa.", "error");
+        header("Location: formulario-idoso");
+        exit();
+    }
+
+    if ($age < $minimumAge) {
+        $_SESSION['idoso-alert'] = setAlert("O formulário é exclusivo para pessoas com 60 anos ou mais.", "error");
+        header("Location: formulario-idoso");
+        exit();
+    }
+
+    $partsDate = explode('/', $nascimentoIdoso);
+
+    $day = (int)$partsDate[0];
+    $month = (int)$partsDate[1];
+    $year = (int)$partsDate[2];
+    
+    if ($month < 1 || $month > 12 || $day < 1 || $day > 31) {
+        $_SESSION['idoso-alert'] = setAlert("Data de nascimento inválida.", "error");
+        header("Location: formulario-idoso");
+        exit();
+    } 
+
+    $partsDateExpedicao = explode('/', $expedicaoIdoso);
+
+    $dayExp = (int)$partsDateExpedicao[0];
+    $monthExp = (int)$partsDateExpedicao[1];
+    $yearExp = (int)$partsDateExpedicao[2];
+
+    if ($monthExp < 1 || $monthExp > 12 || $dayExp < 1 || $dayExp > 31) {
+        $_SESSION['idoso-alert'] = setAlert("Data de expedição do RG inválida.", "error");
+        header("Location: formulario-idoso");
+        exit();
+    }
+
+    if($yearExp > date('Y')) {
+        $_SESSION['idoso-alert'] = setAlert("Data de expedição do RG inválida.", "error");
+        header("Location: formulario-idoso");
+        exit();
+    }
+
     try {
         $result = $formIdoso->sendIdoso(
             $nomeIdoso, 
@@ -219,7 +267,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $_SESSION['idoso-alert'] = setAlert("Erro ao enviar o formulário. Por favor, tente novamente.", 'error');
         }
-
+        
     } catch(Exception $e) {
         $_SESSION['idoso-alert'] = setAlert("Erro ao enviar o formulário: " . $e->getMessage(), 'error');
     }
