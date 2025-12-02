@@ -429,6 +429,20 @@ class FormIdosoModel {
         }
     }
 
+    public function lastRegistrationNumber()
+    {
+        try {
+
+            $stmt = $this->pdo->query("SELECT numero_registro FROM cartao_idoso WHERE numero_registro != 0");
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['numero_registro'] : null;
+            
+        } catch(PDOException $e) {
+            error_log("Erro ao obter último número de registro: " . $e->getMessage());
+            return null;
+        }
+    }
+
     public function deleteIdoso($id)
     {
         try {
