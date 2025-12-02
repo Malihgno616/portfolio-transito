@@ -21,20 +21,20 @@
                         <div class="p-5 grid grid-cols-3 gap-10">
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-idoso">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Nome do idoso
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nasc-idoso" oninput="formatDate(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Data de nascimento
                                 </label>
                             </div>
@@ -45,70 +45,70 @@
                                     <option value="masculino">Masculino</option>
                                     <option value="feminino">Feminino</option>
                                 </select>
-                                <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Sexo
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-idoso" id="cep" oninput="pesquisacep(this.value);">
-                                    <label for="cep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="cep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     CEP
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-idoso" id="rua">
-                                    <label for="rua" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="rua" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Endereço (Rua, Av)
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-idoso">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Nº (Casa, Ap)
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="comp-idoso">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Complemento (opcional)
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-idoso" id="bairro">
-                                    <label for="bairro" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="bairro" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Bairro
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-idoso" id="cidade">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Cidade
                                 </label>
                             </div>
@@ -151,80 +151,80 @@
                                     }
                                     ?>
                                 </select>
-                                <label for="uf" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <label for="uf" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Unidade Federativa(UF)
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="tel-idoso" oninput="formatPhone(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Telefone
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-idoso" oninput="formatRG(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     nº do RG
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="data-exp-idoso" oninput="formatDate(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Data de expedição
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="expedido-idoso">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Expedido por
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cnh-idoso">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     CNH (Caso for condutor)
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="validade-cnh-idoso" oninput="formatDate(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Validade da CNH
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="email" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="email-idoso">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     E-mail (opcional)
                                 </label>
                             </div>                           
@@ -263,20 +263,20 @@
 
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="nome-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Nome do representante
                                 </label>
                             </div>
 
                             <div class="relative z-0">
                                 <input type="email" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="email-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Email
                                 </label>
                             </div>
@@ -284,10 +284,10 @@
                                                         
                             <div class="relative z-0">
                                 <input type="text" id="cep-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cep-rep" oninput="pesquisacepRep(this.value);">
-                                    <label for="cep-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="cep-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     CEP
                                 </label>
                             </div>
@@ -407,50 +407,50 @@
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="end-rep" id="rua-rep">
-                                    <label for="rua-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="rua-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Endereço (Rua, Av)
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Nº (Casa, Ap)
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="comp-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Complemento (opcional)
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="bairro-rep" id="bairro-rep">
-                                    <label for="bairro-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="bairro-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Bairro
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" id="cidade-rep" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="cidade-rep">
-                                    <label for="cidade-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="cidade-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Cidade
                                 </label>
                             </div>
@@ -494,50 +494,50 @@
                                     }
                                     ?>
                                 </select>
-                                <label for="uf-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                <label for="uf-rep" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Unidade Federativa(UF)
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="tel-rep" oninput="formatPhone(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Telefone
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-rep" oninput="formatRG(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     nº do RG
                                 </label>
                             </div>
                             
                             <div class="relative z-0">
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="data-exp-rep" oninput="formatDate(this)">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Data de expedição
                                 </label>
                             </div>
                             
                             <div class="relative z-0"> 
                                 <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="expedido-rep">
-                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+                                    <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] 
                                     peer-focus:start-0 peer-focus:text-yellow-500 
-                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
-                                    peer-focus:scale-90 peer-focus:-translate-y-4">
+                                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
+                                    peer-focus:scale-90 peer-focus:-translate-y-6">
                                     Expedido por
                                 </label>
                             </div>                           
