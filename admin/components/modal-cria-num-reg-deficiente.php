@@ -25,7 +25,7 @@
 
                         <input type="hidden" name="id-beneficiario" value="<?= $beneficiario['id']?>">
 
-                        <input type="number" type="number" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="numero-registro-deficiente">
+                        <input type="number" type="number" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="numero-registro-deficiente" value="<?= $formDeficienteModel->lastRegistrationNumber() + 1 ?>">
                             <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0]
                             peer-focus:start-0 peer-focus:text-yellow-500
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0

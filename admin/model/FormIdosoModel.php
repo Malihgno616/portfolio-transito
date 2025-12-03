@@ -432,8 +432,7 @@ class FormIdosoModel {
     public function lastRegistrationNumber()
     {
         try {
-
-            $stmt = $this->pdo->query("SELECT numero_registro FROM cartao_idoso WHERE numero_registro != 0");
+            $stmt = $this->pdo->query("SELECT MAX(numero_registro) AS numero_registro FROM cartao_idoso;");
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result['numero_registro'] : null;
             

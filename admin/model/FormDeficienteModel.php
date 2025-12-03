@@ -528,6 +528,19 @@ class FormDeficienteModel {
         } 
     }
 
+    public function lastRegistrationNumber()
+    {
+        try {
+            $stmt = $this->pdo->query("SELECT MAX(numero_registro) AS numero_registro FROM cartao_deficiente;");
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['numero_registro'] : null;
+            
+        } catch(PDOException $e) {
+            error_log("Erro ao buscar o último nº de registro: " . $e->getMessage());
+            return null;
+        }
+    }
+
     public function deficienteCountTable()
     {
         try {
