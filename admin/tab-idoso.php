@@ -30,6 +30,24 @@ $listIdosos = $idosos['idosos'];
 // Calcular offset para numeração
 $offset = ($currentPage - 1) * $limit;
 
+$order = $_GET['orderBy'] ?? "id";
+
+switch ($order) {
+    case 'name':
+        $listIdosos = $formIdosoModel->orderByName($limit, $offset);
+        break;
+    case 'reg':
+        $listIdosos = $formIdosoModel->orderByRegNumber($limit, $offset);
+        break;
+    case 'id':
+        $listIdosos = $formIdosoModel->orderById($limit, $offset);
+        break;  
+    default:
+        $listIdosos = $formIdosoModel->paginatedIdosos($page, $limit)['idosos'];
+        break;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

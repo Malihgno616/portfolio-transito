@@ -528,6 +528,48 @@ class FormDeficienteModel {
         } 
     }
 
+    public function orderById($limit, $offset)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao ordenar por ID: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function orderByName($limit, $offset)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente ORDER BY nome_beneficiario ASC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao ordenar por nome: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function orderByRegNumber($limit, $offset)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao ordenar por nº de registro: " . $e->getMessage());
+            return [];
+        }
+    }
+
     public function lastRegistrationNumber()
     {
         try {

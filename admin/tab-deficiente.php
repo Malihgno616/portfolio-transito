@@ -23,6 +23,24 @@ $listBeneficiarios = $beneficiarios['deficientes'];
 
 $offset = ($currentPage - 1) * $limit;
 
+$order = $_GET['orderBy'] ?? "id";
+
+switch ($order) {
+    case 'id':
+        $listBeneficiarios = $formDeficienteModel->orderById($limit, $offset);
+        break;
+    case 'name':
+        $listBeneficiarios = $formDeficienteModel->orderByName($limit, $offset);
+        break;
+    case 'reg':
+        $listBeneficiarios = $formDeficienteModel->orderByRegNumber($limit, $offset);
+        break;
+    default:
+        $listBeneficiarios = $formDeficienteModel->paginatedDeficientes($page, $limit)['deficientes'];
+        break;        
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

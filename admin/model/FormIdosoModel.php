@@ -429,6 +429,48 @@ class FormIdosoModel {
         }
     }
 
+    public function orderByName($limit, $offset)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY nome_idoso ASC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao ordenar por nome: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function orderById($limit, $offset)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao ordenar por ID: " . $e->getMessage());
+            return [];
+        }
+    }
+    
+    public function orderByRegNumber($limit, $offset)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao ordenar por número de registro: " . $e->getMessage());
+            return [];
+        }
+    }
+
     public function lastRegistrationNumber()
     {
         try {

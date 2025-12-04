@@ -11,15 +11,15 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
                 <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderById">ID</a></th>
+                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderBy=id">ID</a></th>
 
-                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderByName">Nome</a></th>
+                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderBy=name">Nome</a></th>
                         
                         <th scope="col" class="px-6 py-3">Nº Telefone</th>
                         
                         <th scope="col" class="px-6 py-3">Data Nasc</th>
                         
-                        <th scope="col" class="px-6 py-3 text-blue-500  hover:underline"><a href="?orderByRegNumber">Nº REG</a></th>
+                        <th scope="col" class="px-6 py-3 text-blue-500  hover:underline"><a href="?orderBy=reg">Nº REG</a></th>
                         
                         <th scope="col" class="px-6 py-3">RG</th>
 
@@ -85,7 +85,7 @@
                                         <li>
                                             <?php if ($currentPage > 1): ?>
                                                 <a class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700" 
-                                                href="?page=<?= $currentPage - 1 ?>">
+                                                href="?orderBy=<?= $order ?>&page=<?= $currentPage - 1 ?>">
                                                     Anterior
                                                 </a>
                                             <?php else: ?>
@@ -105,7 +105,7 @@
                                         for ($x = $startPage; $x <= $endPage; $x++): ?>
                                             <li>
                                                 <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-yellow-100 hover:text-yellow-700 <?= $x == $currentPage ? ' text-yellow-600 border-gray-300' : '' ?>" 
-                                                href="?page=<?= $x ?>">
+                                                href="?orderBy=<?= $order ?>&page=<?= $x ?>">
                                                     <?= $x ?>
                                                 </a>
                                             </li>
@@ -115,7 +115,7 @@
                                         <li>
                                             <?php if ($currentPage < $totalPages): ?>
                                                 <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700" 
-                                                href="?page=<?= $currentPage + 1 ?>">
+                                                href="?orderBy=<?= $order ?>&page=<?= $currentPage + 1 ?>">
                                                     Próximo
                                                 </a>
                                             <?php else: ?>
