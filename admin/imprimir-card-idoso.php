@@ -77,6 +77,13 @@ $nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
             </button>
         </form>
 
+        <form action="" method="get" target="_blank">
+            <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
+            <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
+                <h1 class="text-4xl text-gray-800 text-center">Imprimir Frente e Verso <i class="fa-solid fa-file-pdf"></i></h1>
+            </button>
+        </form>
+
         <a href="tab-idoso.php" class="rounded-xl w-[400px] text-3xl flex justify-center m-auto items-center bg-yellow-600 text-white p-3 hover:bg-yellow-500 duration-75">Voltar</a>
     
     </div>
