@@ -556,6 +556,21 @@ class FormDeficienteModel {
         }
     }
 
+    public function lastInsertId()
+    {
+        try {
+            $query = "SELECT id FROM cartao_deficiente ORDER BY id DESC LIMIT 1;";
+            $stmt = $this->pdo->query($query);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['id'] : null;
+
+        } catch(PDOException $e) {
+            error_log("Erro ao obter último ID inserido: " . $e->getMessage());
+            return null;
+        }
+    }
+    
+
     public function orderByRegNumber($limit, $offset)
     {
         try {

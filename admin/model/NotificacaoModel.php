@@ -21,18 +21,20 @@ class NotificacaoModel {
     $this->pdo = $this->conn->connect();
   }
 
-  public function sendNotification($descricao = "", $categoria = "")
+  public function sendNotification($descricao = "", $categoria = "", $linkNotificacao = "")
   {
     
     try {
 
-      $query = "INSERT INTO notificacoes (descricao, categoria) VALUES (:desc, :cat)";
+      $query = "INSERT INTO notificacoes (descricao, categoria, link_notificacao) VALUES (:desc, :cat, :link_notificacao)";
 
       $stmt = $this->pdo->prepare($query);
       
       $stmt->bindValue(':desc', $descricao);
       
       $stmt->bindValue(':cat', $categoria);
+      
+      $stmt->bindValue(':link_notificacao', $linkNotificacao);
       
       $stmt->execute();
 
@@ -60,7 +62,7 @@ class NotificacaoModel {
 
           $totalPages = $limit > 0 ? ceil($total / $limit) : 0;
 
-          $queryNotifications = "SELECT id, descricao, categoria, data FROM notificacoes ORDER BY id DESC LIMIT :limit OFFSET :offset";
+          $queryNotifications = "SELECT id, descricao, categoria, data, link_notificacao FROM notificacoes ORDER BY id DESC LIMIT :limit OFFSET :offset";
           $stmtNotificacoes = $this->pdo->prepare($queryNotifications);
 
           $stmtNotificacoes->bindValue(':limit', $limit, PDO::PARAM_INT);

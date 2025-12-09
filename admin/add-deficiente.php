@@ -206,9 +206,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nomeAqvCompRep                
         );
 
+        $idBeneficiario = $beneficiarios->lastInsertId();
+
         if ($result !== false) {
             $_SESSION['alert-beneficiario'] = setAlert("Dados enviados com sucesso!");
-            $notificacoes->sendNotification("NOVO CARTÃO PARA ". $nomeBenef, "CARTÃO DO DEFICIENTE");
+            $notificacoes->sendNotification("NOVO CARTÃO PARA ". $nomeBenef, "CARTÃO DO DEFICIENTE", "detalhes-card-deficiente.php?id-beneficiario=" . $idBeneficiario);
             header("Location: tab-deficiente.php");
             exit();
         } else {

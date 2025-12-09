@@ -19,11 +19,9 @@
                     <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['categoria']?></td>
                     <td class="px-6 py-4 font-normal text-lg text-center"><?=$notificacoes['data']?></td>
                     <td class="px-6 py-4 font-normal text-lg text-center">
-                        <form action="#" method="get">
-                            <button type="submit">
-                                <i class="fa-solid fa-caret-up text-yellow-500"></i>
-                            </button>
-                        </form>
+                        <a href="<?= !empty($notificacoes['link_notificacao']) ? $notificacoes['link_notificacao'] : '#' ?>" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-caret-up text-yellow-500"></i>
+                        </a>    
                     </td>
                     <td class="px-6 py-4 font-normal text-lg text-center">
                         <form action="#" method="post" onsubmit="return confirm('Tem certeza que deseja excluir?')">

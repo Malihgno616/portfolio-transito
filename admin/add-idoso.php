@@ -191,8 +191,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nomeAqvCompRep
         );    
 
+        $idIdoso = $formIdosoModel->lastInsertId();
+
         $_SESSION['idoso-alert'] = setAlert("Cadastro realizado com sucesso!", "success");
-        $notificacoes->sendNotification("NOVO CARTÃO PARA " . $nomeIdoso, "CARTÃO DO IDOSO");
+        $notificacoes->sendNotification("NOVO CARTÃO PARA " . $nomeIdoso, "CARTÃO DO IDOSO", "detalhes-card-idoso.php?id-idoso=$idIdoso");
         header("Location: tab-idoso.php");
         exit();
         
