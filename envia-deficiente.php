@@ -265,9 +265,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nomeArquivCompRep
     );
 
+    $idBeneficiario = $formDeficiente->lastInsertId();
+
     if($result) {
         $_SESSION['alert-deficiente'] = setAlert("Formulário enviado com sucesso!", 'success');
-        $formDeficiente->sendNotification("NOVO CARTÃO PARA ". $nomeBeneficiario, "CARTÃO DEFICIENTE");
+        $formDeficiente->sendNotification("NOVO CARTÃO PARA ". $nomeBeneficiario, "CARTÃO DEFICIENTE", "detalhes-card-deficiente.php?id-beneficiario=".$idBeneficiario);
         unset($_SESSION['old-form-def']);
     } else {
         $_SESSION['alert-deficiente'] = setAlert("Erro ao enviar o formulário!");

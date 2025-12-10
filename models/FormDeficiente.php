@@ -185,18 +185,34 @@ class FormDeficiente {
         }
     }
 
-    public function sendNotification($descricao = "", $categoria = "")
+    public function lastInsertId()
+    {
+        try {
+            $query = "SELECT id FROM cartao_deficiente ORDER BY id DESC LIMIT 1;";
+            $stmt = $this->pdo->query($query);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['id'] : null;
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function sendNotification($descricao = "", $categoria = "", $linkNotificacao = "")
     {
 
         try {
 
-            $query = "INSERT INTO notificacoes (descricao, categoria) VALUES (:desc, :cat)";
+            $query = "INSERT INTO notificacoes (descricao, categoria, link_notificacao) VALUES (:desc, :cat, :link_notificacao)";
 
             $stmt = $this->pdo->prepare($query);
             
             $stmt->bindValue(':desc', $descricao);
             
             $stmt->bindValue(':cat', $categoria);
+
+            $stmt->bindValue(':link_notificacao', $linkNotificacao);
             
             $stmt->execute();
 

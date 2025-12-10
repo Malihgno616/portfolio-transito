@@ -259,9 +259,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nomeArquivoCompRep
         );
 
+        $idIdoso = $formIdoso->lastInsertId();
+
         if ($result === true) {
             $_SESSION['idoso-alert'] = setAlert("Informações enviadas com sucesso!", 'success');
-            $formIdoso->sendNotification("NOVO CARTÃO PARA ". $nomeIdoso, "CARTÃO DO IDOSO");
+            $formIdoso->sendNotification("NOVO CARTÃO PARA ". $nomeIdoso, "CARTÃO DO IDOSO", "detalhes-card-idoso.php?id-idoso=".$idIdoso);
             unset($_SESSION['old-form-idoso']);
             unset($_SESSION['err-fields']);
         } else {
