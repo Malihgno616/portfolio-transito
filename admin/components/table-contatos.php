@@ -24,7 +24,7 @@
               <option value="?orderBy=name&page=<?= $currentPage ?>" <?= $order === 'name' ? 'selected' : '' ?>>Nome</option>
               <option value="?orderBy=date&page=<?= $currentPage ?>" <?= $order === 'date' ? 'selected' : '' ?>>Data e Hora</option>
             </select>
-          <label for="orderBy" class="absolute text-md text-gray-500 duration-300 transform ``-translate-y-7 scale-100 top-3 -z-10 origin-[0] 
+          <label for="orderBy" class="absolute text-md text-gray-500 duration-300 transform -translate-y-7 scale-100 top-3 -z-10 origin-[0] 
             peer-focus:start-0 peer-focus:text-yellow-500 
             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 
             peer-focus:scale-90 peer-focus:-translate-y-6">Ordenar por:</label>
