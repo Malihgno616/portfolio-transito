@@ -50,7 +50,59 @@ class ContactModel {
     $row = $stmt->fetch();
     return $row['total'];
   }
-  
+
+  public function orderByName($limit, $offset)
+  {
+    try {
+
+      $query = "SELECT * FROM form_contato ORDER BY nome ASC LIMIT :limit OFFSET :offset";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+      $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+        error_log("Erro ao ordenar por nome: " . $e->getMessage());
+        return false;
+    }
+
+  }
+
+  public function orderByDate($limit, $offset)
+  {
+    try {
+
+      $query = "SELECT * FROM form_contato ORDER BY data_enviado DESC LIMIT :limit OFFSET :offset";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+      $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+        error_log("Erro ao ordenar por data: " . $e->getMessage());
+        return false;
+    }
+  }
+
+  public function orderById($limit, $offset)
+  {
+    try {
+
+      $query = "SELECT * FROM form_contato ORDER BY id DESC LIMIT :limit OFFSET :offset";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+      $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+        error_log("Erro ao ordenar por ID: " . $e->getMessage());
+        return false;
+    }
+  }
+
   public function deleteContact($id)
   {
     try {
@@ -67,8 +119,7 @@ class ContactModel {
         error_log("Erro ao deletar contato: " . $e->getMessage());
         return false;
     }
-  }
-    
+  }   
 
 }
 

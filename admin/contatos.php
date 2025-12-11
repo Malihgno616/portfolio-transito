@@ -28,6 +28,26 @@ $totalContacts = $data['total'];
 $start = (($currentPage - 1) * 15) + 1;
 $end = min($currentPage * 15, $totalContacts);
 
+$order = $_GET['orderBy'] ?? "id";
+
+$limit = 15;
+$offset = ($currentPage - 1) * $limit;
+
+switch ($order) {
+    case 'id':
+        $contacts = $model->orderById($limit, $offset);
+        break;
+    case 'name':
+        $contacts = $model->orderByName($limit, $offset);
+        break;
+    case 'date':
+        $contacts = $model->orderByDate($limit, $offset);
+        break;  
+    default:
+        $contacts = $model->paginatedContacts($page, 15)['contacts'];
+        break;
+}
+
 ?>
 
 <!DOCTYPE html>
