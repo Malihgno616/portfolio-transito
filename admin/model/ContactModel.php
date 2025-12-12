@@ -103,6 +103,43 @@ class ContactModel {
     }
   }
 
+  public function searchContact($name = "", $id = null, $date = "")
+  {
+    try {
+      
+      $query = "SELECT * FROM form_contato WHERE 1 = 1";
+      $stmt = $this->pdo->prepare($query);
+            
+      switch($query) {
+        case !empty($name):
+            $query .= " AND nome LIKE :name LIMIT 10";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':name', '%' . $name . '%', PDO::PARAM_STR);
+            break;
+        case !empty($id):
+            $query .= " AND id = :id LIMIT 10";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            break;
+        case !empty($date):
+            $query .= " AND DATE(data_enviado) = :date LIMIT 10";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':date', $date, PDO::PARAM_STR);
+            break;
+        default:
+            break;
+      }
+
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+        error_log("Erro ao buscar contato: " . $e->getMessage());
+        return false;
+    }
+    
+  }
+
   public function deleteContact($id)
   {
     try {
