@@ -103,7 +103,7 @@ class ContactModel {
     }
   }
 
-  public function searchContact($name = "", $id = null, $date = "")
+  public function searchContact($name = "", $id = null, $date = "", $phone = "")
   {
     try {
       
@@ -126,8 +126,14 @@ class ContactModel {
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':date', $date, PDO::PARAM_STR);
             break;
+        case !empty($phone):
+            $query .= " AND telefone LIKE :phone LIMIT 10";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':phone', '%' . $phone . '%', PDO::PARAM_STR);
+            break;
         default:
             break;
+
       }
 
       $stmt->execute();
@@ -139,7 +145,7 @@ class ContactModel {
     }
     
   }
-
+  
   public function deleteContact($id)
   {
     try {

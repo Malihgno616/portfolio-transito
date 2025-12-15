@@ -21,28 +21,49 @@ $type = $_GET['type'] ?? "";
 $id = $_GET['id'] ?? "";
 $name = $_GET['name'] ?? ""; 
 $date = $_GET['date'] ?? "";
+$phone = $_GET['phone'] ?? "";
 
 // var_dump($_GET);
+header('Content-Type: application/json; charset=utf-8');
 
 switch($type) {
     case 'contact':
-        $nameContacts = $contactModel->searchContact($name, $id, $date);
-        if(!empty($nameContacts)) {
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode($nameContacts, JSON_UNESCAPED_UNICODE);
-            if (empty($nameContacts)) {
-                echo "Nenhum contato encontrado com o nome: " . htmlspecialchars($name);
-            }
+        $results = $contactModel->searchContact($name, $id, $date, $phone);
+        
+        if (!empty($results)) {
+            $response = [
+                'success' => true,
+                'search_params' => [
+                    'id' => $id,
+                    'name' => $name,
+                    'telefone' => $phone,
+                    'date' => $date
+                ],
+                'data' => $results,
+                'count' => count($results)
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'search_params' => [
+                    'id' => $id,
+                    'name' => $name,
+                    'telefone' => $phone,
+                    'date' => $date
+                ],
+                'data' => [],
+                'message' => 'Nenhum contato encontrado com os critérios fornecidos'
+            ];
         }
+        
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        break;      
 
-        break;
-
+    default:
+        echo json_encode([
+            'success' => false,
+            'message' => 'Tipo de busca inválido'
+        ], JSON_UNESCAPED_UNICODE);
+        break;   
+        
 }
-
-
-
-
-
-
-
-
