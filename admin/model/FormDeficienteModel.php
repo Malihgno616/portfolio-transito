@@ -570,6 +570,49 @@ class FormDeficienteModel {
         }
     }
     
+    public function searchBeneficiario($id, $name, $birthDate, $rg, $regNumber)
+    {
+        try {
+
+            $query = "SELECT id, nome_beneficiario, nasc_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente WHERE 1=1";
+            $params = [];
+
+            if (!empty($id)) {
+                $query .= " AND id LIKE :id LIMIT 10";
+                $params[':id'] = $id;
+            }
+            if (!empty($name)) {
+                $query .= " AND nome_beneficiario LIKE :name LIMIT 10";
+                $params[':name'] = '%' . $name . '%';
+            }
+            if (!empty($birthDate)) {
+                $query .= " AND nasc_beneficiario LIKE :birthDate LIMIT 10";
+                $params[':birthDate'] = $birthDate;
+            }
+            if (!empty($rg)) {
+                $query .= " AND rg_beneficiario LIKE :rg LIMIT 10";
+                $params[':rg'] = $rg;
+            }
+            if (!empty($regNumber)) {
+                $query .= " AND numero_registro LIKE :regNumber LIMIT 10";
+                $params[':regNumber'] = $regNumber;
+            }
+
+            $stmt = $this->pdo->prepare($query);
+
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            error_log("Erro na busca de beneficiario: " . $e->getMessage());
+            return [];
+        }
+    }
 
     public function orderByRegNumber($limit, $offset)
     {

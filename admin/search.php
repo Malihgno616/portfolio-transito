@@ -23,7 +23,7 @@ $name = $_GET['name'] ?? "";
 $date = $_GET['date'] ?? "";
 $phone = $_GET['phone'] ?? "";
 $rg = $_GET['rg'] ?? "";
-$regNumber = $_GET['reg-n`umber'] ?? "";
+$regNumber = $_GET['reg-number'] ?? "";
 
 // var_dump($_GET);
 header('Content-Type: application/json; charset=utf-8');
@@ -92,6 +92,40 @@ switch($type) {
             ];
         }
                 
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        break;
+
+    case 'form-deficiente':
+        $results = $formDeficienteModel->searchBeneficiario($id, $name, $date, $rg, $regNumber);
+
+        if (!empty($results)) {
+            $response = [
+                'success' => true,
+                'search_params' => [
+                    'id' => $id,
+                    'name' => $name,
+                    'rg' => $rg,
+                    'reg_number' => $regNumber,
+                    'birth_date' => $date
+                ],
+                'data' => $results,
+                'count' => count($results)
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'search_params' => [
+                    'id' => $id,
+                    'name' => $name,
+                    'rg' => $rg,
+                    'reg_number' => $regNumber,
+                    'birth_date' => $date
+                ],
+                'data' => [],
+                'message' => 'Nenhum formulário de deficiente encontrado com os critérios fornecidos'
+            ];
+        }
+
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
         break;
 
