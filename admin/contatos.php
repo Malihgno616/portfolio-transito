@@ -62,6 +62,9 @@ include __DIR__.'/layout/header.php';
   <?php include __DIR__.'/components/table-contatos.php';?>
 </main>
 
-<?php include __DIR__.'/components/modal-contact.php';?>
+<?php 
+include __DIR__.'/components/modal-contact.php';
+include __DIR__.'/components/modal-pesquisa-contato.php';
+?>
 
 <?php include __DIR__.'/layout/footer.php';?> 

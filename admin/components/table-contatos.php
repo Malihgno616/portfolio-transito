@@ -17,16 +17,9 @@
         </div>
     <hr>
     <br>
-    <form class="max-w-4xl mx-auto m-10">   
-        <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
-        <div class="relative">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-            </div>
-            <input type="search" id="search" class="block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading text-sm rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" placeholder="Digite informações do contato` para filtrar (Nome, ID, Número)" required />
-            <button type="button" class="absolute end-1.5 bottom-1.5 text-black bg-yellow-500 hover:bg-yellow-300 box-border border border-transparent focus:ring-4 focus:ring-yellow-100 shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Pesquisar</button>
-        </div>
-    </form>
+    <button data-modal-target="search-contact" data-modal-toggle="search-contact" class="max-w-lg bg-yellow-600 m-auto rounded-lg p-4 text-white flex items-center gap-2 hover:bg-yellow-500 mb-6 duration-150 text-xl">
+        Pesquisar Contato <i class="fas fa-search"></i>
+    </button>  
     <div>
       <div class="mb-4 mt-4 relative z-0">
           <select id="orderBy" name="orderBy" onchange="location = this.value;" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer">
