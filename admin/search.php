@@ -23,7 +23,7 @@ $name = $_GET['name'] ?? "";
 $date = $_GET['date'] ?? "";
 $phone = $_GET['phone'] ?? "";
 $rg = $_GET['rg'] ?? "";
-$regNumber = $_GET['reg-n`umber'] ?? "";
+$regNumber = $_GET['reg-number'] ?? "";
 
 // var_dump($_GET);
 header('Content-Type: application/json; charset=utf-8');

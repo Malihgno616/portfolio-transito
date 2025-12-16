@@ -3,7 +3,7 @@
 include __DIR__.'/../components/footer.php';
 
 ?>
- 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 <script src="assets/js/imgNews.js"></script>
 <script src="assets/js/addUserImage.js"></script>
@@ -20,5 +20,6 @@ include __DIR__.'/../components/footer.php';
 <script src="assets/js/formatInput.js"></script>
 <script src="assets/js/spinnerForms.js"></script>
 <script src="assets/js/change-slider.js"></script>
+<script src="assets/js/search.js"></script>
 </body>
 </html>
