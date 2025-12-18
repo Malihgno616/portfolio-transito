@@ -32,34 +32,55 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         }
       );
+
       tableBodyContact.innerHTML = `
-        <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">ID</th>
-                <th scope="col" class="px-6 py-3">Nome</th>
-                <th scope="col" class="px-6 py-3">Email</th>
-                <th scope="col" class="px-6 py-3">Telefone</th>
-                <th scope="col" class="px-6 py-3">Ações</th> 
-            </tr>
-        </thead>
-        <tbody>
-             <tr class="bg-white border-b  hover:bg-gray-50">
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.id || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.nome || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.email || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.telefone || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg"></td>
-             </tr>
-        </tbody>
+      <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3">ID</th>
+                  <th scope="col" class="px-6 py-3">Nome</th>
+                  <th scope="col" class="px-6 py-3">Email</th>
+                  <th scope="col" class="px-6 py-3">Telefone</th>
+                  <th scope="col" class="px-6 py-3">Ações</th> 
+              </tr>
+      </thead>
+      <tbody></tbody>
       `;
+
+      const tbody = tableBodyContact.querySelector("tbody");
+
+      if (response.data.data.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="px-6 py-4 text-center text-red-600 font-bold text-lg">
+              Nenhum contato encontrado
+            </td>
+          </tr>
+        `;
+      } else {
+        response.data.data.forEach((contacts) => {
+          tbody.innerHTML += `
+            <tr class="bg-white border-b  hover:bg-gray-50">
+              <td class="px-6 py-4 font-bold text-lg">${contacts.id || ""}</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.nome || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.email || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.telefone || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">
+                <button type="button" data-modal-target="modal-${
+                  contacts.id
+                }" data-modal-toggle="modal-${
+            contacts.id
+          }" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
@@ -80,34 +101,55 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         }
       );
+
       tableBodyContact.innerHTML = `
-        <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">ID</th>
-                <th scope="col" class="px-6 py-3">Nome</th>
-                <th scope="col" class="px-6 py-3">Email</th>
-                <th scope="col" class="px-6 py-3">Telefone</th>
-                <th scope="col" class="px-6 py-3">Ações</th> 
-            </tr>
-        </thead>
-        <tbody>
-             <tr class="bg-white border-b  hover:bg-gray-50">
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.id || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.nome || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.email || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.telefone || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg"></td>
-             </tr>
-        </tbody>
+      <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3">ID</th>
+                  <th scope="col" class="px-6 py-3">Nome</th>
+                  <th scope="col" class="px-6 py-3">Email</th>
+                  <th scope="col" class="px-6 py-3">Telefone</th>
+                  <th scope="col" class="px-6 py-3">Ações</th> 
+              </tr>
+      </thead>
+      <tbody></tbody>
       `;
+
+      const tbody = tableBodyContact.querySelector("tbody");
+
+      if (response.data.data.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="px-6 py-4 text-center text-red-600 font-bold text-lg">
+              Nenhum contato encontrado
+            </td>
+          </tr>
+        `;
+      } else {
+        response.data.data.forEach((contacts) => {
+          tbody.innerHTML += `
+            <tr class="bg-white border-b  hover:bg-gray-50">
+              <td class="px-6 py-4 font-bold text-lg">${contacts.id || ""}</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.nome || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.email || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.telefone || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">
+                <button type="button" data-modal-target="modal-${
+                  contacts.id
+                }" data-modal-toggle="modal-${
+            contacts.id
+          }" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
@@ -128,34 +170,57 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         }
       );
+
+      console.log(response);
+
       tableBodyContact.innerHTML = `
-        <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">ID</th>
-                <th scope="col" class="px-6 py-3">Nome</th>
-                <th scope="col" class="px-6 py-3">Email</th>
-                <th scope="col" class="px-6 py-3">Telefone</th>
-                <th scope="col" class="px-6 py-3">Ações</th> 
-            </tr>
-        </thead>
-        <tbody>
-             <tr class="bg-white border-b  hover:bg-gray-50">
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.id || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.nome || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.email || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg">${
-                  response.telefone || ""
-                }</td>
-                <td class="px-6 py-4 font-bold text-lg"></td>
-             </tr>
-        </tbody>
+      <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3">ID</th>
+                  <th scope="col" class="px-6 py-3">Nome</th>
+                  <th scope="col" class="px-6 py-3">Email</th>
+                  <th scope="col" class="px-6 py-3">Telefone</th>
+                  <th scope="col" class="px-6 py-3">Ações</th> 
+              </tr>
+      </thead>
+      <tbody></tbody>
       `;
+
+      const tbody = tableBodyContact.querySelector("tbody");
+
+      if (response.data.data.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="px-6 py-4 text-center text-red-600 font-bold text-lg">
+              Nenhum contato encontrado
+            </td>
+          </tr>
+        `;
+      } else {
+        response.data.data.forEach((contacts) => {
+          tbody.innerHTML += `
+            <tr class="bg-white border-b  hover:bg-gray-50">
+              <td class="px-6 py-4 font-bold text-lg">${contacts.id || ""}</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.nome || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.email || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">${
+                contacts.telefone || ""
+              }</td>
+              <td class="px-6 py-4 font-bold text-lg">
+                <button type="button" data-modal-target="modal-${
+                  contacts.id
+                }" data-modal-toggle="modal-${
+            contacts.id
+          }" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
     } catch (error) {
       console.error("Error fetching search results:", error);
     }

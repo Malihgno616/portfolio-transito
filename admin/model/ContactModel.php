@@ -109,31 +109,29 @@ class ContactModel {
       
       $query = "SELECT * FROM form_contato WHERE 1 = 1";
       $stmt = $this->pdo->prepare($query);
-            
-      switch($query) {
-        case !empty($name):
-            $query .= " AND nome LIKE :name LIMIT 10";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':name', '%' . $name . '%', PDO::PARAM_STR);
-            break;
-        case !empty($id):
-            $query .= " AND id = :id LIMIT 10";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-            break;
-        case !empty($date):
-            $query .= " AND DATE(data_enviado) = :date LIMIT 10";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':date', $date, PDO::PARAM_STR);
-            break;
-        case !empty($phone):
-            $query .= " AND telefone LIKE :phone LIMIT 10";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':phone', '%' . $phone . '%', PDO::PARAM_STR);
-            break;
-        default:
-            break;
 
+      $params = [];
+
+      if (!empty($name)) {
+          $query .= " AND nome LIKE :name";
+          $params[':name'] = '%' . $name . '%';
+      } elseif (!empty($id)) {
+          $query .= " AND id = :id";
+          $params[':id'] = $id;
+      } elseif (!empty($date)) {
+          $query .= " AND DATE(data_enviado) = :date";
+          $params[':date'] = $date;
+      } elseif (!empty($phone)) {
+          $query .= " AND telefone LIKE :phone";
+          $params[':phone'] = '%' . $phone . '%';
+      } else {
+          $query .= " ORDER BY id DESC LIMIT 15";
+      }
+
+      $stmt = $this->pdo->prepare($query);
+
+      foreach ($params as $key => $value) {
+          $stmt->bindValue($key, $value);
       }
 
       $stmt->execute();
