@@ -226,3 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// Evento para pesquisa dos dados dos idosos
+document.addEventListener("DOMContentLoaded", () => {});
+
+// Evento para pesquisa dos dados dos deficientes/beneficiários
+document.addEventListener("DOMContentLoaded", () => {});

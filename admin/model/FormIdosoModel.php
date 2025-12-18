@@ -484,7 +484,7 @@ class FormIdosoModel {
         }
     }
 
-    public function searchIdoso($id, $name, $birthDate ,$rg, $regNumber)
+    public function searchIdoso($id, $name, $birthDate , $rg, $regNumber)
     {
         try {
             $query = "SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso WHERE 1=1";
@@ -493,22 +493,20 @@ class FormIdosoModel {
             if (!empty($id)) {
                 $query .= " AND id = :id";
                 $params[':id'] = $id;
-            }
-            if (!empty($name)) {
+            } elseif (!empty($name)) {
                 $query .= " AND nome_idoso LIKE :name";
                 $params[':name'] = '%' . $name . '%';
-            }
-            if (!empty($birthDate)) {
+            } elseif (!empty($birthDate)) {
                 $query .= " AND nascimento_idoso = :birthDate";
                 $params[':birthDate'] = $birthDate;
-            }
-            if (!empty($rg)) {
+            } elseif (!empty($rg)) {
                 $query .= " AND rg_idoso LIKE :rg";
                 $params[':rg'] = '%' . $rg . '%';
-            }
-            if (!empty($regNumber)) {
+            } elseif (!empty($regNumber)) {
                 $query .= " AND numero_registro LIKE :regNumber";
                 $params[':regNumber'] = '%' . $regNumber . '%';
+            } else {
+                $query .= " ORDER BY id DESC LIMIT 15";
             }
 
             $stmt = $this->pdo->prepare($query);
