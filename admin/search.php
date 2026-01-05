@@ -62,7 +62,7 @@ switch($type) {
         break;      
 
     case 'form-idoso':
-        $results = $formIdosoModel->searchIdoso($id, $name, $date, $rg, $regNumber);  
+        $results = $formIdosoModel->searchIdoso($id, $name, $date, $rg, $regNumber, $phone);  
 
         if (!empty($results)) {
             $response = [
@@ -72,7 +72,8 @@ switch($type) {
                     'name' => $name,
                     'rg' => $rg,
                     'reg_number' => $regNumber,
-                    'birth_date' => $date
+                    'birth_date' => $date,
+                    'phone' => $phone
                 ],
                 'data' => $results,
                 'count' => count($results)
@@ -85,7 +86,8 @@ switch($type) {
                     'name' => $name,
                     'rg' => $rg,
                     'reg_number' => $regNumber,
-                    'birth_date' => $date
+                    'birth_date' => $date,
+                    'phone' => $phone
                 ],
                 'data' => [],
                 'message' => 'Nenhum formulário de idoso encontrado com os critérios fornecidos'
