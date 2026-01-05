@@ -6,7 +6,7 @@
       deverá ser preenchido o <strong>Requerimento para Implantação de Redutor de Velocidade.</strong></p>
     <p class="text-justify text-lg sm:text-xl p-5">
       Para baixar o requerimento: <a
-        class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">Clique Aqui</a>
+        class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="REQUERIMENTO - Implantação de Lombada.pdf" target="_blank" download>Clique Aqui</a>
     </p>
     <p class="text-justify text-lg sm:text-xl p-5">
       Nos casos em não possuir email, poderá depositar na Caixa de Documentos pela Setor de Trânsito, e caso falte algum
@@ -37,7 +37,7 @@
     </p>
     <p class="text-justify text-lg sm:text-xl p-5">
       Para baixar o requerimento: <a
-        class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="#">Clique Aqui</a>
+        class="bg-yellow-500 ml-4 px-4 py-2 rounded-md hover:bg-amber-200 duration-200 text-lg" href="REQUERIMENTO - Retirada de Lombada.pdf" target="_blank" download>Clique Aqui</a>
     </p>
     <p class="text-justify text-lg sm:text-xl p-5">
       - Após o preenchimento realizar o protocolo junto à PREFEITURA, de segunda à sexta-feira.
