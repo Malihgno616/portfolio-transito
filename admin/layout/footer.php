@@ -21,5 +21,6 @@ include __DIR__.'/../components/footer.php';
 <script src="assets/js/spinnerForms.js"></script>
 <script src="assets/js/change-slider.js"></script>
 <script src="assets/js/search.js"></script>
+<script src="assets/js/searchIdoso.js"></script>
 </body>
 </html>

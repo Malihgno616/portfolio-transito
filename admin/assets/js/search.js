@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fetchContacts = async (params) => {
     try {
       const response = await axios.get(
-        "https://novo.transitoleme.sp.gov.br/admin/search.php",
+        "search.php",
         {
           params: {
             type: "contact",
@@ -98,9 +98,3 @@ document.addEventListener("DOMContentLoaded", () => {
   addSearchListener(inputIdContact, "id");
   addSearchListener(inputPhoneContact, "phone");
 });
-
-// Evento para os dados dos idosos
-document.addEventListener("DOMContentLoaded", () => {});
-
-// Evento para os dados dos deficientes
-document.addEventListener("DOMContentLoaded", () => {});
