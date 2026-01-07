@@ -493,25 +493,35 @@ class FormIdosoModel {
             if (!empty($id)) {
                 $query .= " AND id = :id";
                 $params[':id'] = $id;
-            } elseif (!empty($name)) {
+            } 
+            
+            if (!empty($name)) {
                 $query .= " AND nome_idoso LIKE :name";
                 $params[':name'] = '%' . $name . '%';
-            } elseif (!empty($birthDate)) {
-                $query .= " AND nascimento_idoso = :birthDate";
-                $params[':birthDate'] = $birthDate;
-            } elseif (!empty($rg)) {
+            } 
+            
+            if (!empty($birthDate)) {
+                $query .= " AND nascimento_idoso LIKE :birthDate";
+                $params[':birthDate'] = '%' . $birthDate . "%";
+            } 
+            
+            if (!empty($rg)) {
                 $query .= " AND rg_idoso LIKE :rg";
                 $params[':rg'] = '%' . $rg . '%';
-            } elseif (!empty($regNumber)) {
+            } 
+            
+            if (!empty($regNumber)) {
                 $query .= " AND numero_registro LIKE :regNumber";
                 $params[':regNumber'] = '%' . $regNumber . '%';
-            } elseif (!empty($phone)) {
+            } 
+            
+            if (!empty($phone)) {
                 $query .= " AND telefone_idoso LIKE :phone";
                 $params[':phone'] = '%' . $phone . '%';
-            } else {
-                $query .= " ORDER BY id DESC LIMIT 15";
-            }
-
+            } 
+            
+            $query .= " ORDER BY id DESC LIMIT 15";
+            
             $stmt = $this->pdo->prepare($query);
             foreach ($params as $key => $value) {
                 $stmt->bindValue($key, $value);

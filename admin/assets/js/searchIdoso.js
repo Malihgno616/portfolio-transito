@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputIdIdoso = document.getElementById("input-id-idoso");
   const inputNomeIdoso = document.getElementById("input-nome-idoso");
   const inputRgIdoso = document.getElementById("input-rg-idoso");
+  const inputNascIdoso = document.getElementById("input-nasc-idoso");
   const inputNumRegIdoso = document.getElementById("input-num-reg-idoso");
   const inputPhoneIdoso = document.getElementById("input-phone-idoso");
   const tableBodyIdoso = document.getElementById("table-idoso-body");
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <th scope="col" class="px-6 py-3">RG</th>
           <th scope="col" class="px-6 py-3">Nº Registro</th>
           <th scope="col" class="px-6 py-3">Telefone</th>
+          <th scope="col" class="px-6 py-3">Data de Nascimento</th>
           <th scope="col" class="px-6 py-3">Ações</th> 
         </tr>
       </thead>
@@ -65,12 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
           <td class="px-6 py-4 text-lg">${idoso.id || ""}</td>
           <td class="px-6 py-4 text-lg">${idoso.nome_idoso || ""}</td>
           <td class="px-6 py-4 text-lg">${idoso.rg_idoso || ""}</td>
-          <td class="px-6 py-4 text-lg text-center">${
-            idoso.numero_registro || "0"
-          }</td>
-          <td class="px-6 py-4 text-lg">${
-            idoso.telefone_idoso || ""
-          }</td>
+          ${
+            idoso.numero_registro === 0
+              ? `<td class="px-6 py-4 text-lg bg-red-200 text-center">0</td>`
+              : `<td class="px-6 py-4 text-lg text-center bg-green-200">${
+                  idoso.numero_registro || ""
+                }</td>`
+          }
+          <td class="px-6 py-4 text-lg">${idoso.telefone_idoso || ""}</td>
+          <td class="px-6 py-4 text-lg">${idoso.nascimento_idoso || ""}</td>
           <td class="px-6 py-4 font-bold text-lg">
             <a href="detalhes-card-idoso.php?id-idoso=${idoso.id || ""}" 
                 class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200 inline-block text-center">
@@ -83,7 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleSearch = async (field, value) => {
-    const params = { id: "", name: "", rg: "", reg_number: "", phone: "" };
+    const params = {
+      id: "",
+      name: "",
+      rg: "",
+      reg_number: "",
+      birth_date: "",
+      phone: "",
+    };
     params[field] = value;
 
     const idosos = await fetchIdosos(params);
@@ -100,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   addSearchListener(inputIdIdoso, "id");
   addSearchListener(inputNomeIdoso, "name");
   addSearchListener(inputRgIdoso, "rg");
-  addSearchListener(inputNumRegIdoso, "reg_number");
+  addSearchListener(inputNumRegIdoso, "reg-number");
   addSearchListener(inputPhoneIdoso, "phone");
+  addSearchListener(inputNascIdoso, "date");
 });
