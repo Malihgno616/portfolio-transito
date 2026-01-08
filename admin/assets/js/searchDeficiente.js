@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <td class="px-6 py-4 text-lg">${beneficiario.telefone_beneficiario || ""}</td>
           <td class="px-6 py-4 text-lg">${beneficiario.nasc_beneficiario || ""}</td>
           <td class="px-6 py-4 text-lg">
-            <a href="editar-deficiente.php?id=${beneficiario.id}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200 inline-block text-center"><i class="fa-solid fa-pen-ruler"></i></a>
+            <a href="detalhes-card-deficiente.php?id-beneficiario=${beneficiario.id}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200 inline-block text-center"><i class="fa-solid fa-pen-ruler"></i></a>
           </td>
         </tr>
       `;
