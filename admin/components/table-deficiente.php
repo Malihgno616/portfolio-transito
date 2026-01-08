@@ -3,7 +3,7 @@
             Total de registros <span class="font-semibold text-gray-900"> <?= $totalBeneficiarios; ?>
         </p>
         <p class="text-md font-normal p-4 text-gray dark:text-gray-400">
-            Último cartão emitido <span class="font-semibold text-gray-900"> 123456</span>
+            Último cartão emitido <span class="font-semibold text-gray-900"> <?= $formDeficienteModel->lastRegistrationNumber() ?></span>
         </p>
     </div>
     <button data-modal-target="search-deficiente" data-modal-toggle="search-deficiente" class="max-w-lg bg-yellow-600 m-auto rounded-lg p-4 text-white flex items-center gap-2 hover:bg-yellow-500 mb-6 duration-150 text-xl">
