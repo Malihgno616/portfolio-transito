@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
+header('Content-Type: application/json; charset=utf-8');
 
 require __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/model/ContactModel.php';
@@ -29,7 +30,6 @@ $rg = $_GET['rg'] ?? "";
 $regNumber = $_GET['reg-number'] ?? "";
 
 // var_dump($_GET);
-header('Content-Type: application/json; charset=utf-8');
 
 switch($type) {
     case 'contact':

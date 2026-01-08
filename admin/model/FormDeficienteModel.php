@@ -570,7 +570,7 @@ class FormDeficienteModel {
         }
     }
     
-    public function searchBeneficiario($id, $name, $birthDate, $rg, $regNumber)
+    public function searchBeneficiario($id, $name, $birthDate, $rg, $regNumber, $phone)
     {
         try {
 
@@ -578,25 +578,36 @@ class FormDeficienteModel {
             $params = [];
 
             if (!empty($id)) {
-                $query .= " AND id LIKE :id LIMIT 10";
+                $query .= " AND id LIKE :id";
                 $params[':id'] = $id;
             }
+
             if (!empty($name)) {
-                $query .= " AND nome_beneficiario LIKE :name LIMIT 10";
-                $params[':name'] = '%' . $name . '%';
+                $query .= " AND nome_beneficiario LIKE :name";
+                $params[':name'] = "%". $name ."%";
             }
+            
             if (!empty($birthDate)) {
-                $query .= " AND nasc_beneficiario LIKE :birthDate LIMIT 10";
-                $params[':birthDate'] = $birthDate;
+                $query .= " AND nasc_beneficiario LIKE :birthDate";
+                $params[':birthDate'] = "%". $birthDate ."%";
             }
+            
             if (!empty($rg)) {
-                $query .= " AND rg_beneficiario LIKE :rg LIMIT 10";
-                $params[':rg'] = $rg;
+                $query .= " AND rg_beneficiario LIKE :rg";
+                $params[':rg'] = "%". $rg ."%";
             }
+            
             if (!empty($regNumber)) {
-                $query .= " AND numero_registro LIKE :regNumber LIMIT 10";
-                $params[':regNumber'] = $regNumber;
+                $query .= " AND numero_registro LIKE :regNumber";
+                $params[':regNumber'] = "%". $regNumber ."%";
             }
+            
+            if (!empty($phone)) {
+                $query .= " AND telefone_beneficiario LIKE :phone";
+                $params[':phone'] = "%". $phone ."%";
+            }
+            
+            $query .= " ORDER BY id DESC LIMIT 15";
 
             $stmt = $this->pdo->prepare($query);
 
