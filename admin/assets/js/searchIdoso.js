@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <td class="px-6 py-4 text-lg">${idoso.nome_idoso || ""}</td>
           <td class="px-6 py-4 text-lg">${idoso.rg_idoso || ""}</td>
           ${
-            idoso.numero_registro === 0
-              ? `<td class="px-6 py-4 text-lg bg-red-200 text-center">0</td>`
+            parseInt(idoso.numero_registro) === 0
+              ? `<td class="px-6 py-4 text-lg bg-red-200 text-center">${idoso.numero_registro || "0"}</td>`
               : `<td class="px-6 py-4 text-lg text-center bg-green-200">${
                   idoso.numero_registro || ""
                 }</td>`
