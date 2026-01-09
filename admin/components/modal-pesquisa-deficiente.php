@@ -28,9 +28,19 @@
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
                     <input type="search" id="input-nome-beneficiario"
-                    placeholder="Pesquisar pelo nome do beneficiário"
+                    placeholder="Pesquisar pelo Nome do beneficiário"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
                 </div>
+
+                <div class="relative">
+                    <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+                    </div>
+                    <input type="search" id="input-nasc-beneficiario" oninput="formatDate(this)"
+                    placeholder="Pesquisar pela Data de Nascimento do beneficiário"
+                    class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
+                </div> 
 
                 <div class="relative">
                     <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
@@ -48,7 +58,7 @@
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
                     <input type="search" id="input-num-reg-beneficiario"
-                    placeholder="Pesquisar pelo nº de registro do beneficiário"
+                    placeholder="Pesquisar pelo Nº de Registro do beneficiário"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
                 </div>               
 
@@ -57,18 +67,8 @@
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
-                    <input type="search" id="input-nasc-beneficiario" oninput="formatDate(this)"
-                    placeholder="Pesquisar pela data de nascimento do beneficiário"
-                    class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
-                </div> 
-
-                <div class="relative">
-                    <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-                    </div>
                     <input type="search" id="input-phone-beneficiario" oninput="formatPhone(this)"
-                    placeholder="Pesquisar pelo nº de telefone do beneficiário"
+                    placeholder="Pesquisar pelo Nº de Telefone do beneficiário"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
                 </div>
 

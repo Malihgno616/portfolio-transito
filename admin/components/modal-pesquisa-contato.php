@@ -17,7 +17,7 @@
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
                     <input type="search" id="input-contact-id"
-                    placeholder="Pesquisar pelo Id"
+                    placeholder="Pesquisar pelo ID"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />  
                 </div>
 
@@ -27,7 +27,7 @@
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
                     <input type="search" id="input-contact-name"
-                    placeholder="Pesquisar pelo nome"
+                    placeholder="Pesquisar pelo Nome"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
                 </div>
 
@@ -37,7 +37,7 @@
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
                     <input type="search" id="input-contact-phone"
-                    placeholder="Pesquisar pelo nº de telefone"
+                    placeholder="Pesquisar pelo Nº de Telefone"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
                 </div>
  
