@@ -55,10 +55,26 @@ switch ($order) {
 <?php include __DIR__.'/layout/header.php';?>
 
 <main class="w-full h-full p-10">
-    <h1 class="text-5xl font-light text-center mb-5">Cartão do Idoso</h1>
-    <div class="flex items-center justify-center">
-        <button data-modal-target="add-idoso-modal" data-modal-toggle="add-idoso-modal" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Adicionar Idoso <i class="fas fa-plus"></i></button>
+    <div class="flex justify-between items-center w-[58em] m-auto mb-5">
+        <h1 class="text-5xl font-light text-center mb-5">Cartão do Idoso</h1>
+        <div class="flex items-center justify-center gap-3">
+            <button data-modal-target="add-idoso-modal" data-modal-toggle="add-idoso-modal" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"><i class="fas fa-plus"></i></button>
+            <button data-modal-target="search-idoso" data-modal-toggle="search-idoso" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                <i class="fas fa-search"></i>
+            </button>
+            <a href="servicos.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+        </div>
     </div>
+    <hr>
+    <div class="flex justify-center items-center mb-4 gap-10">
+        <p class="text-md font-normal p-4 text-gray-500 dark:text-gray-400">
+            Total de registros <span class="font-semibold text-gray-900"> <?= $formIdosoModel->idosoCountTable(); ?>
+        </p>
+        <p class="text-md font-normal p-4 text-gray dark:text-gray-400">
+            Último cartão emitido <span class="font-semibold text-gray-900"> <?= $formIdosoModel->lastRegistrationNumber() ?> </span>
+        </p> 
+    </div>
+    <br>
     <?php 
         if (isset($_SESSION['idoso-alert'])) {
             echo $_SESSION['idoso-alert'];
@@ -70,9 +86,7 @@ switch ($order) {
         include __DIR__.'/components/modal-pesquisa-idoso.php';
         include __DIR__.'/components/table-idoso.php';
     ?>
-    <div class="m-auto text-center p-12">
-      <a href="servicos.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
-    </div>
+    
 </main>
 
 <?php include __DIR__.'/layout/footer.php';?>
