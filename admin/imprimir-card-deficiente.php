@@ -54,14 +54,19 @@ $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['no
 <?php include __DIR__.'/layout/header.php';?>
 
 <main class="w-full h-full p-10">
-    <h1 class="text-5xl font-light text-center mb-5">Impressão dos cartões</h1>
+    <div class="flex justify-between items-center w-md">
+        <h1 class="text-5xl font-light text-center mb-5">Impressão dos cartões</h1>
+        <a href="tab-deficiente.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
+    <hr>
+    <br>
     <p class="font-bold text-2xl text-center m-7 text-yellow-700">
         ID: <?= $idBeneficiario; ?>
     </p>
     <p class="text-2xl text-center m-7">
         Nome: <?= $nomeBeneficiario; ?>
     </p>
-    <div class="flex gap-8 justify-center flex-col items-center w-full">
+    <div class="grid grid-cols-2 gap-1 justify-items-center flex-col items-center w-full">
         
         <form action="card-deficiente-frente.php" method="get" target="_blank">
             <input type="hidden" name="id-beneficiario" value="<?= $idBeneficiario ?>">
@@ -77,7 +82,6 @@ $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['no
             </button>
         </form>
 
-        <a href="tab-deficiente.php" class="rounded-xl w-[400px] text-3xl flex justify-center m-auto items-center bg-yellow-600 text-white p-3 hover:bg-yellow-500 duration-75">Voltar</a>
     </div>
 </main>
 
