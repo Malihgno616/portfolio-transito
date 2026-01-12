@@ -15,8 +15,6 @@ use Model\ContactModel\ContactModel;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// Paginação
-
 $model = new ContactModel();
 $data = $model->paginatedContacts($page, 15);
 
@@ -59,7 +57,21 @@ include __DIR__.'/layout/header.php';
 ?>
 
 <main class="w-full h-full p-10">
-  <?php include __DIR__.'/components/table-contatos.php';?>
+
+    <div class="flex justify-between items-center w-[58em] m-auto mb-5">
+        <h1 class="text-5xl text-center">Contatos</h1>
+        <div class="flex items-center justify-center gap-3">
+            <button data-modal-target="search-contact" data-modal-toggle="search-contact" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                <i class="fas fa-search"></i>
+            </button> 
+            <a href="home.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">
+            Voltar
+            </a>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <?php include __DIR__.'/components/table-contatos.php';?>
 </main>
 
 <?php 

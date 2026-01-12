@@ -1,25 +1,14 @@
-    <?php 
-        if(isset($_SESSION['success_del_contact'])) {
-            echo $_SESSION['success_del_contact'];
-            unset($_SESSION['success_del_contact']);
-        } elseif(isset($_SESSION['error_message'])) {
-            echo $_SESSION['error_message'];
-            unset($_SESSION['error_message']);
-        } 
-    ?>
+<?php 
+    if(isset($_SESSION['success_del_contact'])) {
+        echo $_SESSION['success_del_contact'];
+        unset($_SESSION['success_del_contact']);
+    } elseif(isset($_SESSION['error_message'])) {
+        echo $_SESSION['error_message'];
+        unset($_SESSION['error_message']);
+    } 
+?>
   <div class="flex justify-center animate__animated animate__fadeIn">
     <div class="p-10 w-full">
-        <div class="flex justify-between items-center w-[58em] m-auto mb-5">
-            <h1 class="text-5xl text-center">Contatos</h1>
-            <a href="home.php" class="text-xl text-center px-6 py-3 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-150 transition-colors">
-            Voltar
-            </a>
-        </div>
-    <hr>
-    <br>
-    <button data-modal-target="search-contact" data-modal-toggle="search-contact" class="max-w-lg bg-yellow-600 m-auto rounded-lg p-4 text-white flex items-center gap-2 hover:bg-yellow-500 mb-6 duration-150 text-xl">
-        Pesquisar Contato <i class="fas fa-search"></i>
-    </button>  
     <div>
       <div class="mb-4 mt-4 relative z-0">
           <select id="orderBy" name="orderBy" onchange="location = this.value;" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer">
