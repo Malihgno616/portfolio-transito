@@ -42,7 +42,7 @@ $type = "deficiente-frente";
 
 try {
 
-    $pdfFrente = new CardDeficienteFrente($imagePath, [495, 255], [230, 333]);
+    $pdfFrente = new CardDeficienteFrente($imagePath, [125, 43], [58, 59]);
 
     $numReg = $formDeficienteModel->detailsDeficiente($idBeneficiario)['numero_registro'];
 

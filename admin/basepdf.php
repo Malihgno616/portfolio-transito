@@ -32,11 +32,13 @@ class BasePdf {
     }
 
     protected function initializePdf() {
-        $this->pdf = new Fpdi('L', 'mm', array($this->widthMm, $this->heightMm));
+        $pageWidth  = 210;
+        $pageHeight = 128;
+        $this->pdf = new Fpdi('L', 'mm', [$pageWidth, $pageHeight]);
         $this->pdf->SetMargins(0, 0, 0);
         $this->pdf->SetAutoPageBreak(false);
         $this->pdf->AddPage();
-        $this->pdf->Image($this->imagePath, 0, 0, $this->widthMm, $this->heightMm);
+        $this->pdf->Image($this->imagePath, 0, 0, $pageWidth, $pageHeight);
     }
 
     public function getPdf() {

@@ -43,7 +43,7 @@ class CardDeficienteFrente extends BasePdf {
 
     public function addContentRegNumber($regNumber)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 88);
+        $this->pdf->SetFont('Helvetica', 'B', 22);
         $this->pdf->SetTextColor(255, 0, 0);
         $this->pdf->SetXY($this->positionRegNumber[0], $this->positionRegNumber[1]);
         $this->pdf->Write(35, $regNumber);
@@ -51,7 +51,7 @@ class CardDeficienteFrente extends BasePdf {
 
     public function addContentIssueDate($issueDate)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 88);
+        $this->pdf->SetFont('Helvetica', 'B', 22);
         $this->pdf->SetTextColor(0 ,0,0);
         $this->pdf->SetXY($this->positionIssueDate[0], $this->positionIssueDate[1]);
         $this->pdf->Write(35, $issueDate);

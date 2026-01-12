@@ -36,7 +36,7 @@ $type = "idoso-frente";
 
 try {
 
-    $pdfVerso = new CardIdosoVerso($imagePath, [295,10]);
+    $pdfVerso = new CardIdosoVerso($imagePath, [72, 6]);
 
     $nomeIdoso = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
 

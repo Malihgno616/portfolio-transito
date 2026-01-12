@@ -36,10 +36,10 @@ class CardIdosoVerso extends BasePdf {
 
     public function addContentNomeIdoso($nomeIdoso)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 75);
+        $this->pdf->SetFont('Helvetica', 'B', 20);
         $this->pdf->SetTextColor(0 ,0,0);
         $this->pdf->SetXY($this->nomeIdosoPosition[0], $this->nomeIdosoPosition[1]);
-        $this->pdf->Write(35, $nomeIdoso);
+        $this->pdf->Write(0, $nomeIdoso);
     }
 
     public function generate($outputPath)

@@ -66,21 +66,14 @@ $nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
         <form action="card-idoso-frente.php" method="get" target="_blank">
             <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
             <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                <h1 class="text-4xl text-gray-800 text-center">Imprimir Frente <i class="fa-solid fa-file-pdf"></i></h1>
+                <h1 class="text-4xl text-gray-800 text-center">Frente <i class="fa-solid fa-file-pdf"></i></h1>
             </button>
         </form>
 
         <form action="card-idoso-verso.php" method="get" target="_blank">
             <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
             <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                <h1 class="text-4xl text-gray-800 text-center">Imprimir Verso <i class="fa-solid fa-file-pdf"></i></h1>
-            </button>
-        </form>
-
-        <form action="" method="get" target="_blank">
-            <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
-            <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                <h1 class="text-4xl text-gray-800 text-center">Imprimir Frente e Verso <i class="fa-solid fa-file-pdf"></i></h1>
+                <h1 class="text-4xl text-gray-800 text-center">Verso <i class="fa-solid fa-file-pdf"></i></h1>
             </button>
         </form>
 

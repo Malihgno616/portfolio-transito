@@ -39,10 +39,10 @@ class CardDeficienteVerso extends BasePdf {
 
     public function addContentNomeIdoso($nomeIdoso)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 75);
+        $this->pdf->SetFont('Helvetica', 'B', 20);
         $this->pdf->SetTextColor(0 ,0,0);
         $this->pdf->SetXY($this->nomeIdosoPosition[0], $this->nomeIdosoPosition[1]);
-        $this->pdf->Write(35, $nomeIdoso);
+        $this->pdf->Write(0, $nomeIdoso);
     }
 
     public function generate($outputPath)
@@ -51,21 +51,3 @@ class CardDeficienteVerso extends BasePdf {
     }
 
 }
-
-// $idDeficiente = 120;
-
-// $outputPath = __DIR__ . '/cartao-deficiente/cartao-deficiente-id' . $idDeficiente . '-verso.pdf';
-
-// try {
-
-//     $deficienteVerso = new CardDeficienteVerso($imagePath, [295,10]);
-    
-//     $deficienteVerso->addContentNomeIdoso('Nome do Deficiente');
-    
-//     $deficienteVerso->generate($outputPath);
-
-//     echo "PDF gerado com sucesso: " . $outputPath . "\n";
-
-// } catch (Exception $e) {
-//     echo "Erro ao gerar o PDF: " . $e->getMessage() . "\n";
-// }
