@@ -33,7 +33,7 @@ class BasePdf {
 
     protected function initializePdf() {
         $pageWidth  = 210;
-        $pageHeight = 128;
+        $pageHeight = 148;
         $this->pdf = new Fpdi('L', 'mm', [$pageWidth, $pageHeight]);
         $this->pdf->SetMargins(0, 0, 0);
         $this->pdf->SetAutoPageBreak(false);

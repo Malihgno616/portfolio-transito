@@ -44,7 +44,7 @@ $outputPath = $outputDir . '/' . $fileName;
 
 try {
 
-    $pdfFrente = new CardIdosoFrente($imagePath, [125, 47], [78, 62]);
+    $pdfFrente = new CardIdosoFrente($imagePath, [125, 57], [78, 75]);
 
     $pdfFrente->addContentRegNumber($numReg . '/' . $year);
 

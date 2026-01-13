@@ -38,7 +38,7 @@ $type = "deficiente-verso";
 
 try {
 
-    $pdfVerso = new CardDeficienteVerso($imagePath, [72, 6]);
+    $pdfVerso = new CardDeficienteVerso($imagePath, [73, 7]);
 
     $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['nome_beneficiario'];
 
