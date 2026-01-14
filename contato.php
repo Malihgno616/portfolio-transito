@@ -23,5 +23,7 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['old-contact']);
     include('layout/header.php');
     include_once('layout/title.php');
     include('layout/form-contato-layout.php');
+  ?>
+  <?php
     include('layout/footer.php'); 
   ?>

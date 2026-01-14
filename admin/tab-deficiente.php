@@ -82,6 +82,11 @@ switch ($order) {
         include __DIR__.'/components/modal-pesquisa-deficiente.php';
     ?>
 </main>
-
+<script src="assets/js/addImgBene.js"></script>
+<script src="assets/js/addAtestado.js"></script>
+<script src="assets/js/spinnerForms.js"></script>
+<script src="assets/js/spinnerOn.js"></script>
+<script src="assets/js/exibirDataBene.js"></script>
+<script src="assets/js/searchDeficiente.js"></script>
 <?php include __DIR__.'/layout/footer.php';?>
 

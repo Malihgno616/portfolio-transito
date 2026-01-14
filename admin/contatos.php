@@ -78,5 +78,5 @@ include __DIR__.'/layout/header.php';
 include __DIR__.'/components/modal-contact.php';
 include __DIR__.'/components/modal-pesquisa-contato.php';
 ?>
-
+<script src="assets/js/search.js"></script>
 <?php include __DIR__.'/layout/footer.php';?> 

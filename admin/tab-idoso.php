@@ -88,6 +88,10 @@ switch ($order) {
     ?>
     
 </main>
-
+<script src="assets/js/searchIdoso.js"></script>
+<script src="assets/js/spinnerForms.js"></script>
+<script src="assets/js/spinnerOn.js"></script>
+<script src="assets/js/showImgIdoso.js"></script>
+<script src="assets/js/showImgRepIdoso.js"></script>
 <?php include __DIR__.'/layout/footer.php';?>
 

@@ -59,7 +59,8 @@ $end = min($currentPage * $limit, $totalUsers);
     </div>
   
     <?php include __DIR__.'/components/modal-usuarios.php';?>
-
+    <script src="assets/js/addUserImage.js"></script>
+    <script src="assets/js/editUserImage.js"></script>
   <?php 
     include __DIR__.'/layout/footer.php';
   ?>
