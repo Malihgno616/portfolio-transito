@@ -41,10 +41,10 @@
   <section class="flex flex-wrap sm:flex-col items-start gap-4 mb-7">
     
     <p class="text-lg sm:text-sm px-5 sm:px-0 sm:text-center">Para baixar o Requerimento de Interdição de Via Pública: </p>
-    <a class="bg-yellow-500 ml-4 rounded-md p-1 hover:bg-amber-200 duration-200 text-lg" href="#" rel="noopener noreferrer">clique aqui</a>
+    <a class="bg-yellow-500 ml-4 rounded-md p-1 hover:bg-amber-200 duration-200 text-lg" href="Requerimento-Interdição-2025.pdf" rel="noopener noreferrer">clique aqui</a>
 
     <p class="text-lg sm:text-sm px-5 sm:px-0 sm:text-center">Para baixar o Formulário de Abaixo Assinado: </p>
-    <a class="bg-yellow-500 ml-4 rounded-md p-1 hover:bg-amber-200 duration-200 text-lg" href="#" rel="noopener noreferrer">clique aqui</a>
+    <a class="bg-yellow-500 ml-4 rounded-md p-1 hover:bg-amber-200 duration-200 text-lg" href="Abaixo-assinado-Interdição-2025.pdf" rel="noopener noreferrer">clique aqui</a>
   
   </section>
 
