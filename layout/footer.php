@@ -60,7 +60,7 @@
     </div>
     <div class="px-4 py-6 bg-yellow-600 md:flex md:items-center md:justify-between">
       <img class="w-10 h-10" src="assets/img/favicon.png" alt="">
-      <span class="text-lg text-gray-900 sm:text-center">©2025 <a href="">Trânsito Leme</a>. Todos os direitos
+      <span class="text-lg text-gray-900 sm:text-center">©<?= date("Y") ?> <a href="">Trânsito Leme</a>. Todos os direitos
         reservados.
       </span>
       <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">

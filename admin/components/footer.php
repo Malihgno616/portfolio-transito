@@ -9,6 +9,6 @@
             </ul>
         </div>
         <hr class="my-4 border-1 rounded-2xl border-gray-400/50 w-250 sm:mx-auto dark:border-gray-900 lg:my-8" />
-        <span class="block text-lg text-gray-500 sm:text-center dark:text-black">© 2023 <a href="home.php" class="hover:underline">Trânsito Leme</a>. Todos os direitos reservados.</span>
+        <span class="block text-lg text-gray-500 sm:text-center dark:text-black">©<?= date("Y") ?> <a href="home.php" class="hover:underline">Trânsito Leme</a>. Todos os direitos reservados.</span>
     </div>
 </footer>
