@@ -42,6 +42,12 @@ $endItem = min($offset + $limit, $totalNews);
 include __DIR__.'/layout/header.php';
 ?>
   <main class="w-full h-full p-10">   
+    <div class="flex justify-between items-center mb-10">
+      <h1 class="text-5xl font-light text-center">Notícias publicadas</h1>
+      <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
+    <hr>
+    <br>
     <?php 
         if(isset($_SESSION['news-alert'])){
           echo $_SESSION['news-alert'];
@@ -52,9 +58,6 @@ include __DIR__.'/layout/header.php';
         
         include __DIR__.'/components/modal-news.php';
     ?>
-    <div class="m-auto text-center p-12">
-      <a href="noticias.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
-    </div>
   </main>
   <script src="assets/js/imgNews.js"></script>
   <script src="assets/js/modalEditImageNews.js"></script>

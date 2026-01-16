@@ -1,4 +1,3 @@
-<h1 class="text-5xl font-light text-center mb-5">Notícias publicadas</h1>
 <div class="flex justify-center animate__animated animate__fadeIn">
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
@@ -17,12 +16,12 @@
           <td class="px-6 py-4 text-lg"><?= $newsItem['titulo_principal'] ?></td>
           <td class="px-6 py-4 text-lg"><?= $newsItem['subtitulo_principal'] ?></td>
           <td class="px-6 py-4 text-lg flex gap-5">
-            <button data-modal-target="news-<?= $newsItem['id_noticia'] ?>" data-modal-toggle="news-<?= $newsItem['id_noticia'] ?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200">Visualizar</button>
-            <button data-modal-target="edit-news-<?= $newsItem['id_noticia']?>" data-modal-toggle="edit-news-<?= $newsItem['id_noticia']?>" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200">Editar</button>
+            <button data-modal-target="news-<?= $newsItem['id_noticia'] ?>" data-modal-toggle="news-<?= $newsItem['id_noticia'] ?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-eye"></i></button>
+            <button data-modal-target="edit-news-<?= $newsItem['id_noticia']?>" data-modal-toggle="edit-news-<?= $newsItem['id_noticia']?>" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200"> <i class="fa-solid fa-pen-ruler"></i></button>
             <form onsubmit="return window.confirm('Tem certeza que deseja excluir esta notícia?')" action="del-news.php" method="post">
               <input type="hidden" name="id-news" value="<?= $newsItem['id_noticia'] ?>">
               <input type="hidden" name="id-content" value="<?= $newsItem['id_conteudo'] ?>">
-              <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200">Excluir</button>
+              <button type="submit" class="font-medium rounded-lg p-1 bg-red-100 text-red-600 dark:text-red-500 hover:bg-red-200"><i class="fa-solid fa-trash-can"></i></button>
             </form>
           </td>
         </tr>

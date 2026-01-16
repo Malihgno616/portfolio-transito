@@ -77,5 +77,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'show_image' && isset($_SESSIO
   <main class="max-w-5xl h-full p-10 m-auto">
    <?php include __DIR__.'/components/form-content.php';?>      
   </main>
+  <script src="assets/js/imgNews.js"></script>
 <?php include __DIR__.'/layout/footer.php';?>
 

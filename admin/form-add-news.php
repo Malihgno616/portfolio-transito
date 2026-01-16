@@ -22,6 +22,12 @@ ini_set("display_startup_errors", 1);
 <body>
   <?php include __DIR__.'/layout/header.php';?>
   <main class="max-w-5xl h-full p-10 m-auto">
+    <div class="flex items-center justify-between mb-10">
+      <h1 class="text-5xl font-light text-center mb-5">Adicione uma notícia</h1>
+      <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
+    <hr>
+    <br>
     <?php 
         
     if(isset($_SESSION['news-alert'])){
@@ -32,9 +38,6 @@ ini_set("display_startup_errors", 1);
     include __DIR__.'/components/form-news.php';
 
     ?>
-    <div class="m-auto text-center p-12">
-      <a href="noticias.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
-    </div>
   </main>
   <script src="assets/js/imgNews.js"></script>
   <?php include __DIR__.'/layout/footer.php';?>

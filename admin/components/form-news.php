@@ -1,4 +1,3 @@
-<h1 class="text-5xl font-light text-center mb-5">Adicione uma notícia</h1>
 <div class="p-10 w-full">
   <form action="form-add-content.php" enctype="multipart/form-data" class="space-y-4 p-5 grid grid-cols-1 gap-10" method="post">
     <div class="relative z-0">
