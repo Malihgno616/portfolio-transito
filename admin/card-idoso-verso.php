@@ -59,7 +59,6 @@ try {
     exit;
 }
 
-$type = "idoso-verso";
 $_SESSION['arquivos_temp_pdf'][] = $outputPath;
 
 ?>
@@ -71,7 +70,10 @@ $_SESSION['arquivos_temp_pdf'][] = $outputPath;
 <?php include __DIR__.'/layout/header.php';?>
 
 <main class="w-full h-full p-10">
-    <h1 class="text-center text-4xl p-3">Impressão do cartão do idoso - Verso</h1>
+    <div class="flex gap-4 justify-between items-center">
+        <h1 class="text-center text-4xl p-3">Impressão do cartão do idoso frente</h1>
+        <a class="flex justify-center text-white text-xl text-center m-7 bg-yellow-600 rounded-lg p-2 hover:bg-yellow-400 duration-75" href="imprimir-card-idoso.php?id-idoso=<?= $idIdoso ?>">Voltar</a>
+    </div>
     <iframe src="pdf-idoso-verso/cartao-idoso-id<?=$idIdoso?>-verso.pdf" width="100%" height="600px"></iframe>
     <a class="flex justify-center text-xl text-center m-7 hover:underline" href="pdf-idoso-verso/cartao-idoso-id<?=$idIdoso?>-verso.pdf" download>Clique aqui para baixar o arquivo</a>
 </main>

@@ -68,14 +68,14 @@ $nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
     </p>
         <div class="grid grid-cols-2 gap-1 justify-items-center flex-col items-center w-full">
         
-            <form action="card-idoso-frente.php" method="get" target="_blank">
+            <form action="card-idoso-frente.php" method="get">
                 <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
                 <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
                     <h1 class="text-4xl text-gray-800 text-center font-light">Frente <i class="fa-solid fa-file-pdf"></i></h1>
                 </button>
             </form>
 
-            <form action="card-idoso-verso.php" method="get" target="_blank">
+            <form action="card-idoso-verso.php" method="get">
                 <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
                 <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
                     <h1 class="text-4xl text-gray-800 text-center font-light">Verso <i class="fa-solid fa-file-pdf"></i></h1>
