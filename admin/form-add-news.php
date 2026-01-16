@@ -36,4 +36,5 @@ ini_set("display_startup_errors", 1);
       <a href="noticias.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
     </div>
   </main>
+  <script src="assets/js/imgNews.js"></script>
   <?php include __DIR__.'/layout/footer.php';?>
