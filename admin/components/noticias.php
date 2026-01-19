@@ -9,21 +9,21 @@
     <hr>
     <br>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-light max-w-4xl mx-auto">
-      <a href="#" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
+      <a href="noticias-destaque.php" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
         <i class="text-yellow-600 fa-solid fa-file-lines text-4xl mb-3"></i>
         Notícias em Destaque
       </a>
       <a href="form-add-news.php" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
         <i class="text-yellow-600 fa-solid fa-square-plus text-4xl mb-3"></i>
-        Adicionar notícias
+        Publicar Notícia
       </a>
       <a href="#" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
         <i class="text-yellow-600 fa-solid fa-magnifying-glass text-4xl mb-3"></i>
-        Pesquisar notícia
+        Pesquisar Notícia
       </a>
       <a href="news-table.php" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
         <i class="text-yellow-600 fa-solid fa-newspaper text-4xl mb-3"></i>
-        Todas as notícias
+        Todas as Publicações
       </a>
     </div>
   </div>

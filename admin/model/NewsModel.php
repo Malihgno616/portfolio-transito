@@ -160,6 +160,64 @@ class NewsModel {
     }
   }
 
+  public function getFeaturedNews($page, $limit, $offset)
+  {
+    $page = max(1, (int)$page);
+    try {
+        $query = "SELECT DISTINCT
+        np.id_noticia,
+        np.img_noticia as img_noticia,
+        np.nome_img_noticia as nome_img_noticia, 
+        np.titulo_principal,
+        np.subtitulo AS subtitulo_principal,
+        cn.id_conteudo,
+        cn.img_conteudo as img_conteudo,
+        cn.nome_img_conteudo as nome_img_conteudo,
+        cn.titulo_conteudo,
+        cn.subtitulo_conteudo,
+        cn.texto_conteudo as texto
+        FROM 
+            noticia_principal np
+        JOIN 
+            conteudo_noticia cn ON np.id_noticia = cn.noticia_id
+        WHERE cn.destaque = 1
+        GROUP BY np.id_noticia, cn.id_conteudo
+        ORDER BY np.id_noticia DESC
+        LIMIT :limit OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+    } catch(PDOException $e) {
+        return "Error: " . $e->getMessage();   
+    }
+  }
+
+  public function countFeaturedNews()
+  {
+    try {
+
+        $query = "SELECT COUNT(DISTINCT np.id_noticia) as total 
+                  FROM noticia_principal np
+                  JOIN conteudo_noticia cn ON np.id_noticia = cn.noticia_id
+                  WHERE cn.destaque = 1";
+        
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['total'];
+
+    } catch(PDOException $e) {
+        return "Error: " . $e->getMessage();
+    }
+  }
+
   public function addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent = "", $imageContent = "")
   {
       try {
