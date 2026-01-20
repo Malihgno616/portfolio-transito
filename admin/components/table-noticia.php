@@ -16,6 +16,9 @@
           <td class="px-6 py-4 text-lg"><?= $newsItem['titulo_principal'] ?></td>
           <td class="px-6 py-4 text-lg"><?= $newsItem['subtitulo_principal'] ?></td>
           <td class="px-6 py-4 text-lg flex gap-5">
+            <button data-modal-target="highlight-news-<?= $newsItem['id_noticia'] ?>" data-modal-toggle="highlight-news-<?= $newsItem['id_noticia'] ?>" class="font-medium rounded-lg p-1 bg-gray-100 text-gray-600 hover:bg-gray-200">
+              <abbr title="Destacar a Publicação"><i class="fa-solid fa-wand-magic-sparkles"></i></abbr>
+            </button>
             <button data-modal-target="news-<?= $newsItem['id_noticia'] ?>" data-modal-toggle="news-<?= $newsItem['id_noticia'] ?>" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-eye"></i></button>
             <button data-modal-target="edit-news-<?= $newsItem['id_noticia']?>" data-modal-toggle="edit-news-<?= $newsItem['id_noticia']?>" class="font-medium rounded-lg p-1 bg-yellow-100 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-200"> <i class="fa-solid fa-pen-ruler"></i></button>
             <form onsubmit="return window.confirm('Tem certeza que deseja excluir esta notícia?')" action="del-news.php" method="post">

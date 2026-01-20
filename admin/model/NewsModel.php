@@ -196,6 +196,24 @@ class NewsModel {
     }
   }
 
+  public function highlightNews($idContent)
+  {
+    try {      
+        $updateNews = " UPDATE conteudo_noticia SET destaque = 1 WHERE id_conteudo = :id_conteudo";
+        
+        $stmt = $this->pdo->prepare($updateNews);
+
+        $stmt->bindValue(':id_conteudo', $idContent, PDO::PARAM_INT);
+        
+        $stmt->execute();
+        
+        return true;      
+
+    } catch(PDOException $e) {
+        return "Error: " . $e->getMessage();
+    }
+  }
+
   public function countFeaturedNews()
   {
     try {
