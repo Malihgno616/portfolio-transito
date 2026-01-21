@@ -2,8 +2,8 @@
 
 namespace Model\NewsModel;
 
-require __DIR__.'/../config/conn.php';
-require __DIR__.'/../config/env.php';
+require_once __DIR__.'/../config/conn.php';
+require_once __DIR__.'/../config/env.php';
 
 use Conn;
 use PDO, PDOException;
@@ -213,7 +213,7 @@ class NewsModel {
         return "Error: " . $e->getMessage();
     }
   }
-
+  
   public function countFeaturedNews()
   {
     try {
@@ -235,6 +235,78 @@ class NewsModel {
         return "Error: " . $e->getMessage();
     }
   }
+
+    public function searchNews($id, $mainTitle, $mainSubtitle, $contentTitle, $contentSubtitle, $textContent)
+    {
+        try {
+            $query = "SELECT DISTINCT
+                np.id_noticia,
+                np.titulo_principal,
+                np.subtitulo AS subtitulo_principal,
+                cn.id_conteudo,
+                cn.titulo_conteudo,
+                cn.subtitulo_conteudo,
+                cn.texto_conteudo AS texto
+            FROM noticia_principal np
+            LEFT JOIN conteudo_noticia cn
+                ON np.id_noticia = cn.noticia_id
+            WHERE 1=1
+            ";
+
+            $params = [];
+
+            if ($id !== null && $id !== '') {
+                $query .= " AND np.id_noticia = :id ";
+                $params[':id'] = (int)$id;
+            }
+
+            $searchTerms = array_filter([
+                $mainTitle,
+                $mainSubtitle,
+                $contentTitle,
+                $contentSubtitle,
+                $textContent
+            ], fn($v) => $v !== null && $v !== '');
+
+            if (!empty($searchTerms)) {
+                $query .= " AND (";
+                $likes = [];
+
+                foreach ($searchTerms as $i => $term) {
+                    $key = ":q$i";
+                    $likes[] = "
+                        np.titulo_principal LIKE $key
+                        OR np.subtitulo LIKE $key
+                        OR cn.titulo_conteudo LIKE $key
+                        OR cn.subtitulo_conteudo LIKE $key
+                        OR cn.texto_conteudo LIKE $key
+                    ";
+                    $params[$key] = "%$term%";
+                }
+
+                $query .= implode(" OR ", $likes) . ")";
+            }
+
+            $query .= " ORDER BY np.id_noticia DESC LIMIT 15";
+
+            $stmt = $this->pdo->prepare($query);
+
+            foreach ($params as $key => $value) {
+                $stmt->bindValue(
+                    $key,
+                    $value,
+                    is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR
+                );
+            }
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            error_log("Erro searchNews: " . $e->getMessage());
+            return [];
+        }
+    }
 
   public function addContentNews($titleContent, $subtitleContent, $textContent, $nameImageContent = "", $imageContent = "")
   {
