@@ -17,7 +17,7 @@
         <i class="text-yellow-600 fa-solid fa-square-plus text-4xl mb-3"></i>
         Publicar Notícia
       </a>
-      <a href="#" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
+      <a href="pesquisa-noticia.php" class="flex flex-col items-center justify-center text-2xl text-center h-48 rounded-lg bg-gray-200 p-6 hover:shadow-xl duration-150 transition-shadow">
         <i class="text-yellow-600 fa-solid fa-magnifying-glass text-4xl mb-3"></i>
         Pesquisar Notícia
       </a>
