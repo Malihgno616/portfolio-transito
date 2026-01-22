@@ -34,5 +34,5 @@ include __DIR__.'/layout/header.php';
     
 </div>
 </main>
-
+<script src="./assets/js/searchNews.js"></script>
 <?php include __DIR__.'/layout/footer.php'; ?>

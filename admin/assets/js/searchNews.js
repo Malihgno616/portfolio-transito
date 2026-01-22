@@ -1,0 +1,91 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const inputMainTitle = document.getElementById("input-main-title");
+  const inputMainSubTitle = document.getElementById("input-main-subtitle");
+  const inputContentText = document.getElementById("input-content-text");
+
+  const tableNewsBody = document.getElementById("table-news-body");
+
+  tableNewsBody.classList.add(
+    "w-full",
+    "text-sm",
+    "text-left",
+    "rtl:text-right",
+    "text-gray-500",
+    "dark:text-gray-800",
+  );
+
+  const fetchNews = async (params) => {
+    try {
+      const response = await axios.get("search.php", {
+        params: {
+          type: "news",
+          ...params,
+        },
+      });
+      return response.data.data;
+    } catch (error) {}
+  };
+
+  const renderTable = (news) => {
+    tableNewsBody.innerHTML = `
+        <thead class="w-2xl text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+            <tr>
+            <th scope="col" class="px-6 py-3">Título Principal</th>
+            <th scope="col" class="px-6 py-3">Subtítulo Principal</th>
+            <th scope="col" class="px-6 py-3">Texto do Conteúdo</th>
+            <th scope="col" class="px-6 py-3">Ações</th> 
+            </tr>
+        </thead>
+        <tbody></tbody>
+        `;
+
+    const tbody = tableNewsBody.querySelector("tbody");
+
+    if (news.length === 0) {
+      tbody.innerHTML = `
+            <tr>
+            <td colspan="7" class="px-6 py-4 text-center text-red-600 font-bold text-lg">
+                Nenhuma notícia encontrada
+            </td>
+            </tr>
+        `;
+      return;
+    }
+
+    news.forEach((noticia) => {
+      tbody.innerHTML += `
+            <tr class="bg-white border-b  hover:bg-gray-50">
+            <td class="px-6 py-4 text-lg">${noticia.titulo_principal}</td>
+            <td class="px-6 py-4 text-lg">${noticia.subtitulo}</td>
+            <td class="px-6 py-4 text-lg truncate">${noticia.texto}</td>
+            <td class="px-6 py-4 text-center">
+                <a href="editar-noticia.php?id=${noticia.id_noticia}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
+            </td>
+            </tr>
+        `;
+    });
+  };
+
+  const handleSearch = async (field, value) => {
+    const params = {
+      main_title: "",
+      main_subtitle: "",
+      content_text: "",
+    };
+    params[field] = value;
+
+    const news = await fetchNews(params);
+    renderTable(news);
+  };
+
+  const addSearchListener = (inputElement, field) => {
+    inputElement.addEventListener("input", (event) => {
+      const value = event.target.value;
+      handleSearch(field, value);
+    });
+  };
+
+  addSearchListener(inputMainTitle, "main-title");
+  addSearchListener(inputMainSubTitle, "main-subtitle");
+  addSearchListener(inputContentText, "text-content");
+});
