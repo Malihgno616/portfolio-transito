@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <td class="px-6 py-4 text-lg">${noticia.subtitulo}</td>
             <td class="px-6 py-4 text-lg truncate">${noticia.texto}</td>
             <td class="px-6 py-4 text-center">
-                <a href="editar-noticia.php?id=${noticia.id_noticia}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
+                <a href="edit-news.php?id=${noticia.id_noticia}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
             </td>
             </tr>
         `;
