@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const renderTable = (news) => {
     tableNewsBody.innerHTML = `
         <thead class="w-2xl text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
-            <tr>
-            <th scope="col" class="px-6 py-3">Título Principal</th>
-            <th scope="col" class="px-6 py-3">Subtítulo Principal</th>
-            <th scope="col" class="px-6 py-3">Texto do Conteúdo</th>
+          <tr>
+            <th scope="col" class="px-6 py-3">Título</th>
+            <th scope="col" class="px-6 py-3">Subtítulo</th>
+            <th scope="col" class="px-6 py-3">Texto</th>
             <th scope="col" class="px-6 py-3">Ações</th> 
-            </tr>
+          </tr>
         </thead>
         <tbody></tbody>
         `;
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (news.length === 0) {
       tbody.innerHTML = `
             <tr>
-            <td colspan="7" class="px-6 py-4 text-center text-red-600 font-bold text-lg">
-                Nenhuma notícia encontrada
-            </td>
+              <td colspan="7" class="px-6 py-4 text-center text-red-600 font-bold text-lg">
+                  Nenhuma notícia encontrada
+              </td>
             </tr>
         `;
       return;
@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML += `
             <tr class="bg-white border-b  hover:bg-gray-50">
             <td class="px-6 py-4 text-lg">${noticia.titulo_principal}</td>
-            <td class="px-6 py-4 text-lg">${noticia.subtitulo}</td>
+            <td class="px-6 py-4 text-lg">${noticia.subtitulo_principal}</td>
             <td class="px-6 py-4 text-lg truncate">${noticia.texto}</td>
             <td class="px-6 py-4 text-center">
-                <a href="edit-news.php?id=${noticia.id_noticia}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
+                <a href="edit-news.php?id=${noticia.id_noticia}&id-content=${noticia.id_conteudo}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
             </td>
             </tr>
         `;

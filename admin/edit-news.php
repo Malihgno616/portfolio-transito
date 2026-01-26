@@ -19,26 +19,26 @@ use Model\NewsModel\NewsModel;
 $newsModel = new NewsModel();
 
 $idNews = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$idContentNews = filter_input(INPUT_GET, 'content_id', FILTER_SANITIZE_NUMBER_INT);
+$idContentNewsFromURL = filter_input(INPUT_GET, 'id-content', FILTER_SANITIZE_NUMBER_INT);
 
 if(!$idNews){
     header("Location: pesquisa-noticia.php");
     exit;
 }
 
-$idMainNews = $newsModel->getMainNews($idNews);
-$idContentNews = $newsModel->getContentNews($idContentNews);
+$mainNewsData = $newsModel->getMainNews($idNews);
+$contentNewsData = $newsModel->getContentNews($idContentNewsFromURL);
 
-echo <<<HTML
-<p class="text-red-600 text-xl">
-    ID recebido - Notícia principal: $idNews
-    <br>
-    ID recebido - Conteúdo da notícia: $idContentNews 
-</p>
-HTML;
+// echo <<<HTML
+// <p class="text-red-600 text-xl">
+//     ID recebido - Notícia principal: $idNews
+//     <br>
+//     ID recebido - Conteúdo da notícia: $idContentNewsFromURL
+// </p>
+// HTML;
 
-// var_dump($idMainNews);
-// var_dump($idContentNews);
+// var_dump($mainNewsData);
+// var_dump($contentNewsData);
 
 ?>
 
