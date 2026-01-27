@@ -1,10 +1,13 @@
 <div class="m-auto p-4 w-full max-w-2xl h-full">
-    <form id="news-details" class="space-y-4 p-5 grid grid-cols-1 gap-10" action="form-edit-news.php" method="post">
+    <form id="news-details" class="space-y-4 p-5 grid grid-cols-1 gap-10" action="form-edit-news.php" method="post" enctype="multipart/form-data">
       <?php if(!empty($mainNewsData) && !empty($contentNewsData)): ?>         
           <h1 class="text-4xl text-center font-light text-stone-600">Notícia Principal</h1>
 
+          <input type="hidden" name="id-main-news" value="<?= $mainNewsData['id_noticia'] ?>">
+          <input type="hidden" name="id-content-news" value="<?= $contentNewsData['id_conteudo'] ?>">
+
           <div class="relative z-0">
-              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" type="text" value="<?= $mainNewsData['titulo_principal'] ?>">
+              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="main-title" type="text" value="<?= $mainNewsData['titulo_principal'] ?>">
               <label
                 for="main-title"
                 class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
@@ -16,8 +19,8 @@
           </div>
 
           <div class="relative z-0">
-              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" type="text" value="<?= $mainNewsData['subtitulo'] ?>">
-              <label for="floating_subtitulo" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="main-subtitle" type="text" value="<?= $mainNewsData['subtitulo'] ?>">
+              <label for="main-subtitle" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                       peer-focus:start-0 peer-focus:text-yellow-500 
                       peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                       peer-focus:scale-90 peer-focus:-translate-y-4">
@@ -65,7 +68,7 @@
           <h1 class="text-4xl text-center font-light text-stone-600">Conteúdo da Notícia</h1>
 
           <div class="relative z-0">
-              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" type="text" value="<?= $contentNewsData['titulo_conteudo'] ?>">
+              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="title-content" type="text" value="<?= $contentNewsData['titulo_conteudo'] ?>">
               <label
                 for="content-title"
                 class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
@@ -77,8 +80,8 @@
           </div>
           
           <div class="relative z-0">
-              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" type="text" value="<?= $contentNewsData['subtitulo_conteudo'] ?>">
-              <label for="floating_subtitulo_content" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
+              <input class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="subtitle-content" type="text" value="<?= $contentNewsData['subtitulo_conteudo'] ?>">
+              <label for="subtitle-content" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                       peer-focus:start-0 peer-focus:text-yellow-500 
                       peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                       peer-focus:scale-90 peer-focus:-translate-y-4">
@@ -122,7 +125,7 @@
           </div>
 
           <div class="relative z-0">
-              <textarea class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" rows="6"><?= $contentNewsData['texto_conteudo'] ?></textarea>
+              <textarea class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" name="text-content" rows="6"><?= $contentNewsData['texto_conteudo'] ?></textarea>
               <label
                 for="content-text"
                 class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 

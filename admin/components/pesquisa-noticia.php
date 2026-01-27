@@ -1,5 +1,10 @@
 <form class="w-full max-w-6xl mx-auto m-10 flex flex-col gap-6">   
-
+    <?php 
+        if(isset($_SESSION['news-alert'])) {
+            echo $_SESSION['news-alert'];
+            unset($_SESSION['news-alert']);
+        }
+    ?>
     <div class="relative">
         <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
