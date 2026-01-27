@@ -35,7 +35,7 @@ $contentNewsData = $newsModel->getContentNews($idContentNewsFromURL);
 //     <br>
 //     ID recebido - Conteúdo da notícia: $idContentNewsFromURL
 // </p>
-// HTML;
+// HTML; 
 
 // var_dump($mainNewsData);
 // var_dump($contentNewsData);
@@ -60,4 +60,5 @@ include __DIR__.'/layout/header.php';
     <br>
     <?php include __DIR__.'/components/edit-news.php';?>
 </main>
+<script src="./assets/js/editNewsImg.js"></script>
 <?php include __DIR__.'/layout/footer.php'; ?>
