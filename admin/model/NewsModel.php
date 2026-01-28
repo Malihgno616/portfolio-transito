@@ -38,7 +38,8 @@ class NewsModel {
         cn.nome_img_conteudo as nome_img_conteudo,
         cn.titulo_conteudo,
         cn.subtitulo_conteudo,
-        cn.texto_conteudo as texto
+        cn.texto_conteudo as texto,
+        cn.destaque 
         FROM 
             noticia_principal np
         JOIN 
