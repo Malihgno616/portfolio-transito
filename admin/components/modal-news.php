@@ -266,26 +266,32 @@
   <div id="highlight-news-<?= $newsItem['id_noticia'] ?>" tabindex="-1" aria-hidden="true" class="animate__animated animate__fadeInDown hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative bg-white rounded-lg shadow-sm">
       <div class="relative p-4 w-full max-w-md max-h-full">
-          <div class="relative bg-neutral-primary-soft border rounded-base shadow-sm p-4 md:p-6">
-                  <button type="button" class="rounded-sm absolute top-3 end-2.5 text-body hover:bg-red-300 hover:text-heading text-sm w-9 h-9 ms-auto inline-flex justify-center items-center" data-modal-hide="highlight-news-<?= $newsItem['id_noticia'] ?>">
-                      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
-                      <span class="sr-only">Close modal</span>
-                  </button>
-              <div class="p-4 md:p-5 text-center">
+        <div class="relative bg-neutral-primary-soft border rounded-base shadow-sm p-4 md:p-6">
+          <button type="button" class="rounded-sm absolute top-3 end-2.5 text-body hover:bg-red-300 hover:text-heading text-sm w-9 h-9 ms-auto inline-flex justify-center items-center" data-modal-hide="highlight-news-<?= $newsItem['id_noticia'] ?>">
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="p-4 md:p-5 text-center">
+                <?php if($newsItem['destaque'] === 0): ?>
                   <h3 class="mb-6 text-body text-lg">Deseja destacar esta publicação?</h3>
-                  <div class="flex items-center space-x-4 justify-center">
-                      
-                      <form action="destacar-noticia.php" method="post">
-                        <input type="hidden" name="id-content-highlight" value="<?= $newsItem['id_conteudo'] ?>">
-                        <button type="submit" class="rounded text-black box-border border border-gray-500 focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none hover:bg-yellow-400 duration-75">
-                        Destacar
-                        </button>
-                      </form>
-                      
-                      <button data-modal-hide="highlight-news-<?= $newsItem['id_noticia'] ?>" type="button" class="rounded text-black box-border border border-gray-500 focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none hover:bg-red-400 duration-75">Voltar</button>
-                      
-                  </div>
+                  <div class="flex items-center space-x-4 justify-center"> 
+                    <form action="destacar-noticia.php" method="post">
+                      <input type="hidden" name="id-content-highlight" value="<?= $newsItem['id_conteudo'] ?>">
+                      <button type="submit" class="rounded text-black box-border border border-gray-500 focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none hover:bg-yellow-400 duration-75">
+                      Destacar
+                      </button>
+                    </form>
+                <?php else: ?>
+                  <h3 class="mb-6 text-body text-lg">Remover do Destaque?</h3>
+                  <form action="remover-destaque-noticia.php" method="post">
+                    <input type="hidden" name="id-content-unhighlight" value="<?= $newsItem['id_conteudo'] ?>">
+                    <button type="submit" class="rounded text-black box-border border border-gray-500 focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none hover:bg-yellow-400 duration-75">
+                    Remover 
+                    </button> 
+                  </form>
+                </div>
               </div>
+              <?php endif;?>
           </div>
       </div>
     </div>
