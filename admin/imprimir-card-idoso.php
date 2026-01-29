@@ -43,7 +43,7 @@ $inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
 
 $idIdoso = $inputGet['id-idoso'];
 
-$nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
+$nomeIdoso = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
 
 ?>
 
@@ -64,24 +64,17 @@ $nomeBeneficiario = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
         ID: <?= $idIdoso; ?>
     </p>
     <p class="text-2xl text-center m-7">
-        Nome: <?= $nomeBeneficiario; ?>
+        Nome: <?= $nomeIdoso; ?>
     </p>
-        <div class="grid grid-cols-2 gap-1 justify-items-center flex-col items-center w-full">
-        
-            <form action="card-idoso-frente.php" method="get">
+        <div class="grid grid-cols-1 gap-1 justify-items-center flex-col items-center w-full">
+    
+            <form action="card-idoso-completo.php" method="get">
                 <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
                 <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                    <h1 class="text-4xl text-gray-800 text-center font-light">Frente <i class="fa-solid fa-file-pdf"></i></h1>
+                    <h1 class="text-4xl text-gray-800 text-center font-light">Imprimir Cartão<i class="fa-solid fa-file-pdf"></i></h1>
                 </button>
             </form>
 
-            <form action="card-idoso-verso.php" method="get">
-                <input type="hidden" name="id-idoso" value="<?= $idIdoso; ?>">
-                <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                    <h1 class="text-4xl text-gray-800 text-center font-light">Verso <i class="fa-solid fa-file-pdf"></i></h1>
-                </button>
-            </form>
-    
         </div>
 </main>
 

@@ -7,24 +7,18 @@ $fileName = $_GET['file'] ?? '';
 $type = $_GET['type'] ?? '';
 
 $outputDir = [
-    "idoso-frente" => __DIR__ . "/pdf-idoso-frente",
-    "idoso-verso" => __DIR__ . "/pdf-idoso-verso",
-    "deficiente-frente" => __DIR__ . "/pdf-deficiente-frente",
-    "deficiente-verso" => __DIR__ . "/pdf-deficiente-verso"
+    "idoso" => __DIR__ . "/pdf-idoso",
+    "deficiente" => __DIR__ . "/pdf-deficiente",
 ];
 
 $patterns = [
-    "idoso-frente" => '/^cartao-idoso-id\d+-frente\.pdf$/',
-    "idoso-verso" => '/^cartao-idoso-id\d+-verso\.pdf$/',
-    "deficiente-frente" => '/^cartao-deficiente-id\d+-frente\.pdf$/',
-    "deficiente-verso" => '/^cartao-deficiente-id\d+-verso\.pdf$/'
+    "idoso" => '/^cartao-idoso-id=\d+\.pdf$/',
+    "deficiente" => '/^cartao-deficiente-id=\d+\.pdf$/'
 ];
 
 switch($type) {
-    case 'idoso-frente':
-    case 'idoso-verso':
-    case 'deficiente-frente':
-    case 'deficiente-verso':
+    case 'idoso':
+    case 'deficiente':
         if ($fileName && preg_match($patterns[$type], $fileName)) {
             $filePath = $outputDir[$type] . '/' . $fileName; 
             if (file_exists($filePath)) {

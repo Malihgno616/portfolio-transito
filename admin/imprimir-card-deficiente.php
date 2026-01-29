@@ -66,19 +66,12 @@ $nomeBeneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario)['no
     <p class="text-2xl text-center m-7">
         Nome: <?= $nomeBeneficiario; ?>
     </p>
-    <div class="grid grid-cols-2 gap-1 justify-items-center flex-col items-center w-full">
-        
-        <form action="card-deficiente-frente.php" method="get">
-            <input type="hidden" name="id-beneficiario" value="<?= $idBeneficiario ?>">
-            <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                <h1 class="text-4xl text-gray-800 text-center">Frente <i class="fa-solid fa-file-pdf"></i></h1>
-            </button>
-        </form>
+    <div class="grid grid-cols-1 gap-1 justify-items-center flex-col items-center w-full">
 
-        <form action="card-deficiente-verso.php" method="get">
+        <form action="card-deficiente-completo.php" method="get">
             <input type="hidden" name="id-beneficiario" value="<?= $idBeneficiario ?>">
             <button class="w-[600px] h-[350px] bg-gray-200 flex items-center justify-center rounded-md hover:bg-gray-300 duration-75">
-                <h1 class="text-4xl text-gray-800 text-center">Verso <i class="fa-solid fa-file-pdf"></i></h1>
+                <h1 class="text-4xl text-gray-800 text-center">Completo <i class="fa-solid fa-file-pdf"></i></h1>
             </button>
         </form>
 

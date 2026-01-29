@@ -8,25 +8,7 @@ include_once __DIR__. '/basepdf.php';
 
 use ConvertPdf\BasePdf;
 
-$date = date("d/m/Y");
-
-$year = date('Y');
-
 $imagePath = __DIR__. '/cartao-deficiente/Cartão-Deficiente-A4.png';
-
-$imageInfo = getimagesize($imagePath);
-
-$widthPx = $imageInfo[0];
-
-$heightPx = $imageInfo[1];
-
-$dpi = 72;
-
-$mmPerInch = 25.4;
-
-$widthMm = ceil($widthPx * $mmPerInch / $dpi);
-
-$heightMm = ceil($heightPx * $mmPerInch / $dpi);
 
 class CardDeficiente extends BasePdf {
     

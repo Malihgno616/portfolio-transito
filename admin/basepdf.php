@@ -11,8 +11,6 @@ class BasePdf {
     protected $imageInfo;
     protected $widthPx;
     protected $heightPx;
-    protected $dpi = 72;
-    protected $mmPerInch = 25.4;
     protected $widthMm;
     protected $heightMm;
     protected $pdf;
@@ -22,23 +20,15 @@ class BasePdf {
         $this->imageInfo = getimagesize($imagePath);
         $this->widthPx = $this->imageInfo[0];
         $this->heightPx = $this->imageInfo[1];
-        $this->calculateDimensions();
         $this->initializePdf();
     }
 
-     protected function calculateDimensions() {
-        $this->widthMm = ceil($this->widthPx * $this->mmPerInch / $this->dpi);
-        $this->heightMm = ceil($this->heightPx * $this->mmPerInch / $this->dpi);
-    }
-
     protected function initializePdf() {
-        $pageWidth  = 210;
-        $pageHeight = 148;
-        $this->pdf = new Fpdi('L', 'mm', [$pageWidth, $pageHeight]);
+        $this->pdf = new Fpdi('P', 'mm', 'A4');
         $this->pdf->SetMargins(0, 0, 0);
         $this->pdf->SetAutoPageBreak(false);
         $this->pdf->AddPage();
-        $this->pdf->Image($this->imagePath, 0, 0, $pageWidth, $pageHeight);
+        $this->pdf->Image($this->imagePath, 0, 0, 210, 297);
     }
 
     public function getPdf() {
