@@ -30,12 +30,21 @@ $offset = ($currentPage - 1) * $limit;
 <?php include __DIR__.'/layout/header.php';?>
 
 <main class="w-full h-full p-10">
-    <div class="flex justify-between items-center w-[58em] m-auto mb-5">
-        <h1 class="text-5xl text-center">Notificações</h1>
-        <a href="home.php" class="text-xl text-center px-6 py-3 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-150 transition-colors">
-          Voltar
+    <div class="flex flex-col md:flex-row 
+            md:justify-between md:items-center 
+            w-full max-w-5xl mx-auto mb-5 gap-4">
+
+        <h1 class="text-3xl md:text-5xl text-center md:text-left">
+            Notificações
+        </h1>
+
+        <a href="home.php"
+            class="text-lg md:text-xl text-center px-6 py-3 rounded-lg 
+                    bg-yellow-600 text-white hover:bg-yellow-500 transition">
+            Voltar
         </a>
     </div>
+
     <hr>
     <br>
     <?php include __DIR__.'/components/table-notificacoes.php';?>
