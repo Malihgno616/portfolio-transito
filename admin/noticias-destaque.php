@@ -38,12 +38,24 @@ $endItem = min($offset + $limit, $totalFeaturedNews);
 include __DIR__.'/layout/header.php';
 ?>
     <main class="w-full h-full p-10">
-        <div class="flex justify-between items-center mb-10">
-            <h1 class="text-5xl font-light text-center">Notícias em Destaque</h1>
-            <div class="w-2xl flex gap-2">
-                <a href="form-add-news.php" class="text-center text-xl w-2xl p-2 rounded-xl bg-green-600 text-white hover:bg-green-500 duration-75">Adicionar uma notícia</a>
-                <a href="news-table.php" class="text-center text-xl w-2xl p-2 rounded-xl bg-gray-600 text-white hover:bg-gray-500 duration-75">Notícias Publicadas</a>
-                <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+        <div class="grid grid-cols-1 gap-2 mb-10">
+            <h1 class="lg:text-5xl text-3xl font-light text-center">Notícias em Destaque</h1>
+            <div class="flex justify-center gap-3">
+
+                <a href="form-add-news.php" class="text-center text-xl w-2xl p-2 rounded-md bg-green-600 text-white hover:bg-green-500 duration-75">
+                    <abbr title="Adicionar um notícia">
+                        <i class="fa-solid fa-plus"></i>
+                    </abbr>
+                </a>
+                
+                <a href="news-table.php" class="text-center text-xl w-2xl p-2 rounded-md bg-gray-600 text-white hover:bg-gray-500 duration-75">
+                    <abbr title="Notícias publicadas">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </abbr>
+                </a>
+                
+                <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-md bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+            
             </div>
         </div>
         <hr>

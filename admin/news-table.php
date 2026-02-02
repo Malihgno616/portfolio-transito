@@ -42,9 +42,9 @@ $endItem = min($offset + $limit, $totalNews);
 include __DIR__.'/layout/header.php';
 ?>
   <main class="w-full h-full p-10">   
+    <h1 class="lg:text-5xl text-3xl font-light text-center mb-5">Notícias publicadas</h1>
     <div class="flex justify-between items-center mb-10">
-      <h1 class="text-5xl font-light text-center">Notícias publicadas</h1>
-      <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+      <a href="noticias.php" class="text-center text-xl w-28 p-2 m-auto rounded-md bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
     </div>
     <hr>
     <br>

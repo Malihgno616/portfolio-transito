@@ -22,9 +22,9 @@ ini_set("display_startup_errors", 1);
 <body>
   <?php include __DIR__.'/layout/header.php';?>
   <main class="max-w-5xl h-full p-10 m-auto">
+    <h1 class="text-5xl font-light text-center mb-5">Adicione uma notícia</h1>
     <div class="flex items-center justify-between mb-10">
-      <h1 class="text-5xl font-light text-center mb-5">Adicione uma notícia</h1>
-      <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+      <a href="noticias.php" class="text-center m-auto text-xl w-28 p-2 rounded-md bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
     </div>
     <hr>
     <br>

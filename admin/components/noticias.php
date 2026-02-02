@@ -1,8 +1,8 @@
 <div class="flex justify-center animate__animated animate__fadeIn">
   <div class="p-10 w-full">
-    <div class="flex justify-between items-center max-w-4xl mx-auto mb-5">
-      <h1 class="text-5xl text-center">Notícia</h1>
-      <a href="home.php" class="text-xl text-center px-6 py-3 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 duration-150 transition-colors">
+    <h1 class="lg:text-5xl text-3xl font-light text-center mb-5">Notícia</h1>
+    <div class="flex justify-center items-center max-w-4xl mx-auto mb-5">
+      <a href="home.php" class="text-center text-xl w-28 p-2 rounded-md bg-yellow-600 text-white hover:bg-yellow-500 duration-75">
         Voltar
       </a>
     </div>

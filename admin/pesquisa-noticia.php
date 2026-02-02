@@ -20,7 +20,7 @@ ini_set("display_startup_errors", 1);
 include __DIR__.'/layout/header.php';
 ?>
 <main class="w-full h-full p-10">
-    <div class="flex justify-between items-center w-[58em] m-auto mb-5">
+    <div class="p-10 w-full">
         <h1 class="text-5xl font-light text-center mb-5">Pesquisar Notícias</h1>
         <div class="flex items-center justify-center gap-3">
             <a href="noticias.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>

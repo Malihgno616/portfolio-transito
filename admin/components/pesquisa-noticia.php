@@ -35,5 +35,8 @@
         class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
     </div>
 
-    <table id="table-news-body"></table>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table id="table-news-body"></table>
+    </div>
+    
 </form>

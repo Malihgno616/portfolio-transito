@@ -1,4 +1,4 @@
- <h1 class="text-5xl font-light text-center mb-5">Título principal</h1>
+ <h1 class="lg:text-5xl text-3xl font-light text-center mb-5">Título principal</h1>
     <div class="p-10 w-full">
       <form action="add-all-news.php" method="post" enctype="multipart/form-data" class="space-y-4 p-5 grid grid-cols-1 gap-10">
           <input type="hidden" name="news_id" value="<?= $_SESSION['main-news-id'] ?>">
@@ -21,7 +21,7 @@
                           <div class="flex justify-center">
                             <img src="display-image.php?id=<?= $mainNews['id_noticia'] ?>&type=main" 
                                 alt="<?= htmlspecialchars($mainNews['nome_img_noticia']) ?>"
-                                class="max-w-full max-h-40 object-contain rounded-lg shadow-md">
+                                class="max-w-full max-h-40 object-contain">
                           </div>
                         </div>
                       <?php else: ?>
@@ -103,3 +103,4 @@
           </button>
       
       </form>
+    </div>
