@@ -1,13 +1,31 @@
 <footer class="shadow-sm bg-gray-500">
-    <div class="w-full max-w-screen-xl mx-auto md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="home.php" class="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="assets/img/logo-borda-branca.png" class="h-20" alt="Flowbite Logo" />
-                <span class="italic text-3xl text-white">Administrativo</span>
+    <div class="w-full max-w-screen-xl mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+
+            <div class="flex items-center space-x-3">
+                <img src="assets/img/logo-borda-branca.png" class="h-14 md:h-16" alt="Logo" />
+                <div class="flex flex-col">
+                    <span class="italic text-xl md:text-2xl text-white font-semibold">Administrativo</span>
+                    <span class="text-xs text-gray-300">Painel de Controle</span>
+                </div>
+            </div>
+
+            <a href="../" 
+               class="text-sm md:text-base text-white hover:text-gray-200 hover:underline transition-colors duration-300">
+                ← Voltar ao site principal
             </a>
-            <a href="../" class="hover:underline">Voltar para a Página Principal</a>
         </div>
-        <hr class="my-4 border-1 rounded-2xl border-gray-400/50 w-250 sm:mx-auto dark:border-gray-900 lg:my-8" />
-        <span class="block text-lg text-gray-500 sm:text-center dark:text-black">©<?= date("Y") ?> <a href="home.php" class="hover:underline">Trânsito Leme</a>. Todos os direitos reservados.</span>
+
+        <hr class="my-4 md:my-6 border-t border-gray-400/30" />
+
+        <div class="text-center">
+            <p class="text-sm text-gray-200">
+                ©<?= date("Y") ?> 
+                <a href="home.php" class="text-white hover:underline">
+                    Trânsito Leme
+                </a>
+                <span class="hidden md:inline"> - Todos os direitos reservados</span>
+            </p>
+        </div>
     </div>
 </footer>
