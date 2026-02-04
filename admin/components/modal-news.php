@@ -272,7 +272,7 @@
             <span class="sr-only">Close modal</span>
           </button>
           <div class="p-4 md:p-5 text-center">
-                <?php if($newsItem['destaque'] === 0): ?>
+            <?php if($newsItem['destaque'] == 0): ?>
                   <h3 class="mb-6 text-body text-lg">Deseja destacar esta publicação?</h3>
                   <div class="flex items-center space-x-4 justify-center"> 
                     <form action="destacar-noticia.php" method="post">
@@ -289,9 +289,9 @@
                     Remover 
                     </button> 
                   </form>
+                <?php endif;?>
                 </div>
               </div>
-              <?php endif;?>
           </div>
       </div>
     </div>
