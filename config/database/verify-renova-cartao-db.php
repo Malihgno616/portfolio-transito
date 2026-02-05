@@ -41,10 +41,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     
     $rgBeneficiario = $_POST['rg-beneficiario'];
-  
+        
     $verified = $requestModel->verifyDocReg($rgBeneficiario);
     
     if ($verified) {
+      $_SESSION['rg_beneficiario_renova'] = $rgBeneficiario;
       header("Location: ../../dados-beneficiario-renova");
       exit();
     } else {

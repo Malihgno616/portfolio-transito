@@ -199,6 +199,23 @@ class FormDeficiente {
         }
     }
 
+    public function getDeficienteByRegNumber($regNumber)
+    {
+        try {
+            $query = "SELECT * FROM cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':rg_beneficiario', $regNumber);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
+
     public function sendNotification($descricao = "", $categoria = "", $linkNotificacao = "")
     {
 
