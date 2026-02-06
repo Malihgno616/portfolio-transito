@@ -1,6 +1,17 @@
 <?php 
 
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__.'/./models/FormDeficiente.php';
+use Models\FormDeficiente;
+
+$rgBeneficiario = $_SESSION['dados_beneficiario_cancela'] ?? null;
+$formDeficienteModel = new FormDeficiente();
+
+$dadosBeneficiario = $formDeficienteModel->getDeficienteByRegNumber($rgBeneficiario);
 
 ?>
 
@@ -11,13 +22,13 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dados do Beneficiario</title>
-  <?php include('layout/head.php');?>
+  <?php include __DIR__.'/layout/head.php';?>
 </head>
 
 <body>
   <?php 
-    include_once('layout/header.php');
-    include_once('layout/title.php');
-    include('layout/dados-bene-cancela.php');
-    include_once('layout/footer.php');
+    include_once __DIR__.'/layout/header.php';
+    include_once __DIR__.'/layout/title.php';
+    include __DIR__.'/layout/dados-bene-cancela.php';
+    include_once __DIR__.'/layout/footer.php';
   ?>

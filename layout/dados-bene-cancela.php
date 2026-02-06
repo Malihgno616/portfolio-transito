@@ -30,7 +30,7 @@ $estados = array(
 	'TO' => 'Tocantins',
 );
 
-$array_generos = [
+$arrayGeneros = [
   "Masculino",
   "Feminino",
 ];
@@ -46,7 +46,6 @@ $deficiencias = [
   "Dificuldade de Locomoção"
 ];
 
-session_start();
 
 if (!isset($_SESSION['dados_beneficiario_cancela'])) {
     header("Location: renovar-cartao.php");
@@ -69,7 +68,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " type="text" name="nome-beneficiario" value="<?=$dados_beneficiario['nome_beneficiario']?>">
+        placeholder=" " type="text" name="nome-beneficiario" value="<?=$dadosBeneficiario['nome_beneficiario']?>">
       <label for="beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
         do Beneficiário</label>
@@ -78,7 +77,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="nascimento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " oninput="formatDate(this)" maxlength="10" value="<?=$dados_beneficiario['nasc_beneficiario']?>"> <label for="nascimento-beneficiario"
+        placeholder=" " oninput="formatDate(this)" maxlength="10" value="<?=$dadosBeneficiario['nasc_beneficiario']?>"> <label for="nascimento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Nascimento</label>
     </div>
@@ -89,8 +88,8 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
         placeholder=" ">
         <option value="">Selecione</option>
         <?php 
-    foreach ($array_generos as $genero) {
-      $selected = ($genero === $dados_beneficiario['genero_beneficiario']) ? 'selected' : '';
+    foreach ($arrayGeneros as $genero) {
+      $selected = ($genero === $dadosBeneficiario['genero_beneficiario']) ? 'selected' : '';
       echo "<option value=\"$genero\" $selected>$genero</option>";
     } 
     ?>
@@ -102,7 +101,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="cep-beneficiario" 
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cep_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['cep_beneficiario'];?>">
       <label for="cep-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
       top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
       peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -112,7 +111,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="endereco-beneficiario" id="rua"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['endereco_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['endereco_beneficiario'];?>">
       <label for="endereco"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA,
         AV)</label>
@@ -121,7 +120,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="numero-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['numero_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['numero_beneficiario'];?>">
       <label for="numero-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500
         duration-300 transform -translate-y-4 scale-75
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
@@ -132,7 +131,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="complemento-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['complemento_beneficiario'] ?: 'Não possui';?>">
+        placeholder=" " value="<?=$dadosBeneficiario['complemento_beneficiario'] ?: 'Não possui';?>">
       <label for="complemento-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento(opcional)</label>
     </div>
@@ -140,7 +139,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="bairro-beneficiario" id="bairro"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['bairro_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['bairro_beneficiario'];?>">
       <label for="bairro-deficiente" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
     top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
     peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -150,7 +149,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="cidade-beneficiario" id="cidade"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cidade_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['cidade_beneficiario'];?>">
       <label for="cidade-beneficiario" class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75
       top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100
       peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75
@@ -163,7 +162,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
         placeholder=" ">
         <option value="">Selecione...</option>
         <?php foreach($estados as $sigla => $nome){
-          $selected = ($sigla === $dados_beneficiario['uf_beneficiario']) ? 'selected' : '';
+          $selected = ($sigla === $dadosBeneficiario['uf_beneficiario']) ? 'selected' : '';
           echo "<option value='$sigla' $selected>$nome</option>";
         }
         ?>
@@ -177,7 +176,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="telefone-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['telefone_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['telefone_beneficiario'];?>">
       <label for="telefone-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -185,7 +184,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" "maxlength="12" oninput="formatRG(this)" value="<?=$dados_beneficiario['rg_beneficiario'];?>">
+        placeholder=" "maxlength="12" oninput="formatRG(this)" value="<?=$dadosBeneficiario['rg_beneficiario'];?>">
       <label for="rg-deficiente"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
     </div>
@@ -193,7 +192,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="expedicao-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dados_beneficiario['expedicao_beneficiario'];?>">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dadosBeneficiario['expedicao_beneficiario'];?>">
       <label for="expedicao-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         Expedição</label>
@@ -202,7 +201,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="expedido-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['expedido_beneficiario'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['expedido_beneficiario'];?>">
       <label for="expedido-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido
         por</label>
@@ -211,7 +210,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cnh_beneficiario'] ?: 'Não possui';?>">
+        placeholder=" " value="<?=$dadosBeneficiario['cnh_beneficiario'] ?: 'Não possui';?>">
       <label for="cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CNH(Se
         for condutor)</label>
@@ -221,7 +220,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="validade-cnh-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="10" oninput="formatDate(this)" value=<?=$beneficiario['validade_cnh_beneficiario'];?>>
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dadosBeneficiario['validade_cnh_beneficiario'];?>">
       <label for="validade-cnh-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Validade
         da CNH</label>
@@ -230,7 +229,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="email-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['email_beneficiario'] ?: 'Não possui';?>">
+        placeholder=" " value="<?=$dadosBeneficiario['email_beneficiario'] ?: 'Não possui';?>">
       <label for="email-beneficiario"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Digite
         seu email(opcional)</label>
@@ -241,15 +240,15 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
         
         <h2 class="text-3xl p-2 text-center">RG do beneficiário</h2>
       
-          <?php if (!empty($dados_beneficiario['copia_rg_beneficiario'])): ?>
+          <?php if (!empty($dadosBeneficiario['copia_rg_beneficiario'])): ?>
           
           <label for="copia-rg-beneficiario"
             class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
             <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-rg-beneficiario">
-              <img class="w-full h-56 object-cover md:w-30" src="data:image/jpeg;base64, <?= base64_encode($dados_beneficiario['copia_rg_beneficiario'])?>">
+              <img class="w-full h-56 object-cover md:w-30" src="data:image/jpeg;base64, <?= base64_encode($dadosBeneficiario['copia_rg_beneficiario'])?>">
             </div>
             <input type="file" name="copia-rg-beneficiario" id="copia-rg-beneficiario" class="hidden" accept="image/*">
-            <input type="text" name="nome-arquivo-rg-benef" id="file-name-rg-beneficiario" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_rg_benef']?>" readonly>
+            <input type="text" name="nome-arquivo-rg-benef" id="file-name-rg-beneficiario" class="h-10 text-center border-transparent bg-transparent" value="<?=$dadosBeneficiario['nome_arquiv_rg_benef']?>" readonly>
           </label>
           
           <?php endif; ?>
@@ -263,7 +262,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="nome-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['nome_medico'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['nome_medico'];?>">
       <label for="nome"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
         do médico </label>
@@ -272,7 +271,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="crm-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['crm'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['crm'];?>">
       <label for="registro"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Registro
         profissional (CRM)</label>
@@ -281,7 +280,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="telefone-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['telefone_medico'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['telefone_medico'];?>">
       <label for="telefone"
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -289,7 +288,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5">
       <input type="text" name="local-atendimento-medico"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['local_atendimento_medico'];?>">
+        placeholder=" " value="<?=$dadosBeneficiario['local_atendimento_medico'];?>">
       <label for=""
         class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Local
         de atendimento (Rua, AV)</label>
@@ -302,9 +301,9 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
   <div class="shadow-lg w-100 m-auto">
     <?php 
-  $deficiencias_marcadas = explode(",", $dados_beneficiario['deficiencia_ambulatoria']);
+  $deficienciasMarcadas = explode(",", $dadosBeneficiario['deficiencia_ambulatoria']);
   foreach($deficiencias as $deficiencia): 
-    $checked = in_array($deficiencia, $deficiencias_marcadas) ? 'checked' : '';
+    $checked = in_array($deficiencia, $deficienciasMarcadas) ? 'checked' : '';
   ?>
     <div class="p-5">
       <input type="checkbox"
@@ -327,14 +326,14 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
       <input type="radio"
         class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
         name="restricao-medica" value="temporaria" id="temporaria"
-        <?= ($dados_beneficiario['periodo_restricao_medica'] === 'temporaria') ? 'checked' : ''; ?>>
+        <?= ($dadosBeneficiario['periodo_restricao_medica'] === 'temporaria') ? 'checked' : ''; ?>>
       <label for="temporaria" class="ms-2 text-lg font-medium text-gray-900">Temporária</label>
     </div>
     <div class="flex items-center">
       <input type="radio"
         class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-500 focus:ring-2"
         name="restricao-medica" value="permanente" id="permanente"
-        <?= ($dados_beneficiario['periodo_restricao_medica'] === 'permanente') ? 'checked' : ''; ?>>
+        <?= ($dadosBeneficiario['periodo_restricao_medica'] === 'permanente') ? 'checked' : ''; ?>>
       <label for="permanente" class="ms-2 text-lg font-medium text-gray-900">Permanente</label>
     </div>
   </div>
@@ -342,7 +341,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
   <div class="relative mb-5">
     <input type="date" name="data-inicio" id="data-inicio"
       class="text-md block px-2.5 pb-2.5 mt-3 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " value=<?=$dados_beneficiario['data_inicio'];?>>
+      placeholder=" " value=<?=$dadosBeneficiario['data_inicio'];?>>
     <label for="data-inicio" id="data-inicio"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de início</label>
@@ -351,7 +350,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
   <div class="relative mb-5">
     <input type="date" name="data-fim" id="data-fim"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " value=<?=$dados_beneficiario['data_fim'];?>>
+      placeholder=" " value=<?=$dadosBeneficiario['data_fim'];?>>
     <label for="data-fim" id="data-fim"
       class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
       de fim</label>
@@ -362,7 +361,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
   <div class="relative mb-5">
     <textarea name="cid" id=""
-      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"> <?=$dados_beneficiario['cid'];?></textarea>
+      class="text-md block px-2.5 pb-2.5 pt-4 w-full h-50 text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"> <?=$dadosBeneficiario['cid'];?></textarea>
     <label for="cid"
       class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Descrição
       CID
@@ -379,15 +378,15 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
     <h2 class="text-3xl p-2 text-center">Atestado médico</h2>
 
-    <?php if (!empty($dados_beneficiario['atestado_medico'])): ?>
+    <?php if (!empty($dadosBeneficiario['atestado_medico'])): ?>
 
     <label for="atestado-medico"
       class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6" id="upload-atestado-medico">
-        <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?= base64_encode($dados_beneficiario['atestado_medico'])?>" alt="">
+        <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?= base64_encode($dadosBeneficiario['atestado_medico'])?>" alt="">
       </div>
       <input type="file" name="atestado-medico" id="atestado-medico" class="hidden" accept="image/*">
-      <input type="text" name="nome-arquivo-atestado" id="file-name-atestado" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_atestado'];?>" readonly>
+      <input type="text" name="nome-arquivo-atestado" id="file-name-atestado" class="h-10 text-center border-transparent bg-transparent" value="<?=$dadosBeneficiario['nome_arquiv_atestado'];?>" readonly>
     </label>
 
     <?php endif; ?>
@@ -423,7 +422,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="nome-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['nome_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['nome_representante'] ?: 'Não possui'?>">
       <label for="nome-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome
         do representante</label>
@@ -432,7 +431,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="email-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['email_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['email_representante'] ?: 'Não possui'?>">
       <label for="email-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
     </div>
@@ -440,7 +439,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="cep-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cep_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['cep_representante'] ?: 'Não possui'?>">
       <label for="cep-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">CEP</label>
     </div>
@@ -448,7 +447,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="endereco-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['endereco_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['endereco_representante'] ?: 'Não possui'?>">
       <label for="endereco-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Endereço(RUA,
         AV)</label>
@@ -459,7 +458,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
         placeholder=" "
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['num_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['num_representante'] ?: 'Não possui'?>">
       <label for="numero-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nº</label>
     </div>
@@ -467,7 +466,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="complemento-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['complemento_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['complemento_representante'] ?: 'Não possui'?>">
       <label for="complemento-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Complemento</label>
     </div>
@@ -475,7 +474,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="bairro-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['bairro_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['bairro_representante'] ?: 'Não possui'?>">
       <label for="bairro-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Bairro</label>
     </div>
@@ -483,7 +482,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="cidade-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " value="<?=$dados_beneficiario['cidade_representante'] ?: 'Não possui'?>">
+        placeholder=" " value="<?=$dadosBeneficiario['cidade_representante'] ?: 'Não possui'?>">
       <label for="cidade-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Cidade</label>
     </div>
@@ -494,7 +493,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
         placeholder=" ">
         <option value="">Selecione...</option>
         <?php foreach($estados as $sigla => $nome){
-          $selected = ($sigla === $dados_beneficiario['uf_representante']) ? 'selected' : 'Não possui';
+          $selected = ($sigla === $dadosBeneficiario['uf_representante']) ? 'selected' : '';
           echo "<option value='$sigla' $selected>$nome</option>";
         }
         ?>
@@ -508,7 +507,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="telefone-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?=$dados_beneficiario['telefone_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="15" oninput="formatPhone(this)" value="<?=$dadosBeneficiario['telefone_representante'] ?: 'Não possui'?>">
       <label for="telefone-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Telefone</label>
     </div>
@@ -516,7 +515,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="rg-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="12" oninput="formatRG(this)" value="<?=$dados_beneficiario['rg_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="12" oninput="formatRG(this)" value="<?=$dadosBeneficiario['rg_representante'] ?: 'Não possui'?>">
       <label for="rg-representante"
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
     </div>
@@ -524,7 +523,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
     <div class="relative mb-5" id="representante">
       <input type="text" name="expedicao-representante" id=""
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dados_beneficiario['expedicao_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="10" oninput="formatDate(this)" value="<?=$dadosBeneficiario['expedicao_representante'] ?: 'Não possui'?>">
       <label for=""
         class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Data
         de Expedição</label>
@@ -534,7 +533,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
   <div class="relative mb-5">
     <input type="text" name="expedido-representante"
       class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-      placeholder=" " value="<?=$dados_beneficiario['expedido_representante'] ?: 'Não possui'?>">
+      placeholder=" " value="<?=$dadosBeneficiario['expedido_representante'] ?: 'Não possui'?>">
     <label for="expedido-por"
       class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Expedido
       por</label>
@@ -543,15 +542,15 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
     <h2 class="text-3xl p-2 text-center">RG do representante</h2>
 
-    <?php if (!empty($dados_beneficiario['copia_rg_representante'])):?>
+    <?php if (!empty($dadosBeneficiario['copia_rg_representante'])):?>
       <label for=""
       class="flex flex-col items-center justify-center w-full h- border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6">
-          <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dados_beneficiario['copia_rg_representante']);?>" alt="">
+          <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dadosBeneficiario['copia_rg_representante']);?>" alt="">
       </div>
       <input id="copia-rg-representante-def" type="file" name="copia-rg-representante" class="hidden"
         accept="image/*" />
-      <input type="text" name="nome-arquivo-rg-rep-def" id="file-name-representante-def" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_rg_rep']?>" readonly>
+      <input type="text" name="nome-arquivo-rg-rep-def" id="file-name-representante-def" class="h-10 text-center border-transparent bg-transparent" value="<?=$dadosBeneficiario['nome_arquiv_rg_rep']?>" readonly>
     </label>
       <?php else: ?>
         <label for=""
@@ -579,15 +578,15 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 
     <h2 class="text-3xl p-2 text-center">Comprovante do representante</h2>
 
-    <?php if (!empty($dados_beneficiario['comprovante_representante'])):?>
+    <?php if (!empty($dadosBeneficiario['comprovante_representante'])):?>
       <label for=""
       class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-yellow-700 hover:bg-gray-100">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
-            <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dados_beneficiario['comprovante_representante']);?>">
+            <img class="w-full h-56 object-cover md:w-30" src="data:image/*;base64, <?=base64_encode($dadosBeneficiario['comprovante_representante']);?>">
         </div>
         <input id="comprovante-representante-def" type="file" name="comprovante-representante" class="hidden"
         accept="image/*" />
-        <input type="text" name="nome-arquivo-comp-rep-def" id="file-name-comp-representante-def"" class="h-10 text-center border-transparent bg-transparent" value="<?=$dados_beneficiario['nome_arquiv_comp_rep']?>" readonly>
+        <input type="text" name="nome-arquivo-comp-rep-def" id="file-name-comp-representante-def" class="h-10 text-center border-transparent bg-transparent" value="<?=$dadosBeneficiario['nome_arquiv_comp_rep']?>" readonly>
       </label>
     
     <?php else: ?>
@@ -634,12 +633,6 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 </form>
 
 <script src="assets/js/formatRG.js"></script>
-<script>
-    const btn = document.querySelector('.delete-btn');
-    btn.addEventListener("click", function () {
-      alert("Cartão cancelado com sucesso!");    
-    });
-</script>
 <script src="assets/js/activeSpinner.js"></script>
 <script src="assets/js/exibirData.js"></script>
 <script src="assets/js/exibirArquivoBeneficiario.js"></script>

@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $verified = $requestModel->verifyDocReg($rgBeneficiario);
     
     if ($verified) {
+      $_SESSION['dados_beneficiario_cancela'] = $rgBeneficiario;
       header("Location: ../../dados-beneficiario-cancela");
       exit();
     } else {

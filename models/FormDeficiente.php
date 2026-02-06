@@ -185,6 +185,20 @@ class FormDeficiente {
         }
     }
 
+    public function deleteDeficiente($rgBeneficiario)
+    {
+        try {
+            $query = "DELETE FROM cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':rg_beneficiario', $rgBeneficiario, PDO::PARAM_STR);
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao deletar: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function updateDeficiente(array $infos, array $files)
     {
         try {
