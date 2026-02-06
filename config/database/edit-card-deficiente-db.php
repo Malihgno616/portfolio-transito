@@ -1,9 +1,17 @@
 <?php
+
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../models/FormDeficiente.php';
 
+require_once __DIR__.'/../../models/Request.php';
+
 use Models\FormDeficiente;
+
+use Models\Request;
 
 function setAlert($message, $type = 'success') {
     $colorClass = $type === 'success' 
@@ -29,13 +37,18 @@ function setAlert($message, $type = 'success') {
 }
 
 $infos = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
 $files = $_FILES;
 
 $model = new FormDeficiente();
+
+$request = new Request();
+
 $updated = $model->updateDeficiente($infos, $files);
 
 if ($updated) {
     $_SESSION['renova-alert'] = setAlert("Dados alterados com sucesso!", 'success');
+    $request->sendNotification("DADOS ALTERADOS DE " . $infos['nome-beneficiario'], "CARTÃO DEFICIENTE: RENOVAÇÃO");
 } else {
     $_SESSION['renova-alert'] = setAlert("Erro ao alterar os dados", 'error');
 }

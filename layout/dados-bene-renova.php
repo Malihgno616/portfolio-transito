@@ -48,9 +48,7 @@ $deficiencias = [
 
 ?>
 
-<form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn"  action="config/database/edit-card-deficiente-db.php"
-  method="post" accept="multipart/form-data">
-
+<form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action="config/database/edit-card-deficiente-db.php" method="post" accept="multipart/form-data">
   <div class="flex flex-col justify-center items-center m-5 gap-3">
     <h2 class="text-3xl md:text-2xl font-bold text-center">Informações do beneficiário</h2>
   </div>
