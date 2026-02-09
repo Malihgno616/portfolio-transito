@@ -34,6 +34,11 @@ $dadosBeneficiario = $formDeficienteModel->getDeficienteByRegNumber($rgBeneficia
   <?php 
     include_once('layout/header.php');
     include_once('layout/title.php');
+  ?>
+  <div class="w-2xl flex justify-center items-center p-4">
+    <a href="renovar-cartao" class="p-2 rounded-lg bg-yellow-500 text-2xl hover:bg-yellow-200 duration-75">Voltar</a>
+  </div>
+  <?php
     include('layout/dados-bene-renova.php'); 
     include_once('layout/footer.php');
   ?>

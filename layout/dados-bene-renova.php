@@ -608,8 +608,6 @@ $deficiencias = [
   </div>
 
   <div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
-    <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
-      type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
     <button id="btn-enviar" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
       <div role="status" class="flex justify-center items-center gap-2">
           <span id="btn-txt">Salvar Alteração <i class="fa-solid fa-floppy-disk"></i></span>
