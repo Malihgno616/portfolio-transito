@@ -28,12 +28,9 @@ if($motivosSegVia !== null) {
       header("Location: perda-cartao");
       exit();
     case '2':
-      header("Location: furto");
+      header("Location: furto-roubo");
       exit();
     case '3':
-      header("Location: roubo");
-      exit();
-    case '4':
       header("Location: dano");
       exit();
   }

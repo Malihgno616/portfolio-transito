@@ -42,6 +42,28 @@ class Request {
         }
     }
 
+    public function send2aViaRequest($rgBeneficiario, $imgBoletim, $imgBoletimName)
+    {
+        try {
+
+            $query = "INSERT INTO solicitacao_2a_via (rg_beneficiario, file_boletim, img_bo) VALUES (:rg_beneficiario, :img_boletim, :img_boletim_name)";
+
+            $stmt = $this->pdo->prepare($query);
+            
+            $stmt->bindValue(':rg_beneficiario', $rgBeneficiario, PDO::PARAM_STR);
+            
+            $stmt->bindValue(':img_boletim', $imgBoletim, PDO::PARAM_LOB);
+            
+            $stmt->bindValue(':img_boletim_name', $imgBoletimName, PDO::PARAM_STR);
+
+            return $stmt->execute();
+            
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function sendNotification($descricao = "", $categoria = "")
     {
 
