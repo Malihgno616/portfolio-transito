@@ -44,9 +44,8 @@
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5">
       <option value="">Selecione...</option>
       <option value="1">Perda</option>
-      <option value="2">Furto</option>
-      <option value="3">Roubo</option>
-      <option value="4">Dano</option>
+      <option value="2">Furto/Roubo</option>
+      <option value="3">Dano</option>
     </select>
   </div>
 
