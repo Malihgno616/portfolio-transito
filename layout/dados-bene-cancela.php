@@ -57,7 +57,7 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
 ?>
 
 <form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action="config/database/delete-card-deficiente.php"
-  method="post" accept="multipart/form-data">
+  method="post" accept="multipart/form-data" onsubmit="return confirm('Tem certeza que deseja cancelar o cartão?')">
 
   <div class="flex flex-col justify-center items-center m-5 gap-3">
     <h2 class="text-3xl md:text-2xl font-bold text-center">Informações do beneficiário</h2>
@@ -617,8 +617,6 @@ $dados_beneficiario = $_SESSION['dados_beneficiario_cancela'];
    
   </div>
   <div class="flex justify-center gap-5 p-5 sm:flex-col md:text-lg">
-    <button class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"
-      type="reset">Limpar <i class="fa-solid fa-broom"></i></button>
     <button id="btn-enviar " class="delete-btn bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer" type="submit">
       <div role="status" class="flex justify-center items-center gap-2">
           <span id="btn-txt">Cancelar <i class="fa-solid fa-xmark"></i></span>
