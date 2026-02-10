@@ -10,8 +10,9 @@ require_once __DIR__ . '/../../models/FormDeficiente.php';
 require_once __DIR__.'/../../models/Request.php';
 
 use Models\FormDeficiente;
-
 use Models\Request;
+
+$request = new Request();
 
 function setAlert($message, $type = 'success') {
     $colorClass = $type === 'success' 
@@ -42,13 +43,13 @@ $files = $_FILES;
 
 $model = new FormDeficiente();
 
-$request = new Request();
+$idBeneficiario = $request->getIdByRegNumber($infos['rg-beneficiario']);
 
 $updated = $model->updateDeficiente($infos, $files);
 
 if ($updated) {
     $_SESSION['renova-alert'] = setAlert("Dados alterados com sucesso!", 'success');
-    $request->sendNotification("DADOS ALTERADOS DE " . $infos['nome-beneficiario'], "CARTÃO DEFICIENTE: RENOVAÇÃO");
+    $request->sendNotification("DADOS ALTERADOS DE " . $infos['nome-beneficiario'], "CARTÃO DEFICIENTE: RENOVAÇÃO", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");
 } else {
     $_SESSION['renova-alert'] = setAlert("Erro ao alterar os dados", 'error');
 }

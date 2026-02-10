@@ -41,6 +41,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     
     $rgBeneficiario = $_POST['rg-beneficiario'];
+    $idBeneficiario = $requestModel->getIdByRegNumber($rgBeneficiario);
         
     $verified = $requestModel->verifyDocReg($rgBeneficiario);
     

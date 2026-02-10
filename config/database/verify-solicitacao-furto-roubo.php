@@ -9,6 +9,8 @@ require_once __DIR__.'/../../models/Request.php';
 
 use Models\Request;
 
+$request = new Request();
+
 function setAlert($message, $type = 'success') {
     $colorClass = $type === 'success' 
         ? 'text-green-800 bg-green-50' 
@@ -36,6 +38,8 @@ $infosPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 $rgBeneficiario = $infosPost['rg-beneficiario'];
 
+$idBeneficiario = $request->getIdByRegNumber($rgBeneficiario);
+
 if (isset($_FILES['boletim']) && $_FILES['boletim']['error'] === UPLOAD_ERR_OK) {
     $fileContentBoletim = file_get_contents($_FILES['boletim']['tmp_name']);
 
@@ -53,14 +57,11 @@ if (isset($_FILES['boletim']) && $_FILES['boletim']['error'] === UPLOAD_ERR_OK) 
 $imgBoletimName = $infosPost['img-bo'];
 
 try {
-
-    $request = new Request();
-
     $result = $request->send2aViaRequest($rgBeneficiario, $imgBoletim, $imgBoletimName);
 
     if($result) {
         $_SESSION['furto-roubo-alert'] = setAlert("Solicitação enviada com sucesso!");
-        $request->sendNotification("SOLICITAÇÃO DA 2ª VIA ENVIADA PARA O RG: $rgBeneficiario", "SEGUNDA VIA: FURTO/ROUBO");
+        $request->sendNotification("SOLICITAÇÃO DA 2ª VIA ENVIADA PARA O RG: $rgBeneficiario", "SEGUNDA VIA: FURTO/ROUBO", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");
         header("Location: ../../furto-roubo");
         exit();
     } else {

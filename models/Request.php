@@ -42,6 +42,24 @@ class Request {
         }
     }
 
+    public function getIdByRegNumber($registrationNumber) 
+    {
+        try {
+            $query = "SELECT id from cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario LIMIT 1";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(":rg_beneficiario", $registrationNumber, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result ? $result['id'] : false;
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function send2aViaRequest($rgBeneficiario, $imgBoletim, $imgBoletimName)
     {
         try {
@@ -64,12 +82,12 @@ class Request {
         }
     }
 
-    public function sendNotification($descricao = "", $categoria = "")
+    public function sendNotification($descricao = "", $categoria = "", $linkNotification = "")
     {
 
         try {
 
-            $query = "INSERT INTO notificacoes (descricao, categoria) VALUES (:desc, :cat)";
+            $query = "INSERT INTO notificacoes (descricao, categoria, link_notificacao) VALUES (:desc, :cat, :link_notificacao)";
 
             $stmt = $this->pdo->prepare($query);
             
@@ -77,6 +95,8 @@ class Request {
             
             $stmt->bindValue(':cat', $categoria);
             
+            $stmt->bindValue(':link_notificacao', $linkNotification);
+
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_ASSOC);

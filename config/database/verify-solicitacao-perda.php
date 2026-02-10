@@ -7,7 +7,10 @@ error_reporting(E_ALL);
 session_start();
 
 require_once __DIR__.'/../../models/Request.php';
+
 use Models\Request;
+
+$requestModel = new Request();
 
 $infosPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 function setAlert($message, $type = 'success') {
@@ -37,8 +40,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   try {
     $rgBeneficiario = $infosPost['rg-beneficiario'];
+
+    $idBeneficiario = $requestModel->getIdByRegNumber($rgBeneficiario);    
     
-    $requestModel = new Request();
     $verify = $requestModel->verifyDocReg($rgBeneficiario);
 
     if(empty($rgBeneficiario)) {
@@ -49,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($verify) {
         $_SESSION['perda-alert'] = setAlert("Solicitação enviada com sucesso", "success");
-        $requestModel->sendNotification("SOLICITAÇÃO DA SEGUNDA VIA PARA O RG: " . $rgBeneficiario, "SEGUNDA VIA: PERDA");  
+        $requestModel->sendNotification("SOLICITAÇÃO DA SEGUNDA VIA PARA O RG: " . $rgBeneficiario, "SEGUNDA VIA: PERDA", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");  
         header("Location: ../../perda-cartao");
         exit();
     }
