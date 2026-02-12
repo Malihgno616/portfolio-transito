@@ -44,6 +44,7 @@ $end = min($currentPage * $limit, $totalUsers);
     <div class="m-auto text-center p-5">
       <a href="home.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
     </div>
+    <hr>
     <div class="flex justify-center animate__animated animate__fadeIn">
       <div class="p-10 w-full">
         <?php 
