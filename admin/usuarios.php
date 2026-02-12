@@ -41,6 +41,9 @@ $end = min($currentPage * $limit, $totalUsers);
   ?>  
   <main class="w-full h-full p-10">
     <h1 class="text-5xl font-light text-center mb-5">Usuários</h1>
+    <div class="m-auto text-center p-5">
+      <a href="home.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+    </div>
     <div class="flex justify-center animate__animated animate__fadeIn">
       <div class="p-10 w-full">
         <?php 
@@ -53,9 +56,6 @@ $end = min($currentPage * $limit, $totalUsers);
         include __DIR__.'/components/table-usuarios.php';
 
         ?>
-    </div>
-    <div class="m-auto text-center p-12">
-      <a href="home.php" class="text-3xl w-32 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
     </div>
   
     <?php include __DIR__.'/components/modal-usuarios.php';?>
