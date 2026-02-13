@@ -47,6 +47,12 @@ $offset = ($currentPage - 1) * $limit;
 
     <hr>
     <br>
+    <?php 
+        if(isset($_SESSION['notificacao-alert'])) {
+            echo $_SESSION['notificacao-alert'];
+            unset($_SESSION['notificacao-alert']);
+        }
+    ?>
     <?php include __DIR__.'/components/table-notificacoes.php';?>
 </main>
 

@@ -47,6 +47,25 @@ class NotificacaoModel {
 
   }
   
+  public function deleteNotification($id)
+  {
+    try {
+      $query = "DELETE FROM notificacoes WHERE id = :id ";
+
+      $stmt = $this->pdo->prepare($query);
+      
+      $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return $stmt->rowCount() > 0;
+
+    } catch(PDOException $e) {
+      error_log("Error: " . $e->getMessage());
+      return false;
+    }
+  }
+
   public function paginatedNotifications($page, $limit)
   {
       try {

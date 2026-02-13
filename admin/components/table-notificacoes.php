@@ -24,7 +24,8 @@
                         </a>    
                     </td>
                     <td class="px-6 py-4 font-normal text-lg text-center">
-                        <form action="#" method="post" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                        <form action="delete-notification.php" method="post" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                            <input type="hidden" name="id-notificacao" value="<?= $notificacoes['id'] ?>">
                             <button type="submit">
                                 <i class="fa fa-trash text-red-600 hover:text-red-500 duration-75" aria-hidden="true"></i>
                             </button>
