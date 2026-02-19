@@ -12,13 +12,11 @@ ini_set("display_startup_errors", 1);
 
 session_regenerate_id(true);
 
-include __DIR__.'/config/conn.php';
-require __DIR__.'/config/env.php';
+require_once __DIR__.'/./model/LoginModel.php';
 
-$conn = new Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+use Model\LoginModel;
 
-//* $message = $conn->connect();
-//* echo $message; Conectado com successo! ou Erro ao conectar!
+$loginModel = new LoginModel();
 
 $inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -53,39 +51,26 @@ try {
       exit();
     } 
     
-    $pdo = $conn->connect();
+    $user = $loginModel->verifyUser($userLogin);
 
-    $query = "SELECT id, user_login, pass from login_adm WHERE user_login = :user_login";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':user_login', $userLogin);
-    $executed = $stmt->execute();  
-    
-    if($stmt->rowCount() > 0) {
+    if($user && password_verify(trim($password), trim($user['pass']))) {                
+      $_SESSION['user-login'] = $user['user_login'];
 
-      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+      $_SESSION['user-id'] = $user['id'];
 
-      if(password_verify(trim($password), trim($user['pass']))) {                
-        $_SESSION['user-login'] = $user['user_login'];
-
-        $_SESSION['user-id'] = $user['id'];
-
-        header("Location: home.php");
-        exit();
-      } else {
-        setError("Usuário e/ou senha incorretos");
-        header("Location: login.php");
-        exit();
-      }
-
+      header("Location: home.php");
+      exit();
     } else {
-      setError("Usuário não encontrado");
+      setError("Usuário e/ou senha incorretos");
       header("Location: login.php");
       exit();
     }
-
 } catch(PDOException $e) {
   setError("Erro: " . $e->getMessage());
   header("Location: login.php");
   exit();
+} catch (Exception $e) {
+  setError("Erro inesperado: " . $e->getMessage());
+  header("Location: login.php");
+  exit();
 }
-
