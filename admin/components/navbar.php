@@ -15,13 +15,13 @@
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
           <li>
-            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Meu perfil</a>
+            <a href="detail-user.php" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Meu perfil</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Outros usuários</a>
+            <a href="usuarios.php" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Outros usuários</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Notificações</a>
+            <a href="notificacoes.php" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Notificações</a>
           </li>
           <li>
             <a href="logout.php" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Sair</a>
