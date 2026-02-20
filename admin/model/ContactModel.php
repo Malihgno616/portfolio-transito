@@ -103,6 +103,29 @@ class ContactModel {
     }
   }
 
+  public function searchContactByTerm($term) {
+    try {
+      $query = "SELECT * FROM form_contato WHERE 
+      nome like :term 
+      OR email like :term 
+      OR telefone like :term
+      ORDER BY id DESC LIMIT 15;
+      ";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":term", "%{$term}%");
+
+      $stmt->execute();
+
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log("Erro ao buscar contato: " . $e->getMessage());
+      return false;
+    }
+  }
+
   public function searchContact($name = "", $id = null, $date = "", $phone = "")
   {
     try {
@@ -164,3 +187,9 @@ class ContactModel {
 
 }
 
+// testing
+$contact = new ContactModel();
+
+$searched = $contact->searchContactByTerm("Contato");
+
+var_dump($searched);
