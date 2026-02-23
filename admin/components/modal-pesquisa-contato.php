@@ -11,35 +11,16 @@
                 </button>
             </div>
             <form class="max-w-4xl mx-auto m-10 flex flex-col gap-6">   
-                <div class="relative">
-                    <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-                    </div>
-                    <input type="search" id="input-contact-id"
-                    placeholder="Pesquisar pelo ID"
-                    class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />  
-                </div>
 
                 <div class="relative">
                     <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                     </div>
-                    <input type="search" id="input-contact-name"
-                    placeholder="Pesquisar pelo Nome"
+                    <input type="search" id="input-contact"
+                    placeholder="Pode pesquisar pelo Nome, Email, Nº de Telefone, Mensagem ou Data de envio"
                     class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
-                </div>
-
-                <div class="relative">
-                    <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-                    </div>
-                    <input type="search" id="input-contact-phone"
-                    placeholder="Pesquisar pelo Nº de Telefone"
-                    class="text-lg block w-full p-3 ps-9 bg-neutral-secondary-medium border border-gray-200 text-heading rounded-lg focus:ring-yellow-400 focus:border-yellow-600 shadow-xs placeholder:text-body" />
-                </div>
+                </div>              
  
                 <table id="table-contact-body" class="w-full max-w-4xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800"></table>
 

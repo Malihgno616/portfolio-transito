@@ -1,8 +1,6 @@
-// Evento para os dados dos contatos
 document.addEventListener("DOMContentLoaded", () => {
-  const inputIdContact = document.getElementById("input-contact-id");
-  const inputNameContact = document.getElementById("input-contact-name");
-  const inputPhoneContact = document.getElementById("input-contact-phone");
+  const inputContact = document.getElementById("input-contact");
+  const modalContainer = document.getElementById("modal-container");
   const tableBodyContact = document.getElementById("table-contact-body");
 
   tableBodyContact.classList.add(
@@ -11,20 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     "text-left",
     "rtl:text-right",
     "text-gray-500",
-    "dark:text-gray-800"
+    "dark:text-gray-800",
   );
 
   const fetchContacts = async (params) => {
     try {
-      const response = await axios.get(
-        "search.php",
-        {
-          params: {
-            type: "contact",
-            ...params,
-          },
-        }
-      );
+      const response = await axios.get("search.php", {
+        params: {
+          type: "contact",
+          ...params,
+        },
+      });
+
       return response.data.data;
     } catch (error) {
       console.error("Error fetching search results:", error);
@@ -67,34 +63,20 @@ document.addEventListener("DOMContentLoaded", () => {
           <td class="px-6 py-4 font-bold text-lg">${contact.email || ""}</td>
           <td class="px-6 py-4 font-bold text-lg">${contact.telefone || ""}</td>
           <td class="px-6 py-4 font-bold text-lg">
-            <button type="button" 
-              data-modal-target="modal-${contact.id}" 
-              data-modal-toggle="modal-${contact.id}" 
-              class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">
-              Mensagem
-            </button>
+            <a href="message-contact.php?id=${contact.id}" class="font-medium rounded-lg p-1 bg-green-100 text-green-600 dark:text-green-500 hover:bg-green-200">Mensagem</a>
           </td>
         </tr>
       `;
     });
   };
 
-  const handleSearch = async (field, value) => {
-    const params = { id: "", name: "", phone: "" };
-    params[field] = value;
-
-    const contacts = await fetchContacts(params);
+  const handleSearch = async (value) => {
+    const contacts = await fetchContacts({ term: value });
     renderTable(contacts);
   };
 
-  const addSearchListener = (input, field) => {
-    input.addEventListener("input", async (e) => {
-      const query = e.target.value;
-      await handleSearch(field, query);
-    });
-  };
-
-  addSearchListener(inputNameContact, "name");
-  addSearchListener(inputIdContact, "id");
-  addSearchListener(inputPhoneContact, "phone");
+  inputContact.addEventListener("input", async (e) => {
+    const query = e.target.value;
+    await handleSearch(query);
+  });
 });
