@@ -484,6 +484,31 @@ class FormIdosoModel {
         }
     }
 
+    public function searchIdosoByTerm($term)
+    {
+        try {
+            $query = "SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso WHERE 
+            id LIKE :term
+            OR nome_idoso LIKE :term
+            OR telefone_idoso LIKE :term
+            OR nascimento_idoso LIKE :term
+            OR numero_registro LIKE :term
+            OR rg_idoso LIKE :term";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(":term", "%{$term}%", PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function searchIdoso($id, $name, $birthDate , $rg, $regNumber, $phone)
     {
         try {

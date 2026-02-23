@@ -25,25 +25,7 @@ $formIdosoModel = new FormIdosoModel();
 $formDeficienteModel = new FormDeficienteModel();
 $newsModel = new NewsModel();
 
-// Parâmetros gerais
 $type = $_GET['type'] ?? "";
-$id = $_GET['id'] ?? "";
-
-// Parâmetros de busca nos contatos, cartão do idoso e deficiente.
-$name = $_GET['name'] ?? ""; 
-$date = $_GET['date'] ?? "";
-$phone = $_GET['phone'] ?? "";
-$rg = $_GET['rg'] ?? "";
-$regNumber = $_GET['reg-number'] ?? "";
-
-// Parâmetros de busca nas notícias
-$mainTitle = $_GET['main-title'] ?? "";
-$mainSubtitle = $_GET['main-subtitle'] ?? "";
-$contentTitle = $_GET['content-title'] ?? "";
-$contentSubtitle = $_GET['content-subtitle'] ?? "";
-$textContent = $_GET['text-content'] ?? "";
-
-// parâmetro 
 $term = $_GET['term'];
 
 switch($type) {
@@ -70,33 +52,19 @@ switch($type) {
         break;      
 
     case 'form-idoso':
-        $results = $formIdosoModel->searchIdoso($id, $name, $date, $rg, $regNumber, $phone);  
+        $results = $formIdosoModel->searchIdosoByTerm($term);  
 
         if (!empty($results)) {
             $response = [
                 'success' => true,
-                'search_params' => [
-                    'id' => $id,
-                    'name' => $name,
-                    'rg' => $rg,
-                    'reg_number' => $regNumber,
-                    'birth_date' => $date,
-                    'phone' => $phone
-                ],
+                'search_param' => $term,
                 'data' => $results,
                 'count' => count($results)
             ];
         } else {
             $response = [
                 'success' => false,
-                'search_params' => [
-                    'id' => $id,
-                    'name' => $name,
-                    'rg' => $rg,
-                    'reg_number' => $regNumber,
-                    'birth_date' => $date,
-                    'phone' => $phone
-                ],
+                'search_param' => $term,
                 'data' => [],
                 'message' => 'Nenhum formulário de idoso encontrado com os critérios fornecidos'
             ];
@@ -106,33 +74,19 @@ switch($type) {
         break;
 
     case 'form-deficiente':
-        $results = $formDeficienteModel->searchBeneficiario($id, $name, $date, $rg, $regNumber, $phone);
+        $results = $formDeficienteModel->searchBeneficiarioByTerm($term);
 
         if (!empty($results)) {
             $response = [
                 'success' => true,
-                'search_params' => [
-                    'id' => $id,
-                    'name' => $name,
-                    'rg' => $rg,
-                    'reg_number' => $regNumber,
-                    'birth_date' => $date,
-                    'phone' => $phone
-                ],
+                'search_param' => $term,
                 'data' => $results,
                 'count' => count($results)
             ];
         } else {
             $response = [
                 'success' => false,
-                'search_params' => [
-                    'id' => $id,
-                    'name' => $name,
-                    'rg' => $rg,
-                    'reg_number' => $regNumber,
-                    'birth_date' => $date,
-                    'phone' => $phone
-                ],
+                'search_param' => $term,
                 'data' => [],
                 'message' => 'Nenhum formulário de deficiente encontrado com os critérios fornecidos'
             ];
