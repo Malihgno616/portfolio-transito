@@ -43,31 +43,24 @@ $contentTitle = $_GET['content-title'] ?? "";
 $contentSubtitle = $_GET['content-subtitle'] ?? "";
 $textContent = $_GET['text-content'] ?? "";
 
+// parâmetro 
+$term = $_GET['term'];
+
 switch($type) {
     case 'contact':
-        $results = $contactModel->searchContact($name, $id, $date, $phone);
+        $results = $contactModel->searchContactByTerm($term);
         
         if (!empty($results)) {
             $response = [
                 'success' => true,
-                'search_params' => [
-                    'id' => $id,
-                    'name' => $name,
-                    'telefone' => $phone,
-                    'date' => $date
-                ],
+                'search_param' => $term,
                 'data' => $results,
                 'count' => count($results)
             ];
         } else {
             $response = [
                 'success' => false,
-                'search_params' => [
-                    'id' => $id,
-                    'name' => $name,
-                    'telefone' => $phone,
-                    'date' => $date
-                ],
+                'search_param' => $term,
                 'data' => [],
                 'message' => 'Nenhum contato encontrado com os critérios fornecidos'
             ];

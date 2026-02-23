@@ -18,6 +18,25 @@ class ContactModel {
     $this->pdo = $this->conn->connect();
   }
 
+  public function getDataById($id)
+  {
+    try { 
+      $query = "SELECT * FROM form_contato WHERE id = :id";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log("Erorr: " . $e->getMessage());
+      return false;
+    }
+  }
+
   public function paginatedContacts($page, $limit)
   {
 
@@ -105,16 +124,19 @@ class ContactModel {
 
   public function searchContactByTerm($term) {
     try {
-      $query = "SELECT * FROM form_contato WHERE 
-      nome like :term 
+      $query = "SELECT * FROM form_contato WHERE
+      id like :term 
+      OR nome like :term 
       OR email like :term 
       OR telefone like :term
+      OR mensagem like :term
+      OR data_enviado like :term
       ORDER BY id DESC LIMIT 15;
       ";
 
       $stmt = $this->pdo->prepare($query);
 
-      $stmt->bindValue(":term", "%{$term}%");
+      $stmt->bindValue(":term", "%{$term}%", PDO::PARAM_STR);
 
       $stmt->execute();
 
@@ -126,47 +148,6 @@ class ContactModel {
     }
   }
 
-  public function searchContact($name = "", $id = null, $date = "", $phone = "")
-  {
-    try {
-      
-      $query = "SELECT * FROM form_contato WHERE 1 = 1";
-      $stmt = $this->pdo->prepare($query);
-
-      $params = [];
-
-      if (!empty($name)) {
-          $query .= " AND nome LIKE :name";
-          $params[':name'] = '%' . $name . '%';
-      } elseif (!empty($id)) {
-          $query .= " AND id = :id";
-          $params[':id'] = $id;
-      } elseif (!empty($date)) {
-          $query .= " AND DATE(data_enviado) = :date";
-          $params[':date'] = $date;
-      } elseif (!empty($phone)) {
-          $query .= " AND telefone LIKE :phone";
-          $params[':phone'] = '%' . $phone . '%';
-      } else {
-          $query .= " ORDER BY id DESC LIMIT 15";
-      }
-
-      $stmt = $this->pdo->prepare($query);
-
-      foreach ($params as $key => $value) {
-          $stmt->bindValue($key, $value);
-      }
-
-      $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    } catch(PDOException $e) {
-        error_log("Erro ao buscar contato: " . $e->getMessage());
-        return false;
-    }
-    
-  }
-  
   public function deleteContact($id)
   {
     try {
@@ -187,9 +168,3 @@ class ContactModel {
 
 }
 
-// testing
-$contact = new ContactModel();
-
-$searched = $contact->searchContactByTerm("Contato");
-
-var_dump($searched);
