@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const inputMainTitle = document.getElementById("input-main-title");
-  const inputMainSubTitle = document.getElementById("input-main-subtitle");
-  const inputContentText = document.getElementById("input-content-text");
-
+  const inputSearchNews = document.getElementById("input-search");
   const tableNewsBody = document.getElementById("table-news-body");
 
   tableNewsBody.classList.add(
@@ -67,26 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const handleSearch = async (field, value) => {
-    const params = {
-      main_title: "",
-      main_subtitle: "",
-      content_text: "",
-    };
-    params[field] = value;
-
-    const news = await fetchNews(params);
+  const handleSearch = async (value) => {
+    const news = await fetchNews({ term: value });
     renderTable(news);
   };
 
-  const addSearchListener = (inputElement, field) => {
-    inputElement.addEventListener("input", (event) => {
-      const value = event.target.value;
-      handleSearch(field, value);
-    });
-  };
+  inputSearchNews.addEventListener("input", async (e) => {
+    const query = e.target.value;
+    await handleSearch(query);
+  });
 
-  addSearchListener(inputMainTitle, "main-title");
-  addSearchListener(inputMainSubTitle, "main-subtitle");
-  addSearchListener(inputContentText, "text-content");
 });
