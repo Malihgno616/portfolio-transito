@@ -26,7 +26,7 @@ $formDeficienteModel = new FormDeficienteModel();
 $newsModel = new NewsModel();
 
 $type = $_GET['type'] ?? "";
-$term = $_GET['term'];
+$term = $_GET['term'] ?? "";
 
 switch($type) {
     case 'contact':
@@ -97,35 +97,21 @@ switch($type) {
 
     case 'news':
 
-        $results = $newsModel->searchNews($id, $mainTitle, $mainSubtitle, $contentTitle, $contentSubtitle, $textContent);   
+        $results = $newsModel->searchNewsByTerm($term);   
 
-        if(!empty($results)) {
+        if (!empty($results)) {
             $response = [
                 'success' => true,
-                'search_params' => [
-                    'id' => $id,
-                    'main_title' => $mainTitle,
-                    'main_subtitle' => $mainSubtitle,
-                    'content_title' => $contentTitle,
-                    'content_subtitle' => $contentSubtitle,
-                    'text_content' => $textContent
-                ],
+                'search_param' => $term,
                 'data' => $results,
-                'count' => count($results),
+                'count' => count($results)
             ];
         } else {
             $response = [
                 'success' => false,
-                'search_params' => [
-                    'id' => $id,
-                    'main_title' => $mainTitle,
-                    'main_subtitle' => $mainSubtitle,
-                    'content_title' => $contentTitle,
-                    'content_subtitle' => $contentSubtitle,
-                    'text_content' => $textContent
-                ],
+                'search_param' => $term,
                 'data' => [],
-                'message' => 'Nenhuma notícia encontrada com os critérios fornecidos'
+                'message' => 'Nenhum formulário de deficiente encontrado com os critérios fornecidos'
             ];
         }
 
@@ -138,5 +124,5 @@ switch($type) {
             'message' => 'Tipo de busca inválido'
         ], JSON_UNESCAPED_UNICODE);
         break;   
-        
+              
 }
