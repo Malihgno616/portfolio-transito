@@ -1,11 +1,6 @@
 // Evento para os dados dos idosos
 document.addEventListener("DOMContentLoaded", () => {
-  const inputIdIdoso = document.getElementById("input-id-idoso");
-  const inputNomeIdoso = document.getElementById("input-nome-idoso");
-  const inputRgIdoso = document.getElementById("input-rg-idoso");
-  const inputNascIdoso = document.getElementById("input-nasc-idoso");
-  const inputNumRegIdoso = document.getElementById("input-num-reg-idoso");
-  const inputPhoneIdoso = document.getElementById("input-phone-idoso");
+  const inputSearchIdoso = document.getElementById("input-search-idoso");
   const tableBodyIdoso = document.getElementById("table-idoso-body");
 
   tableBodyIdoso.classList.add(
@@ -14,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "text-left",
     "rtl:text-right",
     "text-gray-500",
-    "dark:text-gray-800"
+    "dark:text-gray-800",
   );
 
   const fetchIdosos = async (params) => {
@@ -87,32 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const handleSearch = async (field, value) => {
-    const params = {
-      id: "",
-      name: "",
-      rg: "",
-      reg_number: "",
-      birth_date: "",
-      phone: "",
-    };
-    params[field] = value;
-
-    const idosos = await fetchIdosos(params);
+  const handleSearch = async (value) => {
+    const idosos = await fetchIdosos({ term: value });
     renderTable(idosos);
   };
 
-  const addSearchListener = (input, field) => {
-    input.addEventListener("input", async (e) => {
-      const query = e.target.value;
-      await handleSearch(field, query);
-    });
-  };
-
-  addSearchListener(inputIdIdoso, "id");
-  addSearchListener(inputNomeIdoso, "name");
-  addSearchListener(inputRgIdoso, "rg");
-  addSearchListener(inputNumRegIdoso, "reg-number");
-  addSearchListener(inputPhoneIdoso, "phone");
-  addSearchListener(inputNascIdoso, "date");
+  inputSearchIdoso.addEventListener("input", async (e) => {
+    const query = e.target.value;
+    await handleSearch(query);
+  });
 });
