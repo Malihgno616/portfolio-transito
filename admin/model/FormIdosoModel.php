@@ -508,58 +508,7 @@ class FormIdosoModel {
             return false;
         }
     }
-
-    public function searchIdoso($id, $name, $birthDate , $rg, $regNumber, $phone)
-    {
-        try {
-            $query = "SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso WHERE 1=1";
-            $params = [];
-            
-            if (!empty($id)) {
-                $query .= " AND id = :id";
-                $params[':id'] = $id;
-            } 
-            
-            if (!empty($name)) {
-                $query .= " AND nome_idoso LIKE :name";
-                $params[':name'] = '%' . $name . '%';
-            } 
-            
-            if (!empty($birthDate)) {
-                $query .= " AND nascimento_idoso LIKE :birthDate";
-                $params[':birthDate'] = '%' . $birthDate . "%";
-            } 
-            
-            if (!empty($rg)) {
-                $query .= " AND rg_idoso LIKE :rg";
-                $params[':rg'] = '%' . $rg . '%';
-            } 
-            
-            if (!empty($regNumber)) {
-                $query .= " AND numero_registro LIKE :regNumber";
-                $params[':regNumber'] = '%' . $regNumber . '%';
-            } 
-            
-            if (!empty($phone)) {
-                $query .= " AND telefone_idoso LIKE :phone";
-                $params[':phone'] = '%' . $phone . '%';
-            } 
-            
-            $query .= " ORDER BY id DESC LIMIT 15";
-            
-            $stmt = $this->pdo->prepare($query);
-            foreach ($params as $key => $value) {
-                $stmt->bindValue($key, $value);
-            }
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        } catch(PDOException $e) {
-            error_log("Erro ao buscar idoso: " . $e->getMessage());
-            return [];
-        }
-    }
-
+    
     public function lastInsertId()
     {
         try {
