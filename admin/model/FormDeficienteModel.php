@@ -6,7 +6,8 @@ require_once __DIR__.'/../config/conn.php';
 require_once __DIR__.'/../config/env.php';
 
 use Conn;
-use PDO, PDOException;
+use PDO;
+use PDOException;
 
 class FormDeficienteModel {
 
@@ -17,10 +18,6 @@ class FormDeficienteModel {
     {
         $this->conn = new Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $this->pdo = $this->conn->connect();
-
-
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
     public function getBeneficiarioById($id)
@@ -81,15 +78,13 @@ class FormDeficienteModel {
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Se nada for encontrado, fetch() retorna false — vamos tratar isso.
             return $result !== false ? $result : null;
 
         } catch (PDOException $e) {
             error_log("Erro ao buscar o id: " . $e->getMessage());
-            return null; // Melhor do que retornar um array vazio, sem sentido
+            return null; 
         }
     }
-
 
     public function deleteBeneficiario($id)
     {
@@ -570,61 +565,32 @@ class FormDeficienteModel {
         }
     }
     
-    public function searchBeneficiario($id, $name, $birthDate, $rg, $regNumber, $phone)
+    public function searchBeneficiarioByTerm($term)
     {
         try {
-
-            $query = "SELECT id, nome_beneficiario, nasc_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente WHERE 1=1";
-            $params = [];
-
-            if (!empty($id)) {
-                $query .= " AND id LIKE :id";
-                $params[':id'] = $id;
-            }
-
-            if (!empty($name)) {
-                $query .= " AND nome_beneficiario LIKE :name";
-                $params[':name'] = "%". $name ."%";
-            }
-            
-            if (!empty($birthDate)) {
-                $query .= " AND nasc_beneficiario LIKE :birthDate";
-                $params[':birthDate'] = "%". $birthDate ."%";
-            }
-            
-            if (!empty($rg)) {
-                $query .= " AND rg_beneficiario LIKE :rg";
-                $params[':rg'] = "%". $rg ."%";
-            }
-            
-            if (!empty($regNumber)) {
-                $query .= " AND numero_registro LIKE :regNumber";
-                $params[':regNumber'] = "%". $regNumber ."%";
-            }
-            
-            if (!empty($phone)) {
-                $query .= " AND telefone_beneficiario LIKE :phone";
-                $params[':phone'] = "%". $phone ."%";
-            }
-            
-            $query .= " ORDER BY id DESC LIMIT 15";
+            $query = "SELECT id, nome_beneficiario, nasc_beneficiario, telefone_beneficiario, numero_registro, rg_beneficiario FROM cartao_deficiente WHERE 
+            id LIKE :term
+            OR nome_beneficiario LIKE :term 
+            OR nasc_beneficiario LIKE :term
+            OR telefone_beneficiario LIKE :term
+            OR numero_registro LIKE :term
+            OR rg_beneficiario LIKE :term
+            ORDER BY id DESC LIMIT 15";
 
             $stmt = $this->pdo->prepare($query);
 
-            foreach ($params as $key => $value) {
-                $stmt->bindValue($key, $value);
-            }
+            $stmt->bindValue(":term", "%{$term}%", PDO::PARAM_STR);
 
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         } catch(PDOException $e) {
-            error_log("Erro na busca de beneficiario: " . $e->getMessage());
-            return [];
-        }
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }            
     }
-
+    
     public function orderByRegNumber($limit, $offset)
     {
         try {
