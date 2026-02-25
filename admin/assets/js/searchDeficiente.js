@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const inputIdBeneficiario = document.getElementById("input-id-beneficiario");
-  const inputNomeBeneficiario = document.getElementById("input-nome-beneficiario");
-  const inputRgBeneficiario = document.getElementById("input-rg-beneficiario");
-  const inputNascBeneficiario = document.getElementById("input-nasc-beneficiario");
-  const inputNumRegBeneficiario = document.getElementById("input-num-reg-beneficiario");
-  const inputPhoneBeneficiario = document.getElementById("input-phone-beneficiario");
-  const tableBodyBeneficiario = document.getElementById("table-deficiente-body");
-  
+  const inputSearchBeneficiario = document.getElementById(
+    "input-search-deficiente",
+  );
+
+  const tableBodyBeneficiario = document.getElementById(
+    "table-deficiente-body",
+  );
+
   tableBodyBeneficiario.classList.add(
     "w-full",
     "text-sm",
     "text-left",
     "rtl:text-right",
     "text-gray-500",
-    "dark:text-gray-800"
+    "dark:text-gray-800",
   );
-  
+
   const fetchBeneficiarios = async (params) => {
     try {
       const response = await axios.get("search.php", {
@@ -81,32 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const handleSearch = async (field, value) => {
-    const params = {
-      id: "",
-      name: "",
-      rg: "",
-      reg_number: "",
-      birth_date: "",
-      phone: "",
-    };
-    params[field] = value;
-
-    const beneficiarios = await fetchBeneficiarios(params);
+  const handleSearch = async (value) => {
+    const beneficiarios = await fetchBeneficiarios({ term: value });
     renderTable(beneficiarios);
   };
 
-  const addSearchListener = (input, field) => {
-    input.addEventListener("input", async (e) => {
-      const query = e.target.value;
-      await handleSearch(field, query);
-    });
-  };
-
-  addSearchListener(inputIdBeneficiario, "id");
-  addSearchListener(inputNomeBeneficiario, "name");
-  addSearchListener(inputRgBeneficiario, "rg");
-  addSearchListener(inputNascBeneficiario, "date");
-  addSearchListener(inputNumRegBeneficiario, "reg-number");
-  addSearchListener(inputPhoneBeneficiario, "phone");
+  inputSearchBeneficiario.addEventListener("input", async (e) => {
+    const query = e.target.value;
+    await handleSearch(query);
+  });
 });
