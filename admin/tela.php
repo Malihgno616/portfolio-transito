@@ -43,7 +43,9 @@ include __DIR__.'/layout/header.php';
         </a>
     </div>
     <hr>
-
+    <?php include __DIR__.'/components/add-content-page.php';?>
 </main>
+
+<script src="assets/js/quill.js"></script>
 
 <?php include __DIR__.'/layout/footer.php'; ?>
