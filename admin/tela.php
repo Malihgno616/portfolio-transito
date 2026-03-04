@@ -15,7 +15,7 @@ use Model\TelaSiteModel;
 
 $telaSiteModel = new TelaSiteModel();
 
-$id = isset($_GET['tela']) ? filter_var($_GET['tela'], FILTER_VALIDATE_INT) : null;
+$id = isset($_GET['tela']) ? filter_var($_GET['tela'], FILTER_VALIDATE_INT) : "";
 
 $pageData = $telaSiteModel->selectTitleById($id);
 
