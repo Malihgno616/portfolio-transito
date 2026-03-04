@@ -17,7 +17,7 @@ $telaSiteModel = new TelaSiteModel();
 
 $id = isset($_GET['tela']) ? filter_var($_GET['tela'], FILTER_VALIDATE_INT) : "";
 
-$pageData = $telaSiteModel->selectTitleById($id);
+$pageTitle = $telaSiteModel->selectTitleById($id);
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ include __DIR__.'/layout/header.php';
         max-w-4xl mx-auto mb-5 gap-4">
 
         <h1 class="text-3xl md:text-5xl text-center md:text-left">
-            <?= $pageData ?>
+            <?= $pageTitle ?>
         </h1>
 
         <a href="telas-site.php"

@@ -1,4 +1,4 @@
-<form action="<?= $_SERVER['PHP_SELF'] . '?tela=' . $id ?>" method="post" class="border-2 border-gray-200 rounded-lg p-4">
+<form action="<?= $_SERVER['PHP_SELF'] . '?tela=' . $id ?>" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4">
   <div id="toolbar-container">
     <span class="ql-formats">
       <select class="ql-font"></select>
@@ -48,12 +48,22 @@
 
 <?php 
 
-  $conteudo = $_POST['conteudo'] ?? null;
+  $paginaTela = $telaSiteModel->getContentById($id) ?? null;
+
+  if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    $conteudo = $_POST['conteudo'] ?? null;
+
+    $telaSiteModel->addContentPage($id, $conteudo);
+
+    $paginaTela = $telaSiteModel->getContentById($id) ?? null;
+
+  }
     
 ?>
 
 <div class="ql-snow">
     <div class="ql-editor">
-        <?= $conteudo ?>
+        <?= $paginaTela['conteudo'] ?? null; ?>
     </div>
 </div>

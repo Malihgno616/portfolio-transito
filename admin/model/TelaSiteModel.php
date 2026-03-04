@@ -58,9 +58,44 @@ class TelaSiteModel {
         }
     }
 
-    public function selectPageById($id)
+    public function addContentPage($id, $content)
     {
-        return 0;
+        try {
+            $query = "INSERT INTO conteudo_paginas (conteudo, id_tela) VALUES (:conteudo, :id)";                      
+
+            $stmt = $this->pdo->prepare($query);
+            
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            
+            $stmt->bindValue(":conteudo", $content, PDO::PARAM_STR);
+
+            return $stmt->execute();
+
+        } catch(PDOException $e) {
+            error_log("Error: ". $e->getMessage());
+            return false;
+        }
     }
+
+    public function getContentById($id)
+    {
+        try {
+            $query = "SELECT * FROM conteudo_paginas WHERE id_tela = :id";
+
+            $stmt = $this->pdo->prepare($query);
+            
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    
 
 }
