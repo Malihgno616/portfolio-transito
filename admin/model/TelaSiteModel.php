@@ -77,6 +77,26 @@ class TelaSiteModel {
         }
     }
 
+    public function editContentPage($id, $content)
+    {
+        try {
+
+            $query = "UPDATE conteudo_paginas SET conteudo = :conteudo WHERE id_tela = :id";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+            $stmt->bindValue(":conteudo", $content, PDO::PARAM_STR);
+
+            return $stmt->execute();
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function getContentById($id)
     {
         try {
