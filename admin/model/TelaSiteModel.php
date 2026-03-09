@@ -116,6 +116,23 @@ class TelaSiteModel {
         }
     }
 
-    
+    public function getLink($id)
+    {
+        try {
+            $query = "SELECT link_pagina from telas where id = :id";
 
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(":id", $id, PDO::FETCH_ASSOC);
+
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            error_log("Error: ". $e->getMessage());
+            return false;
+        }
+    }
+    
 }

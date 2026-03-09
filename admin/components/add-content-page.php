@@ -52,4 +52,6 @@
     Salvar
   </button>
 
+  <a class="mt-5 text-lg md:text-xl text-center px-6 py-3 rounded-lg bg-green-600 text-white hover:bg-green-500 w-42" href="../<?= $linkPage["link_pagina"] ?>" target="_blank">Acessar a página</a>
+
 </form>

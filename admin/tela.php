@@ -19,6 +19,8 @@ $id = isset($_GET['tela']) ? filter_var($_GET['tela'], FILTER_VALIDATE_INT) : ""
 
 $pageTitle = $telaSiteModel->selectTitleById($id);
 
+$linkPage = $telaSiteModel->getLink($id);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
