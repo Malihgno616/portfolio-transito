@@ -1,20 +1,7 @@
 <?php 
-  $paginaTela = $telaSiteModel->getContentById($id) ?? null;
- 
-  if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-      $conteudo = $_POST['conteudo'] ?? null;
-
-      if(empty($paginaTela)) {
-          $telaSiteModel->addContentPage($id, $conteudo);
-      } else {
-          $telaSiteModel->editContentPage($id, $conteudo);
-      }
-
-      $paginaTela = $telaSiteModel->getContentById($id);
-  }
+  $paginaTela = $telaSiteModel->getContentById($id) ?? null; 
 ?>
-<form action="<?= $_SERVER['PHP_SELF'] . '?tela=' . $id ?>" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4">
+<form action="save-quill-content.php" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4">
 
   <div id="toolbar-container">
     <span class="ql-formats">
@@ -58,6 +45,7 @@
     <?= $paginaTela['conteudo'] ?? null; ?>
   </div>
 
+  <input type="hidden" name="id-tela" value="<?= $id ?>">
   <input type="hidden" name="conteudo" id="conteudo">
 
   <button type="submit" class="mt-5 text-lg md:text-xl text-center px-6 py-3 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 w-42 transition">

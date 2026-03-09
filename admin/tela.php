@@ -43,7 +43,17 @@ include __DIR__.'/layout/header.php';
         </a>
     </div>
     <hr>
-    <?php include __DIR__.'/components/add-content-page.php';?>
+
+    <?php 
+    
+    if(isset($_SESSION['content-alert'])) {
+        echo $_SESSION['content-alert'];
+        unset($_SESSION['content-alert']);
+    }
+
+    include __DIR__.'/components/add-content-page.php';
+    
+    ?>
 </main>
 
 <script src="assets/js/quill.js"></script>
