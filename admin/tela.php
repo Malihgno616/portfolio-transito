@@ -43,9 +43,11 @@ include __DIR__.'/layout/header.php';
         </a>
     </div>
     <hr>
-
-    <?php 
     
+    <?php 
+
+    echo "<br>";
+
     if(isset($_SESSION['content-alert'])) {
         echo $_SESSION['content-alert'];
         unset($_SESSION['content-alert']);
