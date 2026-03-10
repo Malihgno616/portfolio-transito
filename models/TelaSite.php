@@ -2,9 +2,9 @@
 
 namespace Models;
 
-require __DIR__.'/../config/database/conn.php';
+require_once __DIR__.'/../config/database/conn.php';
 
-require __DIR__.'/../config/database/env.php';
+require_once __DIR__.'/../config/database/env.php';
 
 use PDO;
 
