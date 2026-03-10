@@ -1,8 +1,9 @@
 <div class="flex flex-col justify-center items-center m-20 gap-3">
-  <h1 class="text-5xl md:text-2xl font-bold text-center">Cartão deficiente</h1>
-  <p class="text-lg md:text-md text-justify">Siga as etapas para solicitar o cartão</p>
-  <p class="text-lg md:text-md text-justify">Assim que o cartão estiver pronto, será feito para agendamento da retirada
-    do cartão</p>
+  <div class="ql-container ql-snow">
+    <div class="ql-editor">
+      <?= $telaSite->getContent(2)['conteudo'] ?>
+    </div>
+  </div>
 </div>
 
 <form action="<?=$_SERVER['PHP_SELF']?>" method="post"

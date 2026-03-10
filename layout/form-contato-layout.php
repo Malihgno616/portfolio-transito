@@ -9,9 +9,11 @@
   ?>
   
   <div class="container mx-auto p-10 text-center">
-    <h1 class="text-5xl p-3 md:text-3xl">Contato</h1>
-    <h2 class="text-2xl p-3 md:text-md">Entre em contato conosco preenchendo o formulário abaixo</h2>
-    <p class="text-lg p-3 md:text-md">Retornaremos o mais breve possível.</p>
+    <div class="ql-container ql-snow">
+      <div class="ql-editor">
+        <?= $telaSite->getContent(3)  ['conteudo'] ?>
+      </div>
+    </div>
   </div>
 
   <div class="relative mb-5">

@@ -70,6 +70,7 @@
   </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="/assets/js/quill.js"></script>
 </body>
 
 </html>

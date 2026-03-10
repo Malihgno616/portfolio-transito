@@ -1,10 +1,3 @@
-<div class="flex flex-col justify-center items-center m-20 gap-3">
-  <h1 class="text-5xl md:text-2xl font-bold text-center">Cartão do Deficiente Físico</h1>
-  <h2 class="text-2xl md:text-lg text-center">Preencha o formulário abaixo</h2>
-  <p class="text-lg md:text-md text-justify"> Assim que o cartão estiver pronto, será feito contato para agendamento da
-    retirada do cartão</p>
-</div>
-
 <form class="max-w-200 mx-auto m-20 p-5 border-2 border-gray-200 rounded-md animate__animated animate__fadeIn" action="envia-deficiente.php" method="post" enctype="multipart/form-data">
 
   <?php 

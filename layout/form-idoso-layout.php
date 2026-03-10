@@ -1,8 +1,9 @@
 <div class="flex flex-col justify-center items-center m-20 gap-3">
-  <h1 class="text-5xl md:text-2xl font-bold text-center">Cartão do Idoso</h1>
-  <h2 class="text-2xl md:text-lg text-center">Preencha o formulário abaixo</h2>
-  <p class="text-lg md:text-md text-justify">Assim que o cartão estiver pronto, será feito contato para agendamento da
-    retirada do cartão.</p>
+  <div class="ql-container ql-snow">
+    <div class="ql-editor">
+      <?= $telaSite->getContent(3)['conteudo'] ?>
+    </div>
+  </div>
 </div>
 
 <form
@@ -11,10 +12,10 @@
 
   <?php 
   
-  if(isset($_SESSION['idoso-alert'])) {
-    echo $_SESSION['idoso-alert'];
-    unset ($_SESSION['idoso-alert']);
-  }
+    if(isset($_SESSION['idoso-alert'])) {
+      echo $_SESSION['idoso-alert'];
+      unset ($_SESSION['idoso-alert']);
+    }
 
   ?>
 
