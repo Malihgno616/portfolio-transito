@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center items-center m-20 gap-3">
-  <div class="ql-container ql-snow">
+  <div class="ql-container ql-snow" style="border: none;">
     <div class="ql-editor">
       <?= $telaSite->getContent(3)['conteudo'] ?>
     </div>

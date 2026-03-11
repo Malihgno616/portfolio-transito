@@ -1,5 +1,5 @@
-<main class="animate__animated animate__fadeIn mx-auto p-5 sm:p-10">
-  <div class="ql-container ql-snow">
+<main class="animate__animated animate__fadeIn m-auto p-10 w-full h-full max-w-4xl">
+  <div class="ql-container ql-snow" style="border: none;">
      <div class="ql-editor">
         <?= $telaSite->getContent(10)['conteudo'] ?>
      </div>

@@ -9,9 +9,9 @@
   ?>
   
   <div class="container mx-auto p-10 text-center">
-    <div class="ql-container ql-snow">
+    <div class="ql-container ql-snow" style="border: none;">
       <div class="ql-editor">
-        <?= $telaSite->getContent(3)  ['conteudo'] ?>
+        <?= $telaSite->getContent(4)['conteudo'] ?>
       </div>
     </div>
   </div>
