@@ -24,12 +24,17 @@
 </head>
 
 <body class="bg-gray-100">
+  <?php include_once('layout/header.php'); ?>  
+
+  <main class="w-full h-full">
   <?php 
-    include_once('layout/header.php');
     include_once('layout/slider.php'); 
-    include_once('layout/title.php');
     include_once('layout/news.php');
     include_once('layout/servicos-destaque.php');
     include_once('layout/institucional.php');
+  ?>
+  </main>
+
+  <?php 
     include_once('layout/footer.php');
   ?>

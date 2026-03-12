@@ -3,7 +3,7 @@
   $img8 = "assets/img/img-slider8.jpg";
   $img9 = "assets/img/img-slider9.jpg"; 
 ?>
-<div id="controls-carousel" class="relative w-full  shadow-2xs" data-carousel="static">
+<div id="controls-carousel" class="relative w-full shadow-2xs" data-carousel="static" style="margin-top: 4.5em;">
 
   <div class="relative h-60 overflow-hidden md:h-105">
 

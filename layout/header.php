@@ -30,12 +30,29 @@
   );
 ?>
 
-<header>
-  <nav class="bg-yellow-500">
+<header class="w-full">
+  <div class="p-10 w-full max-w-1/2 flex items-center justify-between gap-5">
+    <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="assets/img/logo-borda-branca.png" class="w-auto h-24" />
+    </a>
+
+    <form action="" class="flex items-center gap-2">
+      <input type="search" name="search" id="search" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Digite aqui...">
+      <button type="submit" class="px-4 py-2 bg-yellow-500 text-gray-900 font-medium rounded-lg hover:bg-yellow-600 duration-200">Buscar</button>
+    </form>
+  </div>
+
+  <div class="bg-stone-800 flex items-center justify-between p-8 text-white absolute top-full w-full mt-8 rounded-b-2xl">
+    <div class="pt-4">
+      <p>Telefone: (XX)XXXX-XXXX</p>
+    </div>
+    <div class="pt-4">
+      <p>Segunda-feira | 10 de setembro de 2025</p>
+    </div>
+  </div>
+
+  <nav class="bg-yellow-500 flex justify-center mx-auto w-1/2 rounded-2xl relative">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="index" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="assets/img/logo-borda-branca.png" class="w-auto h-16 p-0" />
-      </a>
       <button data-collapse-toggle="navbar-dropdown" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:bg-gray-100"
         aria-controls="navbar-dropdown" aria-expanded="false">
@@ -47,23 +64,22 @@
       </button>
       <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
         <ul
-          class="flex flex-col font-medium p-4 md:p-0 mt-4 bg-yellow-500 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-yellow-500 ">
+          class="flex flex-col font-medium p-4 md:p-0 mt-4 bg-yellow-500 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-yellow-500">
           <li>
             <a href="index"
-              class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0  md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200"
+              class="block py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200"
               aria-current="page" title="Home Page">
               <i class="fas fa-home mr-2"></i> Home
             </a>
           </li>
           <li>
             <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-              class="flex items-center justify-between w-full py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0  md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Multas<svg
+              class="flex items-center justify-between w-full py-2 px-3 text-gray-900 text-xl rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:dark:hover:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent duration-200">Multas<svg
                 class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="m1 1 4 4 4-4" />
               </svg></button>
-            <!-- Dropdown menu -->
             <div id="dropdownNavbar"
               class="z-50 hidden font-normal bg-white divide-y divide-gray-400 rounded-lg shadow-sm w-65 dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-300" aria-labelledby="dropdownLargeButton">
@@ -105,4 +121,5 @@
       </div>
     </div>
   </nav>
+  
 </header>
