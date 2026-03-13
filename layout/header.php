@@ -14,7 +14,7 @@
     'Sat' => 'Sábado'
   );
 
-  $mes_extenso = array(
+  $mesExtenso = array(
     'Jan' => 'Janeiro',
     'Feb' => 'Fevereiro',
     'Mar' => 'Março',
@@ -31,7 +31,7 @@
 ?>
 
 <header class="w-full">
-  <div class="p-10 w-full max-w-1/2 flex items-center justify-between gap-5">
+  <div class="p-10 w-full flex items-center justify-center m-auto gap-16">
     <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="assets/img/logo-borda-branca.png" class="w-auto h-24" />
     </a>
@@ -43,15 +43,15 @@
   </div>
 
   <div class="bg-stone-800 flex items-center justify-between p-8 text-white absolute top-full w-full mt-8 rounded-b-2xl">
-    <div class="pt-4">
-      <p>Telefone: (XX)XXXX-XXXX</p>
+    <div class="pt-4 animate__animated animate__fadeIn">
+      <p>Telefone: (19)3573-5310</p>
     </div>
-    <div class="pt-4">
-      <p>Segunda-feira | 10 de setembro de 2025</p>
+    <div class="pt-4 animate__animated animate__fadeIn">
+      <p>Seja bem-vindo | <?= $semana[$data] . ", " . $dia . " de " . $mesExtenso[$mes] . " de " . $ano; ?></p>
     </div>
   </div>
 
-  <nav class="bg-yellow-500 flex justify-center mx-auto w-1/2 rounded-2xl relative">
+  <nav class="bg-yellow-500 flex justify-between m-auto w-1/2 rounded-2xl relative">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <button data-collapse-toggle="navbar-dropdown" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:bg-gray-100"
