@@ -23,7 +23,7 @@
   <?php include("layout/head.php");?>
 </head>
 
-<body class="bg-gray-100">
+<body>
   <?php include_once('layout/header.php'); ?>  
 
   <main class="w-full h-full">
