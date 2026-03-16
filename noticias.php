@@ -37,7 +37,6 @@ $page = $currentPage;
   <body>
     <?php
       include 'layout/header.php';
-      include 'layout/title.php';
       include 'layout/allNews.php';
       include 'layout/footer.php';
     ?>

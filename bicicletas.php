@@ -21,7 +21,6 @@ error_reporting(E_ALL);
 <body>
   <?php 
   include('layout/header.php');
-  include('layout/title.php');
   include('layout/txt-bicicletas.php');
   include('layout/footer.php');
   ?>

@@ -21,7 +21,6 @@ unset($_SESSION['erro'], $_SESSION['erro-campos'], $_SESSION['old-contact']);
 <body>
   <?php 
     include('layout/header.php');
-    include_once('layout/title.php');
     include('layout/form-contato-layout.php');
   ?>
   <?php

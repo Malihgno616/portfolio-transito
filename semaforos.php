@@ -11,7 +11,6 @@
 <body>
   <?php 
     include('layout/header.php');
-    include_once('layout/title.php');
     include('layout/layout-semaforos.php');
     include('layout/footer.php');
   ?>

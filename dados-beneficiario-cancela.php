@@ -28,7 +28,6 @@ $dadosBeneficiario = $formDeficienteModel->getDeficienteByRegNumber($rgBeneficia
 <body>
   <?php 
     include_once __DIR__.'/layout/header.php';
-    include_once __DIR__.'/layout/title.php';
   ?>
   <div class="w-2xl flex justify-center items-center p-4">
     <a href="cancelar-cartao" class="p-2 rounded-lg bg-yellow-500 text-2xl hover:bg-yellow-200 duration-75">Voltar</a>

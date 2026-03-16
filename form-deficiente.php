@@ -68,7 +68,6 @@ $deficiencias = [
 <body>
   <?php 
     include('layout/header.php');
-    include_once('layout/title.php');
     include('layout/layout-form-deficiente.php');
     include('layout/footer.php');
   ?>

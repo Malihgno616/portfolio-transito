@@ -31,7 +31,6 @@ $noticiaDetalhada = $news->detailedNews($id);
   <body>
     <?php
       include 'layout/header.php';
-      include 'layout/title.php';
       include __DIR__.'/layout/detail-news.php';
       include 'layout/footer.php';
     ?>

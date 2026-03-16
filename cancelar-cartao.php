@@ -18,7 +18,6 @@ session_start();
 <body>
   <?php 
     include_once("layout/header.php");
-    include_once('layout/title.php');
     include_once("layout/form-cancela.php");
     include_once("layout/footer.php");
   ?>

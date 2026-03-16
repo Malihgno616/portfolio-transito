@@ -52,7 +52,6 @@ if($motivosSegVia !== null) {
 <body>
   <?php 
     include('layout/header.php');
-    include('layout/title.php');
     include('layout/cartao-deficiente.php');
     include('layout/footer.php');
   ?>
