@@ -174,9 +174,9 @@ $deficiencias = [
     <div class="relative mb-5">
       <input type="text" name="rg-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="12" oninput="formatRG(this)" value="<?=$dadosBeneficiario['rg_beneficiario'];?>">
+        placeholder=" " maxlength="25" oninput="formatDoc(this)" value="<?=$dadosBeneficiario['rg_beneficiario'];?>">
       <label for="rg-deficiente"
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
+        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG ou CPF</label>
     </div>
 
     <div class="relative mb-5">
@@ -505,9 +505,9 @@ $deficiencias = [
     <div class="relative mb-5" id="representante">
       <input type="text" name="rg-representante"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" " maxlength="12" oninput="formatRG(this)" value="<?=$dadosBeneficiario['rg_representante'] ?: 'Não possui'?>">
+        placeholder=" " maxlength="25" oninput="formatDoc(this)" value="<?=$dadosBeneficiario['rg_representante'] ?: 'Não possui'?>">
       <label for="rg-representante"
-        class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
+        class="absolute text-md text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG ou CPF</label>
     </div>
 
     <div class="relative mb-5" id="representante">
@@ -621,7 +621,7 @@ $deficiencias = [
 
 </form>
 
-<script src="assets/js/formatRG.js"></script>
+<script src="assets/js/formatDoc.js"></script>
 <script src="assets/js/formatPhone.js"></script>
 <script src="assets/js/formatDate.js"></script>
 <script src="assets/js/activeSpinner.js"></script>

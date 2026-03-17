@@ -239,8 +239,8 @@
         ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
         : 'border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 '?> peer"
         placeholder=" " 
-        oninput="formatRG(this)" 
-        maxlength="12"
+        oninput="formatDoc(this)" 
+        maxlength="25"
         value="<?= htmlspecialchars($old_form_idoso['rg-idoso']) ?? ''?>"
         >
       <label for="rg"
@@ -249,7 +249,7 @@
         ? 'text-red-500 peer-focus:text-red-500' 
         : 'text-gray-500 peer-focus:text-yellow-500'?> 
         top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
-        <?= !empty($array_error['rg-idoso']) ? "Preencha seu RG" : "RG"?>
+        <?= !empty($array_error['rg-idoso']) ? "Preencha seu RG ou CPF" : "RG ou CPF"?>
       </label>
     </div>
       
@@ -450,9 +450,9 @@
       <div class="relative mb-5" id="representante">
         <input type="text" name="rg-representante"
           class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-          placeholder=" " maxlength="12" oninput="formatRG(this)">
+          placeholder=" " maxlength="25" oninput="formatDoc(this)">
         <label for="rg-representante"
-          class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG</label>
+          class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG ou CPF</label>
       </div>
       <div class="relative mb-5" id="representante">
         <input type="text" name="expedicao-representante" id=""
@@ -535,7 +535,7 @@
   <p class="text-lg text-justify">Horário de atendimento: Das 8:00h ás 12:00h e das 13:00 às 16:00h</p>
 </div>
 
-<script src="assets//js/formatRG.js"></script>
+<script src="assets/js/formatDoc.js"></script>
 <script src="assets/js/formatPhone.js"></script>
 <script src="assets/js/formatDate.js"></script>
 <script src="assets/js/activeSpinner.js"></script>
