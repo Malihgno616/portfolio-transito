@@ -10,6 +10,8 @@
 
   $news = new News();
 
+  $noticiasDestaque = $news->featuredNews(2);
+
   $noticiasRecentes = $news->recentNews(3);
 
 ?>

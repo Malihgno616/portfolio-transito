@@ -2,7 +2,9 @@
 
 namespace Models;
 
-use PDO, PDOException;
+use PDO;
+
+use PDOException;
 
 require __DIR__.'/../config/database/conn.php';
 
@@ -108,6 +110,36 @@ class News {
         } catch(PDOException $e) {
             error_log("Erro ao contar notícias: " . $e->getMessage());
             return 0;
+        }
+    }
+
+    public function featuredNews($limit)
+    {
+        try {
+            $query = "SELECT 
+            np.id_noticia,
+            np.titulo_principal as titulo_principal,
+            np.subtitulo AS subtitulo_principal
+            FROM 
+                noticia_principal np
+            INNER JOIN 
+                conteudo_noticia cn ON np.id_noticia = cn.noticia_id
+            WHERE 
+                cn.destaque = 1 ORDER BY np.id_noticia DESC LIMIT :limit;";
+                
+            $stmt = $this->pdo->prepare($query);
+            
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $result ?: [];
+            
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return [];
         }
     }
     
