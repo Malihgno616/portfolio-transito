@@ -17,7 +17,7 @@ class FormDeficiente {
         $this->pdo = $this->conn->connect();
     }
 
-    public function sendDeficiente($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $rg, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $rgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "")
+    public function sendDeficiente($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numIdentidade, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $identidadeRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "")
     {
         try {
 
@@ -36,7 +36,7 @@ class FormDeficiente {
             cidade_beneficiario,  
             uf_beneficiario,      
             telefone_beneficiario,
-            rg_beneficiario,
+            num_identidade_beneficiario,
             expedicao_beneficiario,
             expedido_beneficiario,
             cnh_beneficiario,
@@ -65,7 +65,7 @@ class FormDeficiente {
             cidade_representante,
             uf_representante,
             telefone_representante,
-            rg_representante,
+            num_identidade_representante,
             expedicao_representante,
             expedido_representante,
             copia_rg_representante,
@@ -85,7 +85,7 @@ class FormDeficiente {
             :cidade_beneficiario,  
             :uf_beneficiario,      
             :telefone_beneficiario,
-            :rg_beneficiario,
+            :num_identidade_beneficiario,
             :expedicao_beneficiario,
             :expedido_beneficiario,
             :cnh_beneficiario,
@@ -114,7 +114,7 @@ class FormDeficiente {
             :cidade_representante,
             :uf_representante,
             :telefone_representante,
-            :rg_representante,
+            :num_identidade_representante,
             :expedicao_representante,
             :expedido_representante,
             :copia_rg_representante,
@@ -136,7 +136,7 @@ class FormDeficiente {
             $stmt->bindValue(':cidade_beneficiario', $cidade);
             $stmt->bindValue(':uf_beneficiario', $uf);
             $stmt->bindValue(':telefone_beneficiario', $tel);
-            $stmt->bindValue(':rg_beneficiario', $rg);
+            $stmt->bindValue(':num_identidade_beneficiario', $numIdentidade);
             $stmt->bindValue(':expedicao_beneficiario', $expedicao);
             $stmt->bindValue(':expedido_beneficiario', $expedido);
             $stmt->bindValue(':cnh_beneficiario', $cnhBeneficiario);
@@ -165,7 +165,7 @@ class FormDeficiente {
             $stmt->bindValue(':cidade_representante', $cidadeRep);
             $stmt->bindValue(':uf_representante', $ufRep);
             $stmt->bindValue(':telefone_representante', $telRep);
-            $stmt->bindValue(':rg_representante', $rgRep);
+            $stmt->bindValue(':num_identidade_representante', $identidadeRep);
             $stmt->bindValue(':expedicao_representante', $expedicaoRep);
             $stmt->bindValue(':expedido_representante', $expedidoRep);
             $stmt->bindValue(':copia_rg_representante', $copiaRgRep);

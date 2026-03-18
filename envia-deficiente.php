@@ -36,7 +36,7 @@ $required = [
     'nome-beneficiario','nascimento-beneficiario','genero-beneficiario',
     'endereco-beneficiario','numero-beneficiario','bairro-beneficiario',
     'cep-beneficiario','cidade-beneficiario','uf-beneficiario',
-    'telefone-beneficiario','rg-beneficiario','expedicao-beneficiario',
+    'telefone-beneficiario','num-identidade-beneficiario','expedicao-beneficiario',
     'expedido-beneficiario','nome-medico','crm-medico','telefone-medico',
     'local-atendimento-medico','cid'
 ];
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         'cidade-beneficiario' => $inputPost['cidade-beneficiario'] ?? '',
         'uf-beneficiario' => $inputPost['uf-beneficiario'] ?? '',
         'telefone-beneficiario' => $inputPost['telefone-beneficiario'] ?? '',
-        'rg-beneficiario' => $inputPost['rg-beneficiario'] ?? '',
+        'num-identidade-beneficiario' => $inputPost['num-identidade-beneficiario'] ?? '',
         'expedicao-beneficiario' => $inputPost['expedicao-beneficiario'] ?? '',
         'expedido-beneficiario' => $inputPost['expedido-beneficiario'] ?? '',
         'nome-medico' => $inputPost['nome-medico'] ?? '',
@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cidadeBeneficiario = $inputPost['cidade-beneficiario'];
     $ufBeneficiario  = $inputPost['uf-beneficiario'];
     $telBeneficiario = $inputPost['telefone-beneficiario'];
-    $rgBeneficiario = $inputPost['rg-beneficiario'];
+    $numIdentidadeBeneficiario = $inputPost['num-identidade-beneficiario'];
     $expedicaoBeneficiario = $inputPost['expedicao-beneficiario'];
     $expedidoBeneficiario = $inputPost['expedido-beneficiario'];
     $cnhBeneficiario = $inputPost['cnh-beneficiario'] ?? null;
@@ -166,7 +166,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ufRepresentante = null; 
     }
     $telRepresentante = $inputPost['telefone-representante'] ?? null;
-    $rgRepresentante = !empty($inputPost['rg-representante']) ? $inputPost['rg-representante'] : null;
+    $numIdentidadeRepresentante = !empty($inputPost['num-identidade-representante']) ? $inputPost['num-identidade-representante'] : null;
     $expedicaoRepresentante = $inputPost['expedicao-representante'] ?? null;
     if($expedicaoRepresentante === '' ){
         $expedicaoRepresentante = null;
@@ -226,7 +226,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cidadeBeneficiario,
         $ufBeneficiario,
         $telBeneficiario,
-        $rgBeneficiario,
+        $numIdentidadeBeneficiario,
         $expedicaoBeneficiario,
         $expedidoBeneficiario,
         $imgRgBeneficiario,
@@ -256,7 +256,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cidadeRepresentante,
         $ufRepresentante,
         $telRepresentante,
-        $rgRepresentante,
+        $numIdentidadeRepresentante,
         $expedicaoRepresentante,
         $expedidoRepresentante,
         $imagemRgRepresentante,
