@@ -17,7 +17,7 @@ class FormIdoso {
         $this->pdo = $this->conn->connect();
     }
 
-    public function sendIdoso($nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numRgIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso,$compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numRgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "")
+    public function sendIdoso($nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $identidadeIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso, $compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $identidadeRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "")
     {
         try {
 
@@ -37,7 +37,7 @@ class FormIdoso {
             cidade_idoso,
             uf_idoso,
             telefone_idoso,
-            rg_idoso,
+            num_identidade_idoso,
             data_expedicao_idoso,
             expedido_idoso,
             cnh_idoso,
@@ -55,7 +55,7 @@ class FormIdoso {
             cidade_representante,
             uf_representante,
             telefone_representante,
-            rg_representante,
+            num_identidade_representante,
             data_expedicao_representante,
             expedido_representante,
             copia_rg_representante,
@@ -76,7 +76,7 @@ class FormIdoso {
             :cidade_idoso,
             :uf_idoso,
             :telefone_idoso,
-            :rg_idoso,
+            :num_identidade_idoso,
             :data_expedicao_idoso,
             :expedido_idoso,
             :cnh_idoso,
@@ -94,7 +94,7 @@ class FormIdoso {
             :cidade_representante,
             :uf_representante,
             :telefone_representante,
-            :rg_representante,
+            :num_identidade_representante,
             :data_expedicao_representante,
             :expedido_representante,
             :copia_rg_representante,
@@ -116,7 +116,7 @@ class FormIdoso {
             ':cidade_idoso' => $cidadeIdoso,
             ':uf_idoso' => $ufIdoso,
             ':telefone_idoso' => $telIdoso,
-            ':rg_idoso' => $numRgIdoso,
+            ':num_identidade_idoso' => $identidadeIdoso,
             ':data_expedicao_idoso' => $expedicaoIdoso,
             ':expedido_idoso' => $expedidoIdoso,
             ':cnh_idoso' => $cnhIdoso,
@@ -137,7 +137,7 @@ class FormIdoso {
             ':cidade_representante' => $cidadeRep,
             ':uf_representante' => $ufRep,
             ':telefone_representante' => $telRep,
-            ':rg_representante' => $numRgRep,
+            ':num_identidade_representante' => $identidadeRep,
             ':data_expedicao_representante' => $expedicaoRep,
             ':expedido_representante' => $expedidoRep,
             ':copia_rg_representante' => $copiaRgRep,

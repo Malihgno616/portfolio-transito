@@ -47,7 +47,7 @@ $_SESSION['old-form-idoso'] = [
     'cidade-idoso' => $inputPost['cidade-idoso'] ?? '', 
     'uf-idoso' => $inputPost['uf-idoso'] ?? '', 
     'telefone-idoso' => $inputPost['telefone-idoso'] ?? '',
-    'rg-idoso' => $inputPost['rg-idoso'] ?? '', 
+    'identidade-idoso' => $inputPost['identidade-idoso'] ?? '', 
     'data-expedicao-idoso' => $inputPost['data-expedicao-idoso'] ?? '', 
     'expedido-idoso' => $inputPost['expedido-idoso'] ?? ''
 ];
@@ -63,7 +63,7 @@ $cepIdoso = $inputPost["cep-idoso"];
 $cidadeIdoso = $inputPost["cidade-idoso"];
 $ufIdoso = $inputPost["uf-idoso"];
 $telIdoso = $inputPost["telefone-idoso"];
-$rgIdoso = $inputPost["rg-idoso"];
+$identidadeIdoso = $inputPost["identidade-idoso"];
 $expedicaoIdoso = $inputPost["data-expedicao-idoso"];
 $expedidoIdoso = $inputPost["expedido-idoso"];
 $cnhIdoso = $inputPost["cnh-idoso"] ?? null;
@@ -82,7 +82,7 @@ if ($ufRepresentante === 'selecione' || $ufRepresentante === '') {
     $ufRepresentante = null; 
 }
 $telRepresentante = $inputPost["telefone-representante"] ?? null;
-$rgRepresentante = !empty($inputPost['rg-representante']) ? $inputPost['rg-representante'] : null;
+$identidadeRepresentante = !empty($inputPost['identidade-representante']) ? $inputPost['identidade-representante'] : null;
 $expedicaoRepresentante = $inputPost["expedicao-representante"] ?? null;
 if ($expedicaoRepresentante === '') {
     $expedicaoRepresentante = null;
@@ -93,7 +93,7 @@ $required = [
     'nome-idoso', 'nascimento-idoso', 'genero-idoso', 
     'endereco-idoso', 'numero-endereco-idoso', 'bairro-idoso',
     'cep-idoso', 'cidade-idoso', 'uf-idoso', 'telefone-idoso',
-    'rg-idoso', 'data-expedicao-idoso', 'expedido-idoso'
+    'identidade-idoso', 'data-expedicao-idoso', 'expedido-idoso'
 ]; 
 
 $errorArray = [];
@@ -231,7 +231,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cidadeIdoso, 
             $ufIdoso, 
             $telIdoso, 
-            $rgIdoso, 
+            $identidadeIdoso, 
             $expedicaoIdoso, 
             $expedidoIdoso, 
             $imagemIdoso,
@@ -250,7 +250,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cidadeRepresentante, 
             $ufRepresentante, 
             $telRepresentante, 
-            $rgRepresentante, 
+            $identidadeRepresentante, 
             $expedicaoRepresentante, 
             $expRepresentante,
             $imagemRgRepresentante,
