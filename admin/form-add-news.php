@@ -40,4 +40,5 @@ ini_set("display_startup_errors", 1);
     ?>
   </main>
   <script src="assets/js/imgNews.js"></script>
+  <script src="assets/js/quill.js"></script>
   <?php include __DIR__.'/layout/footer.php';?>
