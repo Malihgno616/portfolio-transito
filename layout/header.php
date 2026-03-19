@@ -61,7 +61,6 @@
 
   <nav class="bg-yellow-500 m-auto flex justify-center max-w-4xl rounded-t-sm relative">
     <div class="p-4 w-full">
-        <!-- Botão centralizado no mobile -->
         <div class="flex justify-center md:hidden">
             <button data-collapse-toggle="navbar-dropdown" type="button"
                 class="inline-flex items-center p-3 w-12 h-12 justify-center text-sm text-black rounded-lg hover:bg-gray-100 transition-all duration-200"
@@ -73,8 +72,6 @@
                 </svg>
             </button>
         </div>
-        
-        <!-- Menu com mais espaço interno no mobile -->
         <div class="hidden w-full mt-4 md:block md:w-auto md:mt-0" id="navbar-dropdown">
             <ul class="flex md:flex-row md:gap-12 justify-center flex-col gap-4 md:gap-12">
                 <li class="w-full md:w-auto">
@@ -93,9 +90,8 @@
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <!-- Dropdown com mais espaço no mobile -->
                     <div id="dropdownNavbar"
-                        class="z-50 hidden font-normal bg-white divide-y divide-gray-400 rounded-lg shadow-sm w-full md:w-65 dark:bg-gray-700 dark:divide-gray-600">
+                        class="z-50 hidden font-normal bg-white divide-y divide-gray-400 rounded-lg shadow-sm w-lg md:w-65 dark:bg-gray-700 dark:divide-gray-600">
                         <ul class="py-3 text-sm text-gray-700 dark:text-gray-300" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="multas"
