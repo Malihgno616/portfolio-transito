@@ -1,5 +1,6 @@
-<form action="#" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4 h-">
-
+<form action="send-news.php" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4 h-">
+  <input type="hidden" name="conteudo">
+  
   <div id="toolbar-container">
     <span class="ql-formats">
       <select class="ql-font"></select>
@@ -40,7 +41,7 @@
   </div>
 
   <div id="editor" class="h-80">
-    <h1>Conteúdo da notícia...</h1>
+    <h1 style="color: gray">Conteúdo da notícia...</h1>
   </div>
 
   <button type="submit" class="mt-4 text-lg md:text-xl text-center px-2 py-2 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 w-42 transition">
