@@ -43,6 +43,62 @@ class NewsModel {
     }
   }
 
+  private function totalNews()
+  {
+    try {
+      $query = "SELECT COUNT(*) as total FROM conteudo_noticia";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      
+      return $result['total'];
+
+    } catch(PDOException $e) {
+      error_log("Error:" . $e->getMessage());
+      return false;
+    }
+  }
+  
+  public function paginatedNews($limit, $offset) 
+  {
+      try {
+          $limit = max(1, (int)$limit);
+          
+          $offset = max(0, (int)$offset); 
+
+          $page = ($offset / $limit) + 1;
+          
+          $query = "SELECT * FROM conteudo_noticia ORDER BY id DESC LIMIT :limit OFFSET :offset";
+          
+          $stmt = $this->pdo->prepare($query);
+          $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
+          $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
+          $stmt->execute();
+          
+          $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          
+          return [
+              "limit" => $limit,
+              "offset" => $offset,
+              "news" => $news,
+              "page" => (int)$page,
+              "total" => $this->totalNews(),
+          ];
+          
+      } catch(PDOException $e) {
+          error_log("Error in paginatedNews: " . $e->getMessage());
+          return [
+              "limit" => 0,
+              "offset" => 0,
+              "news" => [],
+              "page" => 0,
+              "total" => 0,
+              "error" => true
+          ];
+      }
+  }
+
   public function updateNews($content)
   {
     
