@@ -35,13 +35,34 @@ function setAlert($message, $type = 'success') {
 
 $inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+if (isset($_FILES['img-news']) && $_FILES['img-news']['error'] === UPLOAD_ERR_OK) {
+
+    $fileContentNews = file_get_contents($_FILES['img-news']['tmp_name']);
+    
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    
+    $mimeTypeNews = $finfo->file($_FILES['img-news']['tmp_name']);
+    if (!in_array($mimeTypeNews, ['image/jpeg', 'image/png'])) {
+        die('Tipo de arquivo inválido. Apenas JPEG e PN são permitidos.');
+    }
+    
+    $imgNews = $fileContentNews;
+
+} else {
+
+    $imgNews = null;
+
+}
+
+$nameFileNews = $inputPost['name-file-news'] ?? "";
+
 $contentNews = $inputPost['conteudo']; 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $newsModel = new NewsModel();
 
-    $sended = $newsModel->sendNews($contentNews);
+    $sended = $newsModel->sendNews($imgNews, $nameFileNews, $contentNews);
     
     if(isset($sended)) {
         $_SESSION['news-alert'] = setAlert("Notícia publicada com sucesso!", "success");

@@ -22,13 +22,15 @@ class NewsModel {
     $this->pdo = $this->conn->connect();
   }
   
-  public function sendNews($content)
+  public function sendNews($fileNews, $nameFileNews, $content)
   {
     try {
-        $query = "INSERT INTO conteudo_noticia (conteudo) VALUES (:conteudo)";
+        $query = "INSERT INTO conteudo_noticia (img_noticia, nome_img_noticia, conteudo) VALUES (:img_noticia, :nome_img_noticia, :conteudo)";
         
         $stmt = $this->pdo->prepare($query);
         
+        $stmt->bindValue(":img_noticia", $fileNews, PDO::PARAM_LOB);
+        $stmt->bindValue(":nome_img_noticia", $nameFileNews, PDO::PARAM_LOB);
         $stmt->bindValue(":conteudo", $content, PDO::PARAM_STR);
 
         $stmt->execute();
