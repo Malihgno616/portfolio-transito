@@ -50,6 +50,8 @@ class NewsModel {
 
       $stmt = $this->pdo->prepare($query);
 
+      $stmt->execute();
+
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
       
       return $result['total'];
@@ -97,6 +99,25 @@ class NewsModel {
               "error" => true
           ];
       }
+  }
+
+  public function getImageNews($id)
+  {
+    try {
+      $query = "SELECT img_noticia, nome_img_noticia FROM conteudo_noticia WHERE id = :id";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log("Error: ". $e->getMessage());
+      return false;
+    }
   }
 
   public function updateNews($content)

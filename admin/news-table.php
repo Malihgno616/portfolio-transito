@@ -18,19 +18,26 @@ require __DIR__.'/model/NewsModel.php';
 
 $newsModel = new NewsModel();
 
-// Obter página atual da URL (default = 1)
-$currentPage = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-$limit = 5;
+$limit = 6;
+
+$pageUrl = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$currentPage = max(1, $pageUrl);
+
 $offset = ($currentPage - 1) * $limit;
 
-// Obter dados
-$data = $newsModel->publishedNews($currentPage, $limit, $offset);
-$totalNews = $newsModel->countAllNews();
+$data = $newsModel->paginatedNews($limit, $offset);
+
+$currentPage = $data['page'];
+$totalNews = $data['total'];
+$newsItems = $data['news'];
+
 $totalPages = ceil($totalNews / $limit);
 
-// Calcular range de exibição
 $startItem = $offset + 1;
 $endItem = min($offset + $limit, $totalNews);
+
+$range = 2;
 
 ?>
 
