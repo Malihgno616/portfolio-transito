@@ -20,6 +20,7 @@ class NewsModel {
     $this->conn = new Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     
     $this->pdo = $this->conn->connect();
+
   }
   
   public function sendNews($fileNews, $nameFileNews, $content)
@@ -105,6 +106,26 @@ class NewsModel {
   {
     try {
       $query = "SELECT img_noticia, nome_img_noticia FROM conteudo_noticia WHERE id = :id";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log("Error: ". $e->getMessage());
+      return false;
+    }
+  }
+
+  public function getNewsById($id)
+  {
+    try {
+      
+      $query = "SELECT * FROM conteudo_noticia WHERE id = :id";
 
       $stmt = $this->pdo->prepare($query);
 

@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <?php foreach($newsItems as $newItem): ?>
         <div class="flex bg-white rounded-md shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-48">
-          <a href="#" class="flex-shrink-0">
+          <a href="edit-news.php?id=<?= $newItem['id'] ?>" class="flex-shrink-0">
             <img src="display-image.php?id=<?= $newItem['id']; ?>&type=main" 
                 alt="" 
                 class="h-48 w-40 object-cover border-0">

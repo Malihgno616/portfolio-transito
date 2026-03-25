@@ -62,9 +62,9 @@ include __DIR__.'/layout/header.php';
         }
 
         include __DIR__.'/components/table-noticia.php';
-        include __DIR__.'/components/modal-news.php';
     ?>
   </main>
   <script src="assets/js/imgNews.js"></script>
+  <script src="assets/js/editNewsImg.js"></script>
   <script src="assets/js/modalEditImageNews.js"></script>
 <?php include __DIR__.'/layout/footer.php'; ?>

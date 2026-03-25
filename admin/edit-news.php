@@ -16,29 +16,9 @@ require_once __DIR__.'/model/NewsModel.php';
 
 use Model\NewsModel\NewsModel;
 
+$id = $_GET['id'];
+
 $newsModel = new NewsModel();
-
-$idNews = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$idContentNewsFromURL = filter_input(INPUT_GET, 'id-content', FILTER_SANITIZE_NUMBER_INT);
-
-if(!$idNews){
-    header("Location: pesquisa-noticia.php");
-    exit;
-}
-
-$mainNewsData = $newsModel->getMainNews($idNews);
-$contentNewsData = $newsModel->getContentNews($idContentNewsFromURL);
-
-// echo <<<HTML
-// <p class="text-red-600 text-xl">
-//     ID recebido - Notícia principal: $idNews
-//     <br>
-//     ID recebido - Conteúdo da notícia: $idContentNewsFromURL
-// </p>
-// HTML; 
-
-// var_dump($mainNewsData);
-// var_dump($contentNewsData);
 
 ?>
 
@@ -61,4 +41,5 @@ include __DIR__.'/layout/header.php';
     <?php include __DIR__.'/components/edit-news.php';?>
 </main>
 <script src="./assets/js/editNewsImg.js"></script>
+<script src="./assets/js/quill.js"></script>
 <?php include __DIR__.'/layout/footer.php'; ?>
