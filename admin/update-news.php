@@ -1,5 +1,4 @@
 <?php 
-
 session_start([
     'cookie_secure' => true,
     'cookie_httponly' => true,
@@ -41,118 +40,54 @@ function setAlert($message, $type = 'success') {
     HTML;  
 }
 
-$inputPost = filter_input_array(INPUT_POST, [
-    'id-main-news' => FILTER_SANITIZE_NUMBER_INT, 
-    'id-content-news' => FILTER_SANITIZE_NUMBER_INT, 
-    'main-title' => FILTER_UNSAFE_RAW,
-    'main-subtitle' => FILTER_UNSAFE_RAW,
-    'title-content' => FILTER_UNSAFE_RAW,
-    'subtitle-content' => FILTER_UNSAFE_RAW,
-    'text-content' => FILTER_UNSAFE_RAW,
-    'name-img-file-main' => FILTER_UNSAFE_RAW,
-    'name-img-file-content' => FILTER_UNSAFE_RAW
-]);
+$inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-$fileMainNews = null;
-$fileContentNews = null;
-$nameImageMainNews = null;
-$nameImageContent = null;
-$updateMainImage = false; // Flag para indicar se há nova imagem principal
-$updateContentImage = false; // Flag para indicar se há nova imagem de conteúdo
+$id = isset($inputPost['id']) ? (int)$inputPost['id'] : 0;
 
-// Processar upload da imagem principal (se houver)
-if (isset($_FILES['img-file-main']) && $_FILES['img-file-main']['error'] === UPLOAD_ERR_OK) {
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $mime = $finfo->file($_FILES['img-file-main']['tmp_name']);
+$updateImage = false;
+$imgNews = null;
+
+if (isset($_FILES['img-news']) && $_FILES['img-news']['error'] === UPLOAD_ERR_OK) {
+
+    $fileContentNews = file_get_contents($_FILES['img-news']['tmp_name']);
+    $updateImage = true;
     
-    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
-        $_SESSION['news-alert'] = setAlert("Tipo de arquivo inválido para imagem principal. Apenas JPEG e PNG são permitidos.", "error");
-        header('Location: news-table.php');
-        exit;
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    
+    $mimeTypeNews = $finfo->file($_FILES['img-news']['tmp_name']);
+    if (!in_array($mimeTypeNews, ['image/jpeg', 'image/png'])) {
+        die('Tipo de arquivo inválido. Apenas JPEG e PN são permitidos.');
     }
     
-    $fileMainNews = file_get_contents($_FILES['img-file-main']['tmp_name']);
-    $nameImageMainNews = $_FILES['img-file-main']['name'];
-    $updateMainImage = true; // Há nova imagem principal
+    $imgNews = $fileContentNews;
+
 } else {
-    // Se não houve upload, usar o nome existente do POST
-    $nameImageMainNews = trim($inputPost['name-img-file-main']);
-    // Não definir $fileMainNews para preservar a imagem existente no banco
+    $nameFileNews = isset($inputPost['name-file-news']) ? $inputPost['name-file-news'] : '';
+    $imgNews = null;
+    $updateImage = false;
 }
 
-// Processar upload da imagem de conteúdo (se houver)
-if (isset($_FILES['img-file-content']) && $_FILES['img-file-content']['error'] === UPLOAD_ERR_OK) {
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $mime = $finfo->file($_FILES['img-file-content']['tmp_name']);
-    
-    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
-        $_SESSION['news-alert'] = setAlert("Tipo de arquivo inválido para imagem de conteúdo. Apenas JPEG e PNG são permitidos.", "error");
-        header('Location: news-table.php');
-        exit;
-    }
-    
-    $fileContentNews = file_get_contents($_FILES['img-file-content']['tmp_name']);
-    $nameImageContent = $_FILES['img-file-content']['name'];
-    $updateContentImage = true; // Há nova imagem de conteúdo
-} else {
-    // Se não houve upload, usar o nome existente do POST
-    $nameImageContent = trim($inputPost['name-img-file-content']);
-    // Não definir $fileContentNews para preservar a imagem existente no banco
-}
+$nameFileNews = $inputPost['name-file-news'];
+
+$content = $inputPost['conteudo'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    if(!filter_var($inputPost['id-main-news'], FILTER_VALIDATE_INT, ['min_range' => 1]) || 
-       !filter_var($inputPost['id-content-news'], FILTER_VALIDATE_INT, ['min_range' => 1])) {
-        $_SESSION['news-alert'] = setAlert("ID da notícia ou conteúdo não fornecido ou inválido.", "error");
-        header('Location: news-table.php');
-        exit;
-    }
-
-    // Validação mais flexível - ajuste conforme suas necessidades
-    if(empty($inputPost['main-title']) || 
-       empty($inputPost['main-subtitle']) || 
-       empty($inputPost['title-content']) || 
-       empty($inputPost['text-content'])) {
-        $_SESSION['news-alert'] = setAlert("Campos obrigatórios não preenchidos.", "error");
-        header('Location: news-table.php');
-        exit;
-    }
-
-    $idMainNews = (int)trim($inputPost['id-main-news']);
-    $idContentNews = (int)trim($inputPost['id-content-news']);
-    $mainTitle = trim($inputPost['main-title']);
-    $mainSubtitle = trim($inputPost['main-subtitle']);
-    $titleContent = trim($inputPost['title-content']);
-    $subtitleContent = trim($inputPost['subtitle-content'] ?? '');
-    $textContent = strip_tags(trim($inputPost['text-content']));
-
     try {
-        $updated = $newsModel->updateNews(
-            $idMainNews, 
-            $idContentNews, 
-            $mainTitle, 
-            $mainSubtitle, 
-            $titleContent, 
-            $subtitleContent, 
-            $textContent, 
-            $fileMainNews, 
-            $nameImageMainNews, 
-            $updateMainImage, // Nova flag
-            $fileContentNews, 
-            $nameImageContent,
-            $updateContentImage // Nova flag
-        );
 
-        if ($updated) {
+        $update = $newsModel->updateNews($id, $imgNews, $nameFileNews, $content, $updateImage);
+
+        if($updated) {
             $_SESSION['news-alert'] = setAlert("Notícia atualizada com sucesso!", "success");
         } else {
-            $_SESSION['news-alert'] = setAlert("Nenhuma alteração foi feita ou erro ao atualizar a notícia.", "error");
+            $_SESSION['news-alert'] = setAlert("Erro ao atualizar a notícia", "error");
         }
-    } catch (Exception $e) {
-        $_SESSION['news-alert'] = setAlert("Erro ao atualizar a notícia: " . $e->getMessage(), "error");
-    }
 
-    header('Location: news-table.php');
-    exit;
+        header("Location: edit-news.php");
+        exit();
+
+    } catch(Exception $e) {
+        setAlert($e->getMessage(), "error");
+        header("Location: edit-news.php");
+        exit();
+    } 
 }

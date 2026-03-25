@@ -16,9 +16,9 @@ require_once __DIR__.'/model/NewsModel.php';
 
 use Model\NewsModel\NewsModel;
 
-$id = $_GET['id'];
-
 $newsModel = new NewsModel();
+
+$id = $_GET['id'];
 
 ?>
 
@@ -38,7 +38,14 @@ include __DIR__.'/layout/header.php';
     </div>
     <hr>
     <br>
-    <?php include __DIR__.'/components/edit-news.php';?>
+    <?php 
+        if(isset($_SESSION['news-alert'])){
+          echo $_SESSION['news-alert'];
+          unset($_SESSION['news-alert']);
+        }
+
+        include __DIR__.'/components/edit-news.php';
+    ?>
 </main>
 <script src="./assets/js/editNewsImg.js"></script>
 <script src="./assets/js/quill.js"></script>

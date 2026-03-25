@@ -141,9 +141,40 @@ class NewsModel {
     }
   }
 
-  public function updateNews($content)
+  public function updateNews($id, $imgNews, $fileNewsName , $content, $imageUpdate)
   {
-    
+      try {    
+          // First check if news exists
+          $check = "SELECT id FROM conteudo_noticia WHERE id = :id";
+          $stmtCheck = $this->pdo->prepare($check);
+          $stmtCheck->bindParam(':id', $id, PDO::PARAM_INT);
+          $stmtCheck->execute();
+          
+          if($stmtCheck->rowCount() > 0) {
+              if ($imageUpdate && !is_null($imgNews)) {
+                  $queryUpdate = "UPDATE conteudo_noticia SET img_noticia = :img_noticia, nome_img_noticia = :nome_img_noticia, conteudo = :conteudo WHERE id = :id";
+              } else {
+                  $queryUpdate = "UPDATE conteudo_noticia SET conteudo = :conteudo WHERE id = :id";
+              }
+              
+              $stmt = $this->pdo->prepare($queryUpdate);
+              $stmt->bindParam(':conteudo', $content, PDO::PARAM_STR);
+              $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+              
+              if ($imageUpdate && !is_null($imgNews)) {
+                  $stmt->bindParam(':img_noticia', $imgNews, PDO::PARAM_LOB);
+                  $stmt->bindParam(':nome_img_noticia', $fileNewsName, PDO::PARAM_STR);
+              }
+              
+              return $stmt->execute();
+          }
+          
+          return false; 
+  
+      } catch(PDOException $e) {
+          error_log("Error: ". $e->getMessage());
+          return false;
+      }
   }
 
   public function featureNews($featured)
