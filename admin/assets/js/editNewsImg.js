@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const reader = new FileReader();
       reader.onload = (ev) => {
         previewContainer.innerHTML = `
-          <img src="${ev.target.result}" class="max-h-40 mx-auto rounded-lg object-contain">
+          <img src="${ev.target.result}" class="max-h-40 mx-auto object-contain">
         `;
         fileNameSpan.textContent = file.name;
         hiddenFileName.value = file.name;

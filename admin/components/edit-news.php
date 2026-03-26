@@ -10,12 +10,17 @@
     <div class="flex items-center justify-center w-full">
         <label for="dropzone-img-news" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-200 dark:bg-gray-100 hover:bg-gray-100 dark:border-gray-600">
           <div id="default-content-news" class="flex flex-col items-center justify-center pt-5 pb-6">
-            <img class="max-h-40 mx-auto rounded-lg" src="display-image.php?id=<?= $newsModel->getNewsById($id)['id'] ?>&type=main" alt="imagem da publicação">
+            <img class="max-h-40 mx-auto" src="display-image.php?id=<?= $newsModel->getNewsById($id)['id'] ?>&type=main" alt="imagem da publicação">
+            <p class="text-sm text-gray-600 font-medium text-center mt-2">
+              <?= $newsModel->getNewsById($id)['nome_img_noticia'] ?>
+            </p>
           </div>
         
           <div id="preview-content-news" class="flex flex-col items-center justify-center w-full h-full p-4" style="display: none;">
             <div id="news-image-preview" class="flex items-center justify-center mb-2 w-full h-40"></div>
-            <p id="news-file-name" class="text-sm text-gray-600 font-medium text-center mt-2"></p>
+            <p id="news-file-name" class="text-sm text-gray-600 font-medium text-center mt-2">
+              
+            </p>
           </div>
           
           <input id="dropzone-img-news" type="file" class="hidden" name="img-news" accept=".png,.jpg,.jpeg,.pdf"/>

@@ -74,20 +74,20 @@ $content = $inputPost['conteudo'];
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
-        $update = $newsModel->updateNews($id, $imgNews, $nameFileNews, $content, $updateImage);
+        $updated = $newsModel->updateNews($id, $imgNews, $nameFileNews, $content, $updateImage);
 
         if($updated) {
             $_SESSION['news-alert'] = setAlert("Notícia atualizada com sucesso!", "success");
         } else {
             $_SESSION['news-alert'] = setAlert("Erro ao atualizar a notícia", "error");
         }
-
-        header("Location: edit-news.php");
+        
+        header("Location: edit-news.php?id=".$id);
         exit();
 
     } catch(Exception $e) {
         setAlert($e->getMessage(), "error");
-        header("Location: edit-news.php");
+        header("Location: edit-news.php?id=".$id);
         exit();
     } 
 }
