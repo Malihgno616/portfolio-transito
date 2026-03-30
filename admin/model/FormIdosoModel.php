@@ -6,7 +6,8 @@ require_once __DIR__.'/../config/conn.php';
 require_once __DIR__.'/../config/env.php';
 
 use Conn;
-use PDO, PDOException;
+use PDO;
+use PDOException;
 
 class FormIdosoModel {
     
@@ -31,7 +32,7 @@ class FormIdosoModel {
             $totalPages = ceil($total / $limit);
 
             // Depois os dados paginados
-            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso,nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso,nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -143,7 +144,7 @@ class FormIdosoModel {
         }
     }
 
-    public function registerIdoso($nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numRgIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso,$compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numRgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "")
+    public function registerIdoso($nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numDocIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso,$compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "")
     {
         try {
 
@@ -163,7 +164,7 @@ class FormIdosoModel {
             cidade_idoso,
             uf_idoso,
             telefone_idoso,
-            rg_idoso,
+            num_identidade_idoso,
             data_expedicao_idoso,
             expedido_idoso,
             cnh_idoso,
@@ -181,7 +182,7 @@ class FormIdosoModel {
             cidade_representante,
             uf_representante,
             telefone_representante,
-            rg_representante,
+            num_identidade_representante,
             data_expedicao_representante,
             expedido_representante,
             copia_rg_representante,
@@ -202,7 +203,7 @@ class FormIdosoModel {
             :cidade_idoso,
             :uf_idoso,
             :telefone_idoso,
-            :rg_idoso,
+            :num_identidade_idoso,
             :data_expedicao_idoso,
             :expedido_idoso,
             :cnh_idoso,
@@ -220,7 +221,7 @@ class FormIdosoModel {
             :cidade_representante,
             :uf_representante,
             :telefone_representante,
-            :rg_representante,
+            :num_identidade_representante,
             :data_expedicao_representante,
             :expedido_representante,
             :copia_rg_representante,
@@ -242,7 +243,7 @@ class FormIdosoModel {
             ':cidade_idoso' => $cidadeIdoso,
             ':uf_idoso' => $ufIdoso,
             ':telefone_idoso' => $telIdoso,
-            ':rg_idoso' => $numRgIdoso,
+            ':num_identidade_idoso' => $numDocIdoso,
             ':data_expedicao_idoso' => $expedicaoIdoso,
             ':expedido_idoso' => $expedidoIdoso,
             ':cnh_idoso' => $cnhIdoso,
@@ -263,7 +264,7 @@ class FormIdosoModel {
             ':cidade_representante' => $cidadeRep,
             ':uf_representante' => $ufRep,
             ':telefone_representante' => $telRep,
-            ':rg_representante' => $numRgRep,
+            ':num_identidade_representante' => $numDocRep,
             ':data_expedicao_representante' => $expedicaoRep,
             ':expedido_representante' => $expedidoRep,
             ':copia_rg_representante' => $copiaRgRep,
@@ -297,7 +298,7 @@ class FormIdosoModel {
         }
     }
     
-    public function updateIdoso($idIdoso, $nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numRgIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso, $compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numRgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "", $updateRgIdoso = false, $updateRgRep = false, $updateCompRep = false)
+    public function updateIdoso($idIdoso, $nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numDocIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso, $compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "", $updateRgIdoso = false, $updateRgRep = false, $updateCompRep = false)
     {
         try {
             $this->pdo->beginTransaction();
@@ -330,7 +331,7 @@ class FormIdosoModel {
                 'cidade_idoso' => $cidadeIdoso,
                 'uf_idoso' => $ufIdoso,
                 'telefone_idoso' => $telIdoso,
-                'rg_idoso' => $numRgIdoso,
+                'num_identidade_idoso' => $numDocIdoso,
                 'data_expedicao_idoso' => $expedicaoIdoso,
                 'expedido_idoso' => $expedidoIdoso,
                 'cnh_idoso' => $cnhIdoso,
@@ -355,7 +356,7 @@ class FormIdosoModel {
                 'cidade_representante' => $cidadeRep,
                 'uf_representante' => $ufRep,
                 'telefone_representante' => $telRep,
-                'rg_representante' => $numRgRep,
+                'num_identidade_representante' => $numDocRep,
                 'data_expedicao_representante' => $expedicaoRep,
                 'expedido_representante' => $expedidoRep
             ];
@@ -432,7 +433,7 @@ class FormIdosoModel {
     public function orderByName($limit, $offset)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY nome_idoso ASC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso ORDER BY nome_idoso ASC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -446,7 +447,7 @@ class FormIdosoModel {
     public function orderById($limit, $offset)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -460,7 +461,7 @@ class FormIdosoModel {
     public function orderByRegNumber($limit, $offset)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -487,13 +488,13 @@ class FormIdosoModel {
     public function searchIdosoByTerm($term)
     {
         try {
-            $query = "SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, rg_idoso FROM cartao_idoso WHERE 
+            $query = "SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso WHERE 
             id LIKE :term
             OR nome_idoso LIKE :term
             OR telefone_idoso LIKE :term
             OR nascimento_idoso LIKE :term
             OR numero_registro LIKE :term
-            OR rg_idoso LIKE :term";
+            OR num_identidade_idoso LIKE :term";
 
             $stmt = $this->pdo->prepare($query);
 

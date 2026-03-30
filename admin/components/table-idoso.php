@@ -13,7 +13,7 @@
                         
                         <th scope="col" class="px-6 py-3 text-blue-500  hover:underline"><a href="?orderBy=reg">Nº REG</a></th>
                         
-                        <th scope="col" class="px-6 py-3">RG</th>
+                        <th scope="col" class="px-6 py-3">RG/CPF</th>
 
                         <th scope="col" class="px-6 py-3 text-center">Ações</th>
                     </tr>
@@ -30,7 +30,7 @@
                                 <td class="px-6 py-4 text-lg"><?= $idoso['nascimento_idoso']?></td>
                                 <td class="px-6 py-4 text-center text-lg font-normal <?= intval($idoso['numero_registro']) === 0 ? 'bg-red-200' : 'bg-green-200' ?>">
                                     <?= intval($idoso['numero_registro']) ?>
-                                </td>    <td class="px-6 py-4 text-lg"><?= $idoso['rg_idoso']?></td>
+                                </td>    <td class="px-6 py-4 text-lg"><?= $idoso['num_identidade_idoso']?></td>
                                 <td class="px-6 py-4 text-lg flex gap-5">
 
                                         <form action="detalhes-card-idoso.php" method="get">

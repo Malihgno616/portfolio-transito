@@ -12,10 +12,8 @@ error_reporting(E_ALL);
 session_start();
 
 require __DIR__.'/model/FormIdosoModel.php';
-
 use Model\FormIdosoModel;
 
-// Obter página atual da URL, padrão é 1
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 5;
 
@@ -26,10 +24,7 @@ $totalIdosos = $idosos['total'];
 $totalPages = $idosos['totalPages'];
 $currentPage = $idosos['page'];
 $listIdosos = $idosos['idosos'];
-
-// Calcular offset para numeração
 $offset = ($currentPage - 1) * $limit;
-
 $order = $_GET['orderBy'] ?? "id";
 
 switch ($order) {

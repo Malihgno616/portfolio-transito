@@ -51,7 +51,7 @@ $cepIdoso = $inputPost['cep-idoso'];
 $cidadeIdoso = $inputPost['cidade-idoso'];
 $ufIdoso = $inputPost['uf-idoso'];
 $telIdoso = $inputPost['tel-idoso'];
-$rgIdoso = $inputPost['rg-idoso'];
+$identidadeIdoso = $inputPost['num-identidade-idoso'];
 $dataExpIdoso = $inputPost['data-exp-idoso'];
 $expedidoIdoso = $inputPost['expedido-idoso'];
 $cnhIdoso = $inputPost['cnh-idoso'] ?? "";
@@ -88,7 +88,7 @@ $cepRep = $inputPost['cep-rep'] ?? "";
 $cidadeRep = $inputPost['cidade-rep'] ?? "";
 $ufRep = $inputPost['uf-rep'] ?? "";
 $telRep = $inputPost['tel-rep'] ?? "";
-$rgRep = $inputPost['rg-rep'] ?? "";
+$identidadeRep = $inputPost['num-identidade-rep'] ?? "";
 $dataExpRep = $inputPost['data-exp-rep'] ?? "";
 $expedidoRep = $inputPost['expedido-rep'] ?? "";
 
@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cidadeIdoso, 
         $ufIdoso, 
         $telIdoso, 
-        $rgIdoso, 
+        $identidadeIdoso, 
         $dataExpIdoso, 
         $expedidoIdoso, 
         $copiaRgIdoso, 
@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cidadeRep, 
         $ufRep, 
         $telRep, 
-        $rgRep, 
+        $identidadeRep, 
         $dataExpRep, 
         $expedidoRep, 
         $copiaRgRep,
@@ -203,6 +203,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: tab-idoso.php");
         exit();
     }
- 
-
 }
