@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <tr>
           <th scope="col" class="px-6 py-3">ID</th>
           <th scope="col" class="px-6 py-3">Nome</th>
-          <th scope="col" class="px-6 py-3">RG</th>
+          <th scope="col" class="px-6 py-3">RG/CPF</th>
           <th scope="col" class="px-6 py-3">Nº Registro</th>
           <th scope="col" class="px-6 py-3">Telefone</th>
           <th scope="col" class="px-6 py-3">Data de Nascimento</th>
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <tr class="bg-white border-b hover:bg-gray-50">
           <td class="px-6 py-4 text-lg">${beneficiario.id || ""}</td>
           <td class="px-6 py-4 text-lg">${beneficiario.nome_beneficiario || ""}</td>
-          <td class="px-6 py-4 text-lg">${beneficiario.rg_beneficiario || ""}</td>
+          <td class="px-6 py-4 text-lg">${beneficiario.num_identidade_beneficiario || ""}</td>
           ${
             parseInt(beneficiario.numero_registro) === 0
               ? `<td class="px-6 py-4 text-lg bg-red-200 text-center">${beneficiario.numero_registro || "0"}</td>`

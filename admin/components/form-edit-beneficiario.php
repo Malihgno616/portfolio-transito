@@ -175,12 +175,12 @@ $deficiencias = [
                     </div>
 
                     <div class="relative z-0">
-                        <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-beneficiario" oninput="formatRG(this)" value="<?= $beneficiario['rg_beneficiario'] ?>">
+                        <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-identidade-beneficiario" oninput="formatDoc(this)" value="<?= $beneficiario['num_identidade_beneficiario'] ?>">
                             <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                             peer-focus:scale-90 peer-focus:-translate-y-4">
-                            nº do RG
+                            RG/CPF
                         </label>
                     </div>
                     
@@ -704,12 +704,12 @@ $deficiencias = [
                     </div>
                     
                     <div class="relative z-0">
-                        <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="rg-rep" oninput="formatRG(this)" value="<?= $beneficiario['rg_representante'] ?? "" ?>">
+                        <input type="text" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" placeholder=" " name="num-identidade-rep" oninput="formatDoc(this)" value="<?= $beneficiario['num_identidade_representante'] ?? "" ?>">
                             <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
                             peer-focus:start-0 peer-focus:text-yellow-500 
                             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                             peer-focus:scale-90 peer-focus:-translate-y-4">
-                            nº do RG
+                            RG/CPF
                         </label>
                     </div>
                     

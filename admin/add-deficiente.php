@@ -52,7 +52,7 @@ $bairroBeneficiario = $inputPost['bairro-beneficiario'];
 $cidadeBeneficiario = $inputPost['cidade-beneficiario'];
 $ufBeneficiario = $inputPost['uf-beneficiario'];
 $telBeneficiario = $inputPost['tel-beneficiario'];
-$rgBeneficiario = $inputPost['rg-beneficiario'];
+$identidadeBeneficiario = $inputPost['num-identidade-beneficiario'];
 $dataExpBeneficiario = $inputPost['data-exp-beneficiario'];
 $expedidoBeneficiario = $inputPost['expedido-beneficiario'];
 $cnhBeneficiario = $inputPost['cnh-beneficiario'] ?? "";
@@ -114,7 +114,7 @@ $cepRep = $inputPost['cep-rep'] ?? "";
 $cidadeRep = $inputPost['cidade-rep'] ?? "";
 $ufRep = $inputPost['uf-rep'] ?? "";
 $telRep = $inputPost['tel-rep'] ?? "";
-$rgRep = $inputPost['rg-rep'] ?? "";
+$identidadeRep = $inputPost['num-identidade-rep'] ?? "";
 $dataExpRep = $inputPost['data-exp-rep'] ?? "";
 $expedidoRep = $inputPost['expedido-rep'] ?? "";
 
@@ -162,12 +162,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
         $result = $beneficiarios->registerBeneficiario(
-            $nomeBenef,                          $nascBenef,                          $generoBeneficiario,                 $endBeneficiario,                        $numBeneficiario,              
-            $bairroBeneficiario,                       $cepBeneficiario,              
+            $nomeBenef,                          
+            $nascBenef,                          
+            $generoBeneficiario,                
+            $endBeneficiario,                        
+            $numBeneficiario,              
+            $bairroBeneficiario,                       
+            $cepBeneficiario,              
             $cidadeBeneficiario,           
             $ufBeneficiario,               
             $telBeneficiario,              
-            $rgBeneficiario,               
+            $identidadeBeneficiario,               
             $dataExpBeneficiario,          
             $expedidoBeneficiario,         
             $copiaRgBeneficiario,          
@@ -197,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cidadeRep,                    
             $ufRep,                        
             $telRep,                       
-            $rgRep,                        
+            $identidadeRep,                        
             $dataExpRep,                   
             $expedidoRep,                  
             $copiaRgRep,                   

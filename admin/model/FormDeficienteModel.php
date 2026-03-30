@@ -151,7 +151,7 @@ class FormDeficienteModel {
             nome_beneficiario, 
             telefone_beneficiario,
             numero_registro,
-            rg_beneficiario
+            num_identidade_beneficiario
         FROM cartao_deficiente 
         ORDER BY id DESC 
         LIMIT :limit OFFSET :offset");
@@ -182,7 +182,7 @@ class FormDeficienteModel {
         }
     }
 
-    public function registerBeneficiario($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $rg, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $rgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "") {
+    public function registerBeneficiario($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numDoc, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "") {
         try {
             $this->pdo->beginTransaction(); 
 
@@ -199,7 +199,7 @@ class FormDeficienteModel {
             cidade_beneficiario,  
             uf_beneficiario,      
             telefone_beneficiario,
-            rg_beneficiario,
+            num_identidade_beneficiario,
             expedicao_beneficiario,
             expedido_beneficiario,
             cnh_beneficiario,
@@ -228,7 +228,7 @@ class FormDeficienteModel {
             cidade_representante,
             uf_representante,
             telefone_representante,
-            rg_representante,
+            num_identidade_representante,
             expedicao_representante,
             expedido_representante,
             copia_rg_representante,
@@ -248,7 +248,7 @@ class FormDeficienteModel {
             :cidade_beneficiario,  
             :uf_beneficiario,      
             :telefone_beneficiario,
-            :rg_beneficiario,
+            :num_identidade_beneficiario,
             :expedicao_beneficiario,
             :expedido_beneficiario,
             :cnh_beneficiario,
@@ -277,7 +277,7 @@ class FormDeficienteModel {
             :cidade_representante,
             :uf_representante,
             :telefone_representante,
-            :rg_representante,
+            :num_identidade_representante,
             :expedicao_representante,
             :expedido_representante,
             :copia_rg_representante,
@@ -299,7 +299,7 @@ class FormDeficienteModel {
             $stmt->bindValue(':cidade_beneficiario', $cidade);
             $stmt->bindValue(':uf_beneficiario', $uf);
             $stmt->bindValue(':telefone_beneficiario', $tel);
-            $stmt->bindValue(':rg_beneficiario', $rg);
+            $stmt->bindValue(':num_identidade_beneficiario', $numDoc);
             $stmt->bindValue(':expedicao_beneficiario', $expedicao);
             $stmt->bindValue(':expedido_beneficiario', $expedido);
             $stmt->bindValue(':cnh_beneficiario', $cnhBeneficiario);
@@ -328,7 +328,7 @@ class FormDeficienteModel {
             $stmt->bindValue(':cidade_representante', $cidadeRep);
             $stmt->bindValue(':uf_representante', $ufRep);
             $stmt->bindValue(':telefone_representante', $telRep);
-            $stmt->bindValue(':rg_representante', $rgRep);
+            $stmt->bindValue(':num_identidade_representante', $numDocRep);
             $stmt->bindValue(':expedicao_representante', $expedicaoRep);
             $stmt->bindValue(':expedido_representante', $expedidoRep);
             $stmt->bindValue(':copia_rg_representante', $copiaRgRep);
@@ -355,7 +355,7 @@ class FormDeficienteModel {
         }
     }
 
-    public function updataBeneficiario($id, $nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $rg, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $rgRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "", $updateRgBeneficiario = false, $updateAtestadoBeneficiario = false, $updateRgRep = false, $updateCompRep = false) 
+    public function updataBeneficiario($id, $nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numDoc, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "", $updateRgBeneficiario = false, $updateAtestadoBeneficiario = false, $updateRgRep = false, $updateCompRep = false) 
     {
         try {
             $this->pdo->beginTransaction(); 
@@ -373,7 +373,7 @@ class FormDeficienteModel {
                     cidade_beneficiario = :cidade_beneficiario,
                     uf_beneficiario = :uf_beneficiario,
                     telefone_beneficiario = :telefone_beneficiario,
-                    rg_beneficiario = :rg_beneficiario,
+                    num_identidade_beneficiario = :num_identidade_beneficiario,
                     expedicao_beneficiario = :expedicao_beneficiario,
                     expedido_beneficiario = :expedido_beneficiario,
                     cnh_beneficiario = :cnh_beneficiario,
@@ -412,7 +412,7 @@ class FormDeficienteModel {
                     cidade_representante = :cidade_representante,
                     uf_representante = :uf_representante,
                     telefone_representante = :telefone_representante,
-                    rg_representante = :rg_representante,
+                    num_identidade_representante = :num_identidade_representante,
                     expedicao_representante = :expedicao_representante,
                     expedido_representante = :expedido_representante,";
 
@@ -447,7 +447,7 @@ class FormDeficienteModel {
             $stmt->bindValue(':cidade_beneficiario', $cidade);
             $stmt->bindValue(':uf_beneficiario', $uf);
             $stmt->bindValue(':telefone_beneficiario', $tel);
-            $stmt->bindValue(':rg_beneficiario', $rg);
+            $stmt->bindValue(':num_identidade_beneficiario', $numDoc);
             $stmt->bindValue(':expedicao_beneficiario', $expedicao);
             $stmt->bindValue(':expedido_beneficiario', $expedido);
             $stmt->bindValue(':cnh_beneficiario', $cnhBeneficiario);
@@ -486,7 +486,7 @@ class FormDeficienteModel {
             $stmt->bindValue(':cidade_representante', $cidadeRep);
             $stmt->bindValue(':uf_representante', $ufRep);
             $stmt->bindValue(':telefone_representante', $telRep);
-            $stmt->bindValue(':rg_representante', $rgRep);
+            $stmt->bindValue(':num_identidade_representante', $numDocRep);
             $stmt->bindValue(':expedicao_representante', $expedicaoRep);
             $stmt->bindValue(':expedido_representante', $expedidoRep);
             
@@ -526,7 +526,7 @@ class FormDeficienteModel {
     public function orderById($limit, $offset)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, num_identidade_beneficiario FROM cartao_deficiente ORDER BY id DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -540,7 +540,7 @@ class FormDeficienteModel {
     public function orderByName($limit, $offset)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente ORDER BY nome_beneficiario ASC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, num_identidade_beneficiario FROM cartao_deficiente ORDER BY nome_beneficiario ASC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -568,13 +568,13 @@ class FormDeficienteModel {
     public function searchBeneficiarioByTerm($term)
     {
         try {
-            $query = "SELECT id, nome_beneficiario, nasc_beneficiario, telefone_beneficiario, numero_registro, rg_beneficiario FROM cartao_deficiente WHERE 
+            $query = "SELECT id, nome_beneficiario, nasc_beneficiario, telefone_beneficiario, numero_registro, num_identidade_beneficiario FROM cartao_deficiente WHERE 
             id LIKE :term
             OR nome_beneficiario LIKE :term 
             OR nasc_beneficiario LIKE :term
             OR telefone_beneficiario LIKE :term
             OR numero_registro LIKE :term
-            OR rg_beneficiario LIKE :term
+            OR num_identidade_beneficiario LIKE :term
             ORDER BY id DESC LIMIT 15";
 
             $stmt = $this->pdo->prepare($query);
@@ -594,7 +594,7 @@ class FormDeficienteModel {
     public function orderByRegNumber($limit, $offset)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, rg_beneficiario FROM cartao_deficiente ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
+            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, num_identidade_beneficiario FROM cartao_deficiente ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
