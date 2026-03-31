@@ -177,6 +177,26 @@ class NewsModel {
       }
   }
 
+  public function searchNewsByTerm($term)
+  {
+    try {
+      $query = "SELECT id, conteudo FROM conteudo_noticia WHERE 
+      id LIKE :term OR conteudo LIKE :term LIMIT 10";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":term", "%{$term}%", PDO::PARAM_STR);
+      
+      $stmt->execute();
+
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log("Error: " . $e->getMessage());
+      return false;
+    }
+  } 
+
   public function featureNews($featured)
   {
     

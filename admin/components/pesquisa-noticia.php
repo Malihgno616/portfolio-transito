@@ -1,4 +1,4 @@
-<form class="w-full max-w-6xl mx-auto m-10 flex flex-col gap-6">   
+<form class="w-full max-w-3xl mx-auto m-10 flex flex-col gap-6">   
     <?php 
         if(isset($_SESSION['news-alert'])) {
             echo $_SESSION['news-alert'];

@@ -24,11 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const renderTable = (news) => {
     tableNewsBody.innerHTML = `
-        <thead class="w-2xl text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+        <thead class="w-lg text-lg text-gray-700 bg-gray-50 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3">Título</th>
-            <th scope="col" class="px-6 py-3">Subtítulo</th>
-            <th scope="col" class="px-6 py-3">Texto</th>
+            <th scope="col" class="px-6 py-3">ID</th>
+            <th scope="col" class="px-6 py-3">Conteúdo</th>
             <th scope="col" class="px-6 py-3">Ações</th> 
           </tr>
         </thead>
@@ -51,14 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
     news.forEach((noticia) => {
       tbody.innerHTML += `
             <tr class="bg-white border-b  hover:bg-gray-50">
-            <td class="px-6 py-4 text-lg">${noticia.titulo_principal}</td>
-            <td class="px-6 py-4 text-lg">${noticia.subtitulo_principal}</td>
-            <td class="px-6 py-4 text-lg">
-              <div class="truncate max-w-lg">${noticia.texto}</div>
-            </td>
-            <td class="px-6 py-4 text-left">
-                <a href="edit-news.php?id=${noticia.id_noticia}&id-content=${noticia.id_conteudo}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
-            </td>
+              <td class="px-6 py-4 text-lg">${noticia.id}</td>
+              <td class="px-6 py-4 text-lg">
+                <div class="truncate max-w-md">${noticia.conteudo}</div>
+              </td>
+              <td class="px-6 py-4 text-center">
+                  <a href="edit-news.php?id=${noticia.id}" class="font-medium rounded-lg p-1 bg-blue-100 text-blue-600 dark:text-blue-500 hover:bg-blue-200"><i class="fa-solid fa-pen-ruler"></i></a>
+              </td>
             </tr>
         `;
     });
