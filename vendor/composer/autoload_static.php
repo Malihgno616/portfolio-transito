@@ -21,6 +21,8 @@ class ComposerStaticInit173da7ca7c5e0338a60e36e31ed92b24
         ),
         'P' => 
         array (
+            'Psr\\Http\\Message\\' => 17,
+            'Predis\\' => 7,
             'PhpOption\\' => 10,
         ),
         'G' => 
@@ -45,6 +47,14 @@ class ComposerStaticInit173da7ca7c5e0338a60e36e31ed92b24
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'PhpOption\\' => 
         array (
