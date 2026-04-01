@@ -3,7 +3,7 @@
         'name' => 'transito/admin',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'a605fd6caa48f2c6d2ebf3d69552b8c52a6295f6',
+        'reference' => '0f2bb1f99f127f5586726a64ffd2f6baa305fc1f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'predis/predis' => array(
-            'pretty_version' => 'v3.2.0',
-            'version' => '3.2.0.0',
-            'reference' => '9e9deec4dfd3ebf65d32eb368f498c646ba2ecd8',
+            'pretty_version' => 'v3.4.2',
+            'version' => '3.4.2.0',
+            'reference' => '2033429520d8997a7815a2485f56abe6d2d0e075',
             'type' => 'library',
             'install_path' => __DIR__ . '/../predis/predis',
             'aliases' => array(),
@@ -49,7 +49,7 @@
         'transito/admin' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'a605fd6caa48f2c6d2ebf3d69552b8c52a6295f6',
+            'reference' => '0f2bb1f99f127f5586726a64ffd2f6baa305fc1f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
