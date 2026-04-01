@@ -1,7 +1,14 @@
 <?php 
 
 require __DIR__ . '/vendor/autoload.php';
+
+require __DIR__.'/models/News.php';
+
 use Predis\Client;
+
+use Models\News;
+
+$newsModel = new News();
 
 $redis = new Client([
     'scheme' => 'tcp',
@@ -9,4 +16,4 @@ $redis = new Client([
     'port'   => 6379,
 ]);
 
-echo $redis->ping(); // Deve retornar PONG
+echo $redis->ping();

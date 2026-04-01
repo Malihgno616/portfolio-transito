@@ -14,17 +14,16 @@
       ?>
       <div class="animate__animated animate__fadeInDown <?= $delayClass ?> bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md">
         <img class="w-full h-48 object-cover rounded-t-md"
-          src="display-news-img?id=<?= $newsCards['id_noticia']?>&type=main" alt="Img conteúdo da notícia"
-          alt="<?= htmlspecialchars($newsCards['titulo_principal']) ?>" />
+          src="display-news-img?id=<?= $newsCards['id']?>&type=main" alt="Img conteúdo da notícia"
+          alt="<?= htmlspecialchars($newsCards['id']) ?>" />
         <div class="p-5">
-          <h5 class="text-center mb-4 text-xl lg:text-2xl font-normal tracking-tight text-gray-900 line-clamp-2">
-            <?= htmlspecialchars($newsCards['titulo_principal']) ?>
-          </h5>                  
-          <h6 class="text-center mb-2 text-xl lg:text-2xl font-medium tracking-tight text-gray-800 line-clamp-2">
-            <?= htmlspecialchars($newsCards['subtitulo_principal']) ?>
-          </h6>
+          <div class="ql-container ql-snow flex-1" style="border: none; height: 192px;">
+              <div class="ql-editor p-3" style="height: 100%; overflow-y: auto; ">
+                  <?= $newsCards['conteudo'] ?>
+              </div>
+          </div>
           <form action="detalhe-noticia" method="get">
-            <input type="hidden" name="id" value="<?=$newsCards['id_noticia']?>">
+            <input type="hidden" name="id" value="<?=$newsCards['id']?>">
             <button type="submit" class="w-40 text-center uppercase flex items-center justify-between m-auto font-bold text-black bg-yellow-500 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 cursor-pointer duration-75" >
               Ler mais
               <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -59,17 +58,16 @@
       ?>
       <div class="animate__animated animate__fadeInDown <?= $delayClass ?> bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md">
         <img class="w-full h-48 object-cover rounded-t-md"
-          src="display-news-img?id=<?= $newsCards['id_noticia']?>&type=main" alt="Img conteúdo da notícia"
-          alt="<?= htmlspecialchars($newsCards['titulo_principal']) ?>" />
+          src="display-news-img?id=<?= $newsCards['id']?>&type=main" alt="Img conteúdo da notícia"
+          alt="" />
         <div class="p-5">
-          <h5 class="text-center mb-4 text-xl lg:text-2xl font-normal tracking-tight text-gray-900 line-clamp-2">
-            <?= htmlspecialchars($newsCards['titulo_principal']) ?>
-          </h5>                  
-          <h6 class="text-center mb-2 text-xl lg:text-2xl font-medium tracking-tight text-gray-800 line-clamp-2">
-            <?= htmlspecialchars($newsCards['subtitulo_principal']) ?>
-          </h6>
+           <div class="ql-container ql-snow flex-1" style="border: none; height: 192px;">
+              <div class="ql-editor p-3" style="height: 100%; overflow-y: auto; ">
+                  <?= $newsCards['conteudo'] ?>
+              </div>
+          </div>
           <form action="detalhe-noticia" method="get">
-            <input type="hidden" name="id" value="<?=$newsCards['id_noticia']?>">
+            <input type="hidden" name="id" value="<?=$newsCards['id']?>">
             <button type="submit" class="w-40 text-center uppercase flex items-center justify-between m-auto font-bold text-black bg-yellow-500 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 cursor-pointer duration-75" >
               Ler mais
               <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
