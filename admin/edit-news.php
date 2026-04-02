@@ -33,7 +33,27 @@ include __DIR__.'/layout/header.php';
     <div class="flex justify-between items-center w-[58em] m-auto mb-5">
         <h1 class="text-5xl font-light text-center mb-5">Detalhes da notícias</h1>
         <div class="flex items-center justify-center gap-3">
-            <a href="pesquisa-noticia.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+
+            <a href="pesquisa-noticia.php" class="text-center text-xl w-2xl p-2 rounded-md bg-stone-600 text-white hover:bg-stone-500 duration-75">
+                <abbr title="Pesquisar notícia">
+                    <i class="fas fa-search"></i>
+                </abbr>
+            </a>
+
+            <a href="news-table.php" class="text-center text-xl w-2xl p-2 rounded-md bg-gray-600 text-white hover:bg-gray-500 duration-75">
+                <abbr title="Notícias publicadas">
+                    <i class="fa-solid fa-newspaper"></i>
+                </abbr>
+            </a>
+
+            <a href="form-add-news.php" class="text-center text-xl w-2xl p-2 rounded-md bg-green-600 text-white hover:bg-green-500 duration-75">
+                <abbr title="Adicionar um notícia">
+                    <i class="fa-solid fa-plus"></i>
+                </abbr>
+            </a>
+            
+            <a href="news-table.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
+            
         </div>
     </div>
     <hr>

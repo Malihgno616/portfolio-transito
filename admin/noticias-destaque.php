@@ -48,7 +48,13 @@ include __DIR__.'/layout/header.php';
                         <i class="fa-solid fa-plus"></i>
                     </abbr>
                 </a>
-                
+                                
+                <a href="pesquisa-noticia.php" class="text-center text-xl w-2xl p-2 rounded-md bg-stone-600 text-white hover:bg-stone-500 duration-75">
+                    <abbr title="Pesquisar notícia">
+                        <i class="fas fa-search"></i>
+                    </abbr>
+                </a>
+
                 <a href="news-table.php" class="text-center text-xl w-2xl p-2 rounded-md bg-gray-600 text-white hover:bg-gray-500 duration-75">
                     <abbr title="Notícias publicadas">
                         <i class="fa-solid fa-newspaper"></i>
@@ -63,7 +69,7 @@ include __DIR__.'/layout/header.php';
         <br>
         <?php       
         include __DIR__.'/components/noticias-destaque.php';
-        // include __DIR__.'/components/modal-featured-news.php';
+        include __DIR__.'/components/modal-featured-news.php';
         ?>
     </main>
 
