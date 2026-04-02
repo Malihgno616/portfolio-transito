@@ -7,24 +7,16 @@ require __DIR__.'/../config/database/env.php';
 
 use PDO;
 
-use Predis\Client;
-
 use PDOException;
 
 class News {
     private $conn;
     private $pdo;
-    private $redis;
+
     public function __construct() 
     {
         $this->conn = new \Conn(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $this->pdo = $this->conn->connect();
-        $this->redis = new Client([
-            'scheme' => 'tcp',
-            'host' => $_ENV['REDIS_HOST'],
-            'port' => $_ENV['REDIS_PORT'],
-            'password' => $_ENV['REDIS_PASS'],
-        ]);
     }
 
     public function detailedNews($id)
@@ -51,21 +43,14 @@ class News {
         try {
             if($page < 0) $page = 1;
 
-            $query = "SELECT DISTINCT
-                np.id_noticia,
-                np.titulo_principal,
-                np.subtitulo AS subtitulo_principal
-            FROM 
-                noticia_principal np
-            JOIN 
-                conteudo_noticia cn ON np.id_noticia = cn.noticia_id
-            GROUP BY np.id_noticia
-            ORDER BY np.id_noticia DESC
-            LIMIT :limit OFFSET :offset";
+            $query = "SELECT * FROM conteudo_noticia ORDER BY id DESC LIMIT :limit OFFSET :offset";
         
             $stmt = $this->pdo->prepare($query);
+            
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            
             $stmt->execute();
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -102,15 +87,7 @@ class News {
 
     public function featuredNews($limit)
     {
-
-        $cacheKey = "noticias_destaque_" . $limit;
-
-        $cached = $this->redis->get($cacheKey);
-        
-        if($cached !== null) {
-            return json_decode($cached, true);
-        }
-        
+                
         try {
             $query = "SELECT * FROM conteudo_noticia WHERE destaque = 1 ORDER BY id DESC LIMIT :limit;";
                 
@@ -122,8 +99,6 @@ class News {
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $this->redis->setex($cacheKey, 10, json_encode($result));
-            
             return $result ?: [];
             
         } catch(PDOException $e) {
@@ -134,13 +109,6 @@ class News {
     
     public function recentNews($limit)
     {
-        $cacheKey = "noticias_recentes_" . $limit;
-        
-        $cached = $this->redis->get($cacheKey);
-        
-        if($cached !== null) {
-            return json_decode($cached, true);
-        }
         
         try {
             $query = "SELECT * FROM conteudo_noticia ORDER BY id DESC LIMIT :limit;";
@@ -149,8 +117,7 @@ class News {
             $stmt->execute();
             
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            $this->redis->setex($cacheKey, 10, json_encode($result));                     
+               
             
             return $result ?: [];
 
@@ -161,5 +128,3 @@ class News {
     }
 
 }
-
-

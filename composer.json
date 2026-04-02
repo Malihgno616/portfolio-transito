@@ -2,8 +2,7 @@
     "name": "transito/portfolio-transito",
     "type": "library",
     "require": {
-        "vlucas/phpdotenv": "^5.6",
-        "predis/predis": "^3.4"
+        "vlucas/phpdotenv": "^5.6"
     },
     "license": "MIT",
     "authors": [

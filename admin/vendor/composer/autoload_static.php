@@ -11,25 +11,12 @@ class ComposerStaticInit1debac9205d2d9237cafb9cd5cd81d3e
         array (
             'setasign\\Fpdi\\' => 14,
         ),
-        'P' => 
-        array (
-            'Psr\\Http\\Message\\' => 17,
-            'Predis\\' => 7,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'setasign\\Fpdi\\' => 
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
-        ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Predis\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
     );
 

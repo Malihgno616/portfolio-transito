@@ -1,6 +1,6 @@
 <div class="shadow-lg bg-stone-500 bg-blend-multiply p-10 bg-no-repeat bg-cover bg-fixed px-4 md:px-6 lg:px-8" style="background-image: url('assets/img/imgtransito-compressed.jpg');">
   <div class="p-10">
-    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Notícias Recentes</h1>
+    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Notícias</h1>
   </div>
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
@@ -9,18 +9,16 @@
       <div class="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md">
         <a href="#" class="block overflow-hidden">
           <img class="w-full h-48 object-cover rounded-t-md"
-            src="display-news-img?id=<?= $noticia['id_noticia']?>&type=main" alt="Img conteúdo da notícia"
-            alt="<?= htmlspecialchars($noticia['titulo_principal']) ?>" />
+            src="display-news-img?id=<?= $noticia['id']?>&type=main" alt="Img conteúdo da notícia"/>
         </a>
         <div class="p-5">
-          <h5 class="text-center mb-4 text-xl lg:text-2xl font-normal tracking-tight text-gray-900 line-clamp-2">
-            <?= htmlspecialchars($noticia['titulo_principal']) ?>
-          </h5>                  
-          <h6 class="text-center mb-2 text-xl lg:text-2xl font-medium tracking-tight text-gray-800 line-clamp-2">
-            <?= htmlspecialchars($noticia['subtitulo_principal']) ?>
-          </h6>
+          <div class="ql-container ql-snow flex-1" style="border: none; height: 192px;">
+              <div class="ql-editor p-3" style="height: 100%; overflow-y: auto; ">
+                  <?= $noticia['conteudo'] ?>
+              </div>
+          </div>
           <form action="detalhe-noticia" method="get">
-            <input type="hidden" name="id" value="<?=$noticia['id_noticia']?>">
+            <input type="hidden" name="id" value="<?=$noticia['id']?>">
             <button type="submit" class="w-40 text-center uppercase flex items-center justify-between m-auto font-bold text-black bg-yellow-500 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 cursor-pointer duration-75" >
               Ler mais
               <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
