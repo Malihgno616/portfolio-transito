@@ -4,19 +4,17 @@
       <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
         <tr>
           <th scope="col" class="px-6 py-3">ID</th>
-          <th scope="col" class="px-6 py-3">Título</th>
-          <th scope="col" class="px-6 py-3">Subtítulo</th>
+          <th scope="col" class="px-6 py-3">Conteúdo</th>
           <th scope="col" class="px-6 py-3 text-center">Ações</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($featuredNews as $newsItem): ?>
+        <?php foreach ($featuredNews['news'] as $newsItem): ?>
         <tr class="bg-white border-b  hover:bg-gray-50">
-          <td class="px-6 py-4 text-lg font-bold"><?= $newsItem['id_noticia'] ?></td>
-          <td class="px-6 py-4 text-lg"><?= $newsItem['titulo_principal'] ?></td>
-          <td class="px-6 py-4 text-lg"><?= $newsItem['subtitulo_principal'] ?></td>
+          <td class="px-6 py-4 text-lg font-bold"><?= $newsItem['id'] ?></td>
+          <td class="px-6 py-4 text-lg font-bold"><?= $newsItem['conteudo'] ?></td>
           <td class="px-6 py-4 text-lg flex justify-center gap-2">
-            <button data-modal-target="news-<?= $newsItem['id_noticia'] ?>" data-modal-toggle="news-<?= $newsItem['id_noticia'] ?>" class="font-medium rounded-lg p-1 bg-gray-100 text-gray-600 hover:bg-gray-200">SELECIONAR</button>
+            <button data-modal-target="news-<?= $newsItem['id'] ?>" data-modal-toggle="news-<?= $newsItem['id'] ?>" class="font-medium rounded-lg p-1 bg-gray-100 text-gray-600 hover:bg-gray-200">SELECIONAR</button>
           </td>
         </tr>
         <?php endforeach; ?>
@@ -27,7 +25,7 @@
             <nav class="flex items-center justify-between pt-2" aria-label="Table navigation">
               <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                 Mostrando <span class="font-semibold text-gray-900"><?= $startItem ?>-<?= $endItem ?></span> de 
-                <span class="font-semibold text-gray-900"><?= $totalFeaturedNews ?></span> notícias
+                <span class="font-semibold text-gray-900"><?= $featuredNews['total'] ?></span> notícias
               </span>
               <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                 <li>

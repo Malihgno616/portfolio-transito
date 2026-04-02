@@ -18,15 +18,16 @@ $newsModel = new NewsModel();
 header("Content-Type: text/html; charset=UTF-8");
 
 $currentPage = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+
 $limit = 5;
+
 $offset = ($currentPage - 1) * $limit;
 
-$totalFeaturedNews = $newsModel->countFeaturedNews();
-$featuredNews = $newsModel->getFeaturedNews($currentPage, $limit, $offset);
+$featuredNews = $newsModel->featuredNews($limit, $offset);
 
-$totalPages = ceil($totalFeaturedNews / $limit);
+$totalPages = ceil($featuredNews['total'] / $limit);
 $startItem = $offset + 1;
-$endItem = min($offset + $limit, $totalFeaturedNews);
+$endItem = min($offset + $limit, $featuredNews['total']);
 
 ?>
 
@@ -62,7 +63,7 @@ include __DIR__.'/layout/header.php';
         <br>
         <?php       
         include __DIR__.'/components/noticias-destaque.php';
-        include __DIR__.'/components/modal-featured-news.php';
+        // include __DIR__.'/components/modal-featured-news.php';
         ?>
     </main>
 
