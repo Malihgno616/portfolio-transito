@@ -255,9 +255,42 @@ class NewsModel {
     }
   }
 
-  public function unfeatureNews($featured)
+  public function featureNews($id)
   {
-    
+    try {
+      $query = "UPDATE conteudo_noticia SET destaque = 1 WHERE id = :id";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return $stmt->rowCount() > 0;
+
+    } catch(PDOException $e) {
+      error_log("Error: ". $e->getMessage());
+      return false;
+    }
+  }
+
+  public function unfeatureNews($id)
+  {
+    try {
+      $query = "UPDATE conteudo_noticia SET destaque = 0 WHERE id = :id";
+
+      $stmt = $this->pdo->prepare($query);
+
+      $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return $stmt->rowCount() > 0;
+
+    } catch(PDOException $e) {
+      error_log("Error: ". $e->getMessage());
+      return false;
+    }
   }
 
 }
