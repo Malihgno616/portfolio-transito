@@ -37,7 +37,7 @@ $newsModel = new NewsModel();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if($newsModel->getNewsById($id)['destaque'] === 0) {
+    if($newsModel->getNewsById($id)['destaque'] == intval(0)) {
         $result = $newsModel->featureNews($id);
         if($result) {
             $_SESSION['news-alert'] = setAlert("Notícia destacada com sucesso!", "success");

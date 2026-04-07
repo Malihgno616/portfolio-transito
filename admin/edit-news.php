@@ -20,6 +20,9 @@ $newsModel = new NewsModel();
 
 $id = $_GET['id'];
 
+$news = $newsModel->getNewsById($id);
+$isFeatured = $news['destaque'] == intval(0);
+
 ?>
 
 <!DOCTYPE html>
@@ -53,15 +56,14 @@ include __DIR__.'/layout/header.php';
             </a>
 
             <form action="feature-news.php" method="post">
-                <input type="hidden" name="id" value="<?= $newsModel->getNewsById($id)['id'] ?>">
-
-                <button type="submit" class="text-center text-xl w-2xl p-2 rounded-md <?= $newsModel->getNewsById($id)['destaque'] == intval(0) ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-400 hover:bg-blue-300' ?> text-white duration-75">
-                    <abbr title="<?= $newsModel->getNewsById($id)['destaque'] == intval(0) ? 'Destacar notícia' : 'Remover destaque' ?>">
+                <input type="hidden" name="id" value="<?= $news['id'] ?>">
+                <button type="submit" class="text-center text-xl w-2xl p-2 rounded-md <?= $isFeatured ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-400 hover:bg-blue-300' ?> text-white duration-75">
+                    <abbr title="<?= $isFeatured ? 'Destacar notícia' : 'Remover destaque' ?>">
                         <i class="fa-solid fa-star"></i>
                     </abbr>
                 </button>
             </form>
-            
+                       
             <a href="news-table.php" class="text-center text-xl w-28 p-2 rounded-xl bg-yellow-600 text-white hover:bg-yellow-500 duration-75">Voltar</a>
             
         </div>
