@@ -163,7 +163,7 @@ if (isset($_FILES['comprovante-rep']) && $_FILES['comprovante-rep']['error'] ===
 $nomeAqvCompRep = $inputPost['nome-aqv-comp-rep'] ?? "";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $updated = $formDeficienteModel->updataBeneficiario(
+    $updated = $formDeficienteModel->update(
         $idBeneficiario, 
         $nomeBenef, 
         $nascBenef, 

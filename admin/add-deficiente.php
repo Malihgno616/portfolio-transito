@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
 
-        $result = $beneficiarios->registerBeneficiario(
+        $result = $beneficiarios->send(
             $nomeBenef,                          
             $nascBenef,                          
             $generoBeneficiario,                

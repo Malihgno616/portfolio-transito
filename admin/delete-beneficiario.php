@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
 
-        $deleted = $beneficiario->deleteBeneficiario($idBeneficiario);
+        $deleted = $beneficiario->delete($idBeneficiario);
 
         if(!$idBeneficiario) {
             $_SERVER['alert-beneficiario'] = setAlert("ID inválido!", "error");

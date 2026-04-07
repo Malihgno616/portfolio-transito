@@ -146,7 +146,7 @@ if (isset($_FILES['comprovante-rep']) && $_FILES['comprovante-rep']['error'] ===
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $updateSuccess = $idosoModel->updateIdoso(
+    $updateSuccess = $idosoModel->update(
         $idIdoso,
         $nomeIdoso,
         $nascIdoso,

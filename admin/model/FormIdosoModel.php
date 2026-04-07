@@ -4,12 +4,14 @@ namespace Model;
 
 require_once __DIR__.'/../config/conn.php';
 require_once __DIR__.'/../config/env.php';
+require_once __DIR__.'/../interfaces/interfaces.php';
 
+use Interfaces\CardIdoso;
 use Conn;
 use PDO;
 use PDOException;
 
-class FormIdosoModel {
+class FormIdosoModel implements CardIdoso {
     
     private $conn;
     private $pdo;
@@ -60,10 +62,10 @@ class FormIdosoModel {
         }
     }
 
-    public function addRegistration($id, $regNumber, $issueDate)
+    public function registerCard($id, $regNumber, $issueDate)
     {
         try {
-
+            
             $query = "UPDATE cartao_idoso SET numero_registro = :regNumber, data_emissao = :issueDate WHERE id = :id ";
             
             $stmt = $this->pdo->prepare($query);
@@ -144,7 +146,7 @@ class FormIdosoModel {
         }
     }
 
-    public function registerIdoso($nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numDocIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso,$compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "")
+    public function send($nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numDocIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso,$compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "")
     {
         try {
 
@@ -298,7 +300,7 @@ class FormIdosoModel {
         }
     }
     
-    public function updateIdoso($idIdoso, $nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numDocIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso, $compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "", $updateRgIdoso = false, $updateRgRep = false, $updateCompRep = false)
+    public function update($idIdoso, $nomeIdoso, $nascIdoso, $sexIdoso, $endIdoso, $numIdoso,  $bairroIdoso, $cepIdoso, $cidadeIdoso, $ufIdoso,  $telIdoso, $numDocIdoso, $expedicaoIdoso, $expedidoIdoso, $copiaRgIdoso, $nomeAqvRgIdoso, $compIdoso = "", $cnhIdoso = "", $validadeCnhIdoso = "", $emailIdoso = "",  $nomeRep = "", $emailRep = "", $endRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "",$comprovanteRep = null, $nomeAqvCompRep = "", $updateRgIdoso = false, $updateRgRep = false, $updateCompRep = false)
     {
         try {
             $this->pdo->beginTransaction();
@@ -524,7 +526,7 @@ class FormIdosoModel {
         }
     }
     
-    public function deleteIdoso($id)
+    public function delete($id)
     {
         try {
             $this->pdo->beginTransaction();

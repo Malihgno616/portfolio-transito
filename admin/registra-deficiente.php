@@ -52,7 +52,7 @@ $date = date("d/m/Y");
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
-        $updated = $formDeficienteModel->addRegistration($idBeneficiario, $numRegistro, $date);
+        $updated = $formDeficienteModel->registerCard($idBeneficiario, $numRegistro, $date);
 
     if($updated) {
         $_SESSION['alert-beneficiario'] = setAlert("Nº de registro do deficiente adicionado com sucesso!", 'success');

@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $formIdosoModel->registerIdoso(
+        $formIdosoModel->send(
         $nomeIdoso, 
         $nascIdoso,
         $sexoIdoso,

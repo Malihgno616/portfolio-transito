@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     }
 
     try {
-        $deletedIdoso = $idosoModel->deleteIdoso($idIdoso);
+        $deletedIdoso = $idosoModel->delete($idIdoso);
         
         if ($deletedIdoso) {
             $_SESSION['idoso-alert'] = setAlert("Cartão do idoso excluído com sucesso!", 'success');

@@ -4,12 +4,14 @@ namespace Model;
 
 require_once __DIR__.'/../config/conn.php';
 require_once __DIR__.'/../config/env.php';
+require_once __DIR__.'/../interfaces/interfaces.php';
 
+use Interfaces\CardDeficiente;
 use Conn;
 use PDO;
 use PDOException;
 
-class FormDeficienteModel {
+class FormDeficienteModel implements CardDeficiente {
 
     private $conn;
     private $pdo;
@@ -43,7 +45,7 @@ class FormDeficienteModel {
 
     }
 
-    public function addRegistration($id, $regNumber, $issueDate)
+    public function registerCard($id, $regNumber, $issueDate)
     {
         try {
 
@@ -86,7 +88,7 @@ class FormDeficienteModel {
         }
     }
 
-    public function deleteBeneficiario($id)
+    public function delete($id)
     {
         try {
 
@@ -182,7 +184,7 @@ class FormDeficienteModel {
         }
     }
 
-    public function registerBeneficiario($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numDoc, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "") {
+    public function send($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numDoc, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "") {
         try {
             $this->pdo->beginTransaction(); 
 
@@ -355,7 +357,7 @@ class FormDeficienteModel {
         }
     }
 
-    public function updataBeneficiario($id, $nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numDoc, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "", $updateRgBeneficiario = false, $updateAtestadoBeneficiario = false, $updateRgRep = false, $updateCompRep = false) 
+    public function update($id, $nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numDoc, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $numDocRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "", $updateRgBeneficiario = false, $updateAtestadoBeneficiario = false, $updateRgRep = false, $updateCompRep = false) 
     {
         try {
             $this->pdo->beginTransaction(); 
