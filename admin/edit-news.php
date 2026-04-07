@@ -55,7 +55,7 @@ include __DIR__.'/layout/header.php';
             <form action="feature-news.php" method="post">
                 <input type="hidden" name="id" value="<?= $newsModel->getNewsById($id)['id'] ?>">
 
-                <button type="submit" class="text-center text-xl w-2xl p-2 rounded-md <?= $newsModel->getNewsById($id)['destaque'] === intval(0) ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-400 hover:bg-blue-300' ?> text-white duration-75">
+                <button type="submit" class="text-center text-xl w-2xl p-2 rounded-md <?= $newsModel->getNewsById($id)['destaque'] == intval(0) ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-400 hover:bg-blue-300' ?> text-white duration-75">
                     <abbr title="<?= $newsModel->getNewsById($id)['destaque'] === intval(0) ? 'Destacar notícia' : 'Remover destaque' ?>">
                         <i class="fa-solid fa-star"></i>
                     </abbr>
