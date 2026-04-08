@@ -38,9 +38,11 @@ class News {
         }
     }
 
-   public function paginatedNews($page, $limit, $offset)
+   public function paginatedNews($limit, $offset)
    {
         try {
+            $page = 1;
+
             if($page < 0) $page = 1;
 
             $query = "SELECT * FROM conteudo_noticia ORDER BY id DESC LIMIT :limit OFFSET :offset";
@@ -70,14 +72,14 @@ class News {
     public function countAllNews()
     {
         try {
-            $query = "SELECT COUNT(DISTINCT np.id_noticia) as total 
-                    FROM noticia_principal np 
-                    JOIN conteudo_noticia cn ON np.id_noticia = cn.noticia_id";
+            $query = "SELECT COUNT(*) as total FROM conteudo_noticia";
+            
             $stmt = $this->pdo->prepare($query);
+            
             $stmt->execute();
             
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result['total'] ?? 0;
+            return $result['total'];
             
         } catch(PDOException $e) {
             error_log("Erro ao contar notícias: " . $e->getMessage());

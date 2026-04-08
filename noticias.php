@@ -16,7 +16,7 @@ $limit = 6;
 
 $offset = ($currentPage - 1) * $limit;
 
-$todasNoticias = $news->paginatedNews($currentPage, $limit, $offset);
+$todasNoticias = $news->paginatedNews($limit, $offset);
 
 $totalNews = $news->countAllNews();
 $totalPages = ceil($totalNews / $limit);
