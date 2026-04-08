@@ -35,14 +35,14 @@ function setAlert($message, $type = 'success') {
 }
 
 $nomeBeneficiario = $_POST['nome-beneficiario'];
-$rgBeneficiario = $_POST['rg-beneficiario'];
+$numIdentidadeBeneficiario = $_POST['num-identidade-beneficiario'];
 
 $formDeficienteModel = new FormDeficiente();
 $request = new Request();
 
 try {
 
-  $executed = $formDeficienteModel->deleteDeficiente($rgBeneficiario);
+  $executed = $formDeficienteModel->delete($numIdentidadeBeneficiario);
 
   if ($executed) {
     $_SESSION['cancel-alert'] = setAlert("Cartão cancelado com sucesso!", "success");

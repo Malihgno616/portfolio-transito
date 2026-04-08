@@ -18,15 +18,15 @@ class Request {
         $this->pdo = $this->conn->connect();
     }
 
-    public function verifyDocReg($registration, $imgDoc = null)
+    public function verifyDocReg($numIdentidade, $imgDoc = null)
     {
         try {
 
-            $query = "SELECT * FROM cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario";
+            $query = "SELECT * FROM cartao_deficiente WHERE num_identidade_beneficiario = :num_identidade_beneficiario";
 
             $stmt = $this->pdo->prepare($query);
             
-            $stmt->bindValue(":rg_beneficiario", $registration, PDO::PARAM_STR);
+            $stmt->bindValue(":num_identidade_beneficiario", $numIdentidade, PDO::PARAM_STR);
             
             $stmt->execute();
 

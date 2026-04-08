@@ -21,5 +21,8 @@ error_reporting(E_ALL);
   <?php 
     include_once("layout/header.php");
     include_once("layout/form-2avia-furto-roubo.php");
+  ?>
+  <script src="assets/js/formatDoc.js"></script>
+  <?php 
     include_once("layout/footer.php");
   ?>

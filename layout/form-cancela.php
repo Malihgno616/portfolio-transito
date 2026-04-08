@@ -15,19 +15,18 @@
         Cancelamento do cartão
       </h2>
       <p>
-      Para solicitção de cancelamento do cartão é necessario que informe abaixo as informações do cartão
+        Para solicitação de cancelamento do cartão é necessario que informe abaixo as informações do cartão
       </p>
       <p class="text-lg text-justify">
-        Informe abaixo o seu RG
+        Informe abaixo seu nº de identidade (RG/CPF)
       </p>
     </div>
     <div class="relative mb-5">
-      <input type="text" name="rg-beneficiario"
+      <input type="text" name="num-identidade-beneficiario"
         class="text-md block px-2.5 pb-2.5 pt-4 w-full text-gray-900 rounded-lg border-2 border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 peer"
-        placeholder=" ">
+        placeholder=" " oninput="formatDoc(this)" maxlength="25">
       <label for=""
-        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG
-        do beneficiário</label>
+        class="absolute text-sm text-gray-500 peer-focus:text-yellow-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RG/CPF do beneficiário</label>
     </div>
     <div class="flex justify-center gap-5 p-5 ">
       <button type="button" class="bg-yellow-500 p-3 rounded-xl hover:bg-yellow-200 duration-200 text-xl cursor-pointer"

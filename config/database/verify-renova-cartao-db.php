@@ -40,13 +40,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   try {
     
-    $rgBeneficiario = $_POST['rg-beneficiario'];
-    $idBeneficiario = $requestModel->getIdByRegNumber($rgBeneficiario);
+    $numIdentidadeBeneficiario = $_POST['num-identidade-beneficiario'];
+    $idBeneficiario = $requestModel->getIdByRegNumber($numIdentidadeBeneficiario);
         
-    $verified = $requestModel->verifyDocReg($rgBeneficiario);
+    $verified = $requestModel->verifyDocReg($numIdentidadeBeneficiario);
     
     if ($verified) {
-      $_SESSION['rg_beneficiario_renova'] = $rgBeneficiario;
+      $_SESSION['rg_beneficiario_renova'] = $numIdentidadeBeneficiario;
       header("Location: ../../dados-beneficiario-renova");
       exit();
     } else {

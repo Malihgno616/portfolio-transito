@@ -39,12 +39,12 @@ function setAlert($message, $type = 'success') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
   try {
-    $rgBeneficiario = $_POST['rg-beneficiario'];
+    $numIdentidadeBeneficiario = $_POST['num-identidade-beneficiario'];
     
-    $verified = $requestModel->verifyDocReg($rgBeneficiario);
+    $verified = $requestModel->verifyDocReg($numIdentidadeBeneficiario);
     
     if ($verified) {
-      $_SESSION['dados_beneficiario_cancela'] = $rgBeneficiario;
+      $_SESSION['dados_beneficiario_cancela'] = $numIdentidadeBeneficiario;
       header("Location: ../../dados-beneficiario-cancela");
       exit();
     } else {

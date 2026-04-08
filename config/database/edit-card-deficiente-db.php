@@ -45,7 +45,7 @@ $model = new FormDeficiente();
 
 $idBeneficiario = $request->getIdByRegNumber($infos['rg-beneficiario']);
 
-$updated = $model->updateDeficiente($infos, $files);
+$updated = $model->update($infos, $files);
 
 if ($updated) {
     $_SESSION['renova-alert'] = setAlert("Dados alterados com sucesso!", 'success');

@@ -17,5 +17,8 @@ session_start();
   <?php 
     include_once("layout/header.php");
     include_once("layout/form-renova.php");
+    ?>
+  <script src="assets/js/formatDoc.js"></script>
+  <?php 
     include_once("layout/footer.php");
   ?>

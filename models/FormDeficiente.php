@@ -4,10 +4,13 @@ namespace Models;
 
 require __DIR__.'/../config/database/conn.php';
 require __DIR__.'/../config/database/env.php';
+require_once __DIR__.'/../interfaces/interfaces.php';
 
-use PDO, PDOException;
+use InterfacesClient\CardDeficiente;
+use PDO;
+use PDOException;
 
-class FormDeficiente {
+class FormDeficiente implements CardDeficiente {
     private $conn;
     private $pdo;
 
@@ -17,7 +20,7 @@ class FormDeficiente {
         $this->pdo = $this->conn->connect();
     }
 
-    public function sendDeficiente($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numIdentidade, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $identidadeRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "")
+    public function send($nome, $nasc, $sexo, $endereco, $numEndereco, $bairro, $cep, $cidade, $uf, $tel, $numIdentidade, $expedicao, $expedido, $copiaRg, $nomeAqvRg, $nomeMedico, $crm, $telMedico, $localAtendMedico, $deficiencias, $periodoRestricaoMedica, $dataInicio, $cid, $atestadoMedico, $nomeAqvAtestado, $complementoBeneficiario = "" , $cnhBeneficiario = "", $validadeCnhBenef = "", $emailBeneficiario = "", $dataFim = "", $nomeRep = "", $emailRep = "", $enderecoRep = "", $numRep = "", $compRep = "", $bairroRep = "", $cepRep = "", $cidadeRep = "", $ufRep = "", $telRep = "", $identidadeRep = "", $expedicaoRep = "", $expedidoRep = "", $copiaRgRep = null, $nomeAqvRgRep = "", $comprovanteRep = null, $nomeAqvCompRep = "")
     {
         try {
 
@@ -185,12 +188,12 @@ class FormDeficiente {
         }
     }
 
-    public function deleteDeficiente($rgBeneficiario)
+    public function delete($numIdentidade)
     {
         try {
-            $query = "DELETE FROM cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario";
+            $query = "DELETE FROM cartao_deficiente WHERE num_identidade_beneficiario = :num_identidade_beneficiario";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':rg_beneficiario', $rgBeneficiario, PDO::PARAM_STR);
+            $stmt->bindValue(':rg_beneficiario', $numIdentidade, PDO::PARAM_STR);
             return $stmt->execute();
 
         } catch (PDOException $e) {
@@ -199,7 +202,7 @@ class FormDeficiente {
         }
     }
 
-    public function updateDeficiente(array $infos, array $files)
+    public function update(array $infos, array $files)
     {
         try {
             $querySelect = "SELECT * FROM cartao_deficiente WHERE rg_beneficiario = ?";
