@@ -41,21 +41,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   try { 
 
-    $rgBeneficiario = $infosPost['rg-beneficiario'];
+    $numIdentidadeBeneficiario = $infosPost['num-identidade-beneficiario'];
   
-    $idBeneficiario = $requestModel->getIdByRegNumber($rgBeneficiario);
+    $idBeneficiario = $requestModel->getIdByDocNumber($numIdentidadeBeneficiario);
 
-    $verify = $requestModel->verifyDocReg($rgBeneficiario);
+    $verify = $requestModel->verifyDocReg($numIdentidadeBeneficiario);
 
-    if(empty($rgBeneficiario)) {
-        $_SESSION['dano-alert'] = setAlert("Por favor, preencha o campo RG do beneficiário.", "error");
+    if(empty($numIdentidadeBeneficiario)) {
+        $_SESSION['dano-alert'] = setAlert("Por favor, preencha o campo RG/CPF do beneficiário.", "error");
         header("Location: ../../dano");
         exit();
     }
 
     if ($verify) {
         $_SESSION['dano-alert'] = setAlert("Solicitação enviada com sucesso", "success");
-        $requestModel->sendNotification("SOLICITAÇÃO DA SEGUNDA VIA PARA O RG: " . $rgBeneficiario, "SEGUNDA VIA: DANOS", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");
+        $requestModel->sendNotification("SOLICITAÇÃO DA SEGUNDA VIA PARA O DOCUMENTO: " . $numIdentidadeBeneficiario, "SEGUNDA VIA: DANOS", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");
         header("Location: ../../dano");
         exit();
     } 

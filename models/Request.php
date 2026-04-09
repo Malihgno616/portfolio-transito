@@ -42,12 +42,12 @@ class Request {
         }
     }
 
-    public function getIdByRegNumber($registrationNumber) 
+    public function getIdByDocNumber($registrationNumber) 
     {
         try {
-            $query = "SELECT id from cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario LIMIT 1";
+            $query = "SELECT id from cartao_deficiente WHERE num_identidade_benefiario = :num_identidade_benefiario LIMIT 1";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(":rg_beneficiario", $registrationNumber, PDO::PARAM_STR);
+            $stmt->bindValue(":num_identidade_benefiario", $registrationNumber, PDO::PARAM_STR);
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -60,15 +60,15 @@ class Request {
         }
     }
 
-    public function send2aViaRequest($rgBeneficiario, $imgBoletim, $imgBoletimName)
+    public function send2aViaRequest($numIdentidadeBeneficiario, $imgBoletim, $imgBoletimName)
     {
         try {
 
-            $query = "INSERT INTO solicitacao_2a_via (rg_beneficiario, file_boletim, img_bo) VALUES (:rg_beneficiario, :img_boletim, :img_boletim_name)";
+            $query = "INSERT INTO solicitacao_2a_via (num_identidade_beneficiario, file_boletim, img_bo) VALUES (:num_identidade_beneficiario, :img_boletim, :img_boletim_name)";
 
             $stmt = $this->pdo->prepare($query);
             
-            $stmt->bindValue(':rg_beneficiario', $rgBeneficiario, PDO::PARAM_STR);
+            $stmt->bindValue(':num_identidade_beneficiario', $numIdentidadeBeneficiario, PDO::PARAM_STR);
             
             $stmt->bindValue(':img_boletim', $imgBoletim, PDO::PARAM_LOB);
             

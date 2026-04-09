@@ -43,7 +43,7 @@ $files = $_FILES;
 
 $model = new FormDeficiente();
 
-$idBeneficiario = $request->getIdByRegNumber($infos['rg-beneficiario']);
+$idBeneficiario = $request->getIdByDocNumber($infos['num-identidade-beneficiario']);
 
 $updated = $model->update($infos, $files);
 

@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     
     $numIdentidadeBeneficiario = $_POST['num-identidade-beneficiario'];
-    $idBeneficiario = $requestModel->getIdByRegNumber($numIdentidadeBeneficiario);
+    $idBeneficiario = $requestModel->getIdByDocNumber($numIdentidadeBeneficiario);
         
     $verified = $requestModel->verifyDocReg($numIdentidadeBeneficiario);
     
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
       header("Location: ../../dados-beneficiario-renova");
       exit();
     } else {
-      $_SESSION['renova-alert'] = setAlert("Número do RG não encontrado/existente.", 'error');
+      $_SESSION['renova-alert'] = setAlert("Número do RG/CPF não encontrado/existente.", 'error');
       header("Location: ../../renovar-cartao");
       exit();
     }

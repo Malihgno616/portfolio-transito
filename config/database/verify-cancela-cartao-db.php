@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header("Location: ../../dados-beneficiario-cancela");
       exit();
     } else {
-      $_SESSION['cancel-alert'] = setAlert("RG não encontrado. Verifique os dados e tente novamente.", 'error');
+      $_SESSION['cancel-alert'] = setAlert("RG/CPF não encontrado. Verifique os dados e tente novamente.", 'error');
       header("Location: ../../cancelar-cartao");
       exit();
     }

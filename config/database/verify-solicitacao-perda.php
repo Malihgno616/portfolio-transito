@@ -39,13 +39,13 @@ function setAlert($message, $type = 'success') {
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   try {
-    $rgBeneficiario = $infosPost['rg-beneficiario'];
+    $numIdentidadeBeneficiario = $infosPost['num-identidade-beneficiario'];
 
-    $idBeneficiario = $requestModel->getIdByRegNumber($rgBeneficiario);    
+    $idBeneficiario = $requestModel->getIdByDocNumber($numIdentidadeBeneficiario);    
     
-    $verify = $requestModel->verifyDocReg($rgBeneficiario);
+    $verify = $requestModel->verifyDocReg($numIdentidadeBeneficiario);
 
-    if(empty($rgBeneficiario)) {
+    if(empty($numIdentidadeBeneficiario)) {
         $_SESSION['perda-alert'] = setAlert("Por favor, preencha o campo RG do beneficiário.", "error");
         header("Location: ../../perda-cartao");
         exit();
@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($verify) {
         $_SESSION['perda-alert'] = setAlert("Solicitação enviada com sucesso", "success");
-        $requestModel->sendNotification("SOLICITAÇÃO DA SEGUNDA VIA PARA O RG: " . $rgBeneficiario, "SEGUNDA VIA: PERDA", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");  
+        $requestModel->sendNotification("SOLICITAÇÃO DA SEGUNDA VIA PARA O DOCUMENTE: " . $numIdentidadeBeneficiario, "SEGUNDA VIA: PERDA", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");  
         header("Location: ../../perda-cartao");
         exit();
     }

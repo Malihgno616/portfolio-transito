@@ -13,11 +13,11 @@ if (!isset($_SESSION['rg_beneficiario_renova']) ||empty($_SESSION['rg_beneficiar
   exit;
 }
 
-$rgBeneficiario = $_SESSION['rg_beneficiario_renova'];
+$numIdentidadeBeneficiario = $_SESSION['rg_beneficiario_renova'];
 
 $formDeficienteModel = new FormDeficiente();
 
-$dadosBeneficiario = $formDeficienteModel->getDeficienteByRegNumber($rgBeneficiario);
+$dadosBeneficiario = $formDeficienteModel->getDeficienteByRegNumber($numIdentidadeBeneficiario);
 
 ?>
 <!DOCTYPE html>

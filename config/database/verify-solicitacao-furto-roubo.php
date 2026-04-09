@@ -36,9 +36,9 @@ function setAlert($message, $type = 'success') {
 
 $infosPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-$rgBeneficiario = $infosPost['rg-beneficiario'];
+$numIdentidadeBeneficiario = $infosPost['num-identidade-beneficiario'];
 
-$idBeneficiario = $request->getIdByRegNumber($rgBeneficiario);
+$idBeneficiario = $request->getIdByDocNumber($numIdentidadeBeneficiario);
 
 if (isset($_FILES['boletim']) && $_FILES['boletim']['error'] === UPLOAD_ERR_OK) {
     $fileContentBoletim = file_get_contents($_FILES['boletim']['tmp_name']);
@@ -57,11 +57,11 @@ if (isset($_FILES['boletim']) && $_FILES['boletim']['error'] === UPLOAD_ERR_OK) 
 $imgBoletimName = $infosPost['img-bo'];
 
 try {
-    $result = $request->send2aViaRequest($rgBeneficiario, $imgBoletim, $imgBoletimName);
+    $result = $request->send2aViaRequest($numIdentidadeBeneficiario, $imgBoletim, $imgBoletimName);
 
     if($result) {
         $_SESSION['furto-roubo-alert'] = setAlert("Solicitação enviada com sucesso!");
-        $request->sendNotification("SOLICITAÇÃO DA 2ª VIA ENVIADA PARA O RG: $rgBeneficiario", "SEGUNDA VIA: FURTO/ROUBO", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");
+        $request->sendNotification("SOLICITAÇÃO DA 2ª VIA ENVIADA PARA O DOCUMENTO: $numIdentidadeBeneficiario", "SEGUNDA VIA: FURTO/ROUBO", "detalhes-card-deficiente.php?id-beneficiario=$idBeneficiario");
         header("Location: ../../furto-roubo");
         exit();
     } else {

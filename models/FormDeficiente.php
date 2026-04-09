@@ -327,9 +327,9 @@ class FormDeficiente implements CardDeficiente {
     public function getDeficienteByRegNumber($regNumber)
     {
         try {
-            $query = "SELECT * FROM cartao_deficiente WHERE rg_beneficiario = :rg_beneficiario";
+            $query = "SELECT * FROM cartao_deficiente WHERE num_identidade_beneficiario = :num_identidade_benficiario";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':rg_beneficiario', $regNumber);
+            $stmt->bindValue(':num_identidade_benficiario', $regNumber);
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
