@@ -193,7 +193,7 @@ class FormDeficiente implements CardDeficiente {
         try {
             $query = "DELETE FROM cartao_deficiente WHERE num_identidade_beneficiario = :num_identidade_beneficiario";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':rg_beneficiario', $numIdentidade, PDO::PARAM_STR);
+            $stmt->bindValue(':num_identidade_beneficiario', $numIdentidade, PDO::PARAM_STR);
             return $stmt->execute();
 
         } catch (PDOException $e) {
@@ -205,9 +205,9 @@ class FormDeficiente implements CardDeficiente {
     public function update(array $infos, array $files)
     {
         try {
-            $querySelect = "SELECT * FROM cartao_deficiente WHERE rg_beneficiario = ?";
+            $querySelect = "SELECT * FROM cartao_deficiente WHERE num_identidade_beneficiario = ?";
             $stmtSelect = $this->pdo->prepare($querySelect);
-            $stmtSelect->execute([$infos['rg-beneficiario']]);
+            $stmtSelect->execute([$infos['num-identidade-beneficiario']]);
             $currentData = $stmtSelect->fetch(PDO::FETCH_ASSOC);
 
             if (!$currentData) {
@@ -230,7 +230,7 @@ class FormDeficiente implements CardDeficiente {
                 'cidade_beneficiario' => $infos['cidade-beneficiario'],
                 'uf_beneficiario' => $infos['uf-beneficiario'],
                 'telefone_beneficiario' => $infos['telefone-beneficiario'],
-                'rg_beneficiario' => $infos['rg-beneficiario'],
+                'num_identidade_beneficiario' => $infos['num-identidade-beneficiario'],
                 'expedicao_beneficiario' => $infos['expedicao-beneficiario'],
                 'expedido_beneficiario' => $infos['expedido-beneficiario'],
                 'cnh_beneficiario' => $infos['cnh-beneficiario'],
@@ -255,7 +255,7 @@ class FormDeficiente implements CardDeficiente {
                 'cidade_representante' => $infos['cidade-representante'],
                 'uf_representante' => $infos['uf-representante'],
                 'telefone_representante' => $infos['telefone-representante'],
-                'rg_representante' => $infos['rg-representante'],
+                'num_identidade_representante' => $infos['num-identidade-representante'],
                 'expedicao_representante' => $infos['expedicao-representante'],
                 'expedido_representante' => $infos['expedido-representante']
             ];
@@ -284,13 +284,13 @@ class FormDeficiente implements CardDeficiente {
                 }
             }
 
-            $params[] = $infos['rg-beneficiario'];
+            $params[] = $infos['num-identidade-beneficiario'];
 
             if (empty($setClauses)) {
                 throw new \Exception("Nenhum campo válido para atualizar.");
             }
 
-            $query = "UPDATE cartao_deficiente SET " . implode(', ', $setClauses) . " WHERE rg_beneficiario = ?";
+            $query = "UPDATE cartao_deficiente SET " . implode(', ', $setClauses) . " WHERE num_identidade_beneficiario = ?";
             $stmt = $this->pdo->prepare($query);
 
             foreach ($params as $index => $value) {
