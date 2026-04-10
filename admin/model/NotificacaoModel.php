@@ -110,5 +110,21 @@ class NotificacaoModel {
       }
   }
 
+  public function getLastNotification()
+  {
+    try {
+      // Busca a última notificação inserida no banco
+      $query = "SELECT id, descricao, categoria, data FROM notificacoes ORDER BY id DESC LIMIT 1";
+
+      $stmt = $this->pdo->prepare($query);
+      $stmt->execute();
+
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log("Error: ". $e->getMessage());
+      return false;
+    }
+  }
 
 }
