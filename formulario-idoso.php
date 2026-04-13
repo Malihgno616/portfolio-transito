@@ -54,8 +54,17 @@ $array_generos = [
 </head>
 
 <body>
-  <?php 
-    include_once('layout/header.php');
-    include_once('layout/form-idoso-layout.php');
-    include_once('layout/footer.php');
-  ?>
+  	<?php 
+    	include_once('layout/header.php');
+    	include_once('layout/form-idoso-layout.php');
+	?>
+	<script src="assets/js/formatDate.js"></script>
+	<script src="assets/js/formatDoc.js"></script>
+	<script src="assets/js/formatPhone.js"></script>
+	<script src="assets/js/autofill.js"></script>
+	<script src="assets/js/autofill-rep.js"></script>
+	<script src="assets/js/exibirArquivo.js"></script>
+	<script src="assets/js/exibirForm.js"></script>
+  	<?php 
+    	include_once('layout/footer.php');
+  	?>
