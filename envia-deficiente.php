@@ -215,7 +215,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nomeArquivCompRep = $inputPost['nome-arquivo-comp-rep-def'] ?? null;
     
-    $result = $formDeficiente->sendDeficiente(
+    $result = $formDeficiente->send(
         $nomeBeneficiario,
         $nascBeneficiario,
         $generoBeneficiario,
