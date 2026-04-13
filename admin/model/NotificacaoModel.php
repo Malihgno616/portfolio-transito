@@ -110,21 +110,31 @@ class NotificacaoModel {
       }
   }
 
-  public function getLastNotification()
+  public function getLastNotification($lastId = null)
   {
-    try {
-      // Busca a última notificação inserida no banco
-      $query = "SELECT id, descricao, categoria, data FROM notificacoes ORDER BY id DESC LIMIT 1";
-
-      $stmt = $this->pdo->prepare($query);
-      $stmt->execute();
-
-      return $stmt->fetch(PDO::FETCH_ASSOC);
-
-    } catch(PDOException $e) {
-      error_log("Error: ". $e->getMessage());
-      return false;
-    }
+      try {
+          if ($lastId === null) {
+              $query = "SELECT id, descricao, categoria, data 
+                        FROM notificacoes 
+                        ORDER BY id DESC 
+                        LIMIT 1";
+              $stmt = $this->pdo->prepare($query);
+          } else {
+              $query = "SELECT id, descricao, categoria, data 
+                        FROM notificacoes 
+                        WHERE id > :last_id 
+                        ORDER BY id DESC 
+                        LIMIT 1";
+              $stmt = $this->pdo->prepare($query);
+              $stmt->bindValue(":last_id", $lastId, PDO::PARAM_INT);
+          }
+          
+          $stmt->execute();
+          return $stmt->fetch(PDO::FETCH_ASSOC);
+          
+      } catch(PDOException $e) {
+          error_log("Error: ". $e->getMessage());
+          return false;
+      }
   }
-
 }
