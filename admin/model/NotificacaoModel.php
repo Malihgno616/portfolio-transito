@@ -6,7 +6,8 @@ require_once __DIR__.'/../config/conn.php';
 require_once __DIR__.'/../config/env.php';
 
 use Conn;
-use PDO, PDOException;
+use PDO;
+use PDOException;
 
 class NotificacaoModel {
 
