@@ -83,3 +83,5 @@
     </div>
   </div>
 </div>
+
+<div id="toast-container" class="fixed bottom-5 end-5 flex flex-col gap-2 w-full max-w-xs"></div>
