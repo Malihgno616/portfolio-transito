@@ -111,6 +111,22 @@ class NotificacaoModel {
       }
   }
 
+  public function getLastNotificationId()
+  {
+    try {
+
+      $query = "SELECT MAX(id) as max_id FROM notificacoes";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $result ? (int) $result['max_id'] : 0;
+
+    } catch(PDOException $e) {
+      error_log("Error: " . $e->getMessage());
+      return false;
+    }
+  }
+
   public function getLastNotification($lastId = null)
   {
       try {
@@ -138,4 +154,5 @@ class NotificacaoModel {
           return false;
       }
   }
+  
 }

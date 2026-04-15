@@ -1,5 +1,4 @@
 <?php 
-
 session_start();
 
 header("Content-Type: text/event-stream; charset=utf-8");
@@ -8,22 +7,23 @@ header("Connection: keep-alive");
 header("X-Accel-Buffering: no");
 date_default_timezone_set('America/Sao_Paulo');
 
+session_write_close();
+ignore_user_abort(true);
+set_time_limit(0);
+
 require __DIR__.'/model/NotificacaoModel.php';
 
 use Model\NotificacaoModel;
 
-session_write_close();
-ignore_user_abort(true);
-set_time_limit(0);
+$notificacaoModel = new NotificacaoModel();
 
 while (ob_get_level() > 0) {
     ob_end_clean();
 }
 
-echo "data: " . json_encode(['status' => 'connected', 'time' => date('H:i:s')]) . "\n\n";
 flush();
 
-$lastSended = null;
+$lastSended = $notificacaoModel->getLastNotificationId();
 $iterationCount = 0;
 $notificacaoModel = null;
 
@@ -40,7 +40,9 @@ while (true) {
         $notificacao = $notificacaoModel->getLastNotification($lastSended);
         
         if ($notificacao && isset($notificacao['id']) && $notificacao['id'] != $lastSended) {
-            echo "data: " . json_encode($notificacao, JSON_UNESCAPED_UNICODE) . "\n\n";
+            echo "id: " . $notificacao['id'] . "\n";
+            echo "data: " . json_encode($notificacao['descricao'], JSON_UNESCAPED_UNICODE) . "\n\n";
+            echo "categoria: " . json_encode($notificacao['categoria'], JSON_UNESCAPED_UNICODE) . "\n\n";
             $lastSended = $notificacao['id'];
             flush();
         }
