@@ -28,6 +28,5 @@ include __DIR__.'/layout/header.php';
   <main class="w-full h-full p-10">
     <?php include __DIR__.'/components/home.php';?>
   </main>
-  <script src="assets/js/sse.js"></script>
 
 <?php include __DIR__.'/layout/footer.php'; ?>
