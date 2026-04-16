@@ -38,18 +38,20 @@ class FormContact {
         }
     }
 
-    public function sendNotification($descricao = "", $categoria = "")
+    public function sendNotification($descricao = "", $categoria = "", $linkNotificacao = "")
     {
 
         try {
 
-            $query = "INSERT INTO notificacoes (descricao, categoria) VALUES (:desc, :cat)";
+            $query = "INSERT INTO notificacoes (descricao, categoria, link_notificacao) VALUES (:desc, :cat, :link_notificacao)";
 
             $stmt = $this->pdo->prepare($query);
             
             $stmt->bindValue(':desc', $descricao);
             
             $stmt->bindValue(':cat', $categoria);
+            
+            $stmt->bindValue(':link_notificacao', $linkNotificacao);
             
             $stmt->execute();
 
