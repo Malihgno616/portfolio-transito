@@ -131,14 +131,12 @@ class NotificacaoModel {
   {
       try {
           if ($lastId === null) {
-              $query = "SELECT id, descricao, categoria, data 
-                        FROM notificacoes 
+              $query = "SELECT id, descricao, categoria, link_notificacao, data FROM notificacoes 
                         ORDER BY id DESC 
                         LIMIT 1";
               $stmt = $this->pdo->prepare($query);
           } else {
-              $query = "SELECT id, descricao, categoria, data 
-                        FROM notificacoes 
+              $query = "SELECT id, descricao, categoria, link_notificacao, data FROM notificacoes 
                         WHERE id > :last_id 
                         ORDER BY id DESC 
                         LIMIT 1";

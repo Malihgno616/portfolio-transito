@@ -40,9 +40,12 @@ while (true) {
         $notificacao = $notificacaoModel->getLastNotification($lastSended);
         
         if ($notificacao && isset($notificacao['id']) && $notificacao['id'] != $lastSended) {
-            echo "id: " . $notificacao['id'] . "\n";
-            echo "data: " . json_encode($notificacao['descricao'], JSON_UNESCAPED_UNICODE) . "\n\n";
-            echo "categoria: " . json_encode($notificacao['categoria'], JSON_UNESCAPED_UNICODE) . "\n\n";
+            echo "data: " . json_encode([
+                "descricao" => $notificacao['descricao'],
+                "categoria" => $notificacao['categoria'],
+                "link" => $notificacao['link_notificacao']
+            ], JSON_UNESCAPED_UNICODE) . "\n\n";
+
             $lastSended = $notificacao['id'];
             flush();
         }
