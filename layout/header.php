@@ -36,23 +36,14 @@
     <a href="index" class="flex items-center">
       <img src="assets/img/logo-borda-branca.png" class="h-24 md:h-24" />
     </a>
-
-    <form action="" class="flex items-center gap-2 w-full md:w-auto">
-      <input 
-        type="search"
-        name="search"
-        id="search"
-        placeholder="Digite aqui..."
-        class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
-      >
-      <button 
-        type="submit"
-        class="px-4 py-2 bg-yellow-500 text-gray-900 font-medium rounded-lg hover:bg-yellow-600 duration-200 whitespace-nowrap"
-      >
-        Buscar
-      </button>
-    </form>
-
+    <?php
+      $directory = __DIR__;
+      if(strpos($_SERVER['REQUEST_URI'], 'pesquisa') !== false) {
+        unset($directory); 
+      } else {
+        include_once "form-pesquisa-menu.php";
+      } 
+    ;?>
   </div>
 
   <div class="w-full bg-stone-800 absolute bottom-full left-0 top-10 p-0 mt-10">
