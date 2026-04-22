@@ -129,4 +129,26 @@ class News {
         } 
     }
 
+    public function searchNews($term)
+    {
+        try {
+
+            if(empty($term)) {
+                $query = "SELECT id, conteudo FROM conteudo_noticia ORDER BY id DESC LIMIT 3";
+                $stmt = $this->pdo->prepare($query);
+            } else {
+                $query = "SELECT id, conteudo FROM conteudo_noticia WHERE conteudo LIKE :term ORDER BY id DESC LIMIT 3";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->bindValue(':term', '%' . $term . '%', PDO::PARAM_STR);
+            }
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
 }

@@ -6,6 +6,8 @@ session_start([
     'use_strict_mode' => true
 ]);
 
+$term = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,6 +27,8 @@ session_start([
     include 'layout/resultado-pesquisa.php';;
   ?>
   </main>
+  
+  <script src="assets/js/pesquisa.js"></script>
 
   <?php 
     include_once('layout/footer.php');
