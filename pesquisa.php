@@ -1,10 +1,16 @@
 <?php 
 
 session_start([
-    'cookie_secure' => false,
+    'cookie_secure' => true,
     'cookie_httponly' => true,
     'use_strict_mode' => true
 ]);
+
+require_once __DIR__ . "/models/News.php";
+
+use Models\News;
+
+$news = new News();
 
 $term = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
 
@@ -24,11 +30,11 @@ $term = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
 
   <main class="w-full h-full">
   <?php 
-    include 'layout/resultado-pesquisa.php';;
+    include 'layout/resultado-pesquisa.php';
   ?>
   </main>
   
-  <script src="assets/js/pesquisa.js"></script>
+  <!-- <script src="assets/js/pesquisa.js"></script> -->
 
   <?php 
     include_once('layout/footer.php');
