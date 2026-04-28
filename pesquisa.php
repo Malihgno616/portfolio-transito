@@ -14,6 +14,8 @@ $news = new News();
 
 $term = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
 
+$results = $news->searchNews($term);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,8 +35,6 @@ $term = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
     include 'layout/resultado-pesquisa.php';
   ?>
   </main>
-  
-  <!-- <script src="assets/js/pesquisa.js"></script> -->
 
   <?php 
     include_once('layout/footer.php');

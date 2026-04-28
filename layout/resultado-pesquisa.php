@@ -1,7 +1,7 @@
 <div class="p-10">
     <div class="mb-6">
         <h1 class="text-black text-center text-3xl md:text-4xl lg:text-5xl mb-4">Digite para iniciar a busca</h1>
-        <form action="pesquisa" id="form-submit" class="flex items-center justify-center gap-2 w-full md:w-auto" method="get">
+        <form action="pesquisa" class="flex items-center justify-center gap-2 w-full md:w-auto" method="get">
             <input type="search" name="term" id="term" placeholder="Digite aqui..." class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" value="<?= htmlspecialchars($term)?>"/>
             <button type="submit" class="px-4 py-2 bg-yellow-500 text-gray-900 font-medium rounded-lg hover:bg-yellow-600 duration-200 whitespace-nowrap cursor-pointer">Buscar</button>
         </form>
@@ -12,8 +12,8 @@
 
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <?php if(is_array($news->searchNews($term)) && !empty($news->searchNews($term))): ?>
-                <?php foreach($news->searchNews($term) as $index => $news):?>
+            <?php if(is_array($results) && !empty($results)): ?>
+                <?php foreach($results as $index => $news):?>
                     <?php
                         $delays = ['animate__delay-0s', 'animate__delay-1s', 'animate__delay-2s'];
                         $delayClass = $delays[$index % count($delays)] ?? 'animate__delay-0s';
@@ -40,6 +40,8 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
+            <?php else: ?>
+                <p class="text-center text-gray-700 col-span-full">Nenhuma notícia encontrada para o termo: <span class="text-yellow-500"><?= htmlspecialchars($term) ?></span></p>
             <?php endif; ?>
             </div>
         </div>

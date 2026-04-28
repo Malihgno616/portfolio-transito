@@ -1,5 +1,10 @@
 <div class="shadow-lg bg-stone-500 bg-blend-multiply p-10 bg-no-repeat bg-cover bg-fixed px-4 md:px-6 lg:px-8" style="background-image: url('assets/img/imgtransito-compressed.jpg');">
-  
+
+  <div class="p-10 flex flex-col items-center justify-center gap-4">
+    <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Buscar notícia</h1>
+    <?php include_once "form-pesquisa-menu.php"; ?>
+  </div>
+
   <div class="p-10">
     <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Notícias em Destaque</h1>
   </div>
@@ -81,7 +86,7 @@
       </div>
       <?php endforeach; ?>
     <?php else: ?>
-      <div class="col-span-3 text-center text-white py-8">
+      <div class="col-span-3 text-center text-black py-8">
         <p>Nenhuma notícia disponível no momento.</p>
       </div>
     <?php endif; ?>

@@ -36,14 +36,7 @@
     <a href="index" class="flex items-center">
       <img src="assets/img/logo-borda-branca.png" class="h-24 md:h-24" />
     </a>
-    <?php
-      $directory = __DIR__;
-      if(strpos($_SERVER['REQUEST_URI'], 'pesquisa') !== false) {
-        unset($directory); 
-      } else {
-        include_once "form-pesquisa-menu.php";
-      } 
-    ;?>
+    
   </div>
 
   <div class="w-full bg-stone-800 absolute bottom-full left-0 top-10 p-0 mt-10">
