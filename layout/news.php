@@ -2,7 +2,7 @@
 
   <div class="p-10 flex flex-col items-center justify-center gap-4">
     <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl mb-4">Buscar notícia</h1>
-    <?php include_once "form-pesquisa-menu.php"; ?>
+    <?php include_once "form-pesquisa-noticia.php"; ?>
   </div>
 
   <div class="p-10">
