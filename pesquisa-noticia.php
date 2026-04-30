@@ -12,9 +12,9 @@ use Models\News;
 
 $news = new News();
 
-$term = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
+$termNews = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS) ?? "";
 
-$results = $news->searchNews($term);
+$results = $news->searchNews($termNews);
 
 ?>
 <!DOCTYPE html>
