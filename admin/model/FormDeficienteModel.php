@@ -136,6 +136,51 @@ class FormDeficienteModel implements CardDeficiente {
         }
     }
     
+    public function getPaginatedBeneficiarios($page, $limit, $orderBy = 'id')
+    {
+        try {
+            $query = "SELECT id, 
+                nome_beneficiario, 
+                telefone_beneficiario, 
+                numero_registro, 
+                num_identidade_beneficiario 
+            FROM 
+                cartao_deficiente 
+            ORDER BY 
+                CASE 
+                    WHEN :order = 'nome' THEN nome_beneficiario 
+                    WHEN :order = 'registro' THEN numero_registro 
+                    ELSE id
+                END DESC
+            LIMIT :limit OFFSET :offset";
+
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':order', $orderBy, PDO::PARAM_STR);
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', ($page - 1) * $limit, PDO::PARAM_INT);
+            $stmt->execute();
+            $beneficiarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return [
+                'beneficiarios' => $beneficiarios,
+                'total' => count($beneficiarios),
+                'page' => $page,
+                'limit' => $limit,
+                'totalPages' => ceil(count($beneficiarios) / $limit)
+            ];
+
+        } catch(PDOException $e) {
+            error_log("Erro ao buscar beneficiarios paginados: " . $e->getMessage());
+            return [
+                'beneficiarios' => [],
+                'total' => 0,
+                'page' => $page,
+                'limit' => $limit,
+                'totalPages' => 0
+            ];
+        }
+    }
+
     public function paginatedDeficientes($page, $limit)
     {
         try {
@@ -634,3 +679,7 @@ class FormDeficienteModel implements CardDeficiente {
     }
 
 }
+
+// $model = new FormDeficienteModel();
+
+// var_dump($model->getPaginatedBeneficiarios(1, 5, 'numero_registro'));
