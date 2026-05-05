@@ -33,23 +33,20 @@ function setAlert($message, $type = 'success') {
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['news-alert'] = setAlert("Acesso não autorizado", 'success');
-    header("Location: table-noticia.php");
+    header("Location: news-table.php");
     exit();
 }
 
 $idNews = filter_input(INPUT_POST, 'id-news', FILTER_VALIDATE_INT);
 
-$idContent = filter_input(INPUT_POST,'id-content', FILTER_VALIDATE_INT);
-
-if (!$idNews || !$idContent) {
-    $_SESSION['news-alert'] = setAlert("IDs inválidos para exclusão", 'sucess');
-    header("Location: table-noticia.php");
+if (!$idNews) {
+    $_SESSION['news-alert'] = setAlert("ID inválido para exclusão", 'success');
+    header("Location: news-table.php");
     exit();
 }
 
 try {
-    $newsModel = new NewsModel();
-    $deletedNews = $newsModel->deleteNews($idNews, $idContent);
+    $deletedNews = $newsModel->deleteNews($idNews);
     
     if ($deletedNews) {
         $_SESSION['news-alert'] = setAlert("Notícia excluída com sucesso!", 'success');
