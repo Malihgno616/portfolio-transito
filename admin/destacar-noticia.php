@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("ID do conteúdo não fornecido.");
         }
 
-        $newsModel->highlightNews($idContent);
+        $newsModel->featureNews($idContent);
 
         $_SESSION['news-alert'] = setAlert("Notícia destacada com sucesso!", 'success');
 

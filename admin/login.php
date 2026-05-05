@@ -39,13 +39,14 @@ if(!in_array($current_page, $allowed_pages)) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php include __DIR__.'/components/head.php'; ?>
+  <head>
+    <?php include __DIR__.'/components/head.php';?>
+  </head>
 <body>
   <div class="bg-gray-500 bg-[url(assets/img/697-compressed.jpg)] h-screen bg-center bg-no-repeat bg-cover bg-blend-multiply">
     <?php require __DIR__.'/components/form-login.php';?>
   </div>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
   <script src="assets/js/spinnerOn.js"></script>
 </body>
 </html>

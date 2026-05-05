@@ -21,7 +21,9 @@ if (!$contactData) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php include __DIR__.'/components/head.php';?>
+  <head>
+    <?php include __DIR__.'/components/head.php';?>
+  </head>
 <body class="min-h-screen flex flex-col">
 
 <?php include __DIR__.'/layout/header.php';?>
