@@ -18,7 +18,7 @@ require __DIR__.'/model/NewsModel.php';
 
 $newsModel = new NewsModel();
 
-$limit = 6;
+$limit = 4;
 
 $pageUrl = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 

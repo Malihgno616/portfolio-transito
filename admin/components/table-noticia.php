@@ -1,18 +1,36 @@
 <div class="container mx-auto px-4">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
       <?php foreach($newsItems as $newItem): ?>
         <div class="flex bg-white rounded-md shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-48">
+          <div class="flex flex-col items-center justify-center">
+
+            <form action="edit-news.php" method="GET">
+              <input type="hidden" name="id" value="<?= $newItem['id'] ?>">
+              <button class="w-12 h-12 text-yellow-600 hover:text-yellow-400 duration-75" type="submit">
+                <abbr title="Editar imagem da notícia"><i class="fas fa-edit"></i></abbr>
+              </button>
+            </form>
+
+            <form action="del-news.php" method="POST" onsubmit="return window.confirm('Deseja remover a notícia?')">
+              <input type="hidden" name="id" value="<?= $newItem['id'] ?>">
+              <button class="w-12 h-12 text-red-600 hover:text-red-400 duration-75" type="submit">
+                <abbr title="Excluir notícia"><i class="fas fa-trash"></i></abbr>
+              </button>
+            </form>
+            
+          </div>
           <a href="edit-news.php?id=<?= $newItem['id'] ?>" class="flex-shrink-0">
             <img src="display-image.php?id=<?= $newItem['id']; ?>&type=main" 
-                alt="" 
-                class="h-48 w-40 object-cover border-0">
+            alt="" 
+            class="h-48 w-40 object-cover border-0">
           </a>
-
+          
           <div class="ql-container ql-snow flex-1" style="border: none; font-size: 6px; height: 192px;">
-              <div class="ql-editor p-3" style="height: 100%; overflow-y: auto; font-size: 6px;">
-                  <?= $newItem['conteudo'] ?>
-              </div>
+            <div class="ql-editor p-3" style="height: 100%; overflow-y: auto; overflow-x: auto; font-size: 6px;">
+              <?= $newItem['conteudo'] ?>
+            </div>
           </div>
+          
         </div>
       <?php endforeach; ?>
   </div>
