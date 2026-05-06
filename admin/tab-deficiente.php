@@ -14,31 +14,15 @@ $formDeficienteModel = new FormDeficienteModel();
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 5;
 
-$beneficiarios = $formDeficienteModel->paginatedDeficientes($page, $limit);
+$beneficiarios = $formDeficienteModel->getPaginatedBeneficiarios($page, $limit, $_GET['orderBy'] ?? 'id');
 
 $totalBeneficiarios = $beneficiarios['total'];
-$totalPages = $beneficiarios['totalPages'];
 $currentPage = $beneficiarios['page'];
-$listBeneficiarios = $beneficiarios['deficientes'];
+$totalPages = $beneficiarios['totalPages'];
+$listBeneficiarios = $beneficiarios['beneficiarios'];
 
 $offset = ($currentPage - 1) * $limit;
-
 $order = $_GET['orderBy'] ?? "id";
-
-switch ($order) {
-    case 'id':
-        $listBeneficiarios = $formDeficienteModel->orderById($limit, $offset);
-        break;
-    case 'name':
-        $listBeneficiarios = $formDeficienteModel->orderByName($limit, $offset);
-        break;
-    case 'reg':
-        $listBeneficiarios = $formDeficienteModel->orderByRegNumber($limit, $offset);
-        break;
-    default:
-        $listBeneficiarios = $formDeficienteModel->paginatedDeficientes($page, $limit)['deficientes'];
-        break;        
-}
 
 ?>
 <!DOCTYPE html>

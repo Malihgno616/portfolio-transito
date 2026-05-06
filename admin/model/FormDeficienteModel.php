@@ -148,12 +148,12 @@ class FormDeficienteModel implements CardDeficiente {
                 cartao_deficiente 
             ORDER BY 
                 CASE 
-                    WHEN :order = 'nome' THEN nome_beneficiario 
+                    WHEN :order = 'nome' THEN nome_beneficiario
                     WHEN :order = 'registro' THEN numero_registro 
                     ELSE id
                 END DESC
             LIMIT :limit OFFSET :offset";
-
+            
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':order', $orderBy, PDO::PARAM_STR);
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -163,64 +163,16 @@ class FormDeficienteModel implements CardDeficiente {
 
             return [
                 'beneficiarios' => $beneficiarios,
-                'total' => count($beneficiarios),
+                'total' => $this->deficienteCountTable(),
                 'page' => $page,
                 'limit' => $limit,
-                'totalPages' => ceil(count($beneficiarios) / $limit)
+                'totalPages' => ceil($this->deficienteCountTable() / $limit)
             ];
 
         } catch(PDOException $e) {
             error_log("Erro ao buscar beneficiarios paginados: " . $e->getMessage());
             return [
                 'beneficiarios' => [],
-                'total' => 0,
-                'page' => $page,
-                'limit' => $limit,
-                'totalPages' => 0
-            ];
-        }
-    }
-
-    public function paginatedDeficientes($page, $limit)
-    {
-        try {
-            if($page < 1) $page = 1;
-            $offset = ($page -1) * $limit; 
-
-            // Primeiro obtemos o total
-            $countStmt = $this->pdo->query("SELECT COUNT(*) as total FROM cartao_deficiente");
-            $total = $countStmt->fetch()['total'];
-            $totalPages = ceil($total / $limit);
-
-            // Depois os dados paginados
-            $stmt = $this->pdo->prepare("SELECT 
-            id, 
-            nome_beneficiario, 
-            telefone_beneficiario,
-            numero_registro,
-            num_identidade_beneficiario
-        FROM cartao_deficiente 
-        ORDER BY id DESC 
-        LIMIT :limit OFFSET :offset");
-            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-            $stmt->execute();
-            
-            $deficientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            return [
-                'deficientes' => $deficientes,
-                'total' => $total,
-                'page' => $page,
-                'limit' => $limit,
-                'totalPages' => $totalPages
-            ];
-            
-        } catch (PDOException $e) {
-            // Log do erro ou tratamento adequado
-            error_log("Erro ao buscar deficientes: " . $e->getMessage());
-            return [
-                'deficientes' => [],
                 'total' => 0,
                 'page' => $page,
                 'limit' => $limit,
@@ -568,35 +520,7 @@ class FormDeficienteModel implements CardDeficiente {
             error_log("Erro ao atualizar beneficiario: " . $e->getMessage());
             throw new \Exception("Erro ao atualizar beneficiario: " . $e->getMessage());
         } 
-    }
-
-    public function orderById($limit, $offset)
-    {
-        try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, num_identidade_beneficiario FROM cartao_deficiente ORDER BY id DESC LIMIT :limit OFFSET :offset");
-            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Erro ao ordenar por ID: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    public function orderByName($limit, $offset)
-    {
-        try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, num_identidade_beneficiario FROM cartao_deficiente ORDER BY nome_beneficiario ASC LIMIT :limit OFFSET :offset");
-            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Erro ao ordenar por nome: " . $e->getMessage());
-            return [];
-        }
-    }
+    } 
 
     public function lastInsertId()
     {
@@ -637,20 +561,6 @@ class FormDeficienteModel implements CardDeficiente {
             return false;
         }            
     }
-    
-    public function orderByRegNumber($limit, $offset)
-    {
-        try {
-            $stmt = $this->pdo->prepare("SELECT id, nome_beneficiario, telefone_beneficiario ,numero_registro, num_identidade_beneficiario FROM cartao_deficiente ORDER BY numero_registro DESC LIMIT :limit OFFSET :offset");
-            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Erro ao ordenar por nº de registro: " . $e->getMessage());
-            return [];
-        }
-    }
 
     public function lastRegistrationNumber()
     {
@@ -682,4 +592,4 @@ class FormDeficienteModel implements CardDeficiente {
 
 // $model = new FormDeficienteModel();
 
-// var_dump($model->getPaginatedBeneficiarios(1, 5, 'numero_registro'));
+// var_dump($model->getPaginatedBeneficiarios(1, 5, 'nome'));
