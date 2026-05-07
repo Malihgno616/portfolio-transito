@@ -141,26 +141,17 @@ class FormDeficienteModel implements CardDeficiente {
         try {
 
             $allowedOrders = [
-                'id' => 'id',
-                'nome' => 'nome_beneficiario',
-                'registro' => 'numero_registro'
+                'id' => 'id DESC',
+                'nome' => 'nome_beneficiario ASC',
+                'registro' => 'numero_registro DESC'
             ];
 
             $orderColumn = $allowedOrders[$orderBy] ?? 'id';
 
             $offset = ($page - 1) * $limit;
 
-            $query = "
-                SELECT 
-                    id,
-                    nome_beneficiario,
-                    telefone_beneficiario,
-                    numero_registro,
-                    num_identidade_beneficiario
-                FROM cartao_deficiente
-                ORDER BY {$orderColumn} DESC
-                LIMIT :limit OFFSET :offset
-            ";
+            $query = "SELECT id, nome_beneficiario, telefone_beneficiario,       numero_registro, num_identidade_beneficiario FROM cartao_deficiente
+            ORDER BY {$orderColumn} LIMIT :limit OFFSET :offset";
 
             $stmt = $this->pdo->prepare($query);
 
