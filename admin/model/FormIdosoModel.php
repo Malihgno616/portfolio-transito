@@ -22,35 +22,42 @@ class FormIdosoModel implements CardIdoso {
         $this->pdo = $this->conn->connect();
     }
 
-    public function paginatedIdosos($page, $limit)
+    public function paginatedIdosos($page, $limit, $orderBy = "id")
     {
         try {
-            if($page < 1) $page = 1;
-            $offset = ($page -1) * $limit; 
+            
+            $allowedOrders = [
+                'id' => 'id DESC',
+                'nome' => 'nome_idoso ASC',
+                'registro' => 'numero_registro DESC'
+            ];
 
-            // Primeiro obtemos o total
-            $countStmt = $this->pdo->query("SELECT COUNT(*) as total FROM cartao_idoso");
-            $total = $countStmt->fetch()['total'];
-            $totalPages = ceil($total / $limit);
+            $orderColumn = $allowedOrders[$orderBy] ?? 'id';
+            
+            $offset = ($page - 1) * $limit;
 
-            // Depois os dados paginados
-            $stmt = $this->pdo->prepare("SELECT id, nome_idoso, telefone_idoso,nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso ORDER BY id DESC LIMIT :limit OFFSET :offset");
+            $query = "SELECT id, nome_idoso, telefone_idoso, nascimento_idoso, numero_registro, num_identidade_idoso FROM cartao_idoso ORDER BY $orderColumn LIMIT :limit OFFSET :offset";
+
+            $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
-            
-            $idosos = $stmt->fetchAll();
-            
+            $idosos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $queryCount = "SELECT COUNT(*) as total FROM cartao_idoso";
+
+            $stmtCount = $this->pdo->query($queryCount);
+            $total = (int)$stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
+
             return [
                 'idosos' => $idosos,
                 'total' => $total,
                 'page' => $page,
                 'limit' => $limit,
-                'totalPages' => $totalPages
+                'totalPages' => ceil($total / $limit)
             ];
             
         } catch (PDOException $e) {
-            // Log do erro ou tratamento adequado
             error_log("Erro ao buscar idosos: " . $e->getMessage());
             return [
                 'idosos' => [],

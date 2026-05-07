@@ -3,7 +3,6 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-// Cache 
 ini_set('session.cache_limiter', 'public');
 ini_set('session.cache_expire', 30);
 session_cache_limiter(true);
@@ -18,7 +17,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 5;
 
 $formIdosoModel = new FormIdosoModel();
-$idosos = $formIdosoModel->paginatedIdosos($page, $limit);
+$idosos = $formIdosoModel->paginatedIdosos($page, $limit, $_GET['orderBy'] ?? 'id');
 
 $totalIdosos = $idosos['total'];
 $totalPages = $idosos['totalPages'];
@@ -26,21 +25,6 @@ $currentPage = $idosos['page'];
 $listIdosos = $idosos['idosos'];
 $offset = ($currentPage - 1) * $limit;
 $order = $_GET['orderBy'] ?? "id";
-
-switch ($order) {
-    case 'name':
-        $listIdosos = $formIdosoModel->orderByName($limit, $offset);
-        break;
-    case 'reg':
-        $listIdosos = $formIdosoModel->orderByRegNumber($limit, $offset);
-        break;
-    case 'id':
-        $listIdosos = $formIdosoModel->orderById($limit, $offset);
-        break;  
-    default:
-        $listIdosos = $formIdosoModel->paginatedIdosos($page, $limit)['idosos'];
-        break;
-}
 
 ?>
 <!DOCTYPE html>

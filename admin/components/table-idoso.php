@@ -5,13 +5,13 @@
                     <tr>
                         <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderBy=id">ID</a></th>
 
-                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderBy=name">Nome</a></th>
+                        <th scope="col" class="px-6 py-3 text-blue-500 hover:underline"><a href="?orderBy=nome">Nome</a></th>
                         
                         <th scope="col" class="px-6 py-3">Nº Telefone</th>
                         
                         <th scope="col" class="px-6 py-3">Data Nasc</th>
                         
-                        <th scope="col" class="px-6 py-3 text-blue-500  hover:underline"><a href="?orderBy=reg">Nº REG</a></th>
+                        <th scope="col" class="px-6 py-3 text-blue-500  hover:underline"><a href="?orderBy=registro">Nº REG</a></th>
                         
                         <th scope="col" class="px-6 py-3">RG/CPF</th>
 
