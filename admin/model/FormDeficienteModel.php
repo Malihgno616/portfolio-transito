@@ -139,38 +139,58 @@ class FormDeficienteModel implements CardDeficiente {
     public function getPaginatedBeneficiarios($page, $limit, $orderBy = 'id')
     {
         try {
-            $query = "SELECT id, 
-                nome_beneficiario, 
-                telefone_beneficiario, 
-                numero_registro, 
-                num_identidade_beneficiario 
-            FROM 
-                cartao_deficiente 
-            ORDER BY 
-                CASE 
-                    WHEN :order = 'nome' THEN nome_beneficiario
-                    WHEN :order = 'registro' THEN numero_registro 
-                    ELSE id
-                END DESC
-            LIMIT :limit OFFSET :offset";
-            
+
+            $allowedOrders = [
+                'id' => 'id',
+                'nome' => 'nome_beneficiario',
+                'registro' => 'numero_registro'
+            ];
+
+            $orderColumn = $allowedOrders[$orderBy] ?? 'id';
+
+            $offset = ($page - 1) * $limit;
+
+            $query = "
+                SELECT 
+                    id,
+                    nome_beneficiario,
+                    telefone_beneficiario,
+                    numero_registro,
+                    num_identidade_beneficiario
+                FROM cartao_deficiente
+                ORDER BY {$orderColumn} DESC
+                LIMIT :limit OFFSET :offset
+            ";
+
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':order', $orderBy, PDO::PARAM_STR);
-            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', ($page - 1) * $limit, PDO::PARAM_INT);
+
+            $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+
             $stmt->execute();
+
             $beneficiarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $queryCount = "SELECT COUNT(*) as total FROM cartao_deficiente";
+            $stmtCount = $this->pdo->query($queryCount);
+
+            $total = (int)$stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
 
             return [
                 'beneficiarios' => $beneficiarios,
-                'total' => $this->deficienteCountTable(),
-                'page' => $page,
-                'limit' => $limit,
-                'totalPages' => ceil($this->deficienteCountTable() / $limit)
+                'total' => $total,
+                'page' => (int)$page,
+                'limit' => (int)$limit,
+                'totalPages' => ceil($total / $limit)
             ];
 
         } catch(PDOException $e) {
-            error_log("Erro ao buscar beneficiarios paginados: " . $e->getMessage());
+
+            error_log(
+                "Erro ao buscar beneficiarios paginados: " .
+                $e->getMessage()
+            );
+
             return [
                 'beneficiarios' => [],
                 'total' => 0,
@@ -572,19 +592,6 @@ class FormDeficienteModel implements CardDeficiente {
         } catch(PDOException $e) {
             error_log("Erro ao buscar o último nº de registro: " . $e->getMessage());
             return null;
-        }
-    }
-
-    public function deficienteCountTable()
-    {
-        try {
-            $stmt = $this->pdo->query("SELECT COUNT(*) as total FROM cartao_deficiente");
-            $total = $stmt->fetch()['total'];
-            return $total;
-        } catch (PDOException $e) {
-            // Log do erro ou tratamento adequado
-            error_log("Erro ao contar deficientes: " . $e->getMessage());
-            return 0;
         }
     }
 
