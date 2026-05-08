@@ -72,7 +72,7 @@ class FormDeficienteModel implements CardDeficiente {
     public function detailsDeficiente($id)
     {
         try {
-            $query = "SELECT id, nome_beneficiario, numero_registro, data_emissao FROM cartao_deficiente WHERE id = :id";
+            $query = "SELECT id, nome_beneficiario, numero_registro, data_emissao, data_inicio, data_fim, periodo_restricao_medica FROM cartao_deficiente WHERE id = :id";
 
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);

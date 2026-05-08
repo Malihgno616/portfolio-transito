@@ -8,7 +8,7 @@ include_once __DIR__. '/basepdf.php';
 
 use ConvertPdf\BasePdf;
 
-$imagePath = __DIR__. '/cartao-idoso/Cartão-Idoso-A4.png';
+$imagePath = __DIR__. '/cartao-idoso/Cartão-Idoso-A4.jpeg';
 
 $imageInfo = getimagesize($imagePath);
 
@@ -32,7 +32,7 @@ class CardIdoso extends BasePdf {
 
     public function addRegNumber($regNumber)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 22);
+        $this->pdf->SetFont('Helvetica', 'B', 12);
         $this->pdf->SetTextColor(255, 0, 0);
         $this->pdf->SetXY($this->positionRegNumber[0], $this->positionRegNumber[1]);
         $this->pdf->Write(35, $regNumber);
@@ -40,7 +40,7 @@ class CardIdoso extends BasePdf {
         
     public function addExpirationDate($expirationDate)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 22);
+        $this->pdf->SetFont('Helvetica', 'B', 12);
         $this->pdf->SetTextColor(0 ,0,0);
         $this->pdf->SetXY($this->positionIssueDate[0], $this->positionIssueDate[1]);
         $this->pdf->Write(35, $expirationDate);
@@ -48,10 +48,10 @@ class CardIdoso extends BasePdf {
 
     public function addName($name)
     {
-        $this->pdf->SetFont('Helvetica', 'B', 22);
+        $this->pdf->SetFont('Helvetica', 'B', 12);
         $this->pdf->SetTextColor(0 ,0,0);
         $this->pdf->SetXY($this->positionName[0], $this->positionName[1]);
-        $this->pdf->Write(35, $name);
+        $this->pdf->Cell(35, 0, mb_convert_encoding($name, 'ISO-8859-1', 'UTF-8'), 0, 0, 'C');
     }
       
     public function generate($outputPath)
@@ -60,3 +60,14 @@ class CardIdoso extends BasePdf {
     }    
 }
 
+// $cardIdoso = new CardIdoso(
+//     $imagePath,
+//     [121, 91], 
+//     [130, 100], 
+//     [95, 140]  
+// );
+
+// $cardIdoso->addRegNumber('1234');
+// $cardIdoso->addExpirationDate('01/01/2023');
+// $cardIdoso->addName('João Silva');
+// $cardIdoso->generate(__DIR__. '/pdf-idoso/cartao-idoso-id='. 1 .'.pdf');

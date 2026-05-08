@@ -20,7 +20,7 @@ use Model\FormIdosoModel;
 
 use ConvertPdf\CardIdoso;
 
-$imagePath = __DIR__ . '/cartao-idoso/Cartão-Idoso-A4.png';
+$imagePath = __DIR__ . '/cartao-idoso/Cartão-Idoso-A4.jpeg';
 
 $formIdosoModel = new FormIdosoModel();
 
@@ -37,9 +37,9 @@ $nomeIdoso = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
 try {
     $cardIdoso = new CardIdoso(
         $imagePath,
-        [125, 56],
-        [78, 74],
-        [73, 141]
+        [121, 91], 
+        [130, 100], 
+        [90, 157]  
     );  
 
     $cardIdoso->addRegNumber($regNumber);

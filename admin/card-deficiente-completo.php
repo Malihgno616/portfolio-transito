@@ -19,6 +19,8 @@ require __DIR__.'/convert-pdf-deficiente.php';
 use Model\FormDeficienteModel;
 use ConvertPdf\CardDeficiente;
 
+$imagePath = __DIR__. '/cartao-deficiente/Cartão-Deficiente-A4.jpeg';
+
 $formDeficienteModel = new FormDeficienteModel();
 
 $inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
@@ -27,22 +29,37 @@ $inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
 try {
     $cardDeficiente = new CardDeficiente(
         $imagePath,
-        [125, 51],
-        [58, 70],
-        [73, 141]
-        );  
+        [121, 91], 
+        [84, 100], 
+        [130, 100], 
+        [92, 153] 
+    );  
         
     $idBeneficiario = $inputGet['id-beneficiario'] ?? null;
     
     $beneficiario = $formDeficienteModel->detailsDeficiente($idBeneficiario);
 
     $regNumber = $beneficiario['numero_registro'] . "/" . date('Y');
+
+    $expirationDate = $beneficiario['data_inicio'];
+
+    if ($beneficiario['periodo_restricao_medica'] == 'permanente') {
+        $expirationDate = date(
+            'd/m/Y',
+            strtotime($beneficiario['data_inicio'] . ' +5 years')
+        );
+    } else {
+        $expirationDate = $beneficiario['data_fim'];
+    }
+
     $issueDate = $beneficiario['data_emissao'];
     $nomeBeneficiario = $beneficiario['nome_beneficiario'];
 
     $cardDeficiente->addRegNumber($regNumber);
+    
+    $cardDeficiente->addExpirationDate($expirationDate);
 
-    $cardDeficiente->addExpirationDate($issueDate);
+    $cardDeficiente->addIssueDate($issueDate);
     
     $cardDeficiente->addName($nomeBeneficiario);
 
