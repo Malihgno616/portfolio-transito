@@ -37,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-$idNews = filter_input(INPUT_POST, 'id-news', FILTER_VALIDATE_INT);
+$idNews = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
 if (!$idNews) {
-    $_SESSION['news-alert'] = setAlert("ID inválido para exclusão", 'success');
+    $_SESSION['news-alert'] = setAlert("ID inválido para exclusão", 'error');
     header("Location: news-table.php");
     exit();
 }
@@ -51,7 +51,7 @@ try {
     if ($deletedNews) {
         $_SESSION['news-alert'] = setAlert("Notícia excluída com sucesso!", 'success');
     } else {
-        $_SESSION['news-alert'] = setAlert("Falha ao excluir a notícia",'success');
+        $_SESSION['news-alert'] = setAlert("Falha ao excluir a notícia",'error');
     }
 } catch (Exception $e) {
     $_SESSION['news-alert'] = setAlert("Erro ao excluir notícia: " . $e->getMessage(), 'success');
