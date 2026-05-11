@@ -29,6 +29,8 @@ $isFeatured = $news['destaque'] == intval(0);
 <html lang="pt-br">
   <head>
     <?php include __DIR__.'/components/head.php';?>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
   </head>
 <body>
 <?php 
