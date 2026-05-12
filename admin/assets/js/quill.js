@@ -9,5 +9,6 @@ let form = document.querySelector("form");
 
 form.onsubmit = function () {
   let conteudo = document.querySelector("input[name=conteudo]");
-  conteudo.value = quill.root.innerHTML; 
+  conteudo.value = quill.root.innerHTML;
+  console.log(conteudo.value);
 };

@@ -1,8 +1,10 @@
-<form action="update-news.php" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4" enctype="multipart/form-data">
+<form id="form-edit-news" action="update-news.php" method="post" class="border-2 border-gray-200 rounded-lg p-4 m-4" enctype="multipart/form-data">
 
   <input type="hidden" name="id" value="<?= $newsModel->getNewsById($id)['id'] ?>">
   
-  <input type="hidden" name="conteudo">
+  <input type="hidden" id="conteudo-original" value="<?= htmlspecialchars($newsModel->getNewsById($id)['conteudo'], ENT_QUOTES, 'UTF-8') ?>">
+
+  <input type="hidden" id="conteudo-edit" name="conteudo-edit">
   
   <h1 class="text-center text-2xl p-4">Atualizar a imagem da publicação</h1>
   
@@ -70,9 +72,7 @@
     
   </div>
   
-  <div id="editor" class="h-80">
-    <?= $newsModel->getNewsById($id)['conteudo'] ?>
-  </div>
+  <div id="editor" class="h-80"></div>
 
   <button type="submit" class="mt-4 text-lg md:text-xl text-center px-2 py-2 rounded-lg bg-yellow-600 text-white hover:bg-yellow-500 w-42 transition">
     Atualizar notícia

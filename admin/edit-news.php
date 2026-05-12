@@ -19,7 +19,6 @@ use Model\NewsModel\NewsModel;
 $newsModel = new NewsModel();
 
 $id = $_GET['id'];
-
 $news = $newsModel->getNewsById($id);
 $isFeatured = $news['destaque'] == intval(0);
 
@@ -83,6 +82,13 @@ include __DIR__.'/layout/header.php';
         include __DIR__.'/components/edit-news.php';
     ?>
 </main>
+
 <script src="./assets/js/editNewsImg.js"></script>
-<script src="./assets/js/quill.js"></script>
+<script src="./assets/js/quill-edit.js"></script>
+
+<script>
+  const conteudoBanco = `<?= addslashes($newsModel->getNewsById($id)['conteudo']) ?>`;
+  quill.root.innerHTML = conteudoBanco;
+</script>
+
 <?php include __DIR__.'/layout/footer.php'; ?>

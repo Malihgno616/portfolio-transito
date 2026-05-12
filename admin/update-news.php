@@ -1,9 +1,5 @@
 <?php 
-session_start([
-    'cookie_secure' => true,
-    'cookie_httponly' => true,
-    'use_strict_mode' => true
-]);
+session_start();
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -40,7 +36,7 @@ function setAlert($message, $type = 'success') {
     HTML;  
 }
 
-$inputPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+$inputPost = $_POST;
 
 $id = isset($inputPost['id']) ? (int)$inputPost['id'] : 0;
 
@@ -67,9 +63,9 @@ if (isset($_FILES['img-news']) && $_FILES['img-news']['error'] === UPLOAD_ERR_OK
     $updateImage = false;
 }
 
-$nameFileNews = $inputPost['name-file-news'];
+$nameFileNews = $inputPost['name-file-news'] ?? "";
 
-$content = $inputPost['conteudo'];
+$content = $inputPost['conteudo-edit'] ?? "";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -81,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $_SESSION['news-alert'] = setAlert("Erro ao atualizar a notícia", "error");
         }
-        
+
         header("Location: edit-news.php?id=".$id);
         exit();
 
