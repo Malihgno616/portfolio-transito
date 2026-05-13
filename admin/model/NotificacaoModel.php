@@ -152,5 +152,18 @@ class NotificacaoModel {
           return false;
       }
   }
+
+  public function deleteAllNotifications()
+  {
+    try {
+      $query = "TRUNCATE TABLE notificacoes";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->execute();
+      return true;
+    } catch(PDOException $e) {
+      error_log("Error: " . $e->getMessage());
+      return false;
+    }
+  }
   
 }

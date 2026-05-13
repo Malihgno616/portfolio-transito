@@ -166,5 +166,21 @@ class ContactModel {
     }
   }   
 
+  public function deleteAllContacts()
+  {
+    try {
+        $query = "TRUNCATE TABLE form_contato";
+        $stmt = $this->pdo->prepare($query);
+                
+        $stmt->execute();
+        
+        return true;
+        
+    } catch (PDOException $e) {
+        error_log("Erro ao deletar contatos: " . $e->getMessage());
+        return false;
+    }
+  }
+
 }
 

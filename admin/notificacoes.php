@@ -32,19 +32,26 @@ $offset = ($currentPage - 1) * $limit;
 <?php include __DIR__.'/layout/header.php';?>
 
 <main class="w-full h-full p-10">
-    <div class="flex flex-col md:flex-row 
-            md:justify-between md:items-center 
-            w-full max-w-5xl mx-auto mb-5 gap-4">
-
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center w-full max-w-5xl mx-auto mb-5 gap-4">
         <h1 class="text-3xl md:text-5xl text-center md:text-left">
             Notificações
         </h1>
 
-        <a href="home.php"
-            class="text-lg md:text-xl text-center px-6 py-3 rounded-lg 
-                    bg-yellow-600 text-white hover:bg-yellow-500 transition">
-            Voltar
-        </a>
+        <div class="w-lg flex gap-2 justify-center">
+
+            <form action="del-all-notifications.php" onsubmit="return window.confirm('Tem certeza que deseja remover todas as notificações?')" method="post">
+                <button type="submit" class="text-lg md:text-xl text-center px-6 py-3 rounded-lg bg-red-600 text-white hover:bg-red-500 transition">
+                    <abbr title="Excluir todas as notificações">
+                        <i class="fas fa-trash"></i>
+                    </abbr>
+                </button>
+            </form>
+            
+            <a href="home.php" class="text-lg md:text-xl text-center px-6 py-3 rounded-lg    bg-yellow-600 text-white hover:bg-yellow-500 transition">
+                Voltar
+            </a>
+            
+        </div>
     </div>
 
     <hr>

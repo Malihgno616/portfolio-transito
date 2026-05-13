@@ -70,6 +70,14 @@ include __DIR__.'/layout/header.php';
 
         <div class="flex items-center justify-center gap-3">
 
+            <form action="del-all-contacts.php" onsubmit="return window.confirm('Tem certeza que deseja remover todos os contatos?')" method="post">
+                <button type="submit" class="text-lg md:text-xl text-center px-6 py-3 rounded-lg bg-red-600 text-white hover:bg-red-500 transition">
+                    <abbr title="Excluir todos os contatos">
+                        <i class="fas fa-trash"></i>
+                    </abbr>
+                </button>
+            </form>
+
             <button
             data-modal-target="search-contact"
             data-modal-toggle="search-contact"

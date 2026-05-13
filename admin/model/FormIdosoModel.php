@@ -560,4 +560,19 @@ class FormIdosoModel implements CardIdoso {
         }
     }
 
+    public function deleteAllFormIdoso()
+    {
+        try {
+            $query = "TRUNCATE TABLE cartao_idoso";
+            $stmt = $this->pdo->prepare($query);
+                    
+            $stmt->execute();
+            
+            return true;
+        } catch(PDOException $e) {
+            error_log("Erro ao deletar todos os formulários de idosos: " . $e->getMessage());
+            return false;
+        }
+    }
+
 }

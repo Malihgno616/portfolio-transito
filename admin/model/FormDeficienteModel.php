@@ -586,6 +586,18 @@ class FormDeficienteModel implements CardDeficiente {
         }
     }
 
+    public function deleteAllFormDeficiente()
+    {
+        try {
+            $query = "TRUNCATE TABLE cartao_deficiente";
+            $stmt = $this->pdo->prepare($query);
+            return $stmt->execute();
+        } catch(PDOException $e) {
+            error_log("Erro ao deletar formulários de deficientes: " . $e->getMessage());
+            return false;
+        }
+    }
+
 }
 
 // $model = new FormDeficienteModel();
