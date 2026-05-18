@@ -46,8 +46,9 @@ $order = $_GET['orderBy'] ?? "id";
                 </button>
             </form>
             
-            <button data-modal-target="add-beneficiario-modal" data-modal-toggle="add-beneficiario-modal" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"><i class="fas fa-plus"></i>
-            </button>
+            <a href="form-add-deficiente.php" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                <i class="fas fa-plus"></i>
+            </a>
             
             <button data-modal-target="search-deficiente" data-modal-toggle="search-deficiente" class="text-white bg-yellow-700 hover:bg-yellow-800
                     focus:ring-4 focus:outline-none focus:ring-yellow-300
@@ -76,17 +77,11 @@ $order = $_GET['orderBy'] ?? "id";
             echo $_SESSION['alert-beneficiario'];
             unset($_SESSION['alert-beneficiario']);
         }
-    
+
         include __DIR__.'/components/table-deficiente.php';
         include __DIR__.'/components/modal-cria-num-reg-deficiente.php';
-        include __DIR__.'/components/modal-add-beneficiario.php';
         include __DIR__.'/components/modal-pesquisa-deficiente.php';
     ?>
 </main>
-<script src="assets/js/addImgBene.js"></script>
-<script src="assets/js/addAtestado.js"></script>
-<script src="assets/js/spinnerForms.js"></script>
-<script src="assets/js/spinnerOn.js"></script>
-<script src="assets/js/exibirDataBene.js"></script>
 <script src="assets/js/searchDeficiente.js"></script>
 <?php include __DIR__.'/layout/footer.php';?>

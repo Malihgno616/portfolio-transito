@@ -80,7 +80,15 @@ $nomeMedico = $inputPost['nome-medico'];
 $crmMedico = $inputPost['crm-medico'];
 $telMedico = $inputPost['telefone-medico'];
 $localAtendimentoMedico = $inputPost['local-atendimento-medico'];
-$deficienciasAmbulatorias = implode(", ", $inputPost['deficiencia-ambulatoria']);
+
+if (empty($inputPost['deficiencia-ambulatoria'])) {
+    $_SESSION['alert-beneficiario'] = setAlert("Selecione uma deficiência ao menos","error");
+    header("Location: form-add-deficiente.php");
+    exit();
+}
+
+$deficienciasAmbulatorias = implode(", ",(array)$inputPost['deficiencia-ambulatoria']);
+
 $restricaoMedica = $inputPost['restricao-medica'];
 $dataInicio = $inputPost['data-inicio'];
 $dataFim = $inputPost['data-fim'] ?? "";
@@ -156,6 +164,36 @@ if (isset($_FILES['comprovante-rep']) && $_FILES['comprovante-rep']['error'] ===
 }
 
 $nomeAqvCompRep = $inputPost['nome-aqv-comp-rep'] ?? "";
+
+$camposObrigatorios = [
+    $nomeBenef,
+    $nascBenef,
+    $generoBeneficiario,
+    $cepBeneficiario,
+    $endBeneficiario,
+    $numBeneficiario,
+    $bairroBeneficiario,
+    $cidadeBeneficiario,
+    $ufBeneficiario,
+    $telBeneficiario,
+    $identidadeBeneficiario,
+    $dataExpBeneficiario,
+    $expedidoBeneficiario,
+    $nomeMedico,
+    $crmMedico,
+    $telMedico,
+    $localAtendimentoMedico,
+    $deficienciasAmbulatorias,
+    $restricaoMedica,
+    $dataInicio,
+    $descricaoCid
+];
+
+if(in_array("", $camposObrigatorios)) {
+    $_SESSION['alert-beneficiario'] = setAlert("Preencha os campos obrigatórios!", "error");
+    header("Location: form-add-deficiente.php");
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

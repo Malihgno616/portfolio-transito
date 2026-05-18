@@ -1,6 +1,7 @@
 <?php 
 
 session_start();
+
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
@@ -139,13 +140,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $month = $partsDateIdoso[1];
     $year = $partsDateIdoso[2];
 
-    if (!checkdate($month, $day, $year)) {
+    $camposObrigatorios = [
+    $nomeIdoso,
+    $nascIdoso,
+    $sexoIdoso,
+    $endIdoso,
+    $numIdoso,
+    $bairroIdoso,
+    $cepIdoso,
+    $cidadeIdoso,
+    $ufIdoso,
+    $telIdoso,
+    $identidadeIdoso,
+    $dataExpIdoso,
+    $expedidoIdoso
+    ];
+
+    if (in_array("", $camposObrigatorios, true)) {
+        $_SESSION['idoso-alert'] = setAlert("Preencha os campos obrigatórios!", "error");
+        header("Location: tab-idoso.php");
+        exit();
+    }
+
+    $partsDateIdoso = explode('/', $nascIdoso);
+
+    if (count($partsDateIdoso) !== 3) {
+        $_SESSION['idoso-alert'] = setAlert("Formato de data inválido!", "error");
+        header("Location: tab-idoso.php");
+        exit();
+    }
+
+    [$day, $month, $year] = $partsDateIdoso;
+
+    if (!checkdate((int)$month, (int)$day, (int)$year)) {
         $_SESSION['idoso-alert'] = setAlert("Data de nascimento inválida!", "error");
         header("Location: tab-idoso.php");
         exit();
     }
 
-    if ($year > date('Y') - 60) {
+    if ((int)$year > date('Y') - 60) {
         $_SESSION['idoso-alert'] = setAlert("O idoso deve ter pelo menos 60 anos!", "error");
         header("Location: tab-idoso.php");
         exit();
