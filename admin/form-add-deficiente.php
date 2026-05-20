@@ -24,7 +24,15 @@ include __DIR__.'/layout/header.php';
         Voltar
       </a>
     </div>
-    <?php include __DIR__.'/components/form-add-deficiente.php';?>
+    <?php 
+    echo "<br>";
+    if(isset($_SESSION['alert-beneficiario'])) {
+      echo $_SESSION['alert-beneficiario'];
+      unset($_SESSION['alert-beneficiario']);
+    }
+    include __DIR__.'/components/form-add-deficiente.php'
+    
+    ;?>
   </main>
   
 <script src="assets/js/addImgBene.js"></script>

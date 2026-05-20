@@ -24,7 +24,15 @@ include __DIR__.'/layout/header.php';
         Voltar
       </a>
     </div>
-    <?php include __DIR__.'/components/form-add-idoso.php';?>
+
+    <?php 
+        echo "<br>";
+        if(isset($_SESSION['idoso-alert'])) {
+          echo $_SESSION['idoso-alert'];
+          unset($_SESSION['idoso-alert']);
+        } 
+        include __DIR__.'/components/form-add-idoso.php'
+    ;?>
   </main>
   
 <script src="assets/js/spinnerForms.js"></script>

@@ -80,15 +80,7 @@ $nomeMedico = $inputPost['nome-medico'];
 $crmMedico = $inputPost['crm-medico'];
 $telMedico = $inputPost['telefone-medico'];
 $localAtendimentoMedico = $inputPost['local-atendimento-medico'];
-
-if (empty($inputPost['deficiencia-ambulatoria'])) {
-    $_SESSION['alert-beneficiario'] = setAlert("Selecione uma deficiência ao menos","error");
-    header("Location: form-add-deficiente.php");
-    exit();
-}
-
 $deficienciasAmbulatorias = implode(", ",(array)$inputPost['deficiencia-ambulatoria']);
-
 $restricaoMedica = $inputPost['restricao-medica'];
 $dataInicio = $inputPost['data-inicio'];
 $dataFim = $inputPost['data-fim'] ?? "";
@@ -191,6 +183,12 @@ $camposObrigatorios = [
 
 if(in_array("", $camposObrigatorios)) {
     $_SESSION['alert-beneficiario'] = setAlert("Preencha os campos obrigatórios!", "error");
+    header("Location: form-add-deficiente.php");
+    exit();
+}
+
+if (empty($inputPost['deficiencia-ambulatoria'])) {
+    $_SESSION['alert-beneficiario'] = setAlert("Selecione uma deficiência ao menos","error");
     header("Location: form-add-deficiente.php");
     exit();
 }

@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (in_array("", $camposObrigatorios, true)) {
         $_SESSION['idoso-alert'] = setAlert("Preencha os campos obrigatórios!", "error");
-        header("Location: tab-idoso.php");
+        header("Location: form-add-idoso.php");
         exit();
     }
 
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (count($partsDateIdoso) !== 3) {
         $_SESSION['idoso-alert'] = setAlert("Formato de data inválido!", "error");
-        header("Location: tab-idoso.php");
+        header("Location: form-add-idoso.php");
         exit();
     }
 
@@ -174,13 +174,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!checkdate((int)$month, (int)$day, (int)$year)) {
         $_SESSION['idoso-alert'] = setAlert("Data de nascimento inválida!", "error");
-        header("Location: tab-idoso.php");
+        header("Location: form-add-idoso.php");
         exit();
     }
 
     if ((int)$year > date('Y') - 60) {
         $_SESSION['idoso-alert'] = setAlert("O idoso deve ter pelo menos 60 anos!", "error");
-        header("Location: tab-idoso.php");
+        header("Location: form-add-idoso.php");
         exit();
     }
 
@@ -228,12 +228,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $_SESSION['idoso-alert'] = setAlert("Cadastro realizado com sucesso!", "success");
         $notificacoes->sendNotification("NOVO CARTÃO PARA " . $nomeIdoso, "CARTÃO DO IDOSO", "detalhes-card-idoso.php?id-idoso=$idIdoso");
-        header("Location: tab-idoso.php");
+        header("Location: form-add-idoso.php");
         exit();
         
     } catch(Exception $e) {
         $_SESSION['idoso-alert'] = setAlert("Erro ao processar o formulário: " . $e->getMessage(), "error");
-        header("Location: tab-idoso.php");
+        header("Location: form-add-idoso.php");
         exit();
     }
 }
