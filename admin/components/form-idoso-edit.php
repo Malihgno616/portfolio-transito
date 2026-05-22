@@ -1,6 +1,6 @@
         <?php foreach($idosos as $idoso): ?>
             <!-- Modal body -->
-            <div class="animate__animated animate__fadeIn p-10 border-2 rounded-lg border-gray-600/50 md:p-5 space-y-4">
+            <div class="p-4 md:p-5 space-y-4 border-2 border-gray-200 rounded-xl">
                     <form class="animate__animated animate__fadeIn" id="form-edit-idoso" action="update-idoso.php" method="post" enctype="multipart/form-data">
                         <h1 class="text-center text-2xl p-5">Informações do Idoso</h1>
                         <h2 class="text-center text-lg text-yellow-700 p-3 font-bold">ID: <?= $idoso['id']?></h2>

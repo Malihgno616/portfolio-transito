@@ -15,7 +15,7 @@ $deficiencias = [
 
 <?php foreach($beneficiarios as $index => $beneficiario): ?>
     
-    <div class="animate__animated animate__fadeIn p-10 border-2 rounded-lg border-gray-600/50 md:p-5 space-y-4">
+    <div class="p-4 md:p-5 space-y-4 border-2 border-gray-200 rounded-xl">
             <form class="animate__animated animate__fadeIn" id="form-edit-beneficiario" action="update-deficiente.php" method="post" enctype="multipart/form-data">
                 <h1 class="text-center text-2xl p-5">Informações do Beneficiário</h1>
                 <h2 class="text-center text-lg text-yellow-700 p-3 font-bold">ID: <?= $beneficiario['id']?></h2>
@@ -46,7 +46,7 @@ $deficiencias = [
                     <div class="relative z-0">
                         <select name="sexo-beneficiario" class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer" id="">
                             <option value="" disabled <?= empty($beneficiario['genero_beneficiario']) ? 'selected' : '' ?>>Selecione o sexo</option>
-                            <option value="masculino" <?= ($beneiciario['genero_beneficiario'] ?? '') === 'masculino' ? 'selected' : '' ?>>Masculino</option>
+                            <option value="masculino" <?= ($beneficiario['genero_beneficiario'] ?? '') === 'masculino' ? 'selected' : '' ?>>Masculino</option>
                             <option value="feminino" <?= ($beneficiario['genero_beneficiario'] ?? '') === 'feminino' ? 'selected' : '' ?>>Feminino</option>
                         </select>
                         <label for="" class="absolute text-md text-gray-500 duration-300 transform -translate-y-4 scale-100 top-3 -z-10 origin-[0] 
