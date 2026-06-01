@@ -19,20 +19,19 @@ require __DIR__.'/convert-pdf-deficiente.php';
 use Model\FormDeficienteModel;
 use ConvertPdf\CardDeficiente;
 
-$imagePath = __DIR__. '/cartao-deficiente/Cartão-Deficiente-A4.jpeg';
+$imagePath = __DIR__. '/cartao-deficiente/Cartão-Deficiente-A4.png';
 
 $formDeficienteModel = new FormDeficienteModel();
 
 $inputGet = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
 
-
 try {
     $cardDeficiente = new CardDeficiente(
         $imagePath,
-        [121, 91], 
-        [84, 100], 
-        [130, 100], 
-        [92, 153] 
+        [114, 67], 
+        [80, 77.5], 
+        [135, 77], 
+        [87.5, 135] 
     );  
         
     $idBeneficiario = $inputGet['id-beneficiario'] ?? null;
