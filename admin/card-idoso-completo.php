@@ -20,7 +20,7 @@ use Model\FormIdosoModel;
 
 use ConvertPdf\CardIdoso;
 
-$imagePath = __DIR__ . '/cartao-idoso/Cartão-Idoso-A4.jpeg';
+$imagePath = __DIR__ . '/cartao-idoso/Cartão-Idoso-A4.png';
 
 $formIdosoModel = new FormIdosoModel();
 
@@ -32,18 +32,30 @@ $regNumber = $formIdosoModel->cardIdosoDetails($idIdoso)['numero_registro'] . "/
 
 $issueDate = $formIdosoModel->cardIdosoDetails($idIdoso)['data_emissao'];
 
+$date = DateTime::createFromFormat('d/m/Y', $issueDate);
+
+if (!$date) {
+    die('Data inválida: ' . $issueDate);
+}
+
+$date->modify('+5 years');
+
+$validationDate = $date->format('d/m/Y');
+
 $nomeIdoso = $formIdosoModel->cardIdosoDetails($idIdoso)['nome_idoso'];
 
 try {
     $cardIdoso = new CardIdoso(
         $imagePath,
-        [121, 91], 
-        [130, 100], 
-        [90, 157]  
+        [114, 67], 
+        [80, 77.4], 
+        [135, 77],
+        [87.5, 135]  
     );  
 
     $cardIdoso->addRegNumber($regNumber);
-    $cardIdoso->addExpirationDate($issueDate);
+    $cardIdoso->addExpirationDate($validationDate);
+    $cardIdoso->addIssueDate($issueDate);
     $cardIdoso->addName($nomeIdoso);
 
     $outputPath = __DIR__ . '/pdf-idoso/cartao-idoso-id='. $idIdoso .'.pdf';
